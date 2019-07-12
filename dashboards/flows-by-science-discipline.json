@@ -1,0 +1,1832 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1562178059985,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "keepTime": true,
+      "tags": [
+        "netsage"
+      ],
+      "targetBlank": true,
+      "title": "Other Dashboards",
+      "type": "dashboards"
+    }
+  ],
+  "panels": [
+    {
+      "content": "<h4>Select a Discipline from the dropdown above. We recommend selecting no more than 3 at a time.</h4>\n<center>This sankey graph shows the top 10 source science organizations by volume for the selected disciplines in a specific period of time.</center>\n<center>It then shows their disciplines and the top 5 destination science organizations for each.  Thicker lines indicate larger flows.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5011,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": null,
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 2,
+        "y": 3
+      },
+      "id": 47,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "  -> SciReg",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline &&  _exists_:meta.scireg.dst.org_name",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": null,
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 15,
+        "y": 3
+      },
+      "id": 42,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "-> flows matched in SciReg",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "_exists_:meta.scireg.dst.org_name AND meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 2,
+        "y": 5
+      },
+      "id": 45,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "-> all",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 15,
+        "y": 5
+      },
+      "id": 46,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "-> total flows",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "__netsage_template": "navigation",
+      "array_option_1": [
+        "What is the current state of the network?",
+        "What are the top senders/receivers of flows?",
+        "What are the top flows by organization?",
+        "What are the top flows by country?",
+        "What are flows by science discipline?",
+        "What is the aggregate flow data for data archives?",
+        "What do individual flows look like?",
+        "What are the current flow data summary statistics?",
+        "What is the state of active testing on the network?",
+        "What are the patterns of loss in the network?",
+        "What are the patterns of latency in the network?",
+        "What are the bandwidth patterns in the network?",
+        "What are the patterns in science data transfers in the network?"
+      ],
+      "array_option_2": [
+        "/grafana/d/000000003/bandwidth-dashboard",
+        "/grafana/d/xk26IFhmk/flow-data",
+        "/grafana/d/QfzDJKhik/flow-data-per-organization",
+        "/grafana/d/fgrOzz_mk/flow-data-per-country",
+        "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
+        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
+        "/grafana/d/-l3_u8nWk/individual-flows",
+        "/grafana/d/CJC1FFhmz/other-flow-stats",
+        "/grafana/d/000000033/loss-and-throughput-active-testing",
+        "/grafana/d/000000006/loss-patterns",
+        "/grafana/d/000000005/latency-patterns",
+        "/grafana/d/000000004/bandwidth-patterns",
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+      ],
+      "array_option_3": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "array_option_4": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "choices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "linear",
+        "colorScheme": "interpolateOranges",
+        "exponent": 0.5,
+        "fillBackground": false,
+        "mode": "spectrum"
+      },
+      "colorModes": [
+        "spectrum"
+      ],
+      "colorScheme": "NetSage",
+      "colors": {
+        "hex_values": [
+          "#f8ae63",
+          "#f5ae66",
+          "#f2ae69",
+          "#efae6c",
+          "#ecae6f",
+          "#e9ae72",
+          "#e6ae75",
+          "#e3ae78",
+          "#e0ae7b",
+          "#ddae7e",
+          "#daae81",
+          "#d7ae84",
+          "#d4ae87",
+          "#d1ae8a",
+          "#ceae8d",
+          "#cbae90",
+          "#c8ae93",
+          "#c5ae96",
+          "#c2ae99",
+          "#bfae9c",
+          "#bcae9f",
+          "#b9aea2",
+          "#b6aea5",
+          "#b3aea8",
+          "#b0aeab",
+          "#adaeae",
+          "#aaaeb1",
+          "#a7aeb4",
+          "#a4aeb7",
+          "#a1aeba",
+          "#9eaebd",
+          "#9baec0",
+          "#98aec3",
+          "#95aec6",
+          "#92aec9",
+          "#8faecc",
+          "#8caecf",
+          "#89aed2",
+          "#86aed5",
+          "#83aed8",
+          "#80aedb",
+          "#7daede",
+          "#7aaee1",
+          "#77aee4",
+          "#74aee7",
+          "#71aeea",
+          "#6eaeed",
+          "#6baef0",
+          "#68aef3",
+          "#65aef6"
+        ],
+        "rgb_values": [
+          "rgb(248,174,99)",
+          "rgb(245,174,102)",
+          "rgb(242,174,105)",
+          "rgb(239,174,108)",
+          "rgb(236,174,111)",
+          "rgb(233,174,114)",
+          "rgb(230,174,117)",
+          "rgb(227,174,120)",
+          "rgb(224,174,123)",
+          "rgb(221,174,126)",
+          "rgb(218,174,129)",
+          "rgb(215,174,132)",
+          "rgb(212,174,135)",
+          "rgb(209,174,138)",
+          "rgb(206,174,141)",
+          "rgb(203,174,144)",
+          "rgb(200,174,147)",
+          "rgb(197,174,150)",
+          "rgb(194,174,153)",
+          "rgb(191,174,156)",
+          "rgb(188,174,159)",
+          "rgb(185,174,162)",
+          "rgb(182,174,165)",
+          "rgb(179,174,168)",
+          "rgb(176,174,171)",
+          "rgb(173,174,174)",
+          "rgb(170,174,177)",
+          "rgb(167,174,180)",
+          "rgb(164,174,183)",
+          "rgb(161,174,186)",
+          "rgb(158,174,189)",
+          "rgb(155,174,192)",
+          "rgb(152,174,195)",
+          "rgb(149,174,198)",
+          "rgb(146,174,201)",
+          "rgb(143,174,204)",
+          "rgb(140,174,207)",
+          "rgb(137,174,210)",
+          "rgb(134,174,213)",
+          "rgb(131,174,216)",
+          "rgb(128,174,219)",
+          "rgb(125,174,222)",
+          "rgb(122,174,225)",
+          "rgb(119,174,228)",
+          "rgb(116,174,231)",
+          "rgb(113,174,234)",
+          "rgb(110,174,237)",
+          "rgb(107,174,240)",
+          "rgb(104,174,243)",
+          "rgb(101,174,246)"
+        ]
+      },
+      "custom_hover": " ",
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 6,
+        "x": 0,
+        "y": 7
+      },
+      "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
+      "hex_values": [
+        "#f8ae63",
+        "#f5ae66",
+        "#f2ae69",
+        "#efae6c",
+        "#ecae6f",
+        "#e9ae72",
+        "#e6ae75",
+        "#e3ae78",
+        "#e0ae7b",
+        "#ddae7e",
+        "#daae81",
+        "#d7ae84",
+        "#d4ae87",
+        "#d1ae8a",
+        "#ceae8d",
+        "#cbae90",
+        "#c8ae93",
+        "#c5ae96",
+        "#c2ae99",
+        "#bfae9c",
+        "#bcae9f",
+        "#b9aea2",
+        "#b6aea5",
+        "#b3aea8",
+        "#b0aeab",
+        "#adaeae",
+        "#aaaeb1",
+        "#a7aeb4",
+        "#a4aeb7",
+        "#a1aeba",
+        "#9eaebd",
+        "#9baec0",
+        "#98aec3",
+        "#95aec6",
+        "#92aec9",
+        "#8faecc",
+        "#8caecf",
+        "#89aed2",
+        "#86aed5",
+        "#83aed8",
+        "#80aedb",
+        "#7daede",
+        "#7aaee1",
+        "#77aee4",
+        "#74aee7",
+        "#71aeea",
+        "#6eaeed",
+        "#6baef0",
+        "#68aef3",
+        "#65aef6"
+      ],
+      "id": "50",
+      "legend": {
+        "legend_colors": [],
+        "show": true
+      },
+      "links": [],
+      "max_total": 512512,
+      "option_1": "netsage",
+      "option_2": "maheshtest",
+      "option_3": "plugin",
+      "option_4": 123,
+      "parsed_data": [
+        {
+          "avg": 1773.39792387543,
+          "label": "Count",
+          "max": 3698,
+          "min": 0,
+          "total": 512512
+        }
+      ],
+      "rgb_values": [
+        "rgb(248,174,99)",
+        "rgb(245,174,102)",
+        "rgb(242,174,105)",
+        "rgb(239,174,108)",
+        "rgb(236,174,111)",
+        "rgb(233,174,114)",
+        "rgb(230,174,117)",
+        "rgb(227,174,120)",
+        "rgb(224,174,123)",
+        "rgb(221,174,126)",
+        "rgb(218,174,129)",
+        "rgb(215,174,132)",
+        "rgb(212,174,135)",
+        "rgb(209,174,138)",
+        "rgb(206,174,141)",
+        "rgb(203,174,144)",
+        "rgb(200,174,147)",
+        "rgb(197,174,150)",
+        "rgb(194,174,153)",
+        "rgb(191,174,156)",
+        "rgb(188,174,159)",
+        "rgb(185,174,162)",
+        "rgb(182,174,165)",
+        "rgb(179,174,168)",
+        "rgb(176,174,171)",
+        "rgb(173,174,174)",
+        "rgb(170,174,177)",
+        "rgb(167,174,180)",
+        "rgb(164,174,183)",
+        "rgb(161,174,186)",
+        "rgb(158,174,189)",
+        "rgb(155,174,192)",
+        "rgb(152,174,195)",
+        "rgb(149,174,198)",
+        "rgb(146,174,201)",
+        "rgb(143,174,204)",
+        "rgb(140,174,207)",
+        "rgb(137,174,210)",
+        "rgb(134,174,213)",
+        "rgb(131,174,216)",
+        "rgb(128,174,219)",
+        "rgb(125,174,222)",
+        "rgb(122,174,225)",
+        "rgb(119,174,228)",
+        "rgb(116,174,231)",
+        "rgb(113,174,234)",
+        "rgb(110,174,237)",
+        "rgb(107,174,240)",
+        "rgb(104,174,243)",
+        "rgb(101,174,246)"
+      ],
+      "scales": [
+        "linear",
+        "sqrt"
+      ],
+      "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "",
+      "to_Byte": false,
+      "to_si": 1000000000,
+      "tooltip": {
+        "content": " ",
+        "show": true,
+        "showDefault": true
+      },
+      "topLogoPath": "https://portal.netsage.global/netsage-cropped.png",
+      "transparent": true,
+      "type": "mahesh-test"
+    },
+    {
+      "auto_format_labels": false,
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "linear",
+        "colorScheme": "interpolateOranges",
+        "exponent": 0.5,
+        "fillBackground": false,
+        "mode": "spectrum"
+      },
+      "colorModes": [
+        "spectrum"
+      ],
+      "colorScheme": "NetSage",
+      "colors": {
+        "hex_values": [
+          "#f8ae63",
+          "#f5ae66",
+          "#f2ae69",
+          "#efae6c",
+          "#ecae6f",
+          "#e9ae72",
+          "#e6ae75",
+          "#e3ae78",
+          "#e0ae7b",
+          "#ddae7e",
+          "#daae81",
+          "#d7ae84",
+          "#d4ae87",
+          "#d1ae8a",
+          "#ceae8d",
+          "#cbae90",
+          "#c8ae93",
+          "#c5ae96",
+          "#c2ae99",
+          "#bfae9c",
+          "#bcae9f",
+          "#b9aea2",
+          "#b6aea5",
+          "#b3aea8",
+          "#b0aeab",
+          "#adaeae",
+          "#aaaeb1",
+          "#a7aeb4",
+          "#a4aeb7",
+          "#a1aeba",
+          "#9eaebd",
+          "#9baec0",
+          "#98aec3",
+          "#95aec6",
+          "#92aec9",
+          "#8faecc",
+          "#8caecf",
+          "#89aed2",
+          "#86aed5",
+          "#83aed8",
+          "#80aedb",
+          "#7daede",
+          "#7aaee1",
+          "#77aee4",
+          "#74aee7",
+          "#71aeea",
+          "#6eaeed",
+          "#6baef0",
+          "#68aef3",
+          "#65aef6"
+        ],
+        "rgb_values": [
+          "rgb(248,174,99)",
+          "rgb(245,174,102)",
+          "rgb(242,174,105)",
+          "rgb(239,174,108)",
+          "rgb(236,174,111)",
+          "rgb(233,174,114)",
+          "rgb(230,174,117)",
+          "rgb(227,174,120)",
+          "rgb(224,174,123)",
+          "rgb(221,174,126)",
+          "rgb(218,174,129)",
+          "rgb(215,174,132)",
+          "rgb(212,174,135)",
+          "rgb(209,174,138)",
+          "rgb(206,174,141)",
+          "rgb(203,174,144)",
+          "rgb(200,174,147)",
+          "rgb(197,174,150)",
+          "rgb(194,174,153)",
+          "rgb(191,174,156)",
+          "rgb(188,174,159)",
+          "rgb(185,174,162)",
+          "rgb(182,174,165)",
+          "rgb(179,174,168)",
+          "rgb(176,174,171)",
+          "rgb(173,174,174)",
+          "rgb(170,174,177)",
+          "rgb(167,174,180)",
+          "rgb(164,174,183)",
+          "rgb(161,174,186)",
+          "rgb(158,174,189)",
+          "rgb(155,174,192)",
+          "rgb(152,174,195)",
+          "rgb(149,174,198)",
+          "rgb(146,174,201)",
+          "rgb(143,174,204)",
+          "rgb(140,174,207)",
+          "rgb(137,174,210)",
+          "rgb(134,174,213)",
+          "rgb(131,174,216)",
+          "rgb(128,174,219)",
+          "rgb(125,174,222)",
+          "rgb(122,174,225)",
+          "rgb(119,174,228)",
+          "rgb(116,174,231)",
+          "rgb(113,174,234)",
+          "rgb(110,174,237)",
+          "rgb(107,174,240)",
+          "rgb(104,174,243)",
+          "rgb(101,174,246)"
+        ]
+      },
+      "custom_hover": " ",
+      "data_type": "table",
+      "description": "",
+      "docs_data": [],
+      "docs_editor_aggregation": "Total",
+      "docs_editor_aggregation_options": [
+        "Total",
+        "Average",
+        "Max",
+        "Min"
+      ],
+      "docs_editor_choices": [
+        1
+      ],
+      "docs_editor_link_width_input": "",
+      "docs_editor_option_nodes": [
+        ""
+      ],
+      "docs_editor_to_Byte": false,
+      "docs_table_data": [],
+      "gridPos": {
+        "h": 27,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "hex_values": [
+        "#f8ae63",
+        "#f5ae66",
+        "#f2ae69",
+        "#efae6c",
+        "#ecae6f",
+        "#e9ae72",
+        "#e6ae75",
+        "#e3ae78",
+        "#e0ae7b",
+        "#ddae7e",
+        "#daae81",
+        "#d7ae84",
+        "#d4ae87",
+        "#d1ae8a",
+        "#ceae8d",
+        "#cbae90",
+        "#c8ae93",
+        "#c5ae96",
+        "#c2ae99",
+        "#bfae9c",
+        "#bcae9f",
+        "#b9aea2",
+        "#b6aea5",
+        "#b3aea8",
+        "#b0aeab",
+        "#adaeae",
+        "#aaaeb1",
+        "#a7aeb4",
+        "#a4aeb7",
+        "#a1aeba",
+        "#9eaebd",
+        "#9baec0",
+        "#98aec3",
+        "#95aec6",
+        "#92aec9",
+        "#8faecc",
+        "#8caecf",
+        "#89aed2",
+        "#86aed5",
+        "#83aed8",
+        "#80aedb",
+        "#7daede",
+        "#7aaee1",
+        "#77aee4",
+        "#74aee7",
+        "#71aeea",
+        "#6eaeed",
+        "#6baef0",
+        "#68aef3",
+        "#65aef6"
+      ],
+      "id": 44,
+      "label_nodes": [
+        "Source",
+        "Discipline",
+        "Destination"
+      ],
+      "legend": {
+        "legend_colors": [],
+        "show": true
+      },
+      "links": [],
+      "options": {},
+      "rgb_values": [
+        "rgb(248,174,99)",
+        "rgb(245,174,102)",
+        "rgb(242,174,105)",
+        "rgb(239,174,108)",
+        "rgb(236,174,111)",
+        "rgb(233,174,114)",
+        "rgb(230,174,117)",
+        "rgb(227,174,120)",
+        "rgb(224,174,123)",
+        "rgb(221,174,126)",
+        "rgb(218,174,129)",
+        "rgb(215,174,132)",
+        "rgb(212,174,135)",
+        "rgb(209,174,138)",
+        "rgb(206,174,141)",
+        "rgb(203,174,144)",
+        "rgb(200,174,147)",
+        "rgb(197,174,150)",
+        "rgb(194,174,153)",
+        "rgb(191,174,156)",
+        "rgb(188,174,159)",
+        "rgb(185,174,162)",
+        "rgb(182,174,165)",
+        "rgb(179,174,168)",
+        "rgb(176,174,171)",
+        "rgb(173,174,174)",
+        "rgb(170,174,177)",
+        "rgb(167,174,180)",
+        "rgb(164,174,183)",
+        "rgb(161,174,186)",
+        "rgb(158,174,189)",
+        "rgb(155,174,192)",
+        "rgb(152,174,195)",
+        "rgb(149,174,198)",
+        "rgb(146,174,201)",
+        "rgb(143,174,204)",
+        "rgb(140,174,207)",
+        "rgb(137,174,210)",
+        "rgb(134,174,213)",
+        "rgb(131,174,216)",
+        "rgb(128,174,219)",
+        "rgb(125,174,222)",
+        "rgb(122,174,225)",
+        "rgb(119,174,228)",
+        "rgb(116,174,231)",
+        "rgb(113,174,234)",
+        "rgb(110,174,237)",
+        "rgb(107,174,240)",
+        "rgb(104,174,243)",
+        "rgb(101,174,246)"
+      ],
+      "scales": [
+        "linear",
+        "sqrt"
+      ],
+      "table_data": [
+        [
+          "Istituto di Radioastronomia",
+          "Astronomy and Astrophysics",
+          "NICT - Kashima - VLBI data transfer servers",
+          5931586914320384
+        ],
+        [
+          "EMBL-EBI - ftp/grid ftp servers",
+          "Bioinformatics",
+          "UNK-DST",
+          3486003349022784
+        ],
+        [
+          "EMBL-EBI - ftp/grid ftp servers",
+          "Bioinformatics",
+          "Academia Sinica",
+          1338821384790016
+        ],
+        [
+          "EMBL-EBI - ftp/grid ftp servers",
+          "Bioinformatics",
+          "Princeton - CentOS mirror",
+          747111509229568
+        ],
+        [
+          "EMBL-EBI - ftp/grid ftp servers",
+          "Bioinformatics",
+          "Mass. Green High Performance Computing Center",
+          77192456658944
+        ],
+        [
+          "EMBL-EBI - ftp/grid ftp servers",
+          "Bioinformatics",
+          "Cornell - Weill Cornell Medicine",
+          76608784728064
+        ],
+        [
+          "Atacama Large Millimeter Array",
+          "Astronomy and Astrophysics",
+          "NOAJ - WIDE Project - unknown",
+          1234362380025856
+        ],
+        [
+          "EMBL-EBI - European Genome-phenome Archive (EGA) - api access",
+          "Bioinformatics",
+          "UNK-DST",
+          984497157046272
+        ],
+        [
+          "EMBL-EBI - European Genome-phenome Archive (EGA) - api access",
+          "Bioinformatics",
+          "Broad Institute - unknown",
+          93991125553152
+        ],
+        [
+          "EWMWF",
+          "Atmospheric Sciences",
+          "UNK-DST",
+          625945229674848
+        ],
+        [
+          "EWMWF",
+          "Atmospheric Sciences",
+          "Academia Sinica - Research Center for Environmental Changes (RCEC)",
+          76602467295232
+        ],
+        [
+          "EWMWF",
+          "Atmospheric Sciences",
+          "National Energy Research Scientific Computing Center (NERSC)",
+          19078989524992
+        ],
+        [
+          "EWMWF",
+          "Atmospheric Sciences",
+          "Academia Sinica",
+          315961344
+        ],
+        [
+          "EMBL-EBI - Aspera servers for various archives",
+          "Bioinformatics",
+          "UNK-DST",
+          515885363634176
+        ],
+        [
+          "EMBL-EBI - Aspera servers for various archives",
+          "Bioinformatics",
+          "SLAC - GridFTP server",
+          136600677752832
+        ],
+        [
+          "EMBL-EBI - Aspera servers for various archives",
+          "Bioinformatics",
+          "Harvard/LMA - unknown",
+          31364194844672
+        ],
+        [
+          "EMBL-EBI - Aspera servers for various archives",
+          "Bioinformatics",
+          "HKUST - HPC2 cluster - login and sftp node",
+          2997600370688
+        ],
+        [
+          "EMBL-EBI - Aspera servers for various archives",
+          "Bioinformatics",
+          "HKUST - HPC2 cluster - master node",
+          1617552498688
+        ],
+        [
+          "UH - IFA - Data Transfer Node UH-IFA at ITC",
+          "Astronomy and Astrophysics",
+          "UH - MAX - Data Transfer Node UH-IFA at MAX",
+          609918424436000
+        ],
+        [
+          "UH - IFA - Data Transfer Node UH-IFA at ITC",
+          "Astronomy and Astrophysics",
+          "UNK-DST",
+          1214136000000
+        ],
+        [
+          "UH - IFA - Data Transfer Node UH-IFA at ITC",
+          "Astronomy and Astrophysics",
+          "CENIC - PerfSonar - lax",
+          1063028640000
+        ],
+        [
+          "HartRAO - European VLBI",
+          "Astronomy and Astrophysics",
+          "NASA - International VLBI Service",
+          551979461476352
+        ],
+        [
+          "NLM - ftp servers",
+          "Bioinformatics",
+          "UNK-DST",
+          485419542208064
+        ],
+        [
+          "NLM - ftp servers",
+          "Bioinformatics",
+          "CUHK",
+          27395296354304
+        ],
+        [
+          "NLM - ftp servers",
+          "Bioinformatics",
+          "HKU",
+          7660604063744
+        ],
+        [
+          "NLM - ftp servers",
+          "Bioinformatics",
+          "Academia Sinica",
+          507996823552
+        ],
+        [
+          "NLM - ftp servers",
+          "Bioinformatics",
+          "NISA - unknown",
+          323766345728
+        ],
+        [
+          "UH - IFA - Asteroid Terrestrial-impact Last Alert System (ATLAS) - Image Processing Cluster",
+          "Astronomy and Astrophysics",
+          "UNK-DST",
+          500504810052000
+        ]
+      ],
+      "table_data_type": "Sum",
+      "table_editor_choices": [
+        1,
+        2,
+        3
+      ],
+      "table_editor_link_width_label": "",
+      "table_editor_link_width_units": "",
+      "table_editor_node_labels": [
+        "Source",
+        "Discipline",
+        "Destination"
+      ],
+      "table_editor_option_nodes": [
+        "meta.scireg.src.resource.keyword",
+        "meta.scireg.src.discipline.keyword",
+        "meta.scireg.dst.resource.keyword"
+      ],
+      "table_editor_unitFormats": "kbn.getUnitFormats()",
+      "table_editor_unitFormats_TEMP": [
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(0,0)",
+              "text": "Not implemented yet",
+              "value": "kbn.getUnitFormats()"
+            },
+            {
+              "click": "menuItemSelected(0,1)",
+              "text": "test unit",
+              "value": "short"
+            }
+          ],
+          "text": "kbn.getUnitFormats()"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.scireg.src.resource.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "Unknown",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "meta.scireg.src.discipline.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "UNK-SRC",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "meta.scireg.dst.resource.keyword",
+              "id": "2",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "UNK-DST",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "5"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Top Science Talkers by Discipline",
+      "tooltip": {
+        "content": " ",
+        "show": true,
+        "showDefault": true
+      },
+      "transparent": true,
+      "type": "netsage-sankey"
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 35
+      },
+      "hideTimeOverride": false,
+      "id": 21,
+      "links": [],
+      "options": {},
+      "pageSize": 10,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Discipline",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": false,
+          "linkTargetBlank": true,
+          "linkTooltip": "Click for more info about data traveling over the $__cell",
+          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "pattern": "/meta.+/",
+          "type": "string",
+          "unit": "bits"
+        },
+        {
+          "alias": "# Flows",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Total Volume",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Sum",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "alias": "Packets",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Sum values.num_packets",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Largest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "/Max/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "alias": "Fastest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.scireg.src.discipline.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "Unknown",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "field": "select field",
+              "id": "7",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Top Disciplines in Science Registry",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "hideTimeOverride": false,
+      "id": 28,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Discipline",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": false,
+          "linkTargetBlank": true,
+          "linkTooltip": "Click for more info about data traveling over the $__cell",
+          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "mappingType": 1,
+          "pattern": "/meta.+/",
+          "rangeMaps": [
+            {
+              "from": "",
+              "text": "",
+              "to": ""
+            }
+          ],
+          "type": "string",
+          "unit": "bits"
+        },
+        {
+          "alias": "# Flows",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Average",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Peak",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Max",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Fastest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.scireg.src.discipline.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "Unknown",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "select field",
+              "id": "7",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Top 10 Peak Rate Disciplines in Science Registry",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a>netsage@iu.edu. </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:8px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  console.log('hi');\n</script>\n",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 49,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [
+    "flow",
+    "netsage"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "netsage",
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": null,
+        "multi": true,
+        "name": "Sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\" (meta.flow_type:sflow  OR meta.flow_type:netflow)  AND NOT meta.sensor_id:cenic*\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "Astronomy and Astrophysics + Atmospheric Sciences + Bioinformatics",
+          "value": [
+            "Astronomy and Astrophysics",
+            "Atmospheric Sciences",
+            "Bioinformatics"
+          ]
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline.keyword\", \"query\":\"-meta.scireg.src.discipline.keyword:\\\"Network Monitoring\\\"\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Discipline",
+        "multi": true,
+        "name": "discipline",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline.keyword\", \"query\":\"-meta.scireg.src.discipline.keyword:\\\"Network Monitoring\\\"\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Flows by Science Discipline",
+  "uid": "WNn1qyaiz"
+}

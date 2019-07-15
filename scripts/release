@@ -1,0 +1,68 @@
+#!/bin/sh -e
+#
+# Close branch, merge into master, tag and create new branches
+# 
+
+WHEREAMI=$(dirname $0)
+. "${WHEREAMI}/common"
+
+#Get version from parameter
+VERSION=$1
+if [ -z "$VERSION" ]; then
+    die "Must specify VERSION as command-line option"
+fi
+
+#merge all changes into existing branches for next versions
+narrate "[MERGE FORWARD]"
+${WHEREAMI}/merge-forward $VERSION
+
+#make temp dir
+TEMPDIR=`mktemp -d`
+narrate "Creating workspace in $TEMPDIR"
+
+#list project
+for PROJECT in "${PROJECTS[@]}"
+do
+    cd $TEMPDIR
+    # checkout clean copy
+    narrate ""
+    narrate "[${PROJECT}]"
+    GIT_URL="https://github.com/netsage-project/${PROJECT}"
+    narrate "Downloading $GIT_URL"
+    git clone $GIT_URL $PROJECT
+    
+    #get branch
+    cd $PROJECT
+    git fetch
+    narrate "Fetching branch ${VERSION}"
+    HAS_BRANCH=$(git branch --list -r origin/${VERSION})
+    if [ -z $HAS_BRANCH ]; then
+        warn "$PROJECT does not contain branch $VERSION, skipping"
+        continue
+    fi
+    
+    # checkout branches since git sometimes needs this to merge
+    git checkout $VERSION
+    
+    # switch back to master to do merge
+    git checkout master
+    
+    # do the merge
+    git merge -m "Merging $VERSION into master for release" $VERSION
+    
+    # tag the branch
+    NEW_TAG="v${VERSION}"
+    HAS_TAG=$(git tag --list ${NEW_TAG})
+    if [ -z "$HAS_TAG" ]; then
+        git tag $NEW_TAG
+        git push --tags
+    fi
+    
+    # checkout branches agains so we can close
+    git checkout $VERSION
+done
+
+#Clean-up TEMPDIR
+echo ""
+rm -rf $TEMPDIR
+echo "[SUCCESS]"

@@ -1,0 +1,39 @@
+#!/bin/sh -e
+#
+# Close the current branch of the current repository.
+#
+
+WHEREAMI=$(dirname $0)
+. "${WHEREAMI}/common"
+
+[ "$1" ] && WHERE="$1" || WHERE="."
+
+GIT_DIR=$(repo_top "${WHERE}")/.git
+export GIT_DIR
+
+THIS_BRANCH=$(git branch -l | awk '$1 == "*" { print $2 }')
+
+# Create new branches from this one if they don't already exist
+
+CHANGED=false
+
+for VERSION in $("${WHEREAMI}/next-versions" "${THIS_BRANCH}")
+do
+    VERSION="$(echo -e "${VERSION}" | tr -d '[:space:]')" #trim whitespace
+    HAS_BRANCH=$(git branch --list -r origin/${VERSION})
+    if [ -n "$HAS_BRANCH" ]; then
+        narrate "Repo already has a branch ${VERSION}"
+        continue
+    fi
+    git checkout -b "${VERSION}"
+    rpm_set_version $VERSION 0.0.a1 || :
+    git push origin "${VERSION}"
+    git branch --set-upstream-to="origin/${VERSION}" "${VERSION}"
+    CHANGED=true
+done
+
+if ${CHANGED}
+then
+    narrate Pushing changes
+    git push --all
+fi

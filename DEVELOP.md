@@ -18,8 +18,8 @@ This documents describes a number of practices related to developing the code in
 
 The NetSage version numbers are based on [semantic versioning](http://semver.org). Given the types of releases listed in the previous section, we need to capture the following information in our versioning scheme:
 
-* **Major version** - This indicates to which *paradigm-shifting release* the software belongs. This will be a number starting at 1.
-* **Minor version** - This indicates to which *major feature enhancement release* the software belongs. This will be a number starting at 0 for each new *major version*.
+* **Major version** - This indicates to which *major release* the software belongs. This will be a number starting at 1.
+* **Minor version** - This indicates to which *minor feature enhancement release* the software belongs. This will be a number starting at 0 for each new *major version*.
 * **Patch version** - This indicates to which *bug fix release* the software belongs. This will be a number starting at 0 for each new *minor version*.
 
  

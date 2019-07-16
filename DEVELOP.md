@@ -20,17 +20,14 @@ The NetSage version numbers are based on [semantic versioning](http://semver.org
 
 * **Major version** - This indicates to which *major release* the software belongs. This will be a number starting at 1.
 * **Minor version** - This indicates to which *minor feature enhancement release* the software belongs. This will be a number starting at 0 for each new *major version*.
-* **Patch version** - This indicates to which *bug fix release* the software belongs. This will be a number starting at 0 for each new *minor version*.
+* **Patch version** - This indicates to which *bug fix release* the software belongs. This will be a number starting at 0 for each new *minor version*. 
 
- 
-The primary goal of this scheme is to facilitate development on multiple software versions simultaneously without adding too much overhead for developers. We aim to accomplish this goal with the following:
+## Branching 
+
+The primary goal of the branching scheme is to facilitate development on multiple software versions simultaneously without adding too much overhead for developers. We aim to accomplish this goal with the following:
 
  * A clearly defined branching strategy that cleanly separates code from different versions to prevent the accidental "leaking" of features and incompatible code
  * A set of tools for automating much of the process to reduce developer overhead and ensure the defined procedures are followed
-
-This document will look at the high-level branching strategy, how to make a change to the code and how to implement the strategy when performing releases. 
-
-## Branching 
 
 ### Basics
 The following are the basic tenants of the branching strategy.

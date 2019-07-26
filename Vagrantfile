@@ -41,16 +41,32 @@ Vagrant.configure("2") do |config|
             net-tools\
             git\
             npm\
-            https://dl.grafana.com/oss/release/grafana-6.2.5-1.x86_64.rpm 
+            rpm-build\
+            gcc-c++\
+            https://dl.grafana.com/oss/release/grafana-6.2.5-1.x86_64.rpm
+        
+        #Install wizzy
+        npm install -g wizzy
+        
+        #install tsds datasource plugin
+        cd /tmp
+        git clone https://github.com/GlobalNOC/tsds-grafana ./tsds-grafana
+        cd tsds-grafana
+        npm install -g yarn #make seems to need this
+        make rpm
+        yum install -y $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
         
         #Enable grafana
         systemctl enable grafana-server
         systemctl start grafana-server
         
-        #Install wizzy
-        npm install -g wizzy
-        
+        #Set to local context
         cd /vagrant
+        cp -f conf/wizzy.json.default conf/wizzy.json
+        wizzy set context grafana local #this should be the default, but just in case
+        wizzy export dashboards
+        wizzy export datasources
+        
         ##
         # This is how the github repo was built
         #wizzy init
@@ -58,9 +74,10 @@ Vagrant.configure("2") do |config|
         
         ##
         # Point at local grafana instance for easy deployment
-        wizzy set grafana url http://localhost:3000
-        wizzy set grafana username admin
-        wizzy set grafana password admin
+        #wizzy set grafana url http://localhost:3000
+        #wizzy set grafana username admin
+        #wizzy set grafana password admin
+        
     SHELL
   end
 end

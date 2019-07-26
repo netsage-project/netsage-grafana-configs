@@ -2,12 +2,24 @@
 
 This repository containes the dashboard configuration files used by NetSage. The configuration files are managed using a tool called [wizzy](https://github.com/utkarshcmu/wizzy). A [Vagrantfile](https://www.vagrantup.com) is provided that sets-up a CentOS 7 environment with Grafana and wizzy installed.
 
+
 ## Using the Vagrant VM
+
+The provided Vagrant VM allows you to run a local NetSage instance. To start the VM run:
 
 ```
 vagrant up
-vagrant ssh
 ```
+Once setup is complete, you will need to configure authentication information for the `netsage` data source with the following steps:
+
+1. Go to http://10.3.3.3:3000/datasources in your browser (10.3.3.3 is the statically set private address of your local VM)
+2. Login with the default username `admin` and password `admin`
+3. Change the password or hit "skip" if prompted to change password
+4. Click *netsage* in the list of datasources
+5. Enter the username and password in the `User` and `Password` fields
+6. Click `Save and Test`. It should provide imediate feedback if things are working or not.
+
+Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/ and see data. 
 
 ## wizzy configuration
 The repo includes a file `conf/wizzy.json.default` that has a set of environments defined that point at different grafana installations. It has the default context (i.e. the active environment) set to `local` which points at the local grafana instance running on the VM. When the VM is created, `conf/wizzy.json.default` is copied to `conf/wizzy.json`. The copy is ignored by git, so if there are any changes you want to commit, they need to be done to `conf/wizzy.json.default` (this protects against iadvertently commiting local changes). The currently defined environments are:
@@ -16,10 +28,17 @@ The repo includes a file `conf/wizzy.json.default` that has a set of environment
  * **international** - points at the NetSage international dashboard with no credentials (i.e. read-only)
 
 ## Importing a remote dashboard
-The commands below download all the dashboards from the grafana instance in the selected context. **Note: Currently no datasources are set, so unless you manually define a datasource, the dashboards won't do much on the local instance).**
+The commands below download all the dashboards from the grafana instance in the selected context.
 
 ```
 wizzy set context grafana ENVIRONMENT_NAME
+wizzy import dashboards
+```
+
+For example, if you want to pull down changes that were made to the international deployment outside of git then run the following:
+
+```
+wizzy set context grafana international
 wizzy import dashboards
 ```
 

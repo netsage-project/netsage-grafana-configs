@@ -48,17 +48,44 @@ Vagrant.configure("2") do |config|
         #Install wizzy
         npm install -g wizzy
         
+        #set default grafana theme to light
+        sed -i 's/^;default_theme.*/default_theme = light/' /etc/grafana/grafana.ini
+        
+        ### Start plugin installs ###
+        cd /vagrant/plugins
+        
+        #install carpetplot
+        /usr/sbin/grafana-cli plugins install petrslavotinek-carpetplot-panel
+        
         #install tsds datasource plugin
-        cd /tmp
-        git clone https://github.com/GlobalNOC/tsds-grafana ./tsds-grafana
         cd tsds-grafana
         npm install -g yarn #make seems to need this
         make rpm
         yum install -y $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
+        cd ../
+        
+        #Install network panel plugin
+        cd globalnoc-networkmap-panel
+        npm install -g gulp #make seems to need this
+        make rpm
+        yum install -y $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
+        cd ../
+        
+        #Install netsage-sankey plugin
+        cd netsage-sankey-plugin
+        make install
+        cd ../
+        
+        #Install navigation
+        cd NetSageNavigation
+        make install
+        cd ../
+        
+        ### End plugin source code installs ###
         
         #Enable grafana
         systemctl enable grafana-server
-        systemctl start grafana-server
+        systemctl restart grafana-server
         
         #Set to local context
         cd /vagrant

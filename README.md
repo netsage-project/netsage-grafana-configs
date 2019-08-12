@@ -1,6 +1,6 @@
 # netsage-grafana-configs
 
-This repository contains the dashboard configuration files used by NetSage. The configuration files are managed using a tool called [wizzy](https://github.com/utkarshcmu/wizzy). A [Vagrantfile](https://www.vagrantup.com) is provided that sets-up a CentOS 7 environment with Grafana and wizzy installed. The Vagrantfile also installs panel and datasource plug-ins used by NetSage, some of which are included as git submodules in the `plugins` directory. For everything to work properly make sure you pull down the submodules when you clone the repository as follows:
+This repository contains the dashboard configuration files used by NetSage. The configuration files are managed using a tool called [wizzy](https://github.com/utkarshcmu/wizzy). A [Vagrantfile](https://www.vagrantup.com) is provided that sets-up a CentOS 7 environment with Grafana and wizzy installed. The Vagrantfile also installs panel and datasource plug-ins used by NetSage, some of which are included as git submodules in the `plugins` directory. For everything to work properly make sure you pull down the submodules when you clone the repository. You can do so with the following commands:
 
 ```
 git clone --recursive https://github.com/netsage-project/netsage-grafana-configs

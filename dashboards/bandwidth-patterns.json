@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1562178058123,
+  "id": 189,
+  "iteration": 1565717818023,
   "links": [
     {
       "asDropdown": true,
@@ -96,7 +97,8 @@
         7,
         8,
         9,
-        10
+        10,
+        11
       ],
       "color": {
         "cardColor": "#b4ff00",
@@ -217,10 +219,9 @@
         ]
       },
       "custom_hover": " ",
-      "datasource": null,
       "gridPos": {
         "h": 1,
-        "w": 6,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -283,18 +284,19 @@
         "show": true
       },
       "links": [],
-      "max_total": 512512,
+      "max_total": 295232451,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
-          "avg": 1773.39792387543,
+          "avg": 204880.25746009714,
           "label": "Count",
-          "max": 3698,
-          "min": 0,
-          "total": 512512
+          "max": 903978,
+          "min": 1,
+          "total": 295232451
         }
       ],
       "rgb_values": [
@@ -392,9 +394,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<center>This is a carpet plot for the bandwidth data across IRNC links as measured through SNMP for specific periods of time. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n",
+      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<center>This is a carpet plot for the bandwidth data across exchange points and IRNC links as measured through SNMP for specific periods of time. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n",
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 24,
         "x": 0,
         "y": 1
@@ -406,6 +408,19 @@
       "title": "",
       "transparent": true,
       "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": "4111111111111111111111111111111111",
+      "panels": [],
+      "title": "Exchange Points",
+      "type": "row"
     },
     {
       "aggregate": "AVG",
@@ -434,6 +449,486 @@
         "w": 24,
         "x": 0,
         "y": 4
+      },
+      "height": "400px",
+      "id": "41111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeatDirection": "h",
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get node, intf, aggregate(values.input, 3600, sum) as values.input, aggregate(values.output, 3600, sum) as values.output by nothing from ( get node, intf, aggregate(values.input, 3600, average)  as values.input,aggregate(values.output, 3600, average)  as values.output between ($START, $END) by node, intf from interface where (node =  \"mct01.miami.ampath.net\" and intf = \"ethernet6/2\") )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Amlight Exchange Point",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "height": "400px",
+      "id": "4111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeatDirection": "h",
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get node, intf, aggregate(values.input, 3600, sum) as values.input, aggregate(values.output, 3600, sum) as values.output by nothing from ( get node, intf, aggregate(values.input, 3600, average)  as values.input,aggregate(values.output, 3600, average)  as values.output between ($START, $END) by node, intf from interface where (node = \"wrn-albu-sw-3.cenic.net\" and intf = \"ethernet5/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet6/15\") or (node = \"wrn-albu-sw-4.cenic.net\" and intf = \"ethernet3/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/3\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/10\") or (node = \"wrn-albu-sw-3.cenic.net\" and intf = \"ethernet7/1\") or (node = \"losa3-pw-sw-1.cenic.net\" and intf = \"ethernet4/1\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet7/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/2\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet1/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet4/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/8\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet7/7\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet3/1\") or (node = \"wrn-elpa-sw-1.cenic.net\" and intf = \"ethernet1/1\") or (node = \"losa3-pw-sw-1.cenic.net\" and intf = \"ethernet7/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet7/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/5\") or (node = \"wrn-elpa-sw-1.cenic.net\" and intf = \"ethernet5/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet1/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet16/5\") or (node = \"wrn-denv-sw-3.cenic.net\" and intf = \"ethernet7/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet6/20\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet13/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/5\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/6\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet7/1\") or (node = \"wrn-albu-sw-4.cenic.net\" and intf = \"ethernet5/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet3/2\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet1/1\") or (node = \"wrn-denv-sw-3.cenic.net\" and intf = \"ethernet1/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet1/1\") or (node = \"losa3-pw-sw-1.cenic.net\" and intf = \"ethernet7/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/7\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/9\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet16/7\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet6/2\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet3/2\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet5/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet4/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet5/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet9/1\") or (node = \"wrn-denv-sw-3.cenic.net\" and intf = \"ethernet5/2\") )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Pacific Wave Exchange Point",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "height": "400px",
+      "id": "411111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "h",
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get node, intf, aggregate(values.input, 3600, sum) as values.input, aggregate(values.output, 3600, sum) as values.output by nothing from ( get node, intf, aggregate(values.input, 3600, average)  as values.input,aggregate(values.output, 3600, average)  as values.output between ($START, $END) by node, intf from interface where (node = \"8700.mren.org\" and intf in (\"8/2\", \"9/1\", \"2/1\", \"1/2\", \"7/1\", \"5/2\", \"6/2\", \"10/2\", \"1/1\", \"5/1\", \"9/2\")) or (node=\"ex9208.sl.startap.net\" and intf in (\"xe-0/2/2\", \"ge-5/0/2\", \"xe-0/1/0\", \"xe-0/1/2\", \"xe-0/3/2\", \"ae2\" )) )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Starlight Exchange Point",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": "411111111111111111111",
+      "panels": [],
+      "title": "Selected IRNC Links",
+      "type": "row"
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 35
       },
       "height": "400px",
       "id": 6,
@@ -595,10 +1090,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 45
       },
       "height": "400px",
-      "id": "411",
+      "id": "41111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -606,7 +1101,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -759,10 +1254,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 55
       },
       "height": "400px",
-      "id": "4111",
+      "id": "411111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -770,7 +1265,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -923,10 +1418,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 65
       },
       "height": "400px",
-      "id": "41111",
+      "id": "4111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -934,7 +1429,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -1087,10 +1582,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 75
       },
       "height": "400px",
-      "id": "411111",
+      "id": "41111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1098,7 +1593,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -1251,10 +1746,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 54
+        "y": 85
       },
       "height": "400px",
-      "id": "4111111",
+      "id": "411111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1262,7 +1757,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -1415,10 +1910,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 95
       },
       "height": "400px",
-      "id": "41111111",
+      "id": "4111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1426,7 +1921,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -1579,10 +2074,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 105
       },
       "height": "400px",
-      "id": "411111111",
+      "id": "41111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1590,7 +2085,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -1743,10 +2238,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 84
+        "y": 115
       },
       "height": "400px",
-      "id": "4111111111",
+      "id": "411111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1754,7 +2249,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -1907,10 +2402,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 94
+        "y": 125
       },
       "height": "400px",
-      "id": "41111111111",
+      "id": "4111111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1918,7 +2413,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -2071,10 +2566,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 104
+        "y": 135
       },
       "height": "400px",
-      "id": "411111111111",
+      "id": "41111111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2082,7 +2577,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -2235,10 +2730,10 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 114
+        "y": 145
       },
       "height": "400px",
-      "id": "4111111111111",
+      "id": "411111111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2246,7 +2741,7 @@
       "maxPerRow": 1,
       "options": {},
       "repeat": null,
-      "repeatIteration": 1562178058123,
+      "repeatIteration": 1565717818023,
       "repeatPanelId": 6,
       "scale": {
         "max": null,
@@ -2379,7 +2874,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 124
+        "y": 155
       },
       "id": 29,
       "links": [],
@@ -2587,6 +3082,7 @@
     ]
   },
   "timezone": "",
-  "title": "Bandwidth Patterns",
-  "uid": "000000004"
+  "title": "Bandwidth Patterns-add new panels",
+  "uid": "LhiMwNdZz",
+  "version": 4
 }

@@ -4,7 +4,7 @@ This repository contains the dashboard configuration files used by NetSage. The 
 
 ## Setting Up Your Environment
 
-Prepare your development system with following steps:
+Prepare your development system with the following steps:
 
 1. Install VirtualBox by following the instructions for your operating system [here](https://www.virtualbox.org/wiki/Downloads)
 2. Install Vagrant by following the instructions for your operating system [here](https://www.vagrantup.com/downloads.html)
@@ -37,7 +37,7 @@ vagrant up
 2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
 3. Login with the default username `admin` and password `admin`
 4. Change the password or hit "skip" if prompted to change password
-5. Click on "Data Sources" in the settings menu on the left hand side
+5. Click on "Data Sources" in the Configuration menu on the left hand side
 6. Click *netsage* in the list of datasources
 7. Enter the username and password in the `User` and `Password` fields
 8. Click `Save and Test`. It should provide imediate feedback if things are working or not.
@@ -47,14 +47,14 @@ Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:30
 ## Using the VM
 
 * SSH into the VM with the command `vagrant ssh`. You will be logged-in as the user *vagrant* and have passwordless `sudo` access.
-* The `/vagrant` is a shared directory between the VM and host system. It is the top-level of the source tree and any changes made to the files on the host system will also happen in the VM and vice-versa. 
+* The `/vagrant` directory is a shared directory between the VM and host system. It is the top-level of the source tree and any changes made to the files on the host system will also happen in the VM and vice-versa. 
 * If you want to shutdown the VM run `vagrant halt`
 * If you want to startup the VM run `vagrant up`
 * If you want to completely erase the VM run `vagrant destroy`
 
 ## Making Changes
 
-There are two ways you can make changes: by editing eeh files in git directly and exporting them to your local instance or editing the configuration through Grafana and importing them into git. Instrcutions for each method below.
+There are two ways you can make changes: by editing the files in git directly and exporting them to your local instance or editing the configuration through Grafana and importing them into git. Instrcutions for each method below.
 
 ### Editing the Source Code in Git and Exporting to Grafana
 

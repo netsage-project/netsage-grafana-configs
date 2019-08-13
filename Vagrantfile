@@ -48,8 +48,11 @@ Vagrant.configure("2") do |config|
         #Install wizzy
         npm install -g wizzy
         
+        ### Update grafana.ini file ###
         #set default grafana theme to light
         sed -i 's/^;default_theme.*/default_theme = light/' /etc/grafana/grafana.ini
+        #need the following setting so the google analytics script tags are not shown
+        sed -i 's/^;disable_sanitize_html.*/disable_sanitize_html = true/' /etc/grafana/grafana.ini
         
         ### Start plugin installs ###
         cd /vagrant/plugins

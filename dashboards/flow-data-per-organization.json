@@ -581,7 +581,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" -meta.src_organization.keyword:*Australia*  -meta.src_country_name.keyword:Australia",
+          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\"",
           "refId": "A",
           "timeField": "start"
         },
@@ -632,7 +632,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.src_organization.keyword:Australia*AARNet*",
+          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors",
           "refId": "B",
           "timeField": "start"
         }
@@ -720,51 +720,8 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" -meta.src_organization.keyword:*Australia*  -meta.src_country_name.keyword:Australia",
+          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.src_organization.keyword:Australia*AARNet*",
-          "refId": "B",
           "timeField": "start"
         }
       ],
@@ -953,50 +910,8 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" -meta.src_organization.keyword:*Australia*  -meta.src_country_name.keyword:Australia",
+          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\"",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "field": "values.bits_per_second",
-              "id": "5",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.src_organization.keyword:Australia*AARNet*",
-          "refId": "B",
           "timeField": "start"
         }
       ],
@@ -1079,47 +994,8 @@
               "type": "max"
             }
           ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" -meta.src_organization.keyword:*Australia*  -meta.src_country_name.keyword:Australia",
+          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\"",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.src_organization.keyword:Australia*AARNet*",
-          "refId": "B",
           "timeField": "start"
         }
       ],
@@ -1339,7 +1215,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" -meta.dst_organization.keyword:*Australia*  -meta.dst_country_name.keyword:Australia",
+          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
           "refId": "A",
           "timeField": "start"
         },
@@ -1478,51 +1354,8 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" -meta.dst_organization.keyword:*Australia*  -meta.dst_country_name.keyword:Australia",
+          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.dst_organization.keyword:Australia*AARNet*",
-          "refId": "B",
           "timeField": "start"
         }
       ],
@@ -1725,50 +1558,8 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" -meta.dst_organization.keyword:*Australia*  -meta.dst_country_name.keyword:Australia",
+          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "field": "values.bits_per_second",
-              "id": "5",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.dst_organization.keyword:Australia*AARNet*",
-          "refId": "B",
           "timeField": "start"
         }
       ],
@@ -1851,47 +1642,8 @@
               "type": "max"
             }
           ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" -meta.dst_organization.keyword:*Australia*  -meta.dst_country_name.keyword:Australia",
+          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors AND meta.dst_organization.keyword:Australia*AARNet*",
-          "refId": "B",
           "timeField": "start"
         }
       ],
@@ -2671,7 +2423,7 @@
         "multi": false,
         "name": "Organization",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.sensor_id.keyword:$Sensors AND (meta.src_organization.keyword:Australia*AARNet* OR (-meta.src_organization.keyword:\\\"\\\" -meta.src_organization.keyword:========* -meta.src_organization.keyword:*Australia* -meta.src_country_name.keyword:Australia))\", \"size\": 10000000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\\\"\\\"\", \"size\": 10000000}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

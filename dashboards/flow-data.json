@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1562178055974,
+  "iteration": 1567545252439,
   "links": [
     {
       "asDropdown": true,
@@ -217,7 +217,6 @@
         ]
       },
       "custom_hover": " ",
-      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 6,
@@ -283,18 +282,19 @@
         "show": true
       },
       "links": [],
-      "max_total": 512512,
+      "max_total": 51523832,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
-          "avg": 1773.39792387543,
+          "avg": 152889.70919881307,
           "label": "Count",
-          "max": 3698,
-          "min": 0,
-          "total": 512512
+          "max": 637685,
+          "min": 1363,
+          "total": 51523832
         }
       ],
       "rgb_values": [
@@ -1847,198 +1847,8 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND (-$source_scope:\"\" AND -$dest_scope:\"\" AND -meta.src_organization.keyword:*Australia* AND -meta.src_country_name.keyword:Australia AND -meta.dst_organization.keyword:*Australia*  AND -meta.dst_country_name.keyword:Australia)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
           "refId": "A",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "$source_scope",
-              "id": "8",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
-              "field": "$dest_scope",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "hide": false,
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
-          "refId": "B",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "$source_scope",
-              "id": "8",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
-              "field": "$dest_scope",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
-          "refId": "C",
-          "timeField": "start"
-        },
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "$source_scope",
-              "id": "8",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
-              "field": "$dest_scope",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
-          "refId": "D",
           "timeField": "start"
         }
       ],

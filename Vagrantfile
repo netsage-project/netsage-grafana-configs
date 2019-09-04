@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
             npm\
             rpm-build\
             gcc-c++\
-            https://dl.grafana.com/oss/release/grafana-6.2.5-1.x86_64.rpm
+            https://dl.grafana.com/oss/release/grafana-6.3.5-1.x86_64.rpm
         
         #Install wizzy
         npm install -g wizzy

@@ -18,12 +18,18 @@ cd netsage-grafana-configs
 ```
 5. Pull down the submodules found in the plug-ins directory:
 ```
-gitsubmodule init
+git submodule init
 git submodule update
 ```
-6. Install the vagrant plugins used by the Vagrantfile
+6. Install the vagrant-vbguest plugin
 ```
-vagrant plugin install vagrant-reload vagrant-vbguest
+vagrant plugin install vagrant-vbguest
+```
+
+7. Install the vagrant-reload plugin (NOTE: you have to do this AFTER installing vbguest above):
+
+```
+vagrant plugin install vagrant-reload 
 ```
 
 ## Starting the VM for the First Time

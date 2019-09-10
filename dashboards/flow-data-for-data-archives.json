@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1568146260295,
+  "iteration": 1568149279726,
   "links": [
     {
       "asDropdown": true,
@@ -296,7 +296,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 69296519,
+      "max_total": 68886435,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -304,11 +304,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 205627.6528189911,
+          "avg": 204410.78635014838,
           "label": "Count",
           "max": 745806,
-          "min": 554,
-          "total": 69296519
+          "min": 0,
+          "total": 68886435
         }
       ],
       "rgb_values": [
@@ -1767,7 +1767,7 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 2,
+        "col": 1,
         "desc": true
       },
       "styles": [
@@ -2423,7 +2423,7 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 5,
+        "col": 2,
         "desc": true
       },
       "styles": [
@@ -2676,39 +2676,6 @@
               "type": "sum"
             },
             {
-              "field": "values.bits_per_second",
-              "id": "14",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "field": "values.tcp_rexmit_pkts",
-              "id": "15",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "field": "select field",
-              "id": "20",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "15"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "21"
-                }
-              ],
-              "settings": {
-                "script": "params.var1/params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
               "field": "values.num_packets",
               "id": "21",
               "meta": {},
@@ -2716,22 +2683,8 @@
               "type": "sum"
             },
             {
-              "field": "values.tcp_rtt_min",
-              "id": "22",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "field": "values.bits_per_second",
-              "id": "23",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
               "field": "values.num_bits",
-              "id": "24",
+              "id": "26",
               "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
@@ -2743,8 +2696,55 @@
             },
             {
               "field": "select field",
-              "id": "25",
+              "id": "27",
               "type": "count"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "28",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "29",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.tcp_rexmit_pkts",
+              "id": "30",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            },
+            {
+              "field": "select field",
+              "id": "31",
+              "meta": {},
+              "pipelineVariables": [
+                {
+                  "name": "var1",
+                  "pipelineAgg": "30"
+                },
+                {
+                  "name": "var2",
+                  "pipelineAgg": "21"
+                }
+              ],
+              "settings": {
+                "script": "params.var1 / params.var2"
+              },
+              "type": "bucket_script"
+            },
+            {
+              "field": "values.tcp_rtt_min",
+              "id": "32",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
             }
           ],
           "query": "meta.sensor_id.keyword:$dtn_sensors",

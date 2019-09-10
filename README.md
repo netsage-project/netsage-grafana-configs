@@ -42,7 +42,7 @@ vagrant up
 ```
 2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
 3. Login with the default username `admin` and password `admin`
-4. Change the password or hit "skip" if prompted to change password
+4. Change the password or hit "skip" if prompted to change password. NOTE: If you change you password then youy also need to update `conf/wizzy.json` with the new password.
 5. Click on "Data Sources" in the Configuration menu on the left hand side
 6. Click *netsage* in the list of datasources
 7. Enter the username and password in the `User` and `Password` fields

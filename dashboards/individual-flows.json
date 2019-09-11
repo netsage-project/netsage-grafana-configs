@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1563977987878,
+  "iteration": 1568146962474,
   "links": [],
   "panels": [
     {
@@ -270,18 +270,19 @@
         "show": true
       },
       "links": [],
-      "max_total": 68209639,
+      "max_total": 68756253,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
-          "avg": 67601.22794846383,
+          "avg": 34088.37530986614,
           "label": "Count",
-          "max": 267327,
-          "min": 53,
-          "total": 68209639
+          "max": 168152,
+          "min": 0,
+          "total": 68756253
         }
       ],
       "rgb_values": [
@@ -379,9 +380,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<center>This dashboard shows tstat data at a per-flow level, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. </center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n<center><b>Please note that retransmit and RTT information is only available for tstat flow data.</b></center>\n",
+      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flow Dashboard</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. </center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n<center><b>Please note that retransmit and RTT information is only available for tstat flow data.</b></center>\n",
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 1
@@ -389,24 +390,6 @@
       "id": 34,
       "links": [],
       "mode": "html",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "content": "",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 4
-      },
-      "id": 28,
-      "links": [],
-      "mode": "markdown",
       "options": {},
       "timeFrom": null,
       "timeShift": null,
@@ -435,7 +418,7 @@
       "gridPos": {
         "h": 3,
         "w": 4,
-        "x": 0,
+        "x": 1,
         "y": 5
       },
       "id": 26,
@@ -521,13 +504,12 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorPostfix": false,
       "colorPrefix": true,
       "colorValue": false,
       "colors": [
         "#299c46",
         "rgba(237, 129, 40, 0.89)",
-        "#E02F44"
+        "#d44a3a"
       ],
       "decimals": 1,
       "format": "decbytes",
@@ -540,11 +522,11 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
-        "x": 4,
+        "w": 4,
+        "x": 5,
         "y": 5
       },
-      "id": 20,
+      "id": 35,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -564,7 +546,7 @@
       "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
-      "prefix": "Avg Volume <br>",
+      "prefix": "Total Volume <br>",
       "prefixFontSize": "70%",
       "rangeMaps": [
         {
@@ -579,7 +561,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "values.num_bits",
       "targets": [
         {
           "bucketAggs": [
@@ -598,13 +580,8 @@
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "avg"
             }
           ],
@@ -627,7 +604,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "total"
     },
     {
       "cacheTimeout": null,
@@ -757,7 +734,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
+        "w": 4,
         "x": 15,
         "y": 5
       },
@@ -892,7 +869,7 @@
       "gridPos": {
         "h": 3,
         "w": 4,
-        "x": 20,
+        "x": 19,
         "y": 5
       },
       "id": 23,
@@ -1010,7 +987,7 @@
       "showHeader": true,
       "sort": {
         "col": 1,
-        "desc": true
+        "desc": false
       },
       "styles": [
         {
@@ -1056,13 +1033,13 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Average values.num_bits",
+          "pattern": "/Sum/",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "alias": "Rate",
+          "alias": "Avg Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1126,7 +1103,7 @@
           "unit": "short"
         },
         {
-          "alias": "Source",
+          "alias": "Source Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1142,7 +1119,7 @@
           "unit": "short"
         },
         {
-          "alias": "Destination",
+          "alias": "Destination Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1203,6 +1180,38 @@
           "pattern": "end",
           "thresholds": [],
           "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "Source Subnet",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "meta.src_ip.keyword",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Destination Subnet",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "meta.dst_ip.keyword",
+          "thresholds": [],
+          "type": "number",
           "unit": "short"
         },
         {
@@ -1276,7 +1285,31 @@
             },
             {
               "fake": true,
+              "field": "meta.src_ip.keyword",
+              "id": "32",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
               "field": "meta.dst_organization.keyword",
+              "id": "33",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "meta.dst_ip.keyword",
               "id": "31",
               "settings": {
                 "min_doc_count": 1,
@@ -1299,7 +1332,7 @@
                   "inline": "_value / 8"
                 }
               },
-              "type": "avg"
+              "type": "sum"
             },
             {
               "field": "values.bits_per_second",
@@ -1625,12 +1658,389 @@
       }
     },
     {
+      "content": "<h1 style=\"margin-top:20px;\"><center>Summary Statistics</center></h1>",
+      "gridPos": {
+        "h": 2,
+        "w": 12,
+        "x": 6,
+        "y": 57
+      },
+      "id": 37,
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 59
+      },
+      "id": 39,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.protocol.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Protocols",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Number of Flows",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 59
+      },
+      "id": 40,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_port",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Source Ports",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Number of Flows",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 59
+      },
+      "id": 41,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.dst_port",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Destination Ports",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Number of Flows",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a>netsage@iu.edu. </a> Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:8px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 67
       },
       "id": 32,
       "links": [],
@@ -1644,7 +2054,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "netsage"
@@ -1731,7 +2141,6 @@
       {
         "allValue": "",
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -1755,15 +2164,6 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
-      },
-      {
-        "datasource": null,
-        "filters": [],
-        "hide": 0,
-        "label": "",
-        "name": "Filters",
-        "skipUrlSync": false,
-        "type": "adhoc"
       }
     ]
   },

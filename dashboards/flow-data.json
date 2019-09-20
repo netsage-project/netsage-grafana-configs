@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1567545252439,
+  "iteration": 1569001732772,
   "links": [
     {
       "asDropdown": true,
@@ -282,7 +282,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 51523832,
+      "max_total": 70564995,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -290,11 +290,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 152889.70919881307,
+          "avg": 139732.66336633664,
           "label": "Count",
-          "max": 637685,
-          "min": 1363,
-          "total": 51523832
+          "max": 561419,
+          "min": 0,
+          "total": 70564995
         }
       ],
       "rgb_values": [
@@ -611,6 +611,7 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
@@ -633,7 +634,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -903,6 +906,7 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
@@ -925,7 +929,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1223,6 +1229,7 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
@@ -1245,7 +1252,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1515,6 +1524,7 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
@@ -1537,7 +1547,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1711,21 +1723,6 @@
           "unit": "decbytes"
         },
         {
-          "alias": "Packets",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
           "alias": "Largest Flow",
           "colorMode": null,
           "colors": [
@@ -1735,25 +1732,10 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "/Max/",
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
         },
         {
           "alias": "Source",
@@ -1769,6 +1751,38 @@
           "pattern": "/\\$source_scope/",
           "thresholds": [],
           "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Avg Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Peak Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
           "unit": "short"
         },
         {
@@ -1845,6 +1859,25 @@
               "field": "select field",
               "id": "7",
               "type": "count"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "select field",
+              "id": "11",
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
@@ -1875,7 +1908,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "flow",

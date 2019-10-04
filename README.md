@@ -34,7 +34,7 @@ Perform the following steps every time you bring up a fresh instance of the VM:
 ```
 vagrant up
 ```
-2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
+2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/grafana/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
 3. Login with the default username `admin` and password `admin`
 4. Change the password or hit "skip" if prompted to change password
 5. Click on "Data Sources" in the Configuration menu on the left hand side
@@ -42,7 +42,7 @@ vagrant up
 7. Enter the username and password in the `User` and `Password` fields
 8. Click `Save and Test`. It should provide imediate feedback if things are working or not.
 
-Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/ and see data.
+Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/grafana and see data.
 
 ## Using the VM
 

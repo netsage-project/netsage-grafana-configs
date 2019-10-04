@@ -15,6 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
+  "id": 48,
   "links": [
     {
       "asDropdown": true,
@@ -214,10 +215,11 @@
         ]
       },
       "custom_hover": " ",
-      "datasource": null,
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
         "h": 1,
-        "w": 6,
+        "w": 2,
         "x": 0,
         "y": 0
       },
@@ -280,18 +282,19 @@
         "show": true
       },
       "links": [],
-      "max_total": 512512,
+      "max_total": 639191,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
-          "avg": 1773.39792387543,
+          "avg": 6589.59793814433,
           "label": "Count",
-          "max": 3698,
-          "min": 0,
-          "total": 512512
+          "max": 14307,
+          "min": 33,
+          "total": 639191
         }
       ],
       "rgb_values": [
@@ -350,7 +353,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -391,10 +396,10 @@
     {
       "content": "<center><h1><b>Loss and Throughput Active Testing</b></h1></center>\n<center>The maps below show the results of active throughput and packet loss testing on National Science Foundation’s International Research Network Connections Program links. </center>\n<center>This data is collected via the perfSONAR tool suite. All hosts are 10GE connected machines, so data represents ability to send traffic at 10Gbps.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 1
+        "h": 3,
+        "w": 20,
+        "x": 2,
+        "y": 0
       },
       "id": 5,
       "links": [],
@@ -594,7 +599,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.loss, 60, average)": ""
+            "aggregate(values.loss, 80, average)": ""
           },
           "metricValueAliases": [
             "AZ"
@@ -623,7 +628,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, aggregate(values.loss, 60, average) between (1562091705, 1562178105) by source_description, destination_description from ps_owamp where (source_description like \".+\")",
+          "target": "get source_description, destination_description, aggregate(values.loss, 80, average) between (1570061508, 1570147908) by source_description, destination_description from ps_owamp where (source_description like \".+\")",
           "target_alias": "$source_description -> $destination_description",
           "templateVariableValue": [
             ""
@@ -853,7 +858,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.throughput, 60, average)": ""
+            "aggregate(values.throughput, 80, average)": ""
           },
           "metricValueAliases": [
             "AZ"
@@ -882,7 +887,7 @@
           ],
           "refId": "A",
           "series": "ps_bwctl",
-          "target": "get source_description, destination_description, aggregate(values.throughput, 60, average) between (1562091705, 1562178105) by source_description, destination_description from ps_bwctl where (source_description like \".+\")",
+          "target": "get source_description, destination_description, aggregate(values.throughput, 80, average) between (1570061508, 1570147908) by source_description, destination_description from ps_bwctl where (source_description like \".+\")",
           "target_alias": "$source_description -> $destination_description",
           "templateVariableValue": [
             ""
@@ -976,5 +981,6 @@
   },
   "timezone": "",
   "title": "Loss and Throughput Active Testing",
-  "uid": "000000033"
+  "uid": "000000033",
+  "version": 2
 }

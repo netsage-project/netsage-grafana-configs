@@ -18,7 +18,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1562178090095,
+  "id": 51,
+  "iteration": 1570147983721,
   "links": [
     {
       "asDropdown": true,
@@ -220,10 +221,11 @@
         ]
       },
       "custom_hover": " ",
-      "datasource": null,
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 2,
+        "w": 2,
         "x": 0,
         "y": 0
       },
@@ -286,18 +288,19 @@
         "show": true
       },
       "links": [],
-      "max_total": 512512,
+      "max_total": 337258747,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
-          "avg": 1773.39792387543,
+          "avg": 934234.7562326869,
           "label": "Count",
-          "max": 3698,
-          "min": 0,
-          "total": 512512
+          "max": 3024744,
+          "min": 2052,
+          "total": 337258747
         }
       ],
       "rgb_values": [
@@ -356,7 +359,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -397,10 +402,10 @@
     {
       "content": "<center><h1><b>Science Discipline Patterns</b></h1></center>\n<center>This is a heatmap for the flow data across IRNC links per science discipline over specific periods of time. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmission rates at those hours.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 1
+        "h": 3,
+        "w": 20,
+        "x": 2,
+        "y": 0
       },
       "id": 21,
       "links": [],
@@ -538,7 +543,7 @@
         "x": 0,
         "y": 11
       },
-      "id": 50,
+      "id": "491",
       "legend": {
         "show": false
       },
@@ -546,7 +551,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -637,7 +642,7 @@
         "x": 0,
         "y": 19
       },
-      "id": 51,
+      "id": "4911",
       "legend": {
         "show": false
       },
@@ -645,7 +650,403 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "BIO.Environmental",
+          "value": "BIO.Environmental"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": "49111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "BIO.General",
+          "value": "BIO.General"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": "491111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "BIO.Genomics and Bioinformatics",
+          "value": "BIO.Genomics and Bioinformatics"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 43
+      },
+      "id": "4911111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "BIO.Medical",
+          "value": "BIO.Medical"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
+      "id": "49111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -734,9 +1135,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 59
       },
-      "id": 52,
+      "id": "491111111",
       "legend": {
         "show": false
       },
@@ -744,7 +1145,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -833,9 +1234,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 67
       },
-      "id": 53,
+      "id": "4911111111",
       "legend": {
         "show": false
       },
@@ -843,7 +1244,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -932,9 +1333,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 75
       },
-      "id": 54,
+      "id": "49111111111",
       "legend": {
         "show": false
       },
@@ -942,7 +1343,304 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "CS.General",
+          "value": "CS.General"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 83
+      },
+      "id": "491111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "CS.Intelligent Systems",
+          "value": "CS.Intelligent Systems"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 91
+      },
+      "id": "4911111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "CS.Network Testing and Monitoring",
+          "value": "CS.Network Testing and Monitoring"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 99
+      },
+      "id": "49111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1031,9 +1729,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 107
       },
-      "id": 55,
+      "id": "491111111111111",
       "legend": {
         "show": false
       },
@@ -1041,7 +1739,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1130,9 +1828,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 115
       },
-      "id": 56,
+      "id": "4911111111111111",
       "legend": {
         "show": false
       },
@@ -1140,7 +1838,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1229,9 +1927,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 123
       },
-      "id": 57,
+      "id": "49111111111111111",
       "legend": {
         "show": false
       },
@@ -1239,7 +1937,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1328,9 +2026,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 131
       },
-      "id": 58,
+      "id": "491111111111111111",
       "legend": {
         "show": false
       },
@@ -1338,7 +2036,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1427,9 +2125,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 139
       },
-      "id": 59,
+      "id": "4911111111111111111",
       "legend": {
         "show": false
       },
@@ -1437,7 +2135,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1526,9 +2224,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 91
+        "y": 147
       },
-      "id": 60,
+      "id": "49111111111111111111",
       "legend": {
         "show": false
       },
@@ -1536,7 +2234,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1625,9 +2323,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 155
       },
-      "id": 61,
+      "id": "491111111111111111111",
       "legend": {
         "show": false
       },
@@ -1635,7 +2333,601 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "GEO.Atmospheric",
+          "value": "GEO.Atmospheric"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 163
+      },
+      "id": "4911111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "GEO.Atmospheric ",
+          "value": "GEO.Atmospheric "
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 171
+      },
+      "id": "49111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "GEO.Climate",
+          "value": "GEO.Climate"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 179
+      },
+      "id": "491111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "GEO.Earth",
+          "value": "GEO.Earth"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 187
+      },
+      "id": "4911111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "GEO.General",
+          "value": "GEO.General"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 195
+      },
+      "id": "49111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "GEO.Ocean",
+          "value": "GEO.Ocean"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 203
+      },
+      "id": "491111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1724,9 +3016,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 107
+        "y": 211
       },
-      "id": 62,
+      "id": "4911111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1734,7 +3026,601 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "MPS.Astronomy",
+          "value": "MPS.Astronomy"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 219
+      },
+      "id": "49111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "MPS.Chemistry",
+          "value": "MPS.Chemistry"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 227
+      },
+      "id": "491111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "MPS.Materials",
+          "value": "MPS.Materials"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 235
+      },
+      "id": "4911111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "MPS.Physics",
+          "value": "MPS.Physics"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 243
+      },
+      "id": "49111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "MPS.Physics.High Energy",
+          "value": "MPS.Physics.High Energy"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 251
+      },
+      "id": "491111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "MSF.General",
+          "value": "MSF.General"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 259
+      },
+      "id": "4911111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1823,9 +3709,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 115
+        "y": 267
       },
-      "id": 63,
+      "id": "49111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1833,7 +3719,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1922,9 +3808,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 123
+        "y": 275
       },
-      "id": 64,
+      "id": "491111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -1932,7 +3818,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2021,9 +3907,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 131
+        "y": 283
       },
-      "id": 65,
+      "id": "4911111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2031,7 +3917,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2120,9 +4006,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 139
+        "y": 291
       },
-      "id": 66,
+      "id": "49111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2130,7 +4016,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2219,9 +4105,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 147
+        "y": 299
       },
-      "id": 67,
+      "id": "491111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2229,7 +4115,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2318,9 +4204,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 155
+        "y": 307
       },
-      "id": 68,
+      "id": "4911111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2328,7 +4214,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2417,9 +4303,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 163
+        "y": 315
       },
-      "id": 69,
+      "id": "49111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2427,7 +4313,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2516,9 +4402,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 171
+        "y": 323
       },
-      "id": 70,
+      "id": "491111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2526,7 +4412,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2615,9 +4501,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 179
+        "y": 331
       },
-      "id": 71,
+      "id": "4911111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2625,7 +4511,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2714,9 +4600,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 187
+        "y": 339
       },
-      "id": 72,
+      "id": "49111111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2724,7 +4610,106 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "SBE.Social and Economics",
+          "value": "SBE.Social and Economics"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 347
+      },
+      "id": "491111111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2813,9 +4798,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 195
+        "y": 355
       },
-      "id": 73,
+      "id": "4911111111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2823,7 +4808,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2912,9 +4897,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 203
+        "y": 363
       },
-      "id": 74,
+      "id": "49111111111111111111111111111111111111111111111",
       "legend": {
         "show": false
       },
@@ -2922,7 +4907,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1570147983721,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2985,12 +4970,111 @@
       }
     },
     {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "netsage",
+      "description": "",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 371
+      },
+      "id": "491111111111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1570147983721,
+      "repeatPanelId": 2,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "disciplines": {
+          "selected": false,
+          "text": "non-science",
+          "value": "non-science"
+        }
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$disciplines",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a>netsage@iu.edu. </a> Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:8px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 211
+        "y": 379
       },
       "id": 23,
       "links": [],
@@ -3098,5 +5182,6 @@
   },
   "timezone": "",
   "title": "Science Discipline Patterns",
-  "uid": "ufIS9W7Zk"
+  "uid": "ufIS9W7Zk",
+  "version": 2
 }

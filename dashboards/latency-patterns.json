@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1562178093172,
+  "id": 47,
+  "iteration": 1570147827903,
   "links": [
     {
       "asDropdown": true,
@@ -217,10 +218,11 @@
         ]
       },
       "custom_hover": " ",
-      "datasource": null,
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 2,
+        "w": 2,
         "x": 0,
         "y": 0
       },
@@ -283,18 +285,19 @@
         "show": true
       },
       "links": [],
-      "max_total": 512512,
+      "max_total": 634122,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
-          "avg": 1773.39792387543,
+          "avg": 6537.340206185567,
           "label": "Count",
-          "max": 3698,
-          "min": 0,
-          "total": 512512
+          "max": 14307,
+          "min": 33,
+          "total": 634122
         }
       ],
       "rgb_values": [
@@ -353,7 +356,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -394,10 +399,10 @@
     {
       "content": "<center><h1><b>Latency Patterns</b></h1></center>\n<center>This is a heatmap for the Latency data across IRNC links over specific periods of time. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show longer delays in data transmissions at those hours.</center>\n<center>The accompanying line graph shows the average, min, or max latency over time and the histogram shows the distribution of latency speeds.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
       "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 1
+        "h": 4,
+        "w": 20,
+        "x": 2,
+        "y": 0
       },
       "id": 5,
       "links": [],
@@ -530,7 +535,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 80, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -559,7 +566,7 @@
           "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 80, average) between (1570061428, 1570147828) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -694,7 +701,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.latency_avg, 3600, average)": ""
+            "aggregate(values.latency_avg, 150, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -720,7 +727,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1559586098, 1562178098) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 150, average) between (1570061428, 1570147828) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -879,7 +886,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.latency_avg, 3600, average)": ""
+            "aggregate(values.latency_avg, 150, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -905,7 +912,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1559586098, 1562178098) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 150, average) between (1570061428, 1570147828) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -980,7 +987,7 @@
       "id": "691",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -1030,7 +1037,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -1097,7 +1104,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 80, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -1123,10 +1132,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 80, average) between (1570061428, 1570147828) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"ESnet pS Server at Sacremento\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -1200,7 +1209,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1290,7 +1299,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1559586098, 1562178098) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"ESnet pS Server at Sacremento\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -1388,7 +1397,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1478,7 +1487,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1559586098, 1562178098) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"ESnet pS Server at Sacremento\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -1553,7 +1562,7 @@
       "id": "6911111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -1603,7 +1612,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -1670,7 +1679,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -1696,10 +1707,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -1773,7 +1784,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1863,7 +1874,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -1961,7 +1972,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2051,7 +2062,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -2126,7 +2137,7 @@
       "id": "69111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -2176,7 +2187,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -2243,7 +2254,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -2269,10 +2282,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -2346,7 +2359,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2436,7 +2449,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -2534,7 +2547,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2624,7 +2637,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -2699,7 +2712,7 @@
       "id": "691111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -2749,7 +2762,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -2816,7 +2829,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -2842,10 +2857,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -2919,7 +2934,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3009,7 +3024,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -3107,7 +3122,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3197,7 +3212,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -3272,7 +3287,7 @@
       "id": "6911111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -3322,7 +3337,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -3389,7 +3404,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -3415,10 +3432,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -3492,7 +3509,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3582,7 +3599,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -3680,7 +3697,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3770,7 +3787,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -3845,7 +3862,7 @@
       "id": "69111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -3895,7 +3912,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -3962,7 +3979,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -3988,10 +4007,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -4065,7 +4084,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4155,7 +4174,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -4253,7 +4272,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4343,7 +4362,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -4418,7 +4437,7 @@
       "id": "691111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 36,
       "scopedVars": {
         "destination": {
@@ -4468,7 +4487,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "h",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 6,
       "repeatedByRow": true,
       "scale": {
@@ -4535,7 +4554,9 @@
               "and"
             ]
           ],
-          "metricValueAliasMappings": {},
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
           "metricValueAliases": [
             ""
           ],
@@ -4561,10 +4582,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558476418, 1561068418) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -4638,7 +4659,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 38,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4728,7 +4749,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "$statistics",
           "templateVariableValue": [
             ""
@@ -4826,7 +4847,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1562178093172,
+      "repeatIteration": 1570147827903,
       "repeatPanelId": 40,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4916,7 +4937,7 @@
           ],
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1558903569, 1561495569) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1567550673, 1570142673) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -5126,7 +5147,7 @@
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -5156,5 +5177,6 @@
   },
   "timezone": "",
   "title": "Latency Patterns",
-  "uid": "000000005"
+  "uid": "000000005",
+  "version": 2
 }

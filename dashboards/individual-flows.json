@@ -379,7 +379,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flow Dashboard</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. </center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n<center><b>Please note that retransmit and RTT information is only available for tstat flow data.</b></center>\n",
+      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flow Dashboard</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular sender and receiver organization. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. </center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given sender and receiver organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n<center><b>Please note that retransmit and RTT information is only available for tstat flow data.</b></center>\n",
       "gridPos": {
         "h": 4,
         "w": 24,
@@ -1102,7 +1102,7 @@
           "unit": "short"
         },
         {
-          "alias": "Source Organization",
+          "alias": "Sender Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1118,7 +1118,7 @@
           "unit": "short"
         },
         {
-          "alias": "Destination Organization",
+          "alias": "Receiver Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1182,7 +1182,7 @@
           "unit": "short"
         },
         {
-          "alias": "Source Subnet",
+          "alias": "Sender Subnet",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1198,7 +1198,7 @@
           "unit": "short"
         },
         {
-          "alias": "Destination Subnet",
+          "alias": "Receiver Subnet",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1418,7 +1418,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Flows from Source to Destination",
+      "title": "Flows from Sender to Receiver",
       "transform": "table",
       "type": "table"
     },
@@ -1897,7 +1897,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Top Source Ports",
+      "title": "Top Sender Ports",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -2017,7 +2017,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Top Destination Ports",
+      "title": "Top Receiver Ports",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -2761,7 +2761,7 @@
           "unit": "short"
         },
         {
-          "alias": "Source Organization",
+          "alias": "Sender Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2777,7 +2777,7 @@
           "unit": "short"
         },
         {
-          "alias": "Destination Organization",
+          "alias": "Receiver Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2841,7 +2841,7 @@
           "unit": "short"
         },
         {
-          "alias": "Source Subnet",
+          "alias": "Sender Subnet",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2857,7 +2857,7 @@
           "unit": "short"
         },
         {
-          "alias": "Destination Subnet",
+          "alias": "Receiver Subnet",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -3077,7 +3077,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Flows from Source to Destination (Reverse)",
+      "title": "Flows from Sender to Receiver (Reverse)",
       "transform": "table",
       "type": "table"
     },
@@ -3555,7 +3555,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Top Source Ports",
+      "title": "Top Sender Ports",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -3675,7 +3675,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Top Destination Ports",
+      "title": "Top Receiver Ports",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -3796,7 +3796,7 @@
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "hide": 0,
         "includeAll": true,
-        "label": "Source Organization",
+        "label": "Sender Organization",
         "multi": true,
         "name": "src",
         "options": [],
@@ -3821,7 +3821,7 @@
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "hide": 0,
         "includeAll": true,
-        "label": "Destination Organization",
+        "label": "Receiver Organization",
         "multi": true,
         "name": "dest",
         "options": [],

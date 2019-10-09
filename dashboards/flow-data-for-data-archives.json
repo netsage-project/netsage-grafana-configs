@@ -15,25 +15,19 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1570212298995,
-  "links": [],
-  "panels": [
+  "iteration": 1570147589505,
+  "links": [
     {
-      "content": "<center><h1><b>Flow Data for Data Archives</b></h1></center>\n<center><h1><b>Top Talkers for Archives Using Tstat Data</b></h1></center>\n<center>This dashboard provides flow data for the top 10 sender and receiver institutions by volume, rate, and restransmits for the Data Archives.</center>\n<center>The above filters can be used to view data for specific countries, organizations, etc.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
-      "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2911,
-      "links": [],
-      "mode": "html",
-      "options": {},
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
+      "asDropdown": true,
+      "icon": "external link",
+      "tags": [
+        "netsage"
+      ],
+      "title": "Other Dashboards",
+      "type": "dashboards"
+    }
+  ],
+  "panels": [
     {
       "__netsage_template": "navigation",
       "array_option_1": [
@@ -45,6 +39,7 @@
         "What is the aggregate flow data for data archives?",
         "What do individual flows look like?",
         "What are the current flow data summary statistics?",
+        "What is the state of active testing on the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
         "What are the bandwidth patterns in the network?",
@@ -220,11 +215,13 @@
         ]
       },
       "custom_hover": " ",
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
         "h": 1,
-        "w": 6,
+        "w": 3,
         "x": 0,
-        "y": 2
+        "y": 0
       },
       "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
       "hex_values": [
@@ -285,7 +282,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 66715886,
+      "max_total": 635429,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -293,11 +290,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 132110.66534653466,
+          "avg": 2198.7162629757786,
           "label": "Count",
-          "max": 749499,
+          "max": 6268,
           "min": 0,
-          "total": 66715886
+          "total": 635429
         }
       ],
       "rgb_values": [
@@ -356,7 +353,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -393,6 +392,22 @@
       "topLogoPath": "https://portal.netsage.global/netsage-cropped.png",
       "transparent": true,
       "type": "netsagenavigation"
+    },
+    {
+      "content": "<center><h1><b>Flow Data for Data Archives</b></h1></center>\n<center>This dashboard provides flow data for the top 10 sender and receiver organizations by volume, rate, and restransmits for the Data Archives.</center>\n<center>The above filters can be used to view data for specific countries, organizations, etc.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "gridPos": {
+        "h": 3,
+        "w": 18,
+        "x": 3,
+        "y": 0
+      },
+      "id": 2911,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "title": "",
+      "transparent": true,
+      "type": "text"
     },
     {
       "content": "<center><h1>Top Senders</h1></center>",
@@ -435,10 +450,10 @@
         {
           "alias": "Sender Organization",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
+          "link": false,
           "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
+          "linkTooltip": "Click for more info about data traveling over the $__cell",
+          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
           "pattern": "meta.src_organization.keyword",
           "type": "string",
           "unit": "bits"
@@ -599,7 +614,6 @@
       "datasource": "netsage",
       "decimals": 1,
       "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 11,
@@ -622,9 +636,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -753,10 +765,10 @@
         {
           "alias": "Sender Organization",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
+          "link": false,
           "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
+          "linkTooltip": "Click for more info about data traveling over the $__cell",
+          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
           "mappingType": 1,
           "pattern": "meta.src_organization.keyword",
           "rangeMaps": [
@@ -900,7 +912,6 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 11,
@@ -922,9 +933,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1047,10 +1056,6 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
           "mappingType": 1,
           "pattern": "meta.src_organization.keyword",
           "thresholds": [],
@@ -1058,7 +1063,7 @@
           "unit": "short"
         },
         {
-          "alias": "Sender IP",
+          "alias": "Senders IP",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1090,7 +1095,7 @@
           "unit": "short"
         },
         {
-          "alias": "Receiver IP",
+          "alias": "Receivers IP",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1302,7 +1307,6 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 11,
@@ -1323,9 +1327,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1461,10 +1463,10 @@
         {
           "alias": "Receiver Organization",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
+          "link": false,
           "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
+          "linkTooltip": "Click for more info about data traveling over the $__cell",
+          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
           "pattern": "meta.dst_organization.keyword",
           "type": "string",
           "unit": "bits"
@@ -1626,7 +1628,6 @@
       "datasource": "netsage",
       "decimals": 1,
       "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 11,
@@ -1649,9 +1650,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1779,10 +1778,10 @@
         {
           "alias": "Receiver Organization",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
+          "link": false,
           "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
+          "linkTooltip": "Click for more info about data traveling over the $__cell",
+          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
           "mappingType": 1,
           "pattern": "meta.dst_organization.keyword",
           "rangeMaps": [
@@ -1927,7 +1926,6 @@
       "datasource": "netsage",
       "decimals": 1,
       "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 11,
@@ -1950,9 +1948,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2081,10 +2077,6 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
           "mappingType": 1,
           "pattern": "meta.dst_organization.keyword",
           "thresholds": [],
@@ -2092,7 +2084,7 @@
           "unit": "short"
         },
         {
-          "alias": "Receiver IP",
+          "alias": "Receivers IP",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2287,7 +2279,6 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 11,
@@ -2309,9 +2300,7 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
+      "options": {},
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2452,10 +2441,6 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
           "mappingType": 1,
           "pattern": "meta.src_organization.keyword",
           "thresholds": [],
@@ -2463,7 +2448,7 @@
           "unit": "short"
         },
         {
-          "alias": "Sender IP",
+          "alias": "Senders IP",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2488,9 +2473,6 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
-          "link": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}",
           "mappingType": 1,
           "pattern": "meta.dst_organization.keyword",
           "thresholds": [],
@@ -2498,7 +2480,7 @@
           "unit": "short"
         },
         {
-          "alias": "Receiver IP",
+          "alias": "Receivers IP",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2798,7 +2780,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 19,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [
     "netsage",
@@ -2834,7 +2816,7 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {

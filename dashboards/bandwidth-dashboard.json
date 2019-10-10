@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1569363854163,
+  "iteration": 1570657584751,
   "links": [],
   "panels": [
     {
@@ -205,9 +205,11 @@
         ]
       },
       "custom_hover": " ",
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
-        "h": 1,
-        "w": 24,
+        "h": 3,
+        "w": 2,
         "x": 0,
         "y": 0
       },
@@ -270,7 +272,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 293697558,
+      "max_total": 1956600,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +280,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 203815.09923664122,
+          "avg": 13493.793103448275,
           "label": "Count",
-          "max": 903978,
-          "min": 4,
-          "total": 293697558
+          "max": 193318,
+          "min": 0,
+          "total": 1956600
         }
       ],
       "rgb_values": [
@@ -341,7 +343,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -380,6 +384,22 @@
       "type": "netsagenavigation"
     },
     {
+      "content": "<center><h1><b>Bandwidth Dashboard</b></h1></center>\n<center>The map above shows the min, max, and average bandwidth utilization of National Science Foundation’s International Research Network Connections Program links over the selected time period.</center>\n<center>The rows below show each of the links in more detail, including traffic volume, bandwidth distribution and total data transferred.</center>\n<center>A combined view of average bandwidth utilization is shown at the bottom of this page.</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "gridPos": {
+        "h": 3,
+        "w": 20,
+        "x": 2,
+        "y": 0
+      },
+      "id": 156,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "cacheTimeout": null,
       "colorBackground": false,
       "colorPrefix": true,
@@ -403,7 +423,7 @@
         "h": 3,
         "w": 8,
         "x": 0,
-        "y": 1
+        "y": 3
       },
       "id": 3,
       "interval": null,
@@ -575,7 +595,7 @@
         "h": 3,
         "w": 8,
         "x": 8,
-        "y": 1
+        "y": 3
       },
       "id": 4,
       "interval": null,
@@ -746,7 +766,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 1
+        "y": 3
       },
       "id": 5,
       "interval": null,
@@ -922,7 +942,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 6
       },
       "hide_layers": false,
       "id": 61,
@@ -942,27 +962,6 @@
         }
       },
       "layers": [
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
         {
           "__baseFactory__": "Layer"
         },
@@ -1238,8 +1237,8 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 3600, average)": "input",
-            "aggregate(values.output, 3600, average)": "output"
+            "aggregate(values.input, 60, average)": "input",
+            "aggregate(values.output, 60, average)": "output"
           },
           "metricValueAliases": [
             "AZ",
@@ -1271,7 +1270,7 @@
           "rawQuery": false,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, node, aggregate(values.input, 3600, average),aggregate(values.output, 3600, average) between (1563242213, 1565834213) by link_name from interface where (link_name like \".+\")",
+          "target": "get link_name, node, aggregate(values.input, 60, average),aggregate(values.output, 60, average) between (1570571291, 1570657691) by link_name from interface where (link_name like \".+\")",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -1493,28 +1492,12 @@
       "zoom": 3
     },
     {
-      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<center>The map above shows the min, max, and average bandwidth utilization of National Science Foundation’s International Research Network Connections Program links over the selected time period.</center>\n<center>The rows below show each of the links in more detail, including traffic volume, bandwidth distribution and total data transferred.</center>\n<center>A combined view of average bandwidth utilization is shown at the bottom of this page.</center>",
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 21
-      },
-      "id": 156,
-      "links": [],
-      "mode": "html",
-      "options": {},
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "content": "",
       "gridPos": {
         "h": 1,
         "w": 2,
         "x": 0,
-        "y": 24
+        "y": 23
       },
       "id": 7,
       "links": [],
@@ -1529,7 +1512,7 @@
         "h": 1,
         "w": 6,
         "x": 2,
-        "y": 24
+        "y": 23
       },
       "id": 8,
       "links": [],
@@ -1544,7 +1527,7 @@
         "h": 1,
         "w": 6,
         "x": 8,
-        "y": 24
+        "y": 23
       },
       "id": 9,
       "links": [],
@@ -1559,7 +1542,7 @@
         "h": 1,
         "w": 6,
         "x": 14,
-        "y": 24
+        "y": 23
       },
       "id": 10,
       "links": [],
@@ -1574,7 +1557,7 @@
         "h": 1,
         "w": 4,
         "x": 20,
-        "y": 24
+        "y": 23
       },
       "id": 11,
       "links": [],
@@ -1589,7 +1572,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 24
       },
       "id": 202,
       "panels": [],
@@ -1610,7 +1593,7 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 26
+        "y": 25
       },
       "id": 12,
       "links": [],
@@ -1640,7 +1623,7 @@
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 26
+        "y": 25
       },
       "id": 13,
       "legend": {
@@ -1739,7 +1722,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -1767,7 +1750,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -1815,7 +1798,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -1832,7 +1815,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -1903,7 +1886,7 @@
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 26
+        "y": 25
       },
       "id": 14,
       "legend": {
@@ -1995,7 +1978,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -2022,7 +2005,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -2094,7 +2077,7 @@
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 26
+        "y": 25
       },
       "id": 15,
       "legend": {
@@ -2186,7 +2169,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -2213,7 +2196,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -2286,7 +2269,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 26
+        "y": 25
       },
       "id": 16,
       "legend": {
@@ -2384,7 +2367,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -2412,7 +2395,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -2460,7 +2443,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -2477,7 +2460,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -2544,12 +2527,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 32
       },
       "id": "5361",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -2567,13 +2550,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 34
+        "y": 33
       },
       "id": "53611",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2600,7 +2583,7 @@
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 34
+        "y": 33
       },
       "id": "536111",
       "legend": {
@@ -2625,7 +2608,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2702,7 +2685,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -2730,7 +2713,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Chile 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -2778,7 +2761,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -2795,7 +2778,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Chile 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -2866,7 +2849,7 @@
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 34
+        "y": 33
       },
       "id": "5361111",
       "legend": {
@@ -2889,7 +2872,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2961,7 +2944,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -2988,7 +2971,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Chile 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -3060,7 +3043,7 @@
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 34
+        "y": 33
       },
       "id": "53611111",
       "legend": {
@@ -3083,7 +3066,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3155,7 +3138,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -3182,7 +3165,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Chile 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -3255,7 +3238,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 34
+        "y": 33
       },
       "id": "536111111",
       "legend": {
@@ -3279,7 +3262,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3356,7 +3339,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -3384,7 +3367,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Chile 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -3432,7 +3415,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -3449,7 +3432,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Chile 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -3516,12 +3499,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 41
+        "y": 40
       },
       "id": "5361111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -3539,13 +3522,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 42
+        "y": 41
       },
       "id": "53611111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3572,7 +3555,7 @@
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 42
+        "y": 41
       },
       "id": "536111111111",
       "legend": {
@@ -3597,7 +3580,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3674,7 +3657,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -3702,7 +3685,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Sao Paulo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -3750,7 +3733,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -3767,7 +3750,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Sao Paulo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -3838,7 +3821,7 @@
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 42
+        "y": 41
       },
       "id": "5361111111111",
       "legend": {
@@ -3861,7 +3844,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3933,7 +3916,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -3960,7 +3943,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Sao Paulo 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -4032,7 +4015,7 @@
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 42
+        "y": 41
       },
       "id": "53611111111111",
       "legend": {
@@ -4055,7 +4038,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4127,7 +4110,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -4154,7 +4137,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Sao Paulo 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -4227,7 +4210,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 42
+        "y": 41
       },
       "id": "536111111111111",
       "legend": {
@@ -4251,7 +4234,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4328,7 +4311,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -4356,7 +4339,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Sao Paulo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -4404,7 +4387,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -4421,7 +4404,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Miami to Sao Paulo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -4488,12 +4471,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 48
       },
       "id": "5361111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -4511,13 +4494,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 50
+        "y": 49
       },
       "id": "53611111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4544,7 +4527,7 @@
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 50
+        "y": 49
       },
       "id": "536111111111111111",
       "legend": {
@@ -4569,7 +4552,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4646,7 +4629,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -4674,7 +4657,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"NEAAR: New York to London 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -4722,7 +4705,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -4739,7 +4722,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"NEAAR: New York to London 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -4810,7 +4793,7 @@
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 50
+        "y": 49
       },
       "id": "5361111111111111111",
       "legend": {
@@ -4833,7 +4816,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4905,7 +4888,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -4932,7 +4915,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"NEAAR: New York to London 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -5004,7 +4987,7 @@
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 50
+        "y": 49
       },
       "id": "53611111111111111111",
       "legend": {
@@ -5027,7 +5010,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5099,7 +5082,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -5126,7 +5109,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"NEAAR: New York to London 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -5199,7 +5182,7 @@
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 50
+        "y": 49
       },
       "id": "536111111111111111111",
       "legend": {
@@ -5223,7 +5206,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5300,7 +5283,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -5328,7 +5311,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"NEAAR: New York to London 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -5376,7 +5359,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -5393,7 +5376,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"NEAAR: New York to London 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -5460,12 +5443,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 56
       },
       "id": "5361111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -5483,13 +5466,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 58
+        "y": 57
       },
       "id": "53611111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5511,11 +5494,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 58
+        "y": 57
       },
       "id": "536111111111111111111111",
       "legend": {
@@ -5533,12 +5517,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5615,7 +5601,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -5643,7 +5629,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Los Angeles to Mauna Lani 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -5691,7 +5677,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -5708,7 +5694,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Los Angeles to Mauna Lani 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -5774,11 +5760,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 58
+        "y": 57
       },
       "id": "5361111111111111111111111",
       "legend": {
@@ -5794,12 +5781,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5871,7 +5860,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -5898,7 +5887,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Los Angeles to Mauna Lani 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -5965,11 +5954,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 58
+        "y": 57
       },
       "id": "53611111111111111111111111",
       "legend": {
@@ -5985,12 +5975,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6062,7 +6054,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -6089,7 +6081,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Los Angeles to Mauna Lani 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -6157,11 +6149,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 58
+        "y": 57
       },
       "id": "536111111111111111111111111",
       "legend": {
@@ -6178,12 +6171,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6260,7 +6255,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -6288,7 +6283,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Los Angeles to Mauna Lani 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -6336,7 +6331,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -6353,7 +6348,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Los Angeles to Mauna Lani 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -6420,12 +6415,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 64
       },
       "id": "5361111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -6443,13 +6438,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 66
+        "y": 65
       },
       "id": "53611111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6471,11 +6466,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 66
+        "y": 65
       },
       "id": "536111111111111111111111111111",
       "legend": {
@@ -6493,12 +6489,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6575,7 +6573,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -6603,7 +6601,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Mauna Lani to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -6651,7 +6649,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -6668,7 +6666,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Mauna Lani to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -6734,11 +6732,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 66
+        "y": 65
       },
       "id": "5361111111111111111111111111111",
       "legend": {
@@ -6754,12 +6753,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6831,7 +6832,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -6858,7 +6859,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Mauna Lani to Sydney 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -6925,11 +6926,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 66
+        "y": 65
       },
       "id": "53611111111111111111111111111111",
       "legend": {
@@ -6945,12 +6947,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7022,7 +7026,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -7049,7 +7053,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Mauna Lani to Sydney 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -7117,11 +7121,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 66
+        "y": 65
       },
       "id": "536111111111111111111111111111111",
       "legend": {
@@ -7138,12 +7143,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7220,7 +7227,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -7248,7 +7255,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Mauna Lani to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -7296,7 +7303,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -7313,7 +7320,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Mauna Lani to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -7380,12 +7387,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 72
       },
       "id": "5361111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -7403,13 +7410,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 74
+        "y": 73
       },
       "id": "53611111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7431,11 +7438,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 74
+        "y": 73
       },
       "id": "536111111111111111111111111111111111",
       "legend": {
@@ -7453,12 +7461,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7535,7 +7545,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -7563,7 +7573,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Guam 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -7611,7 +7621,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -7628,7 +7638,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Guam 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -7694,11 +7704,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 74
+        "y": 73
       },
       "id": "5361111111111111111111111111111111111",
       "legend": {
@@ -7714,12 +7725,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7791,7 +7804,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -7818,7 +7831,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Guam 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -7885,11 +7898,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 74
+        "y": 73
       },
       "id": "53611111111111111111111111111111111111",
       "legend": {
@@ -7905,12 +7919,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7982,7 +7998,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -8009,7 +8025,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Guam 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -8077,11 +8093,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 74
+        "y": 73
       },
       "id": "536111111111111111111111111111111111111",
       "legend": {
@@ -8098,12 +8115,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8180,7 +8199,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -8208,7 +8227,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Guam 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -8256,7 +8275,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -8273,7 +8292,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Guam 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -8340,12 +8359,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 81
+        "y": 80
       },
       "id": "5361111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -8363,13 +8382,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 82
+        "y": 81
       },
       "id": "53611111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8391,11 +8410,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 82
+        "y": 81
       },
       "id": "536111111111111111111111111111111111111111",
       "legend": {
@@ -8413,12 +8433,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8495,7 +8517,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -8523,7 +8545,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Los Angeles 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -8571,7 +8593,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -8588,7 +8610,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Los Angeles 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -8654,11 +8676,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 82
+        "y": 81
       },
       "id": "5361111111111111111111111111111111111111111",
       "legend": {
@@ -8674,12 +8697,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8751,7 +8776,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -8778,7 +8803,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Los Angeles 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -8845,11 +8870,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 82
+        "y": 81
       },
       "id": "53611111111111111111111111111111111111111111",
       "legend": {
@@ -8865,12 +8891,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8942,7 +8970,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -8969,7 +8997,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Los Angeles 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -9037,11 +9065,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 82
+        "y": 81
       },
       "id": "536111111111111111111111111111111111111111111",
       "legend": {
@@ -9058,12 +9087,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9140,7 +9171,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -9168,7 +9199,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Los Angeles 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -9216,7 +9247,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -9233,7 +9264,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Los Angeles 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -9300,12 +9331,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 89
+        "y": 88
       },
       "id": "5361111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -9323,13 +9354,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 90
+        "y": 89
       },
       "id": "53611111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9351,11 +9382,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 90
+        "y": 89
       },
       "id": "536111111111111111111111111111111111111111111111",
       "legend": {
@@ -9373,12 +9405,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9455,7 +9489,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -9483,7 +9517,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -9531,7 +9565,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -9548,7 +9582,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -9614,11 +9648,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 90
+        "y": 89
       },
       "id": "5361111111111111111111111111111111111111111111111",
       "legend": {
@@ -9634,12 +9669,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9711,7 +9748,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -9738,7 +9775,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Sydney 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -9805,11 +9842,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 90
+        "y": 89
       },
       "id": "53611111111111111111111111111111111111111111111111",
       "legend": {
@@ -9825,12 +9863,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9902,7 +9942,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -9929,7 +9969,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Sydney 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -9997,11 +10037,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 90
+        "y": 89
       },
       "id": "536111111111111111111111111111111111111111111111111",
       "legend": {
@@ -10018,12 +10059,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10100,7 +10143,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -10128,7 +10171,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -10176,7 +10219,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -10193,7 +10236,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Oahu to Sydney 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -10260,12 +10303,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 97
+        "y": 96
       },
       "id": "5361111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -10283,13 +10326,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 98
+        "y": 97
       },
       "id": "53611111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10311,11 +10354,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 98
+        "y": 97
       },
       "id": "536111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -10333,12 +10377,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10415,7 +10461,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -10443,7 +10489,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Seattle to Oahu 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -10491,7 +10537,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -10508,7 +10554,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Seattle to Oahu 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -10574,11 +10620,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 98
+        "y": 97
       },
       "id": "5361111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -10594,12 +10641,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10671,7 +10720,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -10698,7 +10747,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Seattle to Oahu 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -10765,11 +10814,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 98
+        "y": 97
       },
       "id": "53611111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -10785,12 +10835,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10862,7 +10914,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -10889,7 +10941,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Seattle to Oahu 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -10957,11 +11009,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 98
+        "y": 97
       },
       "id": "536111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -10978,12 +11031,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11060,7 +11115,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -11088,7 +11143,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Seattle to Oahu 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -11136,7 +11191,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -11153,7 +11208,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"PIREN: Seattle to Oahu 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -11220,12 +11275,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 105
+        "y": 104
       },
       "id": "5361111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -11243,13 +11298,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 106
+        "y": 105
       },
       "id": "53611111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11271,11 +11326,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 106
+        "y": 105
       },
       "id": "536111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -11293,12 +11349,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11375,7 +11433,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -11403,7 +11461,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Hong Kong to Guam 10GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -11451,7 +11509,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -11468,7 +11526,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Hong Kong to Guam 10GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -11534,11 +11592,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 106
+        "y": 105
       },
       "id": "5361111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -11554,12 +11613,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11631,7 +11692,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -11658,7 +11719,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Hong Kong to Guam 10GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -11725,11 +11786,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 106
+        "y": 105
       },
       "id": "53611111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -11745,12 +11807,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11822,7 +11886,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -11849,7 +11913,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Hong Kong to Guam 10GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -11917,11 +11981,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 106
+        "y": 105
       },
       "id": "536111111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -11938,12 +12003,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12020,7 +12087,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -12048,7 +12115,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Hong Kong to Guam 10GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -12096,7 +12163,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -12113,7 +12180,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Hong Kong to Guam 10GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -12180,12 +12247,12 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 113
+        "y": 112
       },
       "id": "5361111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -12203,13 +12270,13 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 114
+        "y": 113
       },
       "id": "53611111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12231,11 +12298,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 2,
-        "y": 114
+        "y": 113
       },
       "id": "536111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -12253,12 +12321,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12335,7 +12405,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "A-Z"
+            "aggregate(values.output, 210, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -12363,7 +12433,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Seattle to Tokyo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -12411,7 +12481,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": "Z-A"
+            "aggregate(values.input, 210, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -12428,7 +12498,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Seattle to Tokyo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -12494,11 +12564,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 8,
-        "y": 114
+        "y": 113
       },
       "id": "5361111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -12514,12 +12585,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12591,7 +12664,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 6830, average)": "output"
+            "aggregate(values.output, 210, average)": "output"
           },
           "metricValueAliases": [
             ""
@@ -12618,7 +12691,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Seattle to Tokyo 100GE\"))",
           "target_alias": "$link_name $VALUE",
           "templateVariableValue": [
             ""
@@ -12685,11 +12758,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 14,
-        "y": 114
+        "y": 113
       },
       "id": "53611111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -12705,12 +12779,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12782,7 +12858,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 6830, average)": ""
+            "aggregate(values.input, 210, average)": ""
           },
           "metricValueAliases": [
             ""
@@ -12809,7 +12885,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 6830, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Seattle to Tokyo 100GE\"))",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -12877,11 +12953,12 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 4,
         "x": 20,
-        "y": 114
+        "y": 113
       },
       "id": "536111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
@@ -12898,12 +12975,14 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1569363854163,
+      "repeatIteration": 1570657584751,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12980,7 +13059,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 10210, average)": "A-Z"
+            "aggregate(values.output, 310, average)": "A-Z"
           },
           "metricValueAliases": [
             ""
@@ -13008,7 +13087,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Seattle to Tokyo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -13056,7 +13135,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 10210, average)": "Z-A"
+            "aggregate(values.input, 310, average)": "Z-A"
           },
           "metricValueAliases": [
             ""
@@ -13073,7 +13152,7 @@
           ],
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 10210, average) between (1563242213, 1565834213) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
+          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"TransPAC: Seattle to Tokyo 100GE\"))",
           "target_alias": "$VALUE",
           "templateVariableValue": [
             ""
@@ -13140,7 +13219,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 121
+        "y": 120
       },
       "id": 451,
       "panels": [],
@@ -13159,7 +13238,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 122
+        "y": 121
       },
       "id": 449,
       "legend": {
@@ -13238,7 +13317,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 3600, average)": "A-Z"
+            "aggregate(values.output, 60, average)": "A-Z"
           },
           "metricValueAliases": [
             "A-Z"
@@ -13265,7 +13344,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 3600, average) between (1563242213, 1565834213) by link_name from interface where (link_name like \".*\") ordered by link_name",
+          "target": "get link_name, aggregate(values.output, 60, average) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
           "target_alias": "$VALUES $link_name",
           "templateVariableValue": [
             ""
@@ -13331,7 +13410,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 134
+        "y": 133
       },
       "id": 455,
       "panels": [],
@@ -13350,7 +13429,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 135
+        "y": 134
       },
       "id": 457,
       "legend": {
@@ -13429,7 +13508,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 3600, average)": "Z-A"
+            "aggregate(values.input, 60, average)": "Z-A"
           },
           "metricValueAliases": [
             "Z-A"
@@ -13456,7 +13535,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 3600, average) between (1563242213, 1565834213) by link_name from interface where (link_name like \".*\") ordered by link_name",
+          "target": "get link_name, aggregate(values.input, 60, average) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
           "target_alias": "$VALUES $link_name",
           "templateVariableValue": [
             ""
@@ -13522,7 +13601,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 147
+        "y": 146
       },
       "id": 459,
       "panels": [],
@@ -13541,7 +13620,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 148
+        "y": 147
       },
       "id": 461,
       "legend": {
@@ -13617,7 +13696,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.output, 3600, max)": "Z-A"
+            "aggregate(values.output, 60, max)": "Z-A"
           },
           "metricValueAliases": [
             "A-Z"
@@ -13644,7 +13723,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 3600, max) between (1563242213, 1565834213) by link_name from interface where (link_name like \".*\") ordered by link_name",
+          "target": "get link_name, aggregate(values.output, 60, max) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
           "target_alias": "$VALUES $link_name",
           "templateVariableValue": [
             ""
@@ -13710,7 +13789,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 160
+        "y": 159
       },
       "id": 463,
       "panels": [],
@@ -13729,7 +13808,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 161
+        "y": 160
       },
       "id": 465,
       "legend": {
@@ -13805,7 +13884,7 @@
             ]
           ],
           "metricValueAliasMappings": {
-            "aggregate(values.input, 3600, max)": "A-Z"
+            "aggregate(values.input, 60, max)": "A-Z"
           },
           "metricValueAliases": [
             "Z-A"
@@ -13832,7 +13911,7 @@
           ],
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 3600, max) between (1563242213, 1565834213) by link_name from interface where (link_name like \".*\") ordered by link_name",
+          "target": "get link_name, aggregate(values.input, 60, max) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
           "target_alias": "$VALUES $link_name",
           "templateVariableValue": [
             ""
@@ -13898,7 +13977,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 173
+        "y": 172
       },
       "id": 467,
       "panels": [],
@@ -13911,7 +13990,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 174
+        "y": 173
       },
       "id": 469,
       "links": [],
@@ -13923,7 +14002,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 19,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [
     "netsage"
@@ -13938,7 +14017,7 @@
         },
         "datasource": "Netsage TSDS",
         "definition": "",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Links",
         "multi": true,

@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1571409288140,
+  "iteration": 1571421529325,
   "links": [],
   "panels": [
     {
@@ -84,8 +84,7 @@
         7,
         8,
         9,
-        10,
-        11
+        10
       ],
       "color": {
         "cardColor": "#b4ff00",
@@ -265,13 +264,13 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": "30",
+      "id": 51,
       "legend": {
         "legend_colors": [],
         "show": true
       },
       "links": [],
-      "max_total": 61405100,
+      "max_total": 63002014,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -279,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 30443.777887952405,
+          "avg": 31235.505205751117,
           "label": "Count",
-          "max": 139177,
+          "max": 157349,
           "min": 0,
-          "total": 61405100
+          "total": 63002014
         }
       ],
       "rgb_values": [
@@ -378,79 +377,19 @@
       },
       "topLogoPath": "https://portal.netsage.global/netsage-cropped.png",
       "transparent": true,
-      "type": "mahesh-test"
+      "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Individual Flows per Country Dashboard</h1></center>",
+      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flows per Country Dashboard</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. </center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n<center><b>Please note that retransmit and RTT information is only available for archive flow data.</b></center>\n",
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 1
       },
-      "id": 61,
-      "mode": "html",
-      "options": {},
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<center>This dashboard shows per-flow level data given a particular source and destination country. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. </center>\n<center>The heat maps below show volume, rate and retransmits of flows for the given source and destination countries over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center>\n<center><b>Please note that retransmit and RTT information is only available for archive flow data.</b></center>\n",
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 3
-      },
       "id": 34,
       "links": [],
       "mode": "html",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "content": "",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 6
-      },
-      "id": 28,
-      "links": [],
-      "mode": "markdown",
       "options": {},
       "timeFrom": null,
       "timeShift": null,
@@ -477,12 +416,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
-        "x": 0,
-        "y": 7
+        "x": 1,
+        "y": 5
       },
-      "id": 26,
+      "id": 45,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -537,13 +476,11 @@
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
-              "settings": {
-                "precision_threshold": null
-              },
-              "type": "cardinality"
+              "settings": {},
+              "type": "count"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -567,13 +504,12 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorPostfix": false,
       "colorPrefix": true,
       "colorValue": false,
       "colors": [
         "#299c46",
         "rgba(237, 129, 40, 0.89)",
-        "#E02F44"
+        "#d44a3a"
       ],
       "decimals": 1,
       "format": "decbytes",
@@ -585,12 +521,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
-        "w": 5,
-        "x": 4,
-        "y": 7
+        "h": 3,
+        "w": 4,
+        "x": 5,
+        "y": 5
       },
-      "id": 20,
+      "id": 35,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -625,7 +561,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "values.num_bits",
       "targets": [
         {
           "bucketAggs": [
@@ -644,17 +580,12 @@
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
+              "settings": {},
+              "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -696,10 +627,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 6,
         "x": 9,
-        "y": 7
+        "y": 5
       },
       "id": 21,
       "interval": null,
@@ -760,7 +691,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -802,10 +733,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
-        "w": 5,
+        "h": 3,
+        "w": 4,
         "x": 15,
-        "y": 7
+        "y": 5
       },
       "id": 22,
       "interval": "",
@@ -894,7 +825,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -936,10 +867,10 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
-        "x": 20,
-        "y": 7
+        "x": 19,
+        "y": 5
       },
       "id": 23,
       "interval": null,
@@ -1000,7 +931,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1027,9 +958,9 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 8
       },
-      "id": 29,
+      "id": 52,
       "links": [],
       "mode": "markdown",
       "options": {},
@@ -1046,7 +977,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 9
       },
       "id": 2,
       "links": [],
@@ -1056,7 +987,7 @@
       "showHeader": true,
       "sort": {
         "col": 1,
-        "desc": false
+        "desc": true
       },
       "styles": [
         {
@@ -1102,13 +1033,13 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Average values.num_bits",
+          "pattern": "/Sum/",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "alias": "Avg. Rate",
+          "alias": "Avg Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1124,7 +1055,7 @@
           "unit": "bps"
         },
         {
-          "alias": "Timestamp (Local Timezone)",
+          "alias": "Timestamp",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1166,13 +1097,13 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "meta.id.keyword",
+          "pattern": "_id",
           "thresholds": [],
           "type": "hidden",
           "unit": "short"
         },
         {
-          "alias": "Source",
+          "alias": "Source Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1182,13 +1113,13 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "meta.src_country_name.keyword",
+          "pattern": "meta.src_organization.keyword",
           "thresholds": [],
           "type": "string",
           "unit": "short"
         },
         {
-          "alias": "Destination",
+          "alias": "Destination Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1198,7 +1129,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "meta.dst_country_name.keyword",
+          "pattern": "meta.dst_organization.keyword",
           "thresholds": [],
           "type": "string",
           "unit": "short"
@@ -1264,7 +1195,7 @@
           "mappingType": 1,
           "pattern": "meta.src_ip.keyword",
           "thresholds": [],
-          "type": "string",
+          "type": "number",
           "unit": "short"
         },
         {
@@ -1280,8 +1211,24 @@
           "mappingType": 1,
           "pattern": "meta.dst_ip.keyword",
           "thresholds": [],
-          "type": "string",
+          "type": "number",
           "unit": "short"
+        },
+        {
+          "alias": "Peak Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Max",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
         },
         {
           "alias": "",
@@ -1306,13 +1253,13 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.id.keyword",
+              "field": "_id",
               "id": "15",
               "settings": {
                 "min_doc_count": 1,
                 "order": "asc",
                 "orderBy": "_term",
-                "size": "0"
+                "size": "10000"
               },
               "type": "terms"
             },
@@ -1342,7 +1289,7 @@
             },
             {
               "fake": true,
-              "field": "meta.src_country_name.keyword",
+              "field": "meta.src_organization.keyword",
               "id": "28",
               "settings": {
                 "min_doc_count": 1,
@@ -1355,7 +1302,7 @@
             {
               "fake": true,
               "field": "meta.src_ip.keyword",
-              "id": "34",
+              "id": "32",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -1366,8 +1313,8 @@
             },
             {
               "fake": true,
-              "field": "meta.dst_country_name.keyword",
-              "id": "35",
+              "field": "meta.dst_organization.keyword",
+              "id": "33",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -1379,7 +1326,7 @@
             {
               "fake": true,
               "field": "meta.dst_ip.keyword",
-              "id": "33",
+              "id": "31",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -1401,7 +1348,7 @@
                   "inline": "_value / 8"
                 }
               },
-              "type": "avg"
+              "type": "sum"
             },
             {
               "field": "values.bits_per_second",
@@ -1409,6 +1356,13 @@
               "meta": {},
               "settings": {},
               "type": "avg"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "30",
+              "meta": {},
+              "settings": {},
+              "type": "max"
             },
             {
               "field": "values.tcp_rexmit_pkts",
@@ -1460,7 +1414,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1495,7 +1449,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 24
       },
       "id": 18,
       "legend": {
@@ -1535,7 +1489,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1583,9 +1537,9 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 35
       },
-      "id": 24,
+      "id": 56,
       "legend": {
         "show": false
       },
@@ -1618,7 +1572,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1666,7 +1620,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 46
       },
       "id": 12,
       "legend": {
@@ -1703,7 +1657,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1727,41 +1681,16 @@
       }
     },
     {
-      "content": "<center><h1>Summary Statistics</h1></center>",
+      "content": "<h1 style=\"margin-top:20px;\"><center>Summary Statistics</center></h1>",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 57
       },
-      "id": 46,
+      "id": 37,
       "mode": "html",
       "options": {},
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1771,29 +1700,26 @@
     {
       "aliasColors": {},
       "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
-      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 0,
-        "y": 60
+        "y": 59
       },
-      "id": 38,
+      "id": 39,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": true,
+        "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
-        "total": true,
-        "values": true
+        "total": false,
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -1803,7 +1729,7 @@
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -1838,14 +1764,12 @@
           ],
           "metrics": [
             {
-              "field": "meta.id.keyword",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1856,7 +1780,7 @@
       "timeShift": null,
       "title": "Top Protocols",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -1872,7 +1796,6 @@
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
@@ -1897,28 +1820,26 @@
     {
       "aliasColors": {},
       "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 8,
-        "y": 60
+        "y": 59
       },
       "id": 40,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": true,
+        "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
-        "total": true,
-        "values": true
+        "total": false,
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -1928,7 +1849,7 @@
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -1963,14 +1884,12 @@
           ],
           "metrics": [
             {
-              "field": "meta.id.keyword",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1981,7 +1900,7 @@
       "timeShift": null,
       "title": "Top Source Ports",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -2021,28 +1940,26 @@
     {
       "aliasColors": {},
       "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 16,
-        "y": 60
+        "y": 59
       },
-      "id": 42,
+      "id": 41,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": true,
+        "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
-        "total": true,
-        "values": true
+        "total": false,
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -2052,7 +1969,7 @@
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -2087,14 +2004,12 @@
           ],
           "metrics": [
             {
-              "field": "meta.id.keyword",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2105,8 +2020,8 @@
       "timeShift": null,
       "title": "Top Destination Ports",
       "tooltip": {
-        "shared": true,
-        "sort": 2,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -2143,41 +2058,16 @@
       }
     },
     {
-      "content": "<center><h1>Reverse Direction</h1></center>",
+      "content": "<center style=\"margin-top:20px;\"><h1>Reverse Direction</h1></center>",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 69
+        "y": 67
       },
-      "id": 44,
+      "id": 62,
       "mode": "html",
       "options": {},
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2203,12 +2093,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
-        "x": 0,
-        "y": 71
+        "x": 1,
+        "y": 69
       },
-      "id": 47,
+      "id": 26,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -2263,13 +2153,11 @@
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
-              "settings": {
-                "precision_threshold": null
-              },
-              "type": "cardinality"
+              "settings": {},
+              "type": "count"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2293,13 +2181,12 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
-      "colorPostfix": false,
       "colorPrefix": true,
       "colorValue": false,
       "colors": [
         "#299c46",
         "rgba(237, 129, 40, 0.89)",
-        "#E02F44"
+        "#d44a3a"
       ],
       "decimals": 1,
       "format": "decbytes",
@@ -2311,12 +2198,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
-        "w": 5,
-        "x": 4,
-        "y": 71
+        "h": 3,
+        "w": 4,
+        "x": 5,
+        "y": 69
       },
-      "id": 48,
+      "id": 47,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -2351,7 +2238,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "values.num_bits",
       "targets": [
         {
           "bucketAggs": [
@@ -2370,17 +2257,12 @@
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
+              "settings": {},
+              "type": "avg"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2422,12 +2304,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 6,
         "x": 9,
-        "y": 71
+        "y": 69
       },
-      "id": 49,
+      "id": 48,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -2486,7 +2368,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2528,12 +2410,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
-        "w": 5,
+        "h": 3,
+        "w": 4,
         "x": 15,
-        "y": 71
+        "y": 69
       },
-      "id": 50,
+      "id": 49,
       "interval": "",
       "links": [],
       "mappingType": 1,
@@ -2620,7 +2502,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2662,12 +2544,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
-        "x": 20,
-        "y": 71
+        "x": 19,
+        "y": 69
       },
-      "id": 51,
+      "id": 50,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -2726,7 +2608,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2748,33 +2630,15 @@
       "valueName": "avg"
     },
     {
-      "content": "",
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 73
-      },
-      "id": 53,
-      "links": [],
-      "mode": "markdown",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "columns": [],
       "fontSize": "100%",
       "gridPos": {
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 72
       },
-      "id": 52,
+      "id": 54,
       "links": [],
       "options": {},
       "pageSize": 15,
@@ -2782,7 +2646,7 @@
       "showHeader": true,
       "sort": {
         "col": 1,
-        "desc": false
+        "desc": true
       },
       "styles": [
         {
@@ -2828,13 +2692,13 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Average values.num_bits",
+          "pattern": "/Sum/",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "alias": "Avg. Rate",
+          "alias": "Avg Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2850,7 +2714,7 @@
           "unit": "bps"
         },
         {
-          "alias": "Timestamp (Local Timezone)",
+          "alias": "Timestamp",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2898,7 +2762,7 @@
           "unit": "short"
         },
         {
-          "alias": "Source",
+          "alias": "Source Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2908,13 +2772,13 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "meta.src_country_name.keyword",
+          "pattern": "meta.src_organization.keyword",
           "thresholds": [],
           "type": "string",
           "unit": "short"
         },
         {
-          "alias": "Destination",
+          "alias": "Destination Organization",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2924,7 +2788,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "meta.dst_country_name.keyword",
+          "pattern": "meta.dst_organization.keyword",
           "thresholds": [],
           "type": "string",
           "unit": "short"
@@ -2990,7 +2854,7 @@
           "mappingType": 1,
           "pattern": "meta.src_ip.keyword",
           "thresholds": [],
-          "type": "string",
+          "type": "number",
           "unit": "short"
         },
         {
@@ -3006,8 +2870,24 @@
           "mappingType": 1,
           "pattern": "meta.dst_ip.keyword",
           "thresholds": [],
-          "type": "string",
+          "type": "number",
           "unit": "short"
+        },
+        {
+          "alias": "Peak Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Max",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
         },
         {
           "alias": "",
@@ -3068,7 +2948,7 @@
             },
             {
               "fake": true,
-              "field": "meta.src_country_name.keyword",
+              "field": "meta.src_organization.keyword",
               "id": "28",
               "settings": {
                 "min_doc_count": 1,
@@ -3081,7 +2961,7 @@
             {
               "fake": true,
               "field": "meta.src_ip.keyword",
-              "id": "34",
+              "id": "32",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -3092,8 +2972,8 @@
             },
             {
               "fake": true,
-              "field": "meta.dst_country_name.keyword",
-              "id": "35",
+              "field": "meta.dst_organization.keyword",
+              "id": "33",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -3105,7 +2985,7 @@
             {
               "fake": true,
               "field": "meta.dst_ip.keyword",
-              "id": "33",
+              "id": "31",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -3127,7 +3007,7 @@
                   "inline": "_value / 8"
                 }
               },
-              "type": "avg"
+              "type": "sum"
             },
             {
               "field": "values.bits_per_second",
@@ -3135,6 +3015,13 @@
               "meta": {},
               "settings": {},
               "type": "avg"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "30",
+              "meta": {},
+              "settings": {},
+              "type": "max"
             },
             {
               "field": "values.tcp_rexmit_pkts",
@@ -3186,7 +3073,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3221,9 +3108,9 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 89
+        "y": 87
       },
-      "id": 54,
+      "id": 55,
       "legend": {
         "show": false
       },
@@ -3261,7 +3148,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3309,9 +3196,9 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 98
       },
-      "id": 55,
+      "id": 24,
       "legend": {
         "show": false
       },
@@ -3344,7 +3231,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3392,9 +3279,9 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 111
+        "y": 109
       },
-      "id": 56,
+      "id": 57,
       "legend": {
         "show": false
       },
@@ -3428,7 +3315,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3452,41 +3339,16 @@
       }
     },
     {
-      "content": "<center><h1>Reverse Summary Statistics</h1></center>",
+      "content": "<h1 style=\"margin-top:20px;\"><center> Reverse Summary Statistics</center></h1>",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 122
+        "y": 120
       },
-      "id": 57,
+      "id": 58,
       "mode": "html",
       "options": {},
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3496,29 +3358,26 @@
     {
       "aliasColors": {},
       "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
-      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 0,
-        "y": 124
+        "y": 122
       },
-      "id": 58,
+      "id": 59,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": true,
+        "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
-        "total": true,
-        "values": true
+        "total": false,
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -3528,7 +3387,7 @@
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -3563,14 +3422,12 @@
           ],
           "metrics": [
             {
-              "field": "meta.id.keyword",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3581,7 +3438,7 @@
       "timeShift": null,
       "title": "Top Protocols",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -3597,7 +3454,6 @@
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
@@ -3622,28 +3478,26 @@
     {
       "aliasColors": {},
       "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 8,
-        "y": 124
+        "y": 122
       },
-      "id": 59,
+      "id": 60,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": true,
+        "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
-        "total": true,
-        "values": true
+        "total": false,
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -3653,7 +3507,7 @@
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -3688,14 +3542,12 @@
           ],
           "metrics": [
             {
-              "field": "meta.id.keyword",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3706,7 +3558,7 @@
       "timeShift": null,
       "title": "Top Source Ports",
       "tooltip": {
-        "shared": true,
+        "shared": false,
         "sort": 0,
         "value_type": "individual"
       },
@@ -3746,28 +3598,26 @@
     {
       "aliasColors": {},
       "bars": true,
+      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 8,
         "x": 16,
-        "y": 124
+        "y": 122
       },
-      "id": 60,
+      "id": 61,
       "legend": {
-        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": true,
+        "max": false,
         "min": false,
-        "rightSide": false,
         "show": false,
-        "total": true,
-        "values": true
+        "total": false,
+        "values": false
       },
       "lines": false,
       "linewidth": 1,
@@ -3777,7 +3627,7 @@
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -3812,14 +3662,12 @@
           ],
           "metrics": [
             {
-              "field": "meta.id.keyword",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$src AND meta.src_country_name.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3830,8 +3678,8 @@
       "timeShift": null,
       "title": "Top Destination Ports",
       "tooltip": {
-        "shared": true,
-        "sort": 2,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -3868,12 +3716,30 @@
       }
     },
     {
+      "content": "",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 130
+      },
+      "id": 53,
+      "links": [],
+      "mode": "markdown",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a>netsage@iu.edu. </a> Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:8px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 133
+        "y": 131
       },
       "id": 32,
       "links": [],
@@ -3890,8 +3756,7 @@
   "schemaVersion": 19,
   "style": "dark",
   "tags": [
-    "netsage",
-    "flow"
+    "netsage"
   ],
   "templating": {
     "list": [
@@ -3931,14 +3796,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "hide": 0,
         "includeAll": true,
-        "label": "Source Country",
+        "label": "Source Organization",
         "multi": true,
         "name": "src",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3958,14 +3823,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "hide": 0,
         "includeAll": true,
-        "label": "Destination Country",
+        "label": "Destination Organization",
         "multi": true,
         "name": "dest",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3979,10 +3844,9 @@
       {
         "allValue": "",
         "current": {
-          "tags": [],
-          "text": "TransPAC Seattle sFlow",
+          "text": "All",
           "value": [
-            "TransPAC Seattle sFlow"
+            "$__all"
           ]
         },
         "datasource": "netsage",
@@ -3992,145 +3856,9 @@
         "label": "Sensor",
         "multi": true,
         "name": "sensor",
-        "options": [
-          {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "AMPATH sFlow MCT02",
-            "value": "AMPATH sFlow MCT02"
-          },
-          {
-            "selected": false,
-            "text": "AMPATH sFlow MLXE",
-            "value": "AMPATH sFlow MLXE"
-          },
-          {
-            "selected": false,
-            "text": "Hawaii Guam netflow",
-            "value": "Hawaii Guam netflow"
-          },
-          {
-            "selected": false,
-            "text": "Hawaii LA netflow",
-            "value": "Hawaii LA netflow"
-          },
-          {
-            "selected": false,
-            "text": "NEAAR New York sFlow",
-            "value": "NEAAR New York sFlow"
-          },
-          {
-            "selected": false,
-            "text": "NOAA Boulder Tstat",
-            "value": "NOAA Boulder Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TACC Frontera data1 Tstat",
-            "value": "TACC Frontera data1 Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TACC Frontera data2 Tstat",
-            "value": "TACC Frontera data2 Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TACC Ranch gridftp3 Tstat",
-            "value": "TACC Ranch gridftp3 Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TACC Ranch mig2 Tstat",
-            "value": "TACC Ranch mig2 Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TACC Stampede2 dtn1 Tstat",
-            "value": "TACC Stampede2 dtn1 Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TACC Stampede2 dtn2 Tstat",
-            "value": "TACC Stampede2 dtn2 Tstat"
-          },
-          {
-            "selected": false,
-            "text": "TransPAC Hong Kong sFlow",
-            "value": "TransPAC Hong Kong sFlow"
-          },
-          {
-            "selected": true,
-            "text": "TransPAC Seattle sFlow",
-            "value": "TransPAC Seattle sFlow"
-          },
-          {
-            "selected": false,
-            "text": "UNET UCAR Tstat",
-            "value": "UNET UCAR Tstat"
-          },
-          {
-            "selected": false,
-            "text": "University of Hawaii Tstat",
-            "value": "University of Hawaii Tstat"
-          },
-          {
-            "selected": false,
-            "text": "dtn01.nersc.gov",
-            "value": "dtn01.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn02.nersc.gov",
-            "value": "dtn02.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn04.nersc.gov",
-            "value": "dtn04.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn05.nersc.gov",
-            "value": "dtn05.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn06.nersc.gov",
-            "value": "dtn06.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn07.nersc.gov",
-            "value": "dtn07.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn08.nersc.gov",
-            "value": "dtn08.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn09.nersc.gov",
-            "value": "dtn09.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn10.nersc.gov",
-            "value": "dtn10.nersc.gov"
-          },
-          {
-            "selected": false,
-            "text": "dtn11.nersc.gov",
-            "value": "dtn11.nersc.gov"
-          }
-        ],
+        "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"meta.flow_type:$flow_type\"}",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -4173,5 +3901,5 @@
   },
   "timezone": "",
   "title": "Individual Flows per Country",
-  "uid": "YXQyrGpWz"
+  "uid": "80IVUboZk"
 }

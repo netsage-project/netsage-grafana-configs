@@ -18,12 +18,13 @@ cd netsage-grafana-configs
 ```
 5. Pull down the submodules found in the plug-ins directory:
 ```
-gitsubmodule init
+git submodule init
 git submodule update
 ```
-6. Install the vagrant plugins used by the Vagrantfile
+6. Install the vagrant plugins used by the Vagrantfile in the following order:
 ```
-vagrant plugin install vagrant-reload vagrant-vbguest
+vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-reload 
 ```
 
 ## Starting the VM for the First Time
@@ -34,7 +35,7 @@ Perform the following steps every time you bring up a fresh instance of the VM:
 ```
 vagrant up
 ```
-2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
+2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/grafana/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
 3. Login with the default username `admin` and password `admin`
 4. Change the password or hit "skip" if prompted to change password
 5. Click on "Data Sources" in the Configuration menu on the left hand side
@@ -42,7 +43,7 @@ vagrant up
 7. Enter the username and password in the `User` and `Password` fields
 8. Click `Save and Test`. It should provide imediate feedback if things are working or not.
 
-Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/ and see data.
+Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/grafana and see data.
 
 ## Using the VM
 
@@ -54,15 +55,19 @@ Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:30
 
 ## Making Changes
 
-There are two ways you can make changes: by editing the files in git directly and exporting them to your local instance or editing the configuration through Grafana and importing them into git. Instrcutions for each method below.
+There are two ways you can make changes
+1. By editing the files in git directly and exporting them to your local instance
+2. By editing the configuration through Grafana and importing them into git.
 
-### Editing the Source Code in Git and Exporting to Grafana
+### 1. Editing the Source Code in Git and Exporting to Grafana
 
-If you make a change to one of the files under `dashboards` directly, you can copy it to the local grafana instance by running `wizzy export dashboards`. 
+When you make a change to one or more of the json files under `dashboards` directly (for example : bandwidth-dashboard.json), you can copy it to the local grafana instance by running either `wizzy export dashboard bandwidth-dashboard` if you changed a single dashboard or `wizzy export dashboards` if you changed one or more dashboards. This command is to be run when you SSH into the VM using `vagrant ssh` and then moving to the vagrant folder using `cd /vagrant/`
 
-### Editing the Source Code in Grafana and Importing to Git 
+### 2. Editing the Source Code in Grafana and Importing to Git 
 
-If you use grafana to edit the dashbaords, you can copy the changes back to git by running `wizzy import dashboards`. 
+If you use grafana to edit the dashbaord(s), for example : bandwidth-dashboard, you can copy the changes back to git by running either `wizzy import dashboard bandwidth-dashboard` if you changed a single dashboard or `wizzy import dashboards` if you changed one or more dashboards. This command is to be run when you SSH into the VM using `vagrant ssh` and then moving to the vagrant folder using `cd /vagrant/`
+
+Then, you would be able to see the changes when you run a `git status` command where you have cloned the `netsage-grafana-configs` directory.
 
 ## Appendix: Plugin Submodules
 
@@ -122,5 +127,3 @@ If you make changes to the git repo dashboard files under the `dashboards` direc
 wizzy set context grafana local
 wizzy export dashboards
 ```
-
-

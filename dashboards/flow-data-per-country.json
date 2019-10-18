@@ -846,7 +846,7 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.dst_country_name.keyword",
+              "field": "meta.src_country_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -880,7 +880,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\"",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -3413,7 +3413,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$Country",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -4836,7 +4836,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country",
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\"",
           "refId": "A",
           "timeField": "start"
         }

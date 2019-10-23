@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1571862087078,
+  "iteration": 1570661789622,
   "links": [],
   "panels": [
     {
@@ -270,13 +270,21 @@
         "show": true
       },
       "links": [],
-      "max_total": 0,
+      "max_total": 58028492,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
       "options": {},
-      "parsed_data": [],
+      "parsed_data": [
+        {
+          "avg": 28769.703520079325,
+          "label": "Count",
+          "max": 245638,
+          "min": 0,
+          "total": 58028492
+        }
+      ],
       "rgb_values": [
         "rgb(248,174,99)",
         "rgb(245,174,102)",
@@ -374,7 +382,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<h1><center><b>Individual Flow Dashboard</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit percent, round trip time (RTT) and duration for each flow.</center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center><center><b>Please note that retransmit and RTT information is only available for archive flow data, and a maximum of 10,000 results are shown in the tables.</b></center><center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+      "content": "\n<h1><center><b>Individual Flow Dashboard</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit %, RTT and duration for each flow. (retransmit and RTT info only available for tstat data) </center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center><center><b>Please note that retransmit and RTT information is only available for tstat flow data, and a maximum of 10,000 results are shown in the tables.</b></center><center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
       "gridPos": {
         "h": 4,
         "w": 21,
@@ -574,13 +582,8 @@
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "avg"
             }
           ],
@@ -3752,7 +3755,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 19,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [
     "netsage"
@@ -3769,7 +3772,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.flow_type.keyword\"}",
-        "hide": 2,
+        "hide": 0,
         "includeAll": true,
         "label": "Flow Type",
         "multi": true,
@@ -3789,8 +3792,8 @@
       {
         "allValue": "*",
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "text": "Indiana University",
+          "value": "Indiana University"
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",

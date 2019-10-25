@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1570662056299,
+  "iteration": 1571863576341,
   "links": [],
   "panels": [
     {
@@ -271,21 +271,13 @@
         "show": true
       },
       "links": [],
-      "max_total": 327598344,
+      "max_total": 0,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
       "option_4": 123,
       "options": {},
-      "parsed_data": [
-        {
-          "avg": 227340.97432338653,
-          "label": "Count",
-          "max": 1001633,
-          "min": 0,
-          "total": 327598344
-        }
-      ],
+      "parsed_data": [],
       "rgb_values": [
         "rgb(248,174,99)",
         "rgb(245,174,102)",
@@ -383,9 +375,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>Select a Discipline from the dropdown above. We recommend selecting no more than 3 at a time.</center>\n<center>This sankey graph shows the top 10 source science organizations by volume for the selected disciplines in a specific period of time.</center>\n<center>It then shows their disciplines and the top 5 destination science organizations for each. Thicker lines indicate larger flows.</center><center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>Disciplines are derived form the Science Registry - a database which matches flows from known hosts with a particular science domain.</center>\n<center>Flows without a match in the Science Registry are labeled as \"Unknown\".</center>\n<center>This sankey graph shows the top 10 source science organizations by volume for the selected disciplines in a specific period of time.</center>\n<center>It then shows their disciplines and the top 5 destination science organizations for each. Thicker lines indicate larger flows.</center><center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 20,
         "x": 2,
         "y": 0
@@ -423,7 +415,7 @@
         "h": 2,
         "w": 7,
         "x": 2,
-        "y": 4
+        "y": 5
       },
       "id": 47,
       "interval": null,
@@ -443,7 +435,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "  -> SciReg",
+      "postfix": " Volume Matched in Science Registry",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -489,7 +481,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline &&  _exists_:meta.scireg.dst.org_name",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -531,7 +523,7 @@
         "h": 2,
         "w": 7,
         "x": 15,
-        "y": 4
+        "y": 5
       },
       "id": 42,
       "interval": null,
@@ -551,7 +543,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> flows matched in SciReg",
+      "postfix": " Flows Matched in Science Registry",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -590,7 +582,7 @@
               "type": "count"
             }
           ],
-          "query": "_exists_:meta.scireg.dst.org_name AND meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -632,7 +624,7 @@
         "h": 2,
         "w": 7,
         "x": 2,
-        "y": 6
+        "y": 7
       },
       "id": 45,
       "interval": null,
@@ -652,7 +644,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> all",
+      "postfix": " Total Volume",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -740,7 +732,7 @@
         "h": 2,
         "w": 7,
         "x": 15,
-        "y": 6
+        "y": 7
       },
       "id": 46,
       "interval": null,
@@ -760,7 +752,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> total flows",
+      "postfix": " Total Flows",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -939,7 +931,7 @@
         ]
       },
       "custom_hover": " ",
-      "data_type": "table",
+      "data_type": "",
       "description": "",
       "docs_data": [],
       "docs_editor_aggregation": "Total",
@@ -962,7 +954,7 @@
         "h": 27,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "hex_values": [
         "#f8ae63",
@@ -1017,11 +1009,7 @@
         "#65aef6"
       ],
       "id": 44,
-      "label_nodes": [
-        "Source",
-        "Discipline",
-        "Destination"
-      ],
+      "label_nodes": [],
       "legend": {
         "legend_colors": [],
         "show": true
@@ -1086,208 +1074,64 @@
       ],
       "table_data": [
         [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "MPS.Astronomy",
-          "UH - IFA - Data Transfer Node UH-IFA at ITC",
-          5426681213836000
-        ],
-        [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "MPS.Astronomy",
-          "UH - IFA - Institute for Astronomy (IfA) ITC",
-          10000008000000
-        ],
-        [
           "Large Hadron Collider (LHC)",
           "MPS.Physics.High Energy",
           "UNK-DST",
-          4429017390497792
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "CUHK - ATLAS",
-          355132424192
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "BNL - National Synchrotron Light Source II (NSLS-II)",
-          81648164864
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "Columbia - Nevis Labs - ATLAS Tier3 job submission node",
-          57395912704
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "UFL - Compute Cluster",
-          33848975360
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "UNK-DST",
-          1377180445180256
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "Broad Institute - unknown",
-          354871624486912
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "Harvard/LMA - unknown",
-          108012999712768
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "Cornell - Weill Cornell Medicine",
-          16949205868544
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "CUHK",
-          9567829159936
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "UNK-DST",
-          1075471714832384
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "MPCDF - GridFTP nodes",
-          216356870791168
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "GWDG - GoeGrid storage elements",
-          68285610483712
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "QMUL - WLCG (World LCH Computing Grid) storage elements",
-          38882571595776
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "Glasgow - GridPP/ScotGrid",
-          31455598874624
+          178672784375808
         ],
         [
           "Microsoft - Windows 10 Updates",
           "non-science",
           "UNK-DST",
-          1255245191298560
-        ],
-        [
-          "ESO - Chile?",
-          "MPS.Astronomy",
-          "ESO - Germany?",
-          1240292618190848
-        ],
-        [
-          "ESO - Chile?",
-          "MPS.Astronomy",
-          "UNK-DST",
-          850395136
-        ],
-        [
-          "Atacama Large Millimeter Array",
-          "MPS.Astronomy",
-          "NOAJ - WIDE Project - unknown",
-          756039381508096
+          95254033072128
         ],
         [
           "Atacama Large Millimeter Array",
           "MPS.Astronomy",
           "NAOJ - WIDE Project - unknown",
-          163705163431936
+          82690323841024
         ],
         [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "UNK-DST",
-          818650867417088
+          "ESO - Chile?",
+          "MPS.Astronomy",
+          "ESO - Germany?",
+          64721242816512
         ],
         [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "HKUST - HPC2 cluster - login and sftp node",
-          39040308928512
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "Broad Institute - unknown",
-          12801573396480
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "HKUST - HPC2 cluster - master node",
-          6030883831808
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "CEN - I2 Connector",
-          1166764728320
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "BU - ATLAS",
-          632051843399680
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "SLAC - GridFTP server",
-          64124577169408
-        ],
-        [
-          "RAL - GridPP - Ceph",
+          "CMS Tier-2 Center @ Purdue",
           "MPS.Physics.High Energy",
           "UNK-DST",
-          56109807312896
+          39276038717440
         ],
         [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "MIT - LHC",
-          2365236301824
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "National Energy Research Scientific Computing Center (NERSC)",
-          2202404831232
-        ],
-        [
-          "ANL - Argonne Leadership Computing Facility (ALCF)",
-          "MSF.General",
+          "EMBL-EBI - ftp/grid ftp servers",
+          "BIO.Genomics and Bioinformatics",
           "UNK-DST",
-          656742098804736
+          36928481067008
         ],
         [
-          "ANL - Argonne Leadership Computing Facility (ALCF)",
-          "MSF.General",
-          "Cineca - Marconi",
-          19140231168
+          "Argentinean-German Geodetic Observatory",
+          "MPS.Astronomy",
+          "DFN - BONN correlator",
+          34892096995328
+        ],
+        [
+          "Univ of Chicago - Tier 2 Center",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          26327167795200
+        ],
+        [
+          "NOAA - NCEP - NOMADS Silver Spring",
+          "GEO.General",
+          "UNK-DST",
+          20683980800000
+        ],
+        [
+          "Rede Nacional de Ensino e Pesquisa - unknown",
+          "Unknown",
+          "NASA - International VLBI Service",
+          19549101621248
         ]
       ],
       "table_data_type": "Sum",
@@ -2229,7 +2073,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 36
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -2399,7 +2243,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top Disciplines in Science Registry",
+      "title": "Science Disciplines by Volume on $Sensors",
       "transform": "table",
       "type": "table"
     },
@@ -2411,7 +2255,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 36
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -2531,7 +2375,7 @@
                 "missing": "Unknown",
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "0"
               },
               "type": "terms"
             }
@@ -2565,7 +2409,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top 10 Peak Rate Disciplines in Science Registry",
+      "title": "Science Disciplines by Peak Rate on $Sensors",
       "transform": "table",
       "type": "table"
     },
@@ -2575,7 +2419,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 47
       },
       "id": 49,
       "links": [],
@@ -2587,7 +2431,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "flow",
@@ -2598,10 +2442,9 @@
       {
         "allValue": null,
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "datasource": "netsage",
         "definition": "",
@@ -2625,10 +2468,9 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "Astronomy and Astrophysics",
+          "text": "All",
           "value": [
-            "Astronomy and Astrophysics"
+            "$__all"
           ]
         },
         "datasource": "netsage",
@@ -2653,7 +2495,7 @@
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {

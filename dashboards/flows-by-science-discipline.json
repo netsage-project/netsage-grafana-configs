@@ -272,6 +272,7 @@
       },
       "links": [],
       "max_total": 61634001,
+
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -385,7 +386,7 @@
     {
       "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>Select a Discipline from the dropdown above.</center>\n<center>This sankey graph shows the top 10 source science organizations by volume for the selected disciplines in a specific period of time.</center>\n<center>It then shows their disciplines and the top 5 destination science organizations for each. Thicker lines indicate larger flows.</center><center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 20,
         "x": 2,
         "y": 0
@@ -423,7 +424,7 @@
         "h": 2,
         "w": 7,
         "x": 2,
-        "y": 4
+        "y": 5
       },
       "id": 47,
       "interval": null,
@@ -443,7 +444,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "  -> SciReg",
+      "postfix": " Volume Matched in Science Registry",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -489,7 +490,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline &&  _exists_:meta.scireg.dst.org_name",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -518,7 +519,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -531,7 +532,7 @@
         "h": 2,
         "w": 7,
         "x": 15,
-        "y": 4
+        "y": 5
       },
       "id": 42,
       "interval": null,
@@ -551,7 +552,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> flows matched in SciReg",
+      "postfix": " Flows Matched in Science Registry",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -590,7 +591,7 @@
               "type": "count"
             }
           ],
-          "query": "_exists_:meta.scireg.dst.org_name AND meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -632,7 +633,7 @@
         "h": 2,
         "w": 7,
         "x": 2,
-        "y": 6
+        "y": 7
       },
       "id": 45,
       "interval": null,
@@ -652,7 +653,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> all",
+      "postfix": " Total Volume",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -740,7 +741,7 @@
         "h": 2,
         "w": 7,
         "x": 15,
-        "y": 6
+        "y": 7
       },
       "id": 46,
       "interval": null,
@@ -760,7 +761,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> total flows",
+      "postfix": " Total Flows",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -957,7 +958,7 @@
         ]
       },
       "custom_hover": " ",
-      "data_type": "table",
+      "data_type": "",
       "description": "",
       "docs_data": [],
       "docs_editor_aggregation": "Total",
@@ -1036,11 +1037,7 @@
         "#65aef6"
       ],
       "id": 44,
-      "label_nodes": [
-        "Source",
-        "Discipline",
-        "Destination"
-      ],
+      "label_nodes": [],
       "legend": {
         "legend_colors": [],
         "show": true
@@ -2297,7 +2294,7 @@
       "id": 21,
       "links": [],
       "options": {},
-      "pageSize": 10,
+      "pageSize": null,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -2461,7 +2458,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top Disciplines in Science Registry",
+      "title": "Science Disciplines by Volume on $Sensors",
       "transform": "table",
       "type": "table"
     },
@@ -2593,7 +2590,7 @@
                 "missing": "Unknown",
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "0"
               },
               "type": "terms"
             }
@@ -2627,7 +2624,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top 10 Peak Rate Disciplines in Science Registry",
+      "title": "Science Disciplines by Peak Rate on $Sensors",
       "transform": "table",
       "type": "table"
     },
@@ -2649,7 +2646,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "flow",
@@ -2660,10 +2657,9 @@
       {
         "allValue": null,
         "current": {
+          "selected": false,
           "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "value": "$__all"
         },
         "datasource": "netsage",
         "definition": "",

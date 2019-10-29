@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1572022021796,
+  "iteration": 1572380097793,
   "links": [],
   "panels": [
     {
@@ -270,13 +270,21 @@
         "show": true
       },
       "links": [],
-      "max_total": 67762875,
+      "max_total": 62924319,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
       "options": {},
-      "parsed_data": [],
+      "parsed_data": [
+        {
+          "avg": 372333.24852071004,
+          "label": "Count",
+          "max": 1208914,
+          "min": 312,
+          "total": 62924319
+        }
+      ],
       "rgb_values": [
         "rgb(248,174,99)",
         "rgb(245,174,102)",
@@ -376,7 +384,7 @@
     {
       "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, retransmit percent, round trip time (RTT) and duration for each flow.</center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center><center><b>Please note that retransmit and RTT information is only available for archive flow data, and a maximum of 10,000 results are shown in the tables.</b></center><center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 21,
         "x": 2,
         "y": 0
@@ -411,9 +419,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 1,
-        "y": 4
+        "w": 5,
+        "x": 2,
+        "y": 5
       },
       "id": 45,
       "interval": null,
@@ -516,9 +524,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 5,
-        "y": 4
+        "w": 5,
+        "x": 7,
+        "y": 5
       },
       "id": 35,
       "interval": null,
@@ -627,9 +635,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 9,
-        "y": 4
+        "w": 5,
+        "x": 12,
+        "y": 5
       },
       "id": 21,
       "interval": null,
@@ -722,140 +730,6 @@
         "rgba(237, 129, 40, 0.89)",
         "#E02F44"
       ],
-      "decimals": 2,
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 15,
-        "y": 4
-      },
-      "id": 22,
-      "interval": "",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "70%",
-      "prefix": "Avg Retransmit %<br>",
-      "prefixFontSize": "70%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "365d",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "3"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "4"
-                }
-              ],
-              "settings": {
-                "script": "params.var1 / params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "field": "values.tcp_rexmit_pkts",
-              "hide": true,
-              "id": "3",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "field": "values.num_packets",
-              "hide": true,
-              "id": "4",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": false,
-      "colorPrefix": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#E02F44"
-      ],
       "decimals": 1,
       "format": "ms",
       "gauge": {
@@ -867,9 +741,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 19,
-        "y": 4
+        "w": 5,
+        "x": 17,
+        "y": 5
       },
       "id": 23,
       "interval": null,
@@ -957,7 +831,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 52,
       "links": [],
@@ -976,7 +850,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 2,
       "links": [],
@@ -1367,29 +1241,8 @@
               "field": "values.tcp_rexmit_pkts",
               "id": "21",
               "meta": {},
-              "settings": {
-                "missing": 0
-              },
+              "settings": {},
               "type": "avg"
-            },
-            {
-              "field": "select field",
-              "id": "24",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "21"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "25"
-                }
-              ],
-              "settings": {
-                "script": "params.var1 / params.var2"
-              },
-              "type": "bucket_script"
             },
             {
               "field": "values.num_packets",
@@ -1448,7 +1301,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 18,
       "legend": {
@@ -1536,7 +1389,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "id": 56,
       "legend": {
@@ -1619,7 +1472,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 46
       },
       "id": 12,
       "legend": {
@@ -1685,7 +1538,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 57
       },
       "id": 37,
       "mode": "html",
@@ -1708,7 +1561,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "id": 39,
       "legend": {
@@ -1828,7 +1681,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 58
+        "y": 59
       },
       "id": 40,
       "legend": {
@@ -1948,7 +1801,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 58
+        "y": 59
       },
       "id": 41,
       "legend": {
@@ -2062,7 +1915,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 67
       },
       "id": 62,
       "mode": "html",
@@ -2093,9 +1946,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 1,
-        "y": 68
+        "w": 5,
+        "x": 3,
+        "y": 69
       },
       "id": 26,
       "interval": null,
@@ -2199,8 +2052,8 @@
       "gridPos": {
         "h": 3,
         "w": 4,
-        "x": 5,
-        "y": 68
+        "x": 8,
+        "y": 69
       },
       "id": 47,
       "interval": null,
@@ -2309,9 +2162,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 6,
-        "x": 9,
-        "y": 68
+        "w": 5,
+        "x": 12,
+        "y": 69
       },
       "id": 48,
       "interval": null,
@@ -2404,140 +2257,6 @@
         "rgba(237, 129, 40, 0.89)",
         "#E02F44"
       ],
-      "decimals": 2,
-      "format": "percent",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 15,
-        "y": 68
-      },
-      "id": 49,
-      "interval": "",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "70%",
-      "prefix": "Avg Retransmit %<br>",
-      "prefixFontSize": "70%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "365d",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "3"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "4"
-                }
-              ],
-              "settings": {
-                "script": "params.var1 / params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "field": "values.tcp_rexmit_pkts",
-              "hide": true,
-              "id": "3",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "field": "values.num_packets",
-              "hide": true,
-              "id": "4",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": false,
-      "colorPrefix": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#E02F44"
-      ],
       "decimals": 1,
       "format": "ms",
       "gauge": {
@@ -2549,9 +2268,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 19,
-        "y": 68
+        "w": 5,
+        "x": 17,
+        "y": 69
       },
       "id": 50,
       "interval": null,
@@ -2640,7 +2359,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 72
       },
       "id": 54,
       "links": [],
@@ -3031,29 +2750,8 @@
               "field": "values.tcp_rexmit_pkts",
               "id": "21",
               "meta": {},
-              "settings": {
-                "missing": 0
-              },
+              "settings": {},
               "type": "avg"
-            },
-            {
-              "field": "select field",
-              "id": "24",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "21"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "25"
-                }
-              ],
-              "settings": {
-                "script": "params.var1 / params.var2"
-              },
-              "type": "bucket_script"
             },
             {
               "field": "values.num_packets",
@@ -3112,7 +2810,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 87
       },
       "id": 55,
       "legend": {
@@ -3200,7 +2898,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 97
+        "y": 98
       },
       "id": 24,
       "legend": {
@@ -3283,7 +2981,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 108
+        "y": 109
       },
       "id": 57,
       "legend": {
@@ -3348,7 +3046,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 119
+        "y": 120
       },
       "id": 58,
       "mode": "html",
@@ -3371,7 +3069,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 121
+        "y": 122
       },
       "id": 59,
       "legend": {
@@ -3491,7 +3189,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 121
+        "y": 122
       },
       "id": 60,
       "legend": {
@@ -3611,7 +3309,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 121
+        "y": 122
       },
       "id": 61,
       "legend": {
@@ -3725,7 +3423,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 129
+        "y": 130
       },
       "id": 53,
       "links": [],
@@ -3743,7 +3441,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 130
+        "y": 131
       },
       "id": 32,
       "links": [],
@@ -3794,8 +3492,10 @@
       {
         "allValue": "*",
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "text": "Indiana University",
+          "value": [
+            "Indiana University"
+          ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
@@ -3820,7 +3520,9 @@
         "allValue": "*",
         "current": {
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",

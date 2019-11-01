@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1572380097793,
+  "iteration": 1572628418699,
   "links": [],
   "panels": [
     {
@@ -270,7 +270,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 62924319,
+      "max_total": 68087550,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 372333.24852071004,
+          "avg": 402884.91124260356,
           "label": "Count",
-          "max": 1208914,
-          "min": 312,
-          "total": 62924319
+          "max": 1195925,
+          "min": 1197,
+          "total": 68087550
         }
       ],
       "rgb_values": [
@@ -382,9 +382,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. \nThe table shows the volume, rate, retransmits, round trip time (RTT) and duration for each flow.</center>\n<center>The heatmaps below show volume, rate and retransmits of flows for the given source and destination organizations over a specific period of time.</center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmissions at those hours.</center><center><b>Please note that retransmit and RTT information is only available for archive flow data, and a maximum of 10,000 results are shown in the tables.</b></center><center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+      "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization. The table shows the volume, rate, retransmits, round trip time (RTT) and duration (in hours, minutes and seconds) for each flow.</center>\n<center><b>Please note that retransmit and RTT information is only available for archive flow data, and a maximum of 10,000 results are shown in the tables.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 21,
         "x": 2,
         "y": 0
@@ -409,7 +409,8 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "format": "none",
+      "decimals": null,
+      "format": "locale",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -421,7 +422,7 @@
         "h": 3,
         "w": 5,
         "x": 2,
-        "y": 5
+        "y": 4
       },
       "id": 45,
       "interval": null,
@@ -526,7 +527,7 @@
         "h": 3,
         "w": 5,
         "x": 7,
-        "y": 5
+        "y": 4
       },
       "id": 35,
       "interval": null,
@@ -637,7 +638,7 @@
         "h": 3,
         "w": 5,
         "x": 12,
-        "y": 5
+        "y": 4
       },
       "id": 21,
       "interval": null,
@@ -743,7 +744,7 @@
         "h": 3,
         "w": 5,
         "x": 17,
-        "y": 5
+        "y": 4
       },
       "id": 23,
       "interval": null,
@@ -831,7 +832,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 7
       },
       "id": 52,
       "links": [],
@@ -850,7 +851,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 8
       },
       "id": 2,
       "links": [],
@@ -859,8 +860,8 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 1,
-        "desc": true
+        "col": 10,
+        "desc": false
       },
       "styles": [
         {
@@ -944,7 +945,7 @@
           "unit": "short"
         },
         {
-          "alias": "Duration (hh:mm:ss)",
+          "alias": "Duration",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1006,22 +1007,6 @@
           "thresholds": [],
           "type": "string",
           "unit": "short"
-        },
-        {
-          "alias": "Retransmit %",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Bucket Script",
-          "thresholds": [],
-          "type": "number",
-          "unit": "percent"
         },
         {
           "alias": "",
@@ -1238,13 +1223,6 @@
               "type": "max"
             },
             {
-              "field": "values.tcp_rexmit_pkts",
-              "id": "21",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
               "field": "values.num_packets",
               "id": "25",
               "meta": {},
@@ -1252,15 +1230,22 @@
               "type": "avg"
             },
             {
-              "field": "values.tcp_rtt_min",
-              "id": "26",
+              "field": "values.duration",
+              "id": "27",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
-              "field": "values.duration",
-              "id": "27",
+              "field": "values.tcp_rexmit_pkts",
+              "id": "34",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "values.tcp_rtt_min",
+              "id": "35",
               "meta": {},
               "settings": {},
               "type": "avg"
@@ -1301,7 +1286,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 23
       },
       "id": 18,
       "legend": {
@@ -1389,7 +1374,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 34
       },
       "id": 56,
       "legend": {
@@ -1472,7 +1457,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 45
       },
       "id": 12,
       "legend": {
@@ -1538,7 +1523,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 56
       },
       "id": 37,
       "mode": "html",
@@ -1561,7 +1546,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 59
+        "y": 58
       },
       "id": 39,
       "legend": {
@@ -1681,7 +1666,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 59
+        "y": 58
       },
       "id": 40,
       "legend": {
@@ -1801,7 +1786,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 59
+        "y": 58
       },
       "id": 41,
       "legend": {
@@ -1915,7 +1900,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 66
       },
       "id": 62,
       "mode": "html",
@@ -1936,7 +1921,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "format": "none",
+      "format": "locale",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1948,7 +1933,7 @@
         "h": 3,
         "w": 5,
         "x": 3,
-        "y": 69
+        "y": 68
       },
       "id": 26,
       "interval": null,
@@ -2053,7 +2038,7 @@
         "h": 3,
         "w": 4,
         "x": 8,
-        "y": 69
+        "y": 68
       },
       "id": 47,
       "interval": null,
@@ -2164,7 +2149,7 @@
         "h": 3,
         "w": 5,
         "x": 12,
-        "y": 69
+        "y": 68
       },
       "id": 48,
       "interval": null,
@@ -2270,7 +2255,7 @@
         "h": 3,
         "w": 5,
         "x": 17,
-        "y": 69
+        "y": 68
       },
       "id": 50,
       "interval": null,
@@ -2359,7 +2344,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 71
       },
       "id": 54,
       "links": [],
@@ -2453,7 +2438,7 @@
           "unit": "short"
         },
         {
-          "alias": "Duration (hh:mm:ss)",
+          "alias": "Duration",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2515,22 +2500,6 @@
           "thresholds": [],
           "type": "string",
           "unit": "short"
-        },
-        {
-          "alias": "Retransmit %",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Bucket Script",
-          "thresholds": [],
-          "type": "number",
-          "unit": "percent"
         },
         {
           "alias": "",
@@ -2747,13 +2716,6 @@
               "type": "max"
             },
             {
-              "field": "values.tcp_rexmit_pkts",
-              "id": "21",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
               "field": "values.num_packets",
               "id": "25",
               "meta": {},
@@ -2761,15 +2723,22 @@
               "type": "avg"
             },
             {
-              "field": "values.tcp_rtt_min",
-              "id": "26",
+              "field": "values.duration",
+              "id": "27",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
-              "field": "values.duration",
-              "id": "27",
+              "field": "values.tcp_rexmit_pkts",
+              "id": "34",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "values.tcp_rtt_min",
+              "id": "35",
               "meta": {},
               "settings": {},
               "type": "avg"
@@ -2810,7 +2779,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 87
+        "y": 86
       },
       "id": 55,
       "legend": {
@@ -2898,7 +2867,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 98
+        "y": 97
       },
       "id": 24,
       "legend": {
@@ -2981,7 +2950,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 109
+        "y": 108
       },
       "id": 57,
       "legend": {
@@ -3046,7 +3015,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 120
+        "y": 119
       },
       "id": 58,
       "mode": "html",
@@ -3069,7 +3038,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 122
+        "y": 121
       },
       "id": 59,
       "legend": {
@@ -3189,7 +3158,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 122
+        "y": 121
       },
       "id": 60,
       "legend": {
@@ -3309,7 +3278,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 122
+        "y": 121
       },
       "id": 61,
       "legend": {
@@ -3423,7 +3392,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 130
+        "y": 129
       },
       "id": 53,
       "links": [],
@@ -3441,7 +3410,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 131
+        "y": 130
       },
       "id": 32,
       "links": [],

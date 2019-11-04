@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1571664721260,
+  "iteration": 1572633393094,
   "links": [],
   "panels": [
     {
@@ -271,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 58408030,
+      "max_total": 68985294,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -279,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 28957.873078829947,
+          "avg": 811591.694117647,
           "label": "Count",
-          "max": 245638,
-          "min": 0,
-          "total": 58408030
+          "max": 2107465,
+          "min": 2960,
+          "total": 68985294
         }
       ],
       "rgb_values": [
@@ -383,10 +383,10 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<div style=\"float:right;\">\n<a class=\"btn navbar-button gf-timepicker-nav-btn\" href=\"/grafana/d/80IVUboZk/individual-flows-per-country?var-src=$Country\" style=\"text-decoration: none; color: #52545C; font-weight: bold;\">See Individual Flows for $Country</a>\n</div>\n<br clear=\"both\" />\n<center><h1><b>Flow Data by Selected Country</b></h1></center>\n<center>Select a Country from the list above. This dashboard shows the flow data for the selected country.</center>\n<center>The tables show top 10 by both volume and rate as well as top talker organizations.  Other flow stats are also included at the bottom.</center>\n<center>The sankey graph shows the top 10 sources and destinations by volume. Thicker lines indicate greater flows.</center><center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "<div style=\"float:right;\">\n<a class=\"btn navbar-button gf-timepicker-nav-btn\" href=\"/grafana/d/80IVUboZk/individual-flows-per-country?var-src=$Country\" style=\"text-decoration: none; color: #52545C; font-weight: bold;\">See Individual Flows for $Country</a>\n</div>\n<br clear=\"both\" />\n<center><h1><b>Flow Data by Selected Country</b></h1></center>\n<center>This dashboard shows the flow data for the selected country.</center>\n<center>The first set of tables show top ten data by both volume and rate and then the set of top pairs of organizations sharing data.</center>\n<center>Other statistics about data to and from this country, including a Sankey graph for the top sources by volume, is then listed.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
         "h": 5,
-        "w": 21,
+        "w": 22,
         "x": 2,
         "y": 0
       },
@@ -399,630 +399,12 @@
       "type": "text"
     },
     {
-      "content": "<h1><center>Top Sources to $Country</center></h1>",
+      "content": "<h1><center>Top Destinations from $Country</center></h1>",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 4
-      },
-      "id": 31,
-      "links": [],
-      "mode": "html",
-      "options": {},
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "columns": [],
-      "datasource": "netsage",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 11,
-        "w": 13,
-        "x": 0,
-        "y": 6
-      },
-      "hideTimeOverride": false,
-      "id": 32,
-      "links": [],
-      "options": {},
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 1,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Source Country",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&src=${__cell}&to=$Country&from=${__from}&to=${__to}",
-          "pattern": "/meta.+/",
-          "type": "string",
-          "unit": "bits"
-        },
-        {
-          "alias": "# Flows",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "Total Volume",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "alias": "Packets",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "Largest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "/Max/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        }
-      ],
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_country_name.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "title": "By Volume",
-      "transform": "table",
-      "type": "table"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 6
-      },
-      "id": 39,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_country_name.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": false,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "decbytes",
-          "label": "Total Volume",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "columns": [],
-      "datasource": "netsage",
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 11,
-        "w": 13,
-        "x": 0,
-        "y": 17
-      },
-      "hideTimeOverride": false,
-      "id": 33,
-      "links": [],
-      "options": {},
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 1,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Source Country",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&src=${__cell}&to=$Country&from=${__from}&to=${__to}",
-          "mappingType": 1,
-          "pattern": "/meta.+/",
-          "rangeMaps": [
-            {
-              "from": "",
-              "text": "",
-              "to": ""
-            }
-          ],
-          "type": "string",
-          "unit": "bits"
-        },
-        {
-          "alias": "# Flows",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "Average",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Peak",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Max",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        }
-      ],
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_country_name.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "field": "values.bits_per_second",
-              "id": "5",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "field": "select field",
-              "id": "7",
-              "type": "count"
-            }
-          ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "title": "By Rate",
-      "transform": "table",
-      "type": "table"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 17
-      },
-      "id": 40,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_country_name.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": false,
-        "values": [
-          "max"
-        ]
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "bps",
-          "label": "rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "content": "<h1 style=\"margin-top:35px;\"><center>Top Destinations from $Country</center></h1>",
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 28
+        "y": 5
       },
       "id": 30,
       "links": [],
@@ -1040,7 +422,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 31
+        "y": 7
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -1060,7 +442,7 @@
           "link": true,
           "linkTargetBlank": true,
           "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&dst=${__cell}&src=$Country&from=${__from}&to=${__to}",
+          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&var-dest=${__cell}&var-src=$Country&from=${__from}&to=${__to}",
           "pattern": "/meta.+/",
           "type": "string",
           "unit": "bits"
@@ -1225,7 +607,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 31
+        "y": 7
       },
       "id": 37,
       "legend": {
@@ -1351,7 +733,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 42
+        "y": 18
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -1371,7 +753,7 @@
           "link": true,
           "linkTargetBlank": true,
           "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&dst=${__cell}&src=$Country&from=${__from}&to=${__to}",
+          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&var-dest=${__cell}&var-src=$Country&from=${__from}&to=${__to}",
           "mappingType": 1,
           "pattern": "/meta.+/",
           "rangeMaps": [
@@ -1520,7 +902,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 42
+        "y": 18
       },
       "id": 38,
       "legend": {
@@ -1635,12 +1017,630 @@
       }
     },
     {
+      "content": "<h1><center style=\"margin-top: 35px;\">Top Sources to $Country</center></h1>",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 31,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 13,
+        "x": 0,
+        "y": 32
+      },
+      "hideTimeOverride": false,
+      "id": 32,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Source Country",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&var-src=${__cell}&var-dest=$Country&from=${__from}&to=${__to}",
+          "pattern": "/meta.+/",
+          "type": "string",
+          "unit": "bits"
+        },
+        {
+          "alias": "# Flows",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Total Volume",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Sum",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "alias": "Packets",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Sum values.num_packets",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Largest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "/Max/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "alias": "Fastest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_country_name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "field": "select field",
+              "id": "7",
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "By Volume",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 11,
+        "x": 13,
+        "y": 32
+      },
+      "id": 39,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_country_name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "decbytes",
+          "label": "Total Volume",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 13,
+        "x": 0,
+        "y": 43
+      },
+      "hideTimeOverride": false,
+      "id": 33,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Source Country",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/80IVUboZk/individual-flows-per-country?orgId=1&var-src=${__cell}&var-dest=$Country&from=${__from}&to=${__to}",
+          "mappingType": 1,
+          "pattern": "/meta.+/",
+          "rangeMaps": [
+            {
+              "from": "",
+              "text": "",
+              "to": ""
+            }
+          ],
+          "type": "string",
+          "unit": "bits"
+        },
+        {
+          "alias": "# Flows",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Average",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Peak",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Max",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Fastest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_country_name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "select field",
+              "id": "7",
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "By Rate",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 11,
+        "x": 13,
+        "y": 43
+      },
+      "id": 40,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_country_name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "max"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "bps",
+          "label": "rate",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "content": "<h1 style=\"margin-top:35px;\"><center>Top Flow Pairs with Endpoint(s) in $Country</center></h1>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 53
+        "y": 54
       },
       "id": 4711111,
       "links": [],
@@ -1657,7 +1657,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 57
       },
       "id": 4711,
       "links": [],
@@ -1814,7 +1814,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "1",
                 "size": "0"
               },
               "type": "terms"
@@ -1826,7 +1826,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "1",
                 "size": "0"
               },
               "type": "terms"
@@ -1895,7 +1895,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 72
       },
       "id": 34,
       "links": [],
@@ -1909,13 +1909,14 @@
       "cacheTimeout": null,
       "colorBackground": false,
       "colorPostfix": true,
+      "colorPrefix": false,
       "colorValue": false,
       "colors": [
         "#299c46",
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "format": "none",
+      "format": "locale",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1927,7 +1928,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 74
       },
       "id": 42,
       "interval": null,
@@ -1947,7 +1948,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": " total large flows observed",
+      "postfix": "         # Flows",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -2004,6 +2005,22 @@
         }
       ],
       "valueName": "total"
+    },
+    {
+      "content": "<h3 style=\"margin-top:20px;\"><center>Sankey Graph of Top Flows in and out of $Country</center></h3>",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 77
+      },
+      "id": 4711115,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "title": "",
+      "transparent": true,
+      "type": "text"
     },
     {
       "aggregated_data": [],
@@ -2153,7 +2170,7 @@
         "h": 15,
         "w": 12,
         "x": 0,
-        "y": 76
+        "y": 79
       },
       "hex_values": [
         "#f8ae63",
@@ -2283,52 +2300,52 @@
         [
           "United States",
           "United States",
-          517937.299575488
+          526683.756735504
         ],
         [
           "Brazil",
           "United States",
-          419187.548259328
+          411571.495051776
         ],
         [
           "United Kingdom",
           "United States",
-          237255.58304017602
-        ],
-        [
-          "Germany",
-          "United States",
-          108095.10488672799
-        ],
-        [
-          "Puerto Rico",
-          "United States",
-          64585.008475944
+          369034.378014308
         ],
         [
           "Italy",
           "United States",
-          49520.203308448
+          137252.18158566
         ],
         [
-          "France",
+          "Germany",
           "United States",
-          46525.234186784
+          113453.313238724
+        ],
+        [
+          "Puerto Rico",
+          "United States",
+          69976.368382628
+        ],
+        [
+          "Belgium",
+          "United States",
+          46532.500649376
         ],
         [
           "Switzerland",
           "United States",
-          35609.424930336
+          37403.489173028
+        ],
+        [
+          "France",
+          "United States",
+          30635.182217172
         ],
         [
           "Guam",
           "United States",
-          25576.117800432
-        ],
-        [
-          "Russia",
-          "United States",
-          22617.19932416
+          23536.000648024
         ]
       ],
       "table_data_type": "Sum",
@@ -3576,7 +3593,7 @@
         "h": 15,
         "w": 12,
         "x": 12,
-        "y": 76
+        "y": 79
       },
       "hex_values": [
         "#f8ae63",
@@ -3705,53 +3722,53 @@
       "table_data": [
         [
           "United States",
-          "United States",
-          517937.299575488
+          "Brazil",
+          564355.696946428
         ],
         [
           "United States",
-          "Brazil",
-          502433.46222
+          "United States",
+          526683.756735504
         ],
         [
           "United States",
           "Puerto Rico",
-          271711.907486184
+          289645.162341544
         ],
         [
           "United States",
           "United Kingdom",
-          151226.874432928
+          147344.282889124
         ],
         [
           "United States",
           "Germany",
-          58112.441678532
+          67385.648997332
         ],
         [
           "United States",
           "U.S. Virgin Islands",
-          34165.233958912
+          33106.98719184
+        ],
+        [
+          "United States",
+          "Hong Kong",
+          32855.875158892
         ],
         [
           "United States",
           "Argentina",
-          30422.971780384
+          21616.035980287998
         ],
         [
           "United States",
           "Netherlands",
-          29912.149870424
+          21231.934952664
         ],
         [
           "United States",
-          "Guam",
-          24877.868961736
-        ],
-        [
-          "United States",
-          "Chile",
-          24537.86574614
+          "Japan",
+          19343.725414348
         ]
       ],
       "table_data_type": "Sum",
@@ -4864,7 +4881,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 91
+        "y": 94
       },
       "id": 24,
       "legend": {
@@ -4988,7 +5005,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 91
+        "y": 94
       },
       "id": 22,
       "legend": {
@@ -5111,7 +5128,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 91
+        "y": 94
       },
       "id": 23,
       "legend": {
@@ -5227,7 +5244,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 103
       },
       "id": 35,
       "links": [],
@@ -5245,7 +5262,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 102
+        "y": 105
       },
       "hideTimeOverride": false,
       "id": 19,
@@ -5416,7 +5433,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 110
+        "y": 113
       },
       "id": 46,
       "links": [],

@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1571346316030,
+  "iteration": 1572900665749,
   "links": [],
   "panels": [
     {
@@ -375,7 +375,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Bandwidth Dashboard</b></h1></center>\n<center>The map above shows the min, max, and average bandwidth utilization of National Science Foundation’s International Research Network Connections Program links over the selected time period.</center>\n<center>The rows below show each of the links in more detail, including traffic volume, bandwidth distribution and total data transferred.</center>\n<center>A combined view of average bandwidth utilization is shown at the bottom of this page.</center><center>All times are displayed in browser local time</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "<center><h1><b>Bandwidth Dashboard</b></h1></center>\n<center>The map shows the minimum, maximum, and average bandwidth utilization the circuits and exchange points over the selected time period.</center>\n<center>The rows below the map show each of the links in more detail, including traffic volume, bandwidth distribution, and total data transferred.</center>\n<center>A combined view of the average and maximum bandwidth utilization is shown at the bottom of the page.</center>\n<center>All times are displayed in browser local time</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
         "h": 4,
         "w": 20,
@@ -412,7 +412,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 8,
+        "w": 6,
         "x": 0,
         "y": 4
       },
@@ -436,7 +436,179 @@
       "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
-      "prefix": "Single Link Max<br>",
+      "prefix": "Single Link Max A-Z<br>",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "bucketValue": [],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              ""
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "Select Metric"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "select table",
+          "target": "get max(aggregate(values.output, $quantify, max)) between ($START,$END) from interface where link_name != null",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "Select Metric",
+                "op": "",
+                "right": ""
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "Netsage TSDS",
+      "decimals": 1,
+      "format": "bps",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 4
+      },
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111",
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "Single Link Max Z-A<br>",
       "prefixFontSize": "70%",
       "rangeMaps": [
         {
@@ -584,8 +756,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 8,
-        "x": 8,
+        "w": 7,
+        "x": 12,
         "y": 4
       },
       "id": 4,
@@ -702,7 +874,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "select table",
-          "target": "get total_avg / 2 as values.avg from (get input_avg + output_avg as total_avg from (get average(aggregate(values.input, $quantify, average)) as input_avg, average(aggregate(values.output, $quantify, average)) as output_avg between ($START,$END) from interface where link_name != null))",
+          "target": "get input_avg + output_avg as values.total_avg from  ( get  average(aggregate(values.input, $quantify, average)) as input_avg,  average(aggregate(values.output, $quantify, average)) as output_avg between ($START,$END)  by nothing  from interface where link_name != null )",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -755,8 +927,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 8,
-        "x": 16,
+        "w": 5,
+        "x": 19,
         "y": 4
       },
       "id": 5,
@@ -874,7 +1046,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "select table",
-          "target": "get values.total / 8 as values.bytes from (get total * $TIMESPAN as values.total from (get input_sum + output_sum as total from (get average(aggregate(values.input,$quantify,average)) as input_sum, average(aggregate(values.output, $quantify, average)) as output_sum between ($START,$END) from interface where link_name != null)))",
+          "target": "get total_bytes_sec  * 3600 as values.total_bytes from (         get input_bytes_sec_total + output_bytes_sec_total as total_bytes_sec from (        get aggregate(input_bytes_sec, 3600, sum) as input_bytes_sec_total, aggregate(output_bytes_sec, 3600, sum) as output_bytes_sec_total by nothing from (           get  aggregate(values.input, 3600, average) / 8 as input_bytes_sec,  aggregate(values.output, 3600, average) / 8 as output_bytes_sec between ($START,$END)  by link_name  from interface where link_name != null  )  ) )",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -953,27 +1125,6 @@
         }
       },
       "layers": [
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
-        {
-          "__baseFactory__": "Layer"
-        },
         {
           "__baseFactory__": "Layer"
         },
@@ -1967,7 +2118,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -2057,7 +2207,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -2158,7 +2308,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -2248,7 +2397,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -2356,13 +2505,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -2405,10 +2553,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -2432,13 +2581,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -2449,6 +2597,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -2470,10 +2619,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -2512,7 +2662,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -2541,10 +2691,10 @@
         "x": 0,
         "y": 33
       },
-      "id": "5361",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -2564,11 +2714,11 @@
         "x": 0,
         "y": 34
       },
-      "id": "53611",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2597,7 +2747,7 @@
         "x": 2,
         "y": 34
       },
-      "id": "536111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -2620,7 +2770,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2863,7 +3013,7 @@
         "x": 8,
         "y": 34
       },
-      "id": "5361111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -2884,7 +3034,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2933,7 +3083,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -3023,7 +3172,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -3057,7 +3206,7 @@
         "x": 14,
         "y": 34
       },
-      "id": "53611111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -3078,7 +3227,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3127,7 +3276,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -3217,7 +3365,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -3252,7 +3400,7 @@
         "x": 20,
         "y": 34
       },
-      "id": "536111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3274,7 +3422,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3328,13 +3476,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -3377,10 +3524,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -3404,13 +3552,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -3421,6 +3568,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -3442,10 +3590,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -3484,7 +3633,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -3513,10 +3662,10 @@
         "x": 0,
         "y": 41
       },
-      "id": "5361111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -3536,11 +3685,11 @@
         "x": 0,
         "y": 42
       },
-      "id": "53611111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3569,7 +3718,7 @@
         "x": 2,
         "y": 42
       },
-      "id": "536111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3592,7 +3741,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3835,7 +3984,7 @@
         "x": 8,
         "y": 42
       },
-      "id": "5361111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -3856,7 +4005,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3905,7 +4054,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -3995,7 +4143,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -4029,7 +4177,7 @@
         "x": 14,
         "y": 42
       },
-      "id": "53611111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -4050,7 +4198,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4099,7 +4247,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -4189,7 +4336,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -4224,7 +4371,7 @@
         "x": 20,
         "y": 42
       },
-      "id": "536111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4246,7 +4393,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4300,13 +4447,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -4349,10 +4495,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -4376,13 +4523,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -4393,6 +4539,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -4414,10 +4561,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -4456,7 +4604,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -4485,10 +4633,10 @@
         "x": 0,
         "y": 49
       },
-      "id": "5361111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -4508,11 +4656,11 @@
         "x": 0,
         "y": 50
       },
-      "id": "53611111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4541,7 +4689,7 @@
         "x": 2,
         "y": 50
       },
-      "id": "536111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4564,7 +4712,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4807,7 +4955,7 @@
         "x": 8,
         "y": 50
       },
-      "id": "5361111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -4828,7 +4976,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4877,7 +5025,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -4967,7 +5114,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -5001,7 +5148,7 @@
         "x": 14,
         "y": 50
       },
-      "id": "53611111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -5022,7 +5169,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5071,7 +5218,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -5161,7 +5307,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -5196,7 +5342,7 @@
         "x": 20,
         "y": 50
       },
-      "id": "536111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5218,7 +5364,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5272,13 +5418,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -5321,10 +5466,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -5348,13 +5494,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -5365,6 +5510,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -5386,10 +5532,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -5428,7 +5575,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -5457,10 +5604,10 @@
         "x": 0,
         "y": 57
       },
-      "id": "5361111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -5480,11 +5627,11 @@
         "x": 0,
         "y": 58
       },
-      "id": "53611111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5513,7 +5660,7 @@
         "x": 2,
         "y": 58
       },
-      "id": "536111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5536,7 +5683,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5779,7 +5926,7 @@
         "x": 8,
         "y": 58
       },
-      "id": "5361111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -5800,7 +5947,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5849,7 +5996,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -5939,7 +6085,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -5973,7 +6119,7 @@
         "x": 14,
         "y": 58
       },
-      "id": "53611111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -5994,7 +6140,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6043,7 +6189,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -6133,7 +6278,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -6168,7 +6313,7 @@
         "x": 20,
         "y": 58
       },
-      "id": "536111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6190,7 +6335,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6244,13 +6389,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -6293,10 +6437,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -6320,13 +6465,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -6337,6 +6481,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -6358,10 +6503,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -6400,7 +6546,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -6429,10 +6575,10 @@
         "x": 0,
         "y": 65
       },
-      "id": "5361111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -6452,11 +6598,11 @@
         "x": 0,
         "y": 66
       },
-      "id": "53611111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6485,7 +6631,7 @@
         "x": 2,
         "y": 66
       },
-      "id": "536111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6508,7 +6654,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6751,7 +6897,7 @@
         "x": 8,
         "y": 66
       },
-      "id": "5361111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -6772,7 +6918,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6821,7 +6967,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -6911,7 +7056,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -6945,7 +7090,7 @@
         "x": 14,
         "y": 66
       },
-      "id": "53611111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -6966,7 +7111,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7015,7 +7160,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -7105,7 +7249,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -7140,7 +7284,7 @@
         "x": 20,
         "y": 66
       },
-      "id": "536111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7162,7 +7306,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7216,13 +7360,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -7265,10 +7408,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -7292,13 +7436,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -7309,6 +7452,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -7330,10 +7474,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -7372,7 +7517,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -7401,10 +7546,10 @@
         "x": 0,
         "y": 73
       },
-      "id": "5361111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -7424,11 +7569,11 @@
         "x": 0,
         "y": 74
       },
-      "id": "53611111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7457,7 +7602,7 @@
         "x": 2,
         "y": 74
       },
-      "id": "536111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7480,7 +7625,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7723,7 +7868,7 @@
         "x": 8,
         "y": 74
       },
-      "id": "5361111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -7744,7 +7889,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7793,7 +7938,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -7883,7 +8027,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -7917,7 +8061,7 @@
         "x": 14,
         "y": 74
       },
-      "id": "53611111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -7938,7 +8082,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7987,7 +8131,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -8077,7 +8220,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -8112,7 +8255,7 @@
         "x": 20,
         "y": 74
       },
-      "id": "536111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8134,7 +8277,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8188,13 +8331,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -8237,10 +8379,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -8264,13 +8407,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -8281,6 +8423,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -8302,10 +8445,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -8344,7 +8488,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -8373,10 +8517,10 @@
         "x": 0,
         "y": 81
       },
-      "id": "5361111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -8396,11 +8540,11 @@
         "x": 0,
         "y": 82
       },
-      "id": "53611111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8429,7 +8573,7 @@
         "x": 2,
         "y": 82
       },
-      "id": "536111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8452,7 +8596,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8695,7 +8839,7 @@
         "x": 8,
         "y": 82
       },
-      "id": "5361111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -8716,7 +8860,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8765,7 +8909,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -8855,7 +8998,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -8889,7 +9032,7 @@
         "x": 14,
         "y": 82
       },
-      "id": "53611111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -8910,7 +9053,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8959,7 +9102,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -9049,7 +9191,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -9084,7 +9226,7 @@
         "x": 20,
         "y": 82
       },
-      "id": "536111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9106,7 +9248,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9160,13 +9302,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -9209,10 +9350,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -9236,13 +9378,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -9253,6 +9394,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -9274,10 +9416,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -9316,7 +9459,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -9345,10 +9488,10 @@
         "x": 0,
         "y": 89
       },
-      "id": "5361111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -9368,11 +9511,11 @@
         "x": 0,
         "y": 90
       },
-      "id": "53611111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9401,7 +9544,7 @@
         "x": 2,
         "y": 90
       },
-      "id": "536111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9424,7 +9567,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9667,7 +9810,7 @@
         "x": 8,
         "y": 90
       },
-      "id": "5361111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -9688,7 +9831,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9737,7 +9880,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -9827,7 +9969,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -9861,7 +10003,7 @@
         "x": 14,
         "y": 90
       },
-      "id": "53611111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -9882,7 +10024,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9931,7 +10073,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -10021,7 +10162,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -10056,7 +10197,7 @@
         "x": 20,
         "y": 90
       },
-      "id": "536111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10078,7 +10219,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10132,13 +10273,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -10181,10 +10321,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -10208,13 +10349,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -10225,6 +10365,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -10246,10 +10387,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -10288,7 +10430,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -10317,10 +10459,10 @@
         "x": 0,
         "y": 97
       },
-      "id": "5361111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -10340,11 +10482,11 @@
         "x": 0,
         "y": 98
       },
-      "id": "53611111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10373,7 +10515,7 @@
         "x": 2,
         "y": 98
       },
-      "id": "536111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10396,7 +10538,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10639,7 +10781,7 @@
         "x": 8,
         "y": 98
       },
-      "id": "5361111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -10660,7 +10802,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10709,7 +10851,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -10799,7 +10940,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -10833,7 +10974,7 @@
         "x": 14,
         "y": 98
       },
-      "id": "53611111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -10854,7 +10995,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10903,7 +11044,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -10993,7 +11133,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -11028,7 +11168,7 @@
         "x": 20,
         "y": 98
       },
-      "id": "536111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11050,7 +11190,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11104,13 +11244,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -11153,10 +11292,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -11180,13 +11320,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -11197,6 +11336,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -11218,10 +11358,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -11260,7 +11401,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -11289,10 +11430,10 @@
         "x": 0,
         "y": 105
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -11312,11 +11453,11 @@
         "x": 0,
         "y": 106
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11345,7 +11486,7 @@
         "x": 2,
         "y": 106
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11368,7 +11509,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11611,7 +11752,7 @@
         "x": 8,
         "y": 106
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -11632,7 +11773,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11681,7 +11822,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -11771,7 +11911,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -11805,7 +11945,7 @@
         "x": 14,
         "y": 106
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -11826,7 +11966,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11875,7 +12015,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -11965,7 +12104,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -12000,7 +12139,7 @@
         "x": 20,
         "y": 106
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12022,7 +12161,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12076,13 +12215,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -12125,10 +12263,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -12152,13 +12291,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -12169,6 +12307,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -12190,10 +12329,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -12232,7 +12372,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -12261,10 +12401,10 @@
         "x": 0,
         "y": 113
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -12284,11 +12424,11 @@
         "x": 0,
         "y": 114
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12317,7 +12457,7 @@
         "x": 2,
         "y": 114
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12340,7 +12480,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12583,7 +12723,7 @@
         "x": 8,
         "y": 114
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -12604,7 +12744,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12653,7 +12793,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "output",
               "align": "",
               "bucket": "",
@@ -12743,7 +12882,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -12777,7 +12916,7 @@
         "x": 14,
         "y": 114
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "avg": false,
         "current": false,
@@ -12798,7 +12937,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 15,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12847,7 +12986,6 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
@@ -12937,7 +13075,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": "Number of Flows",
+          "label": "Number of Datapoints",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -12972,7 +13110,7 @@
         "x": 20,
         "y": 114
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12994,7 +13132,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1571346316030,
+      "repeatIteration": 1572900665749,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -13048,13 +13186,12 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "A-Z",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "output",
@@ -13097,10 +13234,11 @@
             "",
             ""
           ],
+          "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, aggregate(values.output, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "A-Z",
           "templateVariableValue": [
             ""
           ],
@@ -13124,13 +13262,12 @@
           "displayFormat": "series",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "Z-A",
               "align": "",
               "bucket": "",
               "expanded": true,
               "method": "average",
-              "operation": "",
+              "operation": "* $TIMESPAN",
               "percentile": "85",
               "root": true,
               "target": "input",
@@ -13141,6 +13278,7 @@
             }
           ],
           "groupby_field": "link_name",
+          "hide": false,
           "inlineGroupOperator": [
             [
               ""
@@ -13162,10 +13300,11 @@
           "outerGroupOperator": [
             ""
           ],
+          "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, aggregate(values.input, 310, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
+          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target_alias": "Z-A",
           "templateVariableValue": [
             ""
           ],
@@ -13204,7 +13343,7 @@
       },
       "yaxes": [
         {
-          "format": "decbits",
+          "format": "decbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -13246,6 +13385,7 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 24,
@@ -13266,7 +13406,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -13437,6 +13579,7 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 24,
@@ -13457,7 +13600,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,

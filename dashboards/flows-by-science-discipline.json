@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1570662056299,
+  "iteration": 1572379458089,
   "links": [],
   "panels": [
     {
@@ -271,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 327598344,
+      "max_total": 61651715,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -279,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 227340.97432338653,
+          "avg": 725314.2941176471,
           "label": "Count",
-          "max": 1001633,
+          "max": 2158635,
           "min": 0,
-          "total": 327598344
+          "total": 61651715
         }
       ],
       "rgb_values": [
@@ -383,9 +383,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>Select a Discipline from the dropdown above. We recommend selecting no more than 3 at a time.</center>\n<center>This sankey graph shows the top 10 source science organizations by volume for the selected disciplines in a specific period of time.</center>\n<center>It then shows their disciplines and the top 5 destination science organizations for each. Thicker lines indicate larger flows.</center><center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows the science disciplines for top talkers using the NetSage Science Registry data (http:// https://scienceregistry.netsage.global). The Sankey graph shows the top ten source organizations by volume for the selected disciplines and their associated top five destination organizations. Thicker lines indicate larger flows.</center>\n<center>All times are displayed in browser local time.</center>\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 20,
         "x": 2,
         "y": 0
@@ -423,7 +423,7 @@
         "h": 2,
         "w": 7,
         "x": 2,
-        "y": 4
+        "y": 5
       },
       "id": 47,
       "interval": null,
@@ -443,7 +443,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "  -> SciReg",
+      "postfix": " Volume Matched in Science Registry",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -489,7 +489,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline &&  _exists_:meta.scireg.dst.org_name",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline or meta.scireg.dst.discipline.keyword:$discipline)",
           "refId": "A",
           "timeField": "start"
         }
@@ -518,7 +518,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "decimals": null,
+      "decimals": 1,
       "format": "short",
       "gauge": {
         "maxValue": 100,
@@ -531,7 +531,7 @@
         "h": 2,
         "w": 7,
         "x": 15,
-        "y": 4
+        "y": 5
       },
       "id": 42,
       "interval": null,
@@ -551,7 +551,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> flows matched in SciReg",
+      "postfix": " Flows Matched in Science Registry",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -590,7 +590,7 @@
               "type": "count"
             }
           ],
-          "query": "_exists_:meta.scireg.dst.org_name AND meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline or meta.scireg.dst.discipline.keyword:$discipline)",
           "refId": "A",
           "timeField": "start"
         }
@@ -632,7 +632,7 @@
         "h": 2,
         "w": 7,
         "x": 2,
-        "y": 6
+        "y": 7
       },
       "id": 45,
       "interval": null,
@@ -652,7 +652,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> all",
+      "postfix": " Total Volume",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -740,7 +740,7 @@
         "h": 2,
         "w": 7,
         "x": 15,
-        "y": 6
+        "y": 7
       },
       "id": 46,
       "interval": null,
@@ -760,7 +760,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "options": {},
-      "postfix": "-> total flows",
+      "postfix": " Total Flows",
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
@@ -817,6 +817,24 @@
         }
       ],
       "valueName": "total"
+    },
+    {
+      "content": "<h3 style=\"margin: 20px;\"><center>Top Science Talkers</center></h3>\n",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 5013,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
     },
     {
       "auto_format_labels": false,
@@ -962,8 +980,9 @@
         "h": 27,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 11
       },
+      "height": 2,
       "hex_values": [
         "#f8ae63",
         "#f5ae66",
@@ -1086,208 +1105,250 @@
       ],
       "table_data": [
         [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "MPS.Astronomy",
-          "UH - IFA - Data Transfer Node UH-IFA at ITC",
-          5426681213836000
+          "National Institute for Nuclear Physics - National Center for Frame Analysis",
+          "MPS.Physics.High Energy",
+          "Northeast Regional Data Center",
+          869742335787008
         ],
         [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "MPS.Astronomy",
-          "UH - IFA - Institute for Astronomy (IfA) ITC",
-          10000008000000
-        ],
-        [
-          "Large Hadron Collider (LHC)",
+          "National Institute for Nuclear Physics - National Center for Frame Analysis",
           "MPS.Physics.High Energy",
           "UNK-DST",
-          4429017390497792
+          3398534823936
         ],
         [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "CUHK - ATLAS",
-          355132424192
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "BNL - National Synchrotron Light Source II (NSLS-II)",
-          81648164864
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "Columbia - Nevis Labs - ATLAS Tier3 job submission node",
-          57395912704
-        ],
-        [
-          "Large Hadron Collider (LHC)",
-          "MPS.Physics.High Energy",
-          "UFL - Compute Cluster",
-          33848975360
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "UNK-DST",
-          1377180445180256
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "Broad Institute - unknown",
-          354871624486912
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "Harvard/LMA - unknown",
-          108012999712768
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "Cornell - Weill Cornell Medicine",
-          16949205868544
-        ],
-        [
-          "EMBL-EBI - ftp/grid ftp servers",
-          "BIO.Genomics and Bioinformatics",
-          "CUHK",
-          9567829159936
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
+          "CERN",
           "MPS.Physics.High Energy",
           "UNK-DST",
-          1075471714832384
+          887036126007296
         ],
         [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "MPCDF - GridFTP nodes",
-          216356870791168
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "GWDG - GoeGrid storage elements",
-          68285610483712
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "QMUL - WLCG (World LCH Computing Grid) storage elements",
-          38882571595776
-        ],
-        [
-          "BNL - ATLAS Grid Storage Elements",
-          "MPS.Physics.High Energy",
-          "Glasgow - GridPP/ScotGrid",
-          31455598874624
-        ],
-        [
-          "Microsoft - Windows 10 Updates",
-          "non-science",
-          "UNK-DST",
-          1255245191298560
-        ],
-        [
-          "ESO - Chile?",
-          "MPS.Astronomy",
-          "ESO - Germany?",
-          1240292618190848
-        ],
-        [
-          "ESO - Chile?",
-          "MPS.Astronomy",
-          "UNK-DST",
-          850395136
-        ],
-        [
-          "Atacama Large Millimeter Array",
-          "MPS.Astronomy",
-          "NOAJ - WIDE Project - unknown",
-          756039381508096
-        ],
-        [
-          "Atacama Large Millimeter Array",
-          "MPS.Astronomy",
-          "NAOJ - WIDE Project - unknown",
-          163705163431936
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "UNK-DST",
-          818650867417088
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "HKUST - HPC2 cluster - login and sftp node",
-          39040308928512
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "Broad Institute - unknown",
-          12801573396480
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "HKUST - HPC2 cluster - master node",
-          6030883831808
-        ],
-        [
-          "EMBL-EBI - Aspera servers for various archives",
-          "BIO.Genomics and Bioinformatics",
-          "CEN - I2 Connector",
-          1166764728320
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "BU - ATLAS",
-          632051843399680
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "SLAC - GridFTP server",
-          64124577169408
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "UNK-DST",
-          56109807312896
-        ],
-        [
-          "RAL - GridPP - Ceph",
-          "MPS.Physics.High Energy",
-          "MIT - LHC",
-          2365236301824
-        ],
-        [
-          "RAL - GridPP - Ceph",
+          "CERN",
           "MPS.Physics.High Energy",
           "National Energy Research Scientific Computing Center (NERSC)",
-          2202404831232
+          83100577091584
         ],
         [
-          "ANL - Argonne Leadership Computing Facility (ALCF)",
-          "MSF.General",
+          "CERN",
+          "MPS.Physics.High Energy",
+          "University of Oklahoma (OU)",
+          11023253557248
+        ],
+        [
+          "CERN",
+          "MPS.Physics.High Energy",
+          "Chinese University of Hong Kong (CUHK)",
+          646871052288
+        ],
+        [
+          "CERN",
+          "MPS.Physics.High Energy",
+          "Columbia University",
+          339465904128
+        ],
+        [
+          "National Institute for Nuclear Physics - National Center for Frame Analysis",
+          "MPS.Physics.High Energy",
+          "Northeast Regional Data Center",
+          807641567817728
+        ],
+        [
+          "National Institute for Nuclear Physics - National Center for Frame Analysis",
+          "MPS.Physics.High Energy",
           "UNK-DST",
-          656742098804736
+          3237281792000
         ],
         [
-          "ANL - Argonne Leadership Computing Facility (ALCF)",
-          "MSF.General",
-          "Cineca - Marconi",
-          19140231168
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          238855657496576
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "Max Planck Computing and Data Facility (MPCDF)",
+          31606890708992
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "Technion - Israel Institute of Technology",
+          21016032874496
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "Gesellschaft fÃ¼r wissenschaftliche Datenverarbeitung mbH GÃ¶ttingen  (GWDG)",
+          11862718799872
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "University of Edinburgh",
+          10796531507200
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          123347844194304
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "Energy Sciences Network (ESnet)",
+          801148764160
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "Chinese University of Hong Kong (CUHK)",
+          563143053312
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          92853629624320
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "National Institute of Chemical Physics and Biophysics (NICPB)",
+          4367936843776
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "JINR/HEPNET",
+          2371041067008
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "Austrian Academy of Sciences (OEAW)",
+          96277753856
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "National Centre for Nuclear Research  (Narodowe Centrum Badan Jadrowych - NCBJ)",
+          60361789440
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          44430781935616
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          10097573625856
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "SLAC National Accelerator Laboratory",
+          3200296505344
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "National Energy Research Scientific Computing Center (NERSC)",
+          1776753991680
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "Massachusetts Institute of Technology (MIT)",
+          544631865344
+        ],
+        [
+          "University of Glasgow (U of G)",
+          "MPS.Physics.High Energy",
+          "Brookhaven National Laboratory (BNL)",
+          36200282427392
+        ],
+        [
+          "University of Glasgow (U of G)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          11127740940288
+        ],
+        [
+          "University of Glasgow (U of G)",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          1901494374400
+        ],
+        [
+          "California Institute of Technology (Caltech)",
+          "MPS.Physics.High Energy",
+          "SLAC National Accelerator Laboratory",
+          543862632448
+        ],
+        [
+          "University of Manchester",
+          "MPS.Physics.High Energy",
+          "National Energy Research Scientific Computing Center (NERSC)",
+          214634721280
+        ],
+        [
+          "Purdue University",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          45345588514816
+        ],
+        [
+          "Purdue University",
+          "MPS.Physics.High Energy",
+          "National Center for Physics (NCP)",
+          8409874432
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          40029333991424
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          1964705632256
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "SLAC National Accelerator Laboratory",
+          1936005914624
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "Chinese University of Hong Kong (CUHK)",
+          207621234688
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "Columbia University",
+          131695058944
+        ],
+        [
+          "Karlsruhe Institute of Technology (KIT)",
+          "MPS.Physics.High Energy",
+          "Northeast Regional Data Center",
+          24993404608512
+        ],
+        [
+          "Karlsruhe Institute of Technology (KIT)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          13902279315456
         ]
       ],
       "table_data_type": "Sum",
@@ -1300,42 +1361,52 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(0,0)",
               "text": "none",
               "value": "none"
             },
             {
+              "click": "menuItemSelected(0,1)",
               "text": "short",
               "value": "short"
             },
             {
+              "click": "menuItemSelected(0,2)",
               "text": "percent (0-100)",
               "value": "percent"
             },
             {
+              "click": "menuItemSelected(0,3)",
               "text": "percent (0.0-1.0)",
               "value": "percentunit"
             },
             {
+              "click": "menuItemSelected(0,4)",
               "text": "Humidity (%H)",
               "value": "humidity"
             },
             {
+              "click": "menuItemSelected(0,5)",
               "text": "decibel",
               "value": "dB"
             },
             {
+              "click": "menuItemSelected(0,6)",
               "text": "hexadecimal (0x)",
               "value": "hex0x"
             },
             {
+              "click": "menuItemSelected(0,7)",
               "text": "hexadecimal",
               "value": "hex"
             },
             {
+              "click": "menuItemSelected(0,8)",
               "text": "scientific notation",
               "value": "sci"
             },
             {
+              "click": "menuItemSelected(0,9)",
               "text": "locale format",
               "value": "locale"
             }
@@ -1345,14 +1416,17 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(1,0)",
               "text": "Meters/sec²",
               "value": "accMS2"
             },
             {
+              "click": "menuItemSelected(1,1)",
               "text": "Feet/sec²",
               "value": "accFS2"
             },
             {
+              "click": "menuItemSelected(1,2)",
               "text": "G unit",
               "value": "accG"
             }
@@ -1362,22 +1436,27 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(2,0)",
               "text": "Degrees (°)",
               "value": "degree"
             },
             {
+              "click": "menuItemSelected(2,1)",
               "text": "Radians",
               "value": "radian"
             },
             {
+              "click": "menuItemSelected(2,2)",
               "text": "Gradian",
               "value": "grad"
             },
             {
+              "click": "menuItemSelected(2,3)",
               "text": "Arc Minutes",
               "value": "arcmin"
             },
             {
+              "click": "menuItemSelected(2,4)",
               "text": "Arc Seconds",
               "value": "arcsec"
             }
@@ -1387,14 +1466,17 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(3,0)",
               "text": "Square Meters (m²)",
               "value": "areaM2"
             },
             {
+              "click": "menuItemSelected(3,1)",
               "text": "Square Feet (ft²)",
               "value": "areaF2"
             },
             {
+              "click": "menuItemSelected(3,2)",
               "text": "Square Miles (mi²)",
               "value": "areaMI2"
             }
@@ -1404,26 +1486,32 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(4,0)",
               "text": "FLOP/s",
               "value": "flops"
             },
             {
+              "click": "menuItemSelected(4,1)",
               "text": "MFLOP/s",
               "value": "mflops"
             },
             {
+              "click": "menuItemSelected(4,2)",
               "text": "GFLOP/s",
               "value": "gflops"
             },
             {
+              "click": "menuItemSelected(4,3)",
               "text": "TFLOP/s",
               "value": "tflops"
             },
             {
+              "click": "menuItemSelected(4,4)",
               "text": "PFLOP/s",
               "value": "pflops"
             },
             {
+              "click": "menuItemSelected(4,5)",
               "text": "EFLOP/s",
               "value": "eflops"
             }
@@ -1433,50 +1521,62 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(5,0)",
               "text": "parts-per-million (ppm)",
               "value": "ppm"
             },
             {
+              "click": "menuItemSelected(5,1)",
               "text": "parts-per-billion (ppb)",
               "value": "conppb"
             },
             {
+              "click": "menuItemSelected(5,2)",
               "text": "nanogram per cubic meter (ng/m³)",
               "value": "conngm3"
             },
             {
+              "click": "menuItemSelected(5,3)",
               "text": "nanogram per normal cubic meter (ng/Nm³)",
               "value": "conngNm3"
             },
             {
+              "click": "menuItemSelected(5,4)",
               "text": "microgram per cubic meter (μg/m³)",
               "value": "conμgm3"
             },
             {
+              "click": "menuItemSelected(5,5)",
               "text": "microgram per normal cubic meter (μg/Nm³)",
               "value": "conμgNm3"
             },
             {
+              "click": "menuItemSelected(5,6)",
               "text": "milligram per cubic meter (mg/m³)",
               "value": "conmgm3"
             },
             {
+              "click": "menuItemSelected(5,7)",
               "text": "milligram per normal cubic meter (mg/Nm³)",
               "value": "conmgNm3"
             },
             {
+              "click": "menuItemSelected(5,8)",
               "text": "gram per cubic meter (g/m³)",
               "value": "congm3"
             },
             {
+              "click": "menuItemSelected(5,9)",
               "text": "gram per normal cubic meter (g/Nm³)",
               "value": "congNm3"
             },
             {
+              "click": "menuItemSelected(5,10)",
               "text": "milligrams per decilitre (mg/dL)",
               "value": "conmgdL"
             },
             {
+              "click": "menuItemSelected(5,11)",
               "text": "millimoles per litre (mmol/L)",
               "value": "conmmolL"
             }
@@ -1486,62 +1586,77 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(6,0)",
               "text": "Dollars ($)",
               "value": "currencyUSD"
             },
             {
+              "click": "menuItemSelected(6,1)",
               "text": "Pounds (£)",
               "value": "currencyGBP"
             },
             {
+              "click": "menuItemSelected(6,2)",
               "text": "Euro (€)",
               "value": "currencyEUR"
             },
             {
+              "click": "menuItemSelected(6,3)",
               "text": "Yen (¥)",
               "value": "currencyJPY"
             },
             {
+              "click": "menuItemSelected(6,4)",
               "text": "Rubles (₽)",
               "value": "currencyRUB"
             },
             {
+              "click": "menuItemSelected(6,5)",
               "text": "Hryvnias (₴)",
               "value": "currencyUAH"
             },
             {
+              "click": "menuItemSelected(6,6)",
               "text": "Real (R$)",
               "value": "currencyBRL"
             },
             {
+              "click": "menuItemSelected(6,7)",
               "text": "Danish Krone (kr)",
               "value": "currencyDKK"
             },
             {
+              "click": "menuItemSelected(6,8)",
               "text": "Icelandic Króna (kr)",
               "value": "currencyISK"
             },
             {
+              "click": "menuItemSelected(6,9)",
               "text": "Norwegian Krone (kr)",
               "value": "currencyNOK"
             },
             {
+              "click": "menuItemSelected(6,10)",
               "text": "Swedish Krona (kr)",
               "value": "currencySEK"
             },
             {
+              "click": "menuItemSelected(6,11)",
               "text": "Czech koruna (czk)",
               "value": "currencyCZK"
             },
             {
+              "click": "menuItemSelected(6,12)",
               "text": "Swiss franc (CHF)",
               "value": "currencyCHF"
             },
             {
+              "click": "menuItemSelected(6,13)",
               "text": "Polish Złoty (PLN)",
               "value": "currencyPLN"
             },
             {
+              "click": "menuItemSelected(6,14)",
               "text": "Bitcoin (฿)",
               "value": "currencyBTC"
             }
@@ -1551,22 +1666,27 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(7,0)",
               "text": "bits",
               "value": "bits"
             },
             {
+              "click": "menuItemSelected(7,1)",
               "text": "bytes",
               "value": "bytes"
             },
             {
+              "click": "menuItemSelected(7,2)",
               "text": "kibibytes",
               "value": "kbytes"
             },
             {
+              "click": "menuItemSelected(7,3)",
               "text": "mebibytes",
               "value": "mbytes"
             },
             {
+              "click": "menuItemSelected(7,4)",
               "text": "gibibytes",
               "value": "gbytes"
             }
@@ -1576,22 +1696,27 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(8,0)",
               "text": "bits",
               "value": "decbits"
             },
             {
+              "click": "menuItemSelected(8,1)",
               "text": "bytes",
               "value": "decbytes"
             },
             {
+              "click": "menuItemSelected(8,2)",
               "text": "kilobytes",
               "value": "deckbytes"
             },
             {
+              "click": "menuItemSelected(8,3)",
               "text": "megabytes",
               "value": "decmbytes"
             },
             {
+              "click": "menuItemSelected(8,4)",
               "text": "gigabytes",
               "value": "decgbytes"
             }
@@ -1601,38 +1726,47 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(9,0)",
               "text": "packets/sec",
               "value": "pps"
             },
             {
+              "click": "menuItemSelected(9,1)",
               "text": "bits/sec",
               "value": "bps"
             },
             {
+              "click": "menuItemSelected(9,2)",
               "text": "bytes/sec",
               "value": "Bps"
             },
             {
+              "click": "menuItemSelected(9,3)",
               "text": "kilobytes/sec",
               "value": "KBs"
             },
             {
+              "click": "menuItemSelected(9,4)",
               "text": "kilobits/sec",
               "value": "Kbits"
             },
             {
+              "click": "menuItemSelected(9,5)",
               "text": "megabytes/sec",
               "value": "MBs"
             },
             {
+              "click": "menuItemSelected(9,6)",
               "text": "megabits/sec",
               "value": "Mbits"
             },
             {
+              "click": "menuItemSelected(9,7)",
               "text": "gigabytes/sec",
               "value": "GBs"
             },
             {
+              "click": "menuItemSelected(9,8)",
               "text": "gigabits/sec",
               "value": "Gbits"
             }
@@ -1642,14 +1776,17 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(10,0)",
               "text": "YYYY-MM-DD HH:mm:ss",
               "value": "dateTimeAsIso"
             },
             {
+              "click": "menuItemSelected(10,1)",
               "text": "DD/MM/YYYY h:mm:ss a",
               "value": "dateTimeAsUS"
             },
             {
+              "click": "menuItemSelected(10,2)",
               "text": "From Now",
               "value": "dateTimeFromNow"
             }
@@ -1659,90 +1796,112 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(11,0)",
               "text": "Watt (W)",
               "value": "watt"
             },
             {
+              "click": "menuItemSelected(11,1)",
               "text": "Kilowatt (kW)",
               "value": "kwatt"
             },
             {
+              "click": "menuItemSelected(11,2)",
               "text": "Milliwatt (mW)",
               "value": "mwatt"
             },
             {
+              "click": "menuItemSelected(11,3)",
               "text": "Watt per square meter (W/m²)",
               "value": "Wm2"
             },
             {
+              "click": "menuItemSelected(11,4)",
               "text": "Volt-ampere (VA)",
               "value": "voltamp"
             },
             {
+              "click": "menuItemSelected(11,5)",
               "text": "Kilovolt-ampere (kVA)",
               "value": "kvoltamp"
             },
             {
+              "click": "menuItemSelected(11,6)",
               "text": "Volt-ampere reactive (var)",
               "value": "voltampreact"
             },
             {
+              "click": "menuItemSelected(11,7)",
               "text": "Kilovolt-ampere reactive (kvar)",
               "value": "kvoltampreact"
             },
             {
+              "click": "menuItemSelected(11,8)",
               "text": "Watt-hour (Wh)",
               "value": "watth"
             },
             {
+              "click": "menuItemSelected(11,9)",
               "text": "Kilowatt-hour (kWh)",
               "value": "kwatth"
             },
             {
+              "click": "menuItemSelected(11,10)",
               "text": "Kilowatt-min (kWm)",
               "value": "kwattm"
             },
             {
+              "click": "menuItemSelected(11,11)",
               "text": "Joule (J)",
               "value": "joule"
             },
             {
+              "click": "menuItemSelected(11,12)",
               "text": "Electron volt (eV)",
               "value": "ev"
             },
             {
+              "click": "menuItemSelected(11,13)",
               "text": "Ampere (A)",
               "value": "amp"
             },
             {
+              "click": "menuItemSelected(11,14)",
               "text": "Kiloampere (kA)",
               "value": "kamp"
             },
             {
+              "click": "menuItemSelected(11,15)",
               "text": "Milliampere (mA)",
               "value": "mamp"
             },
             {
+              "click": "menuItemSelected(11,16)",
               "text": "Volt (V)",
               "value": "volt"
             },
             {
+              "click": "menuItemSelected(11,17)",
               "text": "Kilovolt (kV)",
               "value": "kvolt"
             },
             {
+              "click": "menuItemSelected(11,18)",
               "text": "Millivolt (mV)",
               "value": "mvolt"
             },
             {
+              "click": "menuItemSelected(11,19)",
               "text": "Decibel-milliwatt (dBm)",
               "value": "dBm"
             },
             {
+              "click": "menuItemSelected(11,20)",
               "text": "Ohm (Ω)",
               "value": "ohm"
             },
             {
+              "click": "menuItemSelected(11,21)",
               "text": "Lumens (Lm)",
               "value": "lumens"
             }
@@ -1752,34 +1911,42 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(12,0)",
               "text": "Gallons/min (gpm)",
               "value": "flowgpm"
             },
             {
+              "click": "menuItemSelected(12,1)",
               "text": "Cubic meters/sec (cms)",
               "value": "flowcms"
             },
             {
+              "click": "menuItemSelected(12,2)",
               "text": "Cubic feet/sec (cfs)",
               "value": "flowcfs"
             },
             {
+              "click": "menuItemSelected(12,3)",
               "text": "Cubic feet/min (cfm)",
               "value": "flowcfm"
             },
             {
+              "click": "menuItemSelected(12,4)",
               "text": "Litre/hour",
               "value": "litreh"
             },
             {
+              "click": "menuItemSelected(12,5)",
               "text": "Litre/min (l/min)",
               "value": "flowlpm"
             },
             {
+              "click": "menuItemSelected(12,6)",
               "text": "milliLitre/min (mL/min)",
               "value": "flowmlpm"
             },
             {
+              "click": "menuItemSelected(12,7)",
               "text": "Lux (lx)",
               "value": "lux"
             }
@@ -1789,18 +1956,22 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(13,0)",
               "text": "Newton-meters (Nm)",
               "value": "forceNm"
             },
             {
+              "click": "menuItemSelected(13,1)",
               "text": "Kilonewton-meters (kNm)",
               "value": "forcekNm"
             },
             {
+              "click": "menuItemSelected(13,2)",
               "text": "Newtons (N)",
               "value": "forceN"
             },
             {
+              "click": "menuItemSelected(13,3)",
               "text": "Kilonewtons (kN)",
               "value": "forcekN"
             }
@@ -1810,30 +1981,37 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(14,0)",
               "text": "hashes/sec",
               "value": "Hs"
             },
             {
+              "click": "menuItemSelected(14,1)",
               "text": "kilohashes/sec",
               "value": "KHs"
             },
             {
+              "click": "menuItemSelected(14,2)",
               "text": "megahashes/sec",
               "value": "MHs"
             },
             {
+              "click": "menuItemSelected(14,3)",
               "text": "gigahashes/sec",
               "value": "GHs"
             },
             {
+              "click": "menuItemSelected(14,4)",
               "text": "terahashes/sec",
               "value": "THs"
             },
             {
+              "click": "menuItemSelected(14,5)",
               "text": "petahashes/sec",
               "value": "PHs"
             },
             {
+              "click": "menuItemSelected(14,6)",
               "text": "exahashes/sec",
               "value": "EHs"
             }
@@ -1843,18 +2021,22 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(15,0)",
               "text": "milligram (mg)",
               "value": "massmg"
             },
             {
+              "click": "menuItemSelected(15,1)",
               "text": "gram (g)",
               "value": "massg"
             },
             {
+              "click": "menuItemSelected(15,2)",
               "text": "kilogram (kg)",
               "value": "masskg"
             },
             {
+              "click": "menuItemSelected(15,3)",
               "text": "metric ton (t)",
               "value": "masst"
             }
@@ -1864,22 +2046,27 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(16,0)",
               "text": "millimetre (mm)",
               "value": "lengthmm"
             },
             {
+              "click": "menuItemSelected(16,1)",
               "text": "feet (ft)",
               "value": "lengthft"
             },
             {
+              "click": "menuItemSelected(16,2)",
               "text": "meter (m)",
               "value": "lengthm"
             },
             {
+              "click": "menuItemSelected(16,3)",
               "text": "kilometer (km)",
               "value": "lengthkm"
             },
             {
+              "click": "menuItemSelected(16,4)",
               "text": "mile (mi)",
               "value": "lengthmi"
             }
@@ -1889,30 +2076,37 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(17,0)",
               "text": "Millibars",
               "value": "pressurembar"
             },
             {
+              "click": "menuItemSelected(17,1)",
               "text": "Bars",
               "value": "pressurebar"
             },
             {
+              "click": "menuItemSelected(17,2)",
               "text": "Kilobars",
               "value": "pressurekbar"
             },
             {
+              "click": "menuItemSelected(17,3)",
               "text": "Hectopascals",
               "value": "pressurehpa"
             },
             {
+              "click": "menuItemSelected(17,4)",
               "text": "Kilopascals",
               "value": "pressurekpa"
             },
             {
+              "click": "menuItemSelected(17,5)",
               "text": "Inches of mercury",
               "value": "pressurehg"
             },
             {
+              "click": "menuItemSelected(17,6)",
               "text": "PSI",
               "value": "pressurepsi"
             }
@@ -1922,38 +2116,47 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(18,0)",
               "text": "Becquerel (Bq)",
               "value": "radbq"
             },
             {
+              "click": "menuItemSelected(18,1)",
               "text": "curie (Ci)",
               "value": "radci"
             },
             {
+              "click": "menuItemSelected(18,2)",
               "text": "Gray (Gy)",
               "value": "radgy"
             },
             {
+              "click": "menuItemSelected(18,3)",
               "text": "rad",
               "value": "radrad"
             },
             {
+              "click": "menuItemSelected(18,4)",
               "text": "Sievert (Sv)",
               "value": "radsv"
             },
             {
+              "click": "menuItemSelected(18,5)",
               "text": "rem",
               "value": "radrem"
             },
             {
+              "click": "menuItemSelected(18,6)",
               "text": "Exposure (C/kg)",
               "value": "radexpckg"
             },
             {
+              "click": "menuItemSelected(18,7)",
               "text": "roentgen (R)",
               "value": "radr"
             },
             {
+              "click": "menuItemSelected(18,8)",
               "text": "Sievert/hour (Sv/h)",
               "value": "radsvh"
             }
@@ -1963,14 +2166,17 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(19,0)",
               "text": "Celsius (°C)",
               "value": "celsius"
             },
             {
+              "click": "menuItemSelected(19,1)",
               "text": "Farenheit (°F)",
               "value": "farenheit"
             },
             {
+              "click": "menuItemSelected(19,2)",
               "text": "Kelvin (K)",
               "value": "kelvin"
             }
@@ -1980,58 +2186,72 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(20,0)",
               "text": "Hertz (1/s)",
               "value": "hertz"
             },
             {
+              "click": "menuItemSelected(20,1)",
               "text": "nanoseconds (ns)",
               "value": "ns"
             },
             {
+              "click": "menuItemSelected(20,2)",
               "text": "microseconds (µs)",
               "value": "µs"
             },
             {
+              "click": "menuItemSelected(20,3)",
               "text": "milliseconds (ms)",
               "value": "ms"
             },
             {
+              "click": "menuItemSelected(20,4)",
               "text": "seconds (s)",
               "value": "s"
             },
             {
+              "click": "menuItemSelected(20,5)",
               "text": "minutes (m)",
               "value": "m"
             },
             {
+              "click": "menuItemSelected(20,6)",
               "text": "hours (h)",
               "value": "h"
             },
             {
+              "click": "menuItemSelected(20,7)",
               "text": "days (d)",
               "value": "d"
             },
             {
+              "click": "menuItemSelected(20,8)",
               "text": "duration (ms)",
               "value": "dtdurationms"
             },
             {
+              "click": "menuItemSelected(20,9)",
               "text": "duration (s)",
               "value": "dtdurations"
             },
             {
+              "click": "menuItemSelected(20,10)",
               "text": "duration (hh:mm:ss)",
               "value": "dthms"
             },
             {
+              "click": "menuItemSelected(20,11)",
               "text": "Timeticks (s/100)",
               "value": "timeticks"
             },
             {
+              "click": "menuItemSelected(20,12)",
               "text": "clock (ms)",
               "value": "clockms"
             },
             {
+              "click": "menuItemSelected(20,13)",
               "text": "clock (s)",
               "value": "clocks"
             }
@@ -2041,34 +2261,42 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(21,0)",
               "text": "ops/sec (ops)",
               "value": "ops"
             },
             {
+              "click": "menuItemSelected(21,1)",
               "text": "requests/sec (rps)",
               "value": "reqps"
             },
             {
+              "click": "menuItemSelected(21,2)",
               "text": "reads/sec (rps)",
               "value": "rps"
             },
             {
+              "click": "menuItemSelected(21,3)",
               "text": "writes/sec (wps)",
               "value": "wps"
             },
             {
+              "click": "menuItemSelected(21,4)",
               "text": "I/O ops/sec (iops)",
               "value": "iops"
             },
             {
+              "click": "menuItemSelected(21,5)",
               "text": "ops/min (opm)",
               "value": "opm"
             },
             {
+              "click": "menuItemSelected(21,6)",
               "text": "reads/min (rpm)",
               "value": "rpm"
             },
             {
+              "click": "menuItemSelected(21,7)",
               "text": "writes/min (wpm)",
               "value": "wpm"
             }
@@ -2078,18 +2306,22 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(22,0)",
               "text": "metres/second (m/s)",
               "value": "velocityms"
             },
             {
+              "click": "menuItemSelected(22,1)",
               "text": "kilometers/hour (km/h)",
               "value": "velocitykmh"
             },
             {
+              "click": "menuItemSelected(22,2)",
               "text": "miles/hour (mph)",
               "value": "velocitymph"
             },
             {
+              "click": "menuItemSelected(22,3)",
               "text": "knot (kn)",
               "value": "velocityknot"
             }
@@ -2099,26 +2331,32 @@
         {
           "submenu": [
             {
+              "click": "menuItemSelected(23,0)",
               "text": "millilitre (mL)",
               "value": "mlitre"
             },
             {
+              "click": "menuItemSelected(23,1)",
               "text": "litre (L)",
               "value": "litre"
             },
             {
+              "click": "menuItemSelected(23,2)",
               "text": "cubic metre",
               "value": "m3"
             },
             {
+              "click": "menuItemSelected(23,3)",
               "text": "Normal cubic metre",
               "value": "Nm3"
             },
             {
+              "click": "menuItemSelected(23,4)",
               "text": "cubic decimetre",
               "value": "dm3"
             },
             {
+              "click": "menuItemSelected(23,5)",
               "text": "gallons",
               "value": "gallons"
             }
@@ -2130,13 +2368,13 @@
       "table_editor_link_width_units": "",
       "table_editor_node_labels": [
         "Source",
-        "Discipline",
+        "Source Discipline",
         "Destination"
       ],
       "table_editor_option_nodes": [
-        "meta.scireg.src.resource.keyword",
+        "meta.scireg.src.org_name.keyword",
         "meta.scireg.src.discipline.keyword",
-        "meta.scireg.dst.resource.keyword"
+        "meta.scireg.dst.org_name.keyword"
       ],
       "table_editor_unitFormats": "kbn.getUnitFormats()",
       "table_editor_unitFormats_TEMP": [
@@ -2161,7 +2399,7 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.scireg.src.resource.keyword",
+              "field": "meta.scireg.src.org_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -2186,7 +2424,7 @@
               "type": "terms"
             },
             {
-              "field": "meta.scireg.dst.resource.keyword",
+              "field": "meta.scireg.dst.org_name.keyword",
               "id": "2",
               "settings": {
                 "min_doc_count": 1,
@@ -2198,6 +2436,7 @@
               "type": "terms"
             }
           ],
+          "hide": false,
           "metrics": [
             {
               "field": "values.num_bits",
@@ -2212,7 +2451,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Top Science Talkers by Discipline",
+      "title": "",
       "tooltip": {
         "content": " ",
         "show": true,
@@ -2222,21 +2461,39 @@
       "type": "netsage-sankey"
     },
     {
+      "content": "<h3><center>Summary of All Disciplines</center></h1>\n<center>Only flows where source or destination has been tagged with a science discipline <br>\nfrom the Science Registry <i>and</i> were seen by the selected sensor(s) are counted.\n</center>",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 5014,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 35
+        "y": 41
       },
       "hideTimeOverride": false,
       "id": 21,
       "links": [],
       "options": {},
       "pageSize": 10,
-      "scroll": true,
+      "scroll": false,
       "showHeader": true,
       "sort": {
         "col": 1,
@@ -2244,13 +2501,13 @@
       },
       "styles": [
         {
-          "alias": "Discipline",
+          "alias": "Source Discipline",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "link": false,
           "linkTargetBlank": true,
           "linkTooltip": "",
           "linkUrl": "",
-          "pattern": "/meta.+/",
+          "pattern": "/meta.*src.*/",
           "type": "string",
           "unit": "bits"
         },
@@ -2285,7 +2542,7 @@
           "unit": "decbytes"
         },
         {
-          "alias": "Packets",
+          "alias": "Peak Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2294,10 +2551,26 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Sum values.num_packets",
+          "pattern": "Max values.bits_per_second",
           "thresholds": [],
           "type": "number",
-          "unit": "short"
+          "unit": "bps"
+        },
+        {
+          "alias": "Average Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
         },
         {
           "alias": "Largest Flow",
@@ -2307,38 +2580,8 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "/Max/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
           "decimals": 0,
-          "pattern": "/.*/",
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
@@ -2353,7 +2596,6 @@
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
-                "missing": "Unknown",
                 "order": "desc",
                 "orderBy": "1",
                 "size": "0"
@@ -2388,8 +2630,22 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "values.bits_per_second",
               "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "8",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "select field",
+              "id": "9",
               "type": "count"
             }
           ],
@@ -2399,7 +2655,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top Disciplines in Science Registry",
+      "title": "Flow Statistics by Source Discipline",
       "transform": "table",
       "type": "table"
     },
@@ -2409,16 +2665,16 @@
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 35
+        "w": 24,
+        "x": 0,
+        "y": 52
       },
       "hideTimeOverride": false,
-      "id": 28,
+      "id": 5015,
       "links": [],
       "options": {},
-      "pageSize": null,
-      "scroll": true,
+      "pageSize": 10,
+      "scroll": false,
       "showHeader": true,
       "sort": {
         "col": 1,
@@ -2426,21 +2682,13 @@
       },
       "styles": [
         {
-          "alias": "Discipline",
+          "alias": "Destination Discipline",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "link": false,
           "linkTargetBlank": true,
           "linkTooltip": "",
           "linkUrl": "",
-          "mappingType": 1,
-          "pattern": "/meta.+/",
-          "rangeMaps": [
-            {
-              "from": "",
-              "text": "",
-              "to": ""
-            }
-          ],
+          "pattern": "/meta.*dst.*/",
           "type": "string",
           "unit": "bits"
         },
@@ -2460,7 +2708,7 @@
           "unit": "short"
         },
         {
-          "alias": "Average",
+          "alias": "Total Volume",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2469,13 +2717,13 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Average",
+          "pattern": "Sum",
           "thresholds": [],
           "type": "number",
-          "unit": "bps"
+          "unit": "decbytes"
         },
         {
-          "alias": "Peak",
+          "alias": "Peak Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2484,28 +2732,29 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Max",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
           "pattern": "Max values.bits_per_second",
           "thresholds": [],
           "type": "number",
           "unit": "bps"
         },
         {
-          "alias": "",
+          "alias": "Average Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Largest Flow",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -2513,7 +2762,7 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "decimals": 0,
-          "pattern": "/.*/",
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
@@ -2524,14 +2773,13 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.scireg.src.discipline.keyword",
+              "field": "meta.scireg.dst.discipline.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
-                "missing": "Unknown",
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "0"
               },
               "type": "terms"
             }
@@ -2539,23 +2787,46 @@
           "dsType": "elasticsearch",
           "metrics": [
             {
-              "field": "values.bits_per_second",
+              "field": "values.num_bits",
               "id": "1",
-              "inlineScript": null,
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "7",
               "meta": {},
               "settings": {},
               "type": "max"
             },
             {
               "field": "values.bits_per_second",
-              "id": "5",
+              "id": "8",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
               "field": "select field",
-              "id": "7",
+              "id": "9",
               "type": "count"
             }
           ],
@@ -2565,7 +2836,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top 10 Peak Rate Disciplines in Science Registry",
+      "title": "Flow Statistics by Destination Discipline",
       "transform": "table",
       "type": "table"
     },
@@ -2575,7 +2846,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 63
       },
       "id": 49,
       "links": [],
@@ -2626,15 +2897,15 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "Astronomy and Astrophysics",
+          "text": "MPS.Physics.High Energy",
           "value": [
-            "Astronomy and Astrophysics"
+            "MPS.Physics.High Energy"
           ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline.keyword\", \"query\":\"-meta.scireg.src.discipline.keyword:\\\"Network Monitoring\\\"\"}",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "Discipline",
         "multi": true,
         "name": "discipline",
@@ -2653,7 +2924,7 @@
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {

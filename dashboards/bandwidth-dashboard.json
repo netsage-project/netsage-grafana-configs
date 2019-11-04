@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1572900665749,
+  "iteration": 1572906116310,
   "links": [],
   "panels": [
     {
@@ -1673,7 +1673,7 @@
       "content": "",
       "gridPos": {
         "h": 1,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 24
       },
@@ -1681,52 +1681,22 @@
       "links": [],
       "mode": "markdown",
       "options": {},
-      "title": "Traffic Volume",
+      "title": "Traffic Rate",
       "type": "text"
     },
     {
       "content": "",
       "gridPos": {
         "h": 1,
-        "w": 6,
-        "x": 8,
-        "y": 24
-      },
-      "id": 9,
-      "links": [],
-      "mode": "markdown",
-      "options": {},
-      "title": "(A to Z) Bandwidth Distribution",
-      "type": "text"
-    },
-    {
-      "content": "",
-      "gridPos": {
-        "h": 1,
-        "w": 6,
-        "x": 14,
-        "y": 24
-      },
-      "id": 10,
-      "links": [],
-      "mode": "markdown",
-      "options": {},
-      "title": "(Z to A) Bandwidth Distribution",
-      "type": "text"
-    },
-    {
-      "content": "",
-      "gridPos": {
-        "h": 1,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 24
       },
       "id": 11,
       "links": [],
       "mode": "markdown",
       "options": {},
-      "title": "Total Data",
+      "title": "Total Volume",
       "type": "text"
     },
     {
@@ -1751,7 +1721,7 @@
       "type": "row"
     },
     {
-      "content": "$links",
+      "content": "**$links**",
       "gridPos": {
         "h": 7,
         "w": 2,
@@ -1784,7 +1754,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 26
       },
@@ -2043,393 +2013,13 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 26
-      },
-      "id": 14,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Chile to Sao Paolo 100GE",
-          "value": "AmLight: Chile to Sao Paolo 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 26
-      },
-      "id": 15,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Chile to Sao Paolo 100GE",
-          "value": "AmLight: Chile to Sao Paolo 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 26
       },
       "id": 16,
@@ -2694,7 +2284,7 @@
       "id": "53611111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -2718,7 +2308,7 @@
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2743,7 +2333,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 34
       },
@@ -2770,7 +2360,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3005,402 +2595,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 34
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Chile 100GE",
-          "value": "AmLight: Miami to Chile 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 34
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Chile 100GE",
-          "value": "AmLight: Miami to Chile 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 34
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3422,7 +2626,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3527,7 +2731,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -3593,7 +2797,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -3662,10 +2866,10 @@
         "x": 0,
         "y": 41
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -3685,11 +2889,11 @@
         "x": 0,
         "y": 42
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3714,11 +2918,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 42
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3741,7 +2945,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3976,402 +3180,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 42
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Sao Paulo 100GE",
-          "value": "AmLight: Miami to Sao Paulo 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 42
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Sao Paulo 100GE",
-          "value": "AmLight: Miami to Sao Paulo 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 42
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4393,7 +3211,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4498,7 +3316,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -4564,7 +3382,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -4633,10 +3451,10 @@
         "x": 0,
         "y": 49
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -4656,11 +3474,11 @@
         "x": 0,
         "y": 50
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4685,11 +3503,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 50
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4712,7 +3530,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4947,402 +3765,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 50
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "NEAAR: New York to London 100GE",
-          "value": "NEAAR: New York to London 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 50
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "NEAAR: New York to London 100GE",
-          "value": "NEAAR: New York to London 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 50
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5364,7 +3796,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5469,7 +3901,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -5535,7 +3967,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -5604,10 +4036,10 @@
         "x": 0,
         "y": 57
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -5627,11 +4059,11 @@
         "x": 0,
         "y": 58
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5656,11 +4088,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 58
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5683,7 +4115,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5918,402 +4350,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 58
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Los Angeles to Mauna Lani 100GE",
-          "value": "PIREN: Los Angeles to Mauna Lani 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 58
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Los Angeles to Mauna Lani 100GE",
-          "value": "PIREN: Los Angeles to Mauna Lani 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 58
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6335,7 +4381,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6440,7 +4486,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -6506,7 +4552,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -6575,10 +4621,10 @@
         "x": 0,
         "y": 65
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -6598,11 +4644,11 @@
         "x": 0,
         "y": 66
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6627,11 +4673,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 66
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6654,7 +4700,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6889,402 +4935,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 66
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Mauna Lani to Sydney 100GE",
-          "value": "PIREN: Mauna Lani to Sydney 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 66
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Mauna Lani to Sydney 100GE",
-          "value": "PIREN: Mauna Lani to Sydney 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 66
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7306,7 +4966,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7411,7 +5071,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -7477,7 +5137,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -7546,10 +5206,10 @@
         "x": 0,
         "y": 73
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -7569,11 +5229,11 @@
         "x": 0,
         "y": 74
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7598,11 +5258,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 74
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7625,7 +5285,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7860,402 +5520,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 74
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Oahu to Guam 100GE",
-          "value": "PIREN: Oahu to Guam 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 74
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Oahu to Guam 100GE",
-          "value": "PIREN: Oahu to Guam 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 74
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8277,7 +5551,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8382,7 +5656,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -8448,7 +5722,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -8517,10 +5791,10 @@
         "x": 0,
         "y": 81
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -8540,11 +5814,11 @@
         "x": 0,
         "y": 82
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8569,11 +5843,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 82
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8596,7 +5870,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8831,402 +6105,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 82
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Oahu to Los Angeles 100GE",
-          "value": "PIREN: Oahu to Los Angeles 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 82
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Oahu to Los Angeles 100GE",
-          "value": "PIREN: Oahu to Los Angeles 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 82
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9248,7 +6136,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9353,7 +6241,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -9419,7 +6307,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -9488,10 +6376,10 @@
         "x": 0,
         "y": 89
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -9511,11 +6399,11 @@
         "x": 0,
         "y": 90
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9540,11 +6428,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 90
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9567,7 +6455,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9802,402 +6690,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 90
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Oahu to Sydney 100GE",
-          "value": "PIREN: Oahu to Sydney 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 90
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Oahu to Sydney 100GE",
-          "value": "PIREN: Oahu to Sydney 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 90
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10219,7 +6721,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10324,7 +6826,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -10390,7 +6892,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -10459,10 +6961,10 @@
         "x": 0,
         "y": 97
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -10482,11 +6984,11 @@
         "x": 0,
         "y": 98
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10511,11 +7013,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 98
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10538,7 +7040,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10773,402 +7275,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 98
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Seattle to Oahu 100GE",
-          "value": "PIREN: Seattle to Oahu 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 98
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "PIREN: Seattle to Oahu 100GE",
-          "value": "PIREN: Seattle to Oahu 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 98
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11190,7 +7306,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11295,7 +7411,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -11361,7 +7477,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -11430,10 +7546,10 @@
         "x": 0,
         "y": 105
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -11453,11 +7569,11 @@
         "x": 0,
         "y": 106
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11482,11 +7598,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 106
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11509,7 +7625,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11744,402 +7860,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 106
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "TransPAC: Hong Kong to Guam 10GE",
-          "value": "TransPAC: Hong Kong to Guam 10GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 106
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "TransPAC: Hong Kong to Guam 10GE",
-          "value": "TransPAC: Hong Kong to Guam 10GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 106
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12161,7 +7891,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12266,7 +7996,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -12332,7 +8062,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -12401,10 +8131,10 @@
         "x": 0,
         "y": 113
       },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 202,
       "scopedVars": {
         "links": {
@@ -12424,11 +8154,11 @@
         "x": 0,
         "y": 114
       },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "links": [],
       "mode": "markdown",
       "options": {},
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12453,11 +8183,11 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 14,
         "x": 2,
         "y": 114
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12480,7 +8210,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12715,402 +8445,16 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 8,
-        "y": 114
-      },
-      "id": "53611111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 14,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "TransPAC: Seattle to Tokyo 100GE",
-          "value": "TransPAC: Seattle to Tokyo 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#FBAE60"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "output",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "output"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$link_name $VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 14,
-        "y": 114
-      },
-      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeatIteration": 1572900665749,
-      "repeatPanelId": 15,
-      "repeatedByRow": true,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "TransPAC: Seattle to Tokyo 100GE",
-          "value": "TransPAC: Seattle to Tokyo 100GE"
-        }
-      },
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#80B2E7"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Datapoints",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 20,
+        "w": 8,
+        "x": 16,
         "y": 114
       },
-      "id": "5361111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+      "id": "536111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -13132,7 +8476,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1572900665749,
+      "repeatIteration": 1572906116310,
       "repeatPanelId": 16,
       "repeatedByRow": true,
       "scopedVars": {
@@ -13237,7 +8581,7 @@
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
-          "target": "get link_name, values.output * $quantify from (get link_name, aggregate(values.output, $quantify, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "A-Z",
           "templateVariableValue": [
             ""
@@ -13303,7 +8647,7 @@
           "rawQuery": true,
           "refId": "B",
           "series": "interface",
-          "target": "get link_name, values.input * $quantify from (get link_name, aggregate(values.input, $quantify, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
+          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
           "target_alias": "Z-A",
           "templateVariableValue": [
             ""
@@ -13773,6 +9117,7 @@
       "datasource": "Netsage TSDS",
       "decimals": 1,
       "fill": 0,
+      "fillGradient": 0,
       "gridPos": {
         "h": 12,
         "w": 24,
@@ -13793,7 +9138,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,

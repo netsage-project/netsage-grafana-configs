@@ -15,489 +15,38 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 88,
-  "iteration": 1566327284783,
-  "links": [
-    {
-      "asDropdown": true,
-      "icon": "external link",
-      "keepTime": true,
-      "tags": [
-        "netsage"
-      ],
-      "targetBlank": true,
-      "title": "Other Dashboards",
-      "type": "dashboards"
-    }
-  ],
+  "iteration": 1573160062016,
+  "links": [],
   "panels": [
-    {
-      "content": "<h4>Select a Discipline from the dropdown above. We recommend selecting no more than 3 at a time.</h4>\n<center>This sankey graph shows the top 10 source science organizations by volume for the selected disciplines in a specific period of time.</center>\n<center>It then shows their disciplines and the top 5 destination science organizations for each.  Thicker lines indicate larger flows.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 5011,
-      "links": [],
-      "mode": "html",
-      "options": {},
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "decimals": null,
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 7,
-        "x": 2,
-        "y": 3
-      },
-      "id": 47,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "  -> SciReg",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline &&  _exists_:meta.scireg.dst.org_name",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": "",
-      "title": "",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "decimals": null,
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 7,
-        "x": 15,
-        "y": 3
-      },
-      "id": 42,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "-> flows matched in SciReg",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "_exists_:meta.scireg.dst.org_name AND meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": "",
-      "title": "",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "decimals": 1,
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 7,
-        "x": 2,
-        "y": 5
-      },
-      "id": 45,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "-> all",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": "",
-      "title": "",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "decimals": 1,
-      "format": "short",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 7,
-        "x": 15,
-        "y": 5
-      },
-      "id": 46,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "-> total flows",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": "",
-      "title": "",
-      "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
     {
       "__netsage_template": "navigation",
       "array_option_1": [
         "What is the current state of the network?",
-        "What are the top senders/receivers of flows?",
+        "What are the top sources/destinations of flows?",
+        "What is the aggregate flow data for data archives?",
         "What are the top flows by organization?",
+        "What do individual flows look like?",
         "What are the top flows by country?",
         "What are flows by science discipline?",
-        "What is the aggregate flow data for data archives?",
-        "What do individual flows look like?",
-        "What are the current flow data summary statistics?",
-        "What is the state of active testing on the network?",
+        "What are the patterns in science data transfers in the network?",
+        "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the bandwidth patterns in the network?",
-        "What are the patterns in science data transfers in the network?"
+        "What are the current flow data summary statistics?"
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
         "/grafana/d/xk26IFhmk/flow-data",
+        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
         "/grafana/d/QfzDJKhik/flow-data-per-organization",
+        "/grafana/d/-l3_u8nWk/individual-flows",
         "/grafana/d/fgrOzz_mk/flow-data-per-country",
         "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
-        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
-        "/grafana/d/-l3_u8nWk/individual-flows",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/000000033/loss-and-throughput-active-testing",
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
+        "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/000000004/bandwidth-patterns",
-        "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+        "/grafana/d/CJC1FFhmz/other-flow-stats"
       ],
       "array_option_3": [
         "",
@@ -655,11 +204,13 @@
         ]
       },
       "custom_hover": " ",
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
-        "h": 1,
-        "w": 24,
+        "h": 3,
+        "w": 2,
         "x": 0,
-        "y": 7
+        "y": 0
       },
       "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
       "hex_values": [
@@ -720,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 275419353,
+      "max_total": 69057620,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -728,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 191130.7099236641,
+          "avg": 406221.29411764705,
           "label": "Count",
-          "max": 903978,
-          "min": 7,
-          "total": 275419353
+          "max": 1195950,
+          "min": 2137,
+          "total": 69057620
         }
       ],
       "rgb_values": [
@@ -791,7 +342,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -828,6 +381,460 @@
       "topLogoPath": "https://portal.netsage.global/netsage-cropped.png",
       "transparent": true,
       "type": "netsagenavigation"
+    },
+    {
+      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows the science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center>The Sankey graph shows the top ten source organizations by volume for the selected disciplines and their associated top five destination organizations.</center>\n<center>Thicker lines indicate larger flows.</center>\n<center>All times are displayed in browser local time.</center>\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "gridPos": {
+        "h": 5,
+        "w": 20,
+        "x": 2,
+        "y": 0
+      },
+      "id": 5011,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 2,
+        "y": 5
+      },
+      "id": 47,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": " Volume Matched in Science Registry",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline or meta.scireg.dst.discipline.keyword:$discipline)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 14,
+        "y": 5
+      },
+      "id": 42,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": " Flows Matched in Science Registry",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline or meta.scireg.dst.discipline.keyword:$discipline)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 2,
+        "y": 7
+      },
+      "id": 45,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": " Total Volume",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "short",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 14,
+        "y": 7
+      },
+      "id": 46,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": " Total Flows",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "content": "<h3 style=\"margin: 20px;\"><center>Top Science Talkers</center></h3>\n",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 5013,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
     },
     {
       "auto_format_labels": false,
@@ -973,8 +980,9 @@
         "h": 27,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 11
       },
+      "height": 2,
       "hex_values": [
         "#f8ae63",
         "#f5ae66",
@@ -1030,7 +1038,7 @@
       "id": 44,
       "label_nodes": [
         "Source",
-        "Discipline",
+        "Source Discipline",
         "Destination"
       ],
       "legend": {
@@ -1097,118 +1105,250 @@
       ],
       "table_data": [
         [
-          "Istituto di Radioastronomia",
-          "Astronomy and Astrophysics",
-          "NICT - Kashima - VLBI data transfer servers",
-          4337524925931520
-        ],
-        [
-          "Atacama Large Millimeter Array",
-          "Astronomy and Astrophysics",
-          "NOAJ - WIDE Project - unknown",
-          1056136326340608
-        ],
-        [
-          "ESO - Chile?",
-          "Astronomy and Astrophysics",
-          "ESO - Germany?",
-          1004235003166720
-        ],
-        [
-          "ESO - Chile?",
-          "Astronomy and Astrophysics",
+          "Brookhaven National Laboratory (BNL)",
+          "MPS.Physics.High Energy",
           "UNK-DST",
-          36843552768
+          501939315200000
         ],
         [
-          "UH - IFA - Asteroid Terrestrial-impact Last Alert System (ATLAS) - Image Processing Cluster",
-          "Astronomy and Astrophysics",
+          "Brookhaven National Laboratory (BNL)",
+          "MPS.Physics.High Energy",
+          "Max Planck Computing and Data Facility (MPCDF)",
+          45097980174336
+        ],
+        [
+          "Brookhaven National Laboratory (BNL)",
+          "MPS.Physics.High Energy",
+          "Technion - Israel Institute of Technology",
+          28355672502272
+        ],
+        [
+          "Brookhaven National Laboratory (BNL)",
+          "MPS.Physics.High Energy",
+          "University of Glasgow (U of G)",
+          19851710185472
+        ],
+        [
+          "Brookhaven National Laboratory (BNL)",
+          "MPS.Physics.High Energy",
+          "University of Edinburgh",
+          9266129661952
+        ],
+        [
+          "National Institute for Nuclear Physics - National Center for Frame Analysis",
+          "MPS.Physics.High Energy",
+          "University of Florida (UF)",
+          389305623838720
+        ],
+        [
+          "National Institute for Nuclear Physics - National Center for Frame Analysis",
+          "MPS.Physics.High Energy",
           "UNK-DST",
-          588121276188000
+          1659069595648
         ],
         [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "Astronomy and Astrophysics",
-          "UH - IFA - Data Transfer Node UH-IFA at ITC",
-          341751488780000
-        ],
-        [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "Astronomy and Astrophysics",
-          "UH - IFA - Institute for Astronomy (IfA) ITC",
-          117760812360000
-        ],
-        [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "Astronomy and Astrophysics",
-          "UH - PerfSonar - Science DMZ (ITC)",
-          32413902720000
-        ],
-        [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "Astronomy and Astrophysics",
-          "UH - PerfSonar- Panoramic Survey Telescope and Rapid Response System (ITC)",
-          30198800256000
-        ],
-        [
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          "Astronomy and Astrophysics",
-          "UH - PerfSonar - Haleakala Summit",
-          913849920000
-        ],
-        [
-          "UH - IFA - Data Transfer Node UH-IFA at ITC",
-          "Astronomy and Astrophysics",
-          "UH - MAX - Data Transfer Node UH-IFA at MAX",
-          408347118960000
-        ],
-        [
-          "UH - IFA - Data Transfer Node UH-IFA at ITC",
-          "Astronomy and Astrophysics",
+          "University of Florida (UF)",
+          "MPS.Physics.High Energy",
           "UNK-DST",
-          5714422080000
+          251113440935936
         ],
         [
-          "UH - IFA - Data Transfer Node UH-IFA at ITC",
-          "Astronomy and Astrophysics",
-          "UH - PerfSonar- Guam Open Research and Education Exchange",
-          4320000000
-        ],
-        [
-          "HartRAO - European VLBI",
-          "Astronomy and Astrophysics",
-          "NASA - International VLBI Service",
-          350199002030080
-        ],
-        [
-          "Argentinean-German Geodetic Observatory",
-          "Astronomy and Astrophysics",
+          "CERN",
+          "MPS.Physics.High Energy",
           "UNK-DST",
-          258273208500224
+          190646092247040
         ],
         [
-          "Argentinean-German Geodetic Observatory",
-          "Astronomy and Astrophysics",
-          "University of Bonn",
-          39760559341568
+          "CERN",
+          "MPS.Physics.High Energy",
+          "University of Oklahoma (OU)",
+          5030050213888
         ],
         [
-          "NRAO - Very Large Baseline Array (VLBA) - Maunakea",
-          "Astronomy and Astrophysics",
-          "NASA - International VLBI Service",
-          199939511152000
+          "CERN",
+          "MPS.Physics.High Energy",
+          "National Energy Research Scientific Computing Center (NERSC)",
+          3580963762176
         ],
         [
-          "NRAO AOC Subversion Server at New Mexico Tech",
-          "Astronomy and Astrophysics",
+          "CERN",
+          "MPS.Physics.High Energy",
+          "Chinese University of Hong Kong (CUHK)",
+          1447286759424
+        ],
+        [
+          "CERN",
+          "MPS.Physics.High Energy",
+          "National Center for Supercomputing Applications (NCSA)",
+          165954961408
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
           "UNK-DST",
-          158689189056128
+          133042372325376
         ],
         [
-          "NRAO AOC Subversion Server at New Mexico Tech",
-          "Astronomy and Astrophysics",
-          "Academia Sinica - Institute of Astronomy and Astrophysics (ASIAA)",
-          3438804754432
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          23697607049216
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "University of Oklahoma (OU)",
+          19406668779520
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "University of Chicago (U of C)",
+          7598631403520
+        ],
+        [
+          "Rutherford Appleton Laboratory (RAL)",
+          "MPS.Physics.High Energy",
+          "Purdue University",
+          5487949225984
+        ],
+        [
+          "University of Manchester",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          40574446874624
+        ],
+        [
+          "University of Manchester",
+          "MPS.Physics.High Energy",
+          "University of Oklahoma (OU)",
+          26331924709376
+        ],
+        [
+          "University of Manchester",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          15062389506048
+        ],
+        [
+          "University of Manchester",
+          "MPS.Physics.High Energy",
+          "SLAC National Accelerator Laboratory",
+          2887498719232
+        ],
+        [
+          "University of Manchester",
+          "MPS.Physics.High Energy",
+          "National Energy Research Scientific Computing Center (NERSC)",
+          25446801408
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          72596969431040
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "Energy Sciences Network (ESnet)",
+          866270519296
+        ],
+        [
+          "University of Chicago (U of C)",
+          "MPS.Physics.High Energy",
+          "Chinese University of Hong Kong (CUHK)",
+          600304750592
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          67148226465792
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "Interuniversity Institute for High Energies (IIHE)",
+          827272617984
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "Austrian Academy of Sciences (OEAW)",
+          810302853120
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "National Centre for Nuclear Research  (Narodowe Centrum Badan Jadrowych - NCBJ)",
+          271685046272
+        ],
+        [
+          "Fermi National Accelerator Laboratory (Fermilab)",
+          "MPS.Physics.High Energy",
+          "JINR/HEPNET",
+          188217724928
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          31944252674048
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          18825030483968
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "SLAC National Accelerator Laboratory",
+          6341632376832
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "University of Oklahoma (OU)",
+          5574486999040
+        ],
+        [
+          "Queen Mary University of London (QMUL)",
+          "MPS.Physics.High Energy",
+          "National Energy Research Scientific Computing Center (NERSC)",
+          1497364766720
+        ],
+        [
+          "Chinese University of Hong Kong (CUHK)",
+          "MPS.Physics.High Energy",
+          "UNK-DST",
+          43301109460992
+        ],
+        [
+          "Chinese University of Hong Kong (CUHK)",
+          "MPS.Physics.High Energy",
+          "Rutherford Appleton Laboratory (RAL)",
+          2206079811584
+        ],
+        [
+          "Chinese University of Hong Kong (CUHK)",
+          "MPS.Physics.High Energy",
+          "Boston University (BU)",
+          1966954004480
+        ],
+        [
+          "Chinese University of Hong Kong (CUHK)",
+          "MPS.Physics.High Energy",
+          "Brookhaven National Laboratory (BNL)",
+          1364086042624
+        ],
+        [
+          "Chinese University of Hong Kong (CUHK)",
+          "MPS.Physics.High Energy",
+          "University of Glasgow (U of G)",
+          1282460459008
         ]
       ],
       "table_data_type": "Sum",
@@ -1217,17 +1357,1024 @@
         2,
         3
       ],
+      "table_editor_kbnUnitFormats": [
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(0,0)",
+              "text": "none",
+              "value": "none"
+            },
+            {
+              "click": "menuItemSelected(0,1)",
+              "text": "short",
+              "value": "short"
+            },
+            {
+              "click": "menuItemSelected(0,2)",
+              "text": "percent (0-100)",
+              "value": "percent"
+            },
+            {
+              "click": "menuItemSelected(0,3)",
+              "text": "percent (0.0-1.0)",
+              "value": "percentunit"
+            },
+            {
+              "click": "menuItemSelected(0,4)",
+              "text": "Humidity (%H)",
+              "value": "humidity"
+            },
+            {
+              "click": "menuItemSelected(0,5)",
+              "text": "decibel",
+              "value": "dB"
+            },
+            {
+              "click": "menuItemSelected(0,6)",
+              "text": "hexadecimal (0x)",
+              "value": "hex0x"
+            },
+            {
+              "click": "menuItemSelected(0,7)",
+              "text": "hexadecimal",
+              "value": "hex"
+            },
+            {
+              "click": "menuItemSelected(0,8)",
+              "text": "scientific notation",
+              "value": "sci"
+            },
+            {
+              "click": "menuItemSelected(0,9)",
+              "text": "locale format",
+              "value": "locale"
+            }
+          ],
+          "text": "Misc"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(1,0)",
+              "text": "Meters/sec²",
+              "value": "accMS2"
+            },
+            {
+              "click": "menuItemSelected(1,1)",
+              "text": "Feet/sec²",
+              "value": "accFS2"
+            },
+            {
+              "click": "menuItemSelected(1,2)",
+              "text": "G unit",
+              "value": "accG"
+            }
+          ],
+          "text": "Acceleration"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(2,0)",
+              "text": "Degrees (°)",
+              "value": "degree"
+            },
+            {
+              "click": "menuItemSelected(2,1)",
+              "text": "Radians",
+              "value": "radian"
+            },
+            {
+              "click": "menuItemSelected(2,2)",
+              "text": "Gradian",
+              "value": "grad"
+            },
+            {
+              "click": "menuItemSelected(2,3)",
+              "text": "Arc Minutes",
+              "value": "arcmin"
+            },
+            {
+              "click": "menuItemSelected(2,4)",
+              "text": "Arc Seconds",
+              "value": "arcsec"
+            }
+          ],
+          "text": "Angle"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(3,0)",
+              "text": "Square Meters (m²)",
+              "value": "areaM2"
+            },
+            {
+              "click": "menuItemSelected(3,1)",
+              "text": "Square Feet (ft²)",
+              "value": "areaF2"
+            },
+            {
+              "click": "menuItemSelected(3,2)",
+              "text": "Square Miles (mi²)",
+              "value": "areaMI2"
+            }
+          ],
+          "text": "Area"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(4,0)",
+              "text": "FLOP/s",
+              "value": "flops"
+            },
+            {
+              "click": "menuItemSelected(4,1)",
+              "text": "MFLOP/s",
+              "value": "mflops"
+            },
+            {
+              "click": "menuItemSelected(4,2)",
+              "text": "GFLOP/s",
+              "value": "gflops"
+            },
+            {
+              "click": "menuItemSelected(4,3)",
+              "text": "TFLOP/s",
+              "value": "tflops"
+            },
+            {
+              "click": "menuItemSelected(4,4)",
+              "text": "PFLOP/s",
+              "value": "pflops"
+            },
+            {
+              "click": "menuItemSelected(4,5)",
+              "text": "EFLOP/s",
+              "value": "eflops"
+            }
+          ],
+          "text": "Computation"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(5,0)",
+              "text": "parts-per-million (ppm)",
+              "value": "ppm"
+            },
+            {
+              "click": "menuItemSelected(5,1)",
+              "text": "parts-per-billion (ppb)",
+              "value": "conppb"
+            },
+            {
+              "click": "menuItemSelected(5,2)",
+              "text": "nanogram per cubic meter (ng/m³)",
+              "value": "conngm3"
+            },
+            {
+              "click": "menuItemSelected(5,3)",
+              "text": "nanogram per normal cubic meter (ng/Nm³)",
+              "value": "conngNm3"
+            },
+            {
+              "click": "menuItemSelected(5,4)",
+              "text": "microgram per cubic meter (μg/m³)",
+              "value": "conμgm3"
+            },
+            {
+              "click": "menuItemSelected(5,5)",
+              "text": "microgram per normal cubic meter (μg/Nm³)",
+              "value": "conμgNm3"
+            },
+            {
+              "click": "menuItemSelected(5,6)",
+              "text": "milligram per cubic meter (mg/m³)",
+              "value": "conmgm3"
+            },
+            {
+              "click": "menuItemSelected(5,7)",
+              "text": "milligram per normal cubic meter (mg/Nm³)",
+              "value": "conmgNm3"
+            },
+            {
+              "click": "menuItemSelected(5,8)",
+              "text": "gram per cubic meter (g/m³)",
+              "value": "congm3"
+            },
+            {
+              "click": "menuItemSelected(5,9)",
+              "text": "gram per normal cubic meter (g/Nm³)",
+              "value": "congNm3"
+            },
+            {
+              "click": "menuItemSelected(5,10)",
+              "text": "milligrams per decilitre (mg/dL)",
+              "value": "conmgdL"
+            },
+            {
+              "click": "menuItemSelected(5,11)",
+              "text": "millimoles per litre (mmol/L)",
+              "value": "conmmolL"
+            }
+          ],
+          "text": "Concentration"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(6,0)",
+              "text": "Dollars ($)",
+              "value": "currencyUSD"
+            },
+            {
+              "click": "menuItemSelected(6,1)",
+              "text": "Pounds (£)",
+              "value": "currencyGBP"
+            },
+            {
+              "click": "menuItemSelected(6,2)",
+              "text": "Euro (€)",
+              "value": "currencyEUR"
+            },
+            {
+              "click": "menuItemSelected(6,3)",
+              "text": "Yen (¥)",
+              "value": "currencyJPY"
+            },
+            {
+              "click": "menuItemSelected(6,4)",
+              "text": "Rubles (₽)",
+              "value": "currencyRUB"
+            },
+            {
+              "click": "menuItemSelected(6,5)",
+              "text": "Hryvnias (₴)",
+              "value": "currencyUAH"
+            },
+            {
+              "click": "menuItemSelected(6,6)",
+              "text": "Real (R$)",
+              "value": "currencyBRL"
+            },
+            {
+              "click": "menuItemSelected(6,7)",
+              "text": "Danish Krone (kr)",
+              "value": "currencyDKK"
+            },
+            {
+              "click": "menuItemSelected(6,8)",
+              "text": "Icelandic Króna (kr)",
+              "value": "currencyISK"
+            },
+            {
+              "click": "menuItemSelected(6,9)",
+              "text": "Norwegian Krone (kr)",
+              "value": "currencyNOK"
+            },
+            {
+              "click": "menuItemSelected(6,10)",
+              "text": "Swedish Krona (kr)",
+              "value": "currencySEK"
+            },
+            {
+              "click": "menuItemSelected(6,11)",
+              "text": "Czech koruna (czk)",
+              "value": "currencyCZK"
+            },
+            {
+              "click": "menuItemSelected(6,12)",
+              "text": "Swiss franc (CHF)",
+              "value": "currencyCHF"
+            },
+            {
+              "click": "menuItemSelected(6,13)",
+              "text": "Polish Złoty (PLN)",
+              "value": "currencyPLN"
+            },
+            {
+              "click": "menuItemSelected(6,14)",
+              "text": "Bitcoin (฿)",
+              "value": "currencyBTC"
+            }
+          ],
+          "text": "Currency"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(7,0)",
+              "text": "bits",
+              "value": "bits"
+            },
+            {
+              "click": "menuItemSelected(7,1)",
+              "text": "bytes",
+              "value": "bytes"
+            },
+            {
+              "click": "menuItemSelected(7,2)",
+              "text": "kibibytes",
+              "value": "kbytes"
+            },
+            {
+              "click": "menuItemSelected(7,3)",
+              "text": "mebibytes",
+              "value": "mbytes"
+            },
+            {
+              "click": "menuItemSelected(7,4)",
+              "text": "gibibytes",
+              "value": "gbytes"
+            }
+          ],
+          "text": "Data (IEC)"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(8,0)",
+              "text": "bits",
+              "value": "decbits"
+            },
+            {
+              "click": "menuItemSelected(8,1)",
+              "text": "bytes",
+              "value": "decbytes"
+            },
+            {
+              "click": "menuItemSelected(8,2)",
+              "text": "kilobytes",
+              "value": "deckbytes"
+            },
+            {
+              "click": "menuItemSelected(8,3)",
+              "text": "megabytes",
+              "value": "decmbytes"
+            },
+            {
+              "click": "menuItemSelected(8,4)",
+              "text": "gigabytes",
+              "value": "decgbytes"
+            }
+          ],
+          "text": "Data (Metric)"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(9,0)",
+              "text": "packets/sec",
+              "value": "pps"
+            },
+            {
+              "click": "menuItemSelected(9,1)",
+              "text": "bits/sec",
+              "value": "bps"
+            },
+            {
+              "click": "menuItemSelected(9,2)",
+              "text": "bytes/sec",
+              "value": "Bps"
+            },
+            {
+              "click": "menuItemSelected(9,3)",
+              "text": "kilobytes/sec",
+              "value": "KBs"
+            },
+            {
+              "click": "menuItemSelected(9,4)",
+              "text": "kilobits/sec",
+              "value": "Kbits"
+            },
+            {
+              "click": "menuItemSelected(9,5)",
+              "text": "megabytes/sec",
+              "value": "MBs"
+            },
+            {
+              "click": "menuItemSelected(9,6)",
+              "text": "megabits/sec",
+              "value": "Mbits"
+            },
+            {
+              "click": "menuItemSelected(9,7)",
+              "text": "gigabytes/sec",
+              "value": "GBs"
+            },
+            {
+              "click": "menuItemSelected(9,8)",
+              "text": "gigabits/sec",
+              "value": "Gbits"
+            }
+          ],
+          "text": "Data Rate"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(10,0)",
+              "text": "YYYY-MM-DD HH:mm:ss",
+              "value": "dateTimeAsIso"
+            },
+            {
+              "click": "menuItemSelected(10,1)",
+              "text": "DD/MM/YYYY h:mm:ss a",
+              "value": "dateTimeAsUS"
+            },
+            {
+              "click": "menuItemSelected(10,2)",
+              "text": "From Now",
+              "value": "dateTimeFromNow"
+            }
+          ],
+          "text": "Date & Time"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(11,0)",
+              "text": "Watt (W)",
+              "value": "watt"
+            },
+            {
+              "click": "menuItemSelected(11,1)",
+              "text": "Kilowatt (kW)",
+              "value": "kwatt"
+            },
+            {
+              "click": "menuItemSelected(11,2)",
+              "text": "Milliwatt (mW)",
+              "value": "mwatt"
+            },
+            {
+              "click": "menuItemSelected(11,3)",
+              "text": "Watt per square meter (W/m²)",
+              "value": "Wm2"
+            },
+            {
+              "click": "menuItemSelected(11,4)",
+              "text": "Volt-ampere (VA)",
+              "value": "voltamp"
+            },
+            {
+              "click": "menuItemSelected(11,5)",
+              "text": "Kilovolt-ampere (kVA)",
+              "value": "kvoltamp"
+            },
+            {
+              "click": "menuItemSelected(11,6)",
+              "text": "Volt-ampere reactive (var)",
+              "value": "voltampreact"
+            },
+            {
+              "click": "menuItemSelected(11,7)",
+              "text": "Kilovolt-ampere reactive (kvar)",
+              "value": "kvoltampreact"
+            },
+            {
+              "click": "menuItemSelected(11,8)",
+              "text": "Watt-hour (Wh)",
+              "value": "watth"
+            },
+            {
+              "click": "menuItemSelected(11,9)",
+              "text": "Kilowatt-hour (kWh)",
+              "value": "kwatth"
+            },
+            {
+              "click": "menuItemSelected(11,10)",
+              "text": "Kilowatt-min (kWm)",
+              "value": "kwattm"
+            },
+            {
+              "click": "menuItemSelected(11,11)",
+              "text": "Joule (J)",
+              "value": "joule"
+            },
+            {
+              "click": "menuItemSelected(11,12)",
+              "text": "Electron volt (eV)",
+              "value": "ev"
+            },
+            {
+              "click": "menuItemSelected(11,13)",
+              "text": "Ampere (A)",
+              "value": "amp"
+            },
+            {
+              "click": "menuItemSelected(11,14)",
+              "text": "Kiloampere (kA)",
+              "value": "kamp"
+            },
+            {
+              "click": "menuItemSelected(11,15)",
+              "text": "Milliampere (mA)",
+              "value": "mamp"
+            },
+            {
+              "click": "menuItemSelected(11,16)",
+              "text": "Volt (V)",
+              "value": "volt"
+            },
+            {
+              "click": "menuItemSelected(11,17)",
+              "text": "Kilovolt (kV)",
+              "value": "kvolt"
+            },
+            {
+              "click": "menuItemSelected(11,18)",
+              "text": "Millivolt (mV)",
+              "value": "mvolt"
+            },
+            {
+              "click": "menuItemSelected(11,19)",
+              "text": "Decibel-milliwatt (dBm)",
+              "value": "dBm"
+            },
+            {
+              "click": "menuItemSelected(11,20)",
+              "text": "Ohm (Ω)",
+              "value": "ohm"
+            },
+            {
+              "click": "menuItemSelected(11,21)",
+              "text": "Lumens (Lm)",
+              "value": "lumens"
+            }
+          ],
+          "text": "Energy"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(12,0)",
+              "text": "Gallons/min (gpm)",
+              "value": "flowgpm"
+            },
+            {
+              "click": "menuItemSelected(12,1)",
+              "text": "Cubic meters/sec (cms)",
+              "value": "flowcms"
+            },
+            {
+              "click": "menuItemSelected(12,2)",
+              "text": "Cubic feet/sec (cfs)",
+              "value": "flowcfs"
+            },
+            {
+              "click": "menuItemSelected(12,3)",
+              "text": "Cubic feet/min (cfm)",
+              "value": "flowcfm"
+            },
+            {
+              "click": "menuItemSelected(12,4)",
+              "text": "Litre/hour",
+              "value": "litreh"
+            },
+            {
+              "click": "menuItemSelected(12,5)",
+              "text": "Litre/min (l/min)",
+              "value": "flowlpm"
+            },
+            {
+              "click": "menuItemSelected(12,6)",
+              "text": "milliLitre/min (mL/min)",
+              "value": "flowmlpm"
+            },
+            {
+              "click": "menuItemSelected(12,7)",
+              "text": "Lux (lx)",
+              "value": "lux"
+            }
+          ],
+          "text": "Flow"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(13,0)",
+              "text": "Newton-meters (Nm)",
+              "value": "forceNm"
+            },
+            {
+              "click": "menuItemSelected(13,1)",
+              "text": "Kilonewton-meters (kNm)",
+              "value": "forcekNm"
+            },
+            {
+              "click": "menuItemSelected(13,2)",
+              "text": "Newtons (N)",
+              "value": "forceN"
+            },
+            {
+              "click": "menuItemSelected(13,3)",
+              "text": "Kilonewtons (kN)",
+              "value": "forcekN"
+            }
+          ],
+          "text": "Force"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(14,0)",
+              "text": "hashes/sec",
+              "value": "Hs"
+            },
+            {
+              "click": "menuItemSelected(14,1)",
+              "text": "kilohashes/sec",
+              "value": "KHs"
+            },
+            {
+              "click": "menuItemSelected(14,2)",
+              "text": "megahashes/sec",
+              "value": "MHs"
+            },
+            {
+              "click": "menuItemSelected(14,3)",
+              "text": "gigahashes/sec",
+              "value": "GHs"
+            },
+            {
+              "click": "menuItemSelected(14,4)",
+              "text": "terahashes/sec",
+              "value": "THs"
+            },
+            {
+              "click": "menuItemSelected(14,5)",
+              "text": "petahashes/sec",
+              "value": "PHs"
+            },
+            {
+              "click": "menuItemSelected(14,6)",
+              "text": "exahashes/sec",
+              "value": "EHs"
+            }
+          ],
+          "text": "Hash Rate"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(15,0)",
+              "text": "milligram (mg)",
+              "value": "massmg"
+            },
+            {
+              "click": "menuItemSelected(15,1)",
+              "text": "gram (g)",
+              "value": "massg"
+            },
+            {
+              "click": "menuItemSelected(15,2)",
+              "text": "kilogram (kg)",
+              "value": "masskg"
+            },
+            {
+              "click": "menuItemSelected(15,3)",
+              "text": "metric ton (t)",
+              "value": "masst"
+            }
+          ],
+          "text": "Mass"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(16,0)",
+              "text": "millimetre (mm)",
+              "value": "lengthmm"
+            },
+            {
+              "click": "menuItemSelected(16,1)",
+              "text": "feet (ft)",
+              "value": "lengthft"
+            },
+            {
+              "click": "menuItemSelected(16,2)",
+              "text": "meter (m)",
+              "value": "lengthm"
+            },
+            {
+              "click": "menuItemSelected(16,3)",
+              "text": "kilometer (km)",
+              "value": "lengthkm"
+            },
+            {
+              "click": "menuItemSelected(16,4)",
+              "text": "mile (mi)",
+              "value": "lengthmi"
+            }
+          ],
+          "text": "length"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(17,0)",
+              "text": "Millibars",
+              "value": "pressurembar"
+            },
+            {
+              "click": "menuItemSelected(17,1)",
+              "text": "Bars",
+              "value": "pressurebar"
+            },
+            {
+              "click": "menuItemSelected(17,2)",
+              "text": "Kilobars",
+              "value": "pressurekbar"
+            },
+            {
+              "click": "menuItemSelected(17,3)",
+              "text": "Hectopascals",
+              "value": "pressurehpa"
+            },
+            {
+              "click": "menuItemSelected(17,4)",
+              "text": "Kilopascals",
+              "value": "pressurekpa"
+            },
+            {
+              "click": "menuItemSelected(17,5)",
+              "text": "Inches of mercury",
+              "value": "pressurehg"
+            },
+            {
+              "click": "menuItemSelected(17,6)",
+              "text": "PSI",
+              "value": "pressurepsi"
+            }
+          ],
+          "text": "Pressure"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(18,0)",
+              "text": "Becquerel (Bq)",
+              "value": "radbq"
+            },
+            {
+              "click": "menuItemSelected(18,1)",
+              "text": "curie (Ci)",
+              "value": "radci"
+            },
+            {
+              "click": "menuItemSelected(18,2)",
+              "text": "Gray (Gy)",
+              "value": "radgy"
+            },
+            {
+              "click": "menuItemSelected(18,3)",
+              "text": "rad",
+              "value": "radrad"
+            },
+            {
+              "click": "menuItemSelected(18,4)",
+              "text": "Sievert (Sv)",
+              "value": "radsv"
+            },
+            {
+              "click": "menuItemSelected(18,5)",
+              "text": "rem",
+              "value": "radrem"
+            },
+            {
+              "click": "menuItemSelected(18,6)",
+              "text": "Exposure (C/kg)",
+              "value": "radexpckg"
+            },
+            {
+              "click": "menuItemSelected(18,7)",
+              "text": "roentgen (R)",
+              "value": "radr"
+            },
+            {
+              "click": "menuItemSelected(18,8)",
+              "text": "Sievert/hour (Sv/h)",
+              "value": "radsvh"
+            }
+          ],
+          "text": "Radiation"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(19,0)",
+              "text": "Celsius (°C)",
+              "value": "celsius"
+            },
+            {
+              "click": "menuItemSelected(19,1)",
+              "text": "Farenheit (°F)",
+              "value": "farenheit"
+            },
+            {
+              "click": "menuItemSelected(19,2)",
+              "text": "Kelvin (K)",
+              "value": "kelvin"
+            }
+          ],
+          "text": "Temperature"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(20,0)",
+              "text": "Hertz (1/s)",
+              "value": "hertz"
+            },
+            {
+              "click": "menuItemSelected(20,1)",
+              "text": "nanoseconds (ns)",
+              "value": "ns"
+            },
+            {
+              "click": "menuItemSelected(20,2)",
+              "text": "microseconds (µs)",
+              "value": "µs"
+            },
+            {
+              "click": "menuItemSelected(20,3)",
+              "text": "milliseconds (ms)",
+              "value": "ms"
+            },
+            {
+              "click": "menuItemSelected(20,4)",
+              "text": "seconds (s)",
+              "value": "s"
+            },
+            {
+              "click": "menuItemSelected(20,5)",
+              "text": "minutes (m)",
+              "value": "m"
+            },
+            {
+              "click": "menuItemSelected(20,6)",
+              "text": "hours (h)",
+              "value": "h"
+            },
+            {
+              "click": "menuItemSelected(20,7)",
+              "text": "days (d)",
+              "value": "d"
+            },
+            {
+              "click": "menuItemSelected(20,8)",
+              "text": "duration (ms)",
+              "value": "dtdurationms"
+            },
+            {
+              "click": "menuItemSelected(20,9)",
+              "text": "duration (s)",
+              "value": "dtdurations"
+            },
+            {
+              "click": "menuItemSelected(20,10)",
+              "text": "duration (hh:mm:ss)",
+              "value": "dthms"
+            },
+            {
+              "click": "menuItemSelected(20,11)",
+              "text": "Timeticks (s/100)",
+              "value": "timeticks"
+            },
+            {
+              "click": "menuItemSelected(20,12)",
+              "text": "clock (ms)",
+              "value": "clockms"
+            },
+            {
+              "click": "menuItemSelected(20,13)",
+              "text": "clock (s)",
+              "value": "clocks"
+            }
+          ],
+          "text": "Time"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(21,0)",
+              "text": "ops/sec (ops)",
+              "value": "ops"
+            },
+            {
+              "click": "menuItemSelected(21,1)",
+              "text": "requests/sec (rps)",
+              "value": "reqps"
+            },
+            {
+              "click": "menuItemSelected(21,2)",
+              "text": "reads/sec (rps)",
+              "value": "rps"
+            },
+            {
+              "click": "menuItemSelected(21,3)",
+              "text": "writes/sec (wps)",
+              "value": "wps"
+            },
+            {
+              "click": "menuItemSelected(21,4)",
+              "text": "I/O ops/sec (iops)",
+              "value": "iops"
+            },
+            {
+              "click": "menuItemSelected(21,5)",
+              "text": "ops/min (opm)",
+              "value": "opm"
+            },
+            {
+              "click": "menuItemSelected(21,6)",
+              "text": "reads/min (rpm)",
+              "value": "rpm"
+            },
+            {
+              "click": "menuItemSelected(21,7)",
+              "text": "writes/min (wpm)",
+              "value": "wpm"
+            }
+          ],
+          "text": "Throughput"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(22,0)",
+              "text": "metres/second (m/s)",
+              "value": "velocityms"
+            },
+            {
+              "click": "menuItemSelected(22,1)",
+              "text": "kilometers/hour (km/h)",
+              "value": "velocitykmh"
+            },
+            {
+              "click": "menuItemSelected(22,2)",
+              "text": "miles/hour (mph)",
+              "value": "velocitymph"
+            },
+            {
+              "click": "menuItemSelected(22,3)",
+              "text": "knot (kn)",
+              "value": "velocityknot"
+            }
+          ],
+          "text": "Velocity"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(23,0)",
+              "text": "millilitre (mL)",
+              "value": "mlitre"
+            },
+            {
+              "click": "menuItemSelected(23,1)",
+              "text": "litre (L)",
+              "value": "litre"
+            },
+            {
+              "click": "menuItemSelected(23,2)",
+              "text": "cubic metre",
+              "value": "m3"
+            },
+            {
+              "click": "menuItemSelected(23,3)",
+              "text": "Normal cubic metre",
+              "value": "Nm3"
+            },
+            {
+              "click": "menuItemSelected(23,4)",
+              "text": "cubic decimetre",
+              "value": "dm3"
+            },
+            {
+              "click": "menuItemSelected(23,5)",
+              "text": "gallons",
+              "value": "gallons"
+            }
+          ],
+          "text": "Volume"
+        }
+      ],
       "table_editor_link_width_label": "",
       "table_editor_link_width_units": "",
       "table_editor_node_labels": [
         "Source",
-        "Discipline",
+        "Source Discipline",
         "Destination"
       ],
       "table_editor_option_nodes": [
-        "meta.scireg.src.resource.keyword",
+        "meta.scireg.src.org_name.keyword",
         "meta.scireg.src.discipline.keyword",
-        "meta.scireg.dst.resource.keyword"
+        "meta.scireg.dst.org_name.keyword"
       ],
       "table_editor_unitFormats": "kbn.getUnitFormats()",
       "table_editor_unitFormats_TEMP": [
@@ -1252,7 +2399,7 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.scireg.src.resource.keyword",
+              "field": "meta.scireg.src.org_name.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1277,7 +2424,7 @@
               "type": "terms"
             },
             {
-              "field": "meta.scireg.dst.resource.keyword",
+              "field": "meta.scireg.dst.org_name.keyword",
               "id": "2",
               "settings": {
                 "min_doc_count": 1,
@@ -1289,6 +2436,7 @@
               "type": "terms"
             }
           ],
+          "hide": false,
           "metrics": [
             {
               "field": "values.num_bits",
@@ -1303,7 +2451,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Top Science Talkers by Discipline",
+      "title": "",
       "tooltip": {
         "content": " ",
         "show": true,
@@ -1313,21 +2461,39 @@
       "type": "netsage-sankey"
     },
     {
+      "content": "<h3><center>Summary of All Disciplines</center></h1>\n<center>Only flows where source or destination has been tagged with a science discipline <br>\nfrom the Science Registry <i>and</i> were seen by the selected sensor(s) are counted.\n</center>",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 5014,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 35
+        "y": 41
       },
       "hideTimeOverride": false,
       "id": 21,
       "links": [],
       "options": {},
       "pageSize": 10,
-      "scroll": true,
+      "scroll": false,
       "showHeader": true,
       "sort": {
         "col": 1,
@@ -1335,13 +2501,13 @@
       },
       "styles": [
         {
-          "alias": "Discipline",
+          "alias": "Source Discipline",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "link": false,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
-          "pattern": "/meta.+/",
+          "linkTooltip": "",
+          "linkUrl": "",
+          "pattern": "/meta.*src.*/",
           "type": "string",
           "unit": "bits"
         },
@@ -1376,7 +2542,7 @@
           "unit": "decbytes"
         },
         {
-          "alias": "Packets",
+          "alias": "Peak Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1385,10 +2551,26 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Sum values.num_packets",
+          "pattern": "Max values.bits_per_second",
           "thresholds": [],
           "type": "number",
-          "unit": "short"
+          "unit": "bps"
+        },
+        {
+          "alias": "Average Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
         },
         {
           "alias": "Largest Flow",
@@ -1398,38 +2580,8 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "/Max/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
           "decimals": 0,
-          "pattern": "/.*/",
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
@@ -1444,7 +2596,6 @@
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
-                "missing": "Unknown",
                 "order": "desc",
                 "orderBy": "1",
                 "size": "0"
@@ -1479,8 +2630,22 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "values.bits_per_second",
               "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "8",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "select field",
+              "id": "9",
               "type": "count"
             }
           ],
@@ -1490,7 +2655,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top Disciplines in Science Registry",
+      "title": "Flow Statistics by Source Discipline",
       "transform": "table",
       "type": "table"
     },
@@ -1500,16 +2665,16 @@
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 35
+        "w": 24,
+        "x": 0,
+        "y": 52
       },
       "hideTimeOverride": false,
-      "id": 28,
+      "id": 5015,
       "links": [],
       "options": {},
-      "pageSize": null,
-      "scroll": true,
+      "pageSize": 10,
+      "scroll": false,
       "showHeader": true,
       "sort": {
         "col": 1,
@@ -1517,21 +2682,13 @@
       },
       "styles": [
         {
-          "alias": "Discipline",
+          "alias": "Destination Discipline",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "link": false,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
-          "mappingType": 1,
-          "pattern": "/meta.+/",
-          "rangeMaps": [
-            {
-              "from": "",
-              "text": "",
-              "to": ""
-            }
-          ],
+          "linkTooltip": "",
+          "linkUrl": "",
+          "pattern": "/meta.*dst.*/",
           "type": "string",
           "unit": "bits"
         },
@@ -1551,7 +2708,7 @@
           "unit": "short"
         },
         {
-          "alias": "Average",
+          "alias": "Total Volume",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1560,13 +2717,13 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Average",
+          "pattern": "Sum",
           "thresholds": [],
           "type": "number",
-          "unit": "bps"
+          "unit": "decbytes"
         },
         {
-          "alias": "Peak",
+          "alias": "Peak Rate",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1575,28 +2732,29 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Max",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
           "pattern": "Max values.bits_per_second",
           "thresholds": [],
           "type": "number",
           "unit": "bps"
         },
         {
-          "alias": "",
+          "alias": "Average Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Largest Flow",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1604,7 +2762,7 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "decimals": 0,
-          "pattern": "/.*/",
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
@@ -1615,14 +2773,13 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.scireg.src.discipline.keyword",
+              "field": "meta.scireg.dst.discipline.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
-                "missing": "Unknown",
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "0"
               },
               "type": "terms"
             }
@@ -1630,23 +2787,46 @@
           "dsType": "elasticsearch",
           "metrics": [
             {
-              "field": "values.bits_per_second",
+              "field": "values.num_bits",
               "id": "1",
-              "inlineScript": null,
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "7",
               "meta": {},
               "settings": {},
               "type": "max"
             },
             {
               "field": "values.bits_per_second",
-              "id": "5",
+              "id": "8",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
               "field": "select field",
-              "id": "7",
+              "id": "9",
               "type": "count"
             }
           ],
@@ -1656,7 +2836,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Top 10 Peak Rate Disciplines in Science Registry",
+      "title": "Flow Statistics by Destination Discipline",
       "transform": "table",
       "type": "table"
     },
@@ -1666,7 +2846,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 63
       },
       "id": 49,
       "links": [],
@@ -1717,15 +2897,15 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "Astronomy and Astrophysics",
+          "text": "MPS.Physics.High Energy",
           "value": [
-            "Astronomy and Astrophysics"
+            "MPS.Physics.High Energy"
           ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline.keyword\", \"query\":\"-meta.scireg.src.discipline.keyword:\\\"Network Monitoring\\\"\"}",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": "Discipline",
         "multi": true,
         "name": "discipline",
@@ -1744,7 +2924,7 @@
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -1775,6 +2955,5 @@
   },
   "timezone": "",
   "title": "Flows by Science Discipline",
-  "uid": "WNn1qyaiz",
-  "version": 69
+  "uid": "WNn1qyaiz"
 }

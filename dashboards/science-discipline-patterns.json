@@ -18,52 +18,38 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1562178090095,
-  "links": [
-    {
-      "asDropdown": true,
-      "icon": "external link",
-      "keepTime": true,
-      "tags": [
-        "netsage"
-      ],
-      "targetBlank": true,
-      "title": "Other Dashboards",
-      "type": "dashboards"
-    }
-  ],
+  "iteration": 1573047862826,
+  "links": [],
   "panels": [
     {
       "__netsage_template": "navigation",
       "array_option_1": [
         "What is the current state of the network?",
-        "What are the top senders/receivers of flows?",
+        "What are the top sources/destinations of flows?",
+        "What is the aggregate flow data for data archives?",
         "What are the top flows by organization?",
+        "What do individual flows look like?",
         "What are the top flows by country?",
         "What are flows by science discipline?",
-        "What is the aggregate flow data for data archives?",
-        "What do individual flows look like?",
-        "What are the current flow data summary statistics?",
-        "What is the state of active testing on the network?",
+        "What are the patterns in science data transfers in the network?",
+        "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the bandwidth patterns in the network?",
-        "What are the patterns in science data transfers in the network?"
+        "What are the current flow data summary statistics?"
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
         "/grafana/d/xk26IFhmk/flow-data",
+        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
         "/grafana/d/QfzDJKhik/flow-data-per-organization",
+        "/grafana/d/-l3_u8nWk/individual-flows",
         "/grafana/d/fgrOzz_mk/flow-data-per-country",
         "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
-        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
-        "/grafana/d/-l3_u8nWk/individual-flows",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/000000033/loss-and-throughput-active-testing",
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",        
+        "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/000000004/bandwidth-patterns",
-        "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+        "/grafana/d/CJC1FFhmz/other-flow-stats"
       ],
       "array_option_3": [
         "",
@@ -220,7 +206,8 @@
         ]
       },
       "custom_hover": " ",
-      "datasource": null,
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
         "h": 1,
         "w": 6,
@@ -291,6 +278,7 @@
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
+      "options": {},
       "parsed_data": [
         {
           "avg": 1773.39792387543,
@@ -356,7 +344,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -395,9 +385,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center>This is a heatmap for the flow data across IRNC links per science discipline over specific periods of time. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day. Darker squares show higher data transmission rates at those hours.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "<center><h1><b>Science Discipline Patterns</b></h1></center>\n<center> This dashboard shows heatmaps for the flow data by science discipline. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show higher data transmission rates at those hours.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 2,
+        "h": 4,
         "w": 24,
         "x": 0,
         "y": 1
@@ -439,7 +429,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 5
       },
       "id": 2,
       "legend": {
@@ -456,8 +446,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Astronomy and Astrophysics",
-          "value": "Astronomy and Astrophysics"
+          "text": "BIO.Environmental",
+          "value": "BIO.Environmental"
         }
       },
       "targets": [
@@ -536,9 +526,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 13
       },
-      "id": 50,
+      "id": "491",
       "legend": {
         "show": false
       },
@@ -546,7 +536,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -555,8 +545,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Atmospheric Sciences",
-          "value": "Atmospheric Sciences"
+          "text": "BIO.General",
+          "value": "BIO.General"
         }
       },
       "targets": [
@@ -635,9 +625,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 21
       },
-      "id": 51,
+      "id": "4911",
       "legend": {
         "show": false
       },
@@ -645,7 +635,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -654,8 +644,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Bioinformatics",
-          "value": "Bioinformatics"
+          "text": "BIO.Genomics and Bioinformatics",
+          "value": "BIO.Genomics and Bioinformatics"
         }
       },
       "targets": [
@@ -734,9 +724,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 29
       },
-      "id": 52,
+      "id": "49111",
       "legend": {
         "show": false
       },
@@ -744,7 +734,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -753,8 +743,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Biomedical",
-          "value": "Biomedical"
+          "text": "BIO.Medical",
+          "value": "BIO.Medical"
         }
       },
       "targets": [
@@ -833,9 +823,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 37
       },
-      "id": 53,
+      "id": "491111",
       "legend": {
         "show": false
       },
@@ -843,7 +833,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -852,8 +842,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Brain and Neurosciences",
-          "value": "Brain and Neurosciences"
+          "text": "CS.General",
+          "value": "CS.General"
         }
       },
       "targets": [
@@ -932,9 +922,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 45
       },
-      "id": 54,
+      "id": "4911111",
       "legend": {
         "show": false
       },
@@ -942,7 +932,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -951,8 +941,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Chemistry",
-          "value": "Chemistry"
+          "text": "CS.Intelligent Systems",
+          "value": "CS.Intelligent Systems"
         }
       },
       "targets": [
@@ -1031,9 +1021,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 53
       },
-      "id": 55,
+      "id": "49111111",
       "legend": {
         "show": false
       },
@@ -1041,7 +1031,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1050,8 +1040,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Climate Change (multi-discipline)",
-          "value": "Climate Change (multi-discipline)"
+          "text": "CS.Network Testing and Monitoring",
+          "value": "CS.Network Testing and Monitoring"
         }
       },
       "targets": [
@@ -1130,9 +1120,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 61
       },
-      "id": 56,
+      "id": "491111111",
       "legend": {
         "show": false
       },
@@ -1140,7 +1130,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1149,8 +1139,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Computer Intelligence",
-          "value": "Computer Intelligence"
+          "text": "GEO.Atmospheric",
+          "value": "GEO.Atmospheric"
         }
       },
       "targets": [
@@ -1229,9 +1219,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 69
       },
-      "id": 57,
+      "id": "4911111111",
       "legend": {
         "show": false
       },
@@ -1239,7 +1229,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1248,8 +1238,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Earth Sciences",
-          "value": "Earth Sciences"
+          "text": "GEO.Climate",
+          "value": "GEO.Climate"
         }
       },
       "targets": [
@@ -1328,9 +1318,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 77
       },
-      "id": 58,
+      "id": "49111111111",
       "legend": {
         "show": false
       },
@@ -1338,7 +1328,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1347,8 +1337,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Economics, Business",
-          "value": "Economics, Business"
+          "text": "GEO.Earth",
+          "value": "GEO.Earth"
         }
       },
       "targets": [
@@ -1427,9 +1417,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 85
       },
-      "id": 59,
+      "id": "491111111111",
       "legend": {
         "show": false
       },
@@ -1437,7 +1427,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1446,8 +1436,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Energy",
-          "value": "Energy"
+          "text": "GEO.General",
+          "value": "GEO.General"
         }
       },
       "targets": [
@@ -1526,9 +1516,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 91
+        "y": 93
       },
-      "id": 60,
+      "id": "4911111111111",
       "legend": {
         "show": false
       },
@@ -1536,7 +1526,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1545,8 +1535,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Environmental Biology",
-          "value": "Environmental Biology"
+          "text": "GEO.Ocean",
+          "value": "GEO.Ocean"
         }
       },
       "targets": [
@@ -1625,9 +1615,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 101
       },
-      "id": 61,
+      "id": "49111111111111",
       "legend": {
         "show": false
       },
@@ -1635,7 +1625,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1644,8 +1634,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "GeoSpace",
-          "value": "GeoSpace"
+          "text": "MPS.Astronomy",
+          "value": "MPS.Astronomy"
         }
       },
       "targets": [
@@ -1724,9 +1714,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 107
+        "y": 109
       },
-      "id": 62,
+      "id": "491111111111111",
       "legend": {
         "show": false
       },
@@ -1734,7 +1724,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1743,8 +1733,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Materials",
-          "value": "Materials"
+          "text": "MPS.Chemistry",
+          "value": "MPS.Chemistry"
         }
       },
       "targets": [
@@ -1823,9 +1813,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 115
+        "y": 117
       },
-      "id": 63,
+      "id": "4911111111111111",
       "legend": {
         "show": false
       },
@@ -1833,7 +1823,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1842,8 +1832,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Multiple",
-          "value": "Multiple"
+          "text": "MPS.Materials",
+          "value": "MPS.Materials"
         }
       },
       "targets": [
@@ -1922,9 +1912,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 123
+        "y": 125
       },
-      "id": 64,
+      "id": "49111111111111111",
       "legend": {
         "show": false
       },
@@ -1932,7 +1922,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -1941,8 +1931,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Network Monitoring",
-          "value": "Network Monitoring"
+          "text": "MPS.Physics",
+          "value": "MPS.Physics"
         }
       },
       "targets": [
@@ -2021,9 +2011,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 131
+        "y": 133
       },
-      "id": 65,
+      "id": "491111111111111111",
       "legend": {
         "show": false
       },
@@ -2031,7 +2021,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2040,8 +2030,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Ocean Sciences",
-          "value": "Ocean Sciences"
+          "text": "MPS.Physics.High Energy",
+          "value": "MPS.Physics.High Energy"
         }
       },
       "targets": [
@@ -2120,9 +2110,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 139
+        "y": 141
       },
-      "id": 66,
+      "id": "4911111111111111111",
       "legend": {
         "show": false
       },
@@ -2130,7 +2120,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2139,8 +2129,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Other",
-          "value": "Other"
+          "text": "Multi-Science Facility",
+          "value": "Multi-Science Facility"
         }
       },
       "targets": [
@@ -2219,9 +2209,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 147
+        "y": 149
       },
-      "id": 67,
+      "id": "49111111111111111111",
       "legend": {
         "show": false
       },
@@ -2229,7 +2219,7 @@
       "options": {},
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
+      "repeatIteration": 1573047862826,
       "repeatPanelId": 2,
       "scale": {
         "max": null,
@@ -2238,701 +2228,8 @@
       "scopedVars": {
         "disciplines": {
           "selected": false,
-          "text": "Other/Unspecified Biology",
-          "value": "Other/Unspecified Biology"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 155
-      },
-      "id": 68,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "Other/Unspecified IT",
-          "value": "Other/Unspecified IT"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 163
-      },
-      "id": 69,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "Other/Unspecified Physics",
-          "value": "Other/Unspecified Physics"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 171
-      },
-      "id": 70,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "Particle Physics",
-          "value": "Particle Physics"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 179
-      },
-      "id": 71,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "Remote Sensing",
-          "value": "Remote Sensing"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 187
-      },
-      "id": 72,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "Space Operations and Technology",
-          "value": "Space Operations and Technology"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 195
-      },
-      "id": 73,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "Unknown",
-          "value": "Unknown"
-        }
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "start",
-              "id": "3",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.scireg.src.discipline.keyword:$disciplines",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
-    },
-    {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
-      "datasource": "netsage",
-      "description": "",
-      "fragment": "HOUR",
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 203
-      },
-      "id": 74,
-      "legend": {
-        "show": false
-      },
-      "links": [],
-      "options": {},
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1562178090095,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
-      "scopedVars": {
-        "disciplines": {
-          "selected": false,
-          "text": "VLBI (geodetic/astrometric)",
-          "value": "VLBI (geodetic/astrometric)"
+          "text": "SBE.Social and Economics",
+          "value": "SBE.Social and Economics"
         }
       },
       "targets": [
@@ -2990,7 +2287,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 211
+        "y": 157
       },
       "id": 23,
       "links": [],
@@ -3003,7 +2300,7 @@
       "type": "text"
     }
   ],
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "flow",

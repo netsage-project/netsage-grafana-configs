@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573145455262,
+  "iteration": 1573145770999,
   "links": [],
   "panels": [
     {
@@ -203,11 +203,9 @@
         ]
       },
       "custom_hover": " ",
-      "cycleview": true,
-      "dashboardselection": true,
       "gridPos": {
-        "h": 3,
-        "w": 2,
+        "h": 1,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -270,7 +268,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 66389611,
+      "max_total": 66176869,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +276,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 390527.12352941174,
+          "avg": 32615.509610645637,
           "label": "Count",
-          "max": 1195950,
-          "min": 2519,
-          "total": 66389611
+          "max": 142823,
+          "min": 0,
+          "total": 66176869
         }
       ],
       "rgb_values": [
@@ -341,9 +339,7 @@
         "linear",
         "sqrt"
       ],
-      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
-      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -382,12 +378,12 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization.</center>\n<center>The table shows the volume, rate, retransmits, round trip time (RTT) and duration (in hours, minutes and seconds) for each flow.</center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flows per Country</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination country.</center>\n<center>The table shows the volume, rate, retransmits, round trip time (RTT) and duration (in hours, minutes and seconds) for each flow. </center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data.</b></center>\n<center>All times are displayed in browser local time.</center>\n",
       "gridPos": {
         "h": 4,
-        "w": 21,
-        "x": 2,
-        "y": 0
+        "w": 24,
+        "x": 0,
+        "y": 1
       },
       "id": 34,
       "links": [],
@@ -402,6 +398,7 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
+      "colorPostfix": false,
       "colorPrefix": true,
       "colorValue": false,
       "colors": [
@@ -422,7 +419,7 @@
         "h": 3,
         "w": 5,
         "x": 2,
-        "y": 4
+        "y": 5
       },
       "id": 45,
       "interval": null,
@@ -483,7 +480,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -525,9 +522,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
+        "w": 4,
         "x": 7,
-        "y": 4
+        "y": 5
       },
       "id": 35,
       "interval": null,
@@ -583,17 +580,17 @@
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -637,8 +634,8 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 12,
-        "y": 4
+        "x": 11,
+        "y": 5
       },
       "id": 21,
       "interval": null,
@@ -699,7 +696,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -743,8 +740,8 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 17,
-        "y": 4
+        "x": 16,
+        "y": 5
       },
       "id": 23,
       "interval": null,
@@ -805,7 +802,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -832,7 +829,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 52,
       "links": [],
@@ -851,7 +848,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 2,
       "links": [],
@@ -1228,7 +1225,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1263,7 +1260,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 18,
       "legend": {
@@ -1303,7 +1300,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1351,7 +1348,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "id": 56,
       "legend": {
@@ -1386,7 +1383,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1434,7 +1431,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 46
       },
       "id": 12,
       "legend": {
@@ -1471,7 +1468,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1500,7 +1497,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 57
       },
       "id": 37,
       "mode": "html",
@@ -1523,7 +1520,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "id": 39,
       "legend": {
@@ -1583,7 +1580,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1643,7 +1640,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 58
+        "y": 59
       },
       "id": 40,
       "legend": {
@@ -1703,7 +1700,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1763,7 +1760,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 58
+        "y": 59
       },
       "id": 41,
       "legend": {
@@ -1823,7 +1820,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1877,7 +1874,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 67
       },
       "id": 62,
       "mode": "html",
@@ -1909,8 +1906,8 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 3,
-        "y": 68
+        "x": 2,
+        "y": 69
       },
       "id": 26,
       "interval": null,
@@ -1971,7 +1968,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2014,8 +2011,8 @@
       "gridPos": {
         "h": 3,
         "w": 4,
-        "x": 8,
-        "y": 68
+        "x": 7,
+        "y": 69
       },
       "id": 47,
       "interval": null,
@@ -2071,17 +2068,17 @@
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2125,8 +2122,8 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 12,
-        "y": 68
+        "x": 11,
+        "y": 69
       },
       "id": 48,
       "interval": null,
@@ -2187,7 +2184,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2231,8 +2228,8 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 17,
-        "y": 68
+        "x": 16,
+        "y": 69
       },
       "id": 50,
       "interval": null,
@@ -2293,7 +2290,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2321,7 +2318,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 72
       },
       "id": 54,
       "links": [],
@@ -2571,7 +2568,7 @@
                 "min_doc_count": 1,
                 "order": "asc",
                 "orderBy": "_term",
-                "size": "10000"
+                "size": "0"
               },
               "type": "terms"
             },
@@ -2698,7 +2695,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2733,7 +2730,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 87
       },
       "id": 55,
       "legend": {
@@ -2773,7 +2770,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2821,7 +2818,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 97
+        "y": 98
       },
       "id": 24,
       "legend": {
@@ -2856,7 +2853,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2904,7 +2901,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 108
+        "y": 109
       },
       "id": 57,
       "legend": {
@@ -2940,7 +2937,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2969,7 +2966,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 119
+        "y": 120
       },
       "id": 58,
       "mode": "html",
@@ -2992,7 +2989,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 121
+        "y": 122
       },
       "id": 59,
       "legend": {
@@ -3052,7 +3049,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3112,7 +3109,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 121
+        "y": 122
       },
       "id": 60,
       "legend": {
@@ -3172,7 +3169,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3232,7 +3229,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 121
+        "y": 122
       },
       "id": 61,
       "legend": {
@@ -3292,7 +3289,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensor AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3346,7 +3343,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 129
+        "y": 130
       },
       "id": 53,
       "links": [],
@@ -3364,7 +3361,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 130
+        "y": 131
       },
       "id": 32,
       "links": [],
@@ -3415,20 +3412,20 @@
       {
         "allValue": "*",
         "current": {
-          "text": "Indiana University",
+          "text": "United States",
           "value": [
-            "Indiana University"
+            "United States"
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "hide": 0,
         "includeAll": true,
-        "label": "Source Organization",
+        "label": "Source Country",
         "multi": true,
         "name": "src",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3442,20 +3439,21 @@
       {
         "allValue": "*",
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "hide": 0,
         "includeAll": true,
-        "label": "Destination Organization",
+        "label": "Destination Country",
         "multi": true,
         "name": "dest",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3525,6 +3523,6 @@
     ]
   },
   "timezone": "",
-  "title": "Individual Flows",
-  "uid": "-l3_u8nWk"
+  "title": "Individual Flows per Country",
+  "uid": "80IVUboZk"
 }

@@ -15,52 +15,38 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1567545252439,
-  "links": [
-    {
-      "asDropdown": true,
-      "icon": "external link",
-      "keepTime": true,
-      "tags": [
-        "netsage"
-      ],
-      "targetBlank": true,
-      "title": "Other Dashboards",
-      "type": "dashboards"
-    }
-  ],
+  "iteration": 1573159855402,
+  "links": [],
   "panels": [
     {
       "__netsage_template": "navigation",
       "array_option_1": [
         "What is the current state of the network?",
-        "What are the top senders/receivers of flows?",
+        "What are the top sources/destinations of flows?",
+        "What is the aggregate flow data for data archives?",
         "What are the top flows by organization?",
+        "What do individual flows look like?",
         "What are the top flows by country?",
         "What are flows by science discipline?",
-        "What is the aggregate flow data for data archives?",
-        "What do individual flows look like?",
-        "What are the current flow data summary statistics?",
-        "What is the state of active testing on the network?",
+        "What are the patterns in science data transfers in the network?",
+        "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the bandwidth patterns in the network?",
-        "What are the patterns in science data transfers in the network?"
+        "What are the current flow data summary statistics?"
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
         "/grafana/d/xk26IFhmk/flow-data",
+        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
         "/grafana/d/QfzDJKhik/flow-data-per-organization",
+        "/grafana/d/-l3_u8nWk/individual-flows",
         "/grafana/d/fgrOzz_mk/flow-data-per-country",
         "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
-        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
-        "/grafana/d/-l3_u8nWk/individual-flows",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/000000033/loss-and-throughput-active-testing",
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
+        "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/000000004/bandwidth-patterns",
-        "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+        "/grafana/d/CJC1FFhmz/other-flow-stats"
       ],
       "array_option_3": [
         "",
@@ -217,9 +203,11 @@
         ]
       },
       "custom_hover": " ",
+      "cycleview": true,
+      "dashboardselection": true,
       "gridPos": {
-        "h": 1,
-        "w": 6,
+        "h": 2,
+        "w": 3,
         "x": 0,
         "y": 0
       },
@@ -282,7 +270,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 51523832,
+      "max_total": 65270716,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -290,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 152889.70919881307,
+          "avg": 383945.38823529414,
           "label": "Count",
-          "max": 637685,
-          "min": 1363,
-          "total": 51523832
+          "max": 1195950,
+          "min": 1303,
+          "total": 65270716
         }
       ],
       "rgb_values": [
@@ -353,7 +341,9 @@
         "linear",
         "sqrt"
       ],
+      "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
+      "sidebar": true,
       "targets": [
         {
           "bucketAggs": [
@@ -392,12 +382,12 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center>This dashboard provides flow data for the top 10 senders and receivers by volume and rate.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "<center><h1><b>Flow Data for Circuits</b></h1></center>\n<center>This dashboard provides flow data for the top ten sources and destinations by volume and rate for circuits.</center>\n<center>Click on an organization name in one of the tables to see the flow data dashboard for that organization.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 1
+        "h": 4,
+        "w": 18,
+        "x": 3,
+        "y": 0
       },
       "id": 4611,
       "links": [],
@@ -408,12 +398,12 @@
       "type": "text"
     },
     {
-      "content": "<h1><center>Top Senders</center></h1>",
+      "content": "<h1><center>Top Sources</center></h1>",
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 30,
       "links": [],
@@ -429,9 +419,9 @@
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 13,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -448,10 +438,10 @@
         {
           "alias": "Source",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
+          "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
           "pattern": "/\\$source_scope/",
           "type": "string",
           "unit": "bits"
@@ -472,7 +462,7 @@
           "unit": "short"
         },
         {
-          "alias": "Total Volume",
+          "alias": "Total Vol.",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -611,11 +601,12 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 5
+        "w": 11,
+        "x": 13,
+        "y": 6
       },
       "id": 37,
       "legend": {
@@ -633,7 +624,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -737,9 +730,9 @@
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 13,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -756,10 +749,10 @@
         {
           "alias": "Source",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
+          "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
           "mappingType": 1,
           "pattern": "/\\$source_scope/",
           "rangeMaps": [
@@ -903,11 +896,12 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 16
+        "w": 11,
+        "x": 13,
+        "y": 17
       },
       "id": 38,
       "legend": {
@@ -925,7 +919,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1020,12 +1016,12 @@
       }
     },
     {
-      "content": "<h1 style=\"margin-top:35px;\"><center>Top Receivers</center></h1>",
+      "content": "<h1 style=\"margin-top:35px;\"><center>Top Destinations</center></h1>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "id": 31,
       "links": [],
@@ -1041,9 +1037,9 @@
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 13,
         "x": 0,
-        "y": 30
+        "y": 31
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -1060,10 +1056,10 @@
         {
           "alias": "Destination",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
+          "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
           "pattern": "/\\$dest_scope/",
           "type": "string",
           "unit": "bits"
@@ -1084,7 +1080,7 @@
           "unit": "short"
         },
         {
-          "alias": "Total Volume",
+          "alias": "Total Vol.",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1223,11 +1219,12 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 30
+        "w": 11,
+        "x": 13,
+        "y": 31
       },
       "id": 39,
       "legend": {
@@ -1245,7 +1242,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1323,7 +1322,7 @@
         {
           "decimals": null,
           "format": "decbytes",
-          "label": "Total Volume",
+          "label": "Total Vol.",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1349,9 +1348,9 @@
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 13,
         "x": 0,
-        "y": 41
+        "y": 42
       },
       "hideTimeOverride": false,
       "id": 33,
@@ -1368,10 +1367,10 @@
         {
           "alias": "Destination",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
+          "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
           "mappingType": 1,
           "pattern": "/\\$dest_scope/",
           "rangeMaps": [
@@ -1515,11 +1514,12 @@
       "dashes": false,
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 41
+        "w": 11,
+        "x": 13,
+        "y": 42
       },
       "id": 40,
       "legend": {
@@ -1537,7 +1537,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
-      "options": {},
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1632,12 +1634,12 @@
       }
     },
     {
-      "content": "<h1 style=\"margin-top:35px;\"><center>Top Pairs by Total Data Transferred</center></h1>",
+      "content": "<h1 style=\"margin-top:35px;\"><center>Top Pairs</center></h1>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 53
       },
       "id": 41,
       "links": [],
@@ -1655,7 +1657,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 56
       },
       "hideTimeOverride": false,
       "id": 42,
@@ -1672,10 +1674,10 @@
         {
           "alias": "Destination",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
+          "link": true,
           "linkTargetBlank": true,
-          "linkTooltip": "Click for more info about data traveling over the $__cell",
-          "linkUrl": "https://netsage-dev.grnoc.iu.edu/grafana/d/000000043/alberto-flow?orgId=1&var-sources=$sources&var-destinations=$destinations&var-barcharts=$barcharts&var-timelines=$timelines&var-Filter=meta.sensor_id.keyword%7C%3D~%7C$__cell",
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
           "pattern": "/\\$dest_scope/",
           "type": "string",
           "unit": "bits"
@@ -1696,7 +1698,7 @@
           "unit": "locale"
         },
         {
-          "alias": "Total Volume",
+          "alias": "Total Vol.",
           "colorMode": null,
           "colors": [
             "rgba(245, 54, 54, 0.9)",
@@ -1711,21 +1713,6 @@
           "unit": "decbytes"
         },
         {
-          "alias": "Packets",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
           "alias": "Largest Flow",
           "colorMode": null,
           "colors": [
@@ -1735,25 +1722,10 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "/Max/",
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
-        },
-        {
-          "alias": "Fastest Flow",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
         },
         {
           "alias": "Source",
@@ -1765,10 +1737,46 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
           "mappingType": 1,
           "pattern": "/\\$source_scope/",
           "thresholds": [],
           "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "Avg Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "Peak Rate",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
           "unit": "short"
         },
         {
@@ -1845,6 +1853,25 @@
               "field": "select field",
               "id": "7",
               "type": "count"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "select field",
+              "id": "11",
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
@@ -1863,7 +1890,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 70
+        "y": 71
       },
       "id": 44,
       "links": [],
@@ -1917,7 +1944,7 @@
           "text": "meta.src_organization.keyword",
           "value": "meta.src_organization.keyword"
         },
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "label": "Source Scope",
         "multi": false,
@@ -1960,7 +1987,7 @@
           "text": "meta.dst_organization.keyword",
           "value": "meta.dst_organization.keyword"
         },
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "label": "Destination Scope",
         "multi": false,
@@ -2029,6 +2056,6 @@
     ]
   },
   "timezone": "",
-  "title": "Flow Data",
+  "title": "Flow Data for Circuits",
   "uid": "xk26IFhmk"
 }

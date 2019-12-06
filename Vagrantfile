@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
             https://dl.grafana.com/oss/release/grafana-6.3.5-1.x86_64.rpm
         
         #Install wizzy
-        npm install -g wizzy
+        npm install -g wizzy@0.6.0
         
         ### Update grafana.ini file ###
         #set default grafana theme to light

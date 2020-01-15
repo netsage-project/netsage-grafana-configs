@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1572991954374,
+  "iteration": 1575917513170,
   "links": [],
   "panels": [
     {
@@ -42,7 +42,7 @@
         "/grafana/d/-l3_u8nWk/individual-flows",
         "/grafana/d/fgrOzz_mk/flow-data-per-country",
         "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
-        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",        
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
@@ -271,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 68985294,
+      "max_total": 94830853,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -279,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 811591.694117647,
+          "avg": 561129.3076923077,
           "label": "Count",
-          "max": 2107465,
-          "min": 2960,
-          "total": 68985294
+          "max": 1339885,
+          "min": 862,
+          "total": 94830853
         }
       ],
       "rgb_values": [
@@ -415,6 +415,222 @@
       "type": "text"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": null,
+      "format": "locale",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 8,
+        "y": 7
+      },
+      "id": 4711117,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "# Flows <br>",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 13,
+        "y": 7
+      },
+      "id": 4711119,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "Total Volume <br>",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "values.num_bits",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
@@ -422,7 +638,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 7
+        "y": 10
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -607,7 +823,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 7
+        "y": 10
       },
       "id": 37,
       "legend": {
@@ -733,7 +949,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 18
+        "y": 21
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -902,7 +1118,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 18
+        "y": 21
       },
       "id": 38,
       "legend": {
@@ -1022,7 +1238,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 32
       },
       "id": 31,
       "links": [],
@@ -1033,6 +1249,220 @@
       "type": "text"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "format": "locale",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 8,
+        "y": 35
+      },
+      "id": 4711121,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "# Flows <br>",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPrefix": true,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "decimals": 1,
+      "format": "decbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 13,
+        "y": 35
+      },
+      "id": 4711123,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "Total Volume <br>",
+      "prefixFontSize": "70%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "values.num_bits",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
@@ -1040,7 +1470,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 32
+        "y": 38
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -1225,7 +1655,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 32
+        "y": 38
       },
       "id": 39,
       "legend": {
@@ -1351,7 +1781,7 @@
         "h": 11,
         "w": 13,
         "x": 0,
-        "y": 43
+        "y": 49
       },
       "hideTimeOverride": false,
       "id": 33,
@@ -1520,7 +1950,7 @@
         "h": 11,
         "w": 11,
         "x": 13,
-        "y": 43
+        "y": 49
       },
       "id": 40,
       "legend": {
@@ -1640,7 +2070,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 54
+        "y": 60
       },
       "id": 4711111,
       "links": [],
@@ -1657,7 +2087,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 63
       },
       "id": 4711,
       "links": [],
@@ -1896,7 +2326,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 78
       },
       "id": 34,
       "links": [],
@@ -1929,7 +2359,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 80
       },
       "id": 42,
       "interval": null,
@@ -2013,7 +2443,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 77
+        "y": 83
       },
       "id": 4711115,
       "links": [],
@@ -2171,7 +2601,7 @@
         "h": 15,
         "w": 12,
         "x": 0,
-        "y": 79
+        "y": 85
       },
       "hex_values": [
         "#f8ae63",
@@ -2301,52 +2731,52 @@
         [
           "United States",
           "United States",
-          526683.756735504
+          1029736.4014975079
         ],
         [
           "Brazil",
           "United States",
-          411571.495051776
+          782177.811042304
         ],
         [
           "United Kingdom",
           "United States",
-          369034.378014308
-        ],
-        [
-          "Italy",
-          "United States",
-          137252.18158566
+          416729.372504576
         ],
         [
           "Germany",
           "United States",
-          113453.313238724
+          176736.517503424
         ],
         [
           "Puerto Rico",
           "United States",
-          69976.368382628
+          75645.842657476
         ],
         [
-          "Belgium",
+          "South Korea",
           "United States",
-          46532.500649376
+          64364.425533231995
         ],
         [
           "Switzerland",
           "United States",
-          37403.489173028
+          57791.402739200006
         ],
         [
           "France",
           "United States",
-          30635.182217172
+          51054.14324224
         ],
         [
-          "Guam",
+          "Belgium",
           "United States",
-          23536.000648024
+          44960.695604224005
+        ],
+        [
+          "Japan",
+          "United States",
+          35469.33992704
         ]
       ],
       "table_data_type": "Sum",
@@ -3594,7 +4024,7 @@
         "h": 15,
         "w": 12,
         "x": 12,
-        "y": 79
+        "y": 85
       },
       "hex_values": [
         "#f8ae63",
@@ -3723,53 +4153,53 @@
       "table_data": [
         [
           "United States",
-          "Brazil",
-          564355.696946428
+          "United States",
+          1029736.4014975079
         ],
         [
           "United States",
-          "United States",
-          526683.756735504
+          "Brazil",
+          557097.591014288
         ],
         [
           "United States",
           "Puerto Rico",
-          289645.162341544
+          253763.862077504
         ],
         [
           "United States",
           "United Kingdom",
-          147344.282889124
+          181519.83425012
+        ],
+        [
+          "United States",
+          "Canada",
+          84599.63437938
+        ],
+        [
+          "United States",
+          "South Korea",
+          83911.992764016
+        ],
+        [
+          "United States",
+          "China",
+          71461.295126428
         ],
         [
           "United States",
           "Germany",
-          67385.648997332
-        ],
-        [
-          "United States",
-          "U.S. Virgin Islands",
-          33106.98719184
+          66184.38770357601
         ],
         [
           "United States",
           "Hong Kong",
-          32855.875158892
-        ],
-        [
-          "United States",
-          "Argentina",
-          21616.035980287998
+          49341.13256242
         ],
         [
           "United States",
           "Netherlands",
-          21231.934952664
-        ],
-        [
-          "United States",
-          "Japan",
-          19343.725414348
+          48060.730954244005
         ]
       ],
       "table_data_type": "Sum",
@@ -4882,7 +5312,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 94
+        "y": 100
       },
       "id": 24,
       "legend": {
@@ -5006,7 +5436,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 94
+        "y": 100
       },
       "id": 22,
       "legend": {
@@ -5129,7 +5559,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 94
+        "y": 100
       },
       "id": 23,
       "legend": {
@@ -5245,7 +5675,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 103
+        "y": 109
       },
       "id": 35,
       "links": [],
@@ -5263,7 +5693,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 105
+        "y": 111
       },
       "hideTimeOverride": false,
       "id": 19,
@@ -5434,7 +5864,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 113
+        "y": 119
       },
       "id": 46,
       "links": [],

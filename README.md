@@ -18,8 +18,7 @@ cd netsage-grafana-configs
 ```
 5. Pull down the submodules found in the plug-ins directory:
 ```
-git submodule init
-git submodule update
+git submodule update --init
 ```
 6. Install the vagrant plugins used by the Vagrantfile in the following order:
 ```
@@ -35,15 +34,15 @@ Perform the following steps every time you bring up a fresh instance of the VM:
 ```
 vagrant up
 ```
-2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/grafana/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
+2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/admin/ in your browser (10.3.3.3 is the statically set private address of your local VM)
 3. Login with the default username `admin` and password `admin`
 4. Change the password or hit "skip" if prompted to change password
 5. Click on "Data Sources" in the Configuration menu on the left hand side
 6. Click *netsage* in the list of datasources
-7. Enter the username and password in the `User` and `Password` fields
+7. Enter the username and password in the `User` and `Password` fields **NOTE:** This is different from your grafana credentials
 8. Click `Save and Test`. It should provide imediate feedback if things are working or not.
 
-Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/grafana and see data.
+Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/ and see data.
 
 ## Using the VM
 

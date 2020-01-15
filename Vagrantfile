@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
     
     #Disable selinux
     netsage.vm.provision "shell", inline: <<-SHELL
-        sed -i s/SELINUX=enforcing/SELINUX=permissive/g /etc/selinux/config
+        sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
     SHELL
     
     #reload VM since selinux requires reboot. Requires `vagrant plugin install vagrant-reload`
@@ -39,6 +39,7 @@ Vagrant.configure("2") do |config|
             perl\
             perl-devel\
             net-tools\
+            nc \
             git\
             npm\
             rpm-build\
@@ -78,15 +79,20 @@ Vagrant.configure("2") do |config|
         cd ../
         
         #Install netsage-sankey plugin
-        cd netsage-sankey-plugin
+        # HACK: for some reason this fails to install unless it's moved to a different location.
+        cp -r netsage-sankey-plugin /tmp
+        pushd . 
+        cd /tmp/netsage-sankey-plugin
         make install
-        cd ../
+        popd
         
         #Install navigation
-        cd NetSageNavigation
+        # HACK: for some reason this fails to install unless it's moved to a different location.
+        cp -r  NetSageNavigation /tmp/
+        pushd . 
+        cd /tmp/NetSageNavigation/
         make install
-        cd ../
-        
+        popd
         ### End plugin source code installs ###
         
         #Enable grafana

@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
         #need the following setting so the google analytics script tags are not shown
         sed -i 's/^;disable_sanitize_html.*/disable_sanitize_html = true/' /etc/grafana/grafana.ini
         #server from /grafana subpath to match prod and dev instances behind a proxy
-        sed -i 's/^;root_url.*/root_url = %(protocol)s:\/\/%(domain)s:3000\/grafana/' /etc/grafana/grafana.ini
+        sed -i 's|^;root_url.*|root_url = http://localhost:3000/grafana|' /etc/grafana/grafana.ini
         sed -i 's/^;serve_from_sub_path.*/serve_from_sub_path = true/' /etc/grafana/grafana.ini
         
         ### Start plugin installs ###

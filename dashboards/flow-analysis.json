@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1579187220745,
+  "iteration": 1579188416973,
   "links": [],
   "panels": [
     {
@@ -270,7 +270,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 69073823,
+      "max_total": 99860725,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 406316.6058823529,
+          "avg": 590891.8639053254,
           "label": "Count",
-          "max": 1195950,
-          "min": 2137,
-          "total": 69073823
+          "max": 2232530,
+          "min": 3349,
+          "total": 99860725
         }
       ],
       "rgb_values": [
@@ -598,7 +598,7 @@
       "showHeader": true,
       "sort": {
         "col": 0,
-        "desc": true
+        "desc": false
       },
       "styles": [
         {
@@ -933,7 +933,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "1",
                 "size": "10"
               },
               "type": "terms"
@@ -970,7 +970,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1059,7 +1059,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1205,7 +1205,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "1",
                 "size": "10"
               },
               "type": "terms"
@@ -1232,7 +1232,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1244,14 +1244,137 @@
       "type": "table"
     },
     {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "netsage",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "id": 17,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "$src_scope",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "By Rate",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
       "gridPos": {
         "h": 11,
         "w": 12,
-        "x": 12,
-        "y": 35
+        "x": 0,
+        "y": 46
       },
       "id": 13,
       "options": {},
@@ -1341,7 +1464,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "1",
                 "size": "10"
               },
               "type": "terms"
@@ -1378,7 +1501,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1390,13 +1513,140 @@
       "type": "table"
     },
     {
-      "columns": [],
-      "fontSize": "100%",
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "netsage",
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 11,
         "w": 12,
         "x": 12,
         "y": 46
+      },
+      "id": 18,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "$dst_scope",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "By Volume",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "decbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 57
       },
       "id": 14,
       "options": {},
@@ -1486,7 +1736,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_term",
+                "orderBy": "1",
                 "size": "10"
               },
               "type": "terms"
@@ -1513,7 +1763,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1525,12 +1775,136 @@
       "type": "table"
     },
     {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "netsage",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 57
+      },
+      "id": 19,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "$dst_scope",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "inlineScript": null,
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "By Rate",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": false,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a>netsage@iu.edu. </a> Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:8px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 68
       },
       "id": 6,
       "mode": "html",
@@ -1553,9 +1927,11 @@
       {
         "allValue": null,
         "current": {
-          "text": "All",
+          "tags": [],
+          "text": "TransPAC Hong Kong sFlow + TransPAC Seattle sFlow",
           "value": [
-            "$__all"
+            "TransPAC Hong Kong sFlow",
+            "TransPAC Seattle sFlow"
           ]
         },
         "datasource": "netsage",
@@ -1605,6 +1981,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "meta.src_organization.keyword",
           "value": "meta.src_organization.keyword"
         },
@@ -1647,6 +2024,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "meta.dst_organization.keyword",
           "value": "meta.dst_organization.keyword"
         },

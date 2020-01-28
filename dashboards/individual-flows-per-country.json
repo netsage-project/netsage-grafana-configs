@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580161239747,
+  "iteration": 1580173727072,
   "links": [],
   "panels": [
     {
@@ -270,7 +270,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 66176869,
+      "max_total": 61264248,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 32615.509610645637,
+          "avg": 30373.945463559743,
           "label": "Count",
-          "max": 142823,
+          "max": 515022,
           "min": 0,
-          "total": 66176869
+          "total": 61264248
         }
       ],
       "rgb_values": [
@@ -3486,12 +3486,201 @@
       }
     },
     {
+      "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Country Flows</center></h3>",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 128
+      },
+      "id": 73,
+      "links": [],
+      "mode": "html",
+      "options": {},
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 130
+      },
+      "hideTimeOverride": false,
+      "id": 75,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "scroll": false,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Link",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": false,
+          "linkTargetBlank": true,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "pattern": "/.*sensor_id.*/",
+          "type": "string",
+          "unit": "bits"
+        },
+        {
+          "alias": "# Flows",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        },
+        {
+          "alias": "Total Volume",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Sum",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "alias": "Largest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Max values.num_bits",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "alias": "Fastest Flow",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.sensor_id.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "select field",
+              "id": "7",
+              "type": "count"
+            }
+          ],
+          "query": "(meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest) AND meta.sensor_id.keyword:$sensor",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Links Usage",
+      "transform": "table",
+      "type": "table"
+    },
+    {
       "content": "",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 128
+        "y": 138
       },
       "id": 53,
       "links": [],
@@ -3509,7 +3698,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 129
+        "y": 139
       },
       "id": 32,
       "links": [],
@@ -3523,7 +3712,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "netsage"

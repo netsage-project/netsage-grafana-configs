@@ -17,6 +17,8 @@ cd /vagrant/plugins
 #install carpetplot
 /usr/sbin/grafana-cli plugins install petrslavotinek-carpetplot-panel
 
+## BEGIN PLUGIN INSTALL ##
+
 #install tsds datasource plugin
 cd tsds-grafana
 npm install -g yarn #make seems to need this
@@ -57,6 +59,10 @@ cd /tmp/Netsage-Slope_graph/
 make install
 popd
 ### End plugin source code installs ###
+
+
+
+## END PLUGIN INSTALL ##
 
 #Enable grafana
 systemctl enable grafana-server

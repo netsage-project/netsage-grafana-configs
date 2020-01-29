@@ -28,6 +28,31 @@ vagrant plugin install vagrant-reload
 
 ## Starting the VM for the First Time
 
+## Upgrading the OS or grafana version
+
+Must be executed at least once to create the base image.  Once the image is built it should not be needed unless a new grafana version is released.
+
+The base image is tagged based on the version of grafana.  The Vagrant box will named: netsage-base/$VERSION where $VERSION is the grafana version.
+
+go into the baseBox directory and run  ./build.sh to use default values or override the default behavior by setting the version
+
+```sh
+VERSION="6.6.0" ./build.sh 
+```
+
+if everything works, you should see the new image listed under:
+
+```sh
+vagrant box list
+```
+
+and to remove the box you can simply use this command:
+
+```sh
+vagrant box remove netsage-base-6.3.5
+```
+
+## Bring up Vagrant 
 Perform the following steps every time you bring up a fresh instance of the VM:
 
 1. Start the VM. This will take several minutes as it builds ands configures the virtual machine:

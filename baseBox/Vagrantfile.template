@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "netsage-base", primary: true, autostart: true do |netsage|
+    # set box to official CentOS 7 image
+    netsage.vm.box = "centos/7"
+    # explcitly set shared folder to virtualbox type. If not set will choose rsync 
+    # which is just a one-way share that is less useful in this context
+    netsage.vm.hostname = "netsage-base"
+    
+    #Disable selinux
+    netsage.vm.provision "shell", inline: <<-SHELL
+        sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
+    SHELL
+    
+    #reload VM since selinux requires reboot. Requires `vagrant plugin install vagrant-reload`
+    netsage.vm.provision :reload
+
+    #Install all requirements and perform initial setup
+    netsage.vm.provision "shell", env: {"VERSION" => "SET_VERSION"}, path: "./setup_vm.sh"
+
+   end
+end

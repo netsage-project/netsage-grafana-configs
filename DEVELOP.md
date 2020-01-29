@@ -119,3 +119,26 @@ The script will walk through all the repositories and do the following:
 1. Merges the version branch into master
 1. Tags master with vVERSION (e.g. v1.0.0)
 1. Closes the version branch. This adds a file to the version branch that says no changes should be committed. This is used by some of the scripts in case you accidentally try to release a closed branch.
+
+
+## Grafana Plugins
+
+First add a new submodule to the plugins directory, Example:
+
+```sh
+git submodule add https://github.com/netsage-project/Netsage-Slope_graph.git plugins/Netsage-Slope_graph
+```
+
+Open the Vagrantfile and create a new section similar to the following and add it to the setup_dashboard.sh
+
+
+```sh
+#Install navigation
+# HACK: for some reason this fails to install unless it's moved to a different location.
+cp -r  Netsage-Slope_graph /tmp/
+pushd . 
+cd /tmp/Netsage-Slope_graph/
+make install
+popd
+### End plugin source code installs ###
+```

@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580160878145,
+  "iteration": 1580242797229,
   "links": [],
   "panels": [
     {
@@ -1650,6 +1650,68 @@
       "type": "text"
     },
     {
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 4613,
+      "links": [],
+      "options": {},
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_organization.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "50"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "meta.dst_organization.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top 10 Organization Pairs by Data Volume",
+      "type": "slope-graph"
+    },
+    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
@@ -1657,7 +1719,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 69
       },
       "hideTimeOverride": false,
       "id": 42,
@@ -1890,7 +1952,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 84
       },
       "id": 44,
       "links": [],

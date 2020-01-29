@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1575917513170,
+  "iteration": 1580327097073,
   "links": [],
   "panels": [
     {
@@ -271,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 94830853,
+      "max_total": 61703808,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -279,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 561129.3076923077,
+          "avg": 365111.2899408284,
           "label": "Count",
-          "max": 1339885,
-          "min": 862,
-          "total": 94830853
+          "max": 2428798,
+          "min": 296,
+          "total": 61703808
         }
       ],
       "rgb_values": [
@@ -2729,54 +2729,54 @@
       ],
       "table_data": [
         [
-          "United States",
-          "United States",
-          1029736.4014975079
-        ],
-        [
           "Brazil",
           "United States",
-          782177.811042304
+          762353.072037376
+        ],
+        [
+          "United States",
+          "United States",
+          657006.012698456
         ],
         [
           "United Kingdom",
           "United States",
-          416729.372504576
+          258979.631177532
+        ],
+        [
+          "Spain",
+          "United States",
+          130513.35584256
         ],
         [
           "Germany",
           "United States",
-          176736.517503424
+          94473.29913836799
         ],
         [
           "Puerto Rico",
           "United States",
-          75645.842657476
-        ],
-        [
-          "South Korea",
-          "United States",
-          64364.425533231995
+          61448.552342404
         ],
         [
           "Switzerland",
           "United States",
-          57791.402739200006
+          34396.828762111996
         ],
         [
-          "France",
+          "Netherlands",
           "United States",
-          51054.14324224
+          28314.284765696
         ],
         [
-          "Belgium",
+          "Ukraine",
           "United States",
-          44960.695604224005
+          17667.612228096
         ],
         [
-          "Japan",
+          "Italy",
           "United States",
-          35469.33992704
+          16641.224109568
         ]
       ],
       "table_data_type": "Sum",
@@ -4154,52 +4154,52 @@
         [
           "United States",
           "United States",
-          1029736.4014975079
+          657006.012698456
         ],
         [
           "United States",
           "Brazil",
-          557097.591014288
-        ],
-        [
-          "United States",
-          "Puerto Rico",
-          253763.862077504
+          640000.012299504
         ],
         [
           "United States",
           "United Kingdom",
-          181519.83425012
+          264025.464201328
         ],
         [
           "United States",
-          "Canada",
-          84599.63437938
-        ],
-        [
-          "United States",
-          "South Korea",
-          83911.992764016
-        ],
-        [
-          "United States",
-          "China",
-          71461.295126428
+          "Puerto Rico",
+          232949.788124096
         ],
         [
           "United States",
           "Germany",
-          66184.38770357601
+          90741.707021696
         ],
         [
           "United States",
-          "Hong Kong",
-          49341.13256242
+          "U.S. Virgin Islands",
+          42499.495804928
         ],
         [
           "United States",
           "Netherlands",
-          48060.730954244005
+          39459.581158748
+        ],
+        [
+          "United States",
+          "Argentina",
+          37071.7602944
+        ],
+        [
+          "United States",
+          "Belgium",
+          29006.040145872
+        ],
+        [
+          "United States",
+          "Chile",
+          28126.318530304
         ]
       ],
       "table_data_type": "Sum",
@@ -5887,20 +5887,21 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
           ]
         },
         "datasource": "netsage",
-        "definition": "",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow)  AND NOT meta.sensor_id:cenic* AND NOT meta.sensor_id:*pacificwave.net\"}",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "Sensors",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow)  AND NOT meta.sensor_id:cenic*\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow)  AND NOT meta.sensor_id:cenic* AND NOT meta.sensor_id:*pacificwave.net\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -5914,18 +5915,19 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "United States",
           "value": "United States"
         },
         "datasource": "netsage",
-        "definition": "",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\"}",
         "hide": 0,
         "includeAll": false,
         "label": "",
         "multi": false,
         "name": "Country",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\":\"meta.sensor_id.keyword:$Sensors AND (-meta.src_country_name.keyword:\\\"\\\" AND -meta.src_country_name.keyword:\\\"==========================================================\\\")\", \"size\": 5000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

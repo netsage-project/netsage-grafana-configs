@@ -48,6 +48,16 @@ make install
 popd
 ### End plugin source code installs ###
 
+
+#Install navigation
+# HACK: for some reason this fails to install unless it's moved to a different location.
+cp -r  Netsage-Slope_graph /tmp/
+pushd . 
+cd /tmp/Netsage-Slope_graph/
+make install
+popd
+### End plugin source code installs ###
+
 #Enable grafana
 systemctl enable grafana-server
 systemctl restart grafana-server

@@ -8,6 +8,8 @@ echo "Updating Menu Items"
 ./apply_templates.py --type MENUS
 echo "Updating Footer on Dashboards"
 ./apply_templates.py --type FOOTER_UPDATES
+echo "Updating Query on Dashboards"
+./apply_templates.py --type QUERY_OVERRIDE
 
 #Install wizzy
 cd /vagrant

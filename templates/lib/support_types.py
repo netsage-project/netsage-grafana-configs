@@ -12,7 +12,8 @@ class ExecutionType(Enum):
     """
     GRAFANA_CONFIG = 1,
     MENUS = 2,
-    FOOTER_UPDATES = 3
+    FOOTER_UPDATES = 3,
+    QUERY_OVERRIDE = 4
 
     def __str__(self):
         return self.name

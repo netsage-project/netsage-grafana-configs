@@ -5,7 +5,7 @@ import sys
 import logging
 import yaml
 import argparse
-from lib.processor import TemplateGrafanaProcessor, TemplateMenuProcessor, TemplateFooterProcessor
+from lib.processor import TemplateGrafanaProcessor, TemplateMenuProcessor, TemplateFooterProcessor, TemplateQueryOverride
 from lib.support_types import ExecutionType
 
 log = logging.getLogger(__name__)
@@ -22,7 +22,8 @@ class Runner(object):
 
         self.callers = {ExecutionType.MENUS: TemplateMenuProcessor(self.__config__),
                         ExecutionType.GRAFANA_CONFIG: TemplateGrafanaProcessor(self.__config__),
-                        ExecutionType.FOOTER_UPDATES: TemplateFooterProcessor(self.__config__)}
+                        ExecutionType.FOOTER_UPDATES: TemplateFooterProcessor(self.__config__),
+                        ExecutionType.QUERY_OVERRIDE: TemplateQueryOverride(self.__config__)}
 
     def process(self, execution_type):
         """

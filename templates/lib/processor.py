@@ -29,6 +29,10 @@ class AbstractTemplateProcessor(ABC):
     def process(self):
         pass
 
+    @abstractmethod
+    def is_valid(self, panel):
+        pass
+
     def __get_wizzy_dashboards__(self):
         """
         :return: List of strings representing the path of all dashboards
@@ -78,6 +82,9 @@ class TemplateGrafanaProcessor(AbstractTemplateProcessor):
         else:
             log.error("Failed to create grafana config as {}".format(file_name))
 
+    def is_valid(self, panel):
+        pass
+
 
 class TemplateMenuProcessor(AbstractTemplateProcessor):
 
@@ -104,9 +111,9 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('panels', [])
-        for p in panels:
-            if '__netsage_template' in p:
-                menu_panel = p
+        for panel in panels:
+            if self.is_valid(panel):
+                menu_panel = panel
                 break
         if menu_panel is None:
             log.warning("No Menu detected for dashboard: {}".format(dashboard))
@@ -119,12 +126,16 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         with open(dashboard, 'w') as outfile:
             json.dump(data, outfile, indent=2, sort_keys=True)
 
+    def is_valid(self, panel):
+        return '__netsage_template' in panel
+
 
 class TemplateFooterProcessor(AbstractTemplateProcessor):
     """
     This Processor is responsible for updating / replacing the footer on each dashboard, if it contains a footer/html
     panel.
     """
+
     def __init__(self, config: dict):
         super().__init__(ExecutionType.FOOTER_UPDATES, config)
 
@@ -146,10 +157,9 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('panels', [])
-        panel = panels[len(panels) - 1]  ## get footer panel
+        panel = panels[len(panels) - 1]  # get footer panel
 
-        ## Validation
-        if panel['mode'] != 'html' or panel['type'] != 'text':
+        if self.is_valid(panel):
             log.error("Last panel is not in HTML mode or of type text, invalid footer panel detected")
 
         panel['content'] = self.get_value('template', self.__namespace__)
@@ -157,3 +167,61 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         log.info("Updating dashboard: {} with new footer".format(dashboard))
         with open(dashboard, 'w') as outfile:
             json.dump(data, outfile, indent=2, sort_keys=True)
+
+    def is_valid(self, panel):
+        """
+        Ensures that the panel is a valid footer panel
+        """
+        return panel['mode'] != 'html' or panel['type'] != 'text'
+
+
+class TemplateQueryOverride(AbstractTemplateProcessor):
+    """
+    This Processor is responsible for updating certain queries as defined by the template config.
+
+    It will process every pair of (name, value) and apply the changes to the template if any are found.
+    """
+
+    def __init__(self, config: dict):
+        super().__init__(ExecutionType.QUERY_OVERRIDE, config)
+
+    def process(self):
+        """
+        Replace the query on each dashboard
+        """
+        dashboard_list = self.__get_wizzy_dashboards__()
+        for dashboard in dashboard_list:
+            self.__apply_dashboard_changes__(dashboard)
+
+    def __apply_dashboard_changes__(self, dashboard):
+        """
+        Note this method isn't especially optimal.  If the number of variable and number of dashboards grows very
+        large this needs to be revisited.  O(num of dashboards * num of changes)
+        :param dashboard:
+        :return:
+        """
+        log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
+        import json
+        panel = None
+        with open(dashboard, 'r') as file:
+            data = json.load(file)
+        panels = data.get('templating', []).get('list', [])
+        for panel in panels:
+            if self.is_valid(panel):
+                name = panel.get('name')
+                for request in self.__config__[self.__namespace__]:
+                    key = request.get('name', '')
+                    request_value = request.get('value', '')
+                    if name == key:
+                        panel['query'] = request_value if len(request_value) > 0 else panel['query']
+                        log.debug("updated query on dashboard: {} for variable: {} with value: {}".format(
+                            os.path.basename(dashboard), key, request_value))
+
+        with open(dashboard, 'w') as outfile:
+            json.dump(data, outfile, indent=2, sort_keys=True)
+
+    def is_valid(self, panel):
+        """
+        Ensure both name and query must be present
+        """
+        return 'name' in panel and 'query' in panel

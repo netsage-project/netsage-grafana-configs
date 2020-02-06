@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580168177848,
+  "iteration": 1580176401170,
   "links": [],
   "panels": [
     {
@@ -271,13 +271,21 @@
         "show": true
       },
       "links": [],
-      "max_total": 0,
+      "max_total": 60973213,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
       "option_4": 123,
       "options": {},
-      "parsed_data": [],
+      "parsed_data": [
+        {
+          "avg": 717331.9176470588,
+          "label": "Count",
+          "max": 3303995,
+          "min": 2389,
+          "total": 60973213
+        }
+      ],
       "rgb_values": [
         "rgb(248,174,99)",
         "rgb(245,174,102)",
@@ -2172,7 +2180,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [
     "flow",
@@ -2189,14 +2197,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\" (meta.flow_type:sflow  OR meta.flow_type:netflow OR meta.flow_type:tstat)  AND NOT meta.sensor_id:cenic*\"}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Sensor",
         "multi": true,
         "name": "sensors",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\" (meta.flow_type:sflow  OR meta.flow_type:netflow OR meta.flow_type:tstat)  AND NOT meta.sensor_id:cenic*\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,

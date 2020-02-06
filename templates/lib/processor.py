@@ -108,7 +108,7 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         log.info("Processing dashboard {}".format(dashboard))
         import json
         menu_panel = None
-        with open(dashboard, 'r') as file:
+        with open(dashboard, 'r', encoding='utf-8') as file:
             data = json.load(file)
         panels = data.get('panels', [])
         for panel in panels:

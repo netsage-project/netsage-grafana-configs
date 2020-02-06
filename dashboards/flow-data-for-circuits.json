@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580175311607,
+  "iteration": 1580857396985,
   "links": [],
   "panels": [
     {
@@ -270,7 +270,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 61068977,
+      "max_total": 65270716,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 361354.89349112427,
+          "avg": 383945.38823529414,
           "label": "Count",
-          "max": 2786014,
-          "min": 699,
-          "total": 61068977
+          "max": 1195950,
+          "min": 1303,
+          "total": 65270716
         }
       ],
       "rgb_values": [
@@ -382,7 +382,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Flow Data for Circuits</b></h1></center>\n<center>This dashboard provides flow data for the top ten sources and destinations by volume and rate for circuits.</center>\n<center>Click on an organization name in one of the tables to see the flow data dashboard for that organization.</center>\n<center><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "<center><h1><b>Flow Data for Circuits</b></h1></center>\n<center>This dashboard provides flow data for the top ten sources and destinations by volume and rate for circuits.</center>\n<center>Click on an organization name in one of the tables to see the flow data dashboard for that organization.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
         "h": 4,
         "w": 18,
@@ -1650,82 +1650,20 @@
       "type": "text"
     },
     {
-      "gridPos": {
-        "h": 13,
-        "w": 24,
-        "x": 0,
-        "y": 56
-      },
-      "id": 4613,
-      "links": [],
-      "options": {},
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "4",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Top 10 Organization Pairs by Data Volume",
-      "type": "slope-graph"
-    },
-    {
       "columns": [],
       "datasource": "netsage",
       "fontSize": "100%",
       "gridPos": {
-        "h": 15,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 69
+        "y": 56
       },
       "hideTimeOverride": false,
       "id": 42,
       "links": [],
       "options": {},
-      "pageSize": 15,
+      "pageSize": 10,
       "scroll": true,
       "showHeader": true,
       "sort": {
@@ -1947,6 +1885,71 @@
       "type": "table"
     },
     {
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 67
+      },
+      "header1": "Source Organization",
+      "header2": "Destination Organization",
+      "id": 4613,
+      "links": [],
+      "num_pairs": "20",
+      "options": {},
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_organization.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "50"
+              },
+              "type": "terms"
+            },
+            {
+              "fake": true,
+              "field": "meta.dst_organization.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$Sensors AND -$source_scope:\"\" AND -$dest_scope:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top 10 Organization Pairs by Data Volume",
+      "type": "slope-graph"
+    },
+    {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu. </a> Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "gridPos": {
         "h": 3,
@@ -1964,7 +1967,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 19,
+  "schemaVersion": 18,
   "style": "dark",
   "tags": [
     "flow",
@@ -1981,14 +1984,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow OR meta.flow_type:tstat) AND -meta.sensor_id:cenic*\"}",
         "hide": 0,
         "includeAll": true,
         "label": null,
         "multi": true,
         "name": "Sensors",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow OR meta.flow_type:tstat) AND -meta.sensor_id:cenic*\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

@@ -18,8 +18,7 @@ cd netsage-grafana-configs
 ```
 5. Pull down the submodules found in the plug-ins directory:
 ```
-git submodule init
-git submodule update
+git submodule update --init
 ```
 6. Install the vagrant plugins used by the Vagrantfile in the following order:
 ```
@@ -29,18 +28,43 @@ vagrant plugin install vagrant-reload
 
 ## Starting the VM for the First Time
 
+## Upgrading the OS or grafana version
+
+Must be executed at least once to create the base image.  Once the image is built it should not be needed unless a new grafana version is released.
+
+The base image is tagged based on the version of grafana.  The Vagrant box will named: netsage-base/$VERSION where $VERSION is the grafana version.
+
+go into the baseBox directory and run  ./build.sh to use default values or override the default behavior by setting the version
+
+```sh
+VERSION="6.6.0" ./build.sh 
+```
+
+if everything works, you should see the new image listed under:
+
+```sh
+vagrant box list
+```
+
+and to remove the box you can simply use this command:
+
+```sh
+vagrant box remove netsage-base-6.3.5
+```
+
+## Bring up Vagrant 
 Perform the following steps every time you bring up a fresh instance of the VM:
 
 1. Start the VM. This will take several minutes as it builds ands configures the virtual machine:
 ```
 vagrant up
 ```
-2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/grafana/admin in your browser (10.3.3.3 is the statically set private address of your local VM)
+2. You are now ready to configure your data source via the Grafana web interface.  Go to http://10.3.3.3:3000/grafana/admin/ in your browser (10.3.3.3 is the statically set private address of your local VM)
 3. Login with the default username `admin` and password `admin`
 4. Change the password or hit "skip" if prompted to change password
 5. Click on "Data Sources" in the Configuration menu on the left hand side
 6. Click *netsage* in the list of datasources
-7. Enter the username and password in the `User` and `Password` fields
+7. Enter the username and password in the `User` and `Password` fields **NOTE:** This is different from your grafana credentials
 8. Click `Save and Test`. It should provide imediate feedback if things are working or not.
 
 Assuming it worked, you can now navigate to the dashboards at http://10.3.3.3:3000/grafana and see data.

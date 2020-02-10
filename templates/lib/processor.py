@@ -1,6 +1,7 @@
 import logging
-
+import json
 import re
+
 from abc import ABC, abstractmethod
 
 from jinja2 import Template
@@ -34,6 +35,10 @@ class AbstractTemplateProcessor(ABC):
     @abstractmethod
     def is_valid(self, panel):
         pass
+
+    def safe_dashboard(self, dashboard, data):
+        with open(dashboard, 'w') as outfile:
+            json.dump(data, outfile, indent=2, sort_keys=True)
 
     def __get_wizzy_dashboards__(self):
         """
@@ -108,7 +113,6 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         otherwise it's a NoOp
         """
         log.info("Processing dashboard {}".format(dashboard))
-        import json
         menu_panel = None
         with open(dashboard, 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -125,8 +129,7 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         menu_panel['array_option_2'] = self.get_value('menu_values', ns='menus')
 
         log.info("Updating dashboard: {}".format(dashboard))
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         return '__netsage_template' in panel
@@ -154,8 +157,6 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         updates footer on the dashboard file if it contains a valid entry
         """
         log.info("Processing dashboard {} for type: {}".format(dashboard, self.type))
-        import json
-        panel = None
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('panels', [])
@@ -167,8 +168,7 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         panel['content'] = self.get_value('template', self.__namespace__)
 
         log.info("Updating dashboard: {} with new footer".format(dashboard))
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         """
@@ -203,8 +203,6 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
         :return:
         """
         log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
-        import json
-        panel = None
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('templating', []).get('list', [])
@@ -219,8 +217,7 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
                         log.debug("updated query on dashboard: {} for variable: {} with value: {}".format(
                             os.path.basename(dashboard), key, request_value))
 
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         """
@@ -231,15 +228,13 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
 
 class TemplateAnalyticsOverride(AbstractTemplateProcessor):
     """
-    This Processor is responsible for updating certain queries as defined by the template config.
+    This Processor is responsible for updating The Google Analytics ID in any content tag for any match found
 
-    It will process every pair of (name, value) and apply the changes to the template if any are found.
     """
 
     def __init__(self, config: dict):
         super().__init__(ExecutionType.GOOGLE_ANALYTICS, config)
         self.pattern = re.compile(".*UA-\d+-\d.*")
-
 
     def process(self):
         """
@@ -251,14 +246,12 @@ class TemplateAnalyticsOverride(AbstractTemplateProcessor):
 
     def __apply_dashboard_changes__(self, dashboard):
         """
-        Note this method isn't especially optimal.  If the number of variable and number of dashboards grows very
-        large this needs to be revisited.  O(num of dashboards * num of changes)
+        Updates google ID wherever it's been found.
+        
         :param dashboard:
         :return:
         """
         log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
-        import json
-        panel = None
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('panels', [])
@@ -270,9 +263,7 @@ class TemplateAnalyticsOverride(AbstractTemplateProcessor):
                 content = re.sub(r"UA-\d+-\d", google_key, content)
                 panel[content_key] = content
 
-
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         """
@@ -282,5 +273,5 @@ class TemplateAnalyticsOverride(AbstractTemplateProcessor):
             return False
         content = panel.get('content')
         # Ensure Analytics ID is present
-        m = self.pattern.search(content)
-        return m is not None
+        match = self.pattern.search(content)
+        return match is not None

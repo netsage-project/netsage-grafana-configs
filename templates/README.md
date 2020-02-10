@@ -12,7 +12,9 @@ pipenv install -r requirements.txt
 
 ## Execute script
 
+```sh
 ./apply_template.py -h 
+ ```
 
 ```shell script
 Template Processor
@@ -29,3 +31,12 @@ For example if you wish to update the menus and reflect the changes on the dashb
 2. Run the script
 3. wizzy export dashboards
 
+###Note:
+
+As a convenience you can also run:
+
+```sh
+./apply_template.py --type ALL
+ ```
+
+This will execution every configure processor on the dashboards.

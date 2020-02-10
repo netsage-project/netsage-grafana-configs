@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
-#Install wizzy
-npm install -g wizzy@0.6.0
 
-### Update grafana.ini file ###
-#set default grafana theme to light
-sed -i 's/^;default_theme.*/default_theme = light/' /etc/grafana/grafana.ini
-#need the following setting so the google analytics script tags are not shown
-sed -i 's/^;disable_sanitize_html.*/disable_sanitize_html = true/' /etc/grafana/grafana.ini
-#server from /grafana subpath to match prod and dev instances behind a proxy
-sed -i 's|^;root_url.*|root_url = http://localhost:3000/grafana|' /etc/grafana/grafana.ini
-sed -i 's/^;serve_from_sub_path.*/serve_from_sub_path = true/' /etc/grafana/grafana.ini
+cd /vagrant/templates/
+pip3 install -r requirements.txt
+echo "Updating Grafana Config"
+./apply_templates.py --type GRAFANA_CONFIG && cp -f grafana.ini /etc/grafana/grafana.ini
+echo "Updating Menu Items"
+./apply_templates.py --type MENUS
+echo "Updating Footer on Dashboards"
+./apply_templates.py --type FOOTER_UPDATES
+echo "Updating Query on Dashboards"
+./apply_templates.py --type QUERY_OVERRIDE
+
+#Install wizzy
+cd /vagrant
+npm install -g wizzy@0.6.0
 
 ### Start plugin installs ###
 cd /vagrant/plugins
@@ -64,6 +68,7 @@ popd
 
 ## END PLUGIN INSTALL ##
 
+
 #Enable grafana
 systemctl enable grafana-server
 systemctl restart grafana-server
@@ -71,6 +76,7 @@ systemctl restart grafana-server
 #Set to local context
 cd /vagrant
 cp -f conf/wizzy.json.default conf/wizzy.json
+
 wizzy set context grafana local #this should be the default, but just in case
 wizzy export dashboards
 wizzy export datasources

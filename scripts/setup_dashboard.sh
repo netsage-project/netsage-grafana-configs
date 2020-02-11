@@ -10,6 +10,8 @@ echo "Updating Footer on Dashboards"
 ./apply_templates.py --type FOOTER_UPDATES
 echo "Updating Query on Dashboards"
 ./apply_templates.py --type QUERY_OVERRIDE
+echo "Updating Google Analytics on Dashboards"
+./apply_templates.py --type GOOGLE_ANALYTICS
 
 #Install wizzy
 cd /vagrant

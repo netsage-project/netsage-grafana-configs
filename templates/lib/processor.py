@@ -1,4 +1,7 @@
 import logging
+import json
+import re
+
 from abc import ABC, abstractmethod
 
 from jinja2 import Template
@@ -32,6 +35,10 @@ class AbstractTemplateProcessor(ABC):
     @abstractmethod
     def is_valid(self, panel):
         pass
+
+    def safe_dashboard(self, dashboard, data):
+        with open(dashboard, 'w') as outfile:
+            json.dump(data, outfile, indent=2, sort_keys=True)
 
     def __get_wizzy_dashboards__(self):
         """
@@ -106,7 +113,6 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         otherwise it's a NoOp
         """
         log.info("Processing dashboard {}".format(dashboard))
-        import json
         menu_panel = None
         with open(dashboard, 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -123,8 +129,7 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         menu_panel['array_option_2'] = self.get_value('menu_values', ns='menus')
 
         log.info("Updating dashboard: {}".format(dashboard))
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         return '__netsage_template' in panel
@@ -152,8 +157,6 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         updates footer on the dashboard file if it contains a valid entry
         """
         log.info("Processing dashboard {} for type: {}".format(dashboard, self.type))
-        import json
-        panel = None
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('panels', [])
@@ -165,8 +168,7 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         panel['content'] = self.get_value('template', self.__namespace__)
 
         log.info("Updating dashboard: {} with new footer".format(dashboard))
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         """
@@ -201,8 +203,6 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
         :return:
         """
         log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
-        import json
-        panel = None
         with open(dashboard, 'r') as file:
             data = json.load(file)
         panels = data.get('templating', []).get('list', [])
@@ -217,11 +217,61 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
                         log.debug("updated query on dashboard: {} for variable: {} with value: {}".format(
                             os.path.basename(dashboard), key, request_value))
 
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
+        self.safe_dashboard(dashboard, data)
 
     def is_valid(self, panel):
         """
         Ensure both name and query must be present
         """
         return 'name' in panel and 'query' in panel
+
+
+class TemplateAnalyticsOverride(AbstractTemplateProcessor):
+    """
+    This Processor is responsible for updating The Google Analytics ID in any content tag for any match found
+
+    """
+
+    def __init__(self, config: dict):
+        super().__init__(ExecutionType.GOOGLE_ANALYTICS, config)
+        self.pattern = re.compile(".*UA-\d+-\d.*")
+
+    def process(self):
+        """
+        Replace the query on each dashboard
+        """
+        dashboard_list = self.__get_wizzy_dashboards__()
+        for dashboard in dashboard_list:
+            self.__apply_dashboard_changes__(dashboard)
+
+    def __apply_dashboard_changes__(self, dashboard):
+        """
+        Updates google ID wherever it's been found.
+        
+        :param dashboard:
+        :return:
+        """
+        log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
+        with open(dashboard, 'r') as file:
+            data = json.load(file)
+        panels = data.get('panels', [])
+        content_key = 'content'
+        for panel in panels:
+            google_key = self.get_value('id', self.__namespace__)
+            if self.is_valid(panel):
+                content = panel.get(content_key)
+                content = re.sub(r"UA-\d+-\d", google_key, content)
+                panel[content_key] = content
+
+        self.safe_dashboard(dashboard, data)
+
+    def is_valid(self, panel):
+        """
+        Ensure Google Analytics ID is found in the content section
+        """
+        if 'content' not in panel:
+            return False
+        content = panel.get('content')
+        # Ensure Analytics ID is present
+        match = self.pattern.search(content)
+        return match is not None

@@ -3664,7 +3664,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest) AND meta.sensor_id.keyword:$sensor",
+          "query": "((meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest) OR (meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src)) AND meta.sensor_id.keyword:$sensor",
           "refId": "A",
           "timeField": "start"
         }

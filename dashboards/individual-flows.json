@@ -3663,7 +3663,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest) AND meta.sensor_id.keyword:$sensor",
+          "query": "((meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest) OR  (meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src)) AND meta.sensor_id.keyword:$sensor",
           "refId": "A",
           "timeField": "start"
         }

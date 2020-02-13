@@ -26,6 +26,15 @@ vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-reload 
 ```
 
+This is optional but useful for copying data from VMs.
+
+```
+vagrant plugin install vagrant-scp
+```
+
+vagrant scp grafana.ini netsage-dev:/etc/grafana/grafana.ini
+
+
 ## Starting the VM for the First Time
 
 ## Upgrading the OS or grafana version

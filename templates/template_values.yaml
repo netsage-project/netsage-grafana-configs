@@ -1,0 +1,56 @@
+grafana_config:
+  grafana_theme: light
+  grafana__sanitize: true
+  grafana_root_url:  http://localhost:3000/grafana
+  grafana_sub_path: true
+  input_file: grafana.template
+  output_file: grafana.ini
+
+common:
+  dashboard_location: dashboards/
+
+
+menus:
+  menu_text:
+    - "What is the current state of the network?"
+    - "What are the top sources/destinations of flows?"
+    - "What is the aggregate flow data for data archives?"
+    - "What are the top flows by organization?"
+    - "What do individual flows look like?"
+    - "What are the top flows by country?"
+    - "What are flows by science discipline?"
+    - "What are the patterns in science data transfers in the network?"
+    - "What are the bandwidth patterns in the network?"
+    - "What are the patterns of loss in the network?"
+    - "What are the patterns of latency in the network?"
+    - "What are the current flow data summary statistics?"
+  menu_values:
+    - "/grafana/d/000000003/bandwidth-dashboard"
+    - "/grafana/d/xk26IFhmk/flow-data"
+    - "/grafana/d/mNPduO8mz/flow-data-for-data-archives"
+    - "/grafana/d/QfzDJKhik/flow-data-per-organization"
+    - "/grafana/d/-l3_u8nWk/individual-flows"
+    - "/grafana/d/fgrOzz_mk/flow-data-per-country"
+    - "/grafana/d/WNn1qyaiz/flows-by-science-discipline"
+    - "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+    - "/grafana/d/000000004/bandwidth-patterns"
+    - "/grafana/d/000000006/loss-patterns"
+    - "/grafana/d/000000005/latency-patterns"
+    - "/grafana/d/CJC1FFhmz/other-flow-stats"
+
+footer_updates:
+  template: >
+    <div> If you have any questions, concerns, or other issues, feel free to contact us at <a href="mailto:netsage@lbl.gov">netsage@lblgov </a> Thanks!
+    <img style="margin-left:10px" src="https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png" width=50 height=50>
+    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933"> NSF GRANT 1540933 </a> </img> <span style="float:right; position:relative; top:15px"> To Review the NetSage
+    Data Policy <a href="http://www.netsage.global/home/netsage-privacy-policy"> click here </a> </div>
+
+## this supports multiple name-value pairs.  The content of query_override is an array.  The name is the name of the query from grafana.  Please ensure 
+# you use the name, and not the display Name or label or any other field.  The $ sign in front of the placeMarker should be omitted. 
+query_override:
+  - name: dummyMarker
+    value:     >
+      {"find":"terms2", "field":"meta.sensor_id.keyword", "query":"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*"}'
+
+google_analytics:
+  id: UA-142763676-1

@@ -15,11 +15,10 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573047528870,
+  "iteration": 1581625112909,
   "links": [],
   "panels": [
     {
-      "__netsage_template": "navigation",
       "array_option_1": [
         "What is the current state of the network?",
         "What are the top sources/destinations of flows?",
@@ -32,7 +31,8 @@
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?"
+        "Advanced Flow Analysis",
+        ""
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
@@ -46,9 +46,11 @@
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats"
+        "/grafana/d/VuuXrnPWz/flow-analysis",
+        ""
       ],
       "array_option_3": [
+        "",
         "",
         "",
         "",
@@ -61,6 +63,7 @@
         ""
       ],
       "array_option_4": [
+        "",
         "",
         "",
         "",
@@ -83,7 +86,8 @@
         8,
         9,
         10,
-        11
+        11,
+        12
       ],
       "color": {
         "cardColor": "#b4ff00",
@@ -265,13 +269,13 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": "41",
+      "id": 41,
       "legend": {
         "legend_colors": [],
         "show": true
       },
       "links": [],
-      "max_total": 316476171,
+      "max_total": 403871036,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -279,11 +283,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 2615505.5454545454,
+          "avg": 3337777.1570247933,
           "label": "Count",
-          "max": 6756717,
-          "min": 7407,
-          "total": 316476171
+          "max": 10907970,
+          "min": 5771,
+          "total": 403871036
         }
       ],
       "rgb_values": [
@@ -932,6 +936,1817 @@
         "max": null,
         "min": null
       },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "AmLight: Chile to Sao Paolo 100GE",
+          "value": "AmLight: Chile to Sao Paolo 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "height": "400px",
+      "id": "41111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "AmLight: Miami to Chile 100GE",
+          "value": "AmLight: Miami to Chile 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "height": "400px",
+      "id": "411111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "AmLight: Miami to Sao Paulo 100GE",
+          "value": "AmLight: Miami to Sao Paulo 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 66
+      },
+      "height": "400px",
+      "id": "4111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "NEAAR: New York to London 100GE",
+          "value": "NEAAR: New York to London 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 76
+      },
+      "height": "400px",
+      "id": "41111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "PIREN: Los Angeles to Mauna Lani 100GE",
+          "value": "PIREN: Los Angeles to Mauna Lani 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 86
+      },
+      "height": "400px",
+      "id": "411111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "PIREN: Mauna Lani to Sydney 100GE",
+          "value": "PIREN: Mauna Lani to Sydney 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 96
+      },
+      "height": "400px",
+      "id": "4111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "PIREN: Oahu to Guam 100GE",
+          "value": "PIREN: Oahu to Guam 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 106
+      },
+      "height": "400px",
+      "id": "41111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "PIREN: Oahu to Los Angeles 100GE",
+          "value": "PIREN: Oahu to Los Angeles 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 116
+      },
+      "height": "400px",
+      "id": "411111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "PIREN: Oahu to Sydney 100GE",
+          "value": "PIREN: Oahu to Sydney 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 126
+      },
+      "height": "400px",
+      "id": "4111111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "PIREN: Seattle to Oahu 100GE",
+          "value": "PIREN: Seattle to Oahu 100GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 136
+      },
+      "height": "400px",
+      "id": "41111111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "TransPAC: Hong Kong to Guam 10GE",
+          "value": "TransPAC: Hong Kong to Guam 10GE"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$data_direction"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$links ($data_direction)",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "bps"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 146
+      },
+      "height": "400px",
+      "id": "411111111111111111111111111111111111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625112909,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "links": {
+          "selected": false,
+          "text": "TransPAC: Seattle to Tokyo 100GE",
+          "value": "TransPAC: Seattle to Tokyo 100GE"
+        }
+      },
       "targets": [
         {
           "aggregate_all": false,
@@ -1052,7 +2867,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 156
       },
       "id": 29,
       "links": [],

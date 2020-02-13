@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573047756375,
+  "iteration": 1581625685761,
   "links": [],
   "panels": [
     {
@@ -32,7 +32,8 @@
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?"
+        "Advanced Flow Analysis",
+        ""
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
@@ -46,7 +47,8 @@
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats"
+        "/grafana/d/VuuXrnPWz/flow-analysis",
+        ""
       ],
       "array_option_3": [
         "",
@@ -270,7 +272,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 316457126,
+      "max_total": 403492359,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +280,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 2615348.1487603304,
+          "avg": 3334647.5950413225,
           "label": "Count",
-          "max": 6756717,
-          "min": 7407,
-          "total": 316457126
+          "max": 10907970,
+          "min": 10232,
+          "total": 403492359
         }
       ],
       "rgb_values": [
@@ -408,6 +410,13 @@
       "id": 36,
       "panels": [],
       "repeat": "destination",
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at South Australia",
+          "value": "AARNet pS Server at South Australia"
+        }
+      },
       "title": "$source -> $destination",
       "type": "row"
     },
@@ -452,6 +461,13 @@
       "scale": {
         "max": null,
         "min": null
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at South Australia",
+          "value": "AARNet pS Server at South Australia"
+        }
       },
       "targets": [
         {
@@ -614,6 +630,13 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at South Australia",
+          "value": "AARNet pS Server at South Australia"
+        }
+      },
       "seriesOverrides": [
         {
           "alias": "/.*/",
@@ -795,6 +818,13 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at South Australia",
+          "value": "AARNet pS Server at South Australia"
+        }
+      },
       "seriesOverrides": [
         {
           "alias": "/.*/",
@@ -947,6 +977,2330 @@
         "x": 0,
         "y": 22
       },
+      "id": "691",
+      "panels": [],
+      "repeat": null,
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 36,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at Victoria",
+          "value": "AARNet pS Server at Victoria"
+        }
+      },
+      "title": "$source -> $destination",
+      "type": "row"
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "ms"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "height": "400px",
+      "id": "6911",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 6,
+      "repeatedByRow": true,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at Victoria",
+          "value": "AARNet pS Server at Victoria"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "hide": false,
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$measurement"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": false,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Latency Timeline",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": "69111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at Victoria",
+          "value": "AARNet pS Server at Victoria"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "$statistics",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency Over Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "ms",
+          "label": "Speed",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "id": "691111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 40,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at Victoria",
+          "value": "AARNet pS Server at Victoria"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency (ms)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "histogram",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "Count",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "id": "6911111",
+      "panels": [],
+      "repeat": null,
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 36,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "APAN pS Server at Tokyo",
+          "value": "APAN pS Server at Tokyo"
+        }
+      },
+      "title": "$source -> $destination",
+      "type": "row"
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "ms"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "height": "400px",
+      "id": "69111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 6,
+      "repeatedByRow": true,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "APAN pS Server at Tokyo",
+          "value": "APAN pS Server at Tokyo"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "hide": false,
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$measurement"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": false,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Latency Timeline",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 49
+      },
+      "id": "691111111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "APAN pS Server at Tokyo",
+          "value": "APAN pS Server at Tokyo"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "$statistics",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency Over Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "ms",
+          "label": "Speed",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 49
+      },
+      "id": "6911111111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 40,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "APAN pS Server at Tokyo",
+          "value": "APAN pS Server at Tokyo"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency (ms)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "histogram",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "Count",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": "69111111111",
+      "panels": [],
+      "repeat": null,
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 36,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Manoa",
+          "value": "Hawaii pS Server at Manoa"
+        }
+      },
+      "title": "$source -> $destination",
+      "type": "row"
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "ms"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "height": "400px",
+      "id": "691111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 6,
+      "repeatedByRow": true,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Manoa",
+          "value": "Hawaii pS Server at Manoa"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "hide": false,
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$measurement"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": false,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Latency Timeline",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 66
+      },
+      "id": "6911111111111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Manoa",
+          "value": "Hawaii pS Server at Manoa"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "$statistics",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency Over Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "ms",
+          "label": "Speed",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 66
+      },
+      "id": "69111111111111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 40,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Manoa",
+          "value": "Hawaii pS Server at Manoa"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency (ms)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "histogram",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "Count",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 73
+      },
+      "id": "691111111111111",
+      "panels": [],
+      "repeat": null,
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 36,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Mauna Lani",
+          "value": "Hawaii pS Server at Mauna Lani"
+        }
+      },
+      "title": "$source -> $destination",
+      "type": "row"
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 1,
+        "unitFormat": "ms"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 74
+      },
+      "height": "400px",
+      "id": "6911111111111111",
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatDirection": "h",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 6,
+      "repeatedByRow": true,
+      "scale": {
+        "max": null,
+        "min": null
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Mauna Lani",
+          "value": "Hawaii pS Server at Mauna Lani"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "hide": false,
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "$measurement"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": false,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "Latency Timeline",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 83
+      },
+      "id": "69111111111111111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 38,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Mauna Lani",
+          "value": "Hawaii pS Server at Mauna Lani"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "$statistics",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency Over Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "ms",
+          "label": "Speed",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 83
+      },
+      "id": "691111111111111111",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1581625685761,
+      "repeatPanelId": 40,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Mauna Lani",
+          "value": "Hawaii pS Server at Mauna Lani"
+        }
+      },
+      "seriesOverrides": [
+        {
+          "alias": "/.*/",
+          "color": "#f9934e"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": false,
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "aggregate_all": false,
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "template",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "$measurement",
+              "template": "$statistics",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "source_description, destination_description",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {
+            "aggregate(values.latency_avg, 3600, average)": ""
+          },
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description",
+            "source"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Latency (ms)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "histogram",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "Count",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 90
+      },
       "id": 34,
       "panels": [],
       "title": "",
@@ -958,7 +3312,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 91
       },
       "id": 25,
       "links": [],

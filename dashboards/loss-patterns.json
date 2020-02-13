@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573047795561,
+  "iteration": 1581625773432,
   "links": [],
   "panels": [
     {
@@ -32,7 +32,8 @@
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?"
+        "Advanced Flow Analysis",
+        ""
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
@@ -46,9 +47,11 @@
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats"
+        "/grafana/d/VuuXrnPWz/flow-analysis",
+        ""
       ],
       "array_option_3": [
+        "",
         "",
         "",
         "",
@@ -70,6 +73,7 @@
         "",
         "",
         "",
+        "",
         ""
       ],
       "choices": [
@@ -82,7 +86,8 @@
         7,
         8,
         9,
-        10
+        10,
+        11
       ],
       "color": {
         "cardColor": "#b4ff00",
@@ -264,13 +269,13 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": "42",
+      "id": 42,
       "legend": {
         "legend_colors": [],
         "show": true
       },
       "links": [],
-      "max_total": 327801938,
+      "max_total": 403849761,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -278,11 +283,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 908038.6094182825,
+          "avg": 3337601.3305785125,
           "label": "Count",
-          "max": 3024744,
-          "min": 1581,
-          "total": 327801938
+          "max": 10907970,
+          "min": 5771,
+          "total": 403849761
         }
       ],
       "rgb_values": [
@@ -438,6 +443,693 @@
         "max": 0.01,
         "min": 0
       },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at South Australia",
+          "value": "AARNet pS Server at South Australia"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 2,
+        "unitFormat": "percentunit"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "height": "400px",
+      "id": 43,
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625773432,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": 0.01,
+        "min": 0
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "AARNet pS Server at Victoria",
+          "value": "AARNet pS Server at Victoria"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 2,
+        "unitFormat": "percentunit"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "height": "400px",
+      "id": 44,
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625773432,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": 0.01,
+        "min": 0
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "APAN pS Server at Tokyo",
+          "value": "APAN pS Server at Tokyo"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 2,
+        "unitFormat": "percentunit"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "height": "400px",
+      "id": 45,
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625773432,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": 0.01,
+        "min": 0
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Manoa",
+          "value": "Hawaii pS Server at Manoa"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "tooltip": {
+        "show": true
+      },
+      "type": "petrslavotinek-carpetplot-panel",
+      "xAxis": {
+        "labelFormat": "%a %m/%d",
+        "minBucketWidthToShowWeekends": 4,
+        "show": true,
+        "showCrosshair": true,
+        "showWeekends": true
+      },
+      "yAxis": {
+        "show": true,
+        "showCrosshair": true
+      }
+    },
+    {
+      "aggregate": "AVG",
+      "color": {
+        "colorScheme": "interpolateBlues",
+        "colorSpace": "RGB",
+        "customColors": [
+          {
+            "color": "#006837"
+          },
+          {
+            "color": "#aa0526"
+          }
+        ],
+        "mode": "SPECTRUM",
+        "nullColor": "transparent"
+      },
+      "data": {
+        "decimals": 2,
+        "unitFormat": "percentunit"
+      },
+      "datasource": "Netsage TSDS",
+      "fragment": "HOUR",
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "height": "400px",
+      "id": 46,
+      "legend": {
+        "show": false
+      },
+      "links": [],
+      "maxPerRow": 1,
+      "options": {},
+      "repeat": null,
+      "repeatIteration": 1581625773432,
+      "repeatPanelId": 6,
+      "scale": {
+        "max": 0.01,
+        "min": 0
+      },
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Mauna Lani",
+          "value": "Hawaii pS Server at Mauna Lani"
+        }
+      },
       "targets": [
         {
           "aggregate_all": false,
@@ -564,7 +1256,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 54
       },
       "id": 31,
       "links": [],

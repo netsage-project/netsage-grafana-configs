@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1581714766077,
+  "iteration": 1582055049569,
   "links": [],
   "panels": [
     {
@@ -32,8 +32,7 @@
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?",
-        "Advanced Flow Analysis"
+        "What are the current flow data summary statistics?"
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
@@ -47,8 +46,7 @@
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/VuuXrnPWz/flow-analysis"
+        "/grafana/d/CJC1FFhmz/other-flow-stats"
       ],
       "array_option_3": [
         "",
@@ -272,7 +270,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 82953761,
+      "max_total": 61634267,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -280,11 +278,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 490850.65680473374,
+          "avg": 364699.8047337278,
           "label": "Count",
-          "max": 2600869,
-          "min": 212,
-          "total": 82953761
+          "max": 1839113,
+          "min": 366,
+          "total": 61634267
         }
       ],
       "rgb_values": [
@@ -2187,8 +2185,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -2205,9 +2203,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",
@@ -2265,6 +2265,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2310,7 +2311,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -2328,9 +2329,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",
@@ -2387,6 +2390,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2432,7 +2436,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -2450,9 +2454,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",

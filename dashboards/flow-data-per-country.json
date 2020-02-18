@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1581715762965,
+  "iteration": 1582055646510,
   "links": [],
   "panels": [
     {
@@ -32,8 +32,7 @@
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?",
-        "Advanced Flow Analysis"
+        "What are the current flow data summary statistics?"
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
@@ -47,8 +46,7 @@
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/VuuXrnPWz/flow-analysis"
+        "/grafana/d/CJC1FFhmz/other-flow-stats"
       ],
       "array_option_3": [
         "",
@@ -273,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 82868321,
+      "max_total": 61530525,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -281,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 490345.0946745562,
+          "avg": 364085.94674556213,
           "label": "Count",
-          "max": 2600869,
-          "min": 3231,
-          "total": 82868321
+          "max": 1839113,
+          "min": 366,
+          "total": 61530525
         }
       ],
       "rgb_values": [
@@ -2743,52 +2741,52 @@
         [
           "United States",
           "United States",
-          3424422.187561155
+          3109577.136389556
         ],
         [
           "Brazil",
           "United States",
-          1262533.83719517
+          1135714.729841951
         ],
         [
           "United Kingdom",
           "United States",
-          357623.642715532
+          369216.241343265
         ],
         [
           "Puerto Rico",
           "United States",
-          103277.044535184
-        ],
-        [
-          "Germany",
-          "United States",
-          72209.245400332
+          73707.379971724
         ],
         [
           "Switzerland",
           "United States",
-          69421.467738693
+          69796.032086287
         ],
         [
-          "Spain",
+          "Germany",
           "United States",
-          55025.151152018
+          53394.095755418
         ],
         [
           "France",
           "United States",
-          39015.388077147
-        ],
-        [
-          "Italy",
-          "United States",
-          26974.992715587
+          22400.11884186
         ],
         [
           "Ireland",
           "United States",
-          14981.506649216
+          15041.2438912
+        ],
+        [
+          "Norway",
+          "United States",
+          14735.431368192
+        ],
+        [
+          "Belgium",
+          "United States",
+          13407.918691568
         ]
       ],
       "table_data_type": "Sum",
@@ -4166,52 +4164,52 @@
         [
           "United States",
           "United States",
-          3424422.187561155
+          3109577.136389556
         ],
         [
           "United States",
           "Brazil",
-          387865.16459819
+          318008.945461937
         ],
         [
           "United States",
           "Puerto Rico",
-          387010.50213448
+          264743.018034504
         ],
         [
           "United States",
           "United Kingdom",
-          200098.791619744
+          217540.512866658
         ],
         [
           "United States",
           "Germany",
-          104242.091230285
-        ],
-        [
-          "United States",
-          "U.S. Virgin Islands",
-          45670.685908992
+          106903.69582549299
         ],
         [
           "United States",
           "Estonia",
-          33916.545522624
+          44621.080361984
+        ],
+        [
+          "United States",
+          "U.S. Virgin Islands",
+          41352.00514048
         ],
         [
           "United States",
           "Belgium",
-          26617.058186389
+          37168.576097672994
         ],
         [
           "United States",
-          "Hong Kong",
-          16651.102767059
+          "Netherlands",
+          34230.335259227
         ],
         [
           "United States",
-          "Switzerland",
-          15336.990424295
+          "China",
+          20718.758793553
         ]
       ],
       "table_data_type": "Sum",
@@ -5363,8 +5361,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -5381,9 +5379,13 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {
+                "precision_threshold": null
+              },
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors",
@@ -5487,7 +5489,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -5505,9 +5507,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors",
@@ -5610,7 +5614,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -5628,9 +5632,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors",

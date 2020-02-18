@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1581711751098,
+  "iteration": 1582058414542,
   "links": [],
   "panels": [
     {
@@ -32,8 +32,7 @@
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?",
-        "Advanced Flow Analysis"
+        "What are the current flow data summary statistics?"
       ],
       "array_option_2": [
         "/grafana/d/000000003/bandwidth-dashboard",
@@ -47,8 +46,7 @@
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/VuuXrnPWz/flow-analysis"
+        "/grafana/d/CJC1FFhmz/other-flow-stats"
       ],
       "array_option_3": [
         "",
@@ -273,7 +271,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 83229645,
+      "max_total": 61302701,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -281,11 +279,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 492483.10650887573,
+          "avg": 362737.875739645,
           "label": "Count",
-          "max": 2600869,
-          "min": 221,
-          "total": 83229645
+          "max": 1839113,
+          "min": 366,
+          "total": 61302701
         }
       ],
       "rgb_values": [
@@ -1506,9 +1504,9 @@
         "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": false,
+        "max": true,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": false,
         "total": true,
         "values": true
@@ -1538,8 +1536,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -1556,9 +1554,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -1570,7 +1570,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Flows by Protocol",
+      "title": "Top Protocols",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1662,8 +1662,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -1680,9 +1680,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "-meta.src_port:0 AND meta.sensor_id.keyword:$sensors",
@@ -1694,7 +1696,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Flows by Source Port",
+      "title": "Top Source Ports",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1786,8 +1788,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -1804,9 +1806,13 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {
+                "precision_threshold": null
+              },
+              "type": "cardinality"
             }
           ],
           "query": "-meta.dst_port:0 AND meta.sensor_id.keyword:$sensors",
@@ -1818,7 +1824,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Flows by Destination Port",
+      "title": "Top Destination Ports",
       "tooltip": {
         "shared": true,
         "sort": 2,

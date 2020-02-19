@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1581605439625,
+  "iteration": 1582058414542,
   "links": [],
   "panels": [
     {
@@ -273,7 +273,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 60973213,
+      "max_total": 61302701,
       "option_1": "netsage",
       "option_2": "netsagenavigation",
       "option_3": "plugin",
@@ -281,11 +281,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 717331.9176470588,
+          "avg": 362737.875739645,
           "label": "Count",
-          "max": 3303995,
-          "min": 2389,
-          "total": 60973213
+          "max": 1839113,
+          "min": 366,
+          "total": 61302701
         }
       ],
       "rgb_values": [
@@ -477,9 +477,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -579,9 +581,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND ( _exists_:meta.scireg.src.org_name.keyword  OR _exists_:meta.scireg.dst.org_name.keyword  ) AND NOT ( _exists_:meta.scireg.src.org_name.keyword  AND _exists_:meta.scireg.dst.org_name.keyword  )",
@@ -699,9 +703,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND ( _exists_:meta.scireg.src.org_name.keyword  AND _exists_:meta.scireg.dst.org_name.keyword  )",
@@ -1500,9 +1506,9 @@
         "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": false,
+        "max": true,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": false,
         "total": true,
         "values": true
@@ -1532,8 +1538,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -1550,9 +1556,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -1564,7 +1572,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Flows by Protocol",
+      "title": "Top Protocols",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1656,8 +1664,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -1674,9 +1682,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "-meta.src_port:0 AND meta.sensor_id.keyword:$sensors",
@@ -1688,7 +1698,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Flows by Source Port",
+      "title": "Top Source Ports",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1780,8 +1790,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -1798,9 +1808,13 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {
+                "precision_threshold": null
+              },
+              "type": "cardinality"
             }
           ],
           "query": "-meta.dst_port:0 AND meta.sensor_id.keyword:$sensors",
@@ -1812,7 +1826,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Flows by Destination Port",
+      "title": "Top Destination Ports",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1895,7 +1909,7 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -2027,9 +2041,11 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",

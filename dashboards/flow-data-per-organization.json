@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1581607533497,
+  "iteration": 1582055049569,
   "links": [],
   "panels": [
     {
@@ -272,7 +272,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 88532400,
+      "max_total": 61634267,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -280,11 +280,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 523860.3550295858,
+          "avg": 364699.8047337278,
           "label": "Count",
-          "max": 2577118,
-          "min": 0,
-          "total": 88532400
+          "max": 1839113,
+          "min": 366,
+          "total": 61634267
         }
       ],
       "rgb_values": [
@@ -497,7 +497,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
@@ -674,7 +674,7 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -782,9 +782,11 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
@@ -978,7 +980,7 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1077,9 +1079,11 @@
               "type": "avg"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\"",
@@ -1316,7 +1320,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\"",
@@ -1493,7 +1497,7 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1586,9 +1590,11 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\"",
@@ -1782,7 +1788,7 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1867,9 +1873,11 @@
               "type": "avg"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\"",
@@ -2101,9 +2109,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",
@@ -2177,8 +2187,8 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
-                "size": "10"
+                "orderBy": "1",
+                "size": "5"
               },
               "type": "terms"
             },
@@ -2195,9 +2205,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",
@@ -2255,6 +2267,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2300,7 +2313,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -2318,9 +2331,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",
@@ -2377,6 +2392,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2422,7 +2438,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -2440,9 +2456,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",
@@ -2551,11 +2569,11 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "pattern": "Count",
+          "decimals": 1,
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
-          "unit": "locale"
+          "unit": "short"
         },
         {
           "alias": "Total Volume",
@@ -2667,9 +2685,11 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors",

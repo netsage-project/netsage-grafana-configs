@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1582139601283,
+  "iteration": 1582056841480,
   "links": [],
   "panels": [
     {
@@ -272,7 +272,7 @@
         "show": true
       },
       "links": [],
-      "max_total": 62016635,
+      "max_total": 61355245,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -280,11 +280,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 366962.3372781065,
+          "avg": 363048.78698224854,
           "label": "Count",
-          "max": 1403779,
-          "min": 2023,
-          "total": 62016635
+          "max": 1839113,
+          "min": 366,
+          "total": 61355245
         }
       ],
       "rgb_values": [
@@ -1254,7 +1254,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1291,9 +1291,11 @@
               "type": "avg"
             },
             {
-              "field": "select field",
-              "id": "4",
-              "type": "count"
+              "field": "meta.id.keyword",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
@@ -1555,7 +1557,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1602,9 +1604,11 @@
               "type": "max"
             },
             {
-              "field": "select field",
-              "id": "5",
-              "type": "count"
+              "field": "meta.id.keyword",
+              "id": "4",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
@@ -1827,7 +1831,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1864,9 +1868,11 @@
               "type": "avg"
             },
             {
-              "field": "select field",
-              "id": "4",
-              "type": "count"
+              "field": "meta.id.keyword",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
@@ -2260,7 +2266,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "/.*/",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "string",
           "unit": "short"
@@ -2307,29 +2313,66 @@
               "type": "terms"
             },
             {
-              "fake": true,
-              "field": "$src_scope",
-              "id": "28",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
-              "field": "meta.src_ip.keyword",
-              "id": "32",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
+              "field": "meta.id.keyword",
+              "id": "4",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "By Rate",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "netsage",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 72
+      },
+      "id": 19,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
             {
               "fake": true,
               "field": "$dst_scope",
@@ -2507,9 +2550,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -2584,7 +2629,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "_count",
-                "size": "10"
+                "size": "5"
               },
               "type": "terms"
             },
@@ -2601,9 +2646,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -2618,7 +2665,7 @@
       "title": "Top Protocols",
       "tooltip": {
         "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -2661,6 +2708,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2706,7 +2754,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -2724,9 +2772,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -2741,7 +2791,7 @@
       "title": "Top Source Ports",
       "tooltip": {
         "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -2783,6 +2833,7 @@
       "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
+      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2793,13 +2844,14 @@
       },
       "id": 37,
       "legend": {
+        "alignAsTable": true,
         "avg": false,
         "current": false,
-        "max": false,
+        "max": true,
         "min": false,
         "show": false,
-        "total": false,
-        "values": false
+        "total": true,
+        "values": true
       },
       "lines": false,
       "linewidth": 1,
@@ -2826,7 +2878,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "_count",
+                "orderBy": "1",
                 "size": "5"
               },
               "type": "terms"
@@ -2844,9 +2896,11 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",
@@ -2860,8 +2914,8 @@
       "timeShift": null,
       "title": "Top Destination Ports",
       "tooltip": {
-        "shared": false,
-        "sort": 0,
+        "shared": true,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -2955,11 +3009,11 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "pattern": "Count",
+          "decimals": 1,
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
-          "unit": "locale"
+          "unit": "short"
         },
         {
           "alias": "Total Volume",
@@ -3071,9 +3125,11 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors",

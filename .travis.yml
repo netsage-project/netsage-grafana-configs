@@ -7,11 +7,9 @@ env:
 jobs:
     include:
         - stage: build docker image
-          script: >-
-             docker-compose build dashboard &&
-             docker images &&
-             docker tag  netsage/dashboard:latest netsage/dashboard:$(echo ${TRAVIS_BRANCH:-testing} | sed -e 's/\//_/g') && 
-             ./scripts/publish_image.sh
+          script: 
+             - ./scripts/integration.sh
+
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose

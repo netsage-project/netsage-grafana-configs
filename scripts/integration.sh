@@ -4,12 +4,12 @@ set -e
 
 function integration_test {
     sed -i   -e 's/netsage\/dashboard:.*/netsage\/dashboard:latest/' docker-compose.yml 
-    #docker-compose build dashboard
-    echo $TRAVIS_PULL_REQUEST
+    docker-compose build dashboard
+    
     if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then 
-        echo docker images 
-        echo docker tag  netsage/dashboard:latest netsage/dashboard:$(echo ${TRAVIS_BRANCH:-testing} | sed -e "s/\//_/g") 
-        echo ./scripts/publish_image.sh
+        docker images 
+        docker tag  netsage/dashboard:latest netsage/dashboard:$(echo ${TRAVIS_BRANCH:-testing} | sed -e "s/\//_/g") 
+        ./scripts/publish_image.sh
     fi
 }
 

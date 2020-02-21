@@ -28,6 +28,7 @@ do
     git checkout -b "${VERSION}"
     git push origin "${VERSION}"
     git branch --set-upstream-to="origin/${VERSION}" "${VERSION}"
+    sed -i   -e 's/netsage\/dashboard:.*/netsage\/dashboard:${VERSION}/' docker-compose.yml 
     CHANGED=true
 done
 

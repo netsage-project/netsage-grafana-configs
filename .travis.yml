@@ -1,18 +1,21 @@
 services:
-  - docker
+- docker
 
 env:
+  matrix:
   - DOCKER_COMPOSE_VERSION=1.25.4
+  global:
+    secure: AWPvD2/Kkd/HQa7ZR1gqjRkWY6O6u64NVkfKW3VwFLlkK3B/xgfHUQIuW6LxYb0xdt9zdsEK2E60DiRk2CAvtQXrS41xzJW9+1Ztlq91ITJFgvqRdHdhKR23uo0HydYxVhv1XbozlxqyjFGY0uPnzcY08bjLbammfxd0rLmDFFGZXA/jJ3KdWo+TbCvVaBKS38PyTjHUR1mI55ip8WcYO+wJxNjgPbSZlNkZpRHBRqMvNJI/Bmg8ZWpDCzfKevD8FlP9LWvrye30IKpmH4gWMAa57C9lVK/7911Fd9l+ECccS+LAAZfsB3x2R5XGcc6zwYAvFl1aJcEybQG7mSuqGMgky6wIw9TokWP04hJI7ai8/5rgHuGJz6IB6anj+FqDl7Wjqfv4Yp5ikWji18QJJyA6B0Bxe5d8r4IN0AI2lLMrhoYoLfRGV5DwaGcsBLuxqSESc5sNa6+x/oI//eSRGm7xVg3HSh1xLyCejBKdjnvyoTERV1gYPSlRpOnkM20q10XDXQMpvPUWG0f87dl9Fm7FTEPSenNECFAjfREEqtVEYPQpG9M2M2VRvSIqNgQSJF13x3SLNPsVefzN/80DGTqRyiFGkbDckfBkjfk6Wx+sDHXyBbyRmQEPCyZTufJmwKbYE0SpbFVAd/LTJnmu8zY6Sy8Px9t4e5Z0tAcAMUA=
 
 jobs:
-    include:
-        - stage: build docker image
-          script: 
-             - ./scripts/integration.sh
-
+  include:
+  - stage: build docker image
+    script:
+    - "./scripts/integration.sh"
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin

@@ -21,8 +21,10 @@ By default the current directory is mounted as /vagrant inside the docker image.
 
 To sync the dashboards from your local file system with the running grafana instance, simply run:
 
+IMPORTANT: you need to run this command at least once in order to get the datasources and dashboards imported. 
+
 ```
-docker-compose  exec dashboard docker-sync.sh
+docker-compose  exec dashboard docker-sync
 ```
 
 The script will essentially reset state of the wizzy config and import all the datasources + dashboards. 
@@ -52,3 +54,17 @@ you need to remove the 1.3.0 tag and pull the latest from docker hub.
 ```sh
 docker rmi netsage/dashboard:1.3.0 && docker pull netsage/dashboard:1.3.0 
 ```
+
+## Saving Credentials Locally 
+
+If you want to avoid from repeateadly entering the netsage credentials you can create a file in the root of your project named: local.env
+
+
+inside the file add the following lines:
+
+```sh
+cred_user=
+cred_pwd=
+```
+
+and fill in the appropriate values. If the file exists, it will use those values each time docker-sync is invoked

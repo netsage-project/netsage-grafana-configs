@@ -22,7 +22,7 @@ RUN cp /vagrant/docker/00_preferences /etc/apt/preferences.d/ && \
 RUN  cd /vagrant/docker; ./docker_fix_build.sh
 RUN /vagrant/docker/setup_dashboard-docker.sh
 
-COPY docker/docker-sync.sh /usr/local/bin/
+COPY docker/docker-sync.sh /usr/local/bin/docker-sync
 
 VOLUME /vagrant
 

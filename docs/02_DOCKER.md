@@ -10,7 +10,7 @@ Once my code has been merged in, I can simply pull the latest version for the gi
 
 ```sh
 docker-compose stop; docker-compose rm 
-docker pull netsage/dashboard:1.3.0
+docker pull netsage/dashboard:1.4.0
 ```
 
 Please note, that if you want to use a different version you also need to change the docker-compose.yml file to point to the correct version.
@@ -43,12 +43,12 @@ If your changes are cosmetic, then a using the current image is just fine.  If y
 an new image that reflects your changes by running:
 
 ```
-docker-compose build
+docker build --tag=netsage/dashboard:1.4.0 -f docker/Dockerfile . 
 ```
 
-Please keep in mind that this will replace the upstream tag.  Meaning when i build a new image it will name it netsage/dashboard:1.3.0  Once you are done testing 
-you need to remove the 1.3.0 tag and pull the latest from docker hub.
+Please keep in mind that this will replace the upstream tag.  Meaning when i build a new image it will name it netsage/dashboard:1.4.0  Once you are done testing 
+you need to remove the 1.4.0 tag and pull the latest from docker hub.
 
 ```sh
-docker rmi netsage/dashboard:1.3.0 && docker pull netsage/dashboard:1.3.0 
+docker rmi netsage/dashboard:1.4.0 && docker pull netsage/dashboard:1.4.0 
 ```

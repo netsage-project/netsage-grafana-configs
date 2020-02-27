@@ -29,7 +29,7 @@ Please keep in mind that this will replace the upstream tag.  Meaning when i bui
 docker-compose pull dashboard
 ```
 
-## Volumes and other fun toys
+## Volumes and Misc Tools
 
 To start the application simply run:
 

@@ -3,8 +3,7 @@ set -e
 
 
 function integration_test {
-    sed -i   -e 's/netsage\/dashboard:.*/netsage\/dashboard:latest/' docker-compose.yml 
-    docker-compose build dashboard
+    docker build --tag=netsage/dashboard:latest -f docker/Dockerfile . 
     
     if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then 
         docker images 

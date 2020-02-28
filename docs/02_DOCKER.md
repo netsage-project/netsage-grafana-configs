@@ -88,9 +88,8 @@ Assuming it worked, you can now navigate to the dashboards at http://localhost:3
 ### Scripted Entry 
 * Enter the container by running the following command: 
 
-```
-./scripts/docker_enter.sh  or linux or TBD on windows.
-```
+`./scripts/docker_enter.sh` on linux or on windows `./scripts/docker_enter.PS1` (requires powershell)
+
 
 ### Manually entering the container:
 

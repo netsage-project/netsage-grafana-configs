@@ -24,6 +24,8 @@ RUN /vagrant/docker/setup_dashboard-docker.sh
 
 COPY docker/docker-sync.sh /usr/local/bin/
 
+WORKDIR /vagrant 
+
 VOLUME /vagrant
 
 CMD /run.sh 

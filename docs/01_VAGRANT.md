@@ -5,7 +5,8 @@ Prepare your development system with the following steps:
 1. Install VirtualBox by following the instructions for your operating system [here](https://www.virtualbox.org/wiki/Downloads)
 2. Install Vagrant by following the instructions for your operating system [here](https://www.vagrantup.com/downloads.html)
 3. Clone this repository using the command(s) below:
-```
+
+```sh
 git clone https://github.com/netsage-project/netsage-grafana-configs
 ```
 4. Change your working directory to the git repository you just cloned:

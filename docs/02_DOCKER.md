@@ -151,7 +151,7 @@ If you are making upgrades to grafana it's a good idea to test the changes local
 
 Notes:
 
-1. `docker/setup_dashboard-docker.sh` is used to instal the grafana plugins as well as the relevant wizzy version.
+1. `docker/setup_dashboard-docker.sh` is used to install the grafana plugins as well as the relevant wizzy version.
 2. `docker/Dockerfile` pins the docker version and installs any OS level packages that you would like to be available.
 
 To build a new image locally, you'll be replacing the current tag with the new version built locally. In order to do so, simply run the following command:

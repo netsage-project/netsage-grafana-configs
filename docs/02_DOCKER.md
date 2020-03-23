@@ -83,8 +83,8 @@ Assuming it worked, you can now navigate to the dashboards at http://localhost:3
 ### Scripted Entry 
 
 Enter the container by running the following command:
-- `./scripts/docker_enter.sh dashboard` on Linux / MacOS
-- `./scripts/docker_enter.PS1 dashboard` on Windows (requires powershell)
+- `./scripts/docker_enter.sh netsage/dashboard` on Linux / MacOS
+- `./scripts/docker_enter.PS1 netsage/dashboard` on Windows (requires powershell)
 
 ### Manually entering the container:
 

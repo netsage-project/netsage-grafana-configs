@@ -3,8 +3,8 @@
 - [Setting Up Your Environment](#1-setting-up-your-environment)
 - [Starting docker container for the First Time](#2-starting-docker-container-for-the-first-time)
 - [Using the docker container](#3-using-the-docker-container)
-    - [Scripted Entry](#scripted-entry)
-    - [Manually entering the container:](#manually-entering-the-container)
+    - [1. Scripted Entry](#1-scripted-entry)
+    - [2. Manually entering the container:](#2-manually-entering-the-container)
 - [Making Changes](#4-making-changes)
     - [1. Editing the Source Code in Git and Exporting to Grafana](#1-editing-the-source-code-in-git-and-exporting-to-grafana)
     - [2. Editing the Source Code in Grafana and Importing to Git](#2-editing-the-source-code-in-grafana-and-importing-to-git)
@@ -80,13 +80,15 @@ Assuming it worked, you can now navigate to the dashboards at http://localhost:3
 
 ## 3. Using the docker container 
 
-### Scripted Entry 
+To use the docker container, you can use either Method 1 (Scripted Entry) or Method 2 (Manual Entry) as mentioned below.
+
+### 1. Scripted Entry 
 
 Enter the container by running the following command:
 - `./scripts/docker_enter.sh netsage/dashboard` on Linux / MacOS
 - `./scripts/docker_enter.PS1 netsage/dashboard` on Windows (requires powershell)
 
-### Manually entering the container:
+### 2. Manually entering the container:
 
 Find the container id by running:
 

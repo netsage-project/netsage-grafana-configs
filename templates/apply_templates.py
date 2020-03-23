@@ -55,8 +55,10 @@ def parse_arguments():
     """
     parser = argparse.ArgumentParser(description='Template Processor')
 
-    parser.add_argument('--type', type=lambda mtype: ExecutionType[mtype], choices=list(ExecutionType),
+    parser.add_argument('-t', '--type', type=lambda mtype: ExecutionType[mtype], choices=list(ExecutionType),
                         help='Type of template', default=ExecutionType.GRAFANA_CONFIG)
+    parser.add_argument('-f', '--config', type=str,
+                        help='location of config file', default='template_values.yaml')
 
     try:
         args = parser.parse_args()
@@ -69,7 +71,7 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
-    runner = Runner()
+    runner = Runner(args.config)
     runner.process(args.type)
 
 

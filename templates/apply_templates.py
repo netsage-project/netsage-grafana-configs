@@ -29,7 +29,8 @@ class Runner(object):
                         ExecutionType.FOOTER_UPDATES: TemplateFooterProcessor(self.__config__),
                         ExecutionType.QUERY_OVERRIDE: TemplateQueryOverride(self.__config__),
                         ExecutionType.GOOGLE_ANALYTICS: TemplateAnalyticsOverride(self.__config__),
-                        ExecutionType.DISABLE_PANEL: DisableDashboardPanels(self.__config__)
+                        ExecutionType.DISABLE_PANEL: DisableDashboardPanels(self.__config__),
+                        ExecutionType.DEFAULT_OVERRIDE: DefaultOverrideTemplate(self.__config__)
                         }
 
     def process(self, execution_type):

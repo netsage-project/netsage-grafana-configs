@@ -17,6 +17,7 @@ class ExecutionType(Enum):
     QUERY_OVERRIDE = 4
     GOOGLE_ANALYTICS = 5
     DISABLE_PANEL = 6
+    DEFAULT_OVERRIDE = 7
 
     def __str__(self):
         return self.name

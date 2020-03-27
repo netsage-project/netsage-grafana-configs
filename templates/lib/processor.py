@@ -286,3 +286,54 @@ class DisableDashboardPanels(AbstractTemplateProcessor):
         Ensure Google Analytics ID is found in the content section
         """
         True
+
+
+class DefaultOverrideTemplate(AbstractTemplateProcessor):
+    """
+    This Processor is responsible for Disabling certain panels on a specific dashboard.
+
+    For each dashboard specified it will match based on the id or title and disable any panels that match
+    any of the specified fields
+
+    """
+
+    def __init__(self, config: dict):
+        super().__init__(ExecutionType.DEFAULT_OVERRIDE, config)
+        self.__panels__ = self.__config__.get('default_override', {}).get('data', [])
+        self.valid_dashboards = set([t.get('dashboard_name', '') for t in self.__panels__])
+        self.mappings = {k.get('dashboard_name'): k for (k) in self.__panels__}
+
+    def process(self, dashboard, data=None):
+        """
+        Replace the query on each dashboard
+        """
+        dashboard_name = os.path.basename(dashboard)
+        if dashboard_name in self.valid_dashboards:
+            return self.__apply_dashboard_changes__(dashboard_name, data)
+        else:
+            return data
+
+    def __apply_dashboard_changes__(self, dashboard, data):
+        """
+        Updates google ID wherever it's been found.
+
+        :param dashboard:
+        :return:
+        """
+        log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
+        templates = data.get('templating', {}).get('list')
+        template_request = self.mappings.get(dashboard, [])
+        for panel in templates:
+            if panel.get('name') == template_request.get('name'):
+                panel_defaults = panel.get('current', {})
+                panel_defaults['text'] = template_request.get('text')
+                panel_defaults['value'] = template_request.get('value')
+                break
+
+        return data
+
+    def is_valid(self, panel):
+        """
+        Ensure Google Analytics ID is found in the content section
+        """
+        True

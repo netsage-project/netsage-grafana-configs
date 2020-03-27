@@ -29,24 +29,12 @@ class AbstractTemplateProcessor(ABC):
         self.__namespace__ = key
 
     @abstractmethod
-    def process(self):
+    def process(self, dashboard, json_data=None):
         pass
 
     @abstractmethod
     def is_valid(self, panel):
         pass
-
-    def safe_dashboard(self, dashboard, data):
-        with open(dashboard, 'w') as outfile:
-            json.dump(data, outfile, indent=2, sort_keys=True)
-
-    def __get_wizzy_dashboards__(self):
-        """
-        :return: List of strings representing the path of all dashboards
-        """
-        dashboard_path = realpath(join(dirname(__file__), '..', '..', self.get_value('dashboard_location', 'common')))
-        dashboard_list = [join(dashboard_path, f) for f in listdir(dashboard_path) if isfile(join(dashboard_path, f))]
-        return dashboard_list
 
     def get_value(self, key, ns):
         """
@@ -65,9 +53,9 @@ class TemplateGrafanaProcessor(AbstractTemplateProcessor):
     def __init__(self, config: dict):
         super().__init__(ExecutionType.GRAFANA_CONFIG, config)
 
-    def process(self):
+    def process(self, dashboard, raw_data=None):
         """
-        Uses the speicified template file and inject values for the define named space and outputs it at the location
+        Uses the specified template file and inject values for the define named space and outputs it at the location
         specified
         :return:
         """
@@ -98,24 +86,14 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
     def __init__(self, config: dict):
         super().__init__(ExecutionType.MENUS, config)
 
-    def process(self):
+    def process(self, dashboard, data=None):
         """
         Updates the navigation Menu on all dashboards with the values specified in the config yaml file
         """
         log.info("Executing for type: {} my ins type is: {}".format(self.type, str(type(self))))
-        dashboard_list = self.__get_wizzy_dashboards__()
-        for dashboard in dashboard_list:
-            self.__apply_dashboard_changes__(dashboard)
-
-    def __apply_dashboard_changes__(self, dashboard):
-        """
-        Identifies the Menu section in the dashboard if one exists it will get updated,
-        otherwise it's a NoOp
-        """
         log.info("Processing dashboard {}".format(dashboard))
         menu_panel = None
-        with open(dashboard, 'r', encoding='utf-8') as file:
-            data = json.load(file)
+
         panels = data.get('panels', [])
         for panel in panels:
             if self.is_valid(panel):
@@ -129,7 +107,7 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         menu_panel['array_option_2'] = self.get_value('menu_values', ns='menus')
 
         log.info("Updating dashboard: {}".format(dashboard))
-        self.safe_dashboard(dashboard, data)
+        return data
 
     def is_valid(self, panel):
         return '__netsage_template' in panel
@@ -144,21 +122,11 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
     def __init__(self, config: dict):
         super().__init__(ExecutionType.FOOTER_UPDATES, config)
 
-    def process(self):
+    def process(self, dashboard, data=None):
         """
         Replace the footer on each dashboard
         """
-        dashboard_list = self.__get_wizzy_dashboards__()
-        for dashboard in dashboard_list:
-            self.__apply_dashboard_changes__(dashboard)
-
-    def __apply_dashboard_changes__(self, dashboard):
-        """
-        updates footer on the dashboard file if it contains a valid entry
-        """
         log.info("Processing dashboard {} for type: {}".format(dashboard, self.type))
-        with open(dashboard, 'r') as file:
-            data = json.load(file)
         panels = data.get('panels', [])
         panel = panels[len(panels) - 1]  # get footer panel
 
@@ -168,7 +136,7 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         panel['content'] = self.get_value('template', self.__namespace__)
 
         log.info("Updating dashboard: {} with new footer".format(dashboard))
-        self.safe_dashboard(dashboard, data)
+        return data
 
     def is_valid(self, panel):
         """
@@ -187,29 +155,21 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
     def __init__(self, config: dict):
         super().__init__(ExecutionType.QUERY_OVERRIDE, config)
 
-    def process(self):
+    def process(self, dashboard, data=None):
         """
         Replace the query on each dashboard
-        """
-        dashboard_list = self.__get_wizzy_dashboards__()
-        for dashboard in dashboard_list:
-            self.__apply_dashboard_changes__(dashboard)
 
-    def __apply_dashboard_changes__(self, dashboard):
-        """
         Note this method isn't especially optimal.  If the number of variable and number of dashboards grows very
         large this needs to be revisited.  O(num of dashboards * num of changes)
         :param dashboard:
         :return:
         """
         log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
-        with open(dashboard, 'r') as file:
-            data = json.load(file)
         panels = data.get('templating', []).get('list', [])
         for panel in panels:
             if self.is_valid(panel):
                 name = panel.get('name')
-                for request in self.__config__[self.__namespace__]:
+                for request in self.__config__.get(self.__namespace__, {}).get('data', {}):
                     key = request.get('name', '')
                     request_value = request.get('value', '')
                     if name == key:
@@ -217,7 +177,7 @@ class TemplateQueryOverride(AbstractTemplateProcessor):
                         log.debug("updated query on dashboard: {} for variable: {} with value: {}".format(
                             os.path.basename(dashboard), key, request_value))
 
-        self.safe_dashboard(dashboard, data)
+        return data
 
     def is_valid(self, panel):
         """
@@ -236,24 +196,16 @@ class TemplateAnalyticsOverride(AbstractTemplateProcessor):
         super().__init__(ExecutionType.GOOGLE_ANALYTICS, config)
         self.pattern = re.compile(".*UA-\d+-\d.*")
 
-    def process(self):
+    def process(self, dashboard, data=None):
         """
         Replace the query on each dashboard
-        """
-        dashboard_list = self.__get_wizzy_dashboards__()
-        for dashboard in dashboard_list:
-            self.__apply_dashboard_changes__(dashboard)
 
-    def __apply_dashboard_changes__(self, dashboard):
-        """
         Updates google ID wherever it's been found.
         
         :param dashboard:
         :return:
         """
         log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
-        with open(dashboard, 'r') as file:
-            data = json.load(file)
         panels = data.get('panels', [])
         content_key = 'content'
         for panel in panels:
@@ -263,7 +215,7 @@ class TemplateAnalyticsOverride(AbstractTemplateProcessor):
                 content = re.sub(r"UA-\d+-\d", google_key, content)
                 panel[content_key] = content
 
-        self.safe_dashboard(dashboard, data)
+        return data
 
     def is_valid(self, panel):
         """
@@ -275,3 +227,62 @@ class TemplateAnalyticsOverride(AbstractTemplateProcessor):
         # Ensure Analytics ID is present
         match = self.pattern.search(content)
         return match is not None
+
+
+class DisableDashboardPanels(AbstractTemplateProcessor):
+    """
+    This Processor is responsible for Disabling certain panels on a specific dashboard.
+
+    For each dashboard specified it will match based on the id or title and disable any panels that match
+    any of the specified fields
+
+    """
+
+    def __init__(self, config: dict):
+        super().__init__(ExecutionType.DISABLE_PANEL, config)
+        self.__panels__ = self.__config__.get('disable_panel', {}).get('data', [])
+        self.valid_dashboards = set([t.get('dashboard_name', '') for t in self.__panels__])
+        self.id_mappings = {k.get('dashboard_name'): k.get('panel_ids') for (k) in self.__panels__}
+        self.title_mappings = {k.get('dashboard_name'): k.get('titles', []) for (k) in self.__panels__}
+
+    def process(self, dashboard, data=None):
+        """
+        Replace the query on each dashboard
+        """
+        dashboard_name = os.path.basename(dashboard)
+        if dashboard_name in self.valid_dashboards:
+            return self.__apply_dashboard_changes__(dashboard_name, data)
+        else:
+            return data
+
+    def __apply_dashboard_changes__(self, dashboard, data):
+        """
+        Updates google ID wherever it's been found.
+
+        :param dashboard:
+        :return:
+        """
+        log.info("Processing dashboard {} for type: {}".format(os.path.basename(dashboard), self.type))
+        panels = data.get('panels', [])
+        id_panels_to_disable = set(self.id_mappings.get(dashboard, []))
+        title_panels_to_disable = set(self.title_mappings.get(dashboard, []))
+        removal_list = []
+        for panel in panels:
+            remove_panel = False
+            if panel.get('id', -1) in id_panels_to_disable:
+                remove_panel = True
+            if panel.get('title') in title_panels_to_disable:
+                remove_panel = True
+            if remove_panel:
+                removal_list.append(panel)
+
+        for item in removal_list:
+            panels.remove(item)
+
+        return data
+
+    def is_valid(self, panel):
+        """
+        Ensure Google Analytics ID is found in the content section
+        """
+        True

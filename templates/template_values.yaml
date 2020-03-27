@@ -1,3 +1,8 @@
+## updates_dashboards:
+##  if true will iterate through all the dashboards to apply changes, if set to False no updates will be executed on
+## dashboards.  For example, grafana_config which doesn't operate on the wizzy dashboards can and should be set to
+## false.
+
 grafana_config:
   grafana_theme: light
   grafana__sanitize: true
@@ -5,12 +10,28 @@ grafana_config:
   grafana_sub_path: true
   input_file: grafana.template
   output_file: grafana.ini
+  updates_dashboards: False
 
 common:
   dashboard_location: dashboards/
 
+disable_panel:
+  updates_dashboards: True
+  data:
+    - dashboard_name: bandwidth-dashboard.json
+      panel_ids:
+        - -5
+    - dashboard_name: flow-analysis.json
+      titles:
+        - "SNMP Graph of $links"
+        - "Foo Graph of $links"
+        - "samir"
+      panel_ids:
+        - -8
+        - -27
 
 menus:
+  updates_dashboards: True
   menu_text:
     - "What is the current state of the network?"
     - "What are the top sources/destinations of flows?"
@@ -41,6 +62,7 @@ menus:
     - "/grafana/d/VuuXrnPWz/flow-analysis"
 
 footer_updates:
+  updates_dashboards: True
   template: >
     <div> If you have any questions, concerns, or other issues, feel free to contact us at <a href="mailto:netsage@lbl.gov">netsage@lblgov </a> Thanks!
     <img style="margin-left:10px" src="https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png" width=50 height=50>
@@ -50,9 +72,12 @@ footer_updates:
 ## this supports multiple name-value pairs.  The content of query_override is an array.  The name is the name of the query from grafana.  Please ensure 
 # you use the name, and not the display Name or label or any other field.  The $ sign in front of the placeMarker should be omitted. 
 query_override:
-  - name: dummyMarker
-    value:     >
-      {"find":"terms2", "field":"meta.sensor_id.keyword", "query":"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*"}'
+  updates_dashboards: True
+  data:
+    - name: dummyMarker
+      value:     >
+        {"find":"terms2", "field":"meta.sensor_id.keyword", "query":"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*"}'
 
 google_analytics:
+  updates_dashboards: True
   id: UA-142763676-1

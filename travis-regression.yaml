@@ -1,0 +1,32 @@
+language: node_js
+
+node_js:
+  - 12
+
+
+services:
+- docker
+
+env:
+  matrix:
+  - DOCKER_COMPOSE_VERSION=1.25.4
+  global:
+    secure: Rn9j+q/eNNcCMGR9khbF6pOF6WtbHAPSyl/ZsWvv/V4umzH6cO0kITx9eRKJI5k6zrZdb42aOc73hbTHRriO7XpOupjhPKX6QkEiyquz8ZQAx8jKSkHKlVAl4TjBsxXkQ5BOf8uuVJa0QDoYvKqVN2iJouranrVrO4YN8ATjYlld4IZMSqsas9c7qUJNBdUyeWVvMOcarmbsdPcGJg92ePe36YRnfrI9OOtrDmoPOMxQL6FtUZYCk8QR92p2ak0lMzlry4vCAu8B0GWnHGA4naJXYEqCWeI8SC4gsScuAwniGpVn23mQ7k2tTyUMaXI3It+Mad/LQFe6iVQ2EwrI2J1WbhpUodH8DQekhfMmSo7H6sYOJRdFNcUDRWqaGC+LYRjVHS8IrLETheB/rSDJdtfW56P2wY9E0DYD6jb0waTQJBLrb87reBPnFJ75ZdW/U5Cz6/woado/vxwnLnIhVE3zeTRrHvoEG01c8Zc2tMKveg8rjGS+B3/YdmjY9Kun1bZBA5/xO90IF40yqqS7j9tOKs+h8Hcxk8+SRN0VH/q3vqWd/LKe0kwYUhwd5rj46rNBSzqx6a1eb2DN1ZoXBK//rre6wjBj60fKCpfWTFYJtWB6dzxzKGSDFGaShHOca7xOdPSaxxLyoZWPyMhlPWV36mYOG5nAqGZHTPg4sWo=
+
+before_install:
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+
+
+install:
+  - yarn install 
+
+before_script:
+  - /usr/local/bin/docker-compose up -d 
+  - /usr/local/bin/docker-compose exec dashboard docker-sync.sh
+
+script:
+  - ./scripts/regression_testing.sh

@@ -28,8 +28,8 @@ Cypress.Commands.add("login", () => {
 
     cy.get('input[ng-model="current.basicAuthUser"]').invoke('val').then((login) => {
         //Initialize DataSource only if not already set
-        const new_login = process.env.GRAFANA_USER || 'GRAFANA_USER'
-        const new_passwd = process.env.GRAFANA_PASSWORD || 'GRAFNA_PWD'
+        const new_login = Cypress.env('GRAFANA_USER')
+        const new_passwd = Cypress.env('GRAFANA_PASSWORD')
         if (login === "" ) {
             cy.get('input[ng-model="current.basicAuthUser"]')
             .clear()

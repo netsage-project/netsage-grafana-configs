@@ -1,18 +1,30 @@
+language: node_js
+
+node_js:
+  - 12
+
 services:
-  - docker
-
+- docker
 env:
+  matrix:
   - DOCKER_COMPOSE_VERSION=1.25.4
-
-jobs:
-    include:
-        - stage: build docker image
-          script: 
-             - ./scripts/integration.sh
-
+  global:
+        secure: "K2AfRZHJtJez+iRH2AbzAjD/yew60JeEas54VTtW5kOFT8guQGI9xcMoTMHGtNoCSazHCIeoBWaD9haJysgF3/4mTCHFG32RhibpbdkZ5pLz8j8vWjW6f36WITWSQUC2cjWHJZtGqRKec9/SyC3BWeV7exgyHDyTIkMtEUbx5EJk1+Mtmuf7GYGzbQbdvyICd1x80sIHUwHG+/e2JmN6dcMc483Zsekzltv4IKFMFwd5Tryryfl6+Vj6gt9kHpuaHlKUEW5mgcEg9HnEy+MO1aGdUqp/luTVy5VVEJVSEmim0rqGq12reFb1fRoKvhxcN7T7M0AIOBvmiqNea3hzuj4R1hXbaacmuQDydaNySx2VgQzoLfgE3CdsUu9Yz2dv6alNbxUYtx9aV/vzIhCkATb1tyYsKIfqEBpMiuiEw1RHK0G3sfl+55PQ2NPrcXbyb1UqgBU5wjJQ1wDuIp6GuxT4huJ6P4ij4BuDeNAZGVXHUJdJ9sFwjYAyG06hDUtN9XO7s5E1pxx+TzyfxcMGBQtgN+AcaUSIL39/k/mWKLmPqPjnc6OoznXfGlyrCsjAXmAoBVp4yZYi7XzybDqVBaOpZt9QYTf0KoZDtYuEwrjlxa9m9bmgoxcYc3+4TikS1GVxP1PBtYl+VOAEpVJimTZbMNL2nWKLb7RI++gDf7w="
 
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+
+install:
+  - yarn install 
+
+jobs:
+  include:
+  - stage: build docker image
+    if: type = pull_request or branch =~ /^\d+.\d+.\d+$/
+    script:
+    - "./scripts/integration.sh"
+

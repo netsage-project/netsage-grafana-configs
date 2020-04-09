@@ -15,7 +15,7 @@ echo "Updating Google Analytics on Dashboards"
 
 #Install wizzy
 cd /vagrant
-npm install -g wizzy@0.6.0
+npm install -g wizzy@0.7.0
 
 ### Start plugin installs ###
 cd /vagrant/plugins

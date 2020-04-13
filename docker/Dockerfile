@@ -1,4 +1,4 @@
-FROM grafana/grafana:6.3.5
+FROM grafana/grafana:6.7.2-ubuntu
 
 USER root
 
@@ -23,6 +23,8 @@ RUN  cd /vagrant/docker; ./docker_fix_build.sh
 RUN /vagrant/docker/setup_dashboard-docker.sh
 
 COPY docker/docker-sync.sh /usr/local/bin/
+
+WORKDIR /vagrant 
 
 VOLUME /vagrant
 

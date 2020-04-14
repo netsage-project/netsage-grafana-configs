@@ -3,29 +3,32 @@ FROM grafana/grafana:6.3.5
 USER root
 
 RUN apt-get update && \ 
-    apt-get install -y python rsync python3 python3-pip git-core vim netcat sudo alien rpm && \
+    apt-get install -y python rsync python3 python3-pip git-core vim netcat sudo alien rpm netcat && \
     pip3 install --upgrade pip && \
     apt-get clean && \
-    mkdir /vagrant  
+    mkdir /app  
     
 ## Build base image
-COPY . /vagrant
+COPY . /app
 
 ## Install super old NodeJS for backward compatibility and force extra old version to be installed
-RUN cp /vagrant/docker/00_preferences /etc/apt/preferences.d/ && \
+RUN cp /app/docker/00_preferences /etc/apt/preferences.d/ && \
     curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
     apt-get update && apt-get install -y nodejs && \
     npm -g install yarn 
 
 
 # Fix the Makefile scripts
-RUN  cd /vagrant/docker; ./docker_fix_build.sh
-RUN /vagrant/docker/setup_dashboard-docker.sh
+RUN  cd /app/docker; ./docker_fix_build.sh && \
+      /app/docker/setup_dashboard-docker.sh && \
+      cp /app/docker/docker-sync.sh /usr/bin/docker-sync && \
+      cp /app/docker/grafana_runner.sh  /usr/bin/grafana_runner && \
+      apt-get clean autoclean && \
+      apt-get autoremove --yes && \
+      rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-COPY docker/docker-sync.sh /usr/local/bin/
+WORKDIR /app 
+VOLUME /app
+USER grafana 
 
-WORKDIR /vagrant 
-
-VOLUME /vagrant
-
-CMD /run.sh 
+ENTRYPOINT [ "/usr/bin/grafana_runner" ]

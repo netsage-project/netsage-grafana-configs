@@ -1,16 +1,30 @@
+language: node_js
+
+node_js:
+  - 12
+
 services:
 - docker
-
 env:
   matrix:
   - DOCKER_COMPOSE_VERSION=1.25.4
   global:
-    secure: AWPvD2/Kkd/HQa7ZR1gqjRkWY6O6u64NVkfKW3VwFLlkK3B/xgfHUQIuW6LxYb0xdt9zdsEK2E60DiRk2CAvtQXrS41xzJW9+1Ztlq91ITJFgvqRdHdhKR23uo0HydYxVhv1XbozlxqyjFGY0uPnzcY08bjLbammfxd0rLmDFFGZXA/jJ3KdWo+TbCvVaBKS38PyTjHUR1mI55ip8WcYO+wJxNjgPbSZlNkZpRHBRqMvNJI/Bmg8ZWpDCzfKevD8FlP9LWvrye30IKpmH4gWMAa57C9lVK/7911Fd9l+ECccS+LAAZfsB3x2R5XGcc6zwYAvFl1aJcEybQG7mSuqGMgky6wIw9TokWP04hJI7ai8/5rgHuGJz6IB6anj+FqDl7Wjqfv4Yp5ikWji18QJJyA6B0Bxe5d8r4IN0AI2lLMrhoYoLfRGV5DwaGcsBLuxqSESc5sNa6+x/oI//eSRGm7xVg3HSh1xLyCejBKdjnvyoTERV1gYPSlRpOnkM20q10XDXQMpvPUWG0f87dl9Fm7FTEPSenNECFAjfREEqtVEYPQpG9M2M2VRvSIqNgQSJF13x3SLNPsVefzN/80DGTqRyiFGkbDckfBkjfk6Wx+sDHXyBbyRmQEPCyZTufJmwKbYE0SpbFVAd/LTJnmu8zY6Sy8Px9t4e5Z0tAcAMUA=
+        secure: "K2AfRZHJtJez+iRH2AbzAjD/yew60JeEas54VTtW5kOFT8guQGI9xcMoTMHGtNoCSazHCIeoBWaD9haJysgF3/4mTCHFG32RhibpbdkZ5pLz8j8vWjW6f36WITWSQUC2cjWHJZtGqRKec9/SyC3BWeV7exgyHDyTIkMtEUbx5EJk1+Mtmuf7GYGzbQbdvyICd1x80sIHUwHG+/e2JmN6dcMc483Zsekzltv4IKFMFwd5Tryryfl6+Vj6gt9kHpuaHlKUEW5mgcEg9HnEy+MO1aGdUqp/luTVy5VVEJVSEmim0rqGq12reFb1fRoKvhxcN7T7M0AIOBvmiqNea3hzuj4R1hXbaacmuQDydaNySx2VgQzoLfgE3CdsUu9Yz2dv6alNbxUYtx9aV/vzIhCkATb1tyYsKIfqEBpMiuiEw1RHK0G3sfl+55PQ2NPrcXbyb1UqgBU5wjJQ1wDuIp6GuxT4huJ6P4ij4BuDeNAZGVXHUJdJ9sFwjYAyG06hDUtN9XO7s5E1pxx+TzyfxcMGBQtgN+AcaUSIL39/k/mWKLmPqPjnc6OoznXfGlyrCsjAXmAoBVp4yZYi7XzybDqVBaOpZt9QYTf0KoZDtYuEwrjlxa9m9bmgoxcYc3+4TikS1GVxP1PBtYl+VOAEpVJimTZbMNL2nWKLb7RI++gDf7w="
+
+before_install:
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+
+install:
+  - yarn install 
 
 jobs:
   include:
   - stage: build docker image
-    if: type = pull_request or branch =~ /\d+.\d+.\d+$/
+    if: type = pull_request or branch =~ /^\d+.\d+.\d+$/
     script:
     - "./scripts/integration.sh"
 

@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1582208699047,
+  "iteration": 1584661315160,
   "links": [],
   "panels": [
     {
@@ -384,7 +384,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes.</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><b>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n</div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
+      "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><b>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n</div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
       "gridPos": {
         "h": 6,
         "w": 22,
@@ -619,6 +619,7 @@
     },
     {
       "columns": [],
+      "datasource": "netsage",
       "fontSize": "100%",
       "gridPos": {
         "h": 15,
@@ -633,7 +634,7 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 2,
+        "col": 5,
         "desc": true
       },
       "styles": [
@@ -681,15 +682,17 @@
           "alias": "Total Vol.",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
+            "rgba(50, 172, 45, 0.97)",
             "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "rgba(245, 54, 54, 0.9)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
           "pattern": "Sum",
-          "thresholds": [],
+          "thresholds": [
+            ""
+          ],
           "type": "number",
           "unit": "decbytes"
         },
@@ -848,7 +851,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -982,7 +985,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1029,12 +1032,14 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "5",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1123,7 +1128,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1254,7 +1259,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1291,12 +1296,14 @@
               "type": "avg"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "4",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1381,7 +1388,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1555,7 +1562,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1602,12 +1609,14 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "5",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1696,7 +1705,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1827,7 +1836,7 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Count",
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
           "unit": "short"
@@ -1864,12 +1873,14 @@
               "type": "avg"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "4",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1955,7 +1966,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -2037,8 +2048,8 @@
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 1,
-        "desc": true
+        "col": 7,
+        "desc": false
       },
       "styles": [
         {
@@ -2405,7 +2416,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -2507,12 +2518,14 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -2601,12 +2614,14 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -2724,12 +2739,14 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -2844,12 +2861,14 @@
           ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -2955,11 +2974,11 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": null,
-          "pattern": "Count",
+          "decimals": 1,
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
-          "unit": "locale"
+          "unit": "short"
         },
         {
           "alias": "Total Volume",
@@ -3071,12 +3090,14 @@
               "type": "max"
             },
             {
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
-              "type": "count"
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -3247,6 +3268,101 @@
           }
         ],
         "query": "meta.dst_organization.keyword, meta.dst_country_name.keyword, meta.dst_continent.keyword, meta.dst_asn, meta.dst_port",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Individual Flow Volume Above (in bits)",
+        "multi": false,
+        "name": "volume_over",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "800000000",
+            "value": "800000000"
+          },
+          {
+            "selected": false,
+            "text": "8000000000",
+            "value": "8000000000"
+          },
+          {
+            "selected": false,
+            "text": "80000000000",
+            "value": "80000000000"
+          },
+          {
+            "selected": false,
+            "text": "800000000000",
+            "value": "800000000000"
+          }
+        ],
+        "query": "0, 800000000, 8000000000, 80000000000, 800000000000",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "100000000000",
+          "value": "100000000000"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Individual Flow Rate Under (in bits per second)",
+        "multi": false,
+        "name": "rate_under",
+        "options": [
+          {
+            "selected": false,
+            "text": "100000",
+            "value": "100000"
+          },
+          {
+            "selected": false,
+            "text": "1000000",
+            "value": "1000000"
+          },
+          {
+            "selected": false,
+            "text": "10000000",
+            "value": "10000000"
+          },
+          {
+            "selected": false,
+            "text": "100000000",
+            "value": "100000000"
+          },
+          {
+            "selected": false,
+            "text": "1000000000",
+            "value": "1000000000"
+          },
+          {
+            "selected": false,
+            "text": "10000000000",
+            "value": "10000000000"
+          },
+          {
+            "selected": true,
+            "text": "100000000000",
+            "value": "100000000000"
+          }
+        ],
+        "query": "100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000",
         "skipUrlSync": false,
         "type": "custom"
       },

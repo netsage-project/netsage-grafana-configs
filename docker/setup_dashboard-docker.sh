@@ -2,7 +2,7 @@
 set -e 
 
 
-cd /vagrant/templates/
+cd /app/templates/
 pip3 install -r requirements.txt
 echo "Updating Grafana Config"
 ./apply_templates.py --type GRAFANA_CONFIG && cp -f grafana.ini /etc/grafana/grafana.ini
@@ -17,11 +17,11 @@ echo "Updating Google Analytics on Dashboards"
 
 
 #Install wizzy
-cd /vagrant
+cd /app
 npm install -g wizzy@0.6.0
 
 ### Start plugin installs ###
-cd /vagrant/plugins
+cd /app/plugins
 
 #install carpetplot
 grafana-cli plugins install petrslavotinek-carpetplot-panel

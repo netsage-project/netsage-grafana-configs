@@ -90,6 +90,8 @@ docker ps -a
 
 Sample output:
 
+```sh
+docker exec -it 08bba311b08d bash
 ```
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
 08bba311b08d        netsage/dashboard:1.4.0   "/run.sh /bin/sh -c …"   19 minutes ago      Up 19 minutes       0.0.0.0:3000->3000/tcp   netsage-grafana-configs_dashboard_1

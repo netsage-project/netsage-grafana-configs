@@ -50,7 +50,7 @@ function cron_regression {
         setupDocker
         /usr/local/bin/docker-compose up -d 
         /usr/local/bin/docker-compose ps
-        /usr/local/bin/docker-compose exec dashboard docker-sync.sh
+        /usr/local/bin/docker-compose exec dashboard docker-sync
         ./node_modules/.bin/cypress run
         /usr/local/bin/docker-compose stop
     fi

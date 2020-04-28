@@ -45,31 +45,21 @@ alien -i $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
 cd ../
 
 #Install netsage-sankey plugin
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r netsage-sankey-plugin /tmp
-pushd . 
-cd /tmp/netsage-sankey-plugin
+cd netsage-sankey-plugin
 make install
-popd
+cd ../
 
 #Install navigation
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r  NetSageNavigation /tmp/
-pushd . 
-cd /tmp/NetSageNavigation/
+cd NetSageNavigation
 make install
-popd
+cd ..
 ### End plugin source code installs ###
 
 #Install navigation
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r  Netsage-Slope_graph /tmp/
-pushd . 
-cd /tmp/Netsage-Slope_graph/
+cd Netsage-Slope_graph/
 make install
-popd
+cd ..
 ### End plugin source code installs ###
-
 
 
 ## END PLUGIN INSTALL ##

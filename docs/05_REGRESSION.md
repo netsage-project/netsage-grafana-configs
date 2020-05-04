@@ -1,3 +1,8 @@
+---
+id: regression
+title: Regression Testing
+sidebar_label: Regression Testing
+---
 # Regression Testing
 
 ## Install Cypress

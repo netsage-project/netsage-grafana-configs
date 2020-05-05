@@ -18,17 +18,17 @@ echo "Updating Google Analytics on Dashboards"
 
 #Install wizzy
 cd /app
-npm install -g wizzy@0.6.0
+npm install -g wizzy@0.7.0
 
 ### Start plugin installs ###
 cd /app/plugins
 
-#install carpetplot
+#Install carpetplot
 grafana-cli plugins install petrslavotinek-carpetplot-panel
 
 ## BEGIN PLUGIN INSTALL ##
 
-#install tsds datasource plugin
+#Install tsds datasource plugin
 cd tsds-grafana
 npm install -g yarn #make seems to need this
 make rpm
@@ -53,13 +53,12 @@ cd ../
 cd NetSageNavigation
 make install
 cd ..
-### End plugin source code installs ###
 
-#Install navigation
+#Install slope graph plugin
 cd Netsage-Slope_graph/
 make install
 cd ..
-### End plugin source code installs ###
 
+### End plugin source code installs ###
 
 ## END PLUGIN INSTALL ##

@@ -61,13 +61,22 @@ make install
 popd
 ### End plugin source code installs ###
 
-#Install navigation
+#Install slope graph
 # HACK: for some reason this fails to install unless it's moved to a different location.
 cp -r  Netsage-Slope_graph /tmp/
 pushd . 
 cd /tmp/Netsage-Slope_graph/
 make install
 popd
+
+#Install discipline map
+# HACK: for some reason this fails to install unless it's moved to a different location.
+cp -r  science-discipline-map-plugin /tmp/
+pushd . 
+cd /tmp/science-discipline-map-plugin/
+make install
+popd
+
 ### End plugin source code installs ###
 
 

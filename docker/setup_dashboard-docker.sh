@@ -18,7 +18,7 @@ echo "Updating Google Analytics on Dashboards"
 
 #Install wizzy
 cd /app
-npm install -g wizzy@0.7.0
+npm install -g wizzy
 
 ### Start plugin installs ###
 cd /app/plugins

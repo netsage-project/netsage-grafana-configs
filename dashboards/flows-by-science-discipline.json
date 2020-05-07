@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1588019028408,
+  "iteration": 1588882479822,
   "links": [],
   "panels": [
     {
@@ -386,7 +386,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows the science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center>The Sankey graph shows the top ten source organizations by volume for the selected disciplines and their associated top five destination organizations.</center>\n<center>Thicker lines indicate larger flows.</center>\n<center><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows the science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center>The map plugin only shows flows with both ends tagged in the NetSage Science Registry.</center>\n<center>Lines are colored by science discipline, arrows indicate the flow direction, and bigger markers indicate larger flows.</center>\n<center>The Sankey graph shows the top ten source organizations by volume for the selected disciplines and their associated top five destination organizations.</center>\n<center>Thicker lines indicate larger flows.</center>\n<center><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "datasource": null,
       "gridPos": {
         "h": 5,
@@ -882,7 +882,7 @@
       "array_option_2": [],
       "array_option_3": [],
       "array_option_4": [],
-      "center_lat": 35,
+      "center_lat": "15",
       "center_lon": "9",
       "choices": [],
       "color": {
@@ -902,7 +902,7 @@
       "dark_mode": false,
       "datasource": "netsage",
       "gridPos": {
-        "h": 18,
+        "h": 23,
         "w": 24,
         "x": 0,
         "y": 10
@@ -2155,28 +2155,122 @@
           "timeField": "start"
         },
         {
-          "bucketAggs": [],
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:318",
+              "fake": true,
+              "field": "meta.scireg.src.discipline.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:319",
+              "fake": true,
+              "field": "meta.scireg.src.org_name.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:320",
+              "fake": true,
+              "field": "meta.src_location.lat",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:321",
+              "fake": true,
+              "field": "meta.src_location.lon",
+              "id": "6",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:322",
+              "fake": true,
+              "field": "meta.scireg.dst.org_name.keyword",
+              "id": "7",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:323",
+              "fake": true,
+              "field": "meta.dst_location.lat",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:324",
+              "field": "meta.dst_location.lon",
+              "id": "2",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "3"
+              },
+              "type": "terms"
+            }
+          ],
           "hide": true,
           "metrics": [
             {
-              "$$hashKey": "object:332",
-              "field": "select field",
+              "$$hashKey": "object:316",
+              "field": "values.num_bits",
               "id": "1",
+              "inlineScript": "_value/8",
               "meta": {},
               "settings": {
-                "size": 500
+                "script": {
+                  "inline": "_value/8"
+                }
               },
-              "type": "raw_document"
+              "type": "sum"
             }
           ],
-          "query": "meta.scireg.src.discipline.keyword:$discipine_name",
-          "refId": "B",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "refId": "C",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$discipline Flows",
+      "title": "Science Disciplines",
       "to_Byte": false,
       "to_si": 1000000000,
       "tooltip": {
@@ -2184,6 +2278,7 @@
         "show": true,
         "showDefault": true
       },
+      "transparent": true,
       "type": "netsage-migrationmap",
       "zoom_lvl": 3
     },
@@ -2194,7 +2289,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 33
       },
       "id": 5013,
       "links": [],
@@ -2350,7 +2445,7 @@
         "h": 27,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 35
       },
       "height": 2,
       "hex_values": [
@@ -3810,7 +3905,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 62
       },
       "id": 5014,
       "links": [],
@@ -3829,7 +3924,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 65
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -4029,7 +4124,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 76
       },
       "hideTimeOverride": false,
       "id": 5015,
@@ -4229,7 +4324,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 82
+        "y": 87
       },
       "id": 49,
       "links": [],

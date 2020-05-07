@@ -36,7 +36,6 @@ alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
 mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
 cd ../
 
-
 #Install network panel plugin
 cd globalnoc-networkmap-panel
 npm install -g gulp #make seems to need this

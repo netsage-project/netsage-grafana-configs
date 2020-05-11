@@ -1,18 +1,8 @@
-# Table of Contents
-
-- [Setting Up Your Environment](#1-setting-up-your-environment)
-- [Starting docker container for the First Time](#2-starting-docker-container-for-the-first-time)
-- [Using the docker container](#3-using-the-docker-container)
-    - [1. Scripted Entry](#1-scripted-entry)
-    - [2. Manually entering the container:](#2-manually-entering-the-container)
-- [Making Changes](#4-making-changes)
-    - [1. Editing the Source Code in Git and Exporting to Grafana](#1-editing-the-source-code-in-git-and-exporting-to-grafana)
-    - [2. Editing the Source Code in Grafana and Importing to Git](#2-editing-the-source-code-in-grafana-and-importing-to-git)
-- [Advanced Docker Usage and Notes](#5-advanced-docker-usage-and-notes)
-- [Building Image Locally](#6-building-image-locally)
-
 ---
-
+id: docker
+title: Docker Dev Guide
+sidebar_label: Docker Dev Guide
+---
 ## 1. Setting Up Your Environment 
 
 Prepare your development system with the following steps:
@@ -153,19 +143,9 @@ Notes:
 To build a new image locally, you'll be replacing the current tag with the new version built locally. In order to do so, simply run the following command:
 
 ```
-docker build --tag=netsage/dashboard:1.4.0 -f docker/Dockerfile . 
+docker-compose build 
 ```
 
-Alternatively you can create a docker-compose.override.yml to point to the docker file.
-
-```
-version: '3.0'
-services:
-  dashboard:
-    build:
-        context: .
-        dockerfile: docker/Dockerfile
-```
 
 Please keep in mind that this will replace the upstream tag. This means that when I build a new image, it will name it `netsage/dashboard:1.4.0`. Once you are done testing, simply do a pull again by running the following command and it will reset back to the version from docker hub. 
 

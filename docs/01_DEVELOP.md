@@ -1,3 +1,9 @@
+---
+id: develop
+title: Developer Guide
+sidebar_label: Developer Guide
+---
+
 # Developing the NetSage Grafana Configuration
 
 This documents describes a number of practices related to developing the code in this repository. Specifically it covers:

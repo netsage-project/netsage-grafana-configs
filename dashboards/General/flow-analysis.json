@@ -2,7 +2,7 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:287",
+        "$$hashKey": "object:303",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1587534158094,
+  "iteration": 1587496702022,
   "links": [],
   "panels": [
     {
@@ -268,24 +268,24 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": "29",
+      "id": 8,
       "legend": {
         "legend_colors": [],
         "show": true
       },
       "links": [],
-      "max_total": 82998921,
+      "max_total": 65780209,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
       "parsed_data": [
         {
-          "avg": 491117.875739645,
+          "avg": 389232.0059171598,
           "label": "Count",
-          "max": 2600869,
-          "min": 0,
-          "total": 82998921
+          "max": 1403779,
+          "min": 1383,
+          "total": 65780209
         }
       ],
       "rgb_values": [
@@ -385,74 +385,262 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Flow Data for Data Archives</b></h1></center>\n<center>This dashboard provides flow data for the top ten source and destination institutions by volume, rate, and retransmits for the data archives.</center>\n<center>Click on an organization name to see the flow data dashboard for that organization.</center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
-      "datasource": null,
+      "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><b>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n</div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
       "gridPos": {
-        "h": 4,
-        "w": 20,
+        "h": 6,
+        "w": 22,
         "x": 2,
         "y": 0
       },
-      "id": 2911,
-      "links": [],
+      "id": 27,
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "content": "<center><h1>Top Sources</h1></center>",
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Netsage TSDS",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "aggregate_all": true,
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "link_name",
+          "inlineGroupOperator": [
+            [
+              ""
+            ]
+          ],
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "A",
+          "series": "interface",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "like",
+                "right": "$links"
+              }
+            ]
+          ]
+        },
+        {
+          "aggregate_all": true,
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "output",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": "link_name",
+          "inlineGroupOperator": [
+            [
+              ""
+            ]
+          ],
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "Select Metric Value"
+          ],
+          "metric_array": [
+            "link_name"
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "refId": "B",
+          "series": "interface",
+          "target_alias": "",
+          "templateVariableValue": [
+            ""
+          ],
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "like",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "SNMP Graph of $links",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "<h1  style=\"margin-top:35px;\"><center>Top Flow Pairs</center></h1>",
       "datasource": null,
       "gridPos": {
-        "h": 2,
-        "w": 22,
-        "x": 1,
-        "y": 4
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 15
       },
-      "id": 10,
-      "links": [],
+      "id": 47,
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
     },
     {
       "columns": [],
-      "datasource": "netsage",
+      "datasource": null,
       "fontSize": "90%",
       "gridPos": {
-        "h": 11,
-        "w": 13,
+        "h": 15,
+        "w": 24,
         "x": 0,
-        "y": 6
+        "y": 18
       },
-      "hideTimeOverride": false,
-      "id": 15,
+      "id": 45,
       "links": [],
-      "pageSize": null,
+      "pageSize": 15,
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 1,
+        "col": 5,
         "desc": true
       },
       "styles": [
         {
-          "$$hashKey": "object:434",
-          "alias": "Source Organization",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "pattern": "meta.src_organization.keyword",
-          "type": "string",
-          "unit": "bits"
-        },
-        {
-          "$$hashKey": "object:435",
-          "alias": "# Flows",
+          "$$hashKey": "object:477",
+          "alias": "Source Scope",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -461,48 +649,61 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Unique Count",
+          "decimals": 2,
+          "link": false,
+          "linkTargetBlank": true,
+          "linkTooltip": "See more information about ${__cell}",
+          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
+          "mappingType": 1,
+          "pattern": "/\\$src_scope/",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:478",
+          "alias": "Destination Scope",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": false,
+          "linkTargetBlank": false,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "mappingType": 1,
+          "pattern": "/\\$dst_scope/",
           "thresholds": [],
           "type": "number",
           "unit": "short"
         },
         {
-          "$$hashKey": "object:436",
+          "$$hashKey": "object:479",
           "alias": "Total Vol.",
           "align": "auto",
           "colorMode": null,
           "colors": [
-            "rgba(245, 54, 54, 0.9)",
+            "rgba(50, 172, 45, 0.97)",
             "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+            "rgba(245, 54, 54, 0.9)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
+          "mappingType": 1,
           "pattern": "Sum",
-          "thresholds": [],
+          "thresholds": [
+            ""
+          ],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:437",
-          "alias": "Packets",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:438",
+          "$$hashKey": "object:480",
           "alias": "Largest Flow",
           "align": "auto",
           "colorMode": null,
@@ -513,14 +714,15 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "/Max/",
+          "mappingType": 1,
+          "pattern": "Max values.num_bits",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:439",
-          "alias": "Fastest Flow",
+          "$$hashKey": "object:481",
+          "alias": "# Flows",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -529,14 +731,51 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "locale"
+        },
+        {
+          "$$hashKey": "object:482",
+          "alias": "Avg Rate",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "$$hashKey": "object:483",
+          "alias": "Peak Rate",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
           "pattern": "Max values.bits_per_second",
           "thresholds": [],
           "type": "number",
           "unit": "bps"
         },
         {
-          "$$hashKey": "object:440",
+          "$$hashKey": "object:484",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -545,20 +784,33 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "decimals": 0,
+          "decimals": 1,
           "pattern": "/.*/",
           "thresholds": [],
           "type": "number",
-          "unit": "decbytes"
+          "unit": "short"
         }
       ],
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:385",
+              "$$hashKey": "object:394",
               "fake": true,
-              "field": "meta.src_organization.keyword",
+              "field": "$src_scope",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:395",
+              "fake": true,
+              "field": "$dst_scope",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -569,23 +821,23 @@
               "type": "terms"
             }
           ],
-          "dsType": "elasticsearch",
+          "hide": false,
           "metrics": [
             {
-              "$$hashKey": "object:379",
+              "$$hashKey": "object:384",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             },
             {
-              "$$hashKey": "object:380",
+              "$$hashKey": "object:385",
               "field": "values.num_bits",
               "id": "5",
               "inlineScript": "_value / 8",
@@ -598,20 +850,238 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:381",
-              "field": "meta.id.keyword",
+              "$$hashKey": "object:386",
+              "field": "values.bits_per_second",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:387",
+              "field": "values.bits_per_second",
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:388",
+              "field": "values.bits_per_second",
+              "id": "8",
+              "meta": {},
+              "settings": {},
+              "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "content": "<h1  style=\"margin-top:35px;\"><center>Top Sources of Flows</center></h1>",
+      "datasource": null,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 23,
+      "mode": "html",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "90%",
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "id": 10,
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:655",
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "$$hashKey": "object:656",
+          "alias": "Source Organization",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 1,
+          "pattern": "/\\$src_scope/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:657",
+          "alias": "Total Vol.",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Sum",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "$$hashKey": "object:658",
+          "alias": "Largest Flow",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Max",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "$$hashKey": "object:659",
+          "alias": "# Flows",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Unique Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:616",
+              "field": "$src_scope",
+              "id": "2",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:610",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:611",
+              "field": "values.num_bits",
+              "id": "4",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:612",
+              "field": "select field",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "By Volume",
       "transform": "table",
       "type": "table"
@@ -622,20 +1092,17 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
-      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 6
+        "w": 12,
+        "x": 12,
+        "y": 36
       },
       "hiddenSeries": false,
-      "hideTimeOverride": false,
-      "id": 21,
+      "id": 16,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
@@ -646,29 +1113,25 @@
       },
       "lines": false,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {}
-      ],
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "",
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "4",
+              "field": "$src_scope",
+              "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -678,9 +1141,8 @@
               "type": "terms"
             },
             {
-              "fake": true,
               "field": "start",
-              "id": "3",
+              "id": "2",
               "settings": {
                 "interval": "auto",
                 "min_doc_count": 0,
@@ -689,24 +1151,22 @@
               "type": "date_histogram"
             }
           ],
-          "dsType": "elasticsearch",
-          "hide": false,
           "metrics": [
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
-          "refId": "B",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
           "timeField": "start"
         }
       ],
@@ -716,8 +1176,8 @@
       "timeShift": null,
       "title": "By Volume",
       "tooltip": {
-        "shared": true,
-        "sort": 2,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -732,21 +1192,21 @@
       },
       "yaxes": [
         {
-          "decimals": null,
+          "decimals": 0,
           "format": "decbytes",
-          "label": "Total Vol.",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "format": "bps",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -756,17 +1216,15 @@
     },
     {
       "columns": [],
-      "datasource": "netsage",
+      "datasource": null,
       "fontSize": "90%",
       "gridPos": {
         "h": 11,
-        "w": 13,
+        "w": 12,
         "x": 0,
-        "y": 17
+        "y": 47
       },
-      "hideTimeOverride": false,
-      "id": 18,
-      "links": [],
+      "id": 12,
       "pageSize": null,
       "scroll": true,
       "showHeader": true,
@@ -776,29 +1234,16 @@
       },
       "styles": [
         {
-          "$$hashKey": "object:587",
-          "alias": "Source Organization",
+          "$$hashKey": "object:792",
+          "alias": "Time",
           "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "mappingType": 1,
-          "pattern": "meta.src_organization.keyword",
-          "rangeMaps": [
-            {
-              "from": "",
-              "text": "",
-              "to": ""
-            }
-          ],
-          "type": "string",
-          "unit": "bits"
+          "pattern": "Time",
+          "type": "date"
         },
         {
-          "$$hashKey": "object:588",
-          "alias": "# Flows",
+          "$$hashKey": "object:793",
+          "alias": "Source Organization",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -806,32 +1251,14 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Unique Count",
+          "decimals": 2,
+          "pattern": "/\\$src_scope/",
           "thresholds": [],
-          "type": "number",
+          "type": "string",
           "unit": "short"
         },
         {
-          "$$hashKey": "object:589",
-          "alias": "Average",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:590",
+          "$$hashKey": "object:794",
           "alias": "Peak",
           "align": "auto",
           "colorMode": null,
@@ -842,30 +1269,14 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
+          "mappingType": 1,
           "pattern": "Max",
           "thresholds": [],
           "type": "number",
           "unit": "bps"
         },
         {
-          "$$hashKey": "object:591",
-          "alias": "Fastest Flow",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:592",
+          "$$hashKey": "object:795",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -874,21 +1285,40 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "decimals": 0,
-          "pattern": "/.*/",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
           "thresholds": [],
           "type": "number",
-          "unit": "decbytes"
+          "unit": "bps"
+        },
+        {
+          "$$hashKey": "object:796",
+          "alias": "# Flows",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Unique Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
         }
       ],
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:544",
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "3",
+              "$$hashKey": "object:753",
+              "field": "$src_scope",
+              "id": "2",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -898,40 +1328,39 @@
               "type": "terms"
             }
           ],
-          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:538",
+              "$$hashKey": "object:747",
               "field": "values.bits_per_second",
               "id": "1",
-              "inlineScript": null,
               "meta": {},
               "settings": {},
               "type": "max"
             },
             {
-              "$$hashKey": "object:539",
+              "$$hashKey": "object:748",
               "field": "values.bits_per_second",
-              "id": "5",
+              "id": "3",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
-              "$$hashKey": "object:540",
-              "field": "meta.id.keyword",
-              "id": "7",
+              "$$hashKey": "object:749",
+              "field": "select field",
+              "id": "4",
               "meta": {},
               "settings": {},
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
+      "timeShift": null,
       "title": "By Rate",
       "transform": "table",
       "type": "table"
@@ -941,20 +1370,18 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "decimals": 1,
+      "datasource": "netsage",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 17
+        "w": 12,
+        "x": 12,
+        "y": 47
       },
       "hiddenSeries": false,
-      "id": 26,
+      "id": 17,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
@@ -965,13 +1392,12 @@
       },
       "lines": false,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -983,7 +1409,7 @@
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.src_organization.keyword",
+              "field": "$src_scope",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1008,12 +1434,13 @@
             {
               "field": "values.bits_per_second",
               "id": "1",
+              "inlineScript": null,
               "meta": {},
               "settings": {},
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1024,8 +1451,8 @@
       "timeShift": null,
       "title": "By Rate",
       "tooltip": {
-        "shared": true,
-        "sort": 2,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -1040,9 +1467,9 @@
       },
       "yaxes": [
         {
-          "decimals": null,
+          "decimals": 0,
           "format": "bps",
-          "label": "Rate",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1063,374 +1490,22 @@
       }
     },
     {
-      "columns": [],
+      "content": "<h1  style=\"margin-top:35px;\"><center>Top Destinations of Flows</center></h1>",
       "datasource": null,
-      "fontSize": "90%",
       "gridPos": {
-        "h": 11,
-        "w": 13,
+        "h": 3,
+        "w": 24,
         "x": 0,
-        "y": 28
+        "y": 58
       },
-      "id": 2,
-      "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 1,
-        "desc": true
-      },
-      "styles": [
-        {
-          "$$hashKey": "object:797",
-          "alias": "Source Organization",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "mappingType": 1,
-          "pattern": "meta.src_organization.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:798",
-          "alias": "Source IP",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "meta.src_ip.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:799",
-          "alias": "Destination Organization",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "meta.dst_organization.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:800",
-          "alias": "Destination IP",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "meta.dst_ip.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:801",
-          "alias": "Retransmits",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Sum values.tcp_rexmit_pkts",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:802",
-          "alias": "Average RTT",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "$$hashKey": "object:803",
-          "alias": "# Flows",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Unique Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:804",
-          "alias": "Packets",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:805",
-          "alias": "Total Vol.",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Sum values.num_bits",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "$$hashKey": "object:806",
-          "alias": "Retransmit %",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Bucket Script",
-          "thresholds": [],
-          "type": "number",
-          "unit": "percent"
-        },
-        {
-          "$$hashKey": "object:807",
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        }
-      ],
+      "id": 25,
+      "mode": "html",
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:739",
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "7",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:729",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:730",
-              "field": "values.num_packets",
-              "id": "6",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:731",
-              "field": "select field",
-              "id": "9",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "1"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "6"
-                }
-              ],
-              "settings": {
-                "script": "params.var1/params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "$$hashKey": "object:732",
-              "field": "values.num_bits",
-              "id": "10",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:733",
-              "field": "meta.id.keyword",
-              "id": "11",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "By Retransmits",
-      "transform": "table",
-      "type": "table"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 28
-      },
-      "hiddenSeries": false,
-      "id": 7,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "7",
-              "settings": {
-                "min_doc_count": 1,
-                "missing": null,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
               "field": "start",
-              "id": "5",
+              "id": "2",
               "settings": {
                 "interval": "auto",
                 "min_doc_count": 0,
@@ -1441,74 +1516,17 @@
           ],
           "metrics": [
             {
-              "field": "values.tcp_rexmit_pkts",
+              "field": "select field",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
+              "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "By Retransmits",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": false,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Retransmits",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "decimals": null,
-          "format": "short",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "content": "<center><h1 style=\"margin-top:35px;\">Top Destinations</h1></center>",
-      "datasource": null,
-      "gridPos": {
-        "h": 3,
-        "w": 23,
-        "x": 1,
-        "y": 39
-      },
-      "id": 13,
-      "links": [],
-      "mode": "html",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1519,13 +1537,11 @@
       "fontSize": "90%",
       "gridPos": {
         "h": 11,
-        "w": 13,
+        "w": 12,
         "x": 0,
-        "y": 42
+        "y": 61
       },
-      "hideTimeOverride": false,
-      "id": 20,
-      "links": [],
+      "id": 13,
       "pageSize": null,
       "scroll": true,
       "showHeader": true,
@@ -1535,21 +1551,16 @@
       },
       "styles": [
         {
-          "$$hashKey": "object:1051",
-          "alias": "Destination Organization",
+          "$$hashKey": "object:926",
+          "alias": "Time",
           "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "pattern": "meta.dst_organization.keyword",
-          "type": "string",
-          "unit": "bits"
+          "pattern": "Time",
+          "type": "date"
         },
         {
-          "$$hashKey": "object:1052",
-          "alias": "# Flows",
+          "$$hashKey": "object:927",
+          "alias": "Destination Organization",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -1557,15 +1568,14 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "Unique Count",
+          "pattern": "/\\$dst_scope/",
           "thresholds": [],
           "type": "number",
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1053",
+          "$$hashKey": "object:928",
           "alias": "Total Vol.",
           "align": "auto",
           "colorMode": null,
@@ -1576,30 +1586,14 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
+          "mappingType": 1,
           "pattern": "Sum",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:1054",
-          "alias": "Packets",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1055",
+          "$$hashKey": "object:929",
           "alias": "Largest Flow",
           "align": "auto",
           "colorMode": null,
@@ -1610,14 +1604,15 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
-          "pattern": "/Max/",
+          "mappingType": 1,
+          "pattern": "Max",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:1056",
-          "alias": "Fastest Flow",
+          "$$hashKey": "object:930",
+          "alias": "# Flows",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -1626,37 +1621,21 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Unique Count",
           "thresholds": [],
           "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:1057",
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
+          "unit": "short"
         }
       ],
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1008",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
+              "$$hashKey": "object:887",
+              "field": "$dst_scope",
+              "id": "2",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -1666,25 +1645,24 @@
               "type": "terms"
             }
           ],
-          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:1002",
+              "$$hashKey": "object:881",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             },
             {
-              "$$hashKey": "object:1003",
+              "$$hashKey": "object:882",
               "field": "values.num_bits",
-              "id": "5",
+              "id": "4",
               "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
@@ -1695,15 +1673,15 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1004",
-              "field": "meta.id.keyword",
-              "id": "7",
+              "$$hashKey": "object:883",
+              "field": "select field",
+              "id": "5",
               "meta": {},
               "settings": {},
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1720,20 +1698,17 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
-      "decimals": 1,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 42
+        "w": 12,
+        "x": 12,
+        "y": 61
       },
       "hiddenSeries": false,
-      "hideTimeOverride": false,
-      "id": 17,
+      "id": 18,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
@@ -1744,29 +1719,25 @@
       },
       "lines": false,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {}
-      ],
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "",
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "4",
+              "field": "$dst_scope",
+              "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -1776,9 +1747,8 @@
               "type": "terms"
             },
             {
-              "fake": true,
               "field": "start",
-              "id": "3",
+              "id": "2",
               "settings": {
                 "interval": "auto",
                 "min_doc_count": 0,
@@ -1787,24 +1757,22 @@
               "type": "date_histogram"
             }
           ],
-          "dsType": "elasticsearch",
-          "hide": false,
           "metrics": [
             {
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
-          "refId": "B",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
           "timeField": "start"
         }
       ],
@@ -1814,8 +1782,8 @@
       "timeShift": null,
       "title": "By Volume",
       "tooltip": {
-        "shared": true,
-        "sort": 2,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -1830,20 +1798,21 @@
       },
       "yaxes": [
         {
+          "decimals": 0,
           "format": "decbytes",
-          "label": "Total Vol.",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "format": "bps",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -1853,17 +1822,15 @@
     },
     {
       "columns": [],
-      "datasource": "netsage",
+      "datasource": null,
       "fontSize": "90%",
       "gridPos": {
         "h": 11,
-        "w": 13,
+        "w": 12,
         "x": 0,
-        "y": 53
+        "y": 72
       },
-      "hideTimeOverride": false,
-      "id": 22,
-      "links": [],
+      "id": 14,
       "pageSize": null,
       "scroll": true,
       "showHeader": true,
@@ -1873,29 +1840,16 @@
       },
       "styles": [
         {
-          "$$hashKey": "object:1213",
-          "alias": "Destination Organization",
+          "$$hashKey": "object:1055",
+          "alias": "Time",
           "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "mappingType": 1,
-          "pattern": "meta.dst_organization.keyword",
-          "rangeMaps": [
-            {
-              "from": "",
-              "text": "",
-              "to": ""
-            }
-          ],
-          "type": "string",
-          "unit": "bits"
+          "pattern": "Time",
+          "type": "date"
         },
         {
-          "$$hashKey": "object:1214",
-          "alias": "# Flows",
+          "$$hashKey": "object:1056",
+          "alias": "Destination Organization",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -1903,32 +1857,14 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Unique Count",
+          "decimals": 2,
+          "pattern": "/\\$dst_scope/",
           "thresholds": [],
-          "type": "number",
+          "type": "string",
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1215",
-          "alias": "Average",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:1216",
+          "$$hashKey": "object:1057",
           "alias": "Peak",
           "align": "auto",
           "colorMode": null,
@@ -1939,30 +1875,14 @@
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
+          "mappingType": 1,
           "pattern": "Max",
           "thresholds": [],
           "type": "number",
           "unit": "bps"
         },
         {
-          "$$hashKey": "object:1217",
-          "alias": "Fastest Flow",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:1218",
+          "$$hashKey": "object:1058",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -1971,21 +1891,40 @@
             "rgba(237, 129, 40, 0.89)",
             "rgba(50, 172, 45, 0.97)"
           ],
-          "decimals": 0,
-          "pattern": "/.*/",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Average",
           "thresholds": [],
           "type": "number",
-          "unit": "decbytes"
+          "unit": "bps"
+        },
+        {
+          "$$hashKey": "object:1059",
+          "alias": "# Flows",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Unique Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
         }
       ],
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1170",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
+              "$$hashKey": "object:1016",
+              "field": "$dst_scope",
+              "id": "2",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -1995,40 +1934,39 @@
               "type": "terms"
             }
           ],
-          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:1164",
+              "$$hashKey": "object:1010",
               "field": "values.bits_per_second",
               "id": "1",
-              "inlineScript": null,
               "meta": {},
               "settings": {},
               "type": "max"
             },
             {
-              "$$hashKey": "object:1165",
+              "$$hashKey": "object:1011",
               "field": "values.bits_per_second",
-              "id": "5",
+              "id": "3",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
-              "$$hashKey": "object:1166",
-              "field": "meta.id.keyword",
-              "id": "7",
+              "$$hashKey": "object:1012",
+              "field": "select field",
+              "id": "4",
               "meta": {},
               "settings": {},
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
+      "timeShift": null,
       "title": "By Rate",
       "transform": "table",
       "type": "table"
@@ -2044,15 +1982,13 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 53
+        "w": 12,
+        "x": 12,
+        "y": 72
       },
       "hiddenSeries": false,
-      "hideTimeOverride": false,
-      "id": 24,
+      "id": 19,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
         "max": false,
@@ -2063,29 +1999,25 @@
       },
       "lines": false,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {}
-      ],
+      "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "",
           "bucketAggs": [
             {
               "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "4",
+              "field": "$dst_scope",
+              "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -2095,9 +2027,8 @@
               "type": "terms"
             },
             {
-              "fake": true,
               "field": "start",
-              "id": "3",
+              "id": "2",
               "settings": {
                 "interval": "auto",
                 "min_doc_count": 0,
@@ -2106,8 +2037,6 @@
               "type": "date_histogram"
             }
           ],
-          "dsType": "elasticsearch",
-          "hide": false,
           "metrics": [
             {
               "field": "values.bits_per_second",
@@ -2118,8 +2047,8 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
-          "refId": "B",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
           "timeField": "start"
         }
       ],
@@ -2129,8 +2058,8 @@
       "timeShift": null,
       "title": "By Rate",
       "tooltip": {
-        "shared": true,
-        "sort": 2,
+        "shared": false,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -2145,397 +2074,17 @@
       },
       "yaxes": [
         {
-          "format": "bps",
-          "label": "Rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
+          "decimals": 0,
           "format": "bps",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "columns": [],
-      "datasource": null,
-      "fontSize": "90%",
-      "gridPos": {
-        "h": 11,
-        "w": 13,
-        "x": 0,
-        "y": 64
-      },
-      "id": 4,
-      "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 1,
-        "desc": true
-      },
-      "styles": [
-        {
-          "$$hashKey": "object:1407",
-          "alias": "Destination Organization",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "mappingType": 1,
-          "pattern": "meta.dst_organization.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1408",
-          "alias": "Destination IP",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "meta.dst_ip.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1409",
-          "alias": "Retransmits",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Sum values.tcp_rexmit_pkts",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1410",
-          "alias": "Average RTT",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "ms"
-        },
-        {
-          "$$hashKey": "object:1411",
-          "alias": "# Flows",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Unique Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1412",
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "Sum values.num_packets",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1413",
-          "alias": "Retransmit %",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "Bucket Script",
-          "thresholds": [],
-          "type": "number",
-          "unit": "percent"
-        },
-        {
-          "$$hashKey": "object:1414",
-          "alias": "Total Vol.",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Sum values.num_bits",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        }
-      ],
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:1349",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "9",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:1339",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1340",
-              "field": "values.num_packets",
-              "id": "6",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1341",
-              "field": "select field",
-              "id": "11",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "1"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "6"
-                }
-              ],
-              "settings": {
-                "script": "params.var1/params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "$$hashKey": "object:1342",
-              "field": "values.num_bits",
-              "id": "12",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1343",
-              "field": "meta.id.keyword",
-              "id": "13",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "title": "By Retransmits",
-      "transform": "table",
-      "type": "table"
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 11,
-        "w": 11,
-        "x": 13,
-        "y": 64
-      },
-      "hiddenSeries": false,
-      "id": 8,
-      "interval": "",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "7",
-              "settings": {
-                "min_doc_count": 1,
-                "missing": null,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "fake": true,
-              "field": "start",
-              "id": "5",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "By Retransmits",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": false,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Number of Retransmits",
-          "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
-          "decimals": null,
           "format": "short",
-          "label": "",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -2548,17 +2097,18 @@
       }
     },
     {
-      "content": "<br>\n<center><h1 style=\"margin-top:35px;\">Top Pairs</h1></center>",
+      "content": "<h1  style=\"margin-top:35px;\"><center>Individual Flows</center></h1>",
       "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 83
       },
-      "id": 12,
-      "links": [],
+      "id": 43,
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2568,24 +2118,24 @@
       "datasource": null,
       "fontSize": "90%",
       "gridPos": {
-        "h": 16,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 78
+        "y": 86
       },
-      "id": 5,
+      "id": 21,
       "links": [],
       "pageSize": 15,
       "scroll": true,
       "showHeader": true,
       "sort": {
-        "col": 2,
-        "desc": true
+        "col": 7,
+        "desc": false
       },
       "styles": [
         {
-          "$$hashKey": "object:1650",
-          "alias": "Source Organization",
+          "$$hashKey": "object:1301",
+          "alias": "Retransmits",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -2594,76 +2144,15 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTargetBlank": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
+          "decimals": 0,
           "mappingType": 1,
-          "pattern": "meta.src_organization.keyword",
+          "pattern": "Average values.tcp_rexmit_pkts",
           "thresholds": [],
-          "type": "string",
+          "type": "number",
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1651",
-          "alias": "Source IP",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "meta.src_ip.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1652",
-          "alias": "Destination Organization",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": true,
-          "linkTooltip": "See more information about ${__cell}",
-          "linkUrl": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__cell}&from=${__from}&to=${__to}",
-          "mappingType": 1,
-          "pattern": "meta.dst_organization.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1653",
-          "alias": "Destination IP",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "meta.dst_ip.keyword",
-          "thresholds": [],
-          "type": "string",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1654",
+          "$$hashKey": "object:1302",
           "alias": "RTT",
           "align": "auto",
           "colorMode": null,
@@ -2681,8 +2170,8 @@
           "unit": "ms"
         },
         {
-          "$$hashKey": "object:1655",
-          "alias": "# Flows",
+          "$$hashKey": "object:1303",
+          "alias": "Total Volume",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -2693,50 +2182,14 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 1,
           "mappingType": 1,
-          "pattern": "Unique Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1656",
-          "alias": "Avg Rate",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Average values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:1657",
-          "alias": "Total Vol.",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Sum values.num_bits",
+          "pattern": "/Sum/",
           "thresholds": [],
           "type": "number",
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:1658",
-          "alias": "Retransmits",
+          "$$hashKey": "object:1304",
+          "alias": "Timestamp",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -2745,67 +2198,33 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Sum values.tcp_rexmit_pkts",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "$$hashKey": "object:1659",
-          "alias": "Peak Rate",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "$$hashKey": "object:1660",
-          "alias": "Largest Flow",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Max values.num_bits",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "$$hashKey": "object:1661",
-          "alias": "Retransmit %",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
           "decimals": 2,
-          "pattern": "Bucket Script",
+          "mappingType": 1,
+          "pattern": "start",
           "thresholds": [],
-          "type": "hidden",
-          "unit": "percent"
+          "type": "date",
+          "unit": "short"
         },
         {
-          "$$hashKey": "object:1662",
+          "$$hashKey": "object:1305",
+          "alias": "Duration",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Average values.duration",
+          "thresholds": [],
+          "type": "number",
+          "unit": "dthms"
+        },
+        {
+          "$$hashKey": "object:1306",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -2817,68 +2236,988 @@
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
           "decimals": 2,
           "mappingType": 1,
-          "pattern": "Sum values.num_packets",
+          "pattern": "meta.id.keyword",
           "thresholds": [],
           "type": "hidden",
           "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1307",
+          "alias": "Source Scope",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "/\\$src_scope/",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1308",
+          "alias": "Destination Scope",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "/\\$dst_scope/",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1309",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Average values.num_packets",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1310",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "end",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1311",
+          "alias": "Source Subnet",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "meta.src_ip.keyword",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1312",
+          "alias": "Destination Subnet",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "meta.dst_ip.keyword",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1313",
+          "alias": "Rate",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "mappingType": 1,
+          "pattern": "Max",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "$$hashKey": "object:1314",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1188",
+              "fake": true,
+              "field": "meta.id.keyword",
+              "id": "15",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "1000"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1189",
+              "fake": true,
+              "field": "start",
+              "id": "16",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1190",
+              "fake": true,
+              "field": "end",
+              "id": "17",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1191",
+              "fake": true,
+              "field": "$src_scope",
+              "id": "28",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1192",
+              "fake": true,
+              "field": "meta.src_ip.keyword",
+              "id": "32",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1193",
+              "fake": true,
+              "field": "$dst_scope",
+              "id": "33",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1194",
+              "fake": true,
+              "field": "meta.dst_ip.keyword",
+              "id": "31",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:1176",
+              "field": "values.num_bits",
+              "id": "12",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:1177",
+              "field": "values.bits_per_second",
+              "id": "30",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:1178",
+              "field": "values.num_packets",
+              "id": "25",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:1179",
+              "field": "values.duration",
+              "id": "27",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:1180",
+              "field": "values.tcp_rexmit_pkts",
+              "id": "34",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:1181",
+              "field": "values.tcp_rtt_min",
+              "id": "35",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Flow Pairs",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "content": "<h1 style=\"margin-top:35px;\"><center>Other Flow Statistics</center></h1>",
+      "datasource": null,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 101
+      },
+      "id": 39,
+      "links": [],
+      "mode": "html",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": true,
+      "colorValue": false,
+      "colors": [
+        "#FF780A",
+        "#FF780A",
+        "#FF780A"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "format": "locale",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 104
+      },
+      "id": 41,
+      "interval": "1h",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:1564",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:1565",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": " total large flows observed",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1520",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1518",
+              "field": "select field",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": "0,1",
+      "title": "",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:1567",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "netsage",
+      "decimals": 1,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 107
+      },
+      "hiddenSeries": false,
+      "id": 33,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.protocol.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Protocols",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "Number of Flows",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "netsage",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 107
+      },
+      "hiddenSeries": false,
+      "id": 35,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": true,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.src_port",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Source Ports",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Number of Flows",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 107
+      },
+      "hiddenSeries": false,
+      "id": 37,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "fake": true,
+              "field": "meta.dst_port",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_count",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Destination Ports",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "total"
+        ]
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Number of Flows",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "<h1 style=\"margin-top:35px;\"><center>Flow Data Summary For Selected Sensors</center></h1>",
+      "datasource": null,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 116
+      },
+      "id": 31,
+      "links": [],
+      "mode": "html",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "columns": [],
+      "datasource": "netsage",
+      "fontSize": "90%",
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 119
+      },
+      "hideTimeOverride": false,
+      "id": 29,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": true
+      },
+      "styles": [
+        {
+          "$$hashKey": "object:1645",
+          "alias": "Link",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": false,
+          "linkTargetBlank": true,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "pattern": "/.*sensor_id.*/",
+          "type": "string",
+          "unit": "bits"
+        },
+        {
+          "$$hashKey": "object:1646",
+          "alias": "# Flows",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Unique Count",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "$$hashKey": "object:1647",
+          "alias": "Total Volume",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Sum",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "$$hashKey": "object:1648",
+          "alias": "Largest Flow",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Max values.num_bits",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
+        },
+        {
+          "$$hashKey": "object:1649",
+          "alias": "Fastest Flow",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 1,
+          "pattern": "Max values.bits_per_second",
+          "thresholds": [],
+          "type": "number",
+          "unit": "bps"
+        },
+        {
+          "$$hashKey": "object:1650",
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "decbytes"
         }
       ],
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1548",
+              "$$hashKey": "object:1597",
               "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "7",
+              "field": "meta.sensor_id.keyword",
+              "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "13",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:1549",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "9",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "13",
-                "size": "0"
+                "orderBy": "1",
+                "size": "10"
               },
               "type": "terms"
             }
           ],
+          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:1530",
+              "$$hashKey": "object:1589",
               "field": "values.num_bits",
-              "id": "13",
-              "inlineScript": "_value / 8",
+              "id": "1",
+              "inlineScript": "_value/8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value / 8"
+                  "inline": "_value/8"
                 }
               },
               "type": "sum"
             },
             {
-              "$$hashKey": "object:1531",
-              "field": "values.num_packets",
-              "id": "21",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1532",
+              "$$hashKey": "object:1590",
               "field": "values.num_bits",
-              "id": "26",
+              "id": "5",
               "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
@@ -2889,74 +3228,29 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1533",
-              "field": "meta.id.keyword",
-              "id": "27",
+              "$$hashKey": "object:1591",
+              "field": "values.bits_per_second",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:1592",
+              "field": "select field",
+              "id": "7",
               "meta": {},
               "settings": {},
               "type": "cardinality"
-            },
-            {
-              "$$hashKey": "object:1534",
-              "field": "values.bits_per_second",
-              "id": "28",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "$$hashKey": "object:1535",
-              "field": "values.bits_per_second",
-              "id": "29",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:1536",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "30",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1537",
-              "field": "select field",
-              "id": "31",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "name": "var1",
-                  "pipelineAgg": "30"
-                },
-                {
-                  "name": "var2",
-                  "pipelineAgg": "21"
-                }
-              ],
-              "settings": {
-                "script": "params.var1 / params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "$$hashKey": "object:1538",
-              "field": "values.tcp_rtt_min",
-              "id": "32",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors",
+          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
-      "timeShift": null,
-      "title": "By Organization Pair",
+      "title": "Links Usage",
       "transform": "table",
       "type": "table"
     },
@@ -2967,50 +3261,268 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 94
+        "y": 127
       },
-      "id": 28,
-      "links": [],
+      "id": 6,
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": "",
   "schemaVersion": 22,
   "style": "dark",
   "tags": [
     "netsage",
-    "dtn"
+    "flow"
   ],
   "templating": {
     "list": [
       {
-        "allValue": "",
+        "allValue": null,
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "text": "NEAAR New York sFlow",
+          "value": [
+            "NEAAR New York sFlow"
+          ]
         },
         "datasource": "netsage",
-        "definition": "",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic*\"}",
         "hide": 0,
         "includeAll": true,
         "index": -1,
-        "label": "Sensors",
+        "label": "Flow Data",
         "multi": true,
         "name": "sensors",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"meta.flow_type:tstat\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic*\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "NEAAR: New York to London 100GE",
+          "value": "NEAAR: New York to London 100GE"
+        },
+        "datasource": "Netsage TSDS",
+        "definition": "get link_name between($START, $END) by link_name from interface where link_name != null limit 100 offset 0",
+        "hide": 0,
+        "includeAll": true,
+        "index": -1,
+        "label": "SNMP Data",
+        "multi": true,
+        "name": "links",
+        "options": [],
+        "query": "get link_name between($START, $END) by link_name from interface where link_name != null limit 100 offset 0",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "meta.src_organization.keyword",
+          "value": "meta.src_organization.keyword"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Source Scope",
+        "multi": false,
+        "name": "src_scope",
+        "options": [
+          {
+            "selected": true,
+            "text": "meta.src_organization.keyword",
+            "value": "meta.src_organization.keyword"
+          },
+          {
+            "selected": false,
+            "text": "meta.src_country_name.keyword",
+            "value": "meta.src_country_name.keyword"
+          },
+          {
+            "selected": false,
+            "text": "meta.src_continent.keyword",
+            "value": "meta.src_continent.keyword"
+          },
+          {
+            "selected": false,
+            "text": "meta.src_asn",
+            "value": "meta.src_asn"
+          },
+          {
+            "selected": false,
+            "text": "meta.src_port",
+            "value": "meta.src_port"
+          }
+        ],
+        "query": "meta.src_organization.keyword, meta.src_country_name.keyword, meta.src_continent.keyword, meta.src_asn, meta.src_port",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "meta.dst_organization.keyword",
+          "value": "meta.dst_organization.keyword"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Destination Scope",
+        "multi": false,
+        "name": "dst_scope",
+        "options": [
+          {
+            "selected": true,
+            "text": "meta.dst_organization.keyword",
+            "value": "meta.dst_organization.keyword"
+          },
+          {
+            "selected": false,
+            "text": "meta.dst_country_name.keyword",
+            "value": "meta.dst_country_name.keyword"
+          },
+          {
+            "selected": false,
+            "text": "meta.dst_continent.keyword",
+            "value": "meta.dst_continent.keyword"
+          },
+          {
+            "selected": false,
+            "text": "meta.dst_asn",
+            "value": "meta.dst_asn"
+          },
+          {
+            "selected": false,
+            "text": "meta.dst_port",
+            "value": "meta.dst_port"
+          }
+        ],
+        "query": "meta.dst_organization.keyword, meta.dst_country_name.keyword, meta.dst_continent.keyword, meta.dst_asn, meta.dst_port",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "0",
+          "value": "0"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Individual Flow Volume Above (in bits)",
+        "multi": false,
+        "name": "volume_over",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "800000000",
+            "value": "800000000"
+          },
+          {
+            "selected": false,
+            "text": "8000000000",
+            "value": "8000000000"
+          },
+          {
+            "selected": false,
+            "text": "80000000000",
+            "value": "80000000000"
+          },
+          {
+            "selected": false,
+            "text": "800000000000",
+            "value": "800000000000"
+          }
+        ],
+        "query": "0, 800000000, 8000000000, 80000000000, 800000000000",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "100000000000",
+          "value": "100000000000"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Individual Flow Rate Under (in bits per second)",
+        "multi": false,
+        "name": "rate_under",
+        "options": [
+          {
+            "selected": false,
+            "text": "100000",
+            "value": "100000"
+          },
+          {
+            "selected": false,
+            "text": "1000000",
+            "value": "1000000"
+          },
+          {
+            "selected": false,
+            "text": "10000000",
+            "value": "10000000"
+          },
+          {
+            "selected": false,
+            "text": "100000000",
+            "value": "100000000"
+          },
+          {
+            "selected": false,
+            "text": "1000000000",
+            "value": "1000000000"
+          },
+          {
+            "selected": false,
+            "text": "10000000000",
+            "value": "10000000000"
+          },
+          {
+            "selected": true,
+            "text": "100000000000",
+            "value": "100000000000"
+          }
+        ],
+        "query": "100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "datasource": "netsage",
+        "filters": [],
+        "hide": 0,
+        "label": "Filters",
+        "name": "filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
       }
     ]
   },
@@ -3030,22 +3542,11 @@
       "1h",
       "2h",
       "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
     ]
   },
   "timezone": "",
-  "title": "Flow Data for Data Archives",
-  "uid": "mNPduO8mz",
+  "title": "Flow Analysis",
+  "uid": "VuuXrnPWz",
   "variables": {
     "list": []
   }

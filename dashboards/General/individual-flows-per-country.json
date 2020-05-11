@@ -2,7 +2,7 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:239",
+        "$$hashKey": "object:19",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1587501514462,
+  "iteration": 1587754474684,
   "links": [],
   "panels": [
     {
@@ -210,8 +210,8 @@
       "dashboardselection": true,
       "datasource": null,
       "gridPos": {
-        "h": 4,
-        "w": 2,
+        "h": 1,
+        "w": 24,
         "x": 0,
         "y": 0
       },
@@ -274,18 +274,18 @@
         "show": true
       },
       "links": [],
-      "max_total": 61672460,
+      "max_total": 61685309,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
       "parsed_data": [
         {
-          "avg": 364925.79881656804,
+          "avg": 30582.701536936045,
           "label": "Count",
-          "max": 1839113,
-          "min": 366,
-          "total": 61672460
+          "max": 471021,
+          "min": 0,
+          "total": 61685309
         }
       ],
       "rgb_values": [
@@ -385,13 +385,13 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds), retransmits and round trip time (RTT) for each flow.</center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+      "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flows per Country</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination country.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds), retransmits and round trip time (RTT) for each flow. </center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n",
       "datasource": null,
       "gridPos": {
         "h": 5,
-        "w": 20,
-        "x": 2,
-        "y": 0
+        "w": 24,
+        "x": 0,
+        "y": 1
       },
       "id": 34,
       "links": [],
@@ -427,7 +427,7 @@
         "h": 2,
         "w": 5,
         "x": 2,
-        "y": 5
+        "y": 6
       },
       "id": 45,
       "interval": null,
@@ -435,12 +435,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:372",
+          "$$hashKey": "object:115",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:373",
+          "$$hashKey": "object:116",
           "name": "range to text",
           "value": 2
         }
@@ -449,7 +449,7 @@
       "nullPointMode": "connected",
       "nullText": null,
       "postfix": "",
-      "postfixFontSize": "80%",
+      "postfixFontSize": "50%",
       "prefix": "# Flows<br>",
       "prefixFontSize": "70%",
       "rangeMaps": [
@@ -470,7 +470,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:327",
+              "$$hashKey": "object:70",
               "field": "start",
               "id": "2",
               "settings": {
@@ -483,7 +483,7 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:325",
+              "$$hashKey": "object:68",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -491,7 +491,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -505,7 +505,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:375",
+          "$$hashKey": "object:118",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -537,7 +537,7 @@
         "h": 2,
         "w": 5,
         "x": 7,
-        "y": 5
+        "y": 6
       },
       "id": 35,
       "interval": null,
@@ -545,12 +545,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:151",
+          "$$hashKey": "object:228",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:152",
+          "$$hashKey": "object:229",
           "name": "range to text",
           "value": 2
         }
@@ -580,7 +580,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:106",
+              "$$hashKey": "object:183",
               "field": "start",
               "id": "2",
               "settings": {
@@ -593,20 +593,20 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:104",
+              "$$hashKey": "object:181",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -620,7 +620,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:154",
+          "$$hashKey": "object:231",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -653,7 +653,7 @@
         "h": 2,
         "w": 5,
         "x": 12,
-        "y": 5
+        "y": 6
       },
       "id": 21,
       "interval": null,
@@ -661,12 +661,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:175",
+          "$$hashKey": "object:304",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:176",
+          "$$hashKey": "object:305",
           "name": "range to text",
           "value": 2
         }
@@ -696,7 +696,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:130",
+              "$$hashKey": "object:259",
               "field": "start",
               "id": "2",
               "settings": {
@@ -709,7 +709,7 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:128",
+              "$$hashKey": "object:257",
               "field": "values.bits_per_second",
               "id": "1",
               "meta": {},
@@ -717,7 +717,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -731,7 +731,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:178",
+          "$$hashKey": "object:307",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -764,7 +764,7 @@
         "h": 2,
         "w": 5,
         "x": 17,
-        "y": 5
+        "y": 6
       },
       "id": 23,
       "interval": null,
@@ -772,12 +772,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:251",
+          "$$hashKey": "object:380",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:252",
+          "$$hashKey": "object:381",
           "name": "range to text",
           "value": 2
         }
@@ -807,7 +807,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:206",
+              "$$hashKey": "object:335",
               "field": "start",
               "id": "2",
               "settings": {
@@ -820,7 +820,7 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:204",
+              "$$hashKey": "object:333",
               "field": "values.tcp_rtt_avg",
               "id": "1",
               "meta": {},
@@ -828,7 +828,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -842,7 +842,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:254",
+          "$$hashKey": "object:383",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -857,7 +857,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 52,
       "links": [],
@@ -876,7 +876,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 2,
       "links": [],
@@ -889,7 +889,7 @@
       },
       "styles": [
         {
-          "$$hashKey": "object:819",
+          "$$hashKey": "object:540",
           "alias": "Retransmits",
           "align": "auto",
           "colorMode": null,
@@ -907,7 +907,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:820",
+          "$$hashKey": "object:541",
           "alias": "RTT",
           "align": "auto",
           "colorMode": null,
@@ -925,7 +925,7 @@
           "unit": "ms"
         },
         {
-          "$$hashKey": "object:821",
+          "$$hashKey": "object:542",
           "alias": "Total Volume",
           "align": "auto",
           "colorMode": null,
@@ -943,7 +943,7 @@
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:822",
+          "$$hashKey": "object:543",
           "alias": "Timestamp",
           "align": "auto",
           "colorMode": null,
@@ -961,7 +961,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:823",
+          "$$hashKey": "object:544",
           "alias": "Duration",
           "align": "auto",
           "colorMode": null,
@@ -979,7 +979,7 @@
           "unit": "dthms"
         },
         {
-          "$$hashKey": "object:824",
+          "$$hashKey": "object:545",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -997,7 +997,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:825",
+          "$$hashKey": "object:546",
           "alias": "Source Organization",
           "align": "auto",
           "colorMode": null,
@@ -1015,7 +1015,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:826",
+          "$$hashKey": "object:547",
           "alias": "Destination Organization",
           "align": "auto",
           "colorMode": null,
@@ -1033,7 +1033,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:827",
+          "$$hashKey": "object:548",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -1051,7 +1051,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:828",
+          "$$hashKey": "object:549",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -1069,7 +1069,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:829",
+          "$$hashKey": "object:550",
           "alias": "Source Subnet",
           "align": "auto",
           "colorMode": null,
@@ -1087,7 +1087,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:830",
+          "$$hashKey": "object:551",
           "alias": "Destination Subnet",
           "align": "auto",
           "colorMode": null,
@@ -1105,7 +1105,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:831",
+          "$$hashKey": "object:552",
           "alias": "Rate",
           "align": "auto",
           "colorMode": null,
@@ -1123,7 +1123,7 @@
           "unit": "bps"
         },
         {
-          "$$hashKey": "object:832",
+          "$$hashKey": "object:553",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -1146,7 +1146,7 @@
           "alias": "",
           "bucketAggs": [
             {
-              "$$hashKey": "object:700",
+              "$$hashKey": "object:421",
               "fake": true,
               "field": "meta.id.keyword",
               "id": "15",
@@ -1159,7 +1159,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:701",
+              "$$hashKey": "object:422",
               "fake": true,
               "field": "start",
               "id": "16",
@@ -1172,7 +1172,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:702",
+              "$$hashKey": "object:423",
               "fake": true,
               "field": "end",
               "id": "17",
@@ -1185,7 +1185,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:703",
+              "$$hashKey": "object:424",
               "fake": true,
               "field": "meta.src_organization.keyword",
               "id": "28",
@@ -1198,7 +1198,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:704",
+              "$$hashKey": "object:425",
               "fake": true,
               "field": "meta.src_ip.keyword",
               "id": "32",
@@ -1211,7 +1211,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:705",
+              "$$hashKey": "object:426",
               "fake": true,
               "field": "meta.dst_organization.keyword",
               "id": "33",
@@ -1224,7 +1224,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:706",
+              "$$hashKey": "object:427",
               "fake": true,
               "field": "meta.dst_ip.keyword",
               "id": "31",
@@ -1240,7 +1240,7 @@
           "hide": false,
           "metrics": [
             {
-              "$$hashKey": "object:688",
+              "$$hashKey": "object:409",
               "field": "values.num_bits",
               "id": "12",
               "inlineScript": "_value / 8",
@@ -1253,7 +1253,7 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:689",
+              "$$hashKey": "object:410",
               "field": "values.bits_per_second",
               "id": "30",
               "meta": {},
@@ -1261,7 +1261,7 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:690",
+              "$$hashKey": "object:411",
               "field": "values.num_packets",
               "id": "25",
               "meta": {},
@@ -1269,7 +1269,7 @@
               "type": "avg"
             },
             {
-              "$$hashKey": "object:691",
+              "$$hashKey": "object:412",
               "field": "values.duration",
               "id": "27",
               "meta": {},
@@ -1277,7 +1277,7 @@
               "type": "avg"
             },
             {
-              "$$hashKey": "object:692",
+              "$$hashKey": "object:413",
               "field": "values.tcp_rexmit_pkts",
               "id": "34",
               "meta": {},
@@ -1285,7 +1285,7 @@
               "type": "avg"
             },
             {
-              "$$hashKey": "object:693",
+              "$$hashKey": "object:414",
               "field": "values.tcp_rtt_min",
               "id": "35",
               "meta": {},
@@ -1293,7 +1293,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1329,7 +1329,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 18,
       "legend": {
@@ -1368,7 +1368,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1417,7 +1417,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "id": 56,
       "legend": {
@@ -1451,7 +1451,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1499,7 +1499,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 46
       },
       "id": 12,
       "legend": {
@@ -1535,7 +1535,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1565,7 +1565,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 56
+        "y": 57
       },
       "id": 37,
       "mode": "html",
@@ -1589,7 +1589,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 39,
@@ -1653,7 +1653,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1715,7 +1715,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 58
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 40,
@@ -1775,11 +1775,13 @@
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
-              "settings": {},
+              "settings": {
+                "precision_threshold": null
+              },
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1841,7 +1843,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 58
+        "y": 59
       },
       "hiddenSeries": false,
       "id": 41,
@@ -1905,7 +1907,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -1954,13 +1956,13 @@
       }
     },
     {
-      "content": "<center style=\"margin-top:35px;\"><h1>Reverse Direction</h1></center>",
+      "content": "<center style=\"margin-top:20px;\"><h1 style=\"margin-top:35px;\">Reverse Direction</h1></center>",
       "datasource": null,
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 67
       },
       "id": 62,
       "mode": "html",
@@ -1993,7 +1995,7 @@
         "h": 2,
         "w": 5,
         "x": 2,
-        "y": 69
+        "y": 70
       },
       "id": 26,
       "interval": null,
@@ -2001,12 +2003,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1559",
+          "$$hashKey": "object:920",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1560",
+          "$$hashKey": "object:921",
           "name": "range to text",
           "value": 2
         }
@@ -2036,7 +2038,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1514",
+              "$$hashKey": "object:875",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2049,7 +2051,7 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:1512",
+              "$$hashKey": "object:873",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -2057,12 +2059,12 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
+      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2071,7 +2073,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1562",
+          "$$hashKey": "object:923",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -2103,7 +2105,7 @@
         "h": 2,
         "w": 5,
         "x": 7,
-        "y": 69
+        "y": 70
       },
       "id": 47,
       "interval": null,
@@ -2111,12 +2113,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:1635",
+          "$$hashKey": "object:1037",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:1636",
+          "$$hashKey": "object:1038",
           "name": "range to text",
           "value": 2
         }
@@ -2146,7 +2148,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1590",
+              "$$hashKey": "object:992",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2159,25 +2161,25 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:1588",
+              "$$hashKey": "object:990",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
+      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2186,7 +2188,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:1638",
+          "$$hashKey": "object:1040",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -2219,7 +2221,7 @@
         "h": 2,
         "w": 5,
         "x": 12,
-        "y": 69
+        "y": 70
       },
       "id": 48,
       "interval": null,
@@ -2227,12 +2229,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:2093",
+          "$$hashKey": "object:1113",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:2094",
+          "$$hashKey": "object:1114",
           "name": "range to text",
           "value": 2
         }
@@ -2262,7 +2264,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:2048",
+              "$$hashKey": "object:1068",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2275,7 +2277,7 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:2046",
+              "$$hashKey": "object:1066",
               "field": "values.bits_per_second",
               "id": "1",
               "meta": {},
@@ -2283,12 +2285,12 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
+      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2297,7 +2299,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:2096",
+          "$$hashKey": "object:1116",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -2330,7 +2332,7 @@
         "h": 2,
         "w": 5,
         "x": 17,
-        "y": 69
+        "y": 70
       },
       "id": 50,
       "interval": null,
@@ -2338,12 +2340,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
-          "$$hashKey": "object:2169",
+          "$$hashKey": "object:1189",
           "name": "value to text",
           "value": 1
         },
         {
-          "$$hashKey": "object:2170",
+          "$$hashKey": "object:1190",
           "name": "range to text",
           "value": 2
         }
@@ -2373,7 +2375,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:2124",
+              "$$hashKey": "object:1144",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2386,7 +2388,7 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:2122",
+              "$$hashKey": "object:1142",
               "field": "values.tcp_rtt_avg",
               "id": "1",
               "meta": {},
@@ -2394,12 +2396,12 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
+      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2408,7 +2410,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "$$hashKey": "object:2172",
+          "$$hashKey": "object:1192",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -2424,7 +2426,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 72
       },
       "id": 54,
       "links": [],
@@ -2437,7 +2439,7 @@
       },
       "styles": [
         {
-          "$$hashKey": "object:1228",
+          "$$hashKey": "object:1343",
           "alias": "Retransmits",
           "align": "auto",
           "colorMode": null,
@@ -2455,7 +2457,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1229",
+          "$$hashKey": "object:1344",
           "alias": "RTT",
           "align": "auto",
           "colorMode": null,
@@ -2473,7 +2475,7 @@
           "unit": "ms"
         },
         {
-          "$$hashKey": "object:1230",
+          "$$hashKey": "object:1345",
           "alias": "Total Volume",
           "align": "auto",
           "colorMode": null,
@@ -2491,7 +2493,7 @@
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:1231",
+          "$$hashKey": "object:1346",
           "alias": "Timestamp",
           "align": "auto",
           "colorMode": null,
@@ -2509,7 +2511,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1232",
+          "$$hashKey": "object:1347",
           "alias": "Duration",
           "align": "auto",
           "colorMode": null,
@@ -2527,7 +2529,7 @@
           "unit": "dthms"
         },
         {
-          "$$hashKey": "object:1233",
+          "$$hashKey": "object:1348",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -2545,7 +2547,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1234",
+          "$$hashKey": "object:1349",
           "alias": "Source Organization",
           "align": "auto",
           "colorMode": null,
@@ -2563,7 +2565,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1235",
+          "$$hashKey": "object:1350",
           "alias": "Destination Organization",
           "align": "auto",
           "colorMode": null,
@@ -2581,7 +2583,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1236",
+          "$$hashKey": "object:1351",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -2599,7 +2601,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1237",
+          "$$hashKey": "object:1352",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -2617,7 +2619,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1238",
+          "$$hashKey": "object:1353",
           "alias": "Source Subnet",
           "align": "auto",
           "colorMode": null,
@@ -2635,7 +2637,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1239",
+          "$$hashKey": "object:1354",
           "alias": "Destination Subnet",
           "align": "auto",
           "colorMode": null,
@@ -2653,7 +2655,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:1240",
+          "$$hashKey": "object:1355",
           "alias": "Rate",
           "align": "auto",
           "colorMode": null,
@@ -2671,7 +2673,7 @@
           "unit": "bps"
         },
         {
-          "$$hashKey": "object:1241",
+          "$$hashKey": "object:1356",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -2694,7 +2696,7 @@
           "alias": "",
           "bucketAggs": [
             {
-              "$$hashKey": "object:1115",
+              "$$hashKey": "object:1230",
               "fake": true,
               "field": "meta.id.keyword",
               "id": "15",
@@ -2707,7 +2709,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:1116",
+              "$$hashKey": "object:1231",
               "fake": true,
               "field": "start",
               "id": "16",
@@ -2720,7 +2722,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:1117",
+              "$$hashKey": "object:1232",
               "fake": true,
               "field": "end",
               "id": "17",
@@ -2733,7 +2735,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:1118",
+              "$$hashKey": "object:1233",
               "fake": true,
               "field": "meta.src_organization.keyword",
               "id": "28",
@@ -2746,7 +2748,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:1119",
+              "$$hashKey": "object:1234",
               "fake": true,
               "field": "meta.src_ip.keyword",
               "id": "32",
@@ -2759,7 +2761,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:1120",
+              "$$hashKey": "object:1235",
               "fake": true,
               "field": "meta.dst_organization.keyword",
               "id": "33",
@@ -2772,7 +2774,7 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:1121",
+              "$$hashKey": "object:1236",
               "fake": true,
               "field": "meta.dst_ip.keyword",
               "id": "31",
@@ -2788,7 +2790,7 @@
           "hide": false,
           "metrics": [
             {
-              "$$hashKey": "object:1103",
+              "$$hashKey": "object:1218",
               "field": "values.num_bits",
               "id": "12",
               "inlineScript": "_value / 8",
@@ -2801,7 +2803,7 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:1104",
+              "$$hashKey": "object:1219",
               "field": "values.bits_per_second",
               "id": "30",
               "meta": {},
@@ -2809,7 +2811,7 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1105",
+              "$$hashKey": "object:1220",
               "field": "values.num_packets",
               "id": "25",
               "meta": {},
@@ -2817,7 +2819,7 @@
               "type": "avg"
             },
             {
-              "$$hashKey": "object:1106",
+              "$$hashKey": "object:1221",
               "field": "values.duration",
               "id": "27",
               "meta": {},
@@ -2825,7 +2827,7 @@
               "type": "avg"
             },
             {
-              "$$hashKey": "object:1107",
+              "$$hashKey": "object:1222",
               "field": "values.tcp_rexmit_pkts",
               "id": "34",
               "meta": {},
@@ -2833,7 +2835,7 @@
               "type": "avg"
             },
             {
-              "$$hashKey": "object:1108",
+              "$$hashKey": "object:1223",
               "field": "values.tcp_rtt_min",
               "id": "35",
               "meta": {},
@@ -2841,7 +2843,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2877,7 +2879,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 87
       },
       "id": 55,
       "legend": {
@@ -2916,7 +2918,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -2965,7 +2967,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 97
+        "y": 98
       },
       "id": 24,
       "legend": {
@@ -2999,7 +3001,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3047,7 +3049,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 108
+        "y": 109
       },
       "id": 57,
       "legend": {
@@ -3082,7 +3084,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3112,7 +3114,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 119
+        "y": 120
       },
       "id": 58,
       "mode": "html",
@@ -3136,7 +3138,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 121
+        "y": 122
       },
       "hiddenSeries": false,
       "id": 59,
@@ -3200,7 +3202,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3262,7 +3264,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 121
+        "y": 122
       },
       "hiddenSeries": false,
       "id": 60,
@@ -3326,7 +3328,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3388,7 +3390,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 121
+        "y": 122
       },
       "hiddenSeries": false,
       "id": 61,
@@ -3452,7 +3454,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
           "refId": "A",
           "timeField": "start"
         }
@@ -3501,13 +3503,13 @@
       }
     },
     {
-      "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Organization Flows</center></h3>",
+      "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Country Flows</center></h3>",
       "datasource": null,
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 129
+        "y": 130
       },
       "id": 73,
       "links": [],
@@ -3524,7 +3526,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 131
+        "y": 132
       },
       "hideTimeOverride": false,
       "id": 75,
@@ -3538,7 +3540,7 @@
       },
       "styles": [
         {
-          "$$hashKey": "object:2315",
+          "$$hashKey": "object:317",
           "alias": "Link",
           "align": "auto",
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
@@ -3551,7 +3553,7 @@
           "unit": "bits"
         },
         {
-          "$$hashKey": "object:2316",
+          "$$hashKey": "object:318",
           "alias": "# Flows",
           "align": "auto",
           "colorMode": null,
@@ -3568,7 +3570,7 @@
           "unit": "short"
         },
         {
-          "$$hashKey": "object:2317",
+          "$$hashKey": "object:319",
           "alias": "Total Volume",
           "align": "auto",
           "colorMode": null,
@@ -3585,7 +3587,7 @@
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:2318",
+          "$$hashKey": "object:320",
           "alias": "Largest Flow",
           "align": "auto",
           "colorMode": null,
@@ -3602,7 +3604,7 @@
           "unit": "decbytes"
         },
         {
-          "$$hashKey": "object:2319",
+          "$$hashKey": "object:321",
           "alias": "Fastest Flow",
           "align": "auto",
           "colorMode": null,
@@ -3619,7 +3621,7 @@
           "unit": "bps"
         },
         {
-          "$$hashKey": "object:2320",
+          "$$hashKey": "object:322",
           "alias": "",
           "align": "auto",
           "colorMode": null,
@@ -3639,7 +3641,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:2263",
+              "$$hashKey": "object:259",
               "fake": true,
               "field": "meta.sensor_id.keyword",
               "id": "3",
@@ -3655,7 +3657,7 @@
           "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:2255",
+              "$$hashKey": "object:251",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -3668,7 +3670,7 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:2256",
+              "$$hashKey": "object:252",
               "field": "values.num_bits",
               "id": "5",
               "inlineScript": "_value / 8",
@@ -3681,7 +3683,7 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:2257",
+              "$$hashKey": "object:253",
               "field": "values.bits_per_second",
               "id": "6",
               "meta": {},
@@ -3689,7 +3691,7 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:2258",
+              "$$hashKey": "object:254",
               "field": "meta.id.keyword",
               "id": "7",
               "meta": {},
@@ -3697,7 +3699,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "((meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest) OR  (meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src)) AND meta.sensor_id.keyword:$sensors",
+          "query": "((meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest) OR (meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src)) AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -3714,7 +3716,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 142
+        "y": 143
       },
       "id": 53,
       "links": [],
@@ -3732,7 +3734,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 143
+        "y": 144
       },
       "id": 32,
       "links": [],
@@ -3744,7 +3746,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 22,
   "style": "dark",
   "tags": [
@@ -3783,21 +3785,21 @@
       {
         "allValue": "*",
         "current": {
-          "text": "Indiana University",
+          "text": "United States",
           "value": [
-            "Indiana University"
+            "United States"
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "hide": 0,
         "includeAll": true,
         "index": -1,
-        "label": "Source Organization",
+        "label": "Source Country",
         "multi": true,
         "name": "src",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3811,21 +3813,22 @@
       {
         "allValue": "*",
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "hide": 0,
         "includeAll": true,
         "index": -1,
-        "label": "Destination Organization",
+        "label": "Destination Country",
         "multi": true,
         "name": "dest",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name.keyword\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3896,8 +3899,8 @@
     ]
   },
   "timezone": "",
-  "title": "Individual Flows",
-  "uid": "-l3_u8nWk",
+  "title": "Individual Flows per Country",
+  "uid": "80IVUboZk",
   "variables": {
     "list": []
   }

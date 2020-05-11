@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd /vagrant
+cd /app
 
 cp -f conf/wizzy.json.default conf/wizzy.json
 

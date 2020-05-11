@@ -31,7 +31,7 @@ git submodule update --init
 1. Start the container
 
 ```sh
-docker-compose up -d 
+docker-compose up -d dashboard
 ```
 
 If you need to, you can view the logs by running:

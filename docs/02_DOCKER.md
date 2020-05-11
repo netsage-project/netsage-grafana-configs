@@ -159,7 +159,7 @@ Notes:
 To build a new image locally, you'll be replacing the current tag with the new version built locally. In order to do so, simply run the following command:
 
 ```
-docker build --tag=netsage/dashboard:1.3.1 -f docker/Dockerfile . 
+docker-compose build
 ```
 
 Please keep in mind that this will replace the upstream tag. This means that when I build a new image, it will name it `netsage/dashboard:1.3.1`. Once you are done testing, simply do a pull again by running the following command and it will reset back to the version from docker hub. 

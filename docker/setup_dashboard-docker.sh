@@ -53,21 +53,15 @@ cd NetSageNavigation
 make install
 cd ..
 
-#Install slope graph
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r  Netsage-Slope_graph /tmp/
-pushd . 
-cd /tmp/Netsage-Slope_graph/
+#Install slope graph plugin
+cd Netsage-Slope_graph/
 make install
-popd
+cd ..
 
-#Install discipline map
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r  science-discipline-map-plugin /tmp/
-pushd . 
-cd /tmp/science-discipline-map-plugin/
+#Install discipline map plugin
+cd science-discipline-map-plugin/
 make install
-popd
+cd ..
 
 ### End plugin source code installs ###
 

@@ -18,24 +18,23 @@ echo "Updating Google Analytics on Dashboards"
 
 #Install wizzy
 cd /app
-npm install -g wizzy@0.6.0
+npm install -g wizzy
 
 ### Start plugin installs ###
 cd /app/plugins
 
-#install carpetplot
+#Install carpetplot
 grafana-cli plugins install petrslavotinek-carpetplot-panel
 
 ## BEGIN PLUGIN INSTALL ##
 
-#install tsds datasource plugin
+#Install tsds datasource plugin
 cd tsds-grafana
 npm install -g yarn #make seems to need this
 make rpm
 alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
 mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
 cd ../
-
 
 #Install network panel plugin
 cd globalnoc-networkmap-panel
@@ -45,21 +44,14 @@ alien -i $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
 cd ../
 
 #Install netsage-sankey plugin
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r netsage-sankey-plugin /tmp
-pushd . 
-cd /tmp/netsage-sankey-plugin
+cd netsage-sankey-plugin
 make install
-popd
+cd ../
 
 #Install navigation
-# HACK: for some reason this fails to install unless it's moved to a different location.
-cp -r  NetSageNavigation /tmp/
-pushd . 
-cd /tmp/NetSageNavigation/
+cd NetSageNavigation
 make install
-popd
-### End plugin source code installs ###
+cd ..
 
 #Install slope graph
 # HACK: for some reason this fails to install unless it's moved to a different location.
@@ -80,5 +72,6 @@ popd
 ### End plugin source code installs ###
 
 
+### End plugin source code installs ###
 
 ## END PLUGIN INSTALL ##

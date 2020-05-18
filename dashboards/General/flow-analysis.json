@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1587496702022,
+  "iteration": 1589546181016,
   "links": [],
   "panels": [
     {
@@ -386,8 +386,9 @@
     },
     {
       "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><b>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n</div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
+      "datasource": null,
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 22,
         "x": 2,
         "y": 0
@@ -412,7 +413,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 7
       },
       "hiddenSeries": false,
       "id": 2,
@@ -608,7 +609,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 47,
       "mode": "html",
@@ -626,7 +627,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 45,
       "links": [],
@@ -679,7 +680,7 @@
           "mappingType": 1,
           "pattern": "/\\$dst_scope/",
           "thresholds": [],
-          "type": "number",
+          "type": "string",
           "unit": "short"
         },
         {
@@ -874,7 +875,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -890,7 +891,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 34
       },
       "id": 23,
       "mode": "html",
@@ -933,7 +934,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 37
       },
       "id": 10,
       "pageSize": null,
@@ -1075,7 +1076,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1098,7 +1099,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 36
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 16,
@@ -1165,7 +1166,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1222,7 +1223,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 47
+        "y": 48
       },
       "id": 12,
       "pageSize": null,
@@ -1354,7 +1355,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1377,7 +1378,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 47
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 17,
@@ -1440,7 +1441,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1496,7 +1497,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "id": 25,
       "mode": "html",
@@ -1539,7 +1540,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 61
+        "y": 62
       },
       "id": 13,
       "pageSize": null,
@@ -1681,7 +1682,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1704,7 +1705,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 61
+        "y": 62
       },
       "hiddenSeries": false,
       "id": 18,
@@ -1771,7 +1772,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1828,7 +1829,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 72
+        "y": 73
       },
       "id": 14,
       "pageSize": null,
@@ -1960,7 +1961,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1984,7 +1985,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 72
+        "y": 73
       },
       "hiddenSeries": false,
       "id": 19,
@@ -2047,7 +2048,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -2103,7 +2104,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 84
       },
       "id": 43,
       "mode": "html",
@@ -2121,7 +2122,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 87
       },
       "id": 21,
       "links": [],
@@ -2538,7 +2539,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -2554,7 +2555,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 101
+        "y": 102
       },
       "id": 39,
       "links": [],
@@ -2587,7 +2588,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 104
+        "y": 105
       },
       "id": 41,
       "interval": "1h",
@@ -2644,14 +2645,14 @@
           "metrics": [
             {
               "$$hashKey": "object:1518",
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -2684,7 +2685,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 107
+        "y": 108
       },
       "hiddenSeries": false,
       "id": 33,
@@ -2749,7 +2750,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -2810,7 +2811,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 107
+        "y": 108
       },
       "hiddenSeries": false,
       "id": 35,
@@ -2875,7 +2876,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -2936,7 +2937,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 107
+        "y": 108
       },
       "hiddenSeries": false,
       "id": 37,
@@ -2999,7 +3000,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -3054,7 +3055,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 116
+        "y": 117
       },
       "id": 31,
       "links": [],
@@ -3071,7 +3072,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 119
+        "y": 120
       },
       "hideTimeOverride": false,
       "id": 29,
@@ -3237,14 +3238,14 @@
             },
             {
               "$$hashKey": "object:1592",
-              "field": "select field",
+              "field": "meta.id.keyword",
               "id": "7",
               "meta": {},
               "settings": {},
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -3261,7 +3262,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 127
+        "y": 128
       },
       "id": 6,
       "mode": "html",
@@ -3283,34 +3284,6 @@
       {
         "allValue": null,
         "current": {
-          "text": "NEAAR New York sFlow",
-          "value": [
-            "NEAAR New York sFlow"
-          ]
-        },
-        "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic*\"}",
-        "hide": 0,
-        "includeAll": true,
-        "index": -1,
-        "label": "Flow Data",
-        "multi": true,
-        "name": "sensors",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic*\"}",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
           "text": "NEAAR: New York to London 100GE",
           "value": "NEAAR: New York to London 100GE"
         },
@@ -3324,6 +3297,34 @@
         "name": "links",
         "options": [],
         "query": "get link_name between($START, $END) by link_name from interface where link_name != null limit 100 offset 0",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "NEAAR New York sFlow",
+          "value": [
+            "NEAAR New York sFlow"
+          ]
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic* AND NOT meta.sensor_id:*pacificwave*\"}",
+        "hide": 0,
+        "includeAll": true,
+        "index": -1,
+        "label": "Flow Data",
+        "multi": true,
+        "name": "sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic* AND NOT meta.sensor_id:*pacificwave*\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3417,101 +3418,6 @@
           }
         ],
         "query": "meta.dst_organization.keyword, meta.dst_country_name.keyword, meta.dst_continent.keyword, meta.dst_asn, meta.dst_port",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "allValue": null,
-        "current": {
-          "tags": [],
-          "text": "0",
-          "value": "0"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Individual Flow Volume Above (in bits)",
-        "multi": false,
-        "name": "volume_over",
-        "options": [
-          {
-            "selected": true,
-            "text": "0",
-            "value": "0"
-          },
-          {
-            "selected": false,
-            "text": "800000000",
-            "value": "800000000"
-          },
-          {
-            "selected": false,
-            "text": "8000000000",
-            "value": "8000000000"
-          },
-          {
-            "selected": false,
-            "text": "80000000000",
-            "value": "80000000000"
-          },
-          {
-            "selected": false,
-            "text": "800000000000",
-            "value": "800000000000"
-          }
-        ],
-        "query": "0, 800000000, 8000000000, 80000000000, 800000000000",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "allValue": null,
-        "current": {
-          "text": "100000000000",
-          "value": "100000000000"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Individual Flow Rate Under (in bits per second)",
-        "multi": false,
-        "name": "rate_under",
-        "options": [
-          {
-            "selected": false,
-            "text": "100000",
-            "value": "100000"
-          },
-          {
-            "selected": false,
-            "text": "1000000",
-            "value": "1000000"
-          },
-          {
-            "selected": false,
-            "text": "10000000",
-            "value": "10000000"
-          },
-          {
-            "selected": false,
-            "text": "100000000",
-            "value": "100000000"
-          },
-          {
-            "selected": false,
-            "text": "1000000000",
-            "value": "1000000000"
-          },
-          {
-            "selected": false,
-            "text": "10000000000",
-            "value": "10000000000"
-          },
-          {
-            "selected": true,
-            "text": "100000000000",
-            "value": "100000000000"
-          }
-        ],
-        "query": "100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000",
         "skipUrlSync": false,
         "type": "custom"
       },

@@ -10,12 +10,14 @@ class ExecutionType(Enum):
 
     ie. all the config relating to menu changes will be under menus:
     """
-    ALL = 0,
-    GRAFANA_CONFIG = 1,
-    MENUS = 2,
-    FOOTER_UPDATES = 3,
+    ALL = 0
+    GRAFANA_CONFIG = 1
+    MENUS = 2
+    FOOTER_UPDATES = 3
     QUERY_OVERRIDE = 4
     GOOGLE_ANALYTICS = 5
+    DISABLE_PANEL = 6
+    DEFAULT_OVERRIDE = 7
 
     def __str__(self):
         return self.name

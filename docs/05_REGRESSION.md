@@ -1,3 +1,8 @@
+---
+id: regression
+title: Regression Testing
+sidebar_label: Regression Testing
+---
 # Regression Testing
 
 ## Install Cypress
@@ -22,7 +27,9 @@ You will need the dashboard to be up and running.  please bring it up via ```doc
 
 The regression tests extracts the credentials from environment variables so you should run it with the following set:
 
+```sh
 CYPRESS_GRAFANA_USER="CHANGE_ME" CYPRESS_GRAFANA_PASSWORD="CHANGEME" ./node_modules/.bin/cypress
+```
 
 Every test should start with issuing the ```cy.login()``` command follow by a typical test.
 

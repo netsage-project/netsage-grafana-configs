@@ -1,3 +1,10 @@
+---
+id: wizzy
+title: Wizzy
+sidebar_label: Wizzy
+---
+
+
 ## Appendix: Wizzy Reference
 
 ### wizzy configuration

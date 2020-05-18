@@ -1,3 +1,8 @@
+---
+id: plugin_submodules
+title: Plugin Submodules
+sidebar_label: Plugin Submodules
+---
 ## Appendix: Plugin Submodules
 
 A number of external plugins are included using git submodules. The way submodules work is they point at a specific commit of a remote git repository. The fact that it points at a specific commit allows us to also control what version of the plugin we are using without worrying about what changes are occuring in the external repository. It also allows us to maintain a history of which versions of the grafana configurations used which versions of the plugins. 

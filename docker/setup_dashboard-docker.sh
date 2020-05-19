@@ -58,6 +58,14 @@ cd Netsage-Slope_graph/
 make install
 cd ..
 
+#Install discipline map plugin
+cd science-discipline-map-plugin/
+make install
+cd ..
+
+### End plugin source code installs ###
+
+
 ### End plugin source code installs ###
 
 ## END PLUGIN INSTALL ##

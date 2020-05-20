@@ -11,7 +11,7 @@ module.exports = {
       title: 'NetSage Documentation',
       logo: {
         alt: 'NetSage Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       links: [
         {

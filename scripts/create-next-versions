@@ -1,7 +1,18 @@
-#!/bin/sh -e
+#!/bin/bash -e
 #
 # Close the current branch of the current repository.
 #
+
+function fixDockerData() 
+{
+    sed -i -e "s/${THIS_BRANCH}/${VERSION}/g" docker-compose.yml 
+    sed -i -e "s/netsage\/dashboard:${THIS_BRANCH}/netsage\/dashboard:${VERSION}/g" docs/02_DOCKER.md
+    git add docker-compose.yml docs/02_DOCKER.md
+    git commit -m 'Fixing docker version reference'
+
+    echo "${THIS_BRANCH} ${VERSION}"
+
+}
 
 WHEREAMI=$(dirname $0)
 . "${WHEREAMI}/common"
@@ -26,6 +37,7 @@ do
         continue
     fi
     git checkout -b "${VERSION}"
+    fixDockerData
     git push origin "${VERSION}"
     git branch --set-upstream-to="origin/${VERSION}" "${VERSION}"
     CHANGED=true

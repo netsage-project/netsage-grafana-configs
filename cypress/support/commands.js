@@ -48,6 +48,37 @@ Cypress.Commands.add("login", () => {
 })
 
 //
+//Ensures all data is loaded by going to end of page
+Cypress.Commands.add("loadAllData", () => {
+    cy.wait(5000)
+    cy.get("div[class='view']").scrollTo('bottom', { duration: 40000, timeout: 40000 })
+})
+// Validate footer
+Cypress.Commands.add("validateFooter", () => {
+    var elements = cy.get("div[class='netsage_footer']")
+
+    elements.within(() => {
+        console.log("Entered within, so footer was found")
+        cy.get("img")
+            .should('have.attr', 'src').and('include', 'NSF_4-Color_bitmap_Logo.png')
+
+        cy.get("a:nth-child(1)")
+            .should('have.attr', 'href')
+            .and('include', 'netsage@lbl.gov')
+
+        //TODO: test the other two links as well code below doesn't seem to work.  Commented out for now
+        // cy.get("a:nth-child(2)")
+        //     .should('have.attr', 'href')
+        //     .and('include', 'https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933')
+
+        // cy.get("a:nth-child(3)")
+        //     .should('have.attr', 'href')
+        //     .and('include', 'http://www.netsage.global/home/netsage-privacy-policy')
+
+    })
+})
+
+//
 // -- This is a child command --
 // Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
 //

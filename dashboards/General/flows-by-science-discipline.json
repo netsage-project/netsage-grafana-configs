@@ -493,7 +493,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline)",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -596,7 +596,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline)",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -704,7 +704,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -807,7 +807,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -2158,7 +2158,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         },
@@ -2246,7 +2246,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "B",
           "timeField": "start"
         },
@@ -2385,7 +2385,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "C",
           "timeField": "start"
         }
@@ -4011,7 +4011,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -4221,7 +4221,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -4410,7 +4410,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -4501,7 +4501,37 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Scope",
+        "multi": true,
+        "name": "country_scope",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
+
     ]
   },
   "time": {

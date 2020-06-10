@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1591814218439,
+  "iteration": 1591823863174,
   "links": [],
   "panels": [
     {
@@ -420,7 +420,7 @@
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "displayName": "Large flows observed ",
+          "displayName": "Large flows observed",
           "mappings": [
             {
               "$$hashKey": "object:178",
@@ -512,7 +512,6 @@
     {
       "cacheTimeout": null,
       "datasource": null,
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -540,299 +539,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 4,
         "x": 1,
         "y": 8
-      },
-      "id": 3225,
-      "interval": "",
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        }
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:1051",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "365d",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:1049",
-              "field": "meta.id.keyword",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND ( _exists_:meta.scireg.src.org_name.keyword  OR _exists_:meta.scireg.dst.org_name.keyword  ) AND NOT ( _exists_:meta.scireg.src.org_name.keyword  AND _exists_:meta.scireg.dst.org_name.keyword  ) AND meta.country_scope.keyword:$country_scope",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "content": "<br>\n<h4  style = 'font-weight:bold; color:#FF780A'>Flows with only one end tagged in Science Registry</h4>\n\n",
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 7,
-        "x": 5,
-        "y": 8
-      },
-      "id": 3229,
-      "mode": "html",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:41",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:39",
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [
-            {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
-            }
-          ],
-          "nullValueMode": "connected",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 12,
-        "y": 8
-      },
-      "id": 3227,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        }
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:152",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "365d",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:150",
-              "field": "meta.id.keyword",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND ( _exists_:meta.scireg.src.org_name.keyword  AND _exists_:meta.scireg.dst.org_name.keyword  ) AND meta.country_scope.keyword:$country_scope",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "content": "<br>\n<h4  style = 'font-weight:bold; color:#FF780A'>Flows with both ends tagged in Science Registry</h4>\n\n",
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 7,
-        "x": 16,
-        "y": 8
-      },
-      "id": 3230,
-      "mode": "html",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:41",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:39",
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [
-            {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
-            }
-          ],
-          "nullValueMode": "connected",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 1,
-        "y": 11
       },
       "id": 3215,
       "interval": null,
@@ -963,10 +673,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 7,
         "x": 5,
-        "y": 11
+        "y": 8
       },
       "id": 3231,
       "mode": "html",
@@ -1033,10 +743,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 4,
         "x": 12,
-        "y": 11
+        "y": 8
       },
       "id": 3223,
       "interval": null,
@@ -1103,10 +813,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 6,
+        "h": 2,
+        "w": 8,
         "x": 16,
-        "y": 11
+        "y": 8
       },
       "id": 3232,
       "mode": "html",
@@ -1175,10 +885,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 4,
         "x": 1,
-        "y": 14
+        "y": 10
       },
       "id": 3213,
       "interval": null,
@@ -1246,10 +956,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 7,
         "x": 5,
-        "y": 14
+        "y": 10
       },
       "id": 3233,
       "mode": "html",
@@ -1317,10 +1027,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 4,
         "x": 12,
-        "y": 14
+        "y": 10
       },
       "id": 3211,
       "interval": null,
@@ -1389,10 +1099,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 7,
+        "h": 2,
+        "w": 8,
         "x": 16,
-        "y": 14
+        "y": 10
       },
       "id": 3234,
       "mode": "html",
@@ -1461,10 +1171,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 4,
         "x": 1,
-        "y": 17
+        "y": 12
       },
       "id": 3217,
       "interval": null,
@@ -1532,10 +1242,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 7,
         "x": 5,
-        "y": 17
+        "y": 12
       },
       "id": 3235,
       "mode": "html",
@@ -1603,10 +1313,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 4,
         "x": 12,
-        "y": 17
+        "y": 12
       },
       "id": 3221,
       "interval": "",
@@ -1674,10 +1384,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 7,
+        "h": 2,
+        "w": 8,
         "x": 16,
-        "y": 17
+        "y": 12
       },
       "id": 3236,
       "mode": "html",
@@ -1716,6 +1426,296 @@
       "type": "text"
     },
     {
+      "cacheTimeout": null,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 1,
+        "y": 14
+      },
+      "id": 3225,
+      "interval": "",
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1051",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "365d",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:1049",
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND ( _exists_:meta.scireg.src.org_name.keyword  OR _exists_:meta.scireg.dst.org_name.keyword  ) AND NOT ( _exists_:meta.scireg.src.org_name.keyword  AND _exists_:meta.scireg.dst.org_name.keyword  ) AND meta.country_scope.keyword:$country_scope",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "content": "<h4  style = 'font-weight:bold; color:#FF780A'>Flows with only one end tagged in Science Registry</h4>\n\n",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 5,
+        "y": 14
+      },
+      "id": 3229,
+      "mode": "html",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 14
+      },
+      "id": 3227,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:152",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "365d",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:150",
+              "field": "meta.id.keyword",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors AND ( _exists_:meta.scireg.src.org_name.keyword  AND _exists_:meta.scireg.dst.org_name.keyword  ) AND meta.country_scope.keyword:$country_scope",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "content": "<h4  style = 'font-weight:bold; color:#FF780A'>Flows with both ends tagged in Science Registry</h4>\n\n",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 8,
+        "x": 16,
+        "y": 14
+      },
+      "id": 3230,
+      "mode": "html",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
@@ -1734,7 +1734,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 20
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 25,
@@ -1867,7 +1867,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 20
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 22,
@@ -2000,7 +2000,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 20
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 23,
@@ -2221,7 +2221,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 25
       },
       "hideTimeOverride": false,
       "id": 19,
@@ -2320,7 +2320,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 24,
@@ -2443,7 +2443,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 46
       },
       "id": 31,
       "links": [],

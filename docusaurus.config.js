@@ -20,6 +20,11 @@ module.exports = {
           label: 'Developer',
           position: 'left',
         },
+        {
+          href: 'https://netsage-project.github.io/netsage-pipeline/',
+          label: 'Pipeline Documentation',
+          position: 'left',
+        },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/netsage-project/netsage-grafana-configs',

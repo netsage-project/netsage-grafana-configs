@@ -1,7 +1,7 @@
 ---
 id: plugin_submodules
 title: Plugin Submodules
-sidebar_label: Plugin Submodules
+sidebar_label: Submodules
 ---
 ## Appendix: Plugin Submodules
 

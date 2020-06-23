@@ -24,7 +24,7 @@ npm install -g wizzy
 cd /app/plugins
 
 #Install carpetplot
-grafana-cli plugins install petrslavotinek-carpetplot-panel
+grafana-cli plugins install marcusolsson-hourly-heatmap-panel
 
 ## BEGIN PLUGIN INSTALL ##
 

@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573047756375,
+  "iteration": 1573047795561,
   "links": [],
   "panels": [
     {
@@ -266,13 +266,13 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": "69",
+      "id": 42,
       "legend": {
         "legend_colors": [],
         "show": true
       },
       "links": [],
-      "max_total": 316457126,
+      "max_total": 327801938,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
@@ -280,11 +280,11 @@
       "options": {},
       "parsed_data": [
         {
-          "avg": 2615348.1487603304,
+          "avg": 908038.6094182825,
           "label": "Count",
-          "max": 6756717,
-          "min": 7407,
-          "total": 316457126
+          "max": 3024744,
+          "min": 1581,
+          "total": 327801938
         }
       ],
       "rgb_values": [
@@ -351,7 +351,7 @@
           "bucketAggs": [
             {
               "field": "start",
-              "id": "2",
+              "id": 2,
               "settings": {
                 "interval": "auto",
                 "min_doc_count": 0,
@@ -363,7 +363,7 @@
           "metrics": [
             {
               "field": "select field",
-              "id": "1",
+              "id": 1,
               "type": "count"
             }
           ],
@@ -384,9 +384,9 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Latency Patterns</b></h1></center>\n<center>This dashboard shows heatmaps for latency across links using perfSONAR active testing data. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show longer delays in data transmissions at those hours. </center>\n<center>The accompanying graphs show the latency over time and a histogram of the latency in milliseconds.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+      "content": "<center><h1><b>Loss Patterns</b></h1></center>\n<center>This dashboard shows heatmaps for the percent of data loss across links using perfSONAR active testing data. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show larger data transmission losses at those hours.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "gridPos": {
-        "h": 5,
+        "h": 4,
         "w": 20,
         "x": 2,
         "y": 0
@@ -398,20 +398,6 @@
       "title": "",
       "transparent": true,
       "type": "text"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 5
-      },
-      "id": 36,
-      "panels": [],
-      "repeat": "destination",
-      "title": "$source -> $destination",
-      "type": "row"
     },
     {
       "aggregate": "AVG",
@@ -430,16 +416,16 @@
         "nullColor": "transparent"
       },
       "data": {
-        "decimals": 1,
-        "unitFormat": "ms"
+        "decimals": 2,
+        "unitFormat": "percentunit"
       },
       "datasource": "Netsage TSDS",
       "fragment": "HOUR",
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 4
       },
       "height": "400px",
       "id": 6,
@@ -449,11 +435,10 @@
       "links": [],
       "maxPerRow": 1,
       "options": {},
-      "repeat": null,
-      "repeatDirection": "h",
+      "repeat": "destination",
       "scale": {
-        "max": null,
-        "min": null
+        "max": 0.01,
+        "min": 0
       },
       "targets": [
         {
@@ -465,7 +450,7 @@
           "bucketAggs": [
             {
               "field": "start",
-              "id": "2",
+              "id": 2,
               "settings": {
                 "interval": "auto",
                 "min_doc_count": 0,
@@ -484,48 +469,43 @@
           "dsType": "elasticsearch",
           "func": [
             {
-              "aggregate_all": false,
               "alias": "",
               "align": "",
               "bucket": "",
               "expanded": false,
-              "method": "template",
+              "method": "average",
               "operation": "",
               "percentile": "85",
               "root": true,
-              "target": "$measurement",
-              "template": "$statistics",
+              "target": "input",
+              "template": "",
               "title": "Aggregate",
               "type": "Aggregate",
               "wrapper": []
             }
           ],
-          "groupby_field": "source_description, destination_description",
-          "hide": false,
+          "groupby_field": " ",
           "inlineGroupOperator": [
             [
               "",
               "and"
             ]
           ],
-          "metricValueAliasMappings": {
-            "aggregate(values.latency_avg, 3600, average)": ""
-          },
+          "metricValueAliasMappings": {},
           "metricValueAliases": [
             ""
           ],
           "metricValues_array": [
-            "$measurement"
+            "loss"
           ],
           "metric_array": [
             "source_description",
-            "destination_description",
-            "source"
+            "destination_description"
           ],
           "metrics": [
             {
               "field": "select field",
-              "id": "1",
+              "id": 1,
               "type": "count"
             }
           ],
@@ -536,10 +516,10 @@
           "percentileValue": [
             ""
           ],
-          "rawQuery": false,
+          "rawQuery": true,
           "refId": "A",
           "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
           "target_alias": "",
           "templateVariableValue": [
             ""
@@ -563,7 +543,7 @@
         }
       ],
       "timeFrom": null,
-      "title": "Latency Timeline",
+      "title": "$source -> $destination",
       "tooltip": {
         "show": true
       },
@@ -581,388 +561,14 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 15
-      },
-      "id": 38,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#f9934e"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "func": [
-            {
-              "aggregate_all": false,
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "template",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "$measurement",
-              "template": "$statistics",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "source_description, destination_description",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.latency_avg, 3600, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "source_description",
-            "destination_description",
-            "source"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "refId": "A",
-          "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
-          "target_alias": "$statistics",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "source_description",
-                "op": "=",
-                "right": "$source"
-              },
-              {
-                "left": "destination_description",
-                "op": "=",
-                "right": "$destination"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Latency Over Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": 0,
-          "format": "ms",
-          "label": "Latency",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 0,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 15
-      },
-      "id": 40,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "/.*/",
-          "color": "#f9934e"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "aggregate_all": false,
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "func": [
-            {
-              "aggregate_all": false,
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "template",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "$measurement",
-              "template": "$statistics",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "source_description, destination_description",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.latency_avg, 3600, average)": ""
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "source_description",
-            "destination_description",
-            "source"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "refId": "A",
-          "series": "ps_owamp",
-          "target": "get source_description, destination_description, source, aggregate(values.latency_avg, 3600, average) between (1568069675, 1570661675) by source_description, destination_description from ps_owamp where ((source_description = \"APAN pS Server at Tokyo\") and (destination_description = \"CENIC pS Server at Los Angeles\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "source_description",
-                "op": "=",
-                "right": "$source"
-              },
-              {
-                "left": "destination_description",
-                "op": "=",
-                "right": "$destination"
-              }
-            ]
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Latency (ms)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "histogram",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "label": "Count",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 22
-      },
-      "id": 34,
-      "panels": [],
-      "title": "",
-      "type": "row"
-    },
-    {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 14
       },
-      "id": 25,
+      "id": 31,
       "links": [],
       "mode": "html",
       "options": {},
@@ -1007,7 +613,9 @@
         "allValue": null,
         "current": {
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "Netsage TSDS",
         "definition": "",
@@ -1017,7 +625,7 @@
         "multi": true,
         "name": "destination",
         "options": [],
-        "query": "get destination_description between($START, $END) by destination_description from ps_owamp where (source_description = \"$source\") limit 100 offset 0",
+        "query": "get destination_description between($START, $END) by destination_description from ps_owamp where source_description = \"$source\" limit 100 offset 0",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1032,43 +640,11 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "latency_avg",
-          "value": "latency_avg"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Measurement",
-        "multi": false,
-        "name": "measurement",
-        "options": [
-          {
-            "selected": true,
-            "text": "latency_avg",
-            "value": "latency_avg"
-          },
-          {
-            "selected": false,
-            "text": "latency_min",
-            "value": "latency_min"
-          },
-          {
-            "selected": false,
-            "text": "latency_max",
-            "value": "latency_max"
-          }
-        ],
-        "query": "latency_avg, latency_min, latency_max",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "allValue": null,
-        "current": {
-          "selected": true,
+          "tags": [],
           "text": "average",
           "value": "average"
         },
-        "hide": 2,
+        "hide": 0,
         "includeAll": false,
         "label": "Statistics",
         "multi": false,
@@ -1078,9 +654,19 @@
             "selected": true,
             "text": "average",
             "value": "average"
+          },
+          {
+            "selected": false,
+            "text": "min",
+            "value": "min"
+          },
+          {
+            "selected": false,
+            "text": "max",
+            "value": "max"
           }
         ],
-        "query": "average",
+        "query": "average, min, max",
         "skipUrlSync": false,
         "type": "custom"
       }
@@ -1116,6 +702,6 @@
     ]
   },
   "timezone": "",
-  "title": "Latency Patterns",
-  "uid": "000000005"
+  "title": "Loss Patterns",
+  "uid": "000000006"
 }

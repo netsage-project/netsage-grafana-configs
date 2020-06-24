@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -e 
-
+set -e
 
 cd /app/templates/
 pip3 install -r requirements.txt
@@ -15,7 +14,6 @@ echo "Updating Query on Dashboards"
 echo "Updating Google Analytics on Dashboards"
 ./apply_templates.py --type GOOGLE_ANALYTICS
 
-
 #Install wizzy
 cd /app
 npm install -g wizzy
@@ -24,7 +22,7 @@ npm install -g wizzy
 cd /app/plugins
 
 #Install carpetplot
-grafana-cli plugins install petrslavotinek-carpetplot-panel
+grafana-cli plugins install marcusolsson-hourly-heatmap-panel
 
 ## BEGIN PLUGIN INSTALL ##
 
@@ -64,7 +62,6 @@ make install
 cd ..
 
 ### End plugin source code installs ###
-
 
 ### End plugin source code installs ###
 

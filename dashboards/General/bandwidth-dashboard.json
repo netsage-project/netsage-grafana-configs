@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1589909229629,
+  "iteration": 1594140961883,
   "links": [],
   "panels": [
     {
@@ -210,6 +210,12 @@
       "cycleview": true,
       "dashboardselection": true,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 2,
@@ -381,6 +387,12 @@
     {
       "content": "<center><h1><b>Bandwidth Dashboard</b></h1></center>\n<center>The map shows the minimum, maximum, and average bandwidth utilization of the circuits and exchange points over the selected time period.</center>\n<center>The rows below the map show each of the links in more detail, including traffic rate and total volume transferred.</center>\n<center>A combined view of the average and maximum bandwidth utilization is shown at the bottom of the page.</center>\n<center>All times are displayed in browser local time</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 4,
         "w": 20,
@@ -396,23 +408,41 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPrefix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": "Netsage TSDS",
-      "decimals": 1,
-      "format": "bps",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -423,38 +453,26 @@
       "id": 3,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "Single Link Max A-Z<br>",
-      "prefixFontSize": "70%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "aggregate_all": false,
@@ -551,39 +569,47 @@
           ]
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Single Link Max A-Z",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPrefix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": "Netsage TSDS",
-      "decimals": 1,
-      "format": "bps",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -594,38 +620,26 @@
       "id": 4,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "Single Link Max Z-A<br>",
-      "prefixFontSize": "70%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "aggregate_all": false,
@@ -722,39 +736,47 @@
           ]
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Single Link Max Z-A",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPrefix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": "Netsage TSDS",
-      "decimals": 2,
-      "format": "bps",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 2,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -765,38 +787,26 @@
       "id": 5,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "Average Across All Links<br>",
-      "prefixFontSize": "70%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "aggregate_all": false,
@@ -893,38 +903,46 @@
           ]
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Average Across All Links",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPrefix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": "Netsage TSDS",
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -935,38 +953,26 @@
       "id": 6,
       "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": " Total Transferred <br>",
-      "prefixFontSize": "70%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "aggregate_all": false,
@@ -1064,19 +1070,9 @@
           ]
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Total Transferred",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "bing_api_key": "AplW162gFohrU9tZYti5XUCVeCG0ljiq5KgvLQREoqNBCl872zhHUs8PoVZ2j6Fw",
@@ -1101,6 +1097,12 @@
       "data": [],
       "datasource": "Netsage TSDS",
       "downLinkColor": "rgb(200,200,200)",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 17,
         "w": 24,
@@ -1655,6 +1657,12 @@
     {
       "content": "",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 2,
@@ -1670,6 +1678,12 @@
     {
       "content": "",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 14,
@@ -1685,6 +1699,12 @@
     {
       "content": "",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 8,
@@ -1722,6 +1742,12 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
@@ -1749,6 +1775,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2014,6 +2046,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2283,11 +2321,11 @@
         "x": 0,
         "y": 33
       },
-      "id": 15,
+      "id": 97,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -2301,16 +2339,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 34
       },
-      "id": 16,
+      "id": 98,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2331,6 +2375,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2340,7 +2390,7 @@
         "y": 34
       },
       "hiddenSeries": false,
-      "id": 17,
+      "id": 99,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -2363,7 +2413,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2599,6 +2649,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2608,7 +2664,7 @@
         "y": 34
       },
       "hiddenSeries": false,
-      "id": 18,
+      "id": 100,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -2630,8 +2686,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -2871,11 +2927,11 @@
         "x": 0,
         "y": 41
       },
-      "id": 19,
+      "id": 101,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -2889,16 +2945,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 42
       },
-      "id": 20,
+      "id": 102,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -2919,6 +2981,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2927,7 +2995,8 @@
         "x": 2,
         "y": 42
       },
-      "id": 21,
+      "hiddenSeries": false,
+      "id": 103,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -2950,7 +3019,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3186,6 +3255,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3194,7 +3269,8 @@
         "x": 16,
         "y": 42
       },
-      "id": 22,
+      "hiddenSeries": false,
+      "id": 104,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3216,8 +3292,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -3457,11 +3533,11 @@
         "x": 0,
         "y": 49
       },
-      "id": 23,
+      "id": 105,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -3475,16 +3551,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 50
       },
-      "id": 24,
+      "id": 106,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3505,6 +3587,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3513,7 +3601,8 @@
         "x": 2,
         "y": 50
       },
-      "id": 25,
+      "hiddenSeries": false,
+      "id": 107,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3536,7 +3625,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -3772,6 +3861,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3780,7 +3875,8 @@
         "x": 16,
         "y": 50
       },
-      "id": 26,
+      "hiddenSeries": false,
+      "id": 108,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3802,8 +3898,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -4043,11 +4139,11 @@
         "x": 0,
         "y": 57
       },
-      "id": 27,
+      "id": 109,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -4061,16 +4157,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 58
       },
-      "id": 28,
+      "id": 110,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4091,6 +4193,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4099,7 +4207,8 @@
         "x": 2,
         "y": 58
       },
-      "id": 29,
+      "hiddenSeries": false,
+      "id": 111,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4122,7 +4231,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4358,6 +4467,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4366,7 +4481,8 @@
         "x": 16,
         "y": 58
       },
-      "id": 30,
+      "hiddenSeries": false,
+      "id": 112,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4388,8 +4504,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -4629,11 +4745,11 @@
         "x": 0,
         "y": 65
       },
-      "id": 31,
+      "id": 113,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -4647,16 +4763,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 66
       },
-      "id": 32,
+      "id": 114,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4677,6 +4799,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4685,7 +4813,8 @@
         "x": 2,
         "y": 66
       },
-      "id": 33,
+      "hiddenSeries": false,
+      "id": 115,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4708,7 +4837,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -4944,6 +5073,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -4952,7 +5087,8 @@
         "x": 16,
         "y": 66
       },
-      "id": 34,
+      "hiddenSeries": false,
+      "id": 116,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -4974,8 +5110,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -5215,11 +5351,11 @@
         "x": 0,
         "y": 73
       },
-      "id": 35,
+      "id": 117,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -5233,16 +5369,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 74
       },
-      "id": 36,
+      "id": 118,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5263,6 +5405,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5271,7 +5419,8 @@
         "x": 2,
         "y": 74
       },
-      "id": 37,
+      "hiddenSeries": false,
+      "id": 119,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5294,7 +5443,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5530,6 +5679,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5538,7 +5693,8 @@
         "x": 16,
         "y": 74
       },
-      "id": 38,
+      "hiddenSeries": false,
+      "id": 120,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5560,8 +5716,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -5801,11 +5957,11 @@
         "x": 0,
         "y": 81
       },
-      "id": 39,
+      "id": 121,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -5819,16 +5975,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 82
       },
-      "id": 40,
+      "id": 122,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -5849,6 +6011,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -5857,7 +6025,8 @@
         "x": 2,
         "y": 82
       },
-      "id": 41,
+      "hiddenSeries": false,
+      "id": 123,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -5880,7 +6049,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6116,6 +6285,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6124,7 +6299,8 @@
         "x": 16,
         "y": 82
       },
-      "id": 42,
+      "hiddenSeries": false,
+      "id": 124,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6146,8 +6322,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -6387,11 +6563,11 @@
         "x": 0,
         "y": 89
       },
-      "id": 43,
+      "id": 125,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -6405,16 +6581,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 90
       },
-      "id": 44,
+      "id": 126,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6435,6 +6617,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6443,7 +6631,8 @@
         "x": 2,
         "y": 90
       },
-      "id": 45,
+      "hiddenSeries": false,
+      "id": 127,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6466,7 +6655,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -6702,6 +6891,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -6710,7 +6905,8 @@
         "x": 16,
         "y": 90
       },
-      "id": 46,
+      "hiddenSeries": false,
+      "id": 128,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -6732,8 +6928,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -6973,11 +7169,11 @@
         "x": 0,
         "y": 97
       },
-      "id": 47,
+      "id": 129,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -6991,16 +7187,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 98
       },
-      "id": 48,
+      "id": 130,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7021,6 +7223,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7029,7 +7237,8 @@
         "x": 2,
         "y": 98
       },
-      "id": 49,
+      "hiddenSeries": false,
+      "id": 131,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7052,7 +7261,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7288,6 +7497,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7296,7 +7511,8 @@
         "x": 16,
         "y": 98
       },
-      "id": 50,
+      "hiddenSeries": false,
+      "id": 132,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7318,8 +7534,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -7559,11 +7775,11 @@
         "x": 0,
         "y": 105
       },
-      "id": 51,
+      "id": 133,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -7577,16 +7793,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 106
       },
-      "id": 52,
+      "id": 134,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7607,6 +7829,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7615,7 +7843,8 @@
         "x": 2,
         "y": 106
       },
-      "id": 53,
+      "hiddenSeries": false,
+      "id": 135,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7638,7 +7867,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -7874,6 +8103,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -7882,7 +8117,8 @@
         "x": 16,
         "y": 106
       },
-      "id": 54,
+      "hiddenSeries": false,
+      "id": 136,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -7904,8 +8140,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -8145,11 +8381,11 @@
         "x": 0,
         "y": 113
       },
-      "id": 55,
+      "id": 137,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -8163,16 +8399,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 114
       },
-      "id": 56,
+      "id": 138,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8193,6 +8435,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8201,7 +8449,8 @@
         "x": 2,
         "y": 114
       },
-      "id": 57,
+      "hiddenSeries": false,
+      "id": 139,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8224,7 +8473,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8460,6 +8709,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8468,7 +8723,8 @@
         "x": 16,
         "y": 114
       },
-      "id": 58,
+      "hiddenSeries": false,
+      "id": 140,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8490,8 +8746,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -8731,11 +8987,11 @@
         "x": 0,
         "y": 121
       },
-      "id": 59,
+      "id": 141,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -8749,16 +9005,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 122
       },
-      "id": 60,
+      "id": 142,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -8779,6 +9041,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -8787,7 +9055,8 @@
         "x": 2,
         "y": 122
       },
-      "id": 61,
+      "hiddenSeries": false,
+      "id": 143,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -8810,7 +9079,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9046,6 +9315,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9054,7 +9329,8 @@
         "x": 16,
         "y": 122
       },
-      "id": 62,
+      "hiddenSeries": false,
+      "id": 144,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9076,8 +9352,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -9317,11 +9593,11 @@
         "x": 0,
         "y": 129
       },
-      "id": 63,
+      "id": 145,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -9335,16 +9611,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 130
       },
-      "id": 64,
+      "id": 146,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9365,6 +9647,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9373,7 +9661,8 @@
         "x": 2,
         "y": 130
       },
-      "id": 65,
+      "hiddenSeries": false,
+      "id": 147,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9396,7 +9685,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9632,6 +9921,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9640,7 +9935,8 @@
         "x": 16,
         "y": 130
       },
-      "id": 66,
+      "hiddenSeries": false,
+      "id": 148,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9662,8 +9958,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -9903,11 +10199,11 @@
         "x": 0,
         "y": 137
       },
-      "id": 67,
+      "id": 149,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -9921,16 +10217,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 138
       },
-      "id": 68,
+      "id": 150,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -9951,6 +10253,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -9959,7 +10267,8 @@
         "x": 2,
         "y": 138
       },
-      "id": 69,
+      "hiddenSeries": false,
+      "id": 151,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -9982,7 +10291,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10218,6 +10527,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -10226,7 +10541,8 @@
         "x": 16,
         "y": 138
       },
-      "id": 70,
+      "hiddenSeries": false,
+      "id": 152,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10248,8 +10564,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -10489,11 +10805,11 @@
         "x": 0,
         "y": 145
       },
-      "id": 71,
+      "id": 153,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -10507,16 +10823,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 146
       },
-      "id": 72,
+      "id": 154,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10537,6 +10859,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -10545,7 +10873,8 @@
         "x": 2,
         "y": 146
       },
-      "id": 73,
+      "hiddenSeries": false,
+      "id": 155,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10568,7 +10897,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -10804,6 +11133,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -10812,7 +11147,8 @@
         "x": 16,
         "y": 146
       },
-      "id": 74,
+      "hiddenSeries": false,
+      "id": 156,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -10834,8 +11170,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -11075,11 +11411,11 @@
         "x": 0,
         "y": 153
       },
-      "id": 75,
+      "id": 157,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -11093,16 +11429,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 154
       },
-      "id": 76,
+      "id": 158,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11123,6 +11465,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -11131,7 +11479,8 @@
         "x": 2,
         "y": 154
       },
-      "id": 77,
+      "hiddenSeries": false,
+      "id": 159,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11154,7 +11503,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11390,6 +11739,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -11398,7 +11753,8 @@
         "x": 16,
         "y": 154
       },
-      "id": 78,
+      "hiddenSeries": false,
+      "id": 160,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11420,8 +11776,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -11661,11 +12017,11 @@
         "x": 0,
         "y": 161
       },
-      "id": 79,
+      "id": 161,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -11679,16 +12035,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 162
       },
-      "id": 80,
+      "id": 162,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11709,6 +12071,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -11717,7 +12085,8 @@
         "x": 2,
         "y": 162
       },
-      "id": 81,
+      "hiddenSeries": false,
+      "id": 163,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -11740,7 +12109,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -11976,6 +12345,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -11984,7 +12359,8 @@
         "x": 16,
         "y": 162
       },
-      "id": 82,
+      "hiddenSeries": false,
+      "id": 164,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12006,8 +12382,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -12247,11 +12623,11 @@
         "x": 0,
         "y": 169
       },
-      "id": 83,
+      "id": 165,
       "panels": [],
       "repeat": null,
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 202,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 11,
       "scopedVars": {
         "links": {
           "selected": false,
@@ -12265,16 +12641,22 @@
     {
       "content": "**$links**",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 7,
         "w": 2,
         "x": 0,
         "y": 170
       },
-      "id": 84,
+      "id": 166,
       "links": [],
       "mode": "markdown",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 12,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12295,6 +12677,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -12303,7 +12691,8 @@
         "x": 2,
         "y": 170
       },
-      "id": 85,
+      "hiddenSeries": false,
+      "id": 167,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12326,7 +12715,7 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
+      "repeatIteration": 1594140961883,
       "repeatPanelId": 13,
       "repeatedByRow": true,
       "scopedVars": {
@@ -12562,6 +12951,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -12570,7 +12965,8 @@
         "x": 16,
         "y": 170
       },
-      "id": 86,
+      "hiddenSeries": false,
+      "id": 168,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -12592,8 +12988,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1589909229629,
-      "repeatPanelId": 16,
+      "repeatIteration": 1594140961883,
+      "repeatPanelId": 14,
       "repeatedByRow": true,
       "scopedVars": {
         "links": {
@@ -12845,6 +13241,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -13040,6 +13442,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -13235,6 +13643,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -13427,6 +13841,12 @@
       "dashes": false,
       "datasource": "Netsage TSDS",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 0,
       "gridPos": {
         "h": 12,
@@ -13611,6 +14031,12 @@
     {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -13626,7 +14052,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 22,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [
     "netsage"
@@ -13643,7 +14069,6 @@
         "definition": "",
         "hide": 2,
         "includeAll": true,
-        "index": -1,
         "label": "Links",
         "multi": true,
         "name": "links",
@@ -13692,8 +14117,5 @@
   },
   "timezone": "",
   "title": "Bandwidth Dashboard",
-  "uid": "000000003",
-  "variables": {
-    "list": []
-  }
+  "uid": "000000003"
 }

@@ -1,4 +1,4 @@
-FROM grafana/grafana:7.0.3-ubuntu
+FROM grafana/grafana:7.0.5-ubuntu
 
 USER root
 

@@ -1,0 +1,1584 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1594085961048,
+  "links": [],
+  "panels": [
+    {
+      "content": "\n<center><h1><b>Project Level Dashboard</b></h1></center>\n<center>This dashboard shows a summary of flow information for a selected project.</center>\n<center>The first table shows the set of top pairs of organizations sharing data for that selected project.</center>\n<center><b>Please note that flows with either ends tagged as part of the project are included</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 20,
+        "x": 2,
+        "y": 0
+      },
+      "id": 48,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 10,
+        "x": 3,
+        "y": 4
+      },
+      "id": 26,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:261",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "1h",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:259",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Volume",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 14,
+        "y": 4
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:261",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:259",
+              "field": "meta.id.keyword",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "# Flows",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "content": "<h3 style=\"margin-top:35px;\"><center>Top Endpoint Pairs for $project_type</center></h3>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 39,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_organization.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 300
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": false,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 440
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 209
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Peak Rate"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 258
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 34,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1281",
+              "fake": true,
+              "field": "meta.src_organization.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1282",
+              "fake": true,
+              "field": "meta.dst_organization.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:1271",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:1272",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:1273",
+              "field": "meta.id.keyword",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            },
+            {
+              "$$hashKey": "object:1274",
+              "field": "values.bits_per_second",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:1275",
+              "field": "values.bits_per_second",
+              "id": "8",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": " ",
+      "type": "table"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "sum",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 14,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:828",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:826",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Volume",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateSpectral",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 16,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:859",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:857",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Rate",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "content": "<h3 style=\"margin-top:35px;\"><center>Summary of Organizations for $project_type</center></h3>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 36,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": "netsage",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_organization.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Peak Rate"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 263
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 50
+      },
+      "hideTimeOverride": false,
+      "id": 38,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:67",
+              "fake": true,
+              "field": "meta.src_organization.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:57",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:58",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:59",
+              "field": "meta.id.keyword",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            },
+            {
+              "$$hashKey": "object:60",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:61",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Summary of Source Organizations table",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Max values.bits_per_second": 2,
+              "Max values.num_bits": 5,
+              "Sum": 1,
+              "Unique Count": 3,
+              "meta.src_organization.keyword": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "netsage",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Destination Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 267
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 61
+      },
+      "hideTimeOverride": false,
+      "id": 40,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:67",
+              "fake": true,
+              "field": "meta.dst_organization.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:57",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:58",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:59",
+              "field": "meta.id.keyword",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            },
+            {
+              "$$hashKey": "object:60",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:61",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Summary of Destination Organizations table",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Max values.bits_per_second": 2,
+              "Max values.num_bits": 5,
+              "Sum": 1,
+              "Unique Count": 3,
+              "meta.dst_organization.keyword": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $project_type flows</center></h3>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 72
+      },
+      "id": 51,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": "netsage",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.sensor_id.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Link"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fastest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 75
+      },
+      "hideTimeOverride": false,
+      "id": 46,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:794",
+              "fake": true,
+              "field": "meta.sensor_id.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:786",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:787",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:788",
+              "field": "values.bits_per_second",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:789",
+              "field": "meta.id.keyword",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Links Usage",
+      "type": "table"
+    },
+    {
+      "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 86
+      },
+      "id": 44,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "schemaVersion": 25,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "ALICE detector on the Large Hadron Collider",
+          "value": "ALICE detector on the Large Hadron Collider"
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.projects.project_name.keyword\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Project",
+        "multi": false,
+        "name": "project_type",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.projects.project_name.keyword\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "Asia Pacific Advanced Network - Japan",
+          "value": "Asia Pacific Advanced Network - Japan"
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Organization",
+        "multi": false,
+        "name": "organization",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Flows by Project",
+  "uid": "ie7TeomGz"
+}

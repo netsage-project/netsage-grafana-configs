@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573047795561,
+  "iteration": 1594139145216,
   "links": [],
   "panels": [
     {
@@ -207,6 +207,13 @@
       "custom_hover": " ",
       "cycleview": true,
       "dashboardselection": true,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 2,
         "w": 2,
@@ -266,7 +273,7 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": "42",
+      "id": 1,
       "legend": {
         "legend_colors": [],
         "show": true
@@ -277,7 +284,6 @@
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
-      "options": {},
       "parsed_data": [
         {
           "avg": 908038.6094182825,
@@ -385,60 +391,64 @@
     },
     {
       "content": "<center><h1><b>Loss Patterns</b></h1></center>\n<center>This dashboard shows heatmaps for the percent of data loss across links using perfSONAR active testing data. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show larger data transmission losses at those hours.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 4,
         "w": 20,
         "x": 2,
         "y": 0
       },
-      "id": 5,
+      "id": 2,
       "links": [],
       "mode": "html",
-      "options": {},
       "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 2,
-        "unitFormat": "percentunit"
-      },
       "datasource": "Netsage TSDS",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 10,
         "w": 24,
         "x": 0,
         "y": 4
       },
-      "height": "400px",
-      "id": 6,
-      "legend": {
-        "show": false
-      },
+      "id": 3,
       "links": [],
-      "maxPerRow": 1,
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
       "repeat": "destination",
-      "scale": {
-        "max": 0.01,
-        "min": 0
+      "repeatDirection": "v",
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "CENIC pS Server at Los Angeles",
+          "value": "CENIC pS Server at Los Angeles"
+        }
       },
       "targets": [
         {
@@ -520,7 +530,7 @@
           "refId": "A",
           "series": "ps_owamp",
           "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
-          "target_alias": "",
+          "target_alias": "Loss",
           "templateVariableValue": [
             ""
           ],
@@ -544,40 +554,1061 @@
       ],
       "timeFrom": null,
       "title": "$source -> $destination",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 3,
+        "h": 10,
         "w": 24,
         "x": 0,
         "y": 14
       },
-      "id": 31,
+      "id": 5,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "ESnet pS Server at Sacremento",
+          "value": "ESnet pS Server at Sacremento"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 6,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "ESnet pS Server at Seattle",
+          "value": "ESnet pS Server at Seattle"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 34
+      },
+      "id": 7,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Hawaii pS Server at Manoa",
+          "value": "Hawaii pS Server at Manoa"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 8,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "Internet2 pS Server at Seattle",
+          "value": "Internet2 pS Server at Seattle"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "id": 9,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "StarLight pS Server at Chicago",
+          "value": "StarLight pS Server at Chicago"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 64
+      },
+      "id": 10,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "TransPAC pS Server at Hong Kong",
+          "value": "TransPAC pS Server at Hong Kong"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": "Netsage TSDS",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 2,
+          "max": 0.01,
+          "min": 0,
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 74
+      },
+      "id": 11,
+      "links": [],
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "22"
+      },
+      "repeat": null,
+      "repeatDirection": "v",
+      "repeatIteration": 1594139145216,
+      "repeatPanelId": 3,
+      "scopedVars": {
+        "destination": {
+          "selected": false,
+          "text": "TransPAC pS Server at Seattle",
+          "value": "TransPAC pS Server at Seattle"
+        }
+      },
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": [
+            "average"
+          ],
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [
+            [
+              "",
+              "and"
+            ]
+          ],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [
+            ""
+          ],
+          "metricValues_array": [
+            "loss"
+          ],
+          "metric_array": [
+            "source_description",
+            "destination_description"
+          ],
+          "metrics": [
+            {
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [
+            ""
+          ],
+          "percentileValue": [
+            ""
+          ],
+          "rawQuery": true,
+          "refId": "A",
+          "series": "ps_owamp",
+          "target": "get source_description, destination_description, aggregate(values.loss, 3600, $statistics) between ($START,$END) from ps_owamp where  ( source_description = \"$source\" and destination_description = \"$destination\" )",
+          "target_alias": "Loss",
+          "templateVariableValue": [
+            ""
+          ],
+          "timeField": "start",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "source_description",
+                "op": "=",
+                "right": "$source"
+              },
+              {
+                "left": "destination_description",
+                "op": "=",
+                "right": "$destination"
+              }
+            ]
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "title": "$source -> $destination",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 84
+      },
+      "id": 4,
       "links": [],
       "mode": "html",
-      "options": {},
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "schemaVersion": 19,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [
     "netsage"
@@ -667,6 +1698,7 @@
           }
         ],
         "query": "average, min, max",
+        "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
       }
@@ -678,7 +1710,6 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",

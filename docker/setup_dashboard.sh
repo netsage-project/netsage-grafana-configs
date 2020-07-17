@@ -7,12 +7,12 @@ echo "Updating Grafana Config"
 ./apply_templates.py --type GRAFANA_CONFIG && cp -f grafana.ini /etc/grafana/grafana.ini
 echo "Updating Menu Items"
 ./apply_templates.py --type MENUS
-# echo "Updating Footer on Dashboards"
-# ./apply_templates.py --type FOOTER_UPDATES
-# echo "Updating Query on Dashboards"
-# ./apply_templates.py --type QUERY_OVERRIDE
-# echo "Updating Google Analytics on Dashboards"
-# ./apply_templates.py --type GOOGLE_ANALYTICS
+echo "Updating Footer on Dashboards"
+./apply_templates.py --type FOOTER_UPDATES
+echo "Updating Query on Dashboards"
+./apply_templates.py --type QUERY_OVERRIDE
+echo "Updating Google Analytics on Dashboards"
+./apply_templates.py --type GOOGLE_ANALYTICS
 
 #Install wizzy
 cd /app

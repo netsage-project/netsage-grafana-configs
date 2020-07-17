@@ -18,7 +18,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1580176496389,
+  "iteration": 1594248957837,
   "links": [],
   "panels": [
     {
@@ -212,6 +212,13 @@
       "custom_hover": " ",
       "cycleview": true,
       "dashboardselection": true,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 6,
@@ -282,7 +289,6 @@
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
-      "options": {},
       "parsed_data": [
         {
           "avg": 1417637.560165975,
@@ -390,6 +396,13 @@
     },
     {
       "content": "<center><h1><b>Science Discipline Patterns</b></h1></center>\n<center> This dashboard shows heatmaps for the flow data by science discipline. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show higher data transmission rates at those hours.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 4,
         "w": 24,
@@ -399,7 +412,6 @@
       "id": 2,
       "links": [],
       "mode": "html",
-      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -407,28 +419,29 @@
       "type": "text"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
@@ -436,17 +449,14 @@
         "y": 5
       },
       "id": 3,
-      "legend": {
-        "show": false
-      },
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": false,
+        "to": "0"
+      },
       "repeat": "disciplines",
       "repeatDirection": "v",
-      "scale": {
-        "max": null,
-        "min": null
-      },
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -458,6 +468,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -471,11 +482,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -487,65 +501,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 13
       },
-      "id": 4,
-      "legend": {
-        "show": false
-      },
+      "id": 23,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -557,6 +555,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -570,11 +569,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -586,65 +588,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 21
       },
-      "id": 5,
-      "legend": {
-        "show": false
-      },
+      "id": 24,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -656,6 +642,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -669,11 +656,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -685,65 +675,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 29
       },
-      "id": 6,
-      "legend": {
-        "show": false
-      },
+      "id": 25,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -755,6 +729,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -768,11 +743,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -784,65 +762,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 37
       },
-      "id": 7,
-      "legend": {
-        "show": false
-      },
+      "id": 26,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -854,6 +816,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -867,11 +830,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -883,65 +849,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 45
       },
-      "id": 8,
-      "legend": {
-        "show": false
-      },
+      "id": 27,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -953,6 +903,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -966,11 +917,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -982,65 +936,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 53
       },
-      "id": 9,
-      "legend": {
-        "show": false
-      },
+      "id": 28,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1052,6 +990,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1065,11 +1004,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1081,65 +1023,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 61
       },
-      "id": 10,
-      "legend": {
-        "show": false
-      },
+      "id": 29,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1151,6 +1077,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1164,11 +1091,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1180,65 +1110,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 69
       },
-      "id": 11,
-      "legend": {
-        "show": false
-      },
+      "id": 30,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1250,6 +1164,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1263,11 +1178,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1279,65 +1197,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 77
       },
-      "id": 12,
-      "legend": {
-        "show": false
-      },
+      "id": 31,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1349,6 +1251,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1362,11 +1265,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1378,65 +1284,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 85
       },
-      "id": 13,
-      "legend": {
-        "show": false
-      },
+      "id": 32,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1448,6 +1338,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1461,11 +1352,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1477,65 +1371,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 93
       },
-      "id": 14,
-      "legend": {
-        "show": false
-      },
+      "id": 33,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1547,6 +1425,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1560,11 +1439,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1576,65 +1458,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 101
       },
-      "id": 15,
-      "legend": {
-        "show": false
-      },
+      "id": 34,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1646,6 +1512,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1659,11 +1526,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1675,65 +1545,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 109
       },
-      "id": 16,
-      "legend": {
-        "show": false
-      },
+      "id": 35,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1745,6 +1599,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1758,11 +1613,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1774,65 +1632,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 117
       },
-      "id": 17,
-      "legend": {
-        "show": false
-      },
+      "id": 36,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1844,6 +1686,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1857,11 +1700,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1873,65 +1719,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 125
       },
-      "id": 18,
-      "legend": {
-        "show": false
-      },
+      "id": 37,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -1943,6 +1773,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -1956,11 +1787,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -1972,65 +1806,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 133
       },
-      "id": 19,
-      "legend": {
-        "show": false
-      },
+      "id": 38,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -2042,6 +1860,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -2055,11 +1874,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -2071,65 +1893,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 141
       },
-      "id": 20,
-      "legend": {
-        "show": false
-      },
+      "id": 39,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -2141,6 +1947,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -2154,11 +1961,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -2170,65 +1980,49 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "aggregate": "AVG",
-      "color": {
-        "colorScheme": "interpolateBlues",
-        "colorSpace": "RGB",
-        "customColors": [
-          {
-            "color": "#006837"
-          },
-          {
-            "color": "#aa0526"
-          }
-        ],
-        "mode": "SPECTRUM",
-        "nullColor": "transparent"
-      },
-      "data": {
-        "decimals": 1,
-        "unitFormat": "bps"
-      },
       "datasource": "netsage",
       "description": "",
-      "fragment": "HOUR",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "decimals": 1,
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": []
+          }
+        ]
+      },
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 149
       },
-      "id": 21,
-      "legend": {
-        "show": false
-      },
+      "id": 40,
       "links": [],
-      "options": {},
+      "options": {
+        "from": "0",
+        "showLegend": true,
+        "to": "0"
+      },
       "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1580176496389,
-      "repeatPanelId": 2,
-      "scale": {
-        "max": null,
-        "min": null
-      },
+      "repeatIteration": 1594248957837,
+      "repeatPanelId": 3,
       "scopedVars": {
         "disciplines": {
           "selected": false,
@@ -2240,6 +2034,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:17",
               "fake": true,
               "field": "start",
               "id": "3",
@@ -2253,11 +2048,14 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:15",
               "field": "values.bits_per_second",
               "id": "1",
               "inlineScript": null,
               "meta": {},
-              "settings": {},
+              "settings": {
+                "missing": null
+              },
               "type": "avg"
             }
           ],
@@ -2269,24 +2067,17 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "$disciplines",
-      "tooltip": {
-        "show": true
-      },
-      "type": "petrslavotinek-carpetplot-panel",
-      "xAxis": {
-        "labelFormat": "%a %m/%d",
-        "minBucketWidthToShowWeekends": 4,
-        "show": true,
-        "showCrosshair": true,
-        "showWeekends": true
-      },
-      "yAxis": {
-        "show": true,
-        "showCrosshair": true
-      }
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -2296,7 +2087,6 @@
       "id": 22,
       "links": [],
       "mode": "html",
-      "options": {},
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2304,7 +2094,7 @@
       "type": "text"
     }
   ],
-  "schemaVersion": 19,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [
     "flow",

@@ -2,7 +2,6 @@
   "annotations": {
     "list": [
       {
-        "$$hashKey": "object:287",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -16,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1594315735849,
+  "iteration": 1595021727830,
   "links": [],
   "panels": [
     {
@@ -87,7 +86,8 @@
         7,
         8,
         9,
-        10
+        10,
+        11
       ],
       "color": {
         "cardColor": "#b4ff00",
@@ -217,6 +217,7 @@
         },
         "overrides": []
       },
+      "grafanafavorites": true,
       "gridPos": {
         "h": 2,
         "w": 2,
@@ -282,18 +283,18 @@
         "show": true
       },
       "links": [],
-      "max_total": 82998921,
+      "max_total": 316476171,
       "option_1": "netsage",
       "option_2": "maheshtest",
       "option_3": "plugin",
       "option_4": 123,
       "parsed_data": [
         {
-          "avg": 491117.875739645,
+          "avg": 2615505.5454545454,
           "label": "Count",
-          "max": 2600869,
-          "min": 0,
-          "total": 82998921
+          "max": 6756717,
+          "min": 7407,
+          "total": 316476171
         }
       ],
       "rgb_values": [
@@ -355,6 +356,7 @@
       "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
       "sidebar": true,
+      "tablefilters": true,
       "targets": [
         {
           "bucketAggs": [
@@ -393,7 +395,7 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Flow Data for Data Archives</b></h1></center>\n<center>This dashboard provides flow data for the top ten source and destination institutions by volume, rate, and retransmits for the data archives.</center>\n<center>Click on an organization name to see the flow data dashboard for that organization.</center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+      "content": "\n<center><h1><b>Flow Data for Projects</b></h1></center>\n<center>This dashboard shows a summary of flow information for a selected project.</center>\n<center><b>Please note that flows with either end tagged as part of the project are included</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -407,42 +409,109 @@
         "x": 2,
         "y": 0
       },
-      "id": 2,
+      "id": 48,
       "links": [],
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "content": "<center><h1>Top Sources</h1></center>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
-        "w": 22,
-        "x": 1,
+        "h": 3,
+        "w": 10,
+        "x": 3,
         "y": 4
       },
-      "id": 3,
-      "links": [],
-      "mode": "html",
-      "title": "",
+      "id": 26,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:261",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "1h",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:259",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Volume",
       "transparent": true,
-      "type": "text"
+      "type": "stat"
     },
     {
-      "datasource": "netsage",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null
-          },
+          "custom": {},
           "decimals": 1,
           "mappings": [],
           "thresholds": {
@@ -451,10 +520,124 @@
               {
                 "color": "light-blue",
                 "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
               }
             ]
           },
-          "unit": "none"
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 14,
+        "y": 4
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:261",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:259",
+              "field": "meta.id.keyword",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "# Flows",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "content": "<h3 style=\"margin-top:35px;\"><center>Top Endpoint Pairs for $project_type</center></h3>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 39,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": [
           {
@@ -472,8 +655,30 @@
                 "value": [
                   {
                     "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
+                    "title": "See more information about flows from ${__data.fields[0]} to ${__data.fields[1]}",
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[0]}&var-dest=${__data.fields[1]}&from=${__from}&to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about flows from ${__data.fields[0]} to ${__data.fields[1]}",
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[0]}&var-dest=${__data.fields[1]}&from=${__from}&to=${__to}"
                   }
                 ]
               }
@@ -494,31 +699,19 @@
                 "value": "decbytes"
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "light-blue",
-                      "value": null
-                    }
-                  ]
-                }
+                "id": "decimals",
+                "value": 1
               },
               {
                 "id": "custom.width",
-                "value": 440
+                "value": 100
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Max"
+              "options": "Max values.num_bits"
             },
             "properties": [
               {
@@ -528,6 +721,14 @@
               {
                 "id": "unit",
                 "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
               }
             ]
           },
@@ -544,19 +745,98 @@
               {
                 "id": "unit",
                 "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 209
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Peak Rate"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 258
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 12,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 10
       },
-      "hideTimeOverride": false,
-      "id": 4,
+      "id": 34,
       "links": [],
       "options": {
         "showHeader": true,
@@ -572,36 +852,49 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:385",
+              "$$hashKey": "object:1281",
               "fake": true,
               "field": "meta.src_organization.keyword",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1282",
+              "fake": true,
+              "field": "meta.dst_organization.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "0"
               },
               "type": "terms"
             }
           ],
-          "dsType": "elasticsearch",
+          "hide": false,
           "metrics": [
             {
-              "$$hashKey": "object:379",
+              "$$hashKey": "object:1271",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
+              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value/8"
+                  "inline": "_value / 8"
                 }
               },
               "type": "sum"
             },
             {
-              "$$hashKey": "object:380",
+              "$$hashKey": "object:1272",
               "field": "values.num_bits",
               "id": "5",
               "inlineScript": "_value / 8",
@@ -614,639 +907,84 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:381",
+              "$$hashKey": "object:1273",
               "field": "meta.id.keyword",
-              "id": "7",
+              "id": "6",
               "meta": {},
               "settings": {},
               "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "title": "By Volume",
-      "type": "table"
-    },
-    {
-      "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_organization.keyword"
             },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Source Organization"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Peak"
-              },
-              {
-                "id": "unit",
-                "value": "bps"
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "light-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "custom.width",
-                "value": 440
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Average"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Average"
-              },
-              {
-                "id": "unit",
-                "value": "bps"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Unique Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "# Flows"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "hideTimeOverride": false,
-      "id": 20,
-      "links": [],
-      "options": {
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Peak"
-          }
-        ]
-      },
-      "pluginVersion": "7.0.5",
-      "targets": [
-        {
-          "bucketAggs": [
             {
-              "$$hashKey": "object:385",
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "$$hashKey": "object:379",
+              "$$hashKey": "object:1274",
               "field": "values.bits_per_second",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:380",
-              "field": "values.bits_per_second",
-              "id": "5",
-              "inlineScript": null,
+              "id": "7",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
-              "$$hashKey": "object:381",
-              "field": "meta.id.keyword",
-              "id": "7",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "title": "By Rate",
-      "type": "table"
-    },
-    {
-      "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_organization.keyword"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Source Organization"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum values.tcp_rexmit_pkts"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Retransmits"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "light-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "custom.width",
-                "value": 440
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Bucket Script"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Retransmit %"
-              },
-              {
-                "id": "unit",
-                "value": "percentunit"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum values.num_bits"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Total Vol."
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Unique Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "# Flows"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 24,
-        "x": 0,
-        "y": 30
-      },
-      "hideTimeOverride": false,
-      "id": 21,
-      "links": [],
-      "options": {
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Retransmits"
-          }
-        ]
-      },
-      "pluginVersion": "7.0.5",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:385",
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "$$hashKey": "object:379",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {
-                "missing": null
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:380",
-              "field": "values.num_packets",
-              "id": "5",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:381",
-              "field": "meta.id.keyword",
-              "id": "7",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "$$hashKey": "object:589",
-                  "name": "var1",
-                  "pipelineAgg": "1"
-                },
-                {
-                  "$$hashKey": "object:594",
-                  "name": "var2",
-                  "pipelineAgg": "5"
-                }
-              ],
-              "settings": {
-                "script": "params.var1/params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "$$hashKey": "object:578",
-              "field": "values.num_bits",
+              "$$hashKey": "object:1275",
+              "field": "values.bits_per_second",
               "id": "8",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:599",
-              "field": "meta.id.keyword",
-              "id": "9",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "title": "By Retransmits",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Sum values.num_bits": true,
-              "Sum values.num_packets": true,
-              "Sum values.tcp_rexmit_pkts": false
-            },
-            "indexByName": {},
-            "renameByName": {}
-          }
-        }
-      ],
+      "title": "By Organization Pair",
       "type": "table"
     },
     {
-      "content": "<center><h1 style=\"margin-top:35px;\">Top Destinations</h1></center>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {
+            "calculation": "sum",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
+          },
+          "min": 1,
+          "unit": "decbytes"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 23,
-        "x": 1,
-        "y": 42
-      },
-      "id": 10,
-      "links": [],
-      "mode": "html",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_organization.keyword"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Destination Organization"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Total Vol."
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "light-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "custom.width",
-                "value": 440
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Largest Flow"
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Unique Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "# Flows"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 12,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 25
       },
-      "hideTimeOverride": false,
-      "id": 22,
+      "id": 14,
       "links": [],
       "options": {
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Total Vol."
-          }
-        ]
+        "from": "0",
+        "showLegend": false,
+        "to": "0"
       },
-      "pluginVersion": "7.0.5",
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:385",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
+              "$$hashKey": "object:828",
+              "field": "start",
+              "id": "2",
               "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
               },
-              "type": "terms"
+              "type": "date_histogram"
             }
           ],
-          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:379",
+              "$$hashKey": "object:826",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -1257,479 +995,80 @@
                 }
               },
               "type": "sum"
-            },
-            {
-              "$$hashKey": "object:380",
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:381",
-              "field": "meta.id.keyword",
-              "id": "7",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Volume",
-      "type": "table"
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": "netsage",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60
           },
           "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
+          "min": 1,
+          "unit": "bps"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_organization.keyword"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Destination Organization"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Peak"
-              },
-              {
-                "id": "unit",
-                "value": "bps"
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "light-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "custom.width",
-                "value": 440
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Average"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Average"
-              },
-              {
-                "id": "unit",
-                "value": "bps"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Unique Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "# Flows"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
-        "h": 12,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 57
+        "y": 36
       },
-      "hideTimeOverride": false,
-      "id": 23,
+      "id": 16,
       "links": [],
       "options": {
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Peak"
-          }
-        ]
+        "from": "0",
+        "showLegend": false,
+        "to": "0"
       },
-      "pluginVersion": "7.0.5",
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:385",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
+              "$$hashKey": "object:859",
+              "field": "start",
+              "id": "2",
               "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
               },
-              "type": "terms"
+              "type": "date_histogram"
             }
           ],
-          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:379",
+              "$$hashKey": "object:857",
               "field": "values.bits_per_second",
               "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:380",
-              "field": "values.bits_per_second",
-              "id": "5",
-              "inlineScript": null,
               "meta": {},
               "settings": {},
               "type": "avg"
-            },
-            {
-              "$$hashKey": "object:381",
-              "field": "meta.id.keyword",
-              "id": "7",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Rate",
-      "type": "table"
+      "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_organization.keyword"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Destination Organization"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum values.tcp_rexmit_pkts"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Retransmits"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "thresholds",
-                "value": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "light-blue",
-                      "value": null
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "custom.width",
-                "value": 440
-              },
-              {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Bucket Script"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Retransmit %"
-              },
-              {
-                "id": "unit",
-                "value": "percentunit"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum values.num_bits"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Total Vol."
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Unique Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "# Flows"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 24,
-        "x": 0,
-        "y": 69
-      },
-      "hideTimeOverride": false,
-      "id": 24,
-      "links": [],
-      "options": {
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Retransmits"
-          }
-        ]
-      },
-      "pluginVersion": "7.0.5",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:385",
-              "fake": true,
-              "field": "meta.dst_organization.keyword",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "10"
-              },
-              "type": "terms"
-            }
-          ],
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "$$hashKey": "object:379",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {
-                "missing": null
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:380",
-              "field": "values.num_packets",
-              "id": "5",
-              "inlineScript": null,
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:381",
-              "field": "meta.id.keyword",
-              "id": "7",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "$$hashKey": "object:589",
-                  "name": "var1",
-                  "pipelineAgg": "1"
-                },
-                {
-                  "$$hashKey": "object:594",
-                  "name": "var2",
-                  "pipelineAgg": "5"
-                }
-              ],
-              "settings": {
-                "script": "params.var1/params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "$$hashKey": "object:578",
-              "field": "values.num_bits",
-              "id": "8",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:599",
-              "field": "meta.id.keyword",
-              "id": "9",
-              "meta": {},
-              "settings": {},
-              "type": "cardinality"
-            }
-          ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "title": "By Retransmits",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Sum values.num_packets": true
-            },
-            "indexByName": {},
-            "renameByName": {}
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "content": "<br>\n<center><h1 style=\"margin-top:35px;\">Top Pairs</h1></center>",
+      "content": "<h3 style=\"margin-top:35px;\"><center>Summary of Organizations for $project_type</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1741,23 +1080,24 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 81
+        "y": 47
       },
-      "id": 17,
+      "id": 36,
       "links": [],
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": "netsage",
       "fieldConfig": {
         "defaults": {
           "custom": {
             "align": null
           },
-          "decimals": 1,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1795,10 +1135,263 @@
                 ]
               },
               {
-                "id": "custom.width"
+                "id": "custom.width",
+                "value": 500
               }
             ]
           },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Peak Rate"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 263
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 50
+      },
+      "hideTimeOverride": false,
+      "id": 38,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:67",
+              "fake": true,
+              "field": "meta.src_organization.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:57",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:58",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:59",
+              "field": "meta.id.keyword",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            },
+            {
+              "$$hashKey": "object:60",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:61",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Summary of Source Organizations",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Max values.bits_per_second": 2,
+              "Max values.num_bits": 5,
+              "Sum": 1,
+              "Unique Count": 3,
+              "meta.src_organization.keyword": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "netsage",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
           {
             "matcher": {
               "id": "byName",
@@ -1818,46 +1411,10 @@
                     "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text}&from=${__from}&to=${__to}"
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum values.num_bits"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Total Vol."
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
               },
               {
                 "id": "custom.width",
-                "value": 95
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max values.num_bits"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Largest Flow"
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              },
-              {
-                "id": "custom.width",
-                "value": 105
+                "value": 500
               }
             ]
           },
@@ -1876,35 +1433,35 @@
                 "value": "short"
               },
               {
-                "id": "custom.width",
-                "value": 95
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Average values.bits_per_second"
+              "options": "Sum"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Avg Rate"
+                "value": "Total Vol."
               },
               {
                 "id": "unit",
-                "value": "bps"
+                "value": "decbytes"
               },
               {
-                "id": "custom.width",
-                "value": 115
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.bits_per_second"
+              "options": "Max values.num_bits"
             },
             "properties": [
               {
@@ -1916,60 +1473,73 @@
                 "value": "bps"
               },
               {
-                "id": "custom.width",
-                "value": 115
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum values.tcp_rexmit_pkts"
+              "options": "Average"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Retransmits"
+                "value": "Avg Rate"
               },
               {
                 "id": "unit",
-                "value": "short"
+                "value": "bps"
               },
               {
-                "id": "custom.width",
-                "value": 95
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Average values.tcp_rtt_min"
+              "options": "Max values.bits_per_second"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "RTT"
+                "value": "Largest Flow"
               },
               {
                 "id": "unit",
-                "value": "ms"
+                "value": "decbytes"
               },
               {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Destination Organization"
+            },
+            "properties": [
+              {
                 "id": "custom.width",
-                "value": 85
+                "value": 267
               }
             ]
           }
         ]
       },
       "gridPos": {
-        "h": 16,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 84
+        "y": 61
       },
-      "id": 18,
+      "hideTimeOverride": false,
+      "id": 40,
       "links": [],
       "options": {
         "showHeader": true,
@@ -1985,58 +1555,38 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1548",
-              "fake": true,
-              "field": "meta.src_organization.keyword",
-              "id": "7",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "13",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:1549",
+              "$$hashKey": "object:67",
               "fake": true,
               "field": "meta.dst_organization.keyword",
-              "id": "9",
+              "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "13",
+                "orderBy": "1",
                 "size": "0"
               },
               "type": "terms"
             }
           ],
+          "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:1530",
+              "$$hashKey": "object:57",
               "field": "values.num_bits",
-              "id": "13",
-              "inlineScript": "_value / 8",
+              "id": "1",
+              "inlineScript": "_value/8",
               "meta": {},
               "settings": {
                 "script": {
-                  "inline": "_value / 8"
+                  "inline": "_value/8"
                 }
               },
               "type": "sum"
             },
             {
-              "$$hashKey": "object:1531",
-              "field": "values.num_packets",
-              "id": "21",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1532",
+              "$$hashKey": "object:58",
               "field": "values.num_bits",
-              "id": "26",
+              "id": "5",
               "inlineScript": "_value / 8",
               "meta": {},
               "settings": {
@@ -2047,89 +1597,285 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1533",
+              "$$hashKey": "object:59",
               "field": "meta.id.keyword",
-              "id": "27",
+              "id": "9",
               "meta": {},
               "settings": {},
               "type": "cardinality"
             },
             {
-              "$$hashKey": "object:1534",
+              "$$hashKey": "object:60",
               "field": "values.bits_per_second",
-              "id": "28",
+              "id": "10",
               "meta": {},
               "settings": {},
               "type": "avg"
             },
             {
-              "$$hashKey": "object:1535",
+              "$$hashKey": "object:61",
               "field": "values.bits_per_second",
-              "id": "29",
+              "id": "11",
               "meta": {},
               "settings": {},
               "type": "max"
-            },
-            {
-              "$$hashKey": "object:1536",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "30",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:1537",
-              "field": "select field",
-              "id": "31",
-              "meta": {},
-              "pipelineVariables": [
-                {
-                  "$$hashKey": "object:555",
-                  "name": "var1",
-                  "pipelineAgg": "30"
-                },
-                {
-                  "$$hashKey": "object:556",
-                  "name": "var2",
-                  "pipelineAgg": "21"
-                }
-              ],
-              "settings": {
-                "script": "params.var1 / params.var2"
-              },
-              "type": "bucket_script"
-            },
-            {
-              "$$hashKey": "object:1538",
-              "field": "values.tcp_rtt_min",
-              "id": "32",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
-      "timeShift": null,
-      "title": "By Organization Pair",
+      "title": "Summary of Destination Organizations",
       "transformations": [
         {
           "id": "organize",
           "options": {
-            "excludeByName": {
-              "Bucket Script": true,
-              "Sum values.num_packets": true
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Max values.bits_per_second": 2,
+              "Max values.num_bits": 5,
+              "Sum": 1,
+              "Unique Count": 3,
+              "meta.dst_organization.keyword": 0
             },
-            "indexByName": {},
             "renameByName": {}
           }
         }
       ],
+      "type": "table"
+    },
+    {
+      "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $project_type flows</center></h3>",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 72
+      },
+      "id": 51,
+      "links": [],
+      "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": "netsage",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.sensor_id.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Link"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fastest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 75
+      },
+      "hideTimeOverride": false,
+      "id": 46,
+      "links": [],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "7.0.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:794",
+              "fake": true,
+              "field": "meta.sensor_id.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:786",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:787",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:788",
+              "field": "values.bits_per_second",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:789",
+              "field": "meta.id.keyword",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "cardinality"
+            }
+          ],
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": null,
+      "title": "Links Usage",
       "type": "table"
     },
     {
@@ -2145,40 +1891,39 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 86
       },
-      "id": 19,
+      "id": 44,
       "links": [],
       "mode": "html",
+      "timeFrom": null,
+      "timeShift": null,
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": "",
   "schemaVersion": 25,
   "style": "dark",
-  "tags": [
-    "netsage",
-    "dtn"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": "",
+        "allValue": null,
         "current": {
-          "text": "All",
-          "value": "$__all"
+          "selected": false,
+          "text": "ALICE detector on the Large Hadron Collider",
+          "value": "ALICE detector on the Large Hadron Collider"
         },
         "datasource": "netsage",
-        "definition": "",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.projects.project_name.keyword\"}",
         "hide": 0,
-        "includeAll": true,
-        "label": "Sensors",
-        "multi": true,
-        "name": "sensors",
+        "includeAll": false,
+        "label": "Project",
+        "multi": false,
+        "name": "project_type",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"meta.flow_type:tstat\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.projects.project_name.keyword\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2192,22 +1937,19 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "tags": [],
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "Asia Pacific Advanced Network - Japan",
+          "value": "Asia Pacific Advanced Network - Japan"
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Scope",
-        "multi": true,
-        "name": "country_scope",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Organization",
+        "multi": false,
+        "name": "organization",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2226,7 +1968,6 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "5s",
       "10s",
       "30s",
       "1m",
@@ -2236,20 +1977,9 @@
       "1h",
       "2h",
       "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
     ]
   },
   "timezone": "",
-  "title": "Flow Data for Data Archives",
-  "uid": "mNPduO8mz"
+  "title": "Flow Data for Projects",
+  "uid": "ie7TeomGz"
 }

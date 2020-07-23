@@ -21,8 +21,9 @@ npm install -g wizzy
 ### Start plugin installs ###
 cd /app/plugins
 
-#Install carpetplot
-grafana-cli plugins install marcusolsson-hourly-heatmap-panel
+#Install carpetplot //using forked version until PR is accepted
+#grafana-cli plugins install marcusolsson-hourly-heatmap-panel
+grafana-cli --repo "https://github.com/netsage-project/grafana-hourly-heatmap-panel" plugins install marcusolsson-hourly-heatmap-panel
 
 ## BEGIN PLUGIN INSTALL ##
 
@@ -58,6 +59,11 @@ cd ..
 
 #Install discipline map plugin
 cd science-discipline-map-plugin/
+make install
+cd ..
+
+#Install bump chart plugin
+cd netsage-bump-chart/
 make install
 cd ..
 

@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1590000877533,
+  "iteration": 1596745741587,
   "links": [],
   "panels": [
     {
@@ -29,11 +29,13 @@
         "What do individual flows look like?",
         "What are the top flows by country?",
         "What are flows by science discipline?",
+        "What are flows by project?",
         "What are the patterns in science data transfers in the network?",
         "What are the bandwidth patterns in the network?",
         "What are the patterns of loss in the network?",
         "What are the patterns of latency in the network?",
         "What are the current flow data summary statistics?",
+        "Who are the top talkers over time?",
         "Advanced Flow Analysis"
       ],
       "array_option_2": [
@@ -44,11 +46,13 @@
         "/grafana/d/-l3_u8nWk/individual-flows",
         "/grafana/d/fgrOzz_mk/flow-data-per-country",
         "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
+        "/grafana/d/ie7TeomGz/flow-data-for-projects",
         "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
         "/grafana/d/000000004/bandwidth-patterns",
         "/grafana/d/000000006/loss-patterns",
         "/grafana/d/000000005/latency-patterns",
         "/grafana/d/CJC1FFhmz/other-flow-stats",
+        "/grafana/d/b35BWxAZz/top-talkers-over-time",
         "/grafana/d/VuuXrnPWz/flow-analysis"
       ],
       "array_option_3": [
@@ -210,6 +214,13 @@
       "cycleview": true,
       "dashboardselection": true,
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "grafanafavorites": true,
       "gridPos": {
         "h": 3,
         "w": 2,
@@ -269,7 +280,7 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": 50,
+      "id": 1,
       "legend": {
         "legend_colors": [],
         "show": true
@@ -389,13 +400,19 @@
     {
       "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows information related to science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center>For the map, only flows with both ends tagged in the NetSage Science Registry have associated lines (others appear as a dot for the source or destination only). Different science disciplines use different colored lines, the arrows indicate the flow direction, and larger dots indicate larger flows.</center>\n<center>The Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and their associated top five destination organizations, with thicker lines for larger flow volumes.</center>\n<center><b>For the summary table, if only one sampled flow was detected, the rate will be zero.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 6,
         "w": 20,
         "x": 2,
         "y": 0
       },
-      "id": 5011,
+      "id": 2,
       "links": [],
       "mode": "html",
       "timeFrom": null,
@@ -406,23 +423,41 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": null,
-      "decimals": 1,
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -430,45 +465,34 @@
         "x": 1,
         "y": 6
       },
-      "id": 47,
+      "id": 3,
       "interval": "1h",
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " Volume of Selected Disciplines Matched in Science Registry",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:41",
               "field": "start",
               "id": "2",
               "settings": {
@@ -481,6 +505,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:39",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -493,44 +518,52 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline)",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Volume of Selected Disciplines Matched in Science Registry",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": null,
-      "decimals": 1,
-      "format": "locale",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -538,45 +571,34 @@
         "x": 12,
         "y": 6
       },
-      "id": 42,
+      "id": 4,
       "interval": "1h",
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " Flows Matched in Science Registry for Selected Disciplines",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:88",
               "field": "start",
               "id": "2",
               "settings": {
@@ -589,6 +611,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:86",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -596,90 +619,87 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline)",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Flows Matched in Science Registry for Selected Disciplines",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": null,
-      "decimals": 1,
-      "format": "decbytes",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 11,
         "x": 1,
         "y": 9
       },
-      "id": 45,
+      "id": 5,
       "interval": "1h",
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " Total Volume",
-      "postfixFontSize": "70%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:115",
               "field": "start",
               "id": "2",
               "settings": {
@@ -692,6 +712,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:113",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -704,90 +725,87 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Total Volume",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": true,
-      "colorValue": false,
-      "colors": [
-        "#FF780A",
-        "#FF780A",
-        "#FF780A"
-      ],
       "datasource": null,
-      "decimals": 1,
-      "format": "locale",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "decimals": 1,
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 11,
         "x": 12,
         "y": 9
       },
-      "id": 46,
+      "id": 6,
       "interval": "1h",
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": " Total Flows",
-      "postfixFontSize": "70%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "sum"
+          ]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
         }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
       },
-      "tableColumn": "",
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:146",
               "field": "start",
               "id": "2",
               "settings": {
@@ -800,6 +818,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:144",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -807,24 +826,14 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "thresholds": "0,1",
-      "title": "",
+      "title": "Total Flows",
       "transparent": true,
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
+      "type": "stat"
     },
     {
       "DarkColorPallet": [
@@ -859,6 +868,7 @@
         "#2CCB7A",
         "#6D5BDD"
       ],
+      "animationPlaying": false,
       "array_option_1": [],
       "array_option_2": [],
       "array_option_3": [],
@@ -882,14 +892,20 @@
       "dark_map_url": "https://api.tiles.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
       "dark_mode": false,
       "datasource": "netsage",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 23,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "hex_values": [],
-      "id": 5017,
+      "id": 7,
       "legend": {
         "legend_colors": [],
         "show": true
@@ -903,6 +919,7 @@
         "linear",
         "sqrt"
       ],
+      "showControls": true,
       "table_data": [
         {
           "color": "#0A369D",
@@ -2158,7 +2175,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         },
@@ -2246,7 +2263,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "B",
           "timeField": "start"
         },
@@ -2385,7 +2402,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "C",
           "timeField": "start"
         }
@@ -2407,13 +2424,19 @@
     {
       "content": "<h3 style=\"margin: 20px;\"><center>Top Science Talkers</center></h3>\n",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
-      "id": 5013,
+      "id": 8,
       "links": [],
       "mode": "html",
       "timeFrom": null,
@@ -2563,11 +2586,17 @@
       ],
       "docs_editor_to_Byte": false,
       "docs_table_data": [],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 27,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 37
       },
       "height": 2,
       "hex_values": [
@@ -2622,7 +2651,7 @@
         "#68aef3",
         "#65aef6"
       ],
-      "id": 44,
+      "id": 9,
       "label_nodes": [
         "Source",
         "Source Discipline",
@@ -4011,7 +4040,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
@@ -4028,13 +4057,19 @@
     {
       "content": "<h1><center>Summary of All Disciplines</center></h1>\n<center>Only flows where source or destination has been tagged with a science discipline <br>\nfrom the Science Registry <i>and</i> were seen by the selected sensor(s) are counted.\n</center>",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 63
+        "y": 64
       },
-      "id": 5014,
+      "id": 10,
       "links": [],
       "mode": "html",
       "timeFrom": null,
@@ -4044,123 +4079,170 @@
       "type": "text"
     },
     {
-      "columns": [],
       "datasource": "netsage",
-      "fontSize": "90%",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.scireg.src.discipline.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Discipline"
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
-        "h": 11,
+        "h": 17,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 67
       },
       "hideTimeOverride": false,
-      "id": 21,
+      "id": 11,
       "links": [],
-      "pageSize": 10,
-      "scroll": false,
-      "showHeader": true,
-      "sort": {
-        "col": 1,
-        "desc": true
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
       },
-      "styles": [
-        {
-          "alias": "Source Discipline",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
-          "linkTargetBlank": true,
-          "linkTooltip": "",
-          "linkUrl": "",
-          "pattern": "/meta.*src.*/",
-          "type": "string",
-          "unit": "bits"
-        },
-        {
-          "alias": "# Flows",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Unique Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "Total Vol.",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "alias": "Peak Rate",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Avg Rate",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Largest Flow",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "Max values.num_bits",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        }
-      ],
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:242",
               "fake": true,
               "field": "meta.scireg.src.discipline.keyword",
               "id": "3",
@@ -4176,6 +4258,7 @@
           "dsType": "elasticsearch",
           "metrics": [
             {
+              "$$hashKey": "object:232",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -4188,6 +4271,7 @@
               "type": "sum"
             },
             {
+              "$$hashKey": "object:233",
               "field": "values.num_bits",
               "id": "5",
               "inlineScript": "_value / 8",
@@ -4200,6 +4284,7 @@
               "type": "max"
             },
             {
+              "$$hashKey": "object:234",
               "field": "meta.id.keyword",
               "id": "9",
               "meta": {},
@@ -4207,6 +4292,7 @@
               "type": "cardinality"
             },
             {
+              "$$hashKey": "object:235",
               "field": "values.bits_per_second",
               "id": "10",
               "meta": {},
@@ -4214,6 +4300,7 @@
               "type": "avg"
             },
             {
+              "$$hashKey": "object:236",
               "field": "values.bits_per_second",
               "id": "11",
               "meta": {},
@@ -4221,135 +4308,180 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
       "title": "Flow Statistics by Source Discipline",
-      "transform": "table",
       "type": "table"
     },
     {
-      "columns": [],
       "datasource": "netsage",
-      "fontSize": "90%",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.scireg.dst.discipline.keyword"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Discipline"
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unique Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Flows"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
-        "h": 11,
+        "h": 17,
         "w": 24,
         "x": 0,
-        "y": 77
+        "y": 84
       },
       "hideTimeOverride": false,
-      "id": 5015,
-      "interval": "",
+      "id": 14,
       "links": [],
-      "pageSize": 10,
-      "scroll": false,
-      "showHeader": true,
-      "sort": {
-        "col": 1,
-        "desc": true
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
       },
-      "styles": [
-        {
-          "alias": "Destination Discipline",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
-          "linkTargetBlank": true,
-          "linkTooltip": "",
-          "linkUrl": "",
-          "pattern": "/meta.*dst.*/",
-          "type": "string",
-          "unit": "bits"
-        },
-        {
-          "alias": "# Flows",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Unique Count",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        },
-        {
-          "alias": "Total Vol.",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Sum",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        },
-        {
-          "alias": "Peak Rate",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "pattern": "Max values.bits_per_second",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Avg Rate",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 1,
-          "mappingType": 1,
-          "pattern": "Average",
-          "thresholds": [],
-          "type": "number",
-          "unit": "bps"
-        },
-        {
-          "alias": "Largest Flow",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "Max values.num_bits",
-          "thresholds": [],
-          "type": "number",
-          "unit": "decbytes"
-        }
-      ],
+      "pluginVersion": "7.0.3",
       "targets": [
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:242",
               "fake": true,
               "field": "meta.scireg.dst.discipline.keyword",
               "id": "3",
@@ -4365,6 +4497,7 @@
           "dsType": "elasticsearch",
           "metrics": [
             {
+              "$$hashKey": "object:232",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -4377,6 +4510,7 @@
               "type": "sum"
             },
             {
+              "$$hashKey": "object:233",
               "field": "values.num_bits",
               "id": "5",
               "inlineScript": "_value / 8",
@@ -4389,6 +4523,7 @@
               "type": "max"
             },
             {
+              "$$hashKey": "object:234",
               "field": "meta.id.keyword",
               "id": "9",
               "meta": {},
@@ -4396,6 +4531,7 @@
               "type": "cardinality"
             },
             {
+              "$$hashKey": "object:235",
               "field": "values.bits_per_second",
               "id": "10",
               "meta": {},
@@ -4403,6 +4539,7 @@
               "type": "avg"
             },
             {
+              "$$hashKey": "object:236",
               "field": "values.bits_per_second",
               "id": "11",
               "meta": {},
@@ -4410,26 +4547,31 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors",
+          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "timeFrom": null,
       "title": "Flow Statistics by Destination Discipline",
-      "transform": "table",
       "type": "table"
     },
     {
       "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  console.log('hi');\n</script>\n",
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 88
+        "y": 101
       },
-      "id": 49,
+      "id": 13,
       "links": [],
       "mode": "html",
       "title": "",
@@ -4438,7 +4580,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 22,
+  "schemaVersion": 25,
   "style": "dark",
   "tags": [
     "flow",
@@ -4449,6 +4591,7 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "All",
           "value": [
             "$__all"
@@ -4458,7 +4601,6 @@
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
         "hide": 0,
         "includeAll": true,
-        "index": -1,
         "label": null,
         "multi": true,
         "name": "Sensors",
@@ -4477,6 +4619,7 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
           "text": "MPS.Physics.High Energy",
           "value": [
             "MPS.Physics.High Energy"
@@ -4486,7 +4629,6 @@
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline.keyword\", \"query\":\"-meta.scireg.src.discipline.keyword:\\\"Network Monitoring\\\"\"}",
         "hide": 0,
         "includeAll": false,
-        "index": -1,
         "label": "Discipline",
         "multi": true,
         "name": "discipline",
@@ -4496,6 +4638,34 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Scope",
+        "multi": true,
+        "name": "country_scope",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
         "tagsQuery": "",
@@ -4536,8 +4706,5 @@
   },
   "timezone": "",
   "title": "Flows by Science Discipline",
-  "uid": "WNn1qyaiz",
-  "variables": {
-    "list": []
-  }
+  "uid": "WNn1qyaiz"
 }

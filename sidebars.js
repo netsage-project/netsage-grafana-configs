@@ -1,7 +1,7 @@
 module.exports = {
   someSidebar: {
-    Developer: ['develop', 'docker', 'plugin_submodules'],
-    Appendix: ['wizzy'],
+    Developer: ['develop', 'docker'],
+    Appendix: ['plugin_submodules', 'wizzy'],
     Testing: ['regression'],
     Documentation: ['documentation']
   },

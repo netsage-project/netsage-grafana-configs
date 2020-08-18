@@ -1,4 +1,4 @@
-FROM grafana/grafana:6.7.2-ubuntu
+FROM grafana/grafana:7.0.5-ubuntu
 
 USER root
 
@@ -7,7 +7,7 @@ RUN apt-get update && \
     pip3 install --upgrade pip && \
     apt-get clean && \
     mkdir /app  
-    
+
 ## Build base image
 COPY . /app
 
@@ -20,12 +20,12 @@ RUN cp /app/docker/00_preferences /etc/apt/preferences.d/ && \
 
 # Fix the Makefile scripts
 RUN  cd /app/docker; ./docker_fix_build.sh && \
-      /app/docker/setup_dashboard-docker.sh && \
-      cp /app/docker/docker-sync.sh /usr/bin/docker-sync && \
-      cp /app/docker/grafana_runner.sh  /usr/bin/grafana_runner && \
-      apt-get clean autoclean && \
-      apt-get autoremove --yes && \
-      rm -rf /var/lib/{apt,dpkg,cache,log}/
+    /app/docker/setup_dashboard.sh && \
+    cp /app/docker/docker-sync.sh /usr/bin/docker-sync && \
+    cp /app/docker/grafana_runner.sh  /usr/bin/grafana_runner && \
+    apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 WORKDIR /app 
 VOLUME /app

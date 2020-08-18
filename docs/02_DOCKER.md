@@ -44,7 +44,7 @@ docker-compose logs -f
 
 2. Configure the datasource
 
-You are now ready to configure your data source via the Grafana web interface. Go to http://localhost:3000/grafana/admin/ in your browser.
+You are now ready to configure your data source via the Grafana web interface. Go to http://localhost:3000/admin/ in your browser.
 
 4. Login with the default username `admin` and password `admin`
 5. Change the password or hit "skip" if prompted to change password
@@ -53,12 +53,12 @@ You are now ready to configure your data source via the Grafana web interface. G
 8. Enter the username and password in the `User` and `Password` fields **NOTE:** This is different from your grafana credentials
 9. Click `Save and Test`. It should provide imediate feedback if things are working or not.
 
-Assuming it worked, you can now navigate to the dashboards at http://localhost:3000/grafana and see data.
+Assuming it worked, you can now navigate to the dashboards at http://localhost:3000/ and see data.
 
 * The `/app` directory is a shared directory between the VM and host system. It is the top-level of the source tree and any changes made to the files on the host system will also happen in the VM and vice-versa. 
 * If you want to stop the container simply run `docker-compose stop`
 * If you want to startup the container again: `docker-compose up -d `
-* If you want to stop the container and erase the current state you can run: `docker-compose up -d; docker-compose rm `
+* If you want to stop the container and erase the current state you can run: `docker-compose down`
 
 ## 3. Using the docker container 
 
@@ -84,7 +84,7 @@ Sample output:
 docker exec -it 08bba311b08d bash
 ```
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
-08bba311b08d        netsage/dashboard:1.4.0   "/run.sh /bin/sh -c …"   19 minutes ago      Up 19 minutes       0.0.0.0:3000->3000/tcp   netsage-grafana-configs_dashboard_1
+08bba311b08d        netsage/dashboard:1.5.0   "/run.sh /bin/sh -c …"   19 minutes ago      Up 19 minutes       0.0.0.0:3000->3000/tcp   netsage-grafana-configs_dashboard_1
 ```
 
 You'll need the container ID which is the first column listed.
@@ -123,7 +123,7 @@ You can find more info on using wizzy [here](04_WIZZY.md)
 Every merge into a main release branch (ie. 1.4.0, 1.3.0, etc) commit will build a new image and replace the previous tag on docker hub. You should not have to worry about this on a day to day basis, but if someone made an architectural change, you may pull an updated version by doing the following.
 
 ```sh
-docker-compose stop; docker-compose rm 
+docker-compose down
 docker-compose pull dashboard
 ```
 
@@ -147,7 +147,7 @@ docker-compose build
 ```
 
 
-Please keep in mind that this will replace the upstream tag. This means that when I build a new image, it will name it `netsage/dashboard:1.4.0`. Once you are done testing, simply do a pull again by running the following command and it will reset back to the version from docker hub. 
+Please keep in mind that this will replace the upstream tag. This means that when I build a new image, it will name it `netsage/dashboard:1.5.0`. Once you are done testing, simply do a pull again by running the following command and it will reset back to the version from docker hub. 
 
 ```sh
 docker-compose pull dashboard

@@ -13,7 +13,7 @@ module.exports = {
         alt: "NetSage Logo",
         src: "img/logo.png",
       },
-      links: [
+      items: [
         {
           to: "docs/develop",
           activeBasePath: "docs",
@@ -36,7 +36,7 @@ module.exports = {
     footer: {
       style: "dark",
       links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} NetSage Built with Docusaurus.`,
     },
   },
   presets: [

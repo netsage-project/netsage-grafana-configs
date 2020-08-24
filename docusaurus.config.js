@@ -47,7 +47,7 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/netsage-project/netsage-grafana-configs/edit/1.5.0/",
+            "https://github.com/netsage-project/netsage-grafana-configs/edit/1.6.0/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

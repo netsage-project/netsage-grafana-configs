@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1596572701450,
+  "iteration": 1598549888305,
   "links": [],
   "panels": [
     {
@@ -490,7 +490,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -568,7 +568,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -917,7 +917,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -984,7 +984,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1047,7 +1047,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1331,7 +1331,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1609,7 +1609,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1857,7 +1857,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type",
+          "query": "meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type AND meta.sensor_id.keyword:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1926,8 +1926,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "Asia Pacific Advanced Network - Japan",
-          "value": "Asia Pacific Advanced Network - Japan"
+          "text": "European Organization for Nuclear Research",
+          "value": "European Organization for Nuclear Research"
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
@@ -1938,6 +1938,34 @@
         "name": "organization",
         "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Sensors",
+        "multi": true,
+        "name": "sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

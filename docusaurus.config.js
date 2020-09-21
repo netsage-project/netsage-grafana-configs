@@ -24,8 +24,8 @@ module.exports = {
           href: "https://netsage-project.github.io/netsage-pipeline/",
           label: "Pipeline Documentation",
           position: "left",
+          target: "_self",
         },
-        // {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: "https://github.com/netsage-project/netsage-grafana-configs",
           label: "GitHub",

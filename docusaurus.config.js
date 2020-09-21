@@ -15,17 +15,32 @@ module.exports = {
       },
       items: [
         {
-          to: "docs/develop",
-          activeBasePath: "docs",
-          label: "Developer",
+          label: "Pipeline Documentation",
           position: "left",
+          items: [
+            {
+              label: "Pipeline Documentation",
+              position: "left",
+              href:
+                "https://netsage-project.github.io/netsage-pipeline/docs/pipeline",
+              target: "_self",
+            },
+            {
+              label: "Docker Guide",
+              position: "left",
+              href:
+                "https://netsage-project.github.io/netsage-pipeline/docs/devel/docker",
+              target: "_self",
+            },
+          ],
         },
         {
-          href: "https://netsage-project.github.io/netsage-pipeline/",
-          label: "Pipeline Documentation",
-          target: "_self",
+          to: "docs/develop",
+          activeBasePath: "docs",
+          label: "Dashboard Documentation",
           position: "left",
         },
+
         {
           href: "https://github.com/netsage-project/netsage-grafana-configs",
           label: "GitHub",

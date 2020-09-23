@@ -15,17 +15,32 @@ module.exports = {
       },
       items: [
         {
-          to: "docs/develop",
-          activeBasePath: "docs",
-          label: "Developer",
-          position: "left",
-        },
-        {
-          href: "https://netsage-project.github.io/netsage-pipeline/",
           label: "Pipeline Documentation",
           position: "left",
+          items: [
+            {
+              label: "Pipeline Documentation",
+              position: "left",
+              href:
+                "https://netsage-project.github.io/netsage-pipeline/docs/pipeline",
+              target: "_self",
+            },
+            {
+              label: "Docker Guide",
+              position: "left",
+              href:
+                "https://netsage-project.github.io/netsage-pipeline/docs/devel/docker",
+              target: "_self",
+            },
+          ],
         },
-        // {to: 'blog', label: 'Blog', position: 'left'},
+        {
+          to: "docs/develop",
+          activeBasePath: "docs",
+          label: "Dashboard Documentation",
+          position: "left",
+        },
+
         {
           href: "https://github.com/netsage-project/netsage-grafana-configs",
           label: "GitHub",
@@ -47,7 +62,7 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/netsage-project/netsage-grafana-configs/edit/1.5.1/",
+            "https://github.com/netsage-project/netsage-grafana-configs/edit/1.6.0/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),

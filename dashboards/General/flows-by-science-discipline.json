@@ -518,7 +518,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -619,7 +619,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors && (meta.scireg.src.discipline.keyword:$discipline OR meta.scireg.dst.discipline.keyword:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -725,7 +725,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -826,7 +826,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2175,7 +2175,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         },
@@ -2263,7 +2263,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "B",
           "timeField": "start"
         },
@@ -2402,7 +2402,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "C",
           "timeField": "start"
         }
@@ -4036,7 +4036,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors && meta.scireg.src.discipline.keyword:$discipline AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -4304,7 +4304,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -4543,7 +4543,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND meta.country_scope.keyword:$country_scope",
+          "query": "meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -4641,7 +4641,7 @@
         "useTags": false
       },
       {
-        "allValue": null,
+        "allValue": "*",
         "current": {
           "selected": true,
           "text": "All",

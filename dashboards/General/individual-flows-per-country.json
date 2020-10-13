@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599169420939,
+  "iteration": 1602624261564,
   "links": [],
   "panels": [
     {
@@ -414,6 +414,11 @@
       "id": 2,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flows per Country</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination country.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds), retransmits and round trip time (RTT) for each flow. </center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -476,9 +481,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -504,7 +510,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -573,9 +579,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -606,7 +613,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -674,9 +681,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -702,7 +710,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -770,9 +778,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -798,7 +807,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -827,6 +836,11 @@
       "id": 7,
       "links": [],
       "mode": "markdown",
+      "options": {
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -838,7 +852,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -1007,7 +1022,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "alias": "",
@@ -1152,7 +1167,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1246,7 +1261,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1309,7 +1324,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1374,7 +1389,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1400,6 +1415,11 @@
       },
       "id": 12,
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:20px;\"><center>Summary Statistics</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1416,7 +1436,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1445,9 +1466,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1459,6 +1481,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:436",
               "fake": true,
               "field": "meta.protocol.keyword",
               "id": "3",
@@ -1471,6 +1494,7 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:437",
               "field": "start",
               "id": "2",
               "settings": {
@@ -1483,6 +1507,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:434",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -1490,7 +1515,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1517,6 +1542,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:510",
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
@@ -1525,6 +1551,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:511",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1548,7 +1575,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1577,9 +1605,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1625,7 +1654,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1685,7 +1714,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1714,9 +1744,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1762,7 +1793,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1829,6 +1860,11 @@
       },
       "id": 16,
       "mode": "html",
+      "options": {
+        "content": "<center style=\"margin-top:20px;\"><h1 style=\"margin-top:35px;\">Reverse Direction</h1></center>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1892,9 +1928,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1920,7 +1957,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1988,9 +2025,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2021,7 +2059,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2089,9 +2127,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2117,7 +2156,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2187,9 +2226,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2215,7 +2255,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2231,7 +2271,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -2400,7 +2441,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "alias": "",
@@ -2545,7 +2586,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2639,7 +2680,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2702,7 +2743,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2766,7 +2807,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2792,6 +2833,11 @@
       },
       "id": 25,
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:20px;\"><center> Reverse Summary Statistics</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2808,7 +2854,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2837,9 +2884,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2851,6 +2899,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:1029",
               "fake": true,
               "field": "meta.protocol.keyword",
               "id": "3",
@@ -2863,6 +2912,7 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:1030",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2875,6 +2925,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:1027",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -2882,7 +2933,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2909,6 +2960,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1103",
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
@@ -2917,6 +2969,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1104",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2940,7 +2993,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2969,9 +3023,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2983,6 +3038,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:1144",
               "fake": true,
               "field": "meta.src_port",
               "id": "3",
@@ -2995,6 +3051,7 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:1145",
               "field": "start",
               "id": "2",
               "settings": {
@@ -3007,6 +3064,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:1142",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -3014,7 +3072,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3041,6 +3099,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1218",
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
@@ -3049,6 +3108,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1219",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3072,7 +3132,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3101,9 +3162,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3115,6 +3177,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:1259",
               "fake": true,
               "field": "meta.dst_port",
               "id": "3",
@@ -3127,6 +3190,7 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:1260",
               "field": "start",
               "id": "2",
               "settings": {
@@ -3139,6 +3203,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:1257",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
@@ -3146,7 +3211,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type",
+          "query": "meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src  AND meta.sensor_id.keyword:$sensors AND meta.flow_type.keyword:$flow_type AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3173,6 +3238,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1333",
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
@@ -3181,6 +3247,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1334",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3212,6 +3279,11 @@
       "id": 29,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Country Flows</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -3221,7 +3293,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -3308,7 +3381,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -3371,7 +3444,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "((meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest) OR (meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src)) AND meta.sensor_id.keyword:$sensors",
+          "query": "((meta.src_country_name.keyword:$src AND meta.dst_country_name.keyword:$dest) OR (meta.src_country_name.keyword:$dest AND meta.dst_country_name.keyword:$src)) AND meta.sensor_id.keyword:$sensors AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3414,6 +3487,11 @@
       "id": 31,
       "links": [],
       "mode": "markdown",
+      "options": {
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3438,6 +3516,11 @@
       "id": 32,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3446,7 +3529,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "netsage"
@@ -3456,7 +3539,10 @@
       {
         "allValue": null,
         "current": {
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -3483,7 +3569,10 @@
       {
         "allValue": "*",
         "current": {
-          "text": "United States",
+          "selected": false,
+          "text": [
+            "United States"
+          ],
           "value": [
             "United States"
           ]
@@ -3510,8 +3599,10 @@
       {
         "allValue": "*",
         "current": {
-          "tags": [],
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -3538,7 +3629,10 @@
       {
         "allValue": "",
         "current": {
-          "text": "All",
+          "selected": true,
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -3561,6 +3655,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "yes",
+          "value": "yes"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Show Test Traffic",
+        "multi": false,
+        "name": "is_net_test",
+        "options": [
+          {
+            "selected": true,
+            "text": "yes",
+            "value": "yes"
+          },
+          {
+            "selected": false,
+            "text": "no",
+            "value": "no"
+          }
+        ],
+        "query": "yes,no",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },

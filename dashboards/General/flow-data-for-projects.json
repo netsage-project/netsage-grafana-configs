@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599776720161,
+  "iteration": 1602625186948,
   "links": [],
   "panels": [
     {
@@ -414,6 +414,11 @@
       "id": 48,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "\n<center><h1><b>Flow Data for Projects</b></h1></center>\n<center>This dashboard shows a summary of flow information for a selected project.</center>\n<center><b>Please note that flows with either end tagged as part of the project are included</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -457,9 +462,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -490,7 +496,7 @@
               "type": "sum"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -539,9 +545,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -568,7 +575,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -597,6 +604,11 @@
       "id": 39,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:35px;\"><center>Top Endpoint Pairs for $project_type</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -608,7 +620,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -833,7 +846,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -917,7 +930,7 @@
               "type": "max"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -986,7 +999,7 @@
               "type": "sum"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1050,7 +1063,7 @@
               "type": "avg"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1076,6 +1089,11 @@
       "id": 36,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:35px;\"><center>Summary of Organizations for $project_type</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1087,7 +1105,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -1263,7 +1282,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1334,7 +1353,7 @@
               "type": "max"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1365,7 +1384,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -1541,7 +1561,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1612,7 +1632,7 @@
               "type": "max"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1656,6 +1676,11 @@
       "id": 51,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $project_type flows</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1667,7 +1692,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -1797,7 +1823,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1860,7 +1886,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors",
+          "query": "(meta.scireg.src.projects.project_name.keyword:$project_type OR meta.scireg.dst.projects.project_name.keyword:$project_type) AND meta.sensor_id.keyword:$sensors (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1887,6 +1913,11 @@
       "id": 44,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1894,7 +1925,7 @@
       "type": "text"
     }
   ],
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1929,8 +1960,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "European Organization for Nuclear Research",
-          "value": "European Organization for Nuclear Research"
+          "text": "CERN - European Organization for Nuclear Research",
+          "value": "CERN - European Organization for Nuclear Research"
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\":\"meta.scireg.src.projects.project_name:$project_type\", \"size\": 10000000}",
@@ -1955,7 +1986,9 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "All",
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -1978,6 +2011,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "yes",
+          "value": "yes"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Show Test Traffic",
+        "multi": false,
+        "name": "is_net_test",
+        "options": [
+          {
+            "selected": true,
+            "text": "yes",
+            "value": "yes"
+          },
+          {
+            "selected": false,
+            "text": "no",
+            "value": "no"
+          }
+        ],
+        "query": "yes,no",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },

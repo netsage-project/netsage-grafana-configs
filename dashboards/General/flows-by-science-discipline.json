@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599164617067,
+  "iteration": 1602621089681,
   "links": [],
   "panels": [
     {
@@ -415,6 +415,11 @@
       "id": 2,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows information related to science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center>For the map, only the top 100 pairs of organizations with at least one end tagged in the science registry are shown.  Larger dots indicate larger flows.</center>\n<center>The Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and their associated top five destination organizations, with thicker lines for larger flow volumes.</center>\n<center><b>For the summary table, if only one sampled flow was detected, the rate will be zero.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -485,9 +490,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -591,9 +597,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -692,9 +699,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -798,9 +806,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -906,6 +915,10 @@
       },
       "hex_values": [],
       "id": 7,
+      "in_field_four": "Volume",
+      "in_field_one": "Discipline",
+      "in_field_three": "Resource",
+      "in_field_two": "To",
       "legend": {
         "legend_colors": [],
         "show": true
@@ -913,6 +926,11 @@
       "light_map_url": "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png",
       "links": [],
       "max_total": 0,
+      "num_lines": "100",
+      "out_field_four": "Volume",
+      "out_field_one": "Discipline",
+      "out_field_three": "Resource",
+      "out_field_two": "To",
       "parsed_data": [],
       "rgb_values": [],
       "scales": [
@@ -2159,7 +2177,7 @@
               "type": "terms"
             }
           ],
-          "hide": false,
+          "hide": true,
           "metrics": [
             {
               "$$hashKey": "object:187",
@@ -2247,7 +2265,7 @@
               "type": "terms"
             }
           ],
-          "hide": false,
+          "hide": true,
           "metrics": [
             {
               "$$hashKey": "object:187",
@@ -2270,7 +2288,7 @@
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:209",
+              "$$hashKey": "object:189",
               "fake": true,
               "field": "meta.scireg.src.discipline.keyword",
               "id": "4",
@@ -2283,9 +2301,9 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:210",
+              "$$hashKey": "object:190",
               "fake": true,
-              "field": "meta.scireg.src.org_name.keyword",
+              "field": "meta.src_preferred_org.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -2296,12 +2314,13 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:211",
+              "$$hashKey": "object:191",
               "fake": true,
-              "field": "meta.src_location.lat",
+              "field": "meta.scireg.src.resource.keyword",
               "id": "5",
               "settings": {
                 "min_doc_count": 1,
+                "missing": "N/A",
                 "order": "desc",
                 "orderBy": "1",
                 "size": "0"
@@ -2309,9 +2328,9 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:212",
+              "$$hashKey": "object:192",
               "fake": true,
-              "field": "meta.src_location.lon",
+              "field": "meta.src_preferred_location.lat",
               "id": "6",
               "settings": {
                 "min_doc_count": 1,
@@ -2322,9 +2341,9 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:213",
+              "$$hashKey": "object:193",
               "fake": true,
-              "field": "meta.scireg.dst.org_name.keyword",
+              "field": "meta.src_preferred_location.lon",
               "id": "7",
               "settings": {
                 "min_doc_count": 1,
@@ -2335,9 +2354,9 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:214",
+              "$$hashKey": "object:194",
               "fake": true,
-              "field": "meta.dst_location.lat",
+              "field": "meta.dst_preferred_org.keyword",
               "id": "8",
               "settings": {
                 "min_doc_count": 1,
@@ -2348,35 +2367,37 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:215",
+              "$$hashKey": "object:195",
               "fake": true,
-              "field": "meta.dst_location.lon",
-              "id": "9",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:216",
-              "fake": true,
-              "field": "meta.scireg.src.resource.keyword",
+              "field": "meta.scireg.dst.resource.keyword",
               "id": "10",
               "settings": {
                 "min_doc_count": 1,
+                "missing": "N/A",
                 "order": "desc",
                 "orderBy": "1",
-                "size": "0"
+                "size": "10"
               },
               "type": "terms"
             },
             {
-              "$$hashKey": "object:217",
-              "field": "meta.scireg.dst.resource.keyword",
-              "id": "2",
+              "$$hashKey": "object:196",
+              "fake": true,
+              "field": "meta.dst_preferred_location.lat",
+              "id": "11",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:197",
+              "fake": true,
+              "field": "meta.dst_preferred_location.lon",
+              "id": "9",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
@@ -2386,10 +2407,10 @@
               "type": "terms"
             }
           ],
-          "hide": true,
+          "hide": false,
           "metrics": [
             {
-              "$$hashKey": "object:207",
+              "$$hashKey": "object:187",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -2409,7 +2430,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Science Disciplines",
+      "title": "Flows between Top 100 by Volume",
       "to_Byte": false,
       "to_si": 1000000000,
       "tooltip": {
@@ -2439,6 +2460,11 @@
       "id": 8,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin: 20px;\"><center>Top Science Talkers</center></h3>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2566,7 +2592,7 @@
         ]
       },
       "custom_hover": " ",
-      "data_type": "",
+      "data_type": "table",
       "datasource": null,
       "description": "",
       "docs_data": [],
@@ -2593,7 +2619,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 27,
+        "h": 31,
         "w": 24,
         "x": 0,
         "y": 37
@@ -2652,7 +2678,11 @@
         "#65aef6"
       ],
       "id": 9,
-      "label_nodes": [],
+      "label_nodes": [
+        "Source",
+        "Source Discipline",
+        "Destination"
+      ],
       "legend": {
         "legend_colors": [],
         "show": true
@@ -3953,9 +3983,9 @@
         "Destination"
       ],
       "table_editor_option_nodes": [
-        "meta.scireg.src.org_name.keyword",
+        "meta.src_preferred_org.keyword",
         "meta.scireg.src.discipline.keyword",
-        "meta.scireg.dst.org_name.keyword"
+        "meta.dst_preferred_org.keyword"
       ],
       "table_editor_unitFormats": "kbn.getUnitFormats()",
       "table_editor_unitFormats_TEMP": [
@@ -4063,11 +4093,16 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 68
       },
       "id": 10,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h1><center>Summary of All Disciplines</center></h1>\n<center>Only flows where source or destination has been tagged with a science discipline <br>\nfrom the Science Registry <i>and</i> were seen by the selected sensor(s) are counted.\n</center>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -4079,7 +4114,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -4219,7 +4255,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 71
       },
       "hideTimeOverride": false,
       "id": 11,
@@ -4233,7 +4269,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -4318,7 +4354,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -4458,7 +4495,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 84
+        "y": 88
       },
       "hideTimeOverride": false,
       "id": 14,
@@ -4472,7 +4509,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -4565,18 +4602,23 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 101
+        "y": 105
       },
       "id": 13,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  console.log('hi');\n</script>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": false,
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "flow",

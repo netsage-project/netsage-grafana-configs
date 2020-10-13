@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599776886314,
+  "iteration": 1602619981759,
   "links": [],
   "panels": [
     {
@@ -414,6 +414,11 @@
       "id": 2,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<center><h1><b>Flow Data</b></h1></center>\n<center>This dashboard provides flow data for the top ten sources and destinations by volume and rate.</center>\n<center>Click on an organization name in one of the tables to see the flow data dashboard for that organization.</center>\n<center><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center>The slope graph below shows the top pairs of organizations by volume.  Darker lines correspond with larger volume.</center>\n<center>All times are displayed in browser local time.</center>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -436,6 +441,11 @@
       "id": 3,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h1><center>Top Sources</center></h1>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -446,7 +456,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -567,7 +578,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -622,7 +633,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -637,7 +648,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -737,7 +749,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -783,7 +795,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -810,6 +822,11 @@
       "id": 8,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h1 style=\"margin-top:35px;\"><center>Top Destinations</center></h1>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -820,7 +837,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": "left"
+            "align": "left",
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -925,7 +943,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -980,7 +998,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -995,7 +1013,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1095,7 +1114,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1141,7 +1160,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1168,6 +1187,11 @@
       "id": 13,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h1 style=\"margin-top:35px;\"><center>Top Pairs</center></h1>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1178,7 +1202,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1352,7 +1377,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1437,7 +1462,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1509,7 +1534,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$Sensors AND -meta.src_organization.keyword:\"\" AND -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1537,13 +1562,18 @@
       "id": 16,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": false,
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "flow",
@@ -1555,7 +1585,9 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "All",
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -1583,7 +1615,10 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "text": "All",
+          "tags": [],
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -1606,6 +1641,35 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "yes",
+          "value": "yes"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Show Test Traffic",
+        "multi": false,
+        "name": "is_net_test",
+        "options": [
+          {
+            "selected": false,
+            "text": "yes",
+            "value": "yes"
+          },
+          {
+            "selected": true,
+            "text": "no",
+            "value": "no"
+          }
+        ],
+        "query": "yes,no",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },

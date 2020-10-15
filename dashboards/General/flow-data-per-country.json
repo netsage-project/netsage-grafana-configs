@@ -544,7 +544,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -654,7 +654,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -851,7 +851,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1018,7 +1018,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1147,7 +1147,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1257,7 +1257,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1447,7 +1447,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1604,7 +1604,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1916,7 +1916,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$Sensors  AND ( meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country ) AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.sensor_id.keyword:$Sensors  AND ( meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country ) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2044,7 +2044,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3498,7 +3498,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.dst_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.src_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -4930,7 +4930,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "meta.src_country_name.keyword:$Country AND meta.sensor_id.keyword:$Sensors AND -meta.dst_country_name.keyword:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -5036,7 +5036,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -5176,7 +5176,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -5315,7 +5315,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -5576,7 +5576,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND (meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
+          "query": "(meta.src_country_name.keyword:$Country OR meta.dst_country_name.keyword:$Country) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }

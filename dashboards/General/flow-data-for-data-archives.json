@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599776552149,
+  "iteration": 1602620748642,
   "links": [],
   "panels": [
     {
@@ -414,6 +414,11 @@
       "id": 2,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<center><h1><b>Flow Data for Data Archives</b></h1></center>\n<center>This dashboard provides flow data for the top ten source and destination institutions by volume, rate, and retransmits for the data archives.</center>\n<center>Click on an organization name to see the flow data dashboard for that organization.</center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -436,6 +441,11 @@
       "id": 3,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<center><h1>Top Sources</h1></center>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -445,7 +455,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -571,7 +582,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -626,7 +637,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -640,7 +651,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -766,7 +778,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -813,7 +825,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -827,7 +839,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -969,7 +982,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1053,7 +1066,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1094,6 +1107,11 @@
       "id": 10,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<center><h1 style=\"margin-top:35px;\">Top Destinations</h1></center>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1103,7 +1121,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1229,7 +1248,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1284,7 +1303,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1298,7 +1317,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1424,7 +1444,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1471,7 +1491,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1485,7 +1505,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1627,7 +1648,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1698,7 +1719,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1737,6 +1758,11 @@
       "id": 17,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<br>\n<center><h1 style=\"margin-top:35px;\">Top Pairs</h1></center>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1746,7 +1772,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1971,7 +1998,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2100,7 +2127,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2141,13 +2168,18 @@
       "id": 19,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": "",
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "netsage",
@@ -2158,6 +2190,7 @@
       {
         "allValue": "",
         "current": {
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -2184,8 +2217,9 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "tags": [],
-          "text": "All",
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
@@ -2208,6 +2242,35 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "yes",
+          "value": "yes"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Show Test Traffic",
+        "multi": false,
+        "name": "is_net_test",
+        "options": [
+          {
+            "selected": true,
+            "text": "yes",
+            "value": "yes"
+          },
+          {
+            "selected": false,
+            "text": "no",
+            "value": "no"
+          }
+        ],
+        "query": "yes,no",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },

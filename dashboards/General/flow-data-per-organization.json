@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602621204055,
+  "iteration": 1602793687200,
   "links": [],
   "panels": [
     {
@@ -540,7 +540,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -839,7 +839,7 @@
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -856,6 +856,7 @@
             "excludeByName": {},
             "indexByName": {},
             "renameByName": {
+              "Count": "# Flows",
               "Max": "Largest Flow",
               "Sum": "Total Volume",
               "Unique Count": "# Flows",
@@ -1032,7 +1033,7 @@
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.src_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.dst_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -1050,6 +1051,7 @@
             "indexByName": {},
             "renameByName": {
               "Average": "",
+              "Count": "# Flows",
               "Max": "Peak",
               "Unique Count": "# Flows",
               "meta.dst_organization.keyword": "Destination Organization"
@@ -1176,7 +1178,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -1467,7 +1469,7 @@
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -1484,6 +1486,7 @@
             "excludeByName": {},
             "indexByName": {},
             "renameByName": {
+              "Count": "# Flows",
               "Max": "Largest Flow",
               "Sum": "Total Volume",
               "Unique Count": "# Flows",
@@ -1652,7 +1655,7 @@
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.dst_organization.keyword:$Organization AND meta.sensor_id.keyword:$Sensors -meta.src_organization.keyword:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -1670,6 +1673,7 @@
             "indexByName": {},
             "renameByName": {
               "Average": "",
+              "Count": "# Flows",
               "Max": "Peak",
               "Unique Count": "# Flows",
               "meta.src_organization.keyword": "Source Organization"
@@ -1788,7 +1792,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -1862,7 +1866,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "1",
+                "orderBy": "_count",
                 "size": "5"
               },
               "type": "terms"
@@ -1886,7 +1890,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -2002,7 +2006,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "1",
+                "orderBy": "_count",
                 "size": "5"
               },
               "type": "terms"
@@ -2026,7 +2030,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -2141,7 +2145,7 @@
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "1",
+                "orderBy": "_count",
                 "size": "5"
               },
               "type": "terms"
@@ -2165,7 +2169,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -2398,7 +2402,7 @@
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "(meta.src_organization.keyword:$Organization OR meta.dst_organization.keyword:$Organization) AND meta.sensor_id.keyword:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)  AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test)",
@@ -2415,6 +2419,7 @@
             "excludeByName": {},
             "indexByName": {},
             "renameByName": {
+              "Count": "# Flows",
               "Max values.bits_per_second": "Fastest Flow",
               "Max values.num_bits": "Largest Flow",
               "Sum": "Total Volume",

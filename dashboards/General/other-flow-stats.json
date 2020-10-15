@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602787462541,
+  "iteration": 1602791405200,
   "links": [],
   "panels": [
     {
@@ -507,7 +507,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -1829,18 +1829,20 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:49",
               "fake": true,
               "field": "meta.protocol.keyword",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "1",
+                "orderBy": "_count",
                 "size": "5"
               },
               "type": "terms"
             },
             {
+              "$$hashKey": "object:50",
               "field": "start",
               "id": "2",
               "settings": {
@@ -1853,11 +1855,12 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:47",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -1887,6 +1890,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:123",
           "decimals": null,
           "format": "short",
           "label": "Number of Flows",
@@ -1896,6 +1900,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:124",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1964,18 +1969,20 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:284",
               "fake": true,
               "field": "meta.src_port",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "1",
+                "orderBy": "_count",
                 "size": "5"
               },
               "type": "terms"
             },
             {
+              "$$hashKey": "object:285",
               "field": "start",
               "id": "2",
               "settings": {
@@ -1988,11 +1995,12 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:282",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "-meta.src_port:0 AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -2022,6 +2030,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:358",
           "decimals": null,
           "format": "short",
           "label": "Number of Flows",
@@ -2031,6 +2040,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:359",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2099,18 +2109,20 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:405",
               "fake": true,
               "field": "meta.dst_port",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
-                "orderBy": "1",
+                "orderBy": "_count",
                 "size": "5"
               },
               "type": "terms"
             },
             {
+              "$$hashKey": "object:406",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2123,13 +2135,12 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:403",
               "field": "meta.id.keyword",
               "id": "1",
               "meta": {},
-              "settings": {
-                "precision_threshold": null
-              },
-              "type": "cardinality"
+              "settings": {},
+              "type": "count"
             }
           ],
           "query": "-meta.dst_port:0 AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -2159,6 +2170,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:479",
           "decimals": null,
           "format": "short",
           "label": "Number of Flows",
@@ -2168,6 +2180,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:480",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2244,7 +2257,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Unique Count"
+              "options": "Count"
             },
             "properties": [
               {
@@ -2358,7 +2371,7 @@
               "id": "9",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND (!(_exists_:meta.scireg.src.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -2459,7 +2472,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Unique Count"
+              "options": "Count"
             },
             "properties": [
               {
@@ -2573,7 +2586,7 @@
               "id": "9",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND (!(_exists_:meta.scireg.dst.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -2687,7 +2700,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Unique Count"
+              "options": "Count"
             },
             "properties": [
               {
@@ -2786,7 +2799,7 @@
               "id": "7",
               "meta": {},
               "settings": {},
-              "type": "cardinality"
+              "type": "count"
             }
           ],
           "query": "meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
@@ -2853,6 +2866,7 @@
         {
           "bucketAggs": [
             {
+              "$$hashKey": "object:1039",
               "fake": true,
               "field": "meta.sensor_id.keyword",
               "id": "3",
@@ -2865,6 +2879,7 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:1040",
               "field": "start",
               "id": "2",
               "settings": {
@@ -2877,6 +2892,7 @@
           ],
           "metrics": [
             {
+              "$$hashKey": "object:1037",
               "field": "select field",
               "id": "1",
               "type": "count"
@@ -2907,6 +2923,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1109",
           "decimals": null,
           "format": "short",
           "label": "Number of Flows",
@@ -2916,6 +2933,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1110",
           "format": "short",
           "label": null,
           "logBase": 1,

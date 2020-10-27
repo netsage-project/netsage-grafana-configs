@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602793578021,
+  "iteration": 1603828567747,
   "links": [],
   "panels": [
     {
@@ -425,6 +425,162 @@
       "type": "text"
     },
     {
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a",
+        "#4040a0"
+      ],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 23,
+        "x": 1,
+        "y": 4
+      },
+      "hideTimeOverride": true,
+      "id": 30,
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:268",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:269",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "pluginVersion": "7.2.1",
+      "polystat": {
+        "animationSpeed": 2500,
+        "columnAutoSize": true,
+        "columns": "",
+        "defaultClickThrough": "",
+        "defaultClickThroughNewTab": false,
+        "defaultClickThroughSanitize": false,
+        "displayLimit": 100,
+        "fontAutoColor": false,
+        "fontAutoScale": true,
+        "fontColor": "rgba(0, 0, 0, 0)",
+        "fontSize": 12,
+        "fontType": "Roboto",
+        "globalDecimals": 1,
+        "globalDisplayMode": "all",
+        "globalDisplayTextTriggeredEmpty": "OK",
+        "globalOperatorName": "current",
+        "globalThresholds": [
+          {
+            "$$hashKey": "object:283",
+            "color": "#d44a3a",
+            "state": 2,
+            "value": 0
+          },
+          {
+            "$$hashKey": "object:290",
+            "color": "#299c46",
+            "state": 0,
+            "value": 1
+          }
+        ],
+        "globalUnitFormat": "short",
+        "gradientEnabled": false,
+        "hexagonSortByDirection": 1,
+        "hexagonSortByField": "name",
+        "maxMetrics": 0,
+        "polygonBorderColor": "#ffffffff",
+        "polygonBorderSize": 1,
+        "polygonGlobalFillColor": "#E0B400",
+        "radius": "",
+        "radiusAutoSize": true,
+        "rowAutoSize": true,
+        "rows": "",
+        "shape": "square",
+        "tooltipDisplayMode": "all",
+        "tooltipDisplayTextTriggeredEmpty": "OK",
+        "tooltipFontSize": 12,
+        "tooltipFontType": "Roboto",
+        "tooltipPrimarySortDirection": 2,
+        "tooltipPrimarySortField": "thresholdLevel",
+        "tooltipSecondarySortDirection": 2,
+        "tooltipSecondarySortField": "value",
+        "tooltipTimestampEnabled": false,
+        "valueEnabled": false
+      },
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "savedComposites": [],
+      "savedOverrides": [],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:247",
+              "fake": true,
+              "field": "meta.sensor_id.keyword",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "missing": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:128",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "3d",
+                "min_doc_count": "0",
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "$$hashKey": "object:126",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id.keyword:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "timeFrom": "60d",
+      "timeShift": null,
+      "title": "Flow Sensor Health (last 3d)",
+      "transparent": true,
+      "type": "grafana-polystat-panel",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:271",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ]
+    },
+    {
       "cacheTimeout": null,
       "datasource": "netsage",
       "description": "",
@@ -456,10 +612,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 3,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 6
       },
       "id": 3,
       "interval": "1h",
@@ -553,7 +709,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 8
+        "y": 9
       },
       "id": 4,
       "interval": null,
@@ -688,7 +844,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 8
+        "y": 9
       },
       "id": 5,
       "mode": "html",
@@ -763,7 +919,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 8
+        "y": 9
       },
       "id": 6,
       "interval": null,
@@ -834,7 +990,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 9
       },
       "id": 7,
       "mode": "html",
@@ -911,7 +1067,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 10
+        "y": 11
       },
       "id": 8,
       "interval": null,
@@ -983,7 +1139,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 10
+        "y": 11
       },
       "id": 9,
       "mode": "html",
@@ -1059,7 +1215,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 10
+        "y": 11
       },
       "id": 10,
       "interval": null,
@@ -1132,7 +1288,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 11
       },
       "id": 11,
       "mode": "html",
@@ -1209,7 +1365,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 12
+        "y": 13
       },
       "id": 12,
       "interval": null,
@@ -1281,7 +1437,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 12
+        "y": 13
       },
       "id": 13,
       "mode": "html",
@@ -1357,7 +1513,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 12
+        "y": 13
       },
       "id": 14,
       "interval": "",
@@ -1429,7 +1585,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 12
+        "y": 13
       },
       "id": 15,
       "mode": "html",
@@ -1506,7 +1662,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 14
+        "y": 15
       },
       "id": 16,
       "interval": "",
@@ -1582,7 +1738,7 @@
         "h": 3,
         "w": 7,
         "x": 5,
-        "y": 14
+        "y": 15
       },
       "id": 17,
       "mode": "html",
@@ -1657,7 +1813,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 14
+        "y": 15
       },
       "id": 18,
       "interval": null,
@@ -1732,7 +1888,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 15
       },
       "id": 19,
       "mode": "html",
@@ -1794,7 +1950,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 20,
@@ -1934,7 +2090,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 21,
@@ -2074,7 +2230,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 17
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 22,
@@ -2304,7 +2460,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "hideTimeOverride": false,
       "id": 27,
@@ -2519,7 +2675,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 26
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -2731,7 +2887,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 40
       },
       "hideTimeOverride": false,
       "id": 23,
@@ -2831,7 +2987,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 24,
@@ -2960,7 +3116,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 61
       },
       "id": 25,
       "links": [],

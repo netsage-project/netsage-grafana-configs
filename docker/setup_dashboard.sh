@@ -21,11 +21,14 @@ npm install -g wizzy
 ### Start plugin installs ###
 cd /app/plugins
 
+## BEGIN PLUGIN INSTALL ##
+
 #Install carpetplot //using forked version until PR is accepted
 #grafana-cli plugins install marcusolsson-hourly-heatmap-panel
 grafana-cli --pluginUrl "https://github.com/netsage-project/grafana-hourly-heatmap-panel/archive/master.zip" plugins install marcusolsson-hourly-heatmap-panel
 
-## BEGIN PLUGIN INSTALL ##
+# Install polystat
+grafana-cli plugins install grafana-polystat-panel
 
 #Install tsds datasource plugin
 cd tsds-grafana

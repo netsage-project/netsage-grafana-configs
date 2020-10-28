@@ -16,11 +16,46 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1602785517452,
+  "iteration": 1603842860056,
   "links": [],
   "panels": [
     {
       "__netsage_template": "navigation",
+      "array_option_1": [],
+      "array_option_2": [],
+      "array_option_3": [],
+      "array_option_4": [],
+      "choices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "cycleview": true,
+      "dashboardselection": true,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "grafanafavorites": true,
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 0,
+        "y": 0
+      },
+      "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
+      "id": 1,
       "link_text": [
         "What is the current state of the network?",
         "What are the top sources/destinations of flows?",
@@ -55,38 +90,11 @@
         "/grafana/d/CJC1FFhmz/other-flow-stats",
         "/grafana/d/VuuXrnPWz/flow-analysis"
       ],
-      "choices": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "cycleview": true,
-      "dashboardselection": true,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "grafanafavorites": true,
-      "gridPos": {
-        "h": 3,
-        "w": 2,
-        "x": 0,
-        "y": 0
-      },
-      "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
-      "id": 1,
       "links": [],
+      "option_1": "netsage",
+      "option_2": "netsagenavigation",
+      "option_3": "plugin",
+      "option_4": 123,
       "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
       "sidebar": true,
@@ -166,7 +174,7 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 2,
+        "x": 5,
         "y": 5
       },
       "id": 45,
@@ -271,7 +279,7 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 7,
+        "x": 10,
         "y": 5
       },
       "id": 35,
@@ -381,7 +389,7 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 12,
+        "x": 15,
         "y": 5
       },
       "id": 21,
@@ -441,111 +449,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Avg Rate",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "decimals": 1,
-          "mappings": [
-            {
-              "$$hashKey": "object:254",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
-            }
-          ],
-          "nullValueMode": "connected",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              },
-              {
-                "color": "light-blue",
-                "value": 0
-              },
-              {
-                "color": "light-blue",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 5,
-        "x": 17,
-        "y": 5
-      },
-      "id": 23,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.2.1",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:206",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:204",
-              "field": "values.tcp_rtt_avg",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Avg RTT",
       "transparent": true,
       "type": "stat"
     },
@@ -675,30 +578,6 @@
               {
                 "id": "custom.width",
                 "value": 115
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "RTT"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "ms"
-              },
-              {
-                "id": "decimals",
-                "value": 1
-              },
-              {
-                "id": "noValue",
-                "value": "-"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
               }
             ]
           },
@@ -897,14 +776,6 @@
               "$$hashKey": "object:692",
               "field": "values.tcp_rexmit_pkts",
               "id": "34",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "$$hashKey": "object:693",
-              "field": "values.tcp_rtt_min",
-              "id": "35",
               "meta": {},
               "settings": {},
               "type": "avg"
@@ -1656,7 +1527,7 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 2,
+        "x": 4,
         "y": 70
       },
       "id": 26,
@@ -1761,7 +1632,7 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 7,
+        "x": 9,
         "y": 70
       },
       "id": 47,
@@ -1871,7 +1742,7 @@
       "gridPos": {
         "h": 3,
         "w": 5,
-        "x": 12,
+        "x": 14,
         "y": 70
       },
       "id": 48,
@@ -1931,111 +1802,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Avg Rate",
-      "transparent": true,
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "decimals": 1,
-          "mappings": [
-            {
-              "$$hashKey": "object:2172",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
-            }
-          ],
-          "nullValueMode": "connected",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue",
-                "value": null
-              },
-              {
-                "color": "light-blue",
-                "value": 0
-              },
-              {
-                "color": "light-blue",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 5,
-        "x": 17,
-        "y": 70
-      },
-      "id": 50,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "value",
-        "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
-        },
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.2.1",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:2124",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "metrics": [
-            {
-              "$$hashKey": "object:2122",
-              "field": "values.tcp_rtt_avg",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            }
-          ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Avg RTT",
       "transparent": true,
       "type": "stat"
     },
@@ -2152,30 +1918,6 @@
               {
                 "id": "custom.width",
                 "value": 115
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "RTT"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "ms"
-              },
-              {
-                "id": "decimals",
-                "value": 1
-              },
-              {
-                "id": "noValue",
-                "value": "-"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
               }
             ]
           },
@@ -2362,14 +2104,6 @@
               "$$hashKey": "object:1107",
               "field": "values.tcp_rexmit_pkts",
               "id": "34",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "$$hashKey": "object:1108",
-              "field": "values.tcp_rtt_min",
-              "id": "35",
               "meta": {},
               "settings": {},
               "type": "avg"

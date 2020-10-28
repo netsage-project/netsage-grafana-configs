@@ -1,7 +1,7 @@
 ---
 id: documentation
-title: Docusaurus 
-sidebar_label: Docusaurus
+title: Documentation Guide
+sidebar_label: Documentation Guide
 ---
 
 # Website

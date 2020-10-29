@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599169275675,
+  "iteration": 1603826989158,
   "links": [],
   "panels": [
     {
@@ -414,6 +414,11 @@
       "id": 34,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds), retransmits and round trip time (RTT) for the top 1000 largest flows.</center>\n<center>Click on the timestamp of an individual flow to show more detailed information about that flow.</center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -484,9 +489,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -588,9 +594,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -697,9 +704,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -801,9 +809,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -858,6 +867,11 @@
       "id": 52,
       "links": [],
       "mode": "markdown",
+      "options": {
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -869,7 +883,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -996,6 +1011,16 @@
               {
                 "id": "unit",
                 "value": "dateTimeAsIso"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}&from=${__from}&to=${__to}"
+                  }
+                ]
               }
             ]
           },
@@ -1022,6 +1047,18 @@
                 "value": 150
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -1042,7 +1079,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "alias": "",
@@ -1119,6 +1156,19 @@
               "id": "33",
               "settings": {
                 "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:115",
+              "fake": true,
+              "field": "_id",
+              "id": "36",
+              "settings": {
+                "min_doc_count": "1",
                 "order": "desc",
                 "orderBy": "_term",
                 "size": "0"
@@ -1210,7 +1260,22 @@
               "end": true,
               "meta.id.keyword": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "Average values.duration": 10,
+              "Average values.num_packets": 9,
+              "Average values.tcp_rexmit_pkts": 11,
+              "Average values.tcp_rtt_min": 12,
+              "Max": 8,
+              "Sum": 7,
+              "_id": 13,
+              "end": 2,
+              "meta.dst_ip.keyword": 6,
+              "meta.dst_organization.keyword": 5,
+              "meta.id.keyword": 0,
+              "meta.src_ip.keyword": 4,
+              "meta.src_organization.keyword": 3,
+              "start": 1
+            },
             "renameByName": {
               "Average values.duration": "Duration",
               "Average values.num_packets": "",
@@ -1218,6 +1283,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
+              "_id": "Flow ID",
               "end": "",
               "meta.dst_ip.keyword": "Destination Subnet",
               "meta.dst_organization.keyword": "Destination Organization",
@@ -1444,6 +1510,11 @@
       },
       "id": 37,
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:20px;\"><center>Summary Statistics</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1460,7 +1531,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1489,9 +1561,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1592,7 +1665,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1621,9 +1695,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1724,7 +1799,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -1753,9 +1829,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1863,6 +1940,11 @@
       },
       "id": 62,
       "mode": "html",
+      "options": {
+        "content": "<center style=\"margin-top:35px;\"><h1>Reverse Direction</h1></center>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1933,9 +2015,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2037,9 +2120,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2146,9 +2230,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2250,9 +2335,10 @@
           ],
           "fields": "",
           "values": false
-        }
+        },
+        "textMode": "auto"
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2294,7 +2380,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -2321,6 +2408,16 @@
               {
                 "id": "unit",
                 "value": "dateTimeAsIso"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}&from=${__from}&to=${__to}"
+                  }
+                ]
               }
             ]
           },
@@ -2451,6 +2548,18 @@
                 "value": 150
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -2471,7 +2580,7 @@
           }
         ]
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "alias": "",
@@ -2548,6 +2657,19 @@
               "id": "33",
               "settings": {
                 "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:355",
+              "fake": true,
+              "field": "_id",
+              "id": "36",
+              "settings": {
+                "min_doc_count": "1",
                 "order": "desc",
                 "orderBy": "_term",
                 "size": "0"
@@ -2639,7 +2761,22 @@
               "end": true,
               "meta.id.keyword": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "Average values.duration": 10,
+              "Average values.num_packets": 9,
+              "Average values.tcp_rexmit_pkts": 11,
+              "Average values.tcp_rtt_min": 12,
+              "Max": 8,
+              "Sum": 7,
+              "_id": 13,
+              "end": 2,
+              "meta.dst_ip.keyword": 6,
+              "meta.dst_organization.keyword": 5,
+              "meta.id.keyword": 0,
+              "meta.src_ip.keyword": 4,
+              "meta.src_organization.keyword": 3,
+              "start": 1
+            },
             "renameByName": {
               "Average values.duration": "Duration",
               "Average values.num_packets": "",
@@ -2647,6 +2784,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
+              "_id": "Flow ID",
               "meta.dst_ip.keyword": "Destination Subnet",
               "meta.dst_organization.keyword": "Destination Organization",
               "meta.src_ip.keyword": "Source Subnet",
@@ -2871,6 +3009,11 @@
       },
       "id": 58,
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:20px;\"><center> Reverse Summary Statistics</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2887,7 +3030,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -2916,9 +3060,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3019,7 +3164,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3048,9 +3194,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3151,7 +3298,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -3180,9 +3328,10 @@
       "links": [],
       "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "alertThreshold": true
       },
       "percentage": false,
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3291,6 +3440,11 @@
       "id": 73,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Organization Flows</center></h3>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -3300,7 +3454,8 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null
+            "align": null,
+            "filterable": false
           },
           "mappings": [],
           "thresholds": {
@@ -3396,7 +3551,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.0.3",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "bucketAggs": [
@@ -3504,6 +3659,11 @@
       "id": 53,
       "links": [],
       "mode": "markdown",
+      "options": {
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3528,6 +3688,11 @@
       "id": 32,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3536,7 +3701,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "netsage"

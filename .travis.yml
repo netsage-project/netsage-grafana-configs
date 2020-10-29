@@ -30,8 +30,7 @@ jobs:
   - stage: Deploy Docs
     if: type != pull_request and branch = '1.6.0'
     script:
-    - yarn install
     - git config --global user.email "${GH_EMAIL}"
     - git config --global user.name "${GH_NAME}"
     - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
-    - yarn && GIT_USER="${GH_NAME}" yarn deploy
+    - cd website && yarn && GIT_USER="${GH_NAME}" yarn deploy

@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1604108505266,
+  "iteration": 1604496715514,
   "links": [],
   "panels": [
     {
@@ -38,7 +38,7 @@
       "links": [],
       "mode": "html",
       "options": {
-        "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flows per Country</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination country.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for each flow. </center>\n<center><b>Please note that the retransmit information is only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n",
+        "content": "<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n<h1><center><b>Individual Flows per Country</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination country.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for each flow. </center>\n<center>Click on the timestamp of an individual flow to show more detailed information about that flow.</center>\n<center><b>Please note that the retransmit information is only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n",
         "mode": "html"
       },
       "pluginVersion": "7.1.0",
@@ -50,6 +50,10 @@
     },
     {
       "__netsage_template": "navigation",
+      "array_option_1": [],
+      "array_option_2": [],
+      "array_option_3": [],
+      "array_option_4": [],
       "choices": [
         1,
         2,
@@ -116,6 +120,10 @@
         "/grafana/d/VuuXrnPWz/flow-analysis"
       ],
       "links": [],
+      "option_1": "netsage",
+      "option_2": "netsagenavigation",
+      "option_3": "plugin",
+      "option_4": 123,
       "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
       "sidebar": true,
@@ -483,6 +491,16 @@
               {
                 "id": "unit",
                 "value": "dateTimeAsIso"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}&from=${__from}&to=${__to}"
+                  }
+                ]
               }
             ]
           },
@@ -589,6 +607,18 @@
                 "value": 150
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -693,6 +723,19 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:132",
+              "fake": true,
+              "field": "_id",
+              "id": "35",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
               "$$hashKey": "object:427",
               "fake": true,
               "field": "meta.dst_ip.keyword",
@@ -760,7 +803,20 @@
               "end": true,
               "meta.id.keyword": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "Average values.duration": 9,
+              "Average values.tcp_rexmit_pkts": 10,
+              "Max": 8,
+              "Sum": 7,
+              "_id": 11,
+              "end": 2,
+              "meta.dst_ip.keyword": 6,
+              "meta.dst_organization.keyword": 5,
+              "meta.id.keyword": 0,
+              "meta.src_ip.keyword": 4,
+              "meta.src_organization.keyword": 3,
+              "start": 1
+            },
             "renameByName": {
               "Average values.duration": "Duration",
               "Average values.num_packets": "",
@@ -768,6 +824,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
+              "_id": "Flow ID",
               "end": "",
               "meta.dst_ip.keyword": "Destination Subnet",
               "meta.dst_organization.keyword": "Destination Organization",
@@ -1779,6 +1836,16 @@
               {
                 "id": "unit",
                 "value": "dateTimeAsIso"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}&from=${__from}&to=${__to}"
+                  }
+                ]
               }
             ]
           },
@@ -1885,6 +1952,18 @@
                 "value": 150
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -1989,6 +2068,19 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:339",
+              "fake": true,
+              "field": "_id",
+              "id": "35",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
               "$$hashKey": "object:427",
               "fake": true,
               "field": "meta.dst_ip.keyword",
@@ -2056,7 +2148,20 @@
               "end": true,
               "meta.id.keyword": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "Average values.duration": 9,
+              "Average values.tcp_rexmit_pkts": 10,
+              "Max": 8,
+              "Sum": 7,
+              "_id": 11,
+              "end": 2,
+              "meta.dst_ip.keyword": 6,
+              "meta.dst_organization.keyword": 5,
+              "meta.id.keyword": 0,
+              "meta.src_ip.keyword": 4,
+              "meta.src_organization.keyword": 3,
+              "start": 1
+            },
             "renameByName": {
               "Average values.duration": "Duration",
               "Average values.num_packets": "",
@@ -2064,6 +2169,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
+              "_id": "Flow ID",
               "end": "",
               "meta.dst_ip.keyword": "Destination Subnet",
               "meta.dst_organization.keyword": "Destination Organization",

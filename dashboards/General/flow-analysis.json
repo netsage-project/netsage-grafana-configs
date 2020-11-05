@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1604082978182,
+  "iteration": 1604497403100,
   "links": [],
   "panels": [
     {
@@ -1511,6 +1511,16 @@
               {
                 "id": "custom.width",
                 "value": 200
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}&from=${__from}&to=${__to}"
+                  }
+                ]
               }
             ]
           },
@@ -1645,6 +1655,18 @@
                 "value": 100
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 1
+              }
+            ]
           }
         ]
       },
@@ -1749,6 +1771,19 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:138",
+              "fake": true,
+              "field": "_id",
+              "id": "35",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
               "$$hashKey": "object:1194",
               "fake": true,
               "field": "meta.dst_ip.keyword",
@@ -1826,7 +1861,21 @@
               "end": true,
               "meta.id.keyword": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "$dst_scope": 5,
+              "$src_scope": 3,
+              "Average values.duration": 10,
+              "Average values.num_packets": 9,
+              "Average values.tcp_rexmit_pkts": 11,
+              "Max": 8,
+              "Sum": 7,
+              "_id": 12,
+              "end": 2,
+              "meta.dst_ip.keyword": 6,
+              "meta.id.keyword": 0,
+              "meta.src_ip.keyword": 4,
+              "start": 1
+            },
             "renameByName": {
               "$dst_scope": "Destination",
               "$src_scope": "Source",
@@ -1836,6 +1885,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Vol.",
+              "_id": "Flow ID",
               "end": "",
               "meta.dst_ip.keyword": "Destination Subnet",
               "meta.id.keyword": "",
@@ -2615,31 +2665,6 @@
       {
         "allValue": null,
         "current": {
-          "text": "NEAAR: New York to London 100GE",
-          "value": "NEAAR: New York to London 100GE"
-        },
-        "datasource": "Netsage TSDS",
-        "definition": "get link_name between($START, $END) by link_name from interface where link_name != null limit 100 offset 0",
-        "hide": 0,
-        "includeAll": true,
-        "label": "SNMP Data",
-        "multi": true,
-        "name": "links",
-        "options": [],
-        "query": "get link_name between($START, $END) by link_name from interface where link_name != null limit 100 offset 0",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
           "text": "NEAAR New York sFlow",
           "value": [
             "NEAAR New York sFlow"
@@ -2654,6 +2679,31 @@
         "name": "sensors",
         "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic* AND NOT meta.sensor_id:*pacificwave*\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "NEAAR: New York to London 100GE",
+          "value": "NEAAR: New York to London 100GE"
+        },
+        "datasource": "Netsage TSDS",
+        "definition": "get link_name between($START, $END) by link_name from interface where flow_sensors like \"$sensors\"",
+        "hide": 0,
+        "includeAll": true,
+        "label": "SNMP Data",
+        "multi": true,
+        "name": "links",
+        "options": [],
+        "query": "get link_name between($START, $END) by link_name from interface where flow_sensors like \"$sensors\"",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

@@ -10,7 +10,7 @@ function fixDockerData()
     sed -i -e "s/${THIS_BRANCH}/${VERSION}/g" website/docusaurus.config.js
     sed -i -e "s/${THIS_BRANCH}/${VERSION}/g" README.md
     sed -i -e "s/netsage\/dashboard:${THIS_BRANCH}/netsage\/dashboard:${VERSION}/g" website/docs/02_DOCKER.md    
-    git commit docker-compose.yml website/docs/02_DOCKER.md .travis.yml website/docusaurus.config.js -m 'Fixing docker version references'
+    git commit docker-compose.yml website/docs/02_DOCKER.md .travis.yml website/docusaurus.config.js README.md -m 'Fixing docker version references'
 
     echo "${THIS_BRANCH} ${VERSION}"
 }

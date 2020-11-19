@@ -1,4 +1,4 @@
-FROM grafana/grafana:7.2.1-ubuntu
+FROM grafana/grafana:7.3.3-ubuntu
 
 USER root
 
@@ -6,7 +6,9 @@ RUN apt-get update && \
     apt-get install -y python rsync python3 python3-pip git-core vim netcat sudo alien rpm netcat && \
     pip3 install --upgrade pip && \
     apt-get clean && \
-    mkdir /app  
+    mkdir /app  && \
+    groupadd grafana && \
+    gpasswd -a grafana grafana
 
 ## Build base image
 COPY . /app
@@ -32,3 +34,4 @@ VOLUME /app
 USER grafana 
 
 ENTRYPOINT [ "/usr/bin/grafana_runner" ]
+

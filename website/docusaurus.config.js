@@ -17,7 +17,8 @@ module.exports = {
         {
           label: "Pipeline Documentation",
           position: "left",
-          href: "https://netsage-project.github.io/netsage-pipeline/docs/pipeline",
+          href:
+            "https://netsage-project.github.io/netsage-pipeline/docs/pipeline/intro",
           target: "_self",
         },
         {

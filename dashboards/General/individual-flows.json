@@ -211,14 +211,14 @@
           "metrics": [
             {
               "$$hashKey": "object:325",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -328,7 +328,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -433,7 +433,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -658,7 +658,7 @@
             {
               "$$hashKey": "object:700",
               "fake": true,
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "15",
               "settings": {
                 "min_doc_count": 1,
@@ -697,7 +697,7 @@
             {
               "$$hashKey": "object:703",
               "fake": true,
-              "field": "meta.src_organization.keyword",
+              "field": "meta.src_organization",
               "id": "28",
               "settings": {
                 "min_doc_count": 1,
@@ -710,7 +710,7 @@
             {
               "$$hashKey": "object:704",
               "fake": true,
-              "field": "meta.src_ip.keyword",
+              "field": "meta.src_ip",
               "id": "32",
               "settings": {
                 "min_doc_count": 1,
@@ -723,7 +723,7 @@
             {
               "$$hashKey": "object:705",
               "fake": true,
-              "field": "meta.dst_organization.keyword",
+              "field": "meta.dst_organization",
               "id": "33",
               "settings": {
                 "min_doc_count": 1,
@@ -749,7 +749,7 @@
             {
               "$$hashKey": "object:706",
               "fake": true,
-              "field": "meta.dst_ip.keyword",
+              "field": "meta.dst_ip",
               "id": "31",
               "settings": {
                 "min_doc_count": 1,
@@ -808,7 +808,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -821,7 +821,7 @@
             "excludeByName": {
               "Average values.num_packets": true,
               "end": true,
-              "meta.id.keyword": true
+              "meta.id": true
             },
             "indexByName": {
               "Average values.duration": 10,
@@ -831,11 +831,11 @@
               "Sum": 7,
               "_id": 12,
               "end": 2,
-              "meta.dst_ip.keyword": 6,
-              "meta.dst_organization.keyword": 5,
-              "meta.id.keyword": 0,
-              "meta.src_ip.keyword": 4,
-              "meta.src_organization.keyword": 3,
+              "meta.dst_ip": 6,
+              "meta.dst_organization": 5,
+              "meta.id": 0,
+              "meta.src_ip": 4,
+              "meta.src_organization": 3,
               "start": 1
             },
             "renameByName": {
@@ -847,10 +847,10 @@
               "Sum": "Total Volume",
               "_id": "Flow ID",
               "end": "",
-              "meta.dst_ip.keyword": "Destination Subnet",
-              "meta.dst_organization.keyword": "Destination Organization",
-              "meta.src_ip.keyword": "Source Subnet",
-              "meta.src_organization.keyword": "Source Organization",
+              "meta.dst_ip": "Destination Subnet",
+              "meta.dst_organization": "Destination Organization",
+              "meta.src_ip": "Source Subnet",
+              "meta.src_organization": "Source Organization",
               "start": "Timestamp"
             }
           }
@@ -918,7 +918,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -981,7 +981,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1046,7 +1046,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1140,7 +1140,7 @@
             {
               "$$hashKey": "object:111",
               "fake": true,
-              "field": "meta.protocol.keyword",
+              "field": "meta.protocol",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1165,14 +1165,14 @@
           "metrics": [
             {
               "$$hashKey": "object:109",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1304,14 +1304,14 @@
           "metrics": [
             {
               "$$hashKey": "object:171",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1443,14 +1443,14 @@
           "metrics": [
             {
               "$$hashKey": "object:233",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1614,14 +1614,14 @@
           "metrics": [
             {
               "$$hashKey": "object:1512",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1731,7 +1731,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1836,7 +1836,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2036,7 +2036,7 @@
             {
               "$$hashKey": "object:1115",
               "fake": true,
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "15",
               "settings": {
                 "min_doc_count": 1,
@@ -2075,7 +2075,7 @@
             {
               "$$hashKey": "object:1118",
               "fake": true,
-              "field": "meta.src_organization.keyword",
+              "field": "meta.src_organization",
               "id": "28",
               "settings": {
                 "min_doc_count": 1,
@@ -2088,7 +2088,7 @@
             {
               "$$hashKey": "object:1119",
               "fake": true,
-              "field": "meta.src_ip.keyword",
+              "field": "meta.src_ip",
               "id": "32",
               "settings": {
                 "min_doc_count": 1,
@@ -2101,7 +2101,7 @@
             {
               "$$hashKey": "object:1120",
               "fake": true,
-              "field": "meta.dst_organization.keyword",
+              "field": "meta.dst_organization",
               "id": "33",
               "settings": {
                 "min_doc_count": 1,
@@ -2127,7 +2127,7 @@
             {
               "$$hashKey": "object:1121",
               "fake": true,
-              "field": "meta.dst_ip.keyword",
+              "field": "meta.dst_ip",
               "id": "31",
               "settings": {
                 "min_doc_count": 1,
@@ -2186,7 +2186,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2199,7 +2199,7 @@
             "excludeByName": {
               "Average values.num_packets": true,
               "end": true,
-              "meta.id.keyword": true
+              "meta.id": true
             },
             "indexByName": {
               "Average values.duration": 10,
@@ -2209,11 +2209,11 @@
               "Sum": 7,
               "_id": 12,
               "end": 2,
-              "meta.dst_ip.keyword": 6,
-              "meta.dst_organization.keyword": 5,
-              "meta.id.keyword": 0,
-              "meta.src_ip.keyword": 4,
-              "meta.src_organization.keyword": 3,
+              "meta.dst_ip": 6,
+              "meta.dst_organization": 5,
+              "meta.id": 0,
+              "meta.src_ip": 4,
+              "meta.src_organization": 3,
               "start": 1
             },
             "renameByName": {
@@ -2224,10 +2224,10 @@
               "Max": "Rate",
               "Sum": "Total Volume",
               "_id": "Flow ID",
-              "meta.dst_ip.keyword": "Destination Subnet",
-              "meta.dst_organization.keyword": "Destination Organization",
-              "meta.src_ip.keyword": "Source Subnet",
-              "meta.src_organization.keyword": "Source Organization",
+              "meta.dst_ip": "Destination Subnet",
+              "meta.dst_organization": "Destination Organization",
+              "meta.src_ip": "Source Subnet",
+              "meta.src_organization": "Source Organization",
               "start": "Timestamp"
             }
           }
@@ -2295,7 +2295,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2358,7 +2358,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2422,7 +2422,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2516,7 +2516,7 @@
             {
               "$$hashKey": "object:14",
               "fake": true,
-              "field": "meta.protocol.keyword",
+              "field": "meta.protocol",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -2541,14 +2541,14 @@
           "metrics": [
             {
               "$$hashKey": "object:12",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2680,14 +2680,14 @@
           "metrics": [
             {
               "$$hashKey": "object:376",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2819,14 +2819,14 @@
           "metrics": [
             {
               "$$hashKey": "object:438",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "1",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3012,7 +3012,7 @@
             {
               "$$hashKey": "object:2263",
               "fake": true,
-              "field": "meta.sensor_id.keyword",
+              "field": "meta.sensor_id",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -3061,14 +3061,14 @@
             },
             {
               "$$hashKey": "object:2258",
-              "field": "meta.id.keyword",
+              "field": "meta.id",
               "id": "7",
               "meta": {},
               "settings": {},
               "type": "count"
             }
           ],
-          "query": "((meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest) OR  (meta.src_organization.keyword:$dest AND meta.dst_organization.keyword:$src)) AND meta.sensor_id.keyword:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing.keyword:no OR meta.is_network_testing.keyword:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope.keyword:$country_scope)",
+          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR  (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3080,7 +3080,7 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "meta.sensor_id.keyword": false
+              "meta.sensor_id": false
             },
             "indexByName": {},
             "renameByName": {
@@ -3089,7 +3089,7 @@
               "Max values.num_bits": "Largest Flow",
               "Sum": "Total Volume",
               "Unique Count": "# Flows",
-              "meta.sensor_id.keyword": "Sensor"
+              "meta.sensor_id": "Sensor"
             }
           }
         }
@@ -3175,14 +3175,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"\", \"size\": 100000} ",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
         "hide": 0,
         "includeAll": true,
         "label": "Source Organization",
         "multi": true,
         "name": "src",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization.keyword\", \"query\": \"\", \"size\": 100000} ",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3205,14 +3205,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"\", \"size\": 100000}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
         "hide": 0,
         "includeAll": true,
         "label": "Destination Organization",
         "multi": true,
         "name": "dest",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization.keyword\", \"query\": \"\", \"size\": 100000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3235,14 +3235,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Sensors",
         "multi": true,
         "name": "sensors",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"-meta.sensor_id:*cenic* AND -meta.sensor_id:*pacificwave*\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3266,14 +3266,14 @@
           ]
         },
         "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest\"}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Scope",
         "multi": true,
         "name": "country_scope",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope.keyword\", \"query\":\"meta.src_organization.keyword:$src AND meta.dst_organization.keyword:$dest\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

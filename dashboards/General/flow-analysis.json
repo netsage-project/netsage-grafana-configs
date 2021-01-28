@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1604497403100,
+  "iteration": 1607561904326,
   "links": [],
   "panels": [
     {
@@ -97,7 +97,6 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -112,12 +111,11 @@
         "y": 0
       },
       "id": 2,
-      "mode": "html",
       "options": {
-        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above (in bits) and rate under (in bits per second).</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
+        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -164,7 +162,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -336,7 +334,6 @@
       }
     },
     {
-      "content": "<h1  style=\"margin-top:35px;\"><center>Top Flow Pairs</center></h1>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -351,12 +348,11 @@
         "y": 16
       },
       "id": 4,
-      "mode": "html",
       "options": {
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Flow Pairs</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -517,14 +513,9 @@
       "links": [],
       "options": {
         "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "# Flows"
-          }
-        ]
+        "sortBy": []
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -608,7 +599,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -635,7 +626,6 @@
       "type": "table"
     },
     {
-      "content": "<h1  style=\"margin-top:35px;\"><center>Top Sources of Flows</center></h1>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -650,12 +640,11 @@
         "y": 34
       },
       "id": 6,
-      "mode": "html",
       "options": {
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Sources of Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -789,7 +778,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -842,7 +831,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -970,7 +959,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1013,7 +1002,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1039,7 +1028,6 @@
       "type": "table"
     },
     {
-      "content": "<h1  style=\"margin-top:35px;\"><center>Top Destinations of Flows</center></h1>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1054,12 +1042,11 @@
         "y": 61
       },
       "id": 11,
-      "mode": "html",
       "options": {
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Destinations of Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1193,7 +1180,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1246,7 +1233,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1374,7 +1361,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1417,7 +1404,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1444,7 +1431,6 @@
       "type": "table"
     },
     {
-      "content": "<h1  style=\"margin-top:35px;\"><center>Individual Flows</center></h1>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1459,12 +1445,11 @@
         "y": 88
       },
       "id": 16,
-      "mode": "html",
       "options": {
         "content": "<h1  style=\"margin-top:35px;\"><center>Individual Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1680,14 +1665,9 @@
       "links": [],
       "options": {
         "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Timestamp"
-          }
-        ]
+        "sortBy": []
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "alias": "",
@@ -1845,7 +1825,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\"",
+          "query": "meta.sensor_id.keyword:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
           "refId": "A",
           "timeField": "start"
         }
@@ -1898,7 +1878,6 @@
       "type": "table"
     },
     {
-      "content": "<h1 style=\"margin-top:35px;\"><center>Other Flow Statistics</center></h1>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1914,12 +1893,11 @@
       },
       "id": 18,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<h1 style=\"margin-top:35px;\"><center>Other Flow Statistics</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1984,7 +1962,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2062,7 +2040,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2202,7 +2180,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2340,7 +2318,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2435,7 +2413,6 @@
       }
     },
     {
-      "content": "<h1 style=\"margin-top:35px;\"><center>Flow Data Summary For Selected Sensors</center></h1>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -2451,12 +2428,11 @@
       },
       "id": 23,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<h1 style=\"margin-top:35px;\"><center>Flow Data Summary For Selected Sensors</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2536,7 +2512,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2626,7 +2602,6 @@
       "type": "table"
     },
     {
-      "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -2641,12 +2616,11 @@
         "y": 132
       },
       "id": 25,
-      "mode": "html",
       "options": {
         "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2665,13 +2639,17 @@
       {
         "allValue": null,
         "current": {
-          "text": "NEAAR New York sFlow",
+          "selected": false,
+          "text": [
+            "NEAAR New York sFlow"
+          ],
           "value": [
             "NEAAR New York sFlow"
           ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id.keyword\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) AND NOT meta.sensor_id:cenic* AND NOT meta.sensor_id:*pacificwave*\"}",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Flow Data",
@@ -2692,11 +2670,17 @@
       {
         "allValue": null,
         "current": {
-          "text": "NEAAR: New York to London 100GE",
-          "value": "NEAAR: New York to London 100GE"
+          "selected": false,
+          "text": [
+            "NEAAR: New York to London 100GE"
+          ],
+          "value": [
+            "NEAAR: New York to London 100GE"
+          ]
         },
         "datasource": "Netsage TSDS",
         "definition": "get link_name between($START, $END) by link_name from interface where flow_sensors like \"$sensors\"",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "SNMP Data",
@@ -2717,10 +2701,11 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
+          "selected": false,
           "text": "meta.src_organization.keyword",
           "value": "meta.src_organization.keyword"
         },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Source Scope",
@@ -2761,10 +2746,11 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
+          "selected": false,
           "text": "meta.dst_organization.keyword",
           "value": "meta.dst_organization.keyword"
         },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Destination Scope",
@@ -2803,7 +2789,118 @@
         "type": "custom"
       },
       {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "0",
+          "value": "0"
+        },
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Individual Flow Volume Over",
+        "multi": false,
+        "name": "volume_over",
+        "options": [
+          {
+            "selected": true,
+            "text": "0",
+            "value": "0"
+          },
+          {
+            "selected": false,
+            "text": "100 MB",
+            "value": "800000000"
+          },
+          {
+            "selected": false,
+            "text": "1 GB",
+            "value": "8000000000"
+          },
+          {
+            "selected": false,
+            "text": "10 GB",
+            "value": "80000000000"
+          },
+          {
+            "selected": false,
+            "text": "100 GB",
+            "value": "800000000000"
+          },
+          {
+            "selected": false,
+            "text": "1 TB",
+            "value": "8000000000000"
+          }
+        ],
+        "query": "0 : 0, 100 MB : 800000000, 1 GB : 8000000000, 10 GB : 80000000000, 100 GB : 800000000000, 1 TB : 8000000000000",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "No Limit",
+          "value": "10000000000000000"
+        },
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Individual Flow Rate Under",
+        "multi": false,
+        "name": "rate_under",
+        "options": [
+          {
+            "selected": false,
+            "text": "1 Mb/s",
+            "value": "1000000"
+          },
+          {
+            "selected": false,
+            "text": "10 Mb/s",
+            "value": "10000000"
+          },
+          {
+            "selected": false,
+            "text": "100 Mb/s",
+            "value": "100000000"
+          },
+          {
+            "selected": false,
+            "text": "1 Gb/s",
+            "value": "1000000000"
+          },
+          {
+            "selected": false,
+            "text": "10 Gb/s",
+            "value": "10000000000"
+          },
+          {
+            "selected": false,
+            "text": "40 Gb/s",
+            "value": "40000000000"
+          },
+          {
+            "selected": false,
+            "text": "100 Gb/s",
+            "value": "100000000000"
+          },
+          {
+            "selected": true,
+            "text": "No Limit",
+            "value": "10000000000000000"
+          }
+        ],
+        "query": "1 Mb/s : 1000000, 10 Mb/s : 10000000, 100 Mb/s : 100000000, 1 Gb/s : 1000000000, 10 Gb/s : 10000000000, 40 Gb/s : 40000000000, 100 Gb/s : 100000000000, No Limit : 10000000000000000",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
         "datasource": "netsage",
+        "error": null,
         "filters": [],
         "hide": 0,
         "label": "Filters",

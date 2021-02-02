@@ -16,28 +16,11 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1605190692555,
+  "iteration": 1612248597372,
   "links": [],
   "panels": [
     {
       "__netsage_template": "navigation",
-      "link_text": [
-        "What is the current state of the network?",
-        "What are the top sources/destinations of flows?",
-        "What is the aggregate flow data for data archives?",
-        "What are the top flows by organization?",
-        "What do individual flows look like?",
-        "What are the top flows by country?",
-        "What are the flows by science discipline?",
-        "What are the flows by project?",
-        "Who are the top talkers over time?",
-        "What are the patterns in science data transfers in the network?",
-        "What are the bandwidth patterns in the network?",
-        "What are the patterns of loss in the network?",
-        "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?",
-        "Advanced Flow Analysis"
-      ],
       "choices": [
         1,
         2,
@@ -69,6 +52,23 @@
       },
       "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
       "id": 1,
+      "link_text": [
+        "What is the current state of the network?",
+        "What are the top sources/destinations of flows?",
+        "What is the aggregate flow data for data archives?",
+        "What are the top flows by organization?",
+        "What do individual flows look like?",
+        "What are the top flows by country?",
+        "What are the flows by science discipline?",
+        "What are the flows by project?",
+        "Who are the top talkers over time?",
+        "What are the patterns in science data transfers in the network?",
+        "What are the bandwidth patterns in the network?",
+        "What are the patterns of loss in the network?",
+        "What are the patterns of latency in the network?",
+        "What are the current flow data summary statistics?",
+        "Advanced Flow Analysis"
+      ],
       "link_url": [
         "/grafana/d/000000003/bandwidth-dashboard",
         "/grafana/d/xk26IFhmk/flow-data",
@@ -1880,7 +1880,7 @@
               "type": "terms"
             }
           ],
-          "hide": false,
+          "hide": true,
           "metrics": [
             {
               "$$hashKey": "object:187",
@@ -1898,6 +1898,164 @@
           ],
           "query": "meta.sensor_id:$Sensors && meta.scireg.src.discipline:$discipline && (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "C",
+          "timeField": "start"
+        },
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:189",
+              "fake": true,
+              "field": "meta.scireg.src.discipline",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:190",
+              "fake": true,
+              "field": "meta.scireg.dst.discipline",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:191",
+              "fake": true,
+              "field": "meta.src_preferred_org",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:192",
+              "fake": true,
+              "field": "meta.scireg.src.resource",
+              "id": "6",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:193",
+              "fake": true,
+              "field": "meta.src_preferred_location.lat",
+              "id": "7",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:194",
+              "fake": true,
+              "field": "meta.src_preferred_location.lon",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:195",
+              "fake": true,
+              "field": "meta.dst_preferred_org",
+              "id": "10",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": null,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:196",
+              "fake": true,
+              "field": "meta.scireg.dst.resource",
+              "id": "11",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:162",
+              "fake": true,
+              "field": "meta.dst_preferred_location.lat",
+              "id": "12",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:197",
+              "fake": true,
+              "field": "meta.dst_preferred_location.lon",
+              "id": "9",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:187",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors && meta.scireg.src.discipline:$discipline && (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
           "timeField": "start"
         }
       ],
@@ -4410,7 +4568,6 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "tags": [],
           "text": [
             "All"
           ],

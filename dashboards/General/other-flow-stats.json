@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1612380024142,
+  "iteration": 1612380024154,
   "links": [],
   "panels": [
     {
@@ -2616,7 +2616,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$sensors AND (!(_exists_:meta.scireg.src.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2808,7 +2808,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$sensors AND (!(_exists_:meta.scireg.src.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -3281,12 +3281,12 @@
         "name": "is_net_test",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "yes",
             "value": "yes"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "no",
             "value": "no"
           }

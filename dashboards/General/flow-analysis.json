@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1607561904326,
+  "iteration": 1612379524623,
   "links": [],
   "panels": [
     {
@@ -112,7 +112,7 @@
       },
       "id": 2,
       "options": {
-        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows SNMP data for the selected link on the SNMP graph below.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
+        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows graphical SNMP data that is related to the selected flow sensor.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
         "mode": "html"
       },
       "pluginVersion": "7.3.3",
@@ -296,7 +296,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "SNMP Graph of $links",
+      "title": "SNMP data related to $sensors",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -312,6 +312,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:311",
           "format": "bps",
           "label": null,
           "logBase": 1,
@@ -320,6 +321,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:312",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -513,7 +515,12 @@
       "links": [],
       "options": {
         "showHeader": true,
-        "sortBy": []
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
       },
       "pluginVersion": "7.3.3",
       "targets": [
@@ -1815,14 +1822,6 @@
               "meta": {},
               "settings": {},
               "type": "avg"
-            },
-            {
-              "$$hashKey": "object:1180",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "34",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
             }
           ],
           "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
@@ -2652,7 +2651,7 @@
         "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": "Flow Data",
+        "label": "Sensor",
         "multi": true,
         "name": "sensors",
         "options": [],
@@ -2681,7 +2680,7 @@
         "datasource": "Netsage TSDS",
         "definition": "get link_name between($START, $END) by link_name from interface where flow_sensors like \"$sensors\"",
         "error": null,
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "SNMP Data",
         "multi": true,

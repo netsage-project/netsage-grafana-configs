@@ -3,6 +3,8 @@ set -e
 
 ## Validates code and publish image for tagged branch
 function integration_test {
+    ## Travis keeps failing due to Limits by dockerhub, requires login 
+    docker_login
     docker build --tag=netsage/dashboard:latest -f docker/Dockerfile . 
     
     if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then 
@@ -13,12 +15,18 @@ function integration_test {
 }
 
 
+function docker_login() {
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+}
+
+
 ## Publish image to our docker hub repository
 function publish_image
 {
     VERSION=${TRAVIS_BRANCH:-'testing'}   # Defaults to testing
     VERSION=$(echo $VERSION | sed -e 's/\//_/g') # removes any / in the branch name for tagging
-    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    docker_login
     echo docker push netsage/dashboard:$VERSION
     docker push netsage/dashboard:$VERSION
 

@@ -90,7 +90,6 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
         """
         Updates the navigation Menu on all dashboards with the values specified in the config yaml file
         """
-        log.info("Executing for type: {} my ins type is: {}".format(self.type, str(type(self))))
         log.info("Processing dashboard {}".format(dashboard))
         menu_panel = None
 
@@ -142,7 +141,14 @@ class TemplateFooterProcessor(AbstractTemplateProcessor):
         """
         Ensures that the panel is a valid footer panel
         """
-        return panel['mode'] != 'html' or panel['type'] != 'text'
+        html_check = False 
+        text_check = False
+        if 'mode' in panel:
+            html_check = panel['mode'] != 'html'
+        if 'type' in panel:
+            text_check = panel['type'] != 'text'
+    
+        return html_check or text_check
 
 
 class TemplateQueryOverride(AbstractTemplateProcessor):

@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1612379524623,
+  "iteration": 1613497109347,
   "links": [],
   "panels": [
     {
@@ -112,7 +112,7 @@
       },
       "id": 2,
       "options": {
-        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows graphical SNMP data that is related to the selected flow sensor.</center>\n<center>It also shows flow pairs and top flows for the selected sensor, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center>Select flow and SNMP data sources from the lists above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
+        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows graphical SNMP data for the selected link and flow data from related flow sensors.</center>\n<center>It also shows flow pairs and top flows, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center>Select a link from the list above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
         "mode": "html"
       },
       "pluginVersion": "7.3.3",
@@ -1672,7 +1672,12 @@
       "links": [],
       "options": {
         "showHeader": true,
-        "sortBy": []
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Timestamp"
+          }
+        ]
       },
       "pluginVersion": "7.3.3",
       "targets": [
@@ -2638,24 +2643,20 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": [
-            "NEAAR New York sFlow"
-          ],
-          "value": [
-            "NEAAR New York sFlow"
-          ]
+          "selected": true,
+          "text": "NEAAR: New York to London 100GE",
+          "value": "NEAAR: New York to London 100GE"
         },
-        "datasource": "netsage",
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) \"}",
+        "datasource": "Netsage TSDS",
+        "definition": "get link_name between($START, $END) by link_name from interface where link_name like \".+\" and flow_sensors !=null",
         "error": null,
         "hide": 0,
-        "includeAll": true,
-        "label": "Sensor",
-        "multi": true,
-        "name": "sensors",
+        "includeAll": false,
+        "label": "Link",
+        "multi": false,
+        "name": "links",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"(meta.flow_type:sflow OR meta.flow_type:netflow) \"}",
+        "query": "get link_name between($START, $END) by link_name from interface where link_name like \".+\" and flow_sensors !=null",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -2670,23 +2671,52 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": [
-            "NEAAR: New York to London 100GE"
-          ],
-          "value": [
-            "NEAAR: New York to London 100GE"
-          ]
+          "text": "NEAAR New York sFlow",
+          "value": "NEAAR New York sFlow"
         },
         "datasource": "Netsage TSDS",
-        "definition": "get link_name between($START, $END) by link_name from interface where flow_sensors like \"$sensors\"",
+        "definition": "get flow_sensors between($START, $END) by flow_sensors from interface where link_name = \"$links\"",
         "error": null,
         "hide": 2,
-        "includeAll": true,
-        "label": "SNMP Data",
-        "multi": true,
-        "name": "links",
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "link_sensor",
+        "options": [
+          {
+            "selected": true,
+            "text": "NEAAR New York sFlow",
+            "value": "NEAAR New York sFlow"
+          }
+        ],
+        "query": "get flow_sensors between($START, $END) by flow_sensors from interface where link_name = \"$links\"",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "NEAAR New York sFlow",
+          "value": "NEAAR New York sFlow"
+        },
+        "datasource": "netsage",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"meta.sensor_id:$link_sensor\"}",
+        "error": null,
+        "hide": 2,
+        "includeAll": false,
+        "label": "Sensor",
+        "multi": false,
+        "name": "sensors",
         "options": [],
-        "query": "get link_name between($START, $END) by link_name from interface where flow_sensors like \"$sensors\"",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"meta.sensor_id:$link_sensor\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

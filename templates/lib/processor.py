@@ -102,8 +102,8 @@ class TemplateMenuProcessor(AbstractTemplateProcessor):
             log.warning("No Menu detected for dashboard: {}".format(dashboard))
             return
 
-        menu_panel['array_option_1'] = self.get_value('menu_text', ns='menus')
-        menu_panel['array_option_2'] = self.get_value('menu_values', ns='menus')
+        menu_panel['link_text'] = self.get_value('menu_text', ns='menus')
+        menu_panel['link_url']  = self.get_value('menu_values', ns='menus')
 
         log.info("Updating dashboard: {}".format(dashboard))
         return data

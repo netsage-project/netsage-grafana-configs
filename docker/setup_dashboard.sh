@@ -24,8 +24,8 @@ cd /app/plugins
 ## BEGIN PLUGIN INSTALL ##
 
 #Install carpetplot //using forked version until PR is accepted
-#grafana-cli plugins install marcusolsson-hourly-heatmap-panel
-grafana-cli --pluginUrl "https://github.com/katrinaturner/grafana-hourly-heatmap-panel/archive/nullColorPickerTest.zip" plugins install marcusolsson-hourly-heatmap-panel
+grafana-cli plugins install marcusolsson-hourly-heatmap-panel
+#grafana-cli --pluginUrl "https://github.com/katrinaturner/grafana-hourly-heatmap-panel/archive/nullColorPickerTest.zip" plugins install marcusolsson-hourly-heatmap-panel
 
 # Install polystat
 grafana-cli plugins install grafana-polystat-panel

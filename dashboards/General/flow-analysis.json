@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1613497109347,
+  "iteration": 1619183442516,
   "links": [],
   "panels": [
     {
@@ -600,7 +600,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -832,7 +832,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1003,7 +1003,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1234,7 +1234,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1405,7 +1405,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id:$sensors AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1823,7 +1823,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under",
+          "query": "meta.sensor_id:$sensors AND -$src_scope:\"\" AND -$dst_scope:\"\" AND values.num_bits:>$volume_over AND values.bits_per_second:<$rate_under AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2084,7 +2084,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors",
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2224,7 +2224,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors",
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2362,7 +2362,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors",
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2573,7 +2573,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors",
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2638,7 +2638,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "NEAAR: New York to London 100GE",
           "value": "NEAAR: New York to London 100GE"
         },
@@ -2666,8 +2666,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "NEAAR New York sFlow",
-          "value": "NEAAR New York sFlow"
+          "text": "NEAAR NY-London",
+          "value": "NEAAR NY-London"
         },
         "datasource": "Netsage TSDS",
         "definition": "get flow_sensors between($START, $END) by flow_sensors from interface where link_name = \"$links\"",
@@ -2679,7 +2679,7 @@
         "name": "link_sensor",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "NEAAR New York sFlow",
             "value": "NEAAR New York sFlow"
           }
@@ -2699,8 +2699,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "NEAAR New York sFlow",
-          "value": "NEAAR New York sFlow"
+          "text": "NEAAR NY-London",
+          "value": "NEAAR NY-London"
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"meta.sensor_id:$link_sensor\"}",
@@ -2815,6 +2815,36 @@
       {
         "allValue": null,
         "current": {
+          "selected": true,
+          "text": "yes",
+          "value": "yes"
+        },
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Show Test Traffic",
+        "multi": false,
+        "name": "is_net_test",
+        "options": [
+          {
+            "selected": true,
+            "text": "yes",
+            "value": "yes"
+          },
+          {
+            "selected": false,
+            "text": "no",
+            "value": "no"
+          }
+        ],
+        "query": "yes,no",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
           "selected": false,
           "text": "0",
           "value": "0"
@@ -2865,7 +2895,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "No Limit",
           "value": "10000000000000000"
         },

@@ -23,7 +23,7 @@ cd /app/plugins
 
 ## BEGIN PLUGIN INSTALL ##
 
-#Install carpetplot //using forked version until PR is accepted
+#Install carpetplot 
 grafana-cli plugins install marcusolsson-hourly-heatmap-panel
 #grafana-cli --pluginUrl "https://github.com/katrinaturner/grafana-hourly-heatmap-panel/archive/nullColorPickerTest.zip" plugins install marcusolsson-hourly-heatmap-panel
 
@@ -55,20 +55,32 @@ cd NetSageNavigation
 make install
 cd ..
 
-#Install slope graph plugin
-cd Netsage-Slope_graph/
-make install
-cd ..
-
 #Install discipline map plugin
 cd science-discipline-map-plugin/
 make install
 cd ..
 
-#Install bump chart plugin
-cd netsage-bump-chart/
-make install
+#Install slope graph plugin
+cd react-slope-graph
+yarn install
+yarn build
 cd ..
+
+#Install bump chart plugin
+cd react-bump-chart
+yarn install
+yarn build
+cd ..
+
+# #Install slope graph plugin  **OLD**
+# cd Netsage-Slope_graph/
+# make install
+# cd ..
+
+# #Install bump chart plugin **OLD**
+# cd netsage-bump-chart/
+# make install
+# cd ..
 
 ### End plugin source code installs ###
 

@@ -30,57 +30,60 @@ grafana-cli plugins install marcusolsson-hourly-heatmap-panel
 # Install polystat
 grafana-cli plugins install grafana-polystat-panel
 
-#Install tsds datasource plugin
-cd tsds-grafana
-npm install -g yarn #make seems to need this
-make rpm
-alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
-mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
-cd ../
+# #Install tsds datasource plugin
+# cd tsds-grafana
+# npm install -g yarn #make seems to need this
+# # yarn install
+# # yarn build
+# make rpm
+# alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
+# mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
+# cd ../
 
-#Install network panel plugin
+# Install network panel plugin
 cd globalnoc-networkmap-panel
 npm install -g gulp #make seems to need this
-make rpm
-alien -i $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
+yarn install
+yarn build
+mv /app/plugins/globalnoc-networkmap-panel/ /var/lib/grafana/plugins/
+# make rpm
+# alien -i $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
 cd ../
 
 #Install netsage-sankey plugin
 cd netsage-sankey-plugin
-make install
+yarn install
+yarn build
+mv /app/plugins/netsage-sankey-plugin/ /var/lib/grafana/plugins/
 cd ../
 
 #Install navigation
 cd NetSageNavigation
-make install
+yarn install
+yarn build
+mv /app/plugins/NetSageNavigation/ /var/lib/grafana/plugins/
 cd ..
 
 #Install discipline map plugin
 cd science-discipline-map-plugin/
-make install
+yarn install
+yarn build
+mv /app/plugins/science-discipline-map-plugin/ /var/lib/grafana/plugins/
 cd ..
 
 #Install slope graph plugin
-cd react-slope-graph
+cd netsage-slope-graph-panel/
 yarn install
 yarn build
+mv /app/plugins/netsage-slope-graph-panel/ /var/lib/grafana/plugins/
 cd ..
 
 #Install bump chart plugin
-cd react-bump-chart
+cd netsage-bumpchart-panel/
 yarn install
 yarn build
+mv /app/plugins/netsage-bumpchart-panel/ /var/lib/grafana/plugins/
 cd ..
-
-# #Install slope graph plugin  **OLD**
-# cd Netsage-Slope_graph/
-# make install
-# cd ..
-
-# #Install bump chart plugin **OLD**
-# cd netsage-bump-chart/
-# make install
-# cd ..
 
 ### End plugin source code installs ###
 

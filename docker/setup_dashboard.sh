@@ -30,15 +30,15 @@ grafana-cli plugins install marcusolsson-hourly-heatmap-panel
 # Install polystat
 grafana-cli plugins install grafana-polystat-panel
 
-# #Install tsds datasource plugin
-# cd tsds-grafana
-# npm install -g yarn #make seems to need this
-# # yarn install
-# # yarn build
-# make rpm
-# alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
-# mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
-# cd ../
+#Install tsds datasource plugin
+cd tsds-grafana
+npm install -g yarn #make seems to need this
+# yarn install
+# yarn build
+make rpm
+alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
+mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
+cd ../
 
 # Install network panel plugin
 cd globalnoc-networkmap-panel

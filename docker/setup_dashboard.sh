@@ -72,10 +72,10 @@ mv /app/plugins/science-discipline-map-plugin/ /var/lib/grafana/plugins/
 cd ..
 
 #Install slope graph plugin
-cd netsage-slope-graph-panel/
+cd netsage-slopegraph-panel/
 yarn install
 yarn build
-mv /app/plugins/netsage-slope-graph-panel/ /var/lib/grafana/plugins/
+mv /app/plugins/netsage-slopegraph-panel/ /var/lib/grafana/plugins/
 cd ..
 
 #Install bump chart plugin

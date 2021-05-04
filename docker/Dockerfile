@@ -15,7 +15,7 @@ COPY . /app
 
 ## Install super old NodeJS for backward compatibility and force extra old version to be installed
 RUN cp /app/docker/00_preferences /etc/apt/preferences.d/ && \
-    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get update && apt-get install -y nodejs && \
     npm -g install yarn 
 

@@ -15,45 +15,11 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1599168587114,
+  "iteration": 1619117095095,
   "links": [],
   "panels": [
     {
       "__netsage_template": "navigation",
-      "link_text": [
-        "What is the current state of the network?",
-        "What are the top sources/destinations of flows?",
-        "What is the aggregate flow data for data archives?",
-        "What are the top flows by organization?",
-        "What do individual flows look like?",
-        "What are the top flows by country?",
-        "What are the flows by science discipline?",
-        "What are the flows by project?",
-        "Who are the top talkers over time?",
-        "What are the patterns in science data transfers in the network?",
-        "What are the bandwidth patterns in the network?",
-        "What are the patterns of loss in the network?",
-        "What are the patterns of latency in the network?",
-        "What are the current flow data summary statistics?",
-        "Advanced Flow Analysis"
-      ],
-      "link_url": [
-        "/grafana/d/000000003/bandwidth-dashboard",
-        "/grafana/d/xk26IFhmk/flow-data",
-        "/grafana/d/mNPduO8mz/flow-data-for-data-archives",
-        "/grafana/d/QfzDJKhik/flow-data-per-organization",
-        "/grafana/d/-l3_u8nWk/individual-flows",
-        "/grafana/d/fgrOzz_mk/flow-data-per-country",
-        "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
-        "/grafana/d/ie7TeomGz/flow-data-for-projects",
-        "/grafana/d/b35BWxAZz/top-talkers-over-time",
-        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
-        "/grafana/d/000000004/bandwidth-patterns",
-        "/grafana/d/000000006/loss-patterns",
-        "/grafana/d/000000005/latency-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/VuuXrnPWz/flow-analysis"
-      ],
       "choices": [
         1,
         2,
@@ -85,6 +51,34 @@
       },
       "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
       "id": 1,
+      "link_text": [
+        "What is the current state of the network?",
+        "What are the top sources/destinations of flows?",
+        "What are the top flows by organization?",
+        "What do individual flows look like?",
+        "What are the top flows by country?",
+        "What are the flows by science discipline?",
+        "What are the flows by project?",
+        "Who are the top talkers over time?",
+        "What are the patterns in science data transfers in the network?",
+        "What are the bandwidth patterns in the network?",
+        "What are the current flow data summary statistics?",
+        "Advanced Flow Analysis"
+      ],
+      "link_url": [
+        "/grafana/d/000000003/bandwidth-dashboard",
+        "/grafana/d/xk26IFhmk/flow-data",
+        "/grafana/d/QfzDJKhik/flow-data-per-organization",
+        "/grafana/d/-l3_u8nWk/individual-flows",
+        "/grafana/d/fgrOzz_mk/flow-data-per-country",
+        "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
+        "/grafana/d/ie7TeomGz/flow-data-for-projects",
+        "/grafana/d/b35BWxAZz/top-talkers-over-time",
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
+        "/grafana/d/000000004/bandwidth-patterns",
+        "/grafana/d/CJC1FFhmz/other-flow-stats",
+        "/grafana/d/VuuXrnPWz/flow-analysis"
+      ],
       "links": [],
       "sharescreen": true,
       "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
@@ -96,7 +90,6 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "<center><h1><b>Bandwidth Patterns</b></h1></center>\n<center>This dashboard shows heatmaps for the bandwidth data across exchange points and links as measured using SNMP. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show higher data transmissions at those hours.</center>\n<center>All times are displayed in browser local time.</center>\n\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -112,7 +105,11 @@
       },
       "id": 2,
       "links": [],
-      "mode": "html",
+      "options": {
+        "content": "<center><h1><b>Bandwidth Patterns</b></h1></center>\n<center>This dashboard shows heatmaps for the bandwidth data across exchange points and links as measured using SNMP. </center>\n<center>The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center>Darker squares show higher data transmissions at those hours.</center>\n<center>All times are displayed in browser local time.</center>\n\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "7.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -144,6 +141,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -154,141 +164,15 @@
         "x": 0,
         "y": 5
       },
-      "id": 4,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get node, aggregate(values.$data_direction,3600, $statistics) between ($START, $END) from interface where (node =  \"mct01.miami.ampath.net\" or node = \"mct02.miami.ampath.net\")",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "Amlight Exchange Point",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "rgb(169, 169, 169)"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 15
-      },
       "id": 5,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "repeatDirection": "h",
@@ -393,144 +277,13 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "rgb(169, 169, 169)"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 25
-      },
-      "id": 6,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get node, intf, aggregate(values.$data_direction, 3600, $statistics) between ($START, $END) from interface where (node = \"8700.mren.org\" and intf in (\"10/2\",\"4/6\",\"6/6\",\"1/6\",\"5/3\",\"6/3\",\"2/5\",\"4/3\",\"2/3\",\"9/2\")) or (node = \"ex9208.sl.startap.net\" and intf in (\"xe-0/1/2\",\"ae2\",\"xe-0/3/2\",\"xe-0/2/2\",\"ge-5/0/2\",\"xe-0/1/0\"))",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "Starlight Exchange Point",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 15
       },
       "id": 7,
       "panels": [],
@@ -550,6 +303,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -558,13 +324,17 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 16
       },
       "id": 8,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "repeat": "links",
@@ -572,8 +342,8 @@
       "scopedVars": {
         "links": {
           "selected": false,
-          "text": "AmLight: Boca Raton to Sao Paulo 100GE",
-          "value": "AmLight: Boca Raton to Sao Paulo 100GE"
+          "text": "NEAAR: New York to Amsterdam 100GE",
+          "value": "NEAAR: New York to Amsterdam 100GE"
         }
       },
       "targets": [
@@ -685,9 +455,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -696,1278 +479,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 26
       },
       "id": 10,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Fortaleza to Sao Paulo 100GE",
-          "value": "AmLight: Fortaleza to Sao Paulo 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 56
-      },
-      "id": 11,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Cape Town 100GE",
-          "value": "AmLight: Miami to Cape Town 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 66
-      },
-      "id": 12,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Fortaleza 100GE",
-          "value": "AmLight: Miami to Fortaleza 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 76
-      },
-      "id": 13,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Santiago 100GE",
-          "value": "AmLight: Miami to Santiago 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 86
-      },
-      "id": 14,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Miami to Sao Paulo 100GE",
-          "value": "AmLight: Miami to Sao Paulo 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 96
-      },
-      "id": 15,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Panama to Puerto Rico 100GE",
-          "value": "AmLight: Panama to Puerto Rico 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 106
-      },
-      "id": 16,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Puerto Rico to Miami 100GE",
-          "value": "AmLight: Puerto Rico to Miami 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 116
-      },
-      "id": 17,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Santiago to Panama 100GE",
-          "value": "AmLight: Santiago to Panama 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 126
-      },
-      "id": 18,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
-      "repeatPanelId": 8,
-      "scopedVars": {
-        "links": {
-          "selected": false,
-          "text": "AmLight: Santiago to Sao Paolo 100GE",
-          "value": "AmLight: Santiago to Sao Paolo 100GE"
-        }
-      },
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "orange"
-          },
-          "decimals": 1,
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 136
-      },
-      "id": 19,
-      "links": [],
-      "options": {
-        "from": "0",
-        "showLegend": false,
-        "to": "0"
-      },
-      "repeat": null,
-      "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2085,9 +611,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2096,18 +635,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 146
+        "y": 36
       },
-      "id": 20,
+      "id": 11,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2225,9 +767,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2236,18 +791,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 156
+        "y": 46
       },
-      "id": 21,
+      "id": 12,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2365,9 +923,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2376,18 +947,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 166
+        "y": 56
       },
-      "id": 22,
+      "id": 13,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2505,9 +1079,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2516,18 +1103,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 176
+        "y": 66
       },
-      "id": 23,
+      "id": 14,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2645,9 +1235,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2656,18 +1259,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 186
+        "y": 76
       },
-      "id": 24,
+      "id": 15,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2785,9 +1391,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2796,18 +1415,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 196
+        "y": 86
       },
-      "id": 25,
+      "id": 16,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -2925,9 +1547,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2936,18 +1571,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 206
+        "y": 96
       },
-      "id": 26,
+      "id": 17,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -3065,9 +1703,22 @@
             "colorSpace": "rgb",
             "groupBy": 60,
             "invertPalette": false,
-            "nullValueColor": "orange"
+            "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -3076,18 +1727,21 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 216
+        "y": 106
       },
-      "id": 27,
+      "id": 18,
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "v",
-      "repeatIteration": 1599168587114,
+      "repeatIteration": 1619117095095,
       "repeatPanelId": 8,
       "scopedVars": {
         "links": {
@@ -3196,7 +1850,6 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -3208,17 +1861,21 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 226
+        "y": 116
       },
       "id": 9,
       "links": [],
-      "mode": "html",
+      "options": {
+        "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "7.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "netsage"
@@ -3236,6 +1893,7 @@
         },
         "datasource": "Netsage TSDS",
         "definition": "",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Links",
@@ -3261,6 +1919,7 @@
             "TransPAC: Seattle to Tokyo 100GE"
           ]
         },
+        "error": null,
         "hide": 2,
         "includeAll": true,
         "label": "",
@@ -3330,6 +1989,7 @@
           "text": "average",
           "value": "average"
         },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Statistics",
@@ -3363,6 +2023,7 @@
           "text": "input",
           "value": "input"
         },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Data Direction",

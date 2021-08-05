@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1612300709330,
+  "iteration": 1628185074267,
   "links": [],
   "panels": [
     {
@@ -90,7 +90,6 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<center><h1><b>Flow Data for Projects</b></h1></center>\n<center>This dashboard shows a summary of flow information for a selected project.</center>\n<center><b>Please note that flows with either end tagged as part of the project are included</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -106,12 +105,11 @@
       },
       "id": 48,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "\n<center><h1><b>Flow Data for Projects</b></h1></center>\n<center>This dashboard shows a summary of flow information for a selected project.</center>\n<center><b>Please note that flows with either end tagged as part of the project are included</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -158,7 +156,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -241,7 +239,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -280,7 +278,6 @@
       "type": "stat"
     },
     {
-      "content": "<h3 style=\"margin-top:35px;\"><center>Top Endpoint Pairs for $project_type</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -296,12 +293,11 @@
       },
       "id": 39,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<h3 style=\"margin-top:35px;\"><center>Top Endpoint Pairs for $project_type</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -539,7 +535,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -629,6 +625,24 @@
         }
       ],
       "title": "By Organization Pair",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Sum": 2,
+              "meta.dst_organization": 1,
+              "meta.src_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -645,6 +659,19 @@
           },
           "decimals": 1,
           "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "decbytes"
         },
         "overrides": []
@@ -659,7 +686,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "targets": [
@@ -714,6 +745,19 @@
           },
           "decimals": 1,
           "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -728,7 +772,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "targets": [
@@ -765,7 +813,6 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "content": "<h3 style=\"margin-top:35px;\"><center>Summary of Organizations for $project_type</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -781,12 +828,11 @@
       },
       "id": 36,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<h3 style=\"margin-top:35px;\"><center>Summary of Organizations for $project_type</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -886,7 +932,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.num_bits"
+              "options": "Max values.bits_per_second"
             },
             "properties": [
               {
@@ -926,7 +972,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.bits_per_second"
+              "options": "Max values.num_bits"
             },
             "properties": [
               {
@@ -975,7 +1021,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1059,11 +1105,11 @@
           "options": {
             "excludeByName": {},
             "indexByName": {
-              "Average": 4,
-              "Max values.bits_per_second": 2,
-              "Max values.num_bits": 5,
+              "Average": 3,
+              "Count": 5,
+              "Max values.bits_per_second": 4,
+              "Max values.num_bits": 2,
               "Sum": 1,
-              "Unique Count": 3,
               "meta.src_organization": 0
             },
             "renameByName": {}
@@ -1165,7 +1211,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.num_bits"
+              "options": "Max values.bits_per_second"
             },
             "properties": [
               {
@@ -1205,7 +1251,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.bits_per_second"
+              "options": "Max values.num_bits"
             },
             "properties": [
               {
@@ -1254,7 +1300,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1338,11 +1384,11 @@
           "options": {
             "excludeByName": {},
             "indexByName": {
-              "Average": 4,
-              "Max values.bits_per_second": 2,
-              "Max values.num_bits": 5,
+              "Average": 3,
+              "Count": 5,
+              "Max values.bits_per_second": 4,
+              "Max values.num_bits": 2,
               "Sum": 1,
-              "Unique Count": 3,
               "meta.dst_organization": 0
             },
             "renameByName": {}
@@ -1352,7 +1398,6 @@
       "type": "table"
     },
     {
-      "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $project_type flows</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1368,12 +1413,11 @@
       },
       "id": 51,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $project_type flows</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1516,7 +1560,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2978,7 +3022,6 @@
       "zoom_lvl": 3
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -2994,12 +3037,11 @@
       },
       "id": 44,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3021,6 +3063,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.project_names\"}",
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Project",
@@ -3051,6 +3094,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Sensors",
@@ -3075,6 +3119,7 @@
           "text": "yes",
           "value": "yes"
         },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Show Test Traffic",

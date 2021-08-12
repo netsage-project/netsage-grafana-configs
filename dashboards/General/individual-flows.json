@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1604495848259,
+  "iteration": 1628601882526,
   "links": [],
   "panels": [
     {
@@ -91,7 +91,6 @@
       "type": "netsagenavigation"
     },
     {
-      "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds), retransmits and round trip time (RTT) for the top 1000 largest flows.</center>\n<center><b>Please note that retransmit and RTT information are only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -107,12 +106,11 @@
       },
       "id": 34,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "\n<h1><center><b>Individual Flows</b></center></h1>\n<center>This dashboard shows per-flow level data, given a particular source and destination organization.</center>\n<center>The table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for the top 1000 largest flows.</center>\n<center>Click on the timestamp of an individual flow to show more detailed information about that flow.</center>\n<center><b>Please note that the retransmit information is only available for archive flow data;<br>\nand rate and duration will be zero for flows where only one sample was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -186,7 +184,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -291,7 +289,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -401,7 +399,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -439,7 +437,6 @@
       "type": "stat"
     },
     {
-      "content": "",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -455,12 +452,11 @@
       },
       "id": 52,
       "links": [],
-      "mode": "markdown",
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -644,7 +640,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "alias": "",
@@ -728,19 +724,6 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:226",
-              "fake": true,
-              "field": "_id",
-              "id": "35",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
               "$$hashKey": "object:706",
               "fake": true,
               "field": "meta.dst_ip",
@@ -778,14 +761,6 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:690",
-              "field": "values.num_packets",
-              "id": "25",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
               "$$hashKey": "object:691",
               "field": "values.duration",
               "id": "27",
@@ -815,22 +790,22 @@
             "excludeByName": {
               "Average values.num_packets": true,
               "end": true,
-              "meta.id": true
+              "meta.id": false
             },
             "indexByName": {
-              "Average values.duration": 10,
-              "Average values.num_packets": 9,
-              "Average values.tcp_rexmit_pkts": 11,
-              "Max": 8,
-              "Sum": 7,
-              "_id": 12,
-              "end": 2,
-              "meta.dst_ip": 6,
-              "meta.dst_organization": 5,
-              "meta.id": 0,
-              "meta.src_ip": 4,
-              "meta.src_organization": 3,
-              "start": 1
+              "Average values.duration": 9,
+              "Average values.num_packets": 8,
+              "Average values.tcp_rexmit_pkts": 10,
+              "Max": 7,
+              "Sum": 6,
+              "_id": 11,
+              "end": 1,
+              "meta.dst_ip": 5,
+              "meta.dst_organization": 4,
+              "meta.id": 12,
+              "meta.src_ip": 3,
+              "meta.src_organization": 2,
+              "start": 0
             },
             "renameByName": {
               "Average values.duration": "Duration",
@@ -839,10 +814,11 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
-              "_id": "Flow ID",
+              "_id": "",
               "end": "",
               "meta.dst_ip": "Destination Subnet",
               "meta.dst_organization": "Destination Organization",
+              "meta.id": "Flow ID",
               "meta.src_ip": "Source Subnet",
               "meta.src_organization": "Source Organization",
               "start": "Timestamp"
@@ -865,6 +841,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "decbytes"
         },
         "overrides": []
@@ -879,7 +868,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "targets": [
@@ -933,6 +926,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -947,7 +953,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "targets": [
@@ -996,6 +1006,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "short"
         },
         "overrides": []
@@ -1010,7 +1033,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "repeat": null,
@@ -1050,7 +1077,6 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "content": "<h3 style=\"margin-top:20px;\"><center>Summary Statistics</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1065,12 +1091,11 @@
         "y": 57
       },
       "id": 37,
-      "mode": "html",
       "options": {
         "content": "<h3 style=\"margin-top:20px;\"><center>Summary Statistics</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1120,7 +1145,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1259,7 +1284,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1398,7 +1423,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1495,7 +1520,6 @@
       }
     },
     {
-      "content": "<center style=\"margin-top:35px;\"><h1>Reverse Direction</h1></center>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -1510,12 +1534,11 @@
         "y": 67
       },
       "id": 62,
-      "mode": "html",
       "options": {
         "content": "<center style=\"margin-top:35px;\"><h1>Reverse Direction</h1></center>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -1589,7 +1612,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1694,7 +1717,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1804,7 +1827,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2022,7 +2045,7 @@
           }
         ]
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "alias": "",
@@ -2106,19 +2129,6 @@
               "type": "terms"
             },
             {
-              "$$hashKey": "object:349",
-              "fake": true,
-              "field": "_id",
-              "id": "35",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
               "$$hashKey": "object:1121",
               "fake": true,
               "field": "meta.dst_ip",
@@ -2156,14 +2166,6 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1105",
-              "field": "values.num_packets",
-              "id": "25",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
               "$$hashKey": "object:1106",
               "field": "values.duration",
               "id": "27",
@@ -2193,22 +2195,20 @@
             "excludeByName": {
               "Average values.num_packets": true,
               "end": true,
-              "meta.id": true
+              "meta.id": false
             },
             "indexByName": {
-              "Average values.duration": 10,
-              "Average values.num_packets": 9,
-              "Average values.tcp_rexmit_pkts": 11,
-              "Max": 8,
-              "Sum": 7,
-              "_id": 12,
-              "end": 2,
-              "meta.dst_ip": 6,
-              "meta.dst_organization": 5,
-              "meta.id": 0,
-              "meta.src_ip": 4,
-              "meta.src_organization": 3,
-              "start": 1
+              "Average values.duration": 8,
+              "Average values.tcp_rexmit_pkts": 9,
+              "Max": 7,
+              "Sum": 6,
+              "end": 1,
+              "meta.dst_ip": 5,
+              "meta.dst_organization": 4,
+              "meta.id": 10,
+              "meta.src_ip": 3,
+              "meta.src_organization": 2,
+              "start": 0
             },
             "renameByName": {
               "Average values.duration": "Duration",
@@ -2220,6 +2220,7 @@
               "_id": "Flow ID",
               "meta.dst_ip": "Destination Subnet",
               "meta.dst_organization": "Destination Organization",
+              "meta.id": "Flow ID",
               "meta.src_ip": "Source Subnet",
               "meta.src_organization": "Source Organization",
               "start": "Timestamp"
@@ -2242,6 +2243,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "decbytes"
         },
         "overrides": []
@@ -2256,7 +2270,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "targets": [
@@ -2310,6 +2328,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "bps"
         },
         "overrides": []
@@ -2324,7 +2355,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "targets": [
@@ -2373,6 +2408,19 @@
             "nullValueColor": "rgb(169, 169, 169)"
           },
           "decimals": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
           "unit": "short"
         },
         "overrides": []
@@ -2387,7 +2435,11 @@
       "links": [],
       "options": {
         "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
         "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
         "to": "0"
       },
       "repeatDirection": "h",
@@ -2426,7 +2478,6 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "content": "<h3 style=\"margin-top:20px;\"><center> Reverse Summary Statistics</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -2441,12 +2492,11 @@
         "y": 121
       },
       "id": 58,
-      "mode": "html",
       "options": {
         "content": "<h3 style=\"margin-top:20px;\"><center> Reverse Summary Statistics</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -2496,7 +2546,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2635,7 +2685,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2774,7 +2824,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2871,7 +2921,6 @@
       }
     },
     {
-      "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Organization Flows</center></h3>",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -2887,12 +2936,11 @@
       },
       "id": 73,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<h3 style=\"margin-top:20px;\"><center>NetSage Sensors Observing Selected Organization Flows</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2999,7 +3047,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.3.3",
       "targets": [
         {
           "bucketAggs": [
@@ -3091,7 +3139,6 @@
       "type": "table"
     },
     {
-      "content": "",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -3107,12 +3154,11 @@
       },
       "id": 53,
       "links": [],
-      "mode": "markdown",
       "options": {
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3120,7 +3166,6 @@
       "type": "text"
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
       "datasource": null,
       "fieldConfig": {
         "defaults": {
@@ -3136,12 +3181,11 @@
       },
       "id": 32,
       "links": [],
-      "mode": "html",
       "options": {
         "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
         "mode": "html"
       },
-      "pluginVersion": "7.1.0",
+      "pluginVersion": "7.3.3",
       "timeFrom": null,
       "timeShift": null,
       "title": "",
@@ -3170,6 +3214,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Source Organization",
@@ -3200,6 +3245,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Destination Organization",
@@ -3230,6 +3276,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Sensors",
@@ -3261,6 +3308,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
+        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Scope",
@@ -3285,6 +3333,7 @@
           "text": "yes",
           "value": "yes"
         },
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Show Test Traffic",

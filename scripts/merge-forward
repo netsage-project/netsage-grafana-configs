@@ -52,11 +52,13 @@ do
     #TODO:MERGE FORWARD INTO NEXT MAJOR release if exists
     for NEXT_VERSION in $("${WHEREAMI}/next-versions" "${VERSION}")
     do
+	narrate "Creating ${NEXT_VERSION}"
         # checkout branches since git sometimes needs this to merge
         git checkout $VERSION
         NEXT_VERSION="$(echo -e "${NEXT_VERSION}" | tr -d '[:space:]')" #trim whitespace
         HAS_BRANCH=$(git branch --list -r origin/${NEXT_VERSION})
-        if ! [[ "$HAS_BRANCH" ]]; then
+        if [ -n "$HAS_BRANCH" ]; then
+	    narrate "Creating new branch for ${NEXT_VERSION}"
             git checkout $NEXT_VERSION
             MERGE_FAILED=0
             git merge -m "Merging $VERSION into $NEXT_VERSION" $VERSION || MERGE_FAILED=1

@@ -84,7 +84,7 @@ Sample output:
 
 ``` sh
 CONTAINER ID        IMAGE                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
-08bba311b08d        netsage/dashboard:1.7.0   "/run.sh /bin/sh -c …"   19 minutes ago      Up 19 minutes       0.0.0.0:3000->3000/tcp   netsage-grafana-configs_dashboard_1
+08bba311b08d        netsage/dashboard:1.9.0   "/run.sh /bin/sh -c …"   19 minutes ago      Up 19 minutes       0.0.0.0:3000->3000/tcp   netsage-grafana-configs_dashboard_1
 ```
 
 You'll need the container ID which is the first column listed.
@@ -146,7 +146,7 @@ To build a new image locally, you'll be replacing the current tag with the new v
 docker-compose build 
 ```
 
-Please keep in mind that this will replace the upstream tag. This means that when I build a new image, it will name it `netsage/dashboard:1.7.0` . Once you are done testing, simply do a pull again by running the following command and it will reset back to the version from docker hub.
+Please keep in mind that this will replace the upstream tag. This means that when I build a new image, it will name it `netsage/dashboard:1.9.0` . Once you are done testing, simply do a pull again by running the following command and it will reset back to the version from docker hub.
 
 ``` sh
 docker-compose pull dashboard

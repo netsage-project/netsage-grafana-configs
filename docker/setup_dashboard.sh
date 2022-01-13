@@ -42,9 +42,9 @@ cd ../
 
 # Install network panel plugin
 cd globalnoc-networkmap-panel
-npm install -g gulp #make seems to need this
-yarn install
-yarn build
+#npm install -g gulp #make seems to need this
+#yarn install
+#yarn build
 mv /app/plugins/globalnoc-networkmap-panel/ /var/lib/grafana/plugins/
 # make rpm
 # alien -i $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
@@ -52,36 +52,36 @@ cd ../
 
 #Install netsage-sankey plugin
 cd netsage-sankey-plugin
-yarn install
-yarn build
+#yarn install
+#yarn build
 mv /app/plugins/netsage-sankey-plugin/ /var/lib/grafana/plugins/
 cd ../
 
 #Install navigation
-cd NetSageNavigation
+cd netsage-nav-plugin
 yarn install
 yarn build
-mv /app/plugins/NetSageNavigation/ /var/lib/grafana/plugins/
+mv /app/plugins/netsage-nav-plugin/ /var/lib/grafana/plugins/
 cd ..
 
 #Install discipline map plugin
 cd science-discipline-map-plugin/
-yarn install
-yarn build
+#yarn install
+#yarn build
 mv /app/plugins/science-discipline-map-plugin/ /var/lib/grafana/plugins/
 cd ..
 
 #Install slope graph plugin
 cd netsage-slopegraph-panel/
-yarn install
-yarn build
+#yarn install
+#yarn build
 mv /app/plugins/netsage-slopegraph-panel/ /var/lib/grafana/plugins/
 cd ..
 
 #Install bump chart plugin
 cd netsage-bumpchart-panel/
-yarn install
-yarn build
+#yarn install
+#yarn build
 mv /app/plugins/netsage-bumpchart-panel/ /var/lib/grafana/plugins/
 cd ..
 

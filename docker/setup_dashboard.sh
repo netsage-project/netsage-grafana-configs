@@ -58,10 +58,10 @@ mv /app/plugins/netsage-sankey-plugin/ /var/lib/grafana/plugins/
 cd ../
 
 #Install navigation
-cd NetSageNavigation
+cd netsage-nav-plugin
 yarn install
 yarn build
-mv /app/plugins/NetSageNavigation/ /var/lib/grafana/plugins/
+mv /app/plugins/netsage-nav-plugin/ /var/lib/grafana/plugins/
 cd ..
 
 #Install discipline map plugin

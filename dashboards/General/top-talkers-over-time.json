@@ -9,15 +9,24 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1622745368644,
+  "id": 16,
+  "iteration": 1645535697177,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
@@ -118,24 +127,18 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 4,
         "w": 23,
         "x": 1,
-        "y": 3
+        "y": 0
       },
       "id": 5,
       "options": {
-        "content": "<center><h1><b>Top Talkers Over Time</b></h1></center>\n<center>This dashboard displays top sending and receiving Organizations over time, ranked by flow data volume.</center>\n<center>To see top talkers to a specific organization, select it from the Organizations list.</center>\n<center>(Start typing to find an organization not in the initial list.)</center>\n<center>All times are displayed in browser local time.</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "content": "<center style=\"margin-top: 0px\"><h1><b>Top Talkers Over Time</b></h1></center>\n<center style=\"margin-top: 0px\">This dashboard displays top sending and receiving Organizations over time, ranked by flow data volume.</center>\n<center style=\"margin-top: 0px\">Select an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.</center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time.</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -165,23 +168,16 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 4
       },
       "header1": "Source Organization",
       "id": 2,
@@ -245,17 +241,11 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 21
       },
       "header1": "Destination Organization",
       "id": 3,
@@ -320,17 +310,11 @@
     {
       "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 42
+        "y": 39
       },
       "id": 7,
       "links": [],
@@ -338,13 +322,12 @@
         "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     }
   ],
-  "schemaVersion": 26,
+  "schemaVersion": 32,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -353,13 +336,16 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "text": "All",
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -373,7 +359,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -387,6 +372,7 @@
           "text": "14d",
           "value": "14d"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "label": "Days per Interval",
@@ -423,13 +409,16 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "text": "All",
+          "text": [
+            "All"
+          ],
           "value": [
             "$__all"
           ]
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -443,7 +432,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -455,6 +443,7 @@
           "text": "1",
           "value": "1"
         },
+        "description": null,
         "error": null,
         "hide": 2,
         "includeAll": false,
@@ -549,5 +538,6 @@
   },
   "timezone": "",
   "title": "Top Talkers Over Time",
-  "uid": "b35BWxAZz"
+  "uid": "b35BWxAZz",
+  "version": 3
 }

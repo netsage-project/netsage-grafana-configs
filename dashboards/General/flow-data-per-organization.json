@@ -9,15 +9,24 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1636660282988,
+  "id": 7,
+  "iteration": 1645534588073,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
@@ -118,12 +127,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 7,
         "w": 22,
@@ -133,22 +136,15 @@
       "id": 44,
       "links": [],
       "options": {
-        "content": "<div style=\"float:right;\">\n<a class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization&from=${__from}&to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold;\">See Individual Flows for $Organization</a>\n<a class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/WNn1qyaiz/flows-by-science-discipline?var-org=$Organization&from=${__from}&to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold;\">See Science Data for $Organization</a>\n</div>\n<br clear=\"both\" />\n<div style=\"padding-right: 10%;\">\n<center><h1><b>Flow Data by Organization</b></h1></center>\n<center>This dashboard shows top flows with the specified organization as the source or destination.</center>\n<center>Select an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.</center>\n<center>Click on the name of an institution in one of the tables to go to the individual flows dashboard for that institution and the one selected for the page.</center>\n<center><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center>All times are displayed in browser local time.</center>\n</div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "content": "<div style=\"float:right;\">\n<a class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization&from=${__from}&to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\">See Individual Flows for $Organization</a>\n<a class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/WNn1qyaiz/flows-by-science-discipline?var-org=$Organization&from=${__from}&to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\">See Science Data for $Organization</a>\n</div>\n<br clear=\"both\">\n<div style=\"padding-right: 10%\">\n<center style=\"margin-top: 0px\"><h1><b>Flow Data by Organization</b></h1></center>\n<center style=\"margin-top: 0px\">This dashboard shows top flows with the specified organization as the source or destination.</center>\n<center style=\"margin-top: 0px\">Select an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.</center>\n<center style=\"margin-top: 0px\">Click on the name of an institution in one of the tables to go to the individual flows dashboard for that institution and the one selected for the page.</center>\n<center style=\"margin-top: 0px\"><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time.</center>\n</div>\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -161,8 +157,7 @@
         "content": "<h1><center>Top Flows Sent by $Organization</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
@@ -171,18 +166,17 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [
             {
-              "$$hashKey": "object:137",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -231,9 +225,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -275,19 +270,18 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 1,
           "mappings": [
             {
-              "$$hashKey": "object:213",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -336,9 +330,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -386,6 +381,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -503,7 +499,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -516,7 +512,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -589,6 +585,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -706,7 +703,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -719,7 +716,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -779,12 +776,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -797,8 +788,7 @@
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Flows Received by $Organization</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
@@ -807,18 +797,17 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [
             {
-              "$$hashKey": "object:705",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -867,9 +856,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -911,19 +901,18 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 1,
           "mappings": [
             {
-              "$$hashKey": "object:794",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -972,9 +961,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1022,6 +1012,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -1131,7 +1122,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1144,7 +1135,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -1217,6 +1208,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -1326,7 +1318,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1339,7 +1331,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -1399,12 +1391,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1417,8 +1403,7 @@
         "content": "<h1 style=\"margin-top:35px;\"><center>Other Statistics about $Organization Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
@@ -1427,18 +1412,17 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [
             {
-              "$$hashKey": "object:1263",
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1479,9 +1463,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1525,7 +1510,6 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1559,7 +1543,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1665,7 +1649,6 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1699,7 +1682,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1804,7 +1787,6 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1838,7 +1820,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1936,12 +1918,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1954,8 +1930,7 @@
         "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $Organization Flows</center></h3>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
@@ -1965,6 +1940,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -2052,7 +2028,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -2144,12 +2120,6 @@
     {
       "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -2162,14 +2132,13 @@
         "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": false,
-  "schemaVersion": 26,
+  "schemaVersion": 32,
   "style": "dark",
   "tags": [
     "flow",
@@ -2186,6 +2155,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2199,7 +2169,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2217,6 +2186,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -2230,7 +2200,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2248,6 +2217,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -2261,7 +2231,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2273,6 +2242,7 @@
           "text": "yes",
           "value": "yes"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2330,5 +2300,6 @@
   },
   "timezone": "",
   "title": "Flow Data per Organization",
-  "uid": "QfzDJKhik"
+  "uid": "QfzDJKhik",
+  "version": 6
 }

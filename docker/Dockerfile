@@ -1,4 +1,4 @@
-FROM grafana/grafana:7.3.3-ubuntu
+FROM grafana/grafana:8.2.7-ubuntu
 
 USER root
 
@@ -32,6 +32,8 @@ RUN  cd /app/docker; ./docker_fix_build.sh && \
 WORKDIR /app 
 VOLUME /app
 USER grafana 
+
+ENV GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=netsage-bumpchart-panel,netsage-sankey,netsage-nav-plugin,globalnoc-tsds-datasource,netsage-migrationmap,globalnoc-networkmap-panel,netsage-slopegraph-panel
 
 ENTRYPOINT [ "/usr/bin/grafana_runner" ]
 

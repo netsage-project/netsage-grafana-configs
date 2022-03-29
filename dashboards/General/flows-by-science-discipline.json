@@ -9,48 +9,34 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1635997669836,
+  "id": 9,
+  "iteration": 1648488256159,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
-      "choices": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "cycleview": true,
-      "dashboardselection": true,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "grafanafavorites": true,
       "gridPos": {
-        "h": 3,
-        "w": 2,
+        "h": 1,
+        "w": 1,
         "x": 0,
         "y": 0
       },
-      "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
       "id": 1,
       "link_text": [
         "What is the current state of the network?",
@@ -80,24 +66,91 @@
         "/grafana/d/CJC1FFhmz/other-flow-stats",
         "/grafana/d/VuuXrnPWz/flow-analysis"
       ],
-      "links": [],
-      "sharescreen": true,
-      "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
-      "sidebar": true,
-      "tablefilters": true,
-      "title": "",
-      "topLogoPath": "https://portal.netsage.global/netsage-cropped.png",
+      "options": {
+        "hideGrafanaTools": {
+          "hideNavBar": true,
+          "hideSideBar": true
+        },
+        "navQuestions": [
+          {
+            "label": "What is the current state of the network?",
+            "link": "/grafana/d/000000003/bandwidth-dashboard"
+          },
+          {
+            "label": "What are the top sources/destinations of flows?",
+            "link": "/grafana/d/xk26IFhmk/flow-data"
+          },
+          {
+            "label": "What are the top flows by organization?",
+            "link": "/grafana/d/QfzDJKhik/flow-data-per-organization"
+          },
+          {
+            "label": "What do individual flows look like?",
+            "link": "/grafana/d/-l3_u8nWk/individual-flows"
+          },
+          {
+            "label": "What are the top flows by country?",
+            "link": "/grafana/d/fgrOzz_mk/flow-data-per-country"
+          },
+          {
+            "label": "What are the flows by science discipline?",
+            "link": "/grafana/d/WNn1qyaiz/flows-by-science-discipline"
+          },
+          {
+            "label": "What are the flows by project?",
+            "link": "/grafana/d/ie7TeomGz/flow-data-for-projects"
+          },
+          {
+            "label": "Who are the top talkers over time?",
+            "link": "/grafana/d/b35BWxAZz/top-talkers-over-time"
+          },
+          {
+            "label": "What are the patterns in science data transfers in the network?",
+            "link": "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+          },
+          {
+            "label": "What are the bandwidth patterns in the network?",
+            "link": "/grafana/d/000000004/bandwidth-patterns"
+          },
+          {
+            "label": "What are the current flow data summary statistics?",
+            "link": "/grafana/d/CJC1FFhmz/other-flow-stats"
+          },
+          {
+            "label": "Advanced Flow Analysis",
+            "link": "/grafana/d/VuuXrnPWz/flow-analysis"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
       "transparent": true,
-      "type": "netsagenavigation"
+      "type": "netsage-nav-plugin"
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 6,
         "w": 20,
@@ -107,13 +160,12 @@
       "id": 2,
       "links": [],
       "options": {
-        "content": "\n<center><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center>This dashboard shows information related to science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center>The map shows only the top 100 pairs of organizations with at least one end tagged in the science registry.  Larger dots indicate larger flows.</center>\n<center>The Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s)<br/> and their associated top three destination organizations, with thicker lines for larger flow volumes.</center>\n<center><b>Note that in the Summary tables, if only one sampled flow was detected, the rate will be zero.</b></center>\n<center>All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "content": "\n<center style=\"margin-top: 0px\"><h1><b>Flow Data by Science Discipline</b></h1></center>\n<center style=\"margin-top: 0px\">This dashboard shows information related to science disciplines for top talkers using the <a href=\"https://scienceregistry.netsage.global\">NetSage Science Registry</a>.</center>\n<center style=\"margin-top: 0px\">The map shows only the top 100 pairs of organizations with at least one end tagged in the science registry.  Larger dots indicate larger flows.</center>\n<center style=\"margin-top: 0px\">The Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s)<br/> and their associated top three destination organizations, with thicker lines for larger flow volumes.</center>\n<center style=\"margin-top: 0px\"><b>Note that in the Summary tables, if only one sampled flow was detected, the rate will be zero.</b></center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time.</center>\n\n\n <!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -122,18 +174,18 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 1,
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -182,9 +234,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -229,18 +282,18 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 1,
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -289,9 +342,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -331,18 +385,18 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 1,
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -391,9 +445,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -438,18 +493,18 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 1,
           "mappings": [
             {
-              "id": 0,
-              "op": "=",
-              "text": "N/A",
-              "type": 1,
-              "value": "null"
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
             }
           ],
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -498,9 +553,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -541,29 +597,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -594,7 +627,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -697,29 +730,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -750,7 +760,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -904,12 +914,6 @@
       "dark_map_url": "https://api.tiles.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
       "dark_mode": false,
       "datasource": "netsage",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 23,
         "w": 24,
@@ -2379,12 +2383,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -2394,13 +2392,12 @@
       "id": 8,
       "links": [],
       "options": {
-        "content": "<h3 style=\"margin: 20px;\"><center>Top Science Talkers</center></h3>\n",
+        "content": "<h3 style=\"margin-top:16px;\"><center>Top Science Talkers</center></h3>\n",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -2545,12 +2542,6 @@
       ],
       "docs_editor_to_Byte": false,
       "docs_table_data": [],
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 31,
         "w": 24,
@@ -4004,7 +3995,6 @@
           "timeField": "start"
         }
       ],
-      "title": "",
       "tooltip": {
         "content": " ",
         "show": true,
@@ -4020,6 +4010,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -4196,7 +4187,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -4296,6 +4287,7 @@
         "defaults": {
           "custom": {
             "align": "left",
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -4406,7 +4398,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -4480,14 +4472,8 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 24,
         "x": 0,
         "y": 102
@@ -4495,13 +4481,12 @@
       "id": 10,
       "links": [],
       "options": {
-        "content": "<br/><br/>\n<h1><center>Summary of All Disciplines</center></h1>\n<center>Only flows where source or destination has been tagged with a science discipline <br>\nfrom the Science Registry <i>and</i> were seen by the selected sensor(s) are counted.\n</center>",
+        "content": "<br/><br/>\n<center style=\"margin-top: 0px\"><h1><center>Summary of All Disciplines</center></h1>\n<center style=\"margin-top: 0px\"><center>Only flows where source or destination has been tagged with a science discipline <br>\nfrom the Science Registry <i>and</i> were seen by the selected sensor(s) are counted.\n</center>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -4511,6 +4496,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "mappings": [],
@@ -4651,7 +4637,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 106
+        "y": 107
       },
       "hideTimeOverride": false,
       "id": 11,
@@ -4665,7 +4651,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -4751,6 +4737,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "mappings": [],
@@ -4891,7 +4878,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 123
+        "y": 124
       },
       "hideTimeOverride": false,
       "id": 14,
@@ -4905,7 +4892,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -4986,19 +4973,13 @@
       "type": "table"
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
+      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 140
+        "y": 141
       },
       "id": 13,
       "links": [],
@@ -5006,14 +4987,13 @@
         "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  console.log('hi');\n</script>\n",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": false,
-  "schemaVersion": 26,
+  "schemaVersion": 32,
   "style": "dark",
   "tags": [
     "flow",
@@ -5034,6 +5014,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_preferred_org\", \"size\": 10000000}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -5047,7 +5028,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -5065,6 +5045,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"Network Monitoring\\\" AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -5078,7 +5059,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -5096,6 +5076,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -5109,7 +5090,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -5127,6 +5107,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
@@ -5140,7 +5121,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -5179,5 +5159,6 @@
   },
   "timezone": "",
   "title": "Flows by Science Discipline",
-  "uid": "WNn1qyaiz"
+  "uid": "WNn1qyaiz",
+  "version": 8
 }

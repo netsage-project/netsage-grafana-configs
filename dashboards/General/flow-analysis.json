@@ -9,48 +9,34 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1635791046769,
+  "id": 3,
+  "iteration": 1645546774143,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
-      "choices": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11
-      ],
-      "cycleview": true,
-      "dashboardselection": true,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "grafanafavorites": true,
       "gridPos": {
-        "h": 3,
-        "w": 2,
+        "h": 1,
+        "w": 1,
         "x": 0,
         "y": 0
       },
-      "hamburgerPath": "https://portal.netsage.global/hamburger-v4.gif",
       "id": 1,
       "link_text": [
         "What is the current state of the network?",
@@ -80,24 +66,91 @@
         "/grafana/d/CJC1FFhmz/other-flow-stats",
         "/grafana/d/VuuXrnPWz/flow-analysis"
       ],
-      "links": [],
-      "sharescreen": true,
-      "sideLogoPath": "https://portal.netsage.global/netsage-header-logo.png",
-      "sidebar": true,
-      "tablefilters": true,
-      "title": "",
-      "topLogoPath": "https://portal.netsage.global/netsage-cropped.png",
+      "options": {
+        "hideGrafanaTools": {
+          "hideNavBar": true,
+          "hideSideBar": true
+        },
+        "navQuestions": [
+          {
+            "label": "What is the current state of the network?",
+            "link": "/grafana/d/000000003/bandwidth-dashboard"
+          },
+          {
+            "label": "What are the top sources/destinations of flows?",
+            "link": "/grafana/d/xk26IFhmk/flow-data"
+          },
+          {
+            "label": "What are the top flows by organization?",
+            "link": "/grafana/d/QfzDJKhik/flow-data-per-organization"
+          },
+          {
+            "label": "What do individual flows look like?",
+            "link": "/grafana/d/-l3_u8nWk/individual-flows"
+          },
+          {
+            "label": "What are the top flows by country?",
+            "link": "/grafana/d/fgrOzz_mk/flow-data-per-country"
+          },
+          {
+            "label": "What are the flows by science discipline?",
+            "link": "/grafana/d/WNn1qyaiz/flows-by-science-discipline"
+          },
+          {
+            "label": "What are the flows by project?",
+            "link": "/grafana/d/ie7TeomGz/flow-data-for-projects"
+          },
+          {
+            "label": "Who are the top talkers over time?",
+            "link": "/grafana/d/b35BWxAZz/top-talkers-over-time"
+          },
+          {
+            "label": "What are the patterns in science data transfers in the network?",
+            "link": "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+          },
+          {
+            "label": "What are the bandwidth patterns in the network?",
+            "link": "/grafana/d/000000004/bandwidth-patterns"
+          },
+          {
+            "label": "What are the current flow data summary statistics?",
+            "link": "/grafana/d/CJC1FFhmz/other-flow-stats"
+          },
+          {
+            "label": "Advanced Flow Analysis",
+            "link": "/grafana/d/VuuXrnPWz/flow-analysis"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
       "transparent": true,
-      "type": "netsagenavigation"
+      "type": "netsage-nav-plugin"
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 7,
         "w": 22,
@@ -106,13 +159,12 @@
       },
       "id": 2,
       "options": {
-        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:35px;\"><center><b>Flow Analysis</b></h1></center>\n<center>This dashboard shows graphical SNMP data for the selected link and flow data from related flow sensors.</center>\n<center>It also shows flow pairs and top flows, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center>Select a link from the list above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center>Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center>All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
+        "content": "<div style=\"padding-right: 10%;\">\n<h1  style=\"margin-top:30px;\"><center><b>Flow Analysis</b></h1></center>\n<center style=\"margin-top: 0px\">This dashboard shows graphical SNMP data for the selected link and flow data from related flow sensors.</center>\n<center style=\"margin-top: 0px\">It also shows flow pairs and top flows, organized by the selected source and destination scopes as well as the volume above and rate under.</center>\n<center style=\"margin-top: 0px\">Select a link from the list above, along with source and destination scopes as well as the volume above and rate under.</center>\n<center style=\"margin-top: 0px\">Clicking and dragging on the SNMP graph below will replace the current time range with a custom range based on the selected portion of the graph.</center>\n<center style=\"margin-top: 0px\"><strong>Please note that the flow rate in the flow pairs table will be zero if only one sampled flow was detected.</strong></center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time.</center></div>\n\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n\n\n\n",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -124,7 +176,6 @@
       "datasource": "Netsage TSDS",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -156,7 +207,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -331,12 +382,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -348,10 +393,9 @@
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Flow Pairs</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -361,6 +405,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -516,7 +561,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -619,7 +664,19 @@
               "Count": "# Flows",
               "Max values.bits_per_second": "Peak Rate",
               "Max values.num_bits": "Largest Flow",
-              "Sum": "Total Vol."
+              "Sum": "Total Vol.",
+              "meta.dst_asn": "Destination",
+              "meta.dst_continent": "Destination",
+              "meta.dst_country_name": "Destination",
+              "meta.dst_organization": "Destination",
+              "meta.dst_port": "Destination",
+              "meta.scireg.dst.project_names": "Destination",
+              "meta.scireg.src.project_names": "Source",
+              "meta.src_asn": "Source",
+              "meta.src_continent": "Source",
+              "meta.src_country_name": "Source",
+              "meta.src_organization": "Source",
+              "meta.src_port": "Source"
             }
           }
         }
@@ -628,12 +685,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -645,7 +696,7 @@
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Sources of Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -673,7 +724,6 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -683,6 +733,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -779,7 +830,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -791,7 +842,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -851,7 +902,13 @@
               "Count": "# Flows",
               "Max": "Largest Flow",
               "Sum": "Total Vol.",
-              "Unique Count": "# Flows"
+              "Unique Count": "# Flows",
+              "meta.scireg.src.project_names": "Source",
+              "meta.src_asn": "Source",
+              "meta.src_continent": "Source",
+              "meta.src_country_name": "Source",
+              "meta.src_organization": "Source",
+              "meta.src_port": "Source"
             }
           }
         }
@@ -864,6 +921,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -960,7 +1018,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -972,7 +1030,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -1021,7 +1079,13 @@
               "$src_scope": "Source",
               "Count": "# Flows",
               "Max": "Peak",
-              "Unique Count": "# Flows"
+              "Unique Count": "# Flows",
+              "meta.scireg.src.project_names": "Source",
+              "meta.src_asn": "Source",
+              "meta.src_continent": "Source",
+              "meta.src_country_name": "Source",
+              "meta.src_organization": "Source",
+              "meta.src_port": "Source"
             }
           }
         }
@@ -1030,12 +1094,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1047,7 +1105,7 @@
         "content": "<h1  style=\"margin-top:35px;\"><center>Top Destinations of Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1075,7 +1133,6 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1085,6 +1142,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -1181,7 +1239,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1193,7 +1251,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -1253,7 +1311,13 @@
               "Count": "# Flows",
               "Max": "Largest Flow",
               "Sum": "Total Vol.",
-              "Unique Count": "# Flows"
+              "Unique Count": "# Flows",
+              "meta.dst_asn": "Destination",
+              "meta.dst_continent": "Destination",
+              "meta.dst_country_name": "Destination",
+              "meta.dst_organization": "Destination",
+              "meta.dst_port": "Destination",
+              "meta.scireg.dst.project_names": "Destination"
             }
           }
         }
@@ -1266,6 +1330,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -1362,7 +1427,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1374,7 +1439,7 @@
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
-                "size": "10"
+                "size": "25"
               },
               "type": "terms"
             }
@@ -1424,7 +1489,13 @@
               "Average": "",
               "Count": "# Flows",
               "Max": "Peak",
-              "Unique Count": "# Flows"
+              "Unique Count": "# Flows",
+              "meta.dst_asn": "Destination",
+              "meta.dst_continent": "Destination",
+              "meta.dst_country_name": "Destination",
+              "meta.dst_organization": "Destination",
+              "meta.dst_port": "Destination",
+              "meta.scireg.dst.project_names": "Destination"
             }
           }
         }
@@ -1433,12 +1504,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1450,10 +1515,9 @@
         "content": "<h1  style=\"margin-top:35px;\"><center>Individual Flows</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1463,6 +1527,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -1673,7 +1738,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "alias": "",
@@ -1824,19 +1889,19 @@
               "Average values.num_packets": true,
               "Max": false,
               "end": true,
+              "es_doc_id": false,
               "meta.id": false
             },
             "indexByName": {
-              "$dst_scope": 4,
-              "$src_scope": 2,
               "Average values.duration": 9,
               "Average values.num_packets": 8,
               "Max": 7,
               "Sum": 6,
-              "_id": 10,
               "end": 1,
+              "es_doc_id": 10,
+              "meta.dst_continent": 4,
               "meta.dst_ip": 5,
-              "meta.id": 11,
+              "meta.src_continent": 2,
               "meta.src_ip": 3,
               "start": 0
             },
@@ -1852,9 +1917,21 @@
               "_id": "",
               "end": "",
               "es_doc_id": "Flow ID",
+              "meta.dst_asn": "Destination",
+              "meta.dst_continent": "Destination",
+              "meta.dst_country_name": "Destination",
               "meta.dst_ip": "Destination Subnet",
+              "meta.dst_organization": "Destination",
+              "meta.dst_port": "Destination",
               "meta.id": "Flow ID",
+              "meta.scireg.dst.project_names": "Destination",
+              "meta.scireg.src.project_names": "Source",
+              "meta.src_asn": "Source",
+              "meta.src_continent": "Source",
+              "meta.src_country_name": "Source",
               "meta.src_ip": "Source Subnet",
+              "meta.src_organization": "Source",
+              "meta.src_port": "Source",
               "start": "Timestamp"
             }
           }
@@ -1864,12 +1941,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1882,8 +1953,7 @@
         "content": "<h1 style=\"margin-top:35px;\"><center>Other Flow Statistics</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
@@ -1893,10 +1963,8 @@
       "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "N/A",
-          "nullValueMode": "connected",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1945,9 +2013,10 @@
           "fields": "/^Count$/",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -1991,7 +2060,6 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2025,7 +2093,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2131,7 +2199,6 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2165,7 +2232,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2271,7 +2338,6 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -2303,7 +2369,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2399,12 +2465,6 @@
     },
     {
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -2417,8 +2477,7 @@
         "content": "<h1 style=\"margin-top:35px;\"><center>Flow Data Summary For Selected Sensors</center></h1>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
-      "title": "",
+      "pluginVersion": "8.2.7",
       "transparent": true,
       "type": "text"
     },
@@ -2429,6 +2488,7 @@
         "defaults": {
           "custom": {
             "align": null,
+            "displayMode": "auto",
             "filterable": false
           },
           "decimals": 1,
@@ -2497,7 +2557,7 @@
           }
         ]
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "targets": [
         {
           "bucketAggs": [
@@ -2587,14 +2647,8 @@
       "type": "table"
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
+      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -2606,15 +2660,14 @@
         "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.3",
+      "pluginVersion": "8.2.7",
       "timeFrom": null,
       "timeShift": null,
-      "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "schemaVersion": 26,
+  "schemaVersion": 32,
   "style": "dark",
   "tags": [
     "netsage",
@@ -2631,6 +2684,7 @@
         },
         "datasource": "Netsage TSDS",
         "definition": "get link_name between($START, $END) by link_name from interface where link_name like \".+\" and flow_sensors !=null",
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2644,7 +2698,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2658,6 +2711,7 @@
         },
         "datasource": "Netsage TSDS",
         "definition": "get flow_sensors between($START, $END) by flow_sensors from interface where link_name = \"$links\"",
+        "description": null,
         "error": null,
         "hide": 2,
         "includeAll": false,
@@ -2671,7 +2725,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2685,6 +2738,7 @@
         },
         "datasource": "netsage",
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\", \"query\":\"meta.sensor_id:$link_sensor\"}",
+        "description": null,
         "error": null,
         "hide": 2,
         "includeAll": false,
@@ -2698,7 +2752,6 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -2710,6 +2763,7 @@
           "text": "meta.src_organization",
           "value": "meta.src_organization"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2760,6 +2814,7 @@
           "text": "meta.dst_organization",
           "value": "meta.dst_organization"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2810,6 +2865,7 @@
           "text": "yes",
           "value": "yes"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2840,6 +2896,7 @@
           "text": "0",
           "value": "0"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2890,6 +2947,7 @@
           "text": "No Limit",
           "value": "10000000000000000"
         },
+        "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
@@ -2945,6 +3003,7 @@
       },
       {
         "datasource": "netsage",
+        "description": null,
         "error": null,
         "filters": [],
         "hide": 0,
@@ -2974,5 +3033,6 @@
   },
   "timezone": "",
   "title": "Flow Analysis",
-  "uid": "VuuXrnPWz"
+  "uid": "VuuXrnPWz",
+  "version": 8
 }

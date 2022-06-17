@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 9,
-  "iteration": 1648488256159,
+  "iteration": 1655415002805,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -258,13 +258,8 @@
               "$$hashKey": "object:39",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -274,6 +269,34 @@
         }
       ],
       "title": "Volume of Selected Disciplines Matched in Science Registry",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -469,13 +492,8 @@
               "$$hashKey": "object:113",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -485,6 +503,34 @@
         }
       ],
       "title": "Total Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -2352,13 +2398,8 @@
               "$$hashKey": "object:187",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -2377,6 +2418,37 @@
         "show": true,
         "showDefault": true
       },
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum": true,
+              "Sum_Bytes": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "transparent": true,
       "type": "netsage-migrationmap",
       "zoom_lvl": 3
@@ -4225,13 +4297,8 @@
               "$$hashKey": "object:764",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -4240,11 +4307,7 @@
               "id": "5",
               "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -4279,6 +4342,64 @@
       ],
       "timeFrom": null,
       "title": "Top Pairs",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Average": 7,
+              "Count": 6,
+              "Max values.bits_per_second": 8,
+              "Max values.num_bits": 4,
+              "Max_Bytes": 5,
+              "Sum": 2,
+              "Sum_Bytes": 3,
+              "meta.dst_preferred_org": 1,
+              "meta.src_preferred_org": 0
+            },
+            "renameByName": {
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -4422,13 +4543,8 @@
               "$$hashKey": "object:786",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -4437,11 +4553,7 @@
               "id": "5",
               "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -4468,6 +4580,63 @@
       ],
       "timeFrom": null,
       "title": "Sensor Usage",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
+            "renameByName": {
+              "Max values.num_bits": "",
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -4675,26 +4844,16 @@
               "$$hashKey": "object:232",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:233",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -4729,6 +4888,65 @@
       ],
       "timeFrom": null,
       "title": "Flow Statistics by Source Discipline",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Average": 6,
+              "Count": 5,
+              "Max values.bits_per_second": 7,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.scireg.src.discipline": 0
+            },
+            "renameByName": {
+              "Max values.num_bits": "",
+              "Max_Bytes": "Max values.num_bits",
+              "Sum": "",
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -4916,26 +5134,16 @@
               "$$hashKey": "object:232",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:233",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -4970,6 +5178,63 @@
       ],
       "timeFrom": null,
       "title": "Flow Statistics by Destination Discipline",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Average": 6,
+              "Count": 5,
+              "Max values.bits_per_second": 7,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.scireg.dst.discipline": 0
+            },
+            "renameByName": {
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {

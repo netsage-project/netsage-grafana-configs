@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 10,
-  "iteration": 1648488183905,
+  "iteration": 1655454643267,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -323,13 +323,8 @@
               "$$hashKey": "object:181",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -341,6 +336,36 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Total Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum_Bytes": "Sum values.num_bits"
+            }
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -746,13 +771,8 @@
               "$$hashKey": "object:409",
               "field": "values.num_bits",
               "id": "12",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -788,22 +808,39 @@
       "title": "Flows from Source to Destination",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Sum": true,
               "end": true,
               "meta.id": false
             },
             "indexByName": {
-              "Average values.duration": 8,
-              "Average values.tcp_rexmit_pkts": 9,
-              "Max": 7,
+              "Average values.duration": 9,
+              "Average values.tcp_rexmit_pkts": 10,
+              "Max": 8,
               "Sum": 6,
-              "_id": 10,
+              "Sum_Bytes": 7,
               "end": 1,
+              "es_doc_id": 11,
               "meta.dst_ip": 5,
               "meta.dst_organization": 4,
-              "meta.id": 11,
               "meta.src_ip": 3,
               "meta.src_organization": 2,
               "start": 0
@@ -815,6 +852,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
+              "Sum_Bytes": "Total Volume",
               "_id": "",
               "end": "",
               "es_doc_id": "Flow ID",
@@ -898,13 +936,8 @@
               "$$hashKey": "object:1172",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -914,6 +947,36 @@
         }
       ],
       "title": "By Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum_Bytes": "Sum values.num_bits"
+            }
+          }
+        }
+      ],
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
@@ -1711,13 +1774,8 @@
               "$$hashKey": "object:990",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -1729,6 +1787,36 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Total Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum_Bytes": "Sum values.num_bits"
+            }
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -2114,13 +2202,8 @@
               "$$hashKey": "object:409",
               "field": "values.num_bits",
               "id": "12",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -2156,22 +2239,39 @@
       "title": "Flows from Source to Destination (Reverse)",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Sum": true,
               "end": true,
               "meta.id": false
             },
             "indexByName": {
-              "Average values.duration": 8,
-              "Average values.tcp_rexmit_pkts": 9,
-              "Max": 7,
+              "Average values.duration": 9,
+              "Average values.tcp_rexmit_pkts": 10,
+              "Max": 8,
               "Sum": 6,
-              "_id": 10,
+              "Sum_Bytes": 7,
               "end": 1,
+              "es_doc_id": 11,
               "meta.dst_ip": 5,
               "meta.dst_organization": 4,
-              "meta.id": 11,
               "meta.src_ip": 3,
               "meta.src_organization": 2,
               "start": 0
@@ -2183,6 +2283,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Volume",
+              "Sum_Bytes": "Total Volume",
               "_id": "",
               "end": "",
               "es_doc_id": "Flow ID",
@@ -2266,13 +2367,8 @@
               "$$hashKey": "object:207",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -2282,6 +2378,36 @@
         }
       ],
       "title": "By Volume (Reverse)",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum_Bytes": "Sum values.num_bits"
+            }
+          }
+        }
+      ],
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
@@ -3017,26 +3143,16 @@
               "$$hashKey": "object:251",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:252",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -3065,14 +3181,59 @@
       "title": "Sensor Usage",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
             "renameByName": {
               "Max values.bits_per_second": "Fastest Flow",
               "Max values.num_bits": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Volume",
+              "Sum_Bytes": "Total Volume",
               "Unique Count": "# Flows",
               "meta.sensor_id": "Sensor"
             }
@@ -3123,7 +3284,7 @@
       "type": "text"
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "schemaVersion": 32,
   "style": "dark",
   "tags": [
@@ -3165,7 +3326,7 @@
       {
         "allValue": "*",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "United States"
           ],
@@ -3288,8 +3449,8 @@
     ]
   },
   "time": {
-    "from": "2022-03-21T17:21:52.058Z",
-    "to": "2022-03-28T17:21:52.059Z"
+    "from": "now-24h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [

@@ -23,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 14,
-  "iteration": 1648238689994,
+  "id": 12,
+  "iteration": 1655455097460,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -2156,13 +2156,8 @@
               "$$hashKey": "object:232",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -2183,23 +2178,39 @@
       "title": "Top Sources not in Science Registry",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Average": true,
               "Max values.bits_per_second": true,
-              "Max values.num_bits": true
+              "Max values.num_bits": true,
+              "Sum": true
             },
             "indexByName": {
-              "Average": 5,
-              "Max values.bits_per_second": 6,
-              "Max values.num_bits": 3,
+              "Count": 4,
               "Sum": 2,
-              "Unique Count": 4,
+              "Sum_Bytes": 3,
               "meta.src_ip": 1,
               "meta.src_preferred_org": 0
             },
             "renameByName": {
+              "Sum_Bytes": "Sum",
               "meta.dst_preferred_org": "Destination Organization",
               "meta.src_ip": "",
               "meta.src_preferred_org": ""
@@ -2372,13 +2383,8 @@
               "$$hashKey": "object:232",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -2399,23 +2405,39 @@
       "title": "Top Destinations not in Science Registry",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Average": true,
               "Max values.bits_per_second": true,
-              "Max values.num_bits": true
+              "Max values.num_bits": true,
+              "Sum": true
             },
             "indexByName": {
-              "Average": 5,
-              "Max values.bits_per_second": 6,
-              "Max values.num_bits": 3,
+              "Count": 4,
               "Sum": 2,
-              "Unique Count": 4,
+              "Sum_Bytes": 3,
               "meta.dst_ip": 1,
               "meta.dst_preferred_org": 0
             },
             "renameByName": {
+              "Sum_Bytes": "Sum",
               "meta.dst_ip": "",
               "meta.dst_preferred_org": "",
               "meta.src_preferred_org": "Source Organization"
@@ -2575,7 +2597,6 @@
               "$$hashKey": "object:232",
               "field": "meta.src_country_name",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
               "settings": {},
               "type": "cardinality"
@@ -2768,7 +2789,6 @@
               "$$hashKey": "object:232",
               "field": "meta.dst_country_name",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
               "settings": {},
               "type": "cardinality"
@@ -2952,26 +2972,16 @@
               "$$hashKey": "object:212",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:213",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -2998,6 +3008,62 @@
       ],
       "timeFrom": null,
       "title": "Sensor Flow Stats",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
+            "renameByName": {
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {

@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 4,
-  "iteration": 1648487668293,
+  "iteration": 1655403039916,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -209,7 +209,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Sum_Bytes"
             },
             "properties": [
               {
@@ -237,7 +237,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max"
+              "options": "Max_Bytes"
             },
             "properties": [
               {
@@ -314,26 +314,16 @@
               "$$hashKey": "object:87",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:88",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -352,6 +342,58 @@
       ],
       "timeFrom": null,
       "title": "By Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 5,
+              "Max": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.src_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -576,7 +618,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Sum_Bytes"
             },
             "properties": [
               {
@@ -596,7 +638,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max"
+              "options": "Max_Bytes"
             },
             "properties": [
               {
@@ -665,26 +707,16 @@
               "$$hashKey": "object:464",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:465",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -703,6 +735,58 @@
       ],
       "timeFrom": null,
       "title": "By Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 5,
+              "Max": 4,
+              "Max_Bytes": 2,
+              "Sum": 3,
+              "Sum_Bytes": 1,
+              "meta.dst_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -952,7 +1036,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Sum_Bytes"
             },
             "properties": [
               {
@@ -972,7 +1056,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.num_bits"
+              "options": "Max_Bytes"
             },
             "properties": [
               {
@@ -1099,26 +1183,16 @@
               "$$hashKey": "object:764",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:765",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1153,6 +1227,61 @@
       ],
       "timeFrom": null,
       "title": "Top Pairs",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Average": 7,
+              "Count": 6,
+              "Max values.bits_per_second": 8,
+              "Max values.num_bits": 5,
+              "Max_Bytes": 4,
+              "Sum": 3,
+              "Sum_Bytes": 2,
+              "meta.dst_organization": 1,
+              "meta.src_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -1228,13 +1357,8 @@
               "$$hashKey": "object:363",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -1246,6 +1370,34 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Top 30 Pairs by Data Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "netsage-slopegraph-panel"
     },
     {
@@ -1843,7 +1995,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Sum_Bytes"
             },
             "properties": [
               {
@@ -1859,7 +2011,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.num_bits"
+              "options": "Max_Bytes"
             },
             "properties": [
               {
@@ -1948,26 +2100,16 @@
               "$$hashKey": "object:786",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:787",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1994,6 +2136,60 @@
       ],
       "timeFrom": null,
       "title": "Sensor Usage",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": false
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
       "type": "table"
     },
     {

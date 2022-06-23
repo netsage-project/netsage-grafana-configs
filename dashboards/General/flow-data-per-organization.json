@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1648487809933,
+  "iteration": 1655409683418,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -354,13 +354,8 @@
               "$$hashKey": "object:163",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -372,6 +367,34 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Total Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -523,26 +546,16 @@
               "$$hashKey": "object:260",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:261",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -563,14 +576,59 @@
       "title": "By Volume",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max": true,
+              "Sum": true,
+              "Sum_Bytes": false
+            },
+            "indexByName": {
+              "Count": 5,
+              "Max": 4,
+              "Max_Bytes": 3,
+              "Sum": 2,
+              "Sum_Bytes": 1,
+              "meta.dst_organization": 0
+            },
             "renameByName": {
               "Count": "# Flows",
               "Max": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Volume",
+              "Sum_Bytes": "Total Volume",
               "Unique Count": "# Flows",
               "meta.dst_organization": "Destination Organization"
             }
@@ -985,13 +1043,8 @@
               "$$hashKey": "object:744",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -1003,6 +1056,34 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Total Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -1146,13 +1227,8 @@
               "$$hashKey": "object:828",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -1161,11 +1237,7 @@
               "id": "5",
               "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1186,14 +1258,58 @@
       "title": "By Volume",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 5,
+              "Max": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.src_organization": 0
+            },
             "renameByName": {
               "Count": "# Flows",
               "Max": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Volume",
+              "Sum_Bytes": "Total Volume",
               "Unique Count": "# Flows",
               "meta.src_organization": "Source Organization"
             }
@@ -2052,26 +2168,16 @@
               "$$hashKey": "object:1293",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:1294",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -2100,15 +2206,60 @@
       "title": "Sensor Usage",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
             "renameByName": {
               "Count": "# Flows",
               "Max values.bits_per_second": "Fastest Flow",
               "Max values.num_bits": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Volume",
+              "Sum_Bytes": "Total Volume",
               "Unique Count": "# Flows",
               "meta.sensor_id": "Sensor"
             }

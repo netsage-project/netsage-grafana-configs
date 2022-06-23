@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 5,
-  "iteration": 1648238603340,
+  "iteration": 1655445098018,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -205,13 +205,8 @@
               "$$hashKey": "object:259",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -223,6 +218,34 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Total Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -288,7 +311,6 @@
               "$$hashKey": "object:259",
               "field": "meta.id",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {},
               "type": "count"
@@ -570,26 +592,16 @@
               "$$hashKey": "object:1271",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:1272",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -625,19 +637,60 @@
       "title": "By Organization Pair",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
             "indexByName": {
-              "Average": 4,
-              "Count": 6,
-              "Max values.bits_per_second": 5,
-              "Max values.num_bits": 3,
+              "Average": 6,
+              "Count": 8,
+              "Max values.bits_per_second": 7,
+              "Max values.num_bits": 4,
+              "Max_Bytes": 5,
               "Sum": 2,
+              "Sum_Bytes": 3,
               "meta.dst_organization": 1,
               "meta.src_organization": 0
             },
-            "renameByName": {}
+            "renameByName": {
+              "Max values.num_bits": "",
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum"
+            }
           }
         }
       ],
@@ -712,13 +765,8 @@
               "$$hashKey": "object:826",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -728,6 +776,37 @@
         }
       ],
       "title": "By Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum values.num_bits": "",
+              "Sum_Bytes": "Sum values.num_bits"
+            }
+          }
+        }
+      ],
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
@@ -1035,26 +1114,16 @@
               "$$hashKey": "object:57",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:58",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1091,18 +1160,59 @@
       "title": "Summary of Source Organizations",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
             "indexByName": {
-              "Average": 3,
-              "Count": 5,
-              "Max values.bits_per_second": 4,
-              "Max values.num_bits": 2,
+              "Average": 5,
+              "Count": 7,
+              "Max values.bits_per_second": 6,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
               "Sum": 1,
+              "Sum_Bytes": 2,
               "meta.src_organization": 0
             },
-            "renameByName": {}
+            "renameByName": {
+              "Max values.num_bits": "",
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum"
+            }
           }
         }
       ],
@@ -1311,26 +1421,16 @@
               "$$hashKey": "object:57",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:58",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1367,18 +1467,59 @@
       "title": "Summary of Destination Organizations",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
             "indexByName": {
-              "Average": 3,
-              "Count": 5,
-              "Max values.bits_per_second": 4,
-              "Max values.num_bits": 2,
+              "Average": 5,
+              "Count": 7,
+              "Max values.bits_per_second": 6,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
               "Sum": 1,
+              "Sum_Bytes": 2,
               "meta.dst_organization": 0
             },
-            "renameByName": {}
+            "renameByName": {
+              "Max_Bytes": "Max values.num_bits",
+              "Sum_Bytes": "Sum",
+              "meta.dst_organization": ""
+            }
           }
         }
       ],
@@ -1565,26 +1706,16 @@
               "$$hashKey": "object:786",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:787",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1611,6 +1742,64 @@
       ],
       "timeFrom": null,
       "title": "Links Usage",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
+            "renameByName": {
+              "Max values.num_bits": "",
+              "Max_Bytes": "Max values.num_bits",
+              "Sum": "",
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -2967,13 +3156,8 @@
               "$$hashKey": "object:187",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -2992,6 +3176,36 @@
         "show": true,
         "showDefault": true
       },
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Sum_Bytes": "Sum"
+            }
+          }
+        }
+      ],
       "transparent": true,
       "type": "netsage-migrationmap",
       "zoom_lvl": 3

@@ -24,7 +24,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 3,
-  "iteration": 1645546774143,
+  "iteration": 1655440017880,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -598,26 +598,16 @@
               "$$hashKey": "object:384",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:385",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -653,10 +643,55 @@
       "title": "Flow Pairs",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Average": 7,
+              "Count": 6,
+              "Max values.bits_per_second": 8,
+              "Max values.num_bits": 4,
+              "Max_Bytes": 5,
+              "Sum": 2,
+              "Sum_Bytes": 3,
+              "meta.dst_organization": 1,
+              "meta.src_organization": 0
+            },
             "renameByName": {
               "$dst_scope": "Destination",
               "$src_scope": "Source",
@@ -664,7 +699,9 @@
               "Count": "# Flows",
               "Max values.bits_per_second": "Peak Rate",
               "Max values.num_bits": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Vol.",
+              "Sum_Bytes": "Total Vol.",
               "meta.dst_asn": "Destination",
               "meta.dst_continent": "Destination",
               "meta.dst_country_name": "Destination",
@@ -852,26 +889,16 @@
               "$$hashKey": "object:610",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:611",
               "field": "values.num_bits",
               "id": "4",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -893,15 +920,59 @@
       "title": "By Volume",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 5,
+              "Max": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.src_organization": 0
+            },
             "renameByName": {
               "$src_scope": "Source",
               "Count": "# Flows",
               "Max": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Vol.",
+              "Sum_Bytes": "Total Vol.",
               "Unique Count": "# Flows",
               "meta.scireg.src.project_names": "Source",
               "meta.src_asn": "Source",
@@ -1261,26 +1332,16 @@
               "$$hashKey": "object:881",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:882",
               "field": "values.num_bits",
               "id": "4",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -1302,15 +1363,59 @@
       "title": "By Volume",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 5,
+              "Max": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.dst_organization": 0
+            },
             "renameByName": {
               "$dst_scope": "Destination",
               "Count": "# Flows",
               "Max": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Vol.",
+              "Sum_Bytes": "Total Vol.",
               "Unique Count": "# Flows",
               "meta.dst_asn": "Destination",
               "meta.dst_continent": "Destination",
@@ -1841,13 +1946,8 @@
               "$$hashKey": "object:1176",
               "field": "values.num_bits",
               "id": "12",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
@@ -1883,26 +1983,44 @@
       "title": "Flow Pairs",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Average values.num_packets": true,
               "Max": false,
+              "Sum": true,
               "end": true,
               "es_doc_id": false,
               "meta.id": false
             },
             "indexByName": {
-              "Average values.duration": 9,
-              "Average values.num_packets": 8,
-              "Max": 7,
-              "Sum": 6,
+              "Average values.duration": 8,
+              "Average values.num_packets": 7,
+              "Max": 6,
+              "Sum": 4,
+              "Sum_Bytes": 5,
               "end": 1,
-              "es_doc_id": 10,
-              "meta.dst_continent": 4,
-              "meta.dst_ip": 5,
-              "meta.src_continent": 2,
-              "meta.src_ip": 3,
+              "es_doc_id": 9,
+              "meta.dst_ip": 3,
+              "meta.dst_organization": 11,
+              "meta.src_ip": 2,
+              "meta.src_organization": 10,
               "start": 0
             },
             "renameByName": {
@@ -1914,6 +2032,7 @@
               "Average values.tcp_rtt_min": "RTT",
               "Max": "Rate",
               "Sum": "Total Vol.",
+              "Sum_Bytes": "Total Vol.",
               "_id": "",
               "end": "",
               "es_doc_id": "Flow ID",
@@ -2581,26 +2700,16 @@
               "$$hashKey": "object:1589",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             },
             {
               "$$hashKey": "object:1590",
               "field": "values.num_bits",
               "id": "5",
-              "inlineScript": "_value / 8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
+              "settings": {},
               "type": "max"
             },
             {
@@ -2629,15 +2738,60 @@
       "title": " ",
       "transformations": [
         {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Max_Bytes",
+            "binary": {
+              "left": "Max values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
-            "excludeByName": {},
-            "indexByName": {},
+            "excludeByName": {
+              "Max values.num_bits": true,
+              "Sum": true
+            },
+            "indexByName": {
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Max_Bytes": 4,
+              "Sum": 1,
+              "Sum_Bytes": 2,
+              "meta.sensor_id": 0
+            },
             "renameByName": {
               "Count": "# Flows",
               "Max values.bits_per_second": "Fastest Flow",
               "Max values.num_bits": "Largest Flow",
+              "Max_Bytes": "Largest Flow",
               "Sum": "Total Vol.",
+              "Sum_Bytes": "Total Vol.",
               "Unique Count": "# Flows",
               "meta.sensor_id": "Sensor"
             }

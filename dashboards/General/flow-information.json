@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 8,
-  "iteration": 1648238478780,
+  "iteration": 1655409941397,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -206,13 +206,8 @@
               "$$hashKey": "object:1193",
               "field": "values.num_bits",
               "id": "1",
-              "inlineScript": "_value/8",
               "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
+              "settings": {},
               "type": "sum"
             }
           ],
@@ -224,6 +219,34 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Volume",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Sum_Bytes",
+            "binary": {
+              "left": "Sum values.num_bits",
+              "operator": "/",
+              "reducer": "sum",
+              "right": "8"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Sum values.num_bits": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
@@ -839,7 +862,6 @@
               "$$hashKey": "object:688",
               "field": "values.num_bits",
               "id": "12",
-              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {},
               "type": "count"
@@ -1120,7 +1142,6 @@
               "$$hashKey": "object:688",
               "field": "values.num_bits",
               "id": "12",
-              "inlineScript": "_value / 8",
               "meta": {},
               "settings": {},
               "type": "count"

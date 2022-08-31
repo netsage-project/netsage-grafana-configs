@@ -1,4 +1,4 @@
-FROM grafana/grafana:8.2.7-ubuntu
+FROM grafana/grafana:9.0.3-ubuntu
 
 USER root
 
@@ -33,7 +33,7 @@ WORKDIR /app
 VOLUME /app
 USER grafana 
 
-ENV GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=netsage-bumpchart-panel,netsage-sankey,netsage-nav-plugin,globalnoc-tsds-datasource,netsage-migrationmap,globalnoc-networkmap-panel,netsage-slopegraph-panel
+ENV GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=netsage-bumpchart-panel,netsage-sankey,netsage-nav-plugin,globalnoc-tsds-datasource,netsage-migrationmap,netsage-slopegraph-panel,globalnoc-worldview-panel
 
 ENTRYPOINT [ "/usr/bin/grafana_runner" ]
 

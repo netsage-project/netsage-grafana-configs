@@ -40,14 +40,11 @@ alien -i $HOME/rpmbuild/RPMS/noarch/globalnoc-tsds-datasource-*.noarch.rpm
 mv /usr/com/grafana/plugins/globalnoc-tsds-datasource/ /var/lib/grafana/plugins/
 cd ../
 
-# Install network panel plugin
-cd globalnoc-networkmap-panel
-npm install -g gulp #make seems to need this
+# Install worldview panel plugin
+cd globalnoc-worldview-panel
 yarn install
 yarn build
-mv /app/plugins/globalnoc-networkmap-panel/ /var/lib/grafana/plugins/
-# make rpm
-# alien -i $HOME/rpmbuild/RPMS/noarch/grnoc-grafana-worldview-*.noarch.rpm
+mv /app/plugins/globalnoc-worldview-panel/ /var/lib/grafana/plugins/
 cd ../
 
 #Install netsage-sankey plugin

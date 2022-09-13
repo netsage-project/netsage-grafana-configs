@@ -1693,7 +1693,7 @@
               "id": "1",
               "meta": {},
               "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
@@ -1952,9 +1952,10 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
+            "align": "auto",
             "displayMode": "auto",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -2201,10 +2202,6 @@
               "type": "terms"
             }
           ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "k4L_ruMVz"
-          },
           "hide": false,
           "metrics": [
             {
@@ -3180,10 +3177,6 @@
               "type": "terms"
             }
           ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "k4L_ruMVz"
-          },
           "dsType": "elasticsearch",
           "metrics": [
             {

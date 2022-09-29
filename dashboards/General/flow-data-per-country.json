@@ -246,12 +246,9 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:4160",
               "field": "meta.id",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -462,7 +459,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Total Volume"
             },
             "properties": [
               {
@@ -486,7 +483,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max"
+              "options": "Largest Flow"
             },
             "properties": [
               {
@@ -527,6 +524,13 @@
       "id": 21,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -551,6 +555,17 @@
                 "size": "25"
               },
               "type": "terms"
+            },
+            {
+              "field": "meta.id",
+              "id": "8",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
             }
           ],
           "dsType": "elasticsearch",
@@ -564,14 +579,6 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:3967",
-              "field": "values.num_bits",
-              "id": "5",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
               "$$hashKey": "object:3968",
               "field": "meta.id",
               "id": "7",
@@ -583,17 +590,63 @@
           "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
+        },
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:3972",
+              "fake": true,
+              "field": "meta.dst_country_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "25"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:3966",
+              "field": "values.num_bits",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:3968",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "B",
+          "timeField": "start"
         }
       ],
       "timeFrom": null,
       "title": "By Volume",
       "transformations": [
         {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "meta.dst_country_name"
+          }
+        },
+        {
           "id": "calculateField",
           "options": {
-            "alias": "Sum_Bytes",
+            "alias": "Sum_Bytes_Largest_Flow",
             "binary": {
-              "left": "Sum",
+              "left": "Sum 1",
               "operator": "/",
               "reducer": "sum",
               "right": "8"
@@ -607,9 +660,9 @@
         {
           "id": "calculateField",
           "options": {
-            "alias": "Max_Bytes",
+            "alias": "Sum_Bytes",
             "binary": {
-              "left": "Max",
+              "left": "Sum 2",
               "operator": "/",
               "reducer": "sum",
               "right": "8"
@@ -624,22 +677,26 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Max": true,
-              "Sum": true
+              "Count 1": true,
+              "Sum 1": true,
+              "Sum 2": true,
+              "meta.id": true
             },
             "indexByName": {
-              "Count": 5,
-              "Max": 3,
-              "Max_Bytes": 4,
-              "Sum": 1,
-              "Sum_Bytes": 2,
-              "meta.dst_country_name": 0
+              "Count 1": 6,
+              "Count 2": 3,
+              "Sum 1": 5,
+              "Sum 2": 7,
+              "Sum_Bytes": 1,
+              "Sum_Bytes_Largest_Flow": 2,
+              "meta.dst_country_name": 0,
+              "meta.id": 4
             },
             "renameByName": {
-              "Count": "",
-              "Max": "",
-              "Max_Bytes": "Max",
-              "Sum_Bytes": "Sum"
+              "Count 2": "# Flows",
+              "Sum_Bytes": "Total Volume",
+              "Sum_Bytes_Largest_Flow": "Largest Flow",
+              "meta.dst_country_name": "Destination Country"
             }
           }
         }
@@ -751,6 +808,13 @@
       "id": 28,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -917,12 +981,9 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:4750",
               "field": "meta.id",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -1105,7 +1166,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.src_country_name"
+              "options": "Source Country"
             },
             "properties": [
               {
@@ -1131,7 +1192,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Total Volume"
             },
             "properties": [
               {
@@ -1151,7 +1212,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max"
+              "options": "Largest Flow"
             },
             "properties": [
               {
@@ -1163,7 +1224,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Count"
+              "options": "# Flows"
             },
             "properties": [
               {
@@ -1188,6 +1249,13 @@
       "id": 32,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -1212,6 +1280,17 @@
                 "size": "25"
               },
               "type": "terms"
+            },
+            {
+              "field": "meta.id",
+              "id": "8",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
             }
           ],
           "dsType": "elasticsearch",
@@ -1225,14 +1304,6 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:4557",
-              "field": "values.num_bits",
-              "id": "5",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
               "$$hashKey": "object:4558",
               "field": "meta.id",
               "id": "7",
@@ -1244,17 +1315,62 @@
           "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
+        },
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4562",
+              "fake": true,
+              "field": "meta.src_country_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "25"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:4556",
+              "field": "values.num_bits",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:4558",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "B",
+          "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Volume",
       "transformations": [
         {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "meta.src_country_name"
+          }
+        },
+        {
           "id": "calculateField",
           "options": {
-            "alias": "Sum_Bytes",
+            "alias": "Sum_Bytes_Largest_Flow",
             "binary": {
-              "left": "Sum",
+              "left": "Sum 1",
               "operator": "/",
               "reducer": "sum",
               "right": "8"
@@ -1268,9 +1384,9 @@
         {
           "id": "calculateField",
           "options": {
-            "alias": "Max_Bytes",
+            "alias": "Sum_Bytes",
             "binary": {
-              "left": "Max",
+              "left": "Sum 2",
               "operator": "/",
               "reducer": "sum",
               "right": "8"
@@ -1285,20 +1401,26 @@
           "id": "organize",
           "options": {
             "excludeByName": {
-              "Max": true,
-              "Sum": true
+              "Count 1": true,
+              "Sum 1": true,
+              "Sum 2": true,
+              "meta.id": true
             },
             "indexByName": {
-              "Count": 5,
-              "Max": 3,
-              "Max_Bytes": 4,
-              "Sum": 1,
-              "Sum_Bytes": 2,
+              "Count 1": 6,
+              "Count 2": 3,
+              "Sum 1": 5,
+              "Sum 2": 7,
+              "Sum_Bytes": 1,
+              "Sum_Bytes_Largest_Flow": 2,
+              "meta.id": 4,
               "meta.src_country_name": 0
             },
             "renameByName": {
-              "Max_Bytes": "Max",
-              "Sum_Bytes": "Sum"
+              "Count 2": "# Flows",
+              "Sum_Bytes": "Total Volume",
+              "Sum_Bytes_Largest_Flow": "Largest Flow",
+              "meta.src_country_name": "Source Country"
             }
           }
         }
@@ -1406,6 +1528,13 @@
       "id": 33,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true
       },
       "pluginVersion": "8.2.7",
@@ -1666,6 +1795,13 @@
       "id": 4711,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -1870,12 +2006,9 @@
           ],
           "metrics": [
             {
-              "$$hashKey": "object:623",
               "field": "meta.id",
               "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "count"
+              "type": "cardinality"
             }
           ],
           "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -5283,7 +5416,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Sum"
+              "options": "Total Volume"
             },
             "properties": [
               {
@@ -5299,7 +5432,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.num_bits"
+              "options": "Largest Flow"
             },
             "properties": [
               {
@@ -5315,7 +5448,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.bits_per_second"
+              "options": "Fastest Flow"
             },
             "properties": [
               {
@@ -5331,7 +5464,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Count"
+              "options": "# Flows"
             },
             "properties": [
               {
@@ -5356,6 +5489,13 @@
       "id": 19,
       "links": [],
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -5380,6 +5520,17 @@
                 "size": "0"
               },
               "type": "terms"
+            },
+            {
+              "field": "meta.id",
+              "id": "8",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
             }
           ],
           "dsType": "elasticsearch",
@@ -5393,22 +5544,6 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:787",
-              "field": "values.num_bits",
-              "id": "5",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:788",
-              "field": "values.bits_per_second",
-              "id": "6",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
               "$$hashKey": "object:789",
               "field": "meta.id",
               "id": "7",
@@ -5420,17 +5555,111 @@
           "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
+        },
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:794",
+              "fake": true,
+              "field": "meta.sensor_id",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:786",
+              "field": "values.num_bits",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:789",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "B",
+          "timeField": "start"
+        },
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:794",
+              "fake": true,
+              "field": "meta.sensor_id",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "meta.id",
+              "id": "8",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
+            }
+          ],
+          "dsType": "elasticsearch",
+          "hide": false,
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:789",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "C",
+          "timeField": "start"
         }
       ],
       "timeFrom": null,
       "title": "Sensor Usage",
       "transformations": [
         {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "meta.sensor_id"
+          }
+        },
+        {
           "id": "calculateField",
           "options": {
-            "alias": "Sum_Bytes",
+            "alias": "Sum_Bytes_Largest_Flow",
             "binary": {
-              "left": "Sum",
+              "left": "Sum 1",
               "operator": "/",
               "reducer": "sum",
               "right": "8"
@@ -5444,9 +5673,9 @@
         {
           "id": "calculateField",
           "options": {
-            "alias": "Max_Bytes",
+            "alias": "Sum_Bytes",
             "binary": {
-              "left": "Max values.num_bits",
+              "left": "Sum 2",
               "operator": "/",
               "reducer": "sum",
               "right": "8"
@@ -5460,19 +5689,35 @@
         {
           "id": "organize",
           "options": {
-            "excludeByName": {},
+            "excludeByName": {
+              "Count 1": true,
+              "Count 2": false,
+              "Count 3": true,
+              "Sum 1": true,
+              "Sum 2": true,
+              "meta.id 1": true,
+              "meta.id 2": true
+            },
             "indexByName": {
-              "Count": 6,
-              "Max values.bits_per_second": 5,
-              "Max values.num_bits": 3,
-              "Max_Bytes": 4,
-              "Sum": 1,
-              "Sum_Bytes": 2,
+              "Average": 3,
+              "Count 1": 7,
+              "Count 2": 4,
+              "Count 3": 9,
+              "Sum 1": 6,
+              "Sum 2": 8,
+              "Sum_Bytes": 1,
+              "Sum_Bytes_Largest_Flow": 2,
+              "meta.id 1": 5,
+              "meta.id 2": 10,
               "meta.sensor_id": 0
             },
             "renameByName": {
-              "Max_Bytes": "Max values.num_bits",
-              "Sum_Bytes": "Sum"
+              "Average": "Fastest Flow",
+              "Count 2": "# Flows",
+              "Count 3": "",
+              "Sum_Bytes": "Total Volume",
+              "Sum_Bytes_Largest_Flow": "Largest Flow",
+              "meta.sensor_id": "Sensor"
             }
           }
         }

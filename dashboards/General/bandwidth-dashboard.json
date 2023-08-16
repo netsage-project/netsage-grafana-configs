@@ -4,11 +4,14 @@
       {
         "$$hashKey": "object:351",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -21,16 +24,17 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 1,
-  "id": 204,
-  "iteration": 1648235279324,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 1,
@@ -135,6 +139,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "id": "1",
@@ -150,7 +158,11 @@
       "type": "netsage-nav-plugin"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "description": "",
       "gridPos": {
         "h": 5,
         "w": 20,
@@ -160,16 +172,32 @@
       "id": 2,
       "links": [],
       "options": {
-        "content": "<center style=\"margin-top: 0px\"><h1><b>Bandwidth Dashboard</b></h1></center>\n<center style=\"margin-top: 0px\">The map shows the minimum, maximum, and average bandwidth utilization of the circuits and exchange points over the selected time period.</center>\n<center style=\"margin-top: 0px\">The rows below the map show each of the links in more detail, including traffic rate and total volume transferred.</center>\n<center style=\"margin-top: 0px\">A combined view of the average and maximum bandwidth utilization is shown at the bottom of the page.</center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time</center>\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eBandwidth Dashboard\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe map shows the minimum, maximum, and average bandwidth utilization of the circuits and exchange points over the selected time period.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe rows below the map show each of the links in more detail, including traffic rate and total volume transferred.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eA combined view of the average and maximum bandwidth utilization is shown at the bottom of the page.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time\u003c/center\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Netsage TSDS",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -212,124 +240,52 @@
         "y": 5
       },
       "id": 3,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
+          "calcs": ["mean"]
         },
         "graphMode": "none",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["max"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "Select Metric"
-          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "max"
             }
           ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "select table",
-          "target": "get max(aggregate(values.output, $quantify, max)) between ($START,$END) from interface where link_name != null",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "Select Metric",
-                "op": "",
-                "right": ""
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
       "title": "Single Link Max A-Z",
@@ -337,8 +293,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Netsage TSDS",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -381,124 +339,52 @@
         "y": 5
       },
       "id": 4,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
+          "calcs": ["mean"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["max"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "Select Metric"
-          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_in_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "max"
             }
           ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "select table",
-          "target": "get max(aggregate(values.input, $quantify, max)) between ($START,$END) from interface where link_name != null",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "Select Metric",
-                "op": "",
-                "right": ""
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
       "title": "Single Link Max Z-A",
@@ -506,8 +392,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Netsage TSDS",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -550,133 +438,77 @@
         "y": 5
       },
       "id": 5,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "mean"
-          ]
+          "calcs": ["mean"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "Select Metric"
-          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.rate",
               "id": "1",
-              "type": "count"
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "field": "values.if_in_bits.rate",
+              "id": "3",
+              "type": "avg"
             }
           ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "select table",
-          "target": "get input_avg + output_avg as values.total_avg from  ( get  average(aggregate(values.input, $quantify, average)) as input_avg,  average(aggregate(values.output, $quantify, average)) as output_avg between ($START,$END)  by nothing  from interface where link_name != null )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "Select Metric",
-                "op": "",
-                "right": ""
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
       "title": "Average Across All Links",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": ["mean"]
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Netsage TSDS",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -718,133 +550,121 @@
         "y": 5
       },
       "id": 6,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "sum"
-          ]
+          "calcs": ["sum"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "hide": false,
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "Select Metric"
-          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.delta",
               "id": "1",
-              "type": "count"
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.if_in_bits.delta",
+              "id": "3",
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
             }
           ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "select table",
-          "target": "get total_bytes_sec  * 3600 as values.total_bytes from (         get input_bytes_sec_total + output_bytes_sec_total as total_bytes_sec from (        get aggregate(input_bytes_sec, 3600, sum) as input_bytes_sec_total, aggregate(output_bytes_sec, 3600, sum) as output_bytes_sec_total by nothing from (           get  aggregate(values.input, 3600, average) / 8 as input_bytes_sec,  aggregate(values.output, 3600, average) / 8 as output_bytes_sec between ($START,$END)  by link_name  from interface where link_name != null  )  ) )",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "Select Metric",
-                "op": "",
-                "right": ""
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
       "title": "Total Transferred",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": ["sum"]
+          }
+        }
+      ],
       "transparent": true,
       "type": "stat"
     },
     {
-      "datasource": "-- Mixed --",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 10000000000
+              },
+              {
+                "color": "super-light-blue",
+                "value": 50000000000
+              },
+              {
+                "color": "yellow",
+                "value": 100000000000
+              },
+              {
+                "color": "orange",
+                "value": 400000000000
+              },
+              {
+                "color": "red",
+                "value": 800000000000
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 17,
         "w": 24,
@@ -854,166 +674,155 @@
       "id": 7,
       "links": [],
       "options": {
-        "customMapJSON": {
-          "content": "{\n  \"adjacencies\": [],\n  \"endpoints\": {},\n  \"metadata\": {},\n  \"name\": \"New Map\"\n}",
-          "mode": "json"
-        },
-        "dataAggregateGroups": [
+        "background": "#EDEDED",
+        "color1": "#c6c6c6",
+        "color2": "grey",
+        "color3": "grey",
+        "dashboardVarL1": "node",
+        "dashboardVarL2": "l2edge",
+        "dashboardVarL3": "l3edge",
+        "dataFieldLabelL1": "Volume:",
+        "dataFieldLabelL2": "Volume:",
+        "dataFieldLabelL3": "Volume:",
+        "dstFieldL1": "Value",
+        "dstFieldLabelL1": "To:",
+        "dstFieldLabelL2": "To:",
+        "dstFieldLabelL3": "To:",
+        "dstVarL1": "destination",
+        "dstVarL2": "meta.org.short_name",
+        "dstVarL3": "meta.remote.loc_name",
+        "edgeWidthL1": 3,
+        "edgeWidthL2": 3,
+        "edgeWidthL3": 3,
+        "enableEdgeAnimation": true,
+        "enableEditing": true,
+        "enableNodeAnimation": true,
+        "enableScrolling": true,
+        "endpointIdL1": "pops",
+        "endpointIdL2": "pops",
+        "endpointIdL3": "pops",
+        "inboundValueFieldL1": "Value",
+        "initialViewStrategy": "viewport",
+        "jsonFromUrlL1": false,
+        "jsonFromUrlL2": false,
+        "jsonFromUrlL3": false,
+        "labelLayer": "toner.labels",
+        "layer1": true,
+        "layer2": false,
+        "layer3": false,
+        "layerName1": "layer 1",
+        "layerName2": "layer 2",
+        "layerName3": "layer 3",
+        "legendColumnLength": 3,
+        "legendDefaultBehavior": "visible",
+        "legendL1": true,
+        "legendL2": true,
+        "legendL3": true,
+        "legendPosition": "bottomleft",
+        "mapjsonL1": "{\"edges\":[{\"name\":\"SoX: Nashville Sidco to Atlanta 100GE\",\"meta\":{\"endpoint_identifiers\":{\"pops\":[\"56MAR\",\"SIDCO\"]}},\"latLngs\":[[33.7554176,-84.3914617],[36.1029297,-86.7555746]],\"children\":[]},{\"name\":\"365DC--SIDCO\",\"meta\":{\"endpoint_identifiers\":{\"pops\":[\"365DC\",\"SIDCO\"]}},\"latLngs\":[[36.1626989,-86.778634],[36.1029297,-86.7555746]],\"children\":[]}],\"nodes\":[{\"name\":\"SIDCO\",\"meta\":{\"display_name\":\"\",\"svg\":\"\",\"template\":\"\"},\"latLng\":[36.1029297,-86.7555746]},{\"name\":\"56MAR\",\"meta\":{\"display_name\":\"\",\"svg\":\"\",\"template\":\"\"},\"latLng\":[33.7554176,-84.3914617]},{\"name\":\"365DC\",\"meta\":{\"display_name\":\"\",\"svg\":\"\",\"template\":\"\"},\"latLng\":[36.1626989,-86.778634]}]}",
+        "mapjsonL2": "{\"edges\":[],\"nodes\":[]}",
+        "mapjsonL3": "{\"edges\":[],\"nodes\":[]}",
+        "mapjsonUrlL1": "https://carto.net.internet2.edu/mb/public/get_atlas?name=LEARN",
+        "mapjsonUrlL2": "",
+        "mapjsonUrlL3": "",
+        "nodeHighlightL1": "light-blue",
+        "nodeHighlightL2": "red",
+        "nodeHighlightL3": "red",
+        "nodeWidthL1": 5,
+        "nodeWidthL2": 5,
+        "nodeWidthL3": 5,
+        "outboundValueFieldL1": "Value",
+        "pathOffsetL1": 3,
+        "pathOffsetL2": 3,
+        "pathOffsetL3": 3,
+        "showLegend": true,
+        "showSidebar": false,
+        "showViewControls": true,
+        "srcFieldL1": "Value",
+        "srcFieldLabelL1": "From:",
+        "srcFieldLabelL2": "From:",
+        "srcFieldLabelL3": "From:",
+        "srcVarL1": "source",
+        "srcVarL2": "meta.device",
+        "srcVarL3": "meta.device_info.loc_name",
+        "startLat": 39,
+        "startLng": -98,
+        "startZoom": 0,
+        "thresholds": [
           {
-            "aggregate_group": "input",
-            "pattern": ".*input$"
+            "color": "#73BF69",
+            "value": null
           },
           {
-            "aggregate_group": "output",
-            "pattern": ".*output$"
+            "color": "#5794F2",
+            "value": 10000000000
+          },
+          {
+            "color": "#C0D8FF",
+            "value": 50000000000
+          },
+          {
+            "color": "#FADE2A",
+            "value": 100000000000
+          },
+          {
+            "color": "#FF9830",
+            "value": 400000000000
+          },
+          {
+            "color": "#F2495C",
+            "value": 800000000000
           }
         ],
-        "dataMappings": {
-          "colorCriteria": "now",
-          "dataAggregate": "sum",
-          "dataTarget": "chooseMax"
-        },
-        "legend": {
-          "colors": [
-            "#77BEFC",
-            "#1F60C4",
-            "#73BF69",
-            "#37872D",
-            "#E0B400",
-            "#FADE2A",
-            "#FF9830",
-            "#FA6400"
-          ],
-          "display": true,
-          "orientation": "horizontal",
-          "size": "50",
-          "target": "latest",
-          "textColor": "black",
-          "threshold": [
-            "0",
-            "500000000",
-            "1000000000",
-            "2000000000",
-            "5000000000",
-            "10000000000",
-            "20000000000",
-            "50000000000",
-            "100000000000"
-          ],
-          "type": "absolute"
-        },
-        "mapSelector": false,
-        "mapTile": false,
-        "mapTileURL": "",
-        "mapType": "url",
-        "mapURLs": {
-          "buxtq": {
-            "display": true,
-            "name": "CENIC",
-            "url": "https://netsage-carto.grnoc.iu.edu/mb/public/get_atlas?name=CENIC"
-          },
-          "ezhqq": {
-            "display": true,
-            "name": "PIREN",
-            "url": "https://netsage-carto.grnoc.iu.edu/mb/public/get_atlas?name=PIREN"
-          },
-          "fflbt": {
-            "display": true,
-            "name": "GEANT",
-            "url": "https://carto.net.internet2.edu/mb/public/get_atlas?name=GEANT"
-          },
-          "gwnxa": {
-            "display": true,
-            "name": "NEAAR",
-            "url": "https://netsage-carto.grnoc.iu.edu/mb/public/get_atlas?name=NEAAR"
-          },
-          "lxotl": {
-            "display": true,
-            "name": "TransPAC",
-            "url": "https://netsage-carto.grnoc.iu.edu/mb/public/get_atlas?name=TransPAC"
-          },
-          "tgsoj": {
-            "display": true,
-            "name": "GSCC",
-            "url": "https://netsage-carto.grnoc.iu.edu/mb/public/get_atlas?name=GSCC"
-          }
-        },
-        "mapView": {
-          "lat": "20.3034",
-          "lng": "-129.7266",
-          "maxZoom": 20,
-          "minZoom": 2,
-          "zoom": 2
-        },
-        "topology": {
-          "line": {
-            "color": "rgba(120, 120, 120, 0.5)",
-            "tooltip": {
-              "content": "<div class= \"wrapper\" style= \"padding:0px; margin:0px; border-radius:0px; \"> <table id= \"dataTable\">\r\n<tr>\r\n<td colspan = \"6\" class = \"mainTitle\">$netsagelinkname</td> </tr>\r\n<tr>\r\n<td colspan = \"3\" class = \"mainHead borderBot\">$inlabel</td>\r\n<td colspan = \"3\" class = \"mainHead borderBot\">$outlabel</td> </tr>\r\n<tr>\r\n<td colspan = \"1\" class = \"headerTxt\">Min</td>\r\n<td colspan = \"1\" class = \"headerTxt\">Avg</td>\r\n<td colspan = \"1\" class = \"headerTxt rightBorder\">Max</td> <td colspan = \"1\" class = \"headerTxt\">Min</td>\r\n<td colspan = \"1\" class = \"headerTxt\">Avg</td>\r\n<td colspan = \"1\" class = \"headerTxt \">Max</td>\r\n</tr> <tr>\r\n<td colspan = \"1\" class = \"bodyTxt\">$dataValues.input.min</td>\r\n<td colspan = \"1\" class = \"bodyTxt\">$dataValues.input.avg</td>\r\n<td colspan = \"1\" class = \"bodyTxt rightBorder\">$dataValues.input.max</td> \r\n<td colspan = \"1\" class = \"bodyTxt\">$dataValues.output.min</td>\r\n<td colspan = \"1\" class = \"bodyTxt\">$dataValues.output.avg</td>\r\n<td colspan = \"1\" class = \"bodyTxt\">$dataValues.output.max</td>\r\n</tr> <tr>\r\n</tr> </table>\r\n<br/>\r\n<style> \r\n.wrapper{ color:snow;\r\nbackground-color: black;\r\nopacity:0.75;\r\n}\r\n.leaflet-popup-content {\r\nmin-width: 440px;\r\n}\r\n.mainTitle{\r\nfont-size: 2em; //border-bottom:1px solid; padding:4px; font-weight:bold; color:orange; border-color:white;\r\n}\r\n.headerTxt{ padding:0px;\r\n}\r\n.bodyTxt{ font-weight:bold; font-size:1.4em; padding:0px;\r\npadding :1px 5px 5px 5px; }\r\n.mainHead{ font-weight:bold; font-size:1.2em; padding-left:20px; padding-right:20px;\r\n}\r\n.borderBot{ //border-bottom:1px solid; color:rgba(18,175,255,1); border-color:white;\r\n\r\n}\r\n.rightBorder{ border-right:0.5px solid; }\r\n#dataTable{\r\nwidth: 100%;\r\ntext-align: center;\r\n}\r\n.atlas-info-div{\r\nborder-radius: 2px; background-color:rgba(0,0,0,0.8); }\r\nhr{ padding:0px; margin:2px; }\r\n</style>",
-              "custom": true,
-              "display": true
-            }
-          },
-          "point": {
-            "color": "#24292e",
-            "tooltip": {
-              "content": "<div class=\"atlas4-tt-container\" style=\"\r\n    width: 100px;\r\n    background: #ffffffd4;\r\n    box-shadow: 0 0px 8px rgba(0,0,0,0.4);\r\n    border-radius: 5px;\r\n    padding: 10px 10px;\r\n    \">\r\n    <div>\r\n        <h4 class=\"atlas4-tt-topology\" style=\"\r\n            font-size: 16px;\r\n            text-align: center;\r\n            text-transform: uppercase;\r\n        \">$topology</h4>\r\n        <img class=\"atlas4-tt-image\" img_src=\"$image\" style=\"\r\n     margin: 6px 0px; max-width: 50px; max-height: 50px; position: relative; left: 50%; transform: translate(-50%, 0);\">\r\n    </div>\r\n    <h6 class=\"atlas4-tt-label\" style=\"\r\n          text-align: center;\r\n          font-size: 14px;\r\n          font-weight: 500;\r\n      \">$label</h6>\r\n</div>",
-              "custom": false,
-              "display": true,
-              "static": false
-            }
-          }
-        },
-        "weatherTile": false
+        "tileSetLayer": "arcgis",
+        "viewportBottomRightLat": "33.02",
+        "viewportBottomRightLng": "-79.24",
+        "viewportTopLeftLat": "36.63",
+        "viewportTopLeftLng": "-90.97",
+        "zIndexBase": 200
       },
       "targets": [
         {
-          "datasource": "NetSage Carto",
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
+          "metrics": [
+            {
+              "field": "values.if_in_bits.val",
+              "id": "1",
+              "type": "sum"
+            },
+            {
+              "field": "values.if_out_bits.val",
+              "id": "3",
+              "type": "sum"
+            }
+          ],
+          "query": "meta.link_name:\"SoX: Nashville Sidco to Atlanta 100GE\"",
           "refId": "A",
-          "target": "CENIC",
-          "type": "timeserie"
-        },
-        {
-          "datasource": "NetSage Carto",
-          "hide": false,
-          "refId": "B",
-          "target": "NEAAR",
-          "type": "timeserie"
-        },
-        {
-          "datasource": "NetSage Carto",
-          "hide": false,
-          "refId": "C",
-          "target": "PIREN",
-          "type": "timeserie"
-        },
-        {
-          "datasource": "NetSage Carto",
-          "hide": false,
-          "refId": "D",
-          "target": "TransPAC",
-          "type": "timeserie"
-        },
-        {
-          "datasource": "Internet2 Carto",
-          "hide": false,
-          "refId": "F",
-          "target": "GEANT",
-          "type": "timeserie"
-        },
-        {
-          "datasource": "NetSage Carto",
-          "hide": false,
-          "refId": "E",
-          "target": "GSCC",
-          "type": "timeserie"
+          "timeField": "@timestamp"
         }
       ],
       "transparent": true,
-      "type": "globalnoc-worldview-panel"
+      "type": "esnet-networkmap-panel"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 2,
@@ -1023,52 +832,103 @@
       "id": 8,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Link",
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
-        "w": 14,
+        "w": 17,
         "x": 2,
         "y": 25
       },
       "id": 9,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Traffic Rate",
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
-        "w": 8,
-        "x": 16,
+        "w": 5,
+        "x": 19,
         "y": 25
       },
       "id": 10,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Total Volume",
       "type": "text"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1077,13 +937,24 @@
       },
       "id": 11,
       "panels": [],
-      "repeat": "links",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
-        "h": 7,
+        "h": 10,
         "w": 2,
         "x": 0,
         "y": 27
@@ -1091,1589 +962,1069 @@
       "id": 12,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "**$links**",
         "mode": "markdown"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "repeat": "links",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Rate",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 60,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 300000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.if_out_bits.rate"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "A-Z Average"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.if_in_bits.rate"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Z-A Average"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.if_out_bits.rate"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "A-Z Max"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.if_in_bits.rate"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Z-A Max"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
-      "fill": 1,
-      "fillGradient": 6,
       "gridPos": {
         "h": 10,
-        "w": 14,
+        "w": 17,
         "x": 2,
         "y": 27
       },
-      "hiddenSeries": false,
       "id": 13,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "maxDataPoints": 150,
-      "nullPointMode": "null",
+      "maxDataPoints": 300,
       "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.7",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:154",
-          "alias": "A-Z Max",
-          "color": "#FBAE60"
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
-        {
-          "$$hashKey": "object:155",
-          "alias": "Z-A Max",
-          "color": "#80B2E7"
-        },
-        {
-          "$$hashKey": "object:255",
-          "alias": "A-Z Avg",
-          "color": "#56A64B"
-        },
-        {
-          "$$hashKey": "object:263",
-          "alias": "Z-A Avg",
-          "color": "#A352CC"
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
         }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      },
+      "pluginVersion": "9.0.3",
+      "repeat": "links",
+      "repeatDirection": "v",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average",
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "A-Z Avg",
-              "align": "",
-              "bucket": "",
-              "expanded": true,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "A-Z"
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
           },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "avg"
+            },
+            {
+              "field": "values.if_in_bits.rate",
+              "id": "3",
+              "type": "avg"
+            },
+            {
+              "field": "values.if_out_bits.rate",
+              "id": "4",
+              "type": "max"
+            },
+            {
+              "field": "values.if_in_bits.rate",
+              "id": "5",
+              "type": "max"
             }
           ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            "",
-            ""
-          ],
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:103",
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        },
-        {
-          "aggregate_all": false,
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "func": [
-            {
-              "alias": "Z-A Avg",
-              "align": "",
-              "bucket": "",
-              "expanded": true,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": "Z-A"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "refId": "B",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:133",
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        },
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average",
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "A-Z Max",
-              "align": "",
-              "bucket": "",
-              "expanded": true,
-              "method": "max",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "hide": false,
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 210, average)": "A-Z"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            "",
-            ""
-          ],
-          "refId": "C",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:103",
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        },
-        {
-          "aggregate_all": false,
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "func": [
-            {
-              "alias": "Z-A Max",
-              "align": "",
-              "bucket": "",
-              "expanded": true,
-              "method": "max",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "hide": false,
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 210, average)": "Z-A"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "refId": "D",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 210, average) between (1570571291, 1570657691) by link_name from interface where ((link_name like \"AmLight: Chile to Sao Paolo 100GE\"))",
-          "target_alias": "$VALUE",
-          "templateVariableValue": [
-            ""
-          ],
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:133",
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
+      "transformations": [],
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bps",
-          "label": "Rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "decbytes"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum values.if_out_bits.delta"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "A-Z"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum values.if_in_bits.delta"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Z-A"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 10,
-        "w": 8,
-        "x": 16,
+        "w": 5,
+        "x": 19,
         "y": 27
       },
-      "hiddenSeries": false,
-      "id": 14,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
+      "id": 108,
       "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.7",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "A-Z",
-          "color": "#FBAE60"
+        "displayLabels": ["name"],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": ["value"]
         },
-        {
-          "alias": "Z-A",
-          "color": "#80B2E7"
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
         }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      },
+      "pluginVersion": "9.0.3",
+      "repeat": "links",
+      "repeatDirection": "v",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average",
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
               "field": "start",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "A-Z",
-              "align": "",
-              "bucket": "",
-              "expanded": true,
-              "method": "average",
-              "operation": "* $TIMESPAN",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 310, average)": "A-Z"
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
           },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.delta",
               "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            "",
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get link_name, values.output * 3600 from (get link_name, aggregate(values.output, 3600, average) / 8 as values.output between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
-          "target_alias": "A-Z",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
-        },
-        {
-          "aggregate_all": false,
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "func": [
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            },
             {
-              "alias": "Z-A",
-              "align": "",
-              "bucket": "",
-              "expanded": true,
-              "method": "average",
-              "operation": "* $TIMESPAN",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
+              "field": "values.if_in_bits.delta",
+              "id": "3",
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
             }
           ],
-          "groupby_field": "link_name",
-          "hide": false,
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 310, average)": "Z-A"
-          },
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "Select Metric Value"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "B",
-          "series": "interface",
-          "target": "get link_name, values.input * 3600 from (get link_name, aggregate(values.input, 3600, average) / 8 as values.input between ($START, $END) by link_name from interface where ((link_name like \"$links\")))",
-          "target_alias": "Z-A",
-          "templateVariableValue": [
-            ""
-          ],
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "like",
-                "right": "$links"
-              }
-            ]
-          ]
+          "query": "meta.link_name:$links",
+          "refId": "A",
+          "timeField": "@timestamp"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
+      "transformations": [],
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "series",
-        "name": null,
-        "show": true,
-        "values": [
-          "total"
-        ]
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": 0,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "piechart"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 169
+        "y": 47
       },
       "id": 87,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Rate",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 300000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
         },
         "overrides": []
       },
-      "fill": 0,
-      "fillGradient": 0,
       "gridPos": {
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 170
+        "y": 48
       },
-      "hiddenSeries": false,
       "id": 88,
-      "legend": {
-        "avg": true,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": ["mean"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "8.2.7",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {}
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "9.0.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "meta.link_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "A-Z",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 60, average)": "A-Z"
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
           },
-          "metricValueAliases": [
-            "A-Z"
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "avg"
             }
           ],
-          "orderby_field": "link_name",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 60, average) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
-          "target_alias": "$VALUES $link_name",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:284",
-                "left": "link_name",
-                "op": "like",
-                "right": ".*"
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "(A to Z) Average Utilization Over Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
+      "transformations": [],
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bps",
-          "label": "Rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 184
+        "y": 62
       },
       "id": 89,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Rate",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 300000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
         },
         "overrides": []
       },
-      "fill": 0,
-      "fillGradient": 0,
       "gridPos": {
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 185
+        "y": 63
       },
-      "hiddenSeries": false,
       "id": 90,
-      "legend": {
-        "avg": true,
-        "current": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": ["mean"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "8.2.7",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {}
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "9.0.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "meta.link_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "bucketValue": [],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "Z-A",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 60, average)": "Z-A"
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
           },
-          "metricValueAliases": [
-            "Z-A"
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_in_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "avg"
             }
           ],
-          "orderby_field": "link_name",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 60, average) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
-          "target_alias": "$VALUES $link_name",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:326",
-                "left": "link_name",
-                "op": "like",
-                "right": ".*"
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "(Z to A) Average Utilization Over Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bps",
-          "label": "Rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 199
+        "y": 77
       },
       "id": 91,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Rate",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 300000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
         },
         "overrides": []
       },
-      "fill": 0,
-      "fillGradient": 0,
       "gridPos": {
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 200
+        "y": 78
       },
-      "hiddenSeries": false,
       "id": 92,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": ["max"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "8.2.7",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "9.0.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "max"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "meta.link_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "Z-A",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "max",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "output",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.output, 60, max)": "Z-A"
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
           },
-          "metricValueAliases": [
-            "A-Z"
-          ],
-          "metricValues_array": [
-            "output"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "max"
             }
           ],
-          "orderby_field": "link_name",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.output, 60, max) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
-          "target_alias": "$VALUES $link_name",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:457",
-                "left": "link_name",
-                "op": "like",
-                "right": ".*"
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "(A to Z) Maximum Utilization Over Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bps",
-          "label": "Rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 214
+        "y": 92
       },
       "id": 93,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Netsage TSDS",
-      "decimals": 1,
-      "fill": 0,
-      "fillGradient": 0,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Rate",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 300000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 215
+        "y": 93
       },
-      "hiddenSeries": false,
       "id": 94,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": ["max"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "8.2.7",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "9.0.3",
       "targets": [
         {
-          "aggregate_all": false,
-          "aggregator": [
-            "max"
-          ],
-          "bucket": [],
+          "alias": "",
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "meta.link_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "@timestamp",
               "id": "2",
               "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
+                "interval": "auto"
               },
               "type": "date_histogram"
             }
           ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "A-Z",
-              "align": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "max",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": "link_name",
-          "inlineGroupOperator": [
-            [
-              ""
-            ]
-          ],
-          "metricValueAliasMappings": {
-            "aggregate(values.input, 60, max)": "A-Z"
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
           },
-          "metricValueAliases": [
-            "Z-A"
-          ],
-          "metricValues_array": [
-            "input"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_in_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "max"
             }
           ],
-          "orderby_field": "link_name",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
+          "query": "meta.link_name:$links",
           "refId": "A",
-          "series": "interface",
-          "target": "get link_name, aggregate(values.input, 60, max) between (1570571291, 1570657691) by link_name from interface where (link_name like \".*\") ordered by link_name",
-          "target_alias": "$VALUES $link_name",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "$$hashKey": "object:521",
-                "left": "link_name",
-                "op": "like",
-                "right": ".*"
-              }
-            ]
-          ]
+          "timeField": "@timestamp"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "(Z to A) Maximum Utilization Over Time",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bps",
-          "label": "Rate",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 229
+        "y": 107
       },
       "id": 95,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
-      "datasource": null,
+      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 230
+        "y": 108
       },
       "id": 96,
       "links": [],
       "options": {
-        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eFor questions, concerns, or other issues, please contact us at \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e.\u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e NSF GRANT 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e click here \u003c/a\u003e \u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": "",
-  "schemaVersion": 32,
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "netsage"
-  ],
+  "tags": ["netsage"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "selected": true,
+          "text": [
+            "SoX: Nashville Sidco to Atlanta 100GE",
+            "SoX: Nashville Sidco to Nashville 365DC 100GE"
+          ],
+          "value": [
+            "SoX: Nashville Sidco to Atlanta 100GE",
+            "SoX: Nashville Sidco to Nashville 365DC 100GE"
+          ]
         },
-        "datasource": "Netsage TSDS",
-        "definition": "",
-        "description": null,
-        "error": null,
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "sSbCgDLVz"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.link_name\"}",
         "hide": 2,
         "includeAll": true,
-        "label": "Links",
         "multi": true,
         "name": "links",
         "options": [],
-        "query": "get link_name between($START, $END) by link_name from interface where link_name != null and link_name not like \"ACE\" limit 100 offset 0 ordered by link_name asc",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.link_name\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       }
     ]
   },
@@ -2693,20 +2044,11 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
   "title": "Bandwidth Dashboard",
   "uid": "000000003",
-  "version": 130
+  "version": 32,
+  "weekStart": ""
 }

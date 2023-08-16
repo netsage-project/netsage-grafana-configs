@@ -3,11 +3,14 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -20,16 +23,17 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1645480291737,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 1,
@@ -134,6 +138,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "id": "1",
@@ -149,7 +157,10 @@
       "type": "netsage-nav-plugin"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 5,
         "w": 20,
@@ -159,226 +170,66 @@
       "id": 2,
       "links": [],
       "options": {
-        "content": "<center style=\"margin-top: 0px\"><h1><b>Bandwidth Patterns</b></h1></center>\n<center style=\"margin-top: 0px\">This dashboard shows heatmaps for the bandwidth data across exchange points and links as measured using SNMP. </center>\n<center style=\"margin-top: 0px\">The horizontal axis represents days and the vertical axis represents time of day.</center>\n<center style=\"margin-top: 0px\">Darker squares show higher data transmissions at those hours.</center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time.</center>\n\n\n\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eBandwidth Patterns\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows heatmaps for the bandwidth data across exchange points and links as measured using SNMP. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe horizontal axis represents days and the vertical axis represents time of day.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eDarker squares show higher data transmissions at those hours.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\n\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 1,
+        "h": 10,
         "w": 24,
         "x": 0,
         "y": 5
-      },
-      "id": 3,
-      "panels": [],
-      "title": "Exchange Points",
-      "type": "row"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "rgb(169, 169, 169)"
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 6
-      },
-      "id": 5,
-      "links": [],
-      "options": {
-        "from": "0",
-        "legendGradientQuality": "high",
-        "showCellBorder": false,
-        "showLegend": false,
-        "showTooltip": true,
-        "showValueIndicator": false,
-        "to": "0"
-      },
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
-          "bucket": [],
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "combineAllBy": "nothing",
-          "condition": [],
-          "dateFormat": "",
-          "displayFormat": "series",
-          "drillDown": [],
-          "drillDownAlias": "",
-          "drillDownValue": [],
-          "dsType": "elasticsearch",
-          "func": [
-            {
-              "alias": "",
-              "bucket": "",
-              "expanded": false,
-              "method": "average",
-              "operation": "",
-              "percentile": "85",
-              "root": true,
-              "target": "input",
-              "template": "",
-              "title": "Aggregate",
-              "type": "Aggregate",
-              "wrapper": []
-            }
-          ],
-          "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
-          "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
-          "metrics": [
-            {
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
-          "rawQuery": true,
-          "refId": "A",
-          "series": "interface",
-          "target": "get node, intf, aggregate(values.$data_direction, 3600, $statistics) between ($START, $END) from interface where (node = \"wrn-albu-sw-3.cenic.net\" and intf = \"ethernet5/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet6/15\") or (node = \"wrn-albu-sw-4.cenic.net\" and intf = \"ethernet3/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/3\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/10\") or (node = \"wrn-albu-sw-3.cenic.net\" and intf = \"ethernet7/1\") or (node = \"losa3-pw-sw-1.cenic.net\" and intf = \"ethernet4/1\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet7/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/2\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet1/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet4/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/8\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet7/7\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet3/1\") or (node = \"wrn-elpa-sw-1.cenic.net\" and intf = \"ethernet1/1\") or (node = \"losa3-pw-sw-1.cenic.net\" and intf = \"ethernet7/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet7/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/5\") or (node = \"wrn-elpa-sw-1.cenic.net\" and intf = \"ethernet5/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet1/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet16/5\") or (node = \"wrn-denv-sw-3.cenic.net\" and intf = \"ethernet7/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet6/20\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet13/1\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/5\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/6\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet7/1\") or (node = \"wrn-albu-sw-4.cenic.net\" and intf = \"ethernet5/1\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet3/2\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet1/1\") or (node = \"wrn-denv-sw-3.cenic.net\" and intf = \"ethernet1/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet1/1\") or (node = \"losa3-pw-sw-1.cenic.net\" and intf = \"ethernet7/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet15/7\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet8/9\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet16/7\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet6/2\") or (node = \"snvl2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet3/2\") or (node = \"wrn-denv-sw-4.cenic.net\" and intf = \"ethernet5/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet4/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet5/2\") or (node = \"losa2-pw-sw-1-mgmt-2.cenic.net\" and intf = \"ethernet9/1\") or (node = \"wrn-denv-sw-3.cenic.net\" and intf = \"ethernet5/2\")",
-          "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
-          "type": "timeserie",
-          "whereClauseGroup": [
-            [
-              {
-                "left": "link_name",
-                "op": "=",
-                "right": "$links"
-              }
-            ]
-          ]
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Pacific Wave Exchange Point",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "collapsed": false,
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 16
-      },
-      "id": 7,
-      "panels": [],
-      "title": "Selected Links",
-      "type": "row"
-    },
-    {
-      "datasource": "Netsage TSDS",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "mean",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "rgb(169, 169, 169)"
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 17
       },
       "id": 8,
       "links": [],
@@ -396,13 +247,12 @@
       "targets": [
         {
           "aggregate_all": false,
-          "aggregator": [
-            "average"
-          ],
+          "aggregator": ["average"],
+          "alias": "",
           "bucket": [],
           "bucketAggs": [
             {
-              "field": "start",
+              "field": "@timestamp",
               "id": "2",
               "settings": {
                 "interval": "auto",
@@ -414,6 +264,10 @@
           ],
           "combineAllBy": "nothing",
           "condition": [],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
           "dateFormat": "",
           "displayFormat": "series",
           "drillDown": [],
@@ -438,45 +292,29 @@
             }
           ],
           "groupby_field": " ",
-          "inlineGroupOperator": [
-            [
-              "",
-              "and"
-            ]
-          ],
+          "inlineGroupOperator": [["", "and"]],
           "metricValueAliasMappings": {},
-          "metricValueAliases": [
-            ""
-          ],
-          "metricValues_array": [
-            "$data_direction"
-          ],
-          "metric_array": [
-            "link_name"
-          ],
+          "metricValueAliases": [""],
+          "metricValues_array": ["$data_direction"],
+          "metric_array": ["link_name"],
           "metrics": [
             {
-              "field": "select field",
+              "field": "values.if_out_bits.rate",
               "id": "1",
-              "type": "count"
+              "type": "avg"
             }
           ],
           "orderby_field": "",
-          "outerGroupOperator": [
-            ""
-          ],
-          "percentileValue": [
-            ""
-          ],
+          "outerGroupOperator": [""],
+          "percentileValue": [""],
+          "query": "meta.link_name=\"$links\"",
           "rawQuery": true,
           "refId": "A",
           "series": "interface",
           "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
           "target_alias": "",
-          "templateVariableValue": [
-            ""
-          ],
-          "timeField": "start",
+          "templateVariableValue": [""],
+          "timeField": "@timestamp",
           "type": "timeserie",
           "whereClauseGroup": [
             [
@@ -489,124 +327,215 @@
           ]
         }
       ],
-      "timeFrom": null,
-      "title": "$links ($data_direction)",
+      "title": "$links (Average)",
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "sSbCgDLVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 11,
+      "links": [],
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "repeat": "links",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "aggregate_all": false,
+          "aggregator": ["average"],
+          "alias": "",
+          "bucket": [],
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "combineAllBy": "nothing",
+          "condition": [],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "sSbCgDLVz"
+          },
+          "dateFormat": "",
+          "displayFormat": "series",
+          "drillDown": [],
+          "drillDownAlias": "",
+          "drillDownValue": [],
+          "dsType": "elasticsearch",
+          "func": [
+            {
+              "alias": "",
+              "align": "",
+              "bucket": "",
+              "expanded": false,
+              "method": "average",
+              "operation": "",
+              "percentile": "85",
+              "root": true,
+              "target": "input",
+              "template": "",
+              "title": "Aggregate",
+              "type": "Aggregate",
+              "wrapper": []
+            }
+          ],
+          "groupby_field": " ",
+          "inlineGroupOperator": [["", "and"]],
+          "metricValueAliasMappings": {},
+          "metricValueAliases": [""],
+          "metricValues_array": ["$data_direction"],
+          "metric_array": ["link_name"],
+          "metrics": [
+            {
+              "field": "values.if_out_bits.rate",
+              "id": "1",
+              "type": "max"
+            }
+          ],
+          "orderby_field": "",
+          "outerGroupOperator": [""],
+          "percentileValue": [""],
+          "query": "meta.link_name=\"$links\"",
+          "rawQuery": true,
+          "refId": "A",
+          "series": "interface",
+          "target": "get  link_name, aggregate(values.$data_direction, 3600, $statistics) between ($START,$END) from interface where  ( link_name = \"$links\" )",
+          "target_alias": "",
+          "templateVariableValue": [""],
+          "timeField": "@timestamp",
+          "type": "timeserie",
+          "whereClauseGroup": [
+            [
+              {
+                "left": "link_name",
+                "op": "=",
+                "right": "$links"
+              }
+            ]
+          ]
+        }
+      ],
+      "title": "$links (Max)",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 197
+        "y": 45
       },
       "id": 9,
       "links": [],
       "options": {
-        "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@lbl.gov\">netsage@lbl.gov </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eFor questions, concerns, or other issues, please contact us at \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e.\u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e NSF GRANT 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e click here \u003c/a\u003e \u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     }
   ],
-  "schemaVersion": 32,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "netsage"
-  ],
+  "tags": ["netsage"],
   "templating": {
     "list": [
       {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "input",
-          "value": "input"
-        },
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": false,
-        "label": "Data Direction",
-        "multi": false,
-        "name": "data_direction",
-        "options": [
-          {
-            "selected": true,
-            "text": "input",
-            "value": "input"
-          },
-          {
-            "selected": false,
-            "text": "output",
-            "value": "output"
-          }
-        ],
-        "query": "input, output",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "average",
-          "value": "average"
-        },
-        "description": null,
-        "error": null,
-        "hide": 0,
-        "includeAll": false,
-        "label": "Statistics",
-        "multi": false,
-        "name": "statistics",
-        "options": [
-          {
-            "selected": true,
-            "text": "average",
-            "value": "average"
-          },
-          {
-            "selected": false,
-            "text": "min",
-            "value": "min"
-          },
-          {
-            "selected": false,
-            "text": "max",
-            "value": "max"
-          }
-        ],
-        "query": "average, min, max",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": [
-            "All"
+            "SoX: Nashville Sidco to Atlanta 100GE",
+            "SoX: Nashville Sidco to Nashville 365DC 100GE"
           ],
           "value": [
-            "$__all"
+            "SoX: Nashville Sidco to Atlanta 100GE",
+            "SoX: Nashville Sidco to Nashville 365DC 100GE"
           ]
         },
-        "datasource": "Netsage TSDS",
-        "definition": "",
-        "description": null,
-        "error": null,
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "sSbCgDLVz"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.link_name\"}",
         "hide": 0,
         "includeAll": true,
         "label": "Links",
         "multi": true,
         "name": "links",
         "options": [],
-        "query": "get link_name between($START, $END) by link_name from interface where link_name != null limit 100 offset 0",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.link_name\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -635,20 +564,11 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
   "title": "Bandwidth Patterns",
   "uid": "000000004",
-  "version": 3
+  "version": 6,
+  "weekStart": ""
 }

@@ -4,11 +4,14 @@
       {
         "$$hashKey": "object:13",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
+        "name": "Annotations \u0026 Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
@@ -21,16 +24,17 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
   "id": 7,
-  "iteration": 1648487809933,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "__netsage_template": "navigation",
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 1,
@@ -122,11 +126,23 @@
           }
         ]
       },
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "netsage-nav-plugin"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 8,
         "w": 22,
@@ -136,15 +152,32 @@
       "id": 44,
       "links": [],
       "options": {
-        "content": "<div style=\"float:right;\">\n<a class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization&from=${__from}&to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\">See Individual Flows for $Organization</a>\n<a class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/WNn1qyaiz/flows-by-science-discipline?var-org=$Organization&from=${__from}&to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\">See Science Data for $Organization</a>\n</div>\n<br clear=\"both\">\n<div style=\"padding-right: 10%\">\n<center style=\"margin-top: 0px\"><h1><b>Flow Data by Organization</b></h1></center>\n<center style=\"margin-top: 0px\">This dashboard shows top flows with the specified organization as the source or destination.</center>\n<center style=\"margin-top: 0px\">Select an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.</center>\n<center style=\"margin-top: 0px\">Click on the name of an institution in one of the tables to go to the individual flows dashboard for that institution and the one selected for the page.</center>\n<center style=\"margin-top: 0px\"><b>Please note that rate will be zero if only one sampled flow was detected.</b></center>\n<center style=\"margin-top: 0px\">All times are displayed in browser local time.</center>\n</div>\n\n\n<br>\n<!-- Global site tag (gtag.js) - Google Analytics -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n</script>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Flows for $Organization\u003c/a\u003e\n\u003ca class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/WNn1qyaiz/flows-by-science-discipline?var-org=$Organization\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Science Data for $Organization\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\"\u003e\n\u003cdiv style=\"padding-right: 10%\"\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eFlow Data by Organization\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top flows with the specified organization as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the name of an institution in one of the tables to go to the individual flows dashboard for that institution and the one selected for the page.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that rate will be zero if only one sampled flow was detected.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e\n\n\n\u003cbr\u003e\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -154,16 +187,32 @@
       "id": 30,
       "links": [],
       "options": {
-        "content": "<h1><center>Top Flows Sent by $Organization</center></h1>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch1\u003e\u003ccenter\u003eTop Flows Sent by $Organization\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -205,30 +254,25 @@
         "y": 10
       },
       "id": 483,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "sum"
-          ]
+          "calcs": ["sum"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -244,6 +288,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:87",
@@ -259,15 +307,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "# Flows",
+      "title": "Number of Flows",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -310,30 +358,25 @@
         "y": 10
       },
       "id": 485,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "sum"
-          ]
+          "calcs": ["sum"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -349,6 +392,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:163",
@@ -369,20 +416,24 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Volume",
       "transparent": true,
       "type": "stat"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -390,7 +441,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "#5795f24d",
                 "value": null
               },
               {
@@ -416,12 +467,11 @@
                 "value": 1
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "custom.width",
-                "value": 440
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               }
             ]
           },
@@ -438,6 +488,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 150
               }
             ]
           },
@@ -454,6 +508,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
               }
             ]
           },
@@ -469,7 +527,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization&var-dest=${__value.text:percentencode}&from=${__from}&to=${__to}"
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization\u0026var-dest=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -491,6 +549,13 @@
       "id": 21,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -499,7 +564,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -517,6 +582,10 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "dsType": "elasticsearch",
           "metrics": [
             {
@@ -559,7 +628,6 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Volume",
       "transformations": [
         {
@@ -580,13 +648,19 @@
       "type": "table"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -594,7 +668,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "#5795f24d",
                 "value": null
               },
               {
@@ -620,12 +694,11 @@
                 "value": 1
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "custom.width",
-                "value": 440
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               }
             ]
           },
@@ -642,6 +715,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 150
               }
             ]
           },
@@ -658,6 +735,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
               }
             ]
           },
@@ -673,7 +754,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization&var-dest=${__value.text:percentencode}&from=${__from}&to=${__to}"
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=$Organization\u0026var-dest=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -695,6 +776,13 @@
       "id": 28,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -703,7 +791,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -721,13 +809,16 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "dsType": "elasticsearch",
           "metrics": [
             {
               "$$hashKey": "object:462",
               "field": "values.bits_per_second",
               "id": "1",
-              "inlineScript": null,
               "meta": {},
               "settings": {},
               "type": "max"
@@ -754,7 +845,6 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Rate",
       "transformations": [
         {
@@ -775,7 +865,10 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -785,16 +878,32 @@
       "id": 31,
       "links": [],
       "options": {
-        "content": "<h1  style=\"margin-top:35px;\"><center>Top Flows Received by $Organization</center></h1>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch1  style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Flows Received by $Organization\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -836,30 +945,25 @@
         "y": 40
       },
       "id": 487,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "sum"
-          ]
+          "calcs": ["sum"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -875,6 +979,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:655",
@@ -890,15 +998,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "# Flows",
+      "title": "Number of Flows",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -941,30 +1049,25 @@
         "y": 40
       },
       "id": 489,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "sum"
-          ]
+          "calcs": ["sum"]
         },
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -980,6 +1083,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:744",
@@ -1000,20 +1107,24 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Volume",
       "transparent": true,
       "type": "stat"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1021,8 +1132,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "#5795f24d",
                 "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
               }
             ]
           }
@@ -1040,7 +1155,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-dest=$Organization&var-src=${__value.text:percentencode}&from=${__from}&to=${__to}"
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-dest=$Organization\u0026var-src=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1065,12 +1180,11 @@
                 "value": 1
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "custom.width",
-                "value": 440
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               }
             ]
           },
@@ -1087,6 +1201,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 150
               }
             ]
           },
@@ -1099,6 +1217,10 @@
               {
                 "id": "unit",
                 "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
               }
             ]
           }
@@ -1114,6 +1236,13 @@
       "id": 32,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -1122,7 +1251,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1140,6 +1269,10 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "dsType": "elasticsearch",
           "metrics": [
             {
@@ -1182,7 +1315,6 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Volume",
       "transformations": [
         {
@@ -1203,13 +1335,19 @@
       "type": "table"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1217,8 +1355,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
+                "color": "#5795f24d",
                 "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
               }
             ]
           }
@@ -1236,7 +1378,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-dest=$Organization&var-src=${__value.text:percentencode}&from=${__from}&to=${__to}"
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-dest=$Organization\u0026var-src=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1261,12 +1403,11 @@
                 "value": 1
               },
               {
-                "id": "custom.displayMode",
-                "value": "gradient-gauge"
-              },
-              {
-                "id": "custom.width",
-                "value": 440
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
               }
             ]
           },
@@ -1283,6 +1424,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 150
               }
             ]
           },
@@ -1295,6 +1440,10 @@
               {
                 "id": "unit",
                 "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
               }
             ]
           }
@@ -1310,6 +1459,13 @@
       "id": 33,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -1318,7 +1474,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1336,13 +1492,16 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "dsType": "elasticsearch",
           "metrics": [
             {
               "$$hashKey": "object:1016",
               "field": "values.bits_per_second",
               "id": "1",
-              "inlineScript": null,
               "meta": {},
               "settings": {},
               "type": "max"
@@ -1369,7 +1528,6 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Rate",
       "transformations": [
         {
@@ -1390,7 +1548,10 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1400,16 +1561,32 @@
       "id": 34,
       "links": [],
       "options": {
-        "content": "<h1 style=\"margin-top:35px;\"><center>Other Statistics about $Organization Flows</center></h1>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eOther Statistics about $Organization Flows\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -1449,24 +1626,20 @@
       "options": {
         "colorMode": "value",
         "fieldOptions": {
-          "calcs": [
-            "sum"
-          ]
+          "calcs": ["sum"]
         },
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1482,6 +1655,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:1210",
@@ -1497,7 +1674,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Total large flows observed",
+      "title": "Total Number of Flows Distributed Over Selected Time Period",
       "transparent": true,
       "type": "stat"
     },
@@ -1506,7 +1683,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1543,7 +1723,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1579,6 +1759,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:522",
@@ -1595,9 +1779,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Protocols",
       "tooltip": {
         "shared": true,
@@ -1606,38 +1788,27 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
           "$$hashKey": "object:598",
-          "decimals": null,
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:599",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1645,7 +1816,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1682,7 +1856,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1718,6 +1892,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:637",
@@ -1734,9 +1912,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Source Ports",
       "tooltip": {
         "shared": true,
@@ -1745,13 +1921,9 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -1759,23 +1931,17 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:714",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1783,7 +1949,10 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1820,7 +1989,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1856,6 +2025,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:752",
@@ -1872,9 +2045,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Destination Ports",
       "tooltip": {
         "shared": true,
@@ -1883,13 +2054,9 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -1897,27 +2064,24 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:829",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1927,21 +2091,41 @@
       "id": 35,
       "links": [],
       "options": {
-        "content": "<h3 style=\"margin-top:35px;\"><center>NetSage Sensors Observing $Organization Flows</center></h3>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch3 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eNetSage Sensors Observing $Organization Flows\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "align": "left",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -1949,12 +2133,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "light-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -1963,48 +2143,92 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Total Volume"
+              "options": "meta.sensor_id"
             },
             "properties": [
               {
-                "id": "unit",
-                "value": "decbytes"
+                "id": "displayName",
+                "value": "Sensor"
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Largest Flow"
+              "options": "Sum"
             },
             "properties": [
               {
+                "id": "displayName",
+                "value": "Total Volume"
+              },
+              {
                 "id": "unit",
                 "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Fastest Flow"
+              "options": "Max values.num_bits"
             },
             "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Flow"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 149
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fastest Flow"
+              },
               {
                 "id": "unit",
                 "value": "bps"
+              },
+              {
+                "id": "custom.width",
+                "value": 149
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "# Flows"
+              "options": "Count"
             },
             "properties": [
               {
+                "id": "displayName",
+                "value": "Number of Flows"
+              },
+              {
                 "id": "unit",
                 "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
               }
             ]
           }
@@ -2017,9 +2241,16 @@
         "y": 85
       },
       "hideTimeOverride": false,
-      "id": 19,
+      "id": 490,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -2028,12 +2259,12 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
             {
-              "$$hashKey": "object:1301",
+              "$$hashKey": "object:794",
               "fake": true,
               "field": "meta.sensor_id",
               "id": "3",
@@ -2046,10 +2277,14 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "dsType": "elasticsearch",
           "metrics": [
             {
-              "$$hashKey": "object:1293",
+              "$$hashKey": "object:786",
               "field": "values.num_bits",
               "id": "1",
               "inlineScript": "_value/8",
@@ -2062,7 +2297,7 @@
               "type": "sum"
             },
             {
-              "$$hashKey": "object:1294",
+              "$$hashKey": "object:787",
               "field": "values.num_bits",
               "id": "5",
               "inlineScript": "_value / 8",
@@ -2075,7 +2310,7 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1295",
+              "$$hashKey": "object:788",
               "field": "values.bits_per_second",
               "id": "6",
               "meta": {},
@@ -2083,7 +2318,7 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1296",
+              "$$hashKey": "object:789",
               "field": "meta.id",
               "id": "7",
               "meta": {},
@@ -2096,30 +2331,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "Sensor Usage",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "Count": "# Flows",
-              "Max values.bits_per_second": "Fastest Flow",
-              "Max values.num_bits": "Largest Flow",
-              "Sum": "Total Volume",
-              "Unique Count": "# Flows",
-              "meta.sensor_id": "Sensor"
-            }
-          }
-        }
-      ],
       "type": "table"
     },
     {
-      "content": "<div class=\"netsage_footer\"> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu </a> Thanks! <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>\n",
-      "datasource": null,
+      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -2129,34 +2349,45 @@
       "id": 46,
       "links": [],
       "options": {
-        "content": "<div> If you have any questions, concerns, or other issues, feel free to contact us at <a href=\"mailto:netsage@iu.edu\">netsage@iu.edu</a>.  Thanks!  <img style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50> <a href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"> NSF GRANT 1540933 </a> </img> <span style=\"float:right; position:relative; top:15px\"> To Review the NetSage Data Policy <a href=\"http://www.netsage.global/home/netsage-privacy-policy\"> click here </a> </div>",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eFor questions, concerns, or other issues, please contact us at \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e.\u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e NSF GRANT 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e click here \u003c/a\u003e \u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 32,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "flow",
-    "netsage"
-  ],
+  "tags": ["flow", "netsage"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "Indiana University",
           "value": "Indiana University"
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "",
@@ -2174,23 +2405,18 @@
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "Sensors",
         "options": [],
@@ -2208,17 +2434,14 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Scope",
@@ -2236,14 +2459,11 @@
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "yes",
           "value": "yes"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Show Test Traffic",
@@ -2286,20 +2506,11 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
   "title": "Flow Data per Organization",
   "uid": "QfzDJKhik",
-  "version": 9
+  "version": 7,
+  "weekStart": ""
 }

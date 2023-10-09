@@ -4,7 +4,10 @@
       {
         "$$hashKey": "object:19",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,15 +24,16 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
   "id": 10,
-  "iteration": 1648488183905,
   "links": [],
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 6,
         "w": 24,
@@ -39,18 +43,33 @@
       "id": 2,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n\u003ch1\u003e\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003eIndividual Flows per Country\u003c/b\u003e\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows per-flow level data, given a particular source and destination country.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for each flow. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that the retransmit information is only available for archive flow data;\u003cbr\u003e\nand rate and duration will be zero for flows where only one sample was detected.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "__netsage_template": "navigation",
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 1,
@@ -142,12 +161,23 @@
           }
         ]
       },
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "netsage-nav-plugin"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -181,7 +211,6 @@
         "y": 6
       },
       "id": 3,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -200,7 +229,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -216,6 +245,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:68",
@@ -231,15 +264,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "# Flows",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -275,7 +308,6 @@
         "y": 6
       },
       "id": 4,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -294,7 +326,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -310,6 +342,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:181",
@@ -330,15 +366,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Volume",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -373,7 +409,6 @@
         "y": 6
       },
       "id": 5,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -392,7 +427,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -408,6 +443,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:257",
@@ -423,14 +462,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Avg Rate",
       "transparent": true,
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -440,23 +480,40 @@
       "id": 7,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -623,6 +680,13 @@
       "id": 8,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -631,7 +695,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "alias": "",
@@ -728,6 +792,10 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "hide": false,
           "metrics": [
             {
@@ -819,7 +887,10 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -881,6 +952,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:1172",
@@ -905,7 +980,10 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -967,6 +1045,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:83",
@@ -986,7 +1068,10 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -1033,7 +1118,6 @@
         "showValueIndicator": false,
         "to": "0"
       },
-      "repeat": null,
       "repeatDirection": "h",
       "targets": [
         {
@@ -1050,6 +1134,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:105",
@@ -1065,12 +1153,14 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Retransmits",
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -1079,22 +1169,36 @@
       },
       "id": 12,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eSummary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": true,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1130,7 +1234,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1166,6 +1270,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:434",
@@ -1182,9 +1290,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Protocols",
       "tooltip": {
         "shared": true,
@@ -1193,9 +1299,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": ["total"]
       },
@@ -1205,32 +1309,28 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:511",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": true,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1266,7 +1366,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1302,6 +1402,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:580",
@@ -1318,9 +1422,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Source Ports",
       "tooltip": {
         "shared": true,
@@ -1329,9 +1431,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": ["total"]
       },
@@ -1341,32 +1441,28 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:745",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": true,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -1402,7 +1498,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1438,6 +1534,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:634",
@@ -1454,9 +1554,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Destination Ports",
       "tooltip": {
         "shared": true,
@@ -1465,9 +1563,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": ["total"]
       },
@@ -1477,27 +1573,24 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:856",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1506,18 +1599,32 @@
       },
       "id": 16,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "\u003ccenter style=\"margin-top:20px;\"\u003e\u003ch1 style=\"margin-top:35px;\"\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1552,7 +1659,6 @@
         "y": 71
       },
       "id": 17,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1571,7 +1677,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1587,6 +1693,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:873",
@@ -1602,15 +1712,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "# Flows",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -1645,7 +1755,6 @@
         "y": 71
       },
       "id": 18,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1664,7 +1773,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1680,6 +1789,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:990",
@@ -1700,15 +1813,15 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Total Volume",
       "transparent": true,
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -1743,7 +1856,6 @@
         "y": 71
       },
       "id": 19,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1762,7 +1874,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1778,6 +1890,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:1066",
@@ -1793,20 +1909,23 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Avg Rate",
       "transparent": true,
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -1973,6 +2092,13 @@
       "id": 33,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -1981,7 +2107,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "alias": "",
@@ -2078,6 +2204,10 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "hide": false,
           "metrics": [
             {
@@ -2169,7 +2299,10 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2186,8 +2319,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2231,6 +2363,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:207",
@@ -2255,7 +2391,10 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2272,8 +2411,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2317,6 +2455,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:233",
@@ -2336,7 +2478,10 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -2399,6 +2544,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:315",
@@ -2414,12 +2563,14 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "By Retransmits (Reverse)",
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -2428,22 +2579,36 @@
       },
       "id": 25,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003e Reverse Summary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "aliasColors": {},
       "bars": true,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2479,7 +2644,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2515,6 +2680,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:1027",
@@ -2531,9 +2700,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Protocols",
       "tooltip": {
         "shared": true,
@@ -2542,9 +2709,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": ["total"]
       },
@@ -2554,32 +2719,28 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1104",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": true,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2615,7 +2776,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2651,6 +2812,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:1142",
@@ -2667,9 +2832,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Source Ports",
       "tooltip": {
         "shared": true,
@@ -2678,9 +2841,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": ["total"]
       },
@@ -2690,32 +2851,28 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1219",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": true,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
@@ -2751,7 +2908,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2787,6 +2944,10 @@
               "type": "date_histogram"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "metrics": [
             {
               "$$hashKey": "object:1257",
@@ -2803,9 +2964,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top Destination Ports",
       "tooltip": {
         "shared": true,
@@ -2814,9 +2973,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "series",
-        "name": null,
         "show": true,
         "values": ["total"]
       },
@@ -2826,27 +2983,24 @@
           "format": "short",
           "label": "Number of Flows",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1334",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 2,
         "w": 24,
@@ -2856,21 +3010,40 @@
       "id": 29,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eNetSage Sensors Observing Selected Country Flows\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": "netsage",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "displayMode": "auto",
-            "filterable": false
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "decimals": 1,
           "mappings": [],
@@ -2949,6 +3122,13 @@
       "id": 30,
       "links": [],
       "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": [
           {
@@ -2957,7 +3137,7 @@
           }
         ]
       },
-      "pluginVersion": "8.2.7",
+      "pluginVersion": "9.5.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2975,6 +3155,10 @@
               "type": "terms"
             }
           ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
           "dsType": "elasticsearch",
           "metrics": [
             {
@@ -3025,7 +3209,6 @@
           "timeField": "start"
         }
       ],
-      "timeFrom": null,
       "title": "Sensor Usage",
       "transformations": [
         {
@@ -3046,7 +3229,10 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3056,18 +3242,33 @@
       "id": 31,
       "links": [],
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
-      "datasource": null,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -3077,33 +3278,45 @@
       "id": 32,
       "links": [],
       "options": {
-        "content": "\u003cdiv\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu\u003c/a\u003e.  Thanks!  \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e",
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eFor questions, concerns, or other issues, please contact us at \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e.\u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e NSF GRANT 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e click here \u003c/a\u003e \u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "8.2.7",
-      "timeFrom": null,
-      "timeShift": null,
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 32,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["netsage"],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": true,
           "text": ["All"],
           "value": ["$__all"]
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.flow_type\"}",
-        "description": null,
-        "error": null,
         "hide": 2,
         "includeAll": true,
         "label": "Flow Type",
@@ -3127,10 +3340,11 @@
           "text": ["United States"],
           "value": ["United States"]
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Source Country",
@@ -3154,10 +3368,11 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Destination Country",
@@ -3181,10 +3396,11 @@
           "text": ["All"],
           "value": ["$__all"]
         },
-        "datasource": "netsage",
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
         "label": "Sensors",
@@ -3202,14 +3418,11 @@
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "yes",
           "value": "yes"
         },
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Show Test Traffic",
@@ -3255,5 +3468,6 @@
   "timezone": "",
   "title": "Individual Flows per Country",
   "uid": "80IVUboZk",
-  "version": 1
+  "version": 2,
+  "weekStart": ""
 }

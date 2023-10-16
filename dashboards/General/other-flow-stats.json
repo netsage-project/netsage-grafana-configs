@@ -1288,7 +1288,6 @@
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -1320,6 +1319,341 @@
         "w": 4,
         "x": 1,
         "y": 12
+      },
+      "id": 36,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:106",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "365d",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND meta.ip_version:4",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Unique Count meta.dst_asn": true,
+              "Unique Count meta.dst_country_name": true,
+              "Unique Count meta.dst_organization": true,
+              "Unique Count meta.src_asn": true,
+              "Unique Count meta.src_country_name": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 5,
+        "y": 12
+      },
+      "id": 35,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr\u003e\n\u003ch4  style = 'margin-top: 0px; font-weight:bold; color:#FF780A'\u003eIPv4 Flows\u003c/h4\u003e\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 12
+      },
+      "id": 37,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:106",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "365d",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND meta.ip_version:6",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Unique Count meta.dst_asn": true,
+              "Unique Count meta.dst_country_name": true,
+              "Unique Count meta.dst_organization": true,
+              "Unique Count meta.src_asn": true,
+              "Unique Count meta.src_country_name": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 12
+      },
+      "id": 38,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr\u003e\n\u003ch4  style = 'margin-top: 0px; font-weight:bold; color:#FF780A'\u003eIPv6 Flows\u003c/h4\u003e\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 1,
+        "y": 14
       },
       "id": 16,
       "interval": "",
@@ -1389,7 +1723,7 @@
         "h": 3,
         "w": 7,
         "x": 5,
-        "y": 12
+        "y": 14
       },
       "id": 17,
       "options": {
@@ -1471,7 +1805,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 12
+        "y": 14
       },
       "id": 18,
       "links": [],
@@ -1539,7 +1873,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 12
+        "y": 14
       },
       "id": 19,
       "options": {
@@ -1622,7 +1956,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 17
       },
       "id": 3,
       "interval": "1h",
@@ -1705,7 +2039,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 18
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 20,
@@ -1838,7 +2172,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 18
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 21,
@@ -1971,7 +2305,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 22,
@@ -2199,7 +2533,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 26
+        "y": 28
       },
       "hideTimeOverride": false,
       "id": 31,
@@ -2408,7 +2742,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 26
+        "y": 28
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -2627,7 +2961,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 42
       },
       "hideTimeOverride": false,
       "id": 33,
@@ -2745,7 +3079,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 24,
@@ -2971,7 +3305,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 60
+        "y": 62
       },
       "hideTimeOverride": false,
       "id": 27,
@@ -3203,7 +3537,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 60
+        "y": 62
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -3328,7 +3662,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 76
       },
       "id": 25,
       "links": [],
@@ -3338,7 +3672,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003cdiv\u003eFor questions, concerns, or other issues, please contact us at \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e.\u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e NSF GRANT 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e click here \u003c/a\u003e \u003c/div\u003e",
+        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
         "mode": "html"
       },
       "pluginVersion": "9.5.3",
@@ -3469,6 +3803,6 @@
   "timezone": "",
   "title": "Other Flow Stats",
   "uid": "CJC1FFhmz",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }

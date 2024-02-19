@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 56,
+  "id": 28,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -77,31 +77,27 @@
         },
         "navQuestions": [
           {
-            "label": "What is the current state of the network?",
-            "link": "/grafana/d/000000003/bandwidth-dashboard"
-          },
-          {
-            "label": "What are the top sources/destinations of flows?",
+            "label": "What are the top sources/destinations of Globus tasks?",
             "link": "/grafana/d/xk26IFhmk/flow-data"
           },
           {
-            "label": "What are the top flows by organization?",
+            "label": "What are the top tasks by organization?",
             "link": "/grafana/d/QfzDJKhik/flow-data-per-organization"
           },
           {
-            "label": "What do individual flows look like?",
+            "label": "What do individual tasks look like?",
             "link": "/grafana/d/-l3_u8nWk/individual-flows"
           },
           {
-            "label": "What are the top flows by country?",
+            "label": "What are the top tasks by country?",
             "link": "/grafana/d/fgrOzz_mk/flow-data-per-country"
           },
           {
-            "label": "What are the flows by science discipline?",
+            "label": "What are the tasks by science discipline?",
             "link": "/grafana/d/WNn1qyaiz/flows-by-science-discipline"
           },
           {
-            "label": "What are the flows by project?",
+            "label": "What are the tasks by project?",
             "link": "/grafana/d/ie7TeomGz/flow-data-for-projects"
           },
           {
@@ -109,15 +105,11 @@
             "link": "/grafana/d/b35BWxAZz/top-talkers-over-time"
           },
           {
-            "label": "What are the patterns in science data transfers in the network?",
+            "label": "What are the patterns in science data transfers?",
             "link": "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
           },
           {
-            "label": "What are the bandwidth patterns in the network?",
-            "link": "/grafana/d/000000004/bandwidth-patterns"
-          },
-          {
-            "label": "What are the current flow data summary statistics?",
+            "label": "What are the current task summary statistics?",
             "link": "/grafana/d/CJC1FFhmz/other-flow-stats"
           }
         ]
@@ -140,7 +132,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 23,
         "x": 1,
         "y": 0
@@ -152,7 +144,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eTop Talkers Over Time\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard displays top sending and receiving Organizations over time, ranked by flow data volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eTop Talkers Over Time\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard displays top sending and receiving Organizations over time, ranked by task volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e",
         "mode": "html"
       },
       "pluginVersion": "9.2.20",
@@ -206,7 +198,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 5
       },
       "header1": "Source Organization",
       "id": 2,
@@ -289,7 +281,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 22
       },
       "header1": "Destination Organization",
       "id": 3,
@@ -366,7 +358,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 40
       },
       "id": 7,
       "links": [],
@@ -393,7 +385,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
   "tags": [],
@@ -432,8 +424,8 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "14d",
-          "value": "14d"
+          "text": "30d",
+          "value": "30d"
         },
         "hide": 0,
         "label": "Days per Interval",
@@ -450,12 +442,12 @@
             "value": "7d"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "14d",
             "value": "14d"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "30d",
             "value": "30d"
           }
@@ -564,8 +556,8 @@
     ]
   },
   "time": {
-    "from": "now-3M",
-    "to": "now"
+    "from": "2022-04-01T05:00:00.000Z",
+    "to": "2023-07-02T04:59:59.000Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -584,6 +576,6 @@
   "timezone": "",
   "title": "Top Talkers Over Time",
   "uid": "b35BWxAZz",
-  "version": 2,
+  "version": 5,
   "weekStart": ""
 }

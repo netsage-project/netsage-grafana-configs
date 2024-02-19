@@ -1,0 +1,2620 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 19,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "__netsage_template": "navigation",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 1,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "link_text": [
+        "What is the current state of the network?",
+        "What are the top sources/destinations of flows?",
+        "What are the top flows by organization?",
+        "What do individual flows look like?",
+        "What are the top flows by country?",
+        "What are the flows by science discipline?",
+        "What are the flows by project?",
+        "Who are the top talkers over time?",
+        "What are the patterns in science data transfers in the network?",
+        "What are the bandwidth patterns in the network?",
+        "What are the current flow data summary statistics?",
+        "Advanced Flow Analysis"
+      ],
+      "link_url": [
+        "/grafana/d/000000003/bandwidth-dashboard",
+        "/grafana/d/xk26IFhmk/flow-data",
+        "/grafana/d/QfzDJKhik/flow-data-per-organization",
+        "/grafana/d/-l3_u8nWk/individual-flows",
+        "/grafana/d/fgrOzz_mk/flow-data-per-country",
+        "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
+        "/grafana/d/ie7TeomGz/flow-data-for-projects",
+        "/grafana/d/b35BWxAZz/top-talkers-over-time",
+        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
+        "/grafana/d/000000004/bandwidth-patterns",
+        "/grafana/d/CJC1FFhmz/other-flow-stats",
+        "/grafana/d/VuuXrnPWz/flow-analysis"
+      ],
+      "options": {
+        "hideGrafanaTools": {
+          "hideNavBar": true,
+          "hideSideBar": true
+        },
+        "navQuestions": [
+          {
+            "label": "What are the top sources/destinations of Globus tasks?",
+            "link": "/grafana/d/xk26IFhmk/flow-data"
+          },
+          {
+            "label": "What are the top tasks by organization?",
+            "link": "/grafana/d/QfzDJKhik/flow-data-per-organization"
+          },
+          {
+            "label": "What do individual tasks look like?",
+            "link": "/grafana/d/-l3_u8nWk/individual-flows"
+          },
+          {
+            "label": "What are the top tasks by country?",
+            "link": "/grafana/d/fgrOzz_mk/flow-data-per-country"
+          },
+          {
+            "label": "What are the tasks by science discipline?",
+            "link": "/grafana/d/WNn1qyaiz/flows-by-science-discipline"
+          },
+          {
+            "label": "What are the tasks by project?",
+            "link": "/grafana/d/ie7TeomGz/flow-data-for-projects"
+          },
+          {
+            "label": "Who are the top talkers over time?",
+            "link": "/grafana/d/b35BWxAZz/top-talkers-over-time"
+          },
+          {
+            "label": "What are the patterns in science data transfers?",
+            "link": "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
+          },
+          {
+            "label": "What are the current task summary statistics?",
+            "link": "/grafana/d/CJC1FFhmz/other-flow-stats"
+          }
+        ]
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "netsage-nav-plugin"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 20,
+        "x": 2,
+        "y": 0
+      },
+      "id": 48,
+      "links": [],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Project\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows a summary of task information for a selected project.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that tasks with either end tagged as part of the project are included.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 7,
+        "y": 4
+      },
+      "id": 26,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:261",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "1h",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:259",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Volume",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 12,
+        "y": 4
+      },
+      "id": 30,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:261",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:259",
+              "field": "meta.id",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Number of Tasks",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "DarkColorPallet": [
+        "#EA3788",
+        "#89FC00",
+        "#01FDF6",
+        "#C200FB",
+        "#731DD8",
+        "#CEB9DA",
+        "#D6FF79",
+        "#FF206E",
+        "#F5B700",
+        "#00A1EA",
+        "#8224E3",
+        "#96F727",
+        "#C04D9B"
+      ],
+      "LightColorPallet": [
+        "#0A369D",
+        "#D53675",
+        "#0B9290",
+        "#FB1919",
+        "#610DA7",
+        "#F8A824",
+        "#EA1AE0",
+        "#531014",
+        "#EF810B",
+        "#4472CA",
+        "#C1292E",
+        "#356E46",
+        "#D086F5",
+        "#2CCB7A",
+        "#6D5BDD"
+      ],
+      "animationPlaying": false,
+      "array_option_1": [],
+      "array_option_2": [],
+      "array_option_3": [],
+      "array_option_4": [],
+      "center_lat": "15",
+      "center_lon": "9",
+      "choices": [],
+      "color": {
+        "cardColor": "#b4ff00",
+        "colorScale": "linear",
+        "colorScheme": "interpolateOranges",
+        "exponent": 0.5,
+        "fillBackground": false,
+        "mode": "spectrum"
+      },
+      "colorModes": ["spectrum"],
+      "colorScheme": "NetSage",
+      "custom_hover": " ",
+      "dark_map_url": "https://api.tiles.mapbox.com/v5/mapbox.dark/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+      "dark_mode": false,
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "hex_values": [],
+      "id": 53,
+      "in_field_four": "Volume",
+      "in_field_one": "Project",
+      "in_field_three": "Resource",
+      "in_field_two": "To",
+      "legend": {
+        "legend_colors": [],
+        "show": true
+      },
+      "light_map_url": "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png",
+      "link_text": [],
+      "link_url": [],
+      "links": [],
+      "max_total": 0,
+      "num_lines": "100",
+      "out_field_four": "Volume",
+      "out_field_one": "Project",
+      "out_field_three": "Resource",
+      "out_field_two": "To",
+      "parsed_data": [],
+      "rgb_values": [],
+      "scales": ["linear", "sqrt"],
+      "showControls": true,
+      "table_data": [
+        {
+          "color": "#0A369D",
+          "from": [6.5980000495910645, 46.52880096435547],
+          "labels": ["CERN", "University of Florida (UF)"],
+          "name": "MPS.Physics.High Energy",
+          "to": [-82.32479858398438, 29.651599884033203],
+          "valInBytes": 1876938953728,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [6.5980000495910645, 46.52880096435547],
+          "labels": ["CERN", "Chinese University of Hong Kong (CUHK)"],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 17248267264,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [6.5980000495910645, 46.52880096435547],
+          "labels": ["CERN", "Columbia University"],
+          "name": "MPS.Physics.High Energy",
+          "to": [-73.90899658203125, 41.017799377441406],
+          "valInBytes": 332342272,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [6.05019998550415, 46.232398986816406],
+          "labels": ["CERN", "Chinese University of Hong Kong (CUHK)"],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 629720729600,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [6.05019998550415, 46.232398986816406],
+          "labels": ["CERN", "University of Florida (UF)"],
+          "name": "MPS.Physics.High Energy",
+          "to": [-82.32479858398438, 29.651599884033203],
+          "valInBytes": 5530591232,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 1435557031936,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "Max Planck Computing and Data Facility (MPCDF)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [11.649999618530273, 48.25],
+          "valInBytes": 816442939904,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "University of Manchester"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-2.2367000579833984, 53.46969985961914],
+          "valInBytes": 211960686592,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "University of Glasgow (U of G)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-4.252900123596191, 55.830101013183594],
+          "valInBytes": 205846592512,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "Gesellschaft fÃ¼r wissenschaftliche Datenverarbeitung mbH GÃ¶ttingen  (GWDG)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [9.933300018310547, 51.53329849243164],
+          "valInBytes": 139197142016,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "Technion - Israel Institute of Technology"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [34.75, 32.81560134887695],
+          "valInBytes": 100957171712,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-72.88680267333984, 40.86949920654297],
+          "labels": [
+            "Brookhaven National Laboratory (BNL)",
+            "Queen Mary University of London (QMUL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-0.09309999644756317, 51.514198303222656],
+          "valInBytes": 10540371968,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-87.60089874267578, 41.78860092163086],
+          "labels": [
+            "University of Chicago (U of C)",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 1273062270235,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-87.60089874267578, 41.78860092163086],
+          "labels": [
+            "University of Chicago (U of C)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 840852167680,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "Boston University (BU)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-71.09929656982422, 42.34510040283203],
+          "valInBytes": 3917112307712,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "SLAC National Accelerator Laboratory"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.1781005859375, 37.45899963378906],
+          "valInBytes": 547497499648,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 510587407360,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 52859971881,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "Massachusetts Institute of Technology (MIT)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-71.0999984741211, 42.364601135253906],
+          "valInBytes": 14143311360,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "University of Chicago (U of C)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-87.60089874267578, 41.78860092163086],
+          "valInBytes": 1152928768,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-1.25, 51.75],
+          "labels": [
+            "Rutherford Appleton Laboratory (RAL)",
+            "Columbia University"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-73.90899658203125, 41.017799377441406],
+          "valInBytes": 810657792,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-2.2367000579833984, 53.46969985961914],
+          "labels": ["University of Manchester", "Boston University (BU)"],
+          "name": "MPS.Physics.High Energy",
+          "to": [-71.09929656982422, 42.34510040283203],
+          "valInBytes": 3206422702592,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-2.2367000579833984, 53.46969985961914],
+          "labels": [
+            "University of Manchester",
+            "SLAC National Accelerator Laboratory"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.1781005859375, 37.45899963378906],
+          "valInBytes": 164423961088,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-2.2367000579833984, 53.46969985961914],
+          "labels": [
+            "University of Manchester",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 63762771968,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-2.2367000579833984, 53.46969985961914],
+          "labels": [
+            "University of Manchester",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 45562628096,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-2.2367000579833984, 53.46969985961914],
+          "labels": [
+            "University of Manchester",
+            "Brookhaven National Laboratory (BNL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-72.88680267333984, 40.86949920654297],
+          "valInBytes": 28186158080,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-2.2367000579833984, 53.46969985961914],
+          "labels": ["University of Manchester", "Columbia University"],
+          "name": "MPS.Physics.High Energy",
+          "to": [-73.90899658203125, 41.017799377441406],
+          "valInBytes": 52419584,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-76.49359893798828, 37.07360076904297],
+          "labels": [
+            "Thomas Jefferson National Accelerator Facility (Jefferson Lab or TJNAF)",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 1207923910136,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-4.252900123596191, 55.830101013183594],
+          "labels": [
+            "University of Glasgow (U of G)",
+            "Brookhaven National Laboratory (BNL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-72.88680267333984, 40.86949920654297],
+          "valInBytes": 1597904986624,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-4.252900123596191, 55.830101013183594],
+          "labels": [
+            "University of Glasgow (U of G)",
+            "SLAC National Accelerator Laboratory"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.1781005859375, 37.45899963378906],
+          "valInBytes": 1067253124608,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-4.252900123596191, 55.830101013183594],
+          "labels": [
+            "University of Glasgow (U of G)",
+            "Boston University (BU)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-71.09929656982422, 42.34510040283203],
+          "valInBytes": 68338200576,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-4.252900123596191, 55.830101013183594],
+          "labels": [
+            "University of Glasgow (U of G)",
+            "University of Chicago (U of C)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-87.60089874267578, 41.78860092163086],
+          "valInBytes": 4243298304,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-4.252900123596191, 55.830101013183594],
+          "labels": [
+            "University of Glasgow (U of G)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 1067591680,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-0.09309999644756317, 51.514198303222656],
+          "labels": [
+            "Queen Mary University of London (QMUL)",
+            "Boston University (BU)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-71.09929656982422, 42.34510040283203],
+          "valInBytes": 1363163462144,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-0.09309999644756317, 51.514198303222656],
+          "labels": [
+            "Queen Mary University of London (QMUL)",
+            "SLAC National Accelerator Laboratory"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.1781005859375, 37.45899963378906],
+          "valInBytes": 1067545073152,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-0.09309999644756317, 51.514198303222656],
+          "labels": [
+            "Queen Mary University of London (QMUL)",
+            "Brookhaven National Laboratory (BNL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-72.88680267333984, 40.86949920654297],
+          "valInBytes": 43684373504,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-0.09309999644756317, 51.514198303222656],
+          "labels": [
+            "Queen Mary University of London (QMUL)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 36600773120,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-0.09309999644756317, 51.514198303222656],
+          "labels": [
+            "Queen Mary University of London (QMUL)",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 13421770752,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-0.09309999644756317, 51.514198303222656],
+          "labels": [
+            "Queen Mary University of London (QMUL)",
+            "Columbia University"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-73.90899658203125, 41.017799377441406],
+          "valInBytes": 17719296,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-88.36119842529297, 41.83919906616211],
+          "labels": [
+            "Fermi National Accelerator Laboratory (Fermilab)",
+            "Interuniversity Institute for High Energies (IIHE)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [4.3333001136779785, 50.83330154418945],
+          "valInBytes": 18215993856,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-88.36119842529297, 41.83919906616211],
+          "labels": [
+            "Fermi National Accelerator Laboratory (Fermilab)",
+            "National Centre for Nuclear Research  (Narodowe Centrum Badan Jadrowych - NCBJ)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [21.308000564575195, 52.118900299072266],
+          "valInBytes": 154852864,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [34.75, 32.81560134887695],
+          "labels": [
+            "Technion - Israel Institute of Technology",
+            "Boston University (BU)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-71.09929656982422, 42.34510040283203],
+          "valInBytes": 804807150592,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [34.75, 32.81560134887695],
+          "labels": [
+            "Technion - Israel Institute of Technology",
+            "SLAC National Accelerator Laboratory"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.1781005859375, 37.45899963378906],
+          "valInBytes": 257476268544,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [34.75, 32.81560134887695],
+          "labels": [
+            "Technion - Israel Institute of Technology",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 86424318976,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [34.75, 32.81560134887695],
+          "labels": [
+            "Technion - Israel Institute of Technology",
+            "Brookhaven National Laboratory (BNL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-72.88680267333984, 40.86949920654297],
+          "valInBytes": 38242923008,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [34.75, 32.81560134887695],
+          "labels": [
+            "Technion - Israel Institute of Technology",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 1475616768,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "Queen Mary University of London (QMUL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-0.09309999644756317, 51.514198303222656],
+          "valInBytes": 367689193984,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "Rutherford Appleton Laboratory (RAL)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-1.25, 51.75],
+          "valInBytes": 190517144576,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "Technion - Israel Institute of Technology"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [34.75, 32.81560134887695],
+          "valInBytes": 120404608512,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "Gesellschaft fÃ¼r wissenschaftliche Datenverarbeitung mbH GÃ¶ttingen  (GWDG)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [9.933300018310547, 51.53329849243164],
+          "valInBytes": 14091851776,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "Max Planck Computing and Data Facility (MPCDF)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [11.649999618530273, 48.25],
+          "valInBytes": 14055626752,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "University of Glasgow (U of G)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-4.252900123596191, 55.830101013183594],
+          "valInBytes": 12382328832,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "University of Manchester"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-2.2367000579833984, 53.46969985961914],
+          "valInBytes": 3045034496,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-122.1781005859375, 37.45899963378906],
+          "labels": [
+            "SLAC National Accelerator Laboratory",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 1031705600,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-71.09929656982422, 42.34510040283203],
+          "labels": [
+            "Boston University (BU)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 40849104896,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [11.33329963684082, 44.483299255371094],
+          "labels": [
+            "National Institute for Nuclear Physics - National Center for Frame Analysis",
+            "University of Florida (UF)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-82.32479858398438, 29.651599884033203],
+          "valInBytes": 282707399680,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [8.380000114440918, 49.00469970703125],
+          "labels": [
+            "Karlsruhe Institute of Technology (KIT)",
+            "University of Florida (UF)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-82.32479858398438, 29.651599884033203],
+          "valInBytes": 28199775232,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [37.6156005859375, 55.752201080322266],
+          "labels": [
+            "Kurchatov Institute - National Research Center (NRC)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 19270419456,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [37.6156005859375, 55.752201080322266],
+          "labels": [
+            "Kurchatov Institute - National Research Center (NRC)",
+            "National Energy Research Scientific Computing Center (NERSC)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-122.25360107421875, 37.866798400878906],
+          "valInBytes": 872775680,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [24.728099822998047, 59.43389892578125],
+          "labels": [
+            "National Institute of Chemical Physics and Biophysics (NICPB)",
+            "University of Florida (UF)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [-82.32479858398438, 29.651599884033203],
+          "valInBytes": 10519037952,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [-97.46029663085938, 35.25230026245117],
+          "labels": [
+            "University of Oklahoma (OU)",
+            "Chinese University of Hong Kong (CUHK)"
+          ],
+          "name": "MPS.Physics.High Energy",
+          "to": [114.16670227050781, 22.25],
+          "valInBytes": 11798056960,
+          "value": 1
+        },
+        {
+          "color": "#0A369D",
+          "from": [114.16670227050781, 22.25],
+          "labels": ["Chinese University of Hong Kong (CUHK)", "CERN"],
+          "name": "MPS.Physics.High Energy",
+          "to": [6.05019998550415, 46.232398986816406],
+          "valInBytes": 17923072,
+          "value": 1
+        }
+      ],
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:189",
+              "fake": true,
+              "field": "meta.scireg.src.project_names",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:190",
+              "fake": true,
+              "field": "meta.scireg.dst.project_names",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:191",
+              "fake": true,
+              "field": "meta.src_preferred_org",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:192",
+              "fake": true,
+              "field": "meta.scireg.src.resource",
+              "id": "6",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:193",
+              "fake": true,
+              "field": "meta.src_preferred_location.lat",
+              "id": "7",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:194",
+              "fake": true,
+              "field": "meta.src_preferred_location.lon",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:195",
+              "fake": true,
+              "field": "meta.dst_preferred_org",
+              "id": "10",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:196",
+              "fake": true,
+              "field": "meta.scireg.dst.resource",
+              "id": "11",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "N/A",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:257",
+              "fake": true,
+              "field": "meta.dst_preferred_location.lat",
+              "id": "12",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:197",
+              "fake": true,
+              "field": "meta.dst_preferred_location.lon",
+              "id": "9",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:187",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "C",
+          "timeField": "start"
+        }
+      ],
+      "title": "Tasks for $project_type",
+      "to_Byte": false,
+      "to_si": 1000000000,
+      "tooltip": {
+        "content": " ",
+        "show": true,
+        "showDefault": true
+      },
+      "transparent": true,
+      "type": "netsage-migrationmap",
+      "zoom_lvl": 3
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 39,
+      "links": [],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch3 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Endpoint Pairs for $project_type\u003c/center\u003e\u003c/h3\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about flows from ${__data.fields[0]} to ${__data.fields[1]}",
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[0]:percentencode}\u0026var-dest=${__data.fields[1]:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about flows from ${__data.fields[0]} to ${__data.fields[1]}",
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[0]:percentencode}\u0026var-dest=${__data.fields[1]:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 101
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 103
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 34,
+      "links": [],
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1281",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1282",
+              "fake": true,
+              "field": "meta.dst_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:1271",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:1272",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:1273",
+              "field": "meta.id",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:1274",
+              "field": "values.bits_per_second",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:1275",
+              "field": "values.bits_per_second",
+              "id": "8",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Organization Pair",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Sum": 2,
+              "meta.dst_organization": 1,
+              "meta.src_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "sum",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "id": 14,
+      "links": [],
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:828",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:826",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Volume",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "min": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 59
+      },
+      "id": 16,
+      "links": [],
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:859",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:857",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Rate",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 70
+      },
+      "id": 36,
+      "links": [],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch3 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eSummary of Organizations for $project_type\u003c/center\u003e\u003c/h3\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5795f24d",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              },
+              {
+                "id": "custom.width",
+                "value": 103
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 73
+      },
+      "hideTimeOverride": false,
+      "id": 38,
+      "links": [],
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:67",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:57",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:58",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:59",
+              "field": "meta.id",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:60",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:61",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Summary of Source Organizations",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 3,
+              "Count": 5,
+              "Max values.bits_per_second": 4,
+              "Max values.num_bits": 2,
+              "Sum": 1,
+              "meta.src_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5795f24d",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              },
+              {
+                "id": "custom.width",
+                "value": 103
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 84
+      },
+      "hideTimeOverride": false,
+      "id": 40,
+      "links": [],
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:67",
+              "fake": true,
+              "field": "meta.dst_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:57",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:58",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:59",
+              "field": "meta.id",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:60",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:61",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Summary of Destination Organizations",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 3,
+              "Count": 5,
+              "Max values.bits_per_second": 4,
+              "Max values.num_bits": 2,
+              "Sum": 1,
+              "meta.dst_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 95
+      },
+      "id": 44,
+      "links": [],
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "9.2.20",
+      "targets": [
+        {
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "ANL-Argonne Leadership Computing Facility (ALCF)",
+          "value": "ANL-Argonne Leadership Computing Facility (ALCF)"
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.project_names\"}",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Project",
+        "multi": false,
+        "name": "project_type",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.project_names\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Sensors",
+        "multi": true,
+        "name": "sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-2y",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Globus Tasks by Project",
+  "uid": "ie7TeomGz",
+  "version": 7,
+  "weekStart": ""
+}

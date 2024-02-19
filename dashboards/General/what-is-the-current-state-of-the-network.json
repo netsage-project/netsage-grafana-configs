@@ -30,130 +30,6 @@
   "liveNow": false,
   "panels": [
     {
-      "__netsage_template": "navigation",
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 1,
-        "x": 0,
-        "y": 0
-      },
-      "id": 1,
-      "link_text": [
-        "What is the current state of the network?",
-        "What are the top sources/destinations of flows?",
-        "What are the top flows by organization?",
-        "What do individual flows look like?",
-        "What are the top flows by country?",
-        "What are the flows by science discipline?",
-        "What are the flows by project?",
-        "Who are the top talkers over time?",
-        "What are the patterns in science data transfers in the network?",
-        "What are the bandwidth patterns in the network?",
-        "What are the current flow data summary statistics?",
-        "Advanced Flow Analysis"
-      ],
-      "link_url": [
-        "/grafana/d/000000003/bandwidth-dashboard",
-        "/grafana/d/xk26IFhmk/flow-data",
-        "/grafana/d/QfzDJKhik/flow-data-per-organization",
-        "/grafana/d/-l3_u8nWk/individual-flows",
-        "/grafana/d/fgrOzz_mk/flow-data-per-country",
-        "/grafana/d/WNn1qyaiz/flows-by-science-discipline",
-        "/grafana/d/ie7TeomGz/flow-data-for-projects",
-        "/grafana/d/b35BWxAZz/top-talkers-over-time",
-        "/grafana/d/ufIS9W7Zk/science-discipline-patterns",
-        "/grafana/d/000000004/bandwidth-patterns",
-        "/grafana/d/CJC1FFhmz/other-flow-stats",
-        "/grafana/d/VuuXrnPWz/flow-analysis"
-      ],
-      "options": {
-        "hideGrafanaTools": {
-          "hideNavBar": true,
-          "hideSideBar": true
-        },
-        "navQuestions": [
-          {
-            "label": "What is the current state of the network?",
-            "link": "/grafana/d/000000003/bandwidth-dashboard"
-          },
-          {
-            "label": "What are the top sources/destinations of flows?",
-            "link": "/grafana/d/xk26IFhmk/flow-data"
-          },
-          {
-            "label": "What are the top flows by organization?",
-            "link": "/grafana/d/QfzDJKhik/flow-data-per-organization"
-          },
-          {
-            "label": "What do individual flows look like?",
-            "link": "/grafana/d/-l3_u8nWk/individual-flows"
-          },
-          {
-            "label": "What are the top flows by country?",
-            "link": "/grafana/d/fgrOzz_mk/flow-data-per-country"
-          },
-          {
-            "label": "What are the flows by science discipline?",
-            "link": "/grafana/d/WNn1qyaiz/flows-by-science-discipline"
-          },
-          {
-            "label": "What are the flows by project?",
-            "link": "/grafana/d/ie7TeomGz/flow-data-for-projects"
-          },
-          {
-            "label": "Who are the top talkers over time?",
-            "link": "/grafana/d/b35BWxAZz/top-talkers-over-time"
-          },
-          {
-            "label": "What are the patterns in science data transfers in the network?",
-            "link": "/grafana/d/ufIS9W7Zk/science-discipline-patterns"
-          },
-          {
-            "label": "What are the bandwidth patterns in the network?",
-            "link": "/grafana/d/000000004/bandwidth-patterns"
-          },
-          {
-            "label": "What are the current flow data summary statistics?",
-            "link": "/grafana/d/CJC1FFhmz/other-flow-stats"
-          }
-        ]
-      },
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "transparent": true,
-      "type": "netsage-nav-plugin"
-    },
-    {
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
@@ -176,7 +52,7 @@
         "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eBandwidth Dashboard\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe map shows the minimum, maximum, and average bandwidth utilization of the circuits and exchange points over the selected time period.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe rows below the map show each of the links in more detail, including traffic rate and total volume transferred.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eA combined view of the average and maximum bandwidth utilization is shown at the bottom of the page.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time\u003c/center\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
         "mode": "html"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -252,9 +128,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "alias": "",
@@ -351,9 +228,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "alias": "",
@@ -450,9 +328,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "alias": "",
@@ -562,9 +441,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "alias": "",
@@ -639,7 +519,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -674,7 +554,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -709,7 +589,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -769,7 +649,7 @@
         "content": "**$links**",
         "mode": "markdown"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "repeat": "links",
       "repeatDirection": "v",
       "targets": [
@@ -795,6 +675,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Rate",
@@ -808,6 +689,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineStyle": {
               "fill": "solid"
@@ -1139,7 +1021,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 20
       },
       "id": 87,
       "panels": [],
@@ -1165,6 +1047,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Rate",
@@ -1178,6 +1061,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1217,7 +1101,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 21
       },
       "id": 88,
       "links": [],
@@ -1289,7 +1173,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 35
       },
       "id": 89,
       "panels": [],
@@ -1366,7 +1250,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 36
       },
       "id": 90,
       "links": [],
@@ -1437,7 +1321,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 50
       },
       "id": 91,
       "panels": [],
@@ -1514,7 +1398,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 51
       },
       "id": 92,
       "links": [],
@@ -1585,7 +1469,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 65
       },
       "id": 93,
       "panels": [],
@@ -1664,7 +1548,7 @@
         "h": 14,
         "w": 24,
         "x": 0,
-        "y": 76
+        "y": 66
       },
       "id": 94,
       "links": [],
@@ -1735,7 +1619,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 90
+        "y": 80
       },
       "id": 95,
       "panels": [],
@@ -1760,7 +1644,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 91
+        "y": 81
       },
       "id": 96,
       "links": [],
@@ -1788,8 +1672,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 38,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": ["netsage"],
   "templating": {
     "list": [
@@ -1843,8 +1726,8 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
-  "title": "Bandwidth Dashboard",
+  "title": "What is the current state of the network?",
   "uid": "000000003",
-  "version": 35,
+  "version": 37,
   "weekStart": ""
 }

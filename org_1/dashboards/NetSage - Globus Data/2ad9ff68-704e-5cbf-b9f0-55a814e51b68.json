@@ -48,10 +48,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003ch1\u003e\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003e\u003cfont color=\"#5794f2\"\u003eIndividual Tasks per Country\u003c/font color=\"#5794f2\"\u003e\u003c/b\u003e\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows per-flow level data, given a particular source and destination country.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for each flow. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
+        "content": "\n\u003ch1\u003e\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003e\u003cfont color=\"#5794f2\"\u003eIndividual Tasks per Country\u003c/font color=\"#5794f2\"\u003e\u003c/b\u003e\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows per-task level data, given a particular source and destination country.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe table shows the volume, rate, and duration (in hours, minutes and seconds) for each task. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the timestamp of an individual flow to show more detailed information about that task.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -67,7 +67,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -91,7 +91,8 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "locale",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -117,11 +118,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -139,7 +141,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -151,7 +153,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -163,7 +165,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "description": "",
       "fieldConfig": {
@@ -189,7 +191,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -215,11 +218,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -237,7 +241,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -254,7 +258,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -266,7 +270,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -291,7 +295,8 @@
               }
             ]
           },
-          "unit": "bps"
+          "unit": "bps",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -317,11 +322,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -339,7 +345,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -351,7 +357,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -382,7 +388,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -398,7 +404,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -423,7 +429,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": [
           {
@@ -441,8 +448,8 @@
                 "value": [
                   {
                     "targetBlank": true,
-                    "title": "Show more information about this flow",
-                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
+                    "title": "Show more information about this task",
+                    "url": "/grafana/d/nzuMyBcGl/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
                   }
                 ]
               }
@@ -602,7 +609,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "alias": "",
@@ -712,7 +719,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "hide": false,
           "metrics": [
@@ -738,12 +745,12 @@
               "type": "max"
             }
           ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type",
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "title": "Flows from Source to Destination",
+      "title": "Tasks from Source to Destination",
       "transformations": [
         {
           "id": "organize",
@@ -791,7 +798,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -818,7 +825,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -856,7 +864,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -873,7 +881,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -884,7 +892,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -948,7 +956,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -960,7 +968,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -989,7 +997,7 @@
         "content": "\u003ccenter style=\"margin-top:20px;\"\u003e\u003ch1 style=\"margin-top:35px;\"\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "9.2.20",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -1005,7 +1013,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "description": "",
       "fieldConfig": {
@@ -1056,9 +1064,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.20",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1076,7 +1085,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -1088,19 +1097,19 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "title": "# Flows",
+      "title": "# Tasks",
       "transparent": true,
       "type": "stat"
     },
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -1151,9 +1160,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.20",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1171,7 +1181,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -1188,7 +1198,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1200,7 +1210,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -1251,9 +1261,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.20",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1271,7 +1282,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -1283,7 +1294,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1295,7 +1306,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -1337,8 +1348,8 @@
                 "value": [
                   {
                     "targetBlank": true,
-                    "title": "Show more information about this flow",
-                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
+                    "title": "Show more information about this task",
+                    "url": "/grafana/d/nzuMyBcGl/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
                   }
                 ]
               }
@@ -1498,7 +1509,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.20",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "alias": "",
@@ -1608,7 +1619,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "hide": false,
           "metrics": [
@@ -1634,12 +1645,12 @@
               "type": "max"
             }
           ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type",
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "title": "Flows from Source to Destination (Reverse)",
+      "title": "Tasks from Source to Destination (Reverse)",
       "transformations": [
         {
           "id": "organize",
@@ -1686,7 +1697,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -1750,7 +1761,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -1767,7 +1778,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1778,7 +1789,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
       },
       "fieldConfig": {
         "defaults": {
@@ -1842,7 +1853,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
           },
           "metrics": [
             {
@@ -1854,7 +1865,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1863,80 +1874,23 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 89
-      },
-      "id": 31,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "",
-        "mode": "markdown"
-      },
-      "pluginVersion": "9.2.20",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 90
+        "y": 89
       },
-      "id": 32,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
-        "mode": "html"
+      "id": 35,
+      "libraryPanel": {
+        "name": "Footer",
+        "uid": "e2261182-e775-48aa-8e5c-0c578ab27f76"
       },
-      "pluginVersion": "9.2.20",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
+      "title": ""
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["Globus task", "netsage"],
+  "tags": ["Globus task"],
   "templating": {
     "list": [
       {
@@ -1947,7 +1901,7 @@
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "u1Gafq5Vz"
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.flow_type\"}",
         "hide": 2,
@@ -1975,7 +1929,7 @@
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "u1Gafq5Vz"
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
         "hide": 0,
@@ -2003,7 +1957,7 @@
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "u1Gafq5Vz"
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
         "hide": 0,
@@ -2031,7 +1985,7 @@
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "u1Gafq5Vz"
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
         "hide": 0,
@@ -2051,31 +2005,22 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "yes",
-          "value": "yes"
-        },
+        "current": {},
         "hide": 0,
-        "includeAll": false,
-        "label": "Show Test Traffic",
-        "multi": false,
-        "name": "is_net_test",
-        "options": [
-          {
-            "selected": true,
-            "text": "yes",
-            "value": "yes"
-          },
-          {
-            "selected": false,
-            "text": "no",
-            "value": "no"
-          }
-        ],
-        "query": "yes,no",
+        "label": "Subnet",
+        "name": "subnet",
+        "options": [],
+        "query": "",
         "skipUrlSync": false,
-        "type": "custom"
+        "type": "textbox"
+      },
+      {
+        "hide": 2,
+        "label": "Show Same Subnet Transfers",
+        "name": "is_internal_transfer",
+        "query": "no,yes",
+        "skipUrlSync": false,
+        "type": "constant"
       }
     ]
   },
@@ -2083,6 +2028,7 @@
     "from": "now-7d",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "refresh_intervals": [
       "5s",
@@ -2101,6 +2047,6 @@
   "timezone": "",
   "title": "What do individual Globus tasks by country look like?",
   "uid": "80IVUboZa",
-  "version": 3,
+  "version": 14,
   "weekStart": ""
 }

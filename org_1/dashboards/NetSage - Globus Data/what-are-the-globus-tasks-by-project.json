@@ -50,7 +50,7 @@
         "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Project\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows a summary of task information for a selected project.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that tasks with either end tagged as part of the project are included.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -80,7 +80,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -101,11 +102,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -167,7 +169,8 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "locale",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -188,11 +191,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -240,22 +244,56 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-blues"
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
-                "color": "green",
+                "color": "#3275d933",
                 "value": null
               },
               {
-                "color": "red",
+                "color": "#3275d959",
+                "value": 10
+              },
+              {
+                "color": "#3275d973",
+                "value": 20
+              },
+              {
+                "color": "#3275d980",
+                "value": 30
+              },
+              {
+                "color": "#3275d98c",
+                "value": 40
+              },
+              {
+                "color": "#3275d999",
+                "value": 50
+              },
+              {
+                "color": "#3275d9b3",
+                "value": 60
+              },
+              {
+                "color": "#3275d9cc",
+                "value": 70
+              },
+              {
+                "color": "#3275d9e6",
                 "value": 80
+              },
+              {
+                "color": "#3274d9",
+                "value": 90
               }
             ]
-          }
+          },
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -359,7 +397,7 @@
         "content": "\u003ch3 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Endpoint Pairs for $project_type\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -392,8 +430,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -419,7 +456,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about flows from ${__data.fields[0]} to ${__data.fields[1]}",
-                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[0]:percentencode}\u0026var-dest=${__data.fields[1]:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/-l3_u8nWl/?var-src=${__data.fields[0]:percentencode}\u0026var-dest=${__data.fields[1]:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               }
@@ -441,7 +478,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about flows from ${__data.fields[0]} to ${__data.fields[1]}",
-                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[0]:percentencode}\u0026var-dest=${__data.fields[1]:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/-l3_u8nWl/?var-src=${__data.fields[0]:percentencode}\u0026var-dest=${__data.fields[1]:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               }
@@ -729,8 +766,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -823,8 +859,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -945,8 +980,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -972,7 +1006,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1245,8 +1279,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1272,7 +1305,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1526,40 +1559,18 @@
       "type": "table"
     },
     {
-      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
         "y": 94
       },
-      "id": 44,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
-        "mode": "html"
+      "id": 55,
+      "libraryPanel": {
+        "name": "Footer",
+        "uid": "e2261182-e775-48aa-8e5c-0c578ab27f76"
       },
-      "pluginVersion": "10.2.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
+      "title": ""
     }
   ],
   "refresh": "",
@@ -1627,6 +1638,7 @@
     "from": "now-7d",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "refresh_intervals": [
       "10s",
@@ -1643,6 +1655,6 @@
   "timezone": "",
   "title": "What are the Globus tasks by project?",
   "uid": "ie7TeomGa",
-  "version": 6,
+  "version": 12,
   "weekStart": ""
 }

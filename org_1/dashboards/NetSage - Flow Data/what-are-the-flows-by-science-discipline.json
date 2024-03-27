@@ -51,7 +51,7 @@
         "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eFlow Data by Science Discipline\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows information related to science disciplines for top talkers using the \u003ca href=\"https://scienceregistry.netsage.global\"\u003eNetSage Science Registry\u003c/a\u003e.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe map shows only the top 100 pairs of organizations with at least one end tagged in the science registry.  Larger dots indicate larger flows.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s)\u003cbr/\u003e and their associated top three destination organizations, with thicker lines for larger flow volumes.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003eNote that in the Summary tables, if only one sampled flow was detected, the rate will be zero.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\n\n \u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -100,7 +100,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -127,11 +128,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -211,7 +213,8 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "locale",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -238,11 +241,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -317,7 +321,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -344,11 +349,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -428,7 +434,8 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "locale",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -455,11 +462,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -499,52 +507,88 @@
       "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "fill": 1,
-      "fillGradient": 0,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": false,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes",
+          "unitScale": true
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
+        "h": 9,
+        "w": 11,
+        "x": 1,
         "y": 12
       },
-      "hiddenSeries": false,
       "id": 22,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": ["sum"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "percentage": false,
       "pluginVersion": "10.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
           "bucketAggs": [
@@ -584,7 +628,9 @@
               "field": "values.num_bits",
               "id": "1",
               "meta": {},
-              "settings": {},
+              "settings": {
+                "script": "_value/8"
+              },
               "type": "sum"
             }
           ],
@@ -593,86 +639,95 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Total Flow Volume by Source of Selected Disciplines",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": false,
-        "values": ["total"]
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:182",
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:183",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "fill": 1,
-      "fillGradient": 0,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": false,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes",
+          "unitScale": true
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 9,
+        "w": 11,
         "x": 12,
         "y": 12
       },
-      "hiddenSeries": false,
       "id": 21,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": false,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": ["sum"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "percentage": false,
       "pluginVersion": "10.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
           "bucketAggs": [
@@ -712,7 +767,9 @@
               "field": "values.num_bits",
               "id": "1",
               "meta": {},
-              "settings": {},
+              "settings": {
+                "script": "_value/8"
+              },
               "type": "sum"
             }
           ],
@@ -721,141 +778,9 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Total Flow Volume by Destination of Selected Disciplines",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
       "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": false,
-        "values": ["total"]
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:182",
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:183",
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-blues"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 23,
-        "w": 24,
-        "x": 0,
-        "y": 20
-      },
-      "id": 7,
-      "links": [],
-      "options": {
-        "fontSize": 12,
-        "headerColor": "text",
-        "hoverColor": "light-orange",
-        "leftHeader": "Source",
-        "numLines": 30,
-        "rightHeader": "Destination",
-        "txtLength": 40
-      },
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:190",
-              "fake": true,
-              "field": "meta.src_preferred_org",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:194",
-              "fake": true,
-              "field": "meta.dst_preferred_org",
-              "id": "8",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "hide": false,
-          "metrics": [
-            {
-              "$$hashKey": "object:187",
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "Flows between Top 30 by Volume",
-      "transparent": true,
-      "type": "netsage-slopegraph-panel"
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -866,7 +791,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 21
       },
       "id": 8,
       "links": [],
@@ -879,7 +804,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eTop Science Talkers\u003c/center\u003e\u003c/h3\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -917,7 +842,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -925,7 +851,7 @@
         "h": 31,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 23
       },
       "id": 9,
       "links": [],
@@ -1046,8 +972,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1200,7 +1125,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 76
+        "y": 54
       },
       "hideTimeOverride": false,
       "id": 16,
@@ -1345,7 +1270,7 @@
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 89
+        "y": 67
       },
       "id": 10,
       "links": [],
@@ -1391,8 +1316,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1524,7 +1448,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 94
+        "y": 72
       },
       "hideTimeOverride": false,
       "id": 11,
@@ -1665,8 +1589,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1798,7 +1721,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 111
+        "y": 89
       },
       "hideTimeOverride": false,
       "id": 14,
@@ -2044,7 +1967,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 128
+        "y": 106
       },
       "hideTimeOverride": false,
       "id": 23,
@@ -2065,7 +1988,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2141,45 +2064,23 @@
       "type": "table"
     },
     {
-      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 139
+        "y": 117
       },
-      "id": 13,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
-        "mode": "html"
+      "id": 25,
+      "libraryPanel": {
+        "name": "Footer",
+        "uid": "e2261182-e775-48aa-8e5c-0c578ab27f76"
       },
-      "pluginVersion": "9.5.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
+      "title": ""
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["flow", "netsage"],
+  "tags": ["Flow Data", "Science Registry"],
   "templating": {
     "list": [
       {
@@ -2298,6 +2199,7 @@
     "from": "now-7d",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "hidden": false,
     "refresh_intervals": [
@@ -2317,6 +2219,6 @@
   "timezone": "",
   "title": "What are the flows by science discipline?",
   "uid": "WNn1qyaiz",
-  "version": 4,
+  "version": 11,
   "weekStart": ""
 }

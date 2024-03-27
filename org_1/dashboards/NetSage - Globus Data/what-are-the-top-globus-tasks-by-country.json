@@ -48,10 +48,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/80IVUboZk/individual-flows-per-country?var-src=$Country\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Country\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\" /\u003e\n\u003cdiv style=\"font-size: 0.9em\" \u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Country\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top tasks with the specified country as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe first set of tables show top twenty data by both volume and rate and then the set of top pairs of organizations sharing data.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eOther statistics about data to and from this country, including a Sankey graph for the top sources by volume, is then listed.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
+        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/80IVUboZa/?var-src=$Country\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Country\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\" /\u003e\n\u003cdiv style=\"font-size: 0.9em\" \u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Country\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top tasks with the specified country as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe first set of tables show top twenty data by both volume and rate and then the set of top pairs of organizations sharing data.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eOther statistics about data to and from this country, including a Sankey graph for the top sources by volume, is then listed.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -86,7 +86,7 @@
         "content": "\u003ch1\u003e\u003ccenter\u003eTop Destinations from $Country\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -134,7 +134,8 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "locale",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -160,11 +161,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -194,7 +196,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -239,7 +241,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -265,11 +268,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -304,7 +308,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -342,7 +346,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": [
           {
@@ -361,7 +366,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/80IVUboZk/individual-flows-per-country?var-dest=${__value.text:percentencode}\u0026var-src=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/80IVUboZa/?var-dest=${__value.text:percentencode}\u0026var-src=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -461,7 +466,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -520,7 +525,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -558,7 +563,8 @@
               }
             ]
           },
-          "unit": "bps"
+          "unit": "bps",
+          "unitScale": true
         },
         "overrides": [
           {
@@ -575,9 +581,9 @@
                 "id": "links",
                 "value": [
                   {
-                    "targetBlank": false,
+                    "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/80IVUboZk/individual-flows-per-country?var-dest=${__value.text:percentencode}\u0026var-src=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/80IVUboZa/?var-dest=${__value.text:percentencode}\u0026var-src=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -665,7 +671,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -714,7 +720,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -779,8 +785,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -884,8 +889,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -992,8 +996,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1020,7 +1023,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/80IVUboZk/individual-flows-per-country?var-src=${__value.text:percentencode}\u0026var-dest=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/80IVUboZa/?var-src=${__value.text:percentencode}\u0026var-dest=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1171,7 +1174,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1200,8 +1203,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1228,7 +1230,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/80IVUboZk/individual-flows-per-country?var-src=${__value.text:percentencode}\u0026var-dest=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/80IVUboZa/?var-src=${__value.text:percentencode}\u0026var-dest=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1423,8 +1425,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1452,9 +1453,9 @@
                 "id": "links",
                 "value": [
                   {
-                    "targetBlank": false,
+                    "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               }
@@ -1476,7 +1477,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               }
@@ -1696,7 +1697,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors  AND ( meta.src_country_name:$Country OR meta.dst_country_name:$Country ) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$Sensors  AND ( meta.src_country_name:$Country OR meta.dst_country_name:$Country )",
           "refId": "A",
           "timeField": "start"
         }
@@ -1772,8 +1773,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1848,7 +1848,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1884,8 +1884,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1960,7 +1959,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -2003,8 +2002,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -2077,7 +2075,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -2087,45 +2085,23 @@
       "type": "stat"
     },
     {
-      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
         "y": 102
       },
-      "id": 46,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
-        "mode": "html"
+      "id": 4711125,
+      "libraryPanel": {
+        "name": "Footer",
+        "uid": "e2261182-e775-48aa-8e5c-0c578ab27f76"
       },
-      "pluginVersion": "10.2.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
+      "title": ""
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["netsage", "Globus task"],
+  "tags": ["Globus task"],
   "templating": {
     "list": [
       {
@@ -2180,34 +2156,6 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "yes",
-          "value": "yes"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Show Test Traffic",
-        "multi": false,
-        "name": "is_net_test",
-        "options": [
-          {
-            "selected": true,
-            "text": "yes",
-            "value": "yes"
-          },
-          {
-            "selected": false,
-            "text": "no",
-            "value": "no"
-          }
-        ],
-        "query": "yes,no",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
       }
     ]
   },
@@ -2215,6 +2163,7 @@
     "from": "now-7d",
     "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "hidden": false,
     "refresh_intervals": [
@@ -2234,6 +2183,6 @@
   "timezone": "",
   "title": "What are the top Globus tasks by country?",
   "uid": "fgrOzz_ml",
-  "version": 5,
+  "version": 9,
   "weekStart": ""
 }

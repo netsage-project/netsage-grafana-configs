@@ -51,7 +51,7 @@
         "content": "\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n\u003ch1\u003e\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003eIndividual Flows per Country\u003c/b\u003e\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows per-flow level data, given a particular source and destination country.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for each flow. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that the retransmit information is only available for archive flow data;\u003cbr\u003e\nand rate and duration will be zero for flows where only one sample was detected.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -91,7 +91,8 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "locale",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -117,11 +118,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -189,7 +191,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -215,11 +218,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -291,7 +295,8 @@
               }
             ]
           },
-          "unit": "bps"
+          "unit": "bps",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -317,11 +322,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "bucketAggs": [
@@ -382,7 +388,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "datasource": {
@@ -423,7 +429,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unitScale": true
         },
         "overrides": [
           {
@@ -590,7 +597,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.3.4",
       "targets": [
         {
           "alias": "",
@@ -721,14 +728,6 @@
               "meta": {},
               "settings": {},
               "type": "avg"
-            },
-            {
-              "$$hashKey": "object:413",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "34",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
             }
           ],
           "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -742,24 +741,25 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average": false,
               "end": true,
               "meta.id": false
             },
+            "includeByName": {},
             "indexByName": {
-              "Average values.duration": 8,
-              "Average values.tcp_rexmit_pkts": 9,
+              "Average": 8,
               "Max": 7,
               "Sum": 6,
-              "_id": 10,
               "end": 1,
+              "es_doc_id": 9,
               "meta.dst_ip": 5,
               "meta.dst_organization": 4,
-              "meta.id": 11,
               "meta.src_ip": 3,
               "meta.src_organization": 2,
               "start": 0
             },
             "renameByName": {
+              "Average": "Duration",
               "Average values.duration": "Duration",
               "Average values.num_packets": "",
               "Average values.tcp_rexmit_pkts": "Retransmits",
@@ -811,7 +811,8 @@
               }
             ]
           },
-          "unit": "decbytes"
+          "unit": "decbytes",
+          "unitScale": true
         },
         "overrides": []
       },
@@ -966,99 +967,11 @@
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "sum",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "rgb(169, 169, 169)"
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 47
-      },
-      "id": 11,
-      "links": [],
-      "options": {
-        "from": "0",
-        "legendGradientQuality": "high",
-        "showCellBorder": false,
-        "showLegend": false,
-        "showTooltip": true,
-        "showValueIndicator": false,
-        "to": "0"
-      },
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:107",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 1,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "metrics": [
-            {
-              "$$hashKey": "object:105",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            }
-          ],
-          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "By Retransmits",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 47
       },
       "id": 12,
       "options": {
@@ -1070,7 +983,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eSummary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -1084,57 +997,58 @@
       "type": "text"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 60
+        "y": 49
       },
-      "hiddenSeries": false,
       "id": 13,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": true,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
       },
-      "percentage": false,
-      "pluginVersion": "9.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1182,91 +1096,72 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Top Protocols",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": true,
-        "values": ["total"]
-      },
-      "yaxes": [
+      "transformations": [
         {
-          "$$hashKey": "object:510",
-          "format": "short",
-          "label": "Number of Flows",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:511",
-          "format": "short",
-          "logBase": 1,
-          "show": true
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
         }
       ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "bargauge"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 60
+        "y": 49
       },
-      "hiddenSeries": false,
       "id": 14,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": true,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
       },
-      "percentage": false,
-      "pluginVersion": "9.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1314,91 +1209,72 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Top Source Ports",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": true,
-        "values": ["total"]
-      },
-      "yaxes": [
+      "transformations": [
         {
-          "$$hashKey": "object:744",
-          "format": "short",
-          "label": "Number of Flows",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:745",
-          "format": "short",
-          "logBase": 1,
-          "show": true
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
         }
       ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "bargauge"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 60
+        "y": 49
       },
-      "hiddenSeries": false,
       "id": 15,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": true,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
       },
-      "percentage": false,
-      "pluginVersion": "9.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1446,38 +1322,18 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Top Destination Ports",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": true,
-        "values": ["total"]
-      },
-      "yaxes": [
+      "transformations": [
         {
-          "$$hashKey": "object:855",
-          "format": "short",
-          "label": "Number of Flows",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:856",
-          "format": "short",
-          "logBase": 1,
-          "show": true
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
         }
       ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -1488,7 +1344,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 68
+        "y": 57
       },
       "id": 16,
       "options": {
@@ -1500,7 +1356,7 @@
         "content": "\u003ccenter style=\"margin-top:20px;\"\u003e\u003ch1 style=\"margin-top:35px;\"\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -1548,7 +1404,7 @@
         "h": 3,
         "w": 5,
         "x": 5,
-        "y": 71
+        "y": 60
       },
       "id": 17,
       "links": [],
@@ -1567,9 +1423,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1643,7 +1500,7 @@
         "h": 3,
         "w": 5,
         "x": 10,
-        "y": 71
+        "y": 60
       },
       "id": 18,
       "links": [],
@@ -1662,9 +1519,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1743,7 +1601,7 @@
         "h": 3,
         "w": 5,
         "x": 15,
-        "y": 71
+        "y": 60
       },
       "id": 19,
       "links": [],
@@ -1762,9 +1620,10 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -1977,7 +1836,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 63
       },
       "id": 33,
       "links": [],
@@ -1997,7 +1856,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "alias": "",
@@ -2128,14 +1987,6 @@
               "meta": {},
               "settings": {},
               "type": "avg"
-            },
-            {
-              "$$hashKey": "object:413",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "34",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
             }
           ],
           "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -2152,21 +2003,21 @@
               "end": true,
               "meta.id": false
             },
+            "includeByName": {},
             "indexByName": {
-              "Average values.duration": 8,
-              "Average values.tcp_rexmit_pkts": 9,
+              "Average": 8,
               "Max": 7,
               "Sum": 6,
-              "_id": 10,
               "end": 1,
+              "es_doc_id": 9,
               "meta.dst_ip": 5,
               "meta.dst_organization": 4,
-              "meta.id": 11,
               "meta.src_ip": 3,
               "meta.src_organization": 2,
               "start": 0
             },
             "renameByName": {
+              "Average": "Duration",
               "Average values.duration": "Duration",
               "Average values.num_packets": "",
               "Average values.tcp_rexmit_pkts": "Retransmits",
@@ -2225,7 +2076,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 89
+        "y": 78
       },
       "id": 22,
       "links": [],
@@ -2317,7 +2168,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 100
+        "y": 89
       },
       "id": 23,
       "links": [],
@@ -2372,99 +2223,11 @@
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "calculation": "sum",
-            "colorPalette": "interpolateBlues",
-            "colorSpace": "rgb",
-            "groupBy": 60,
-            "invertPalette": false,
-            "nullValueColor": "rgb(169, 169, 169)"
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 111
-      },
-      "id": 24,
-      "links": [],
-      "options": {
-        "from": "0",
-        "legendGradientQuality": "high",
-        "showCellBorder": false,
-        "showLegend": false,
-        "showTooltip": true,
-        "showValueIndicator": false,
-        "to": "0"
-      },
-      "repeatDirection": "h",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:317",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 1,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "metrics": [
-            {
-              "$$hashKey": "object:315",
-              "field": "values.tcp_rexmit_pkts",
-              "id": "1",
-              "meta": {},
-              "settings": {},
-              "type": "sum"
-            }
-          ],
-          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src  AND meta.sensor_id:$sensors AND meta.flow_type:$flow_type AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "By Retransmits (Reverse)",
-      "type": "marcusolsson-hourly-heatmap-panel"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 122
+        "y": 100
       },
       "id": 25,
       "options": {
@@ -2476,7 +2239,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003e Reverse Summary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -2490,57 +2253,58 @@
       "type": "text"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 124
+        "y": 102
       },
-      "hiddenSeries": false,
       "id": 26,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": true,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
       },
-      "percentage": false,
-      "pluginVersion": "9.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2588,91 +2352,72 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Top Protocols",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": true,
-        "values": ["total"]
-      },
-      "yaxes": [
+      "transformations": [
         {
-          "$$hashKey": "object:1103",
-          "format": "short",
-          "label": "Number of Flows",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1104",
-          "format": "short",
-          "logBase": 1,
-          "show": true
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
         }
       ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "bargauge"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 124
+        "y": 102
       },
-      "hiddenSeries": false,
       "id": 27,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": true,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
       },
-      "percentage": false,
-      "pluginVersion": "9.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2720,91 +2465,72 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Top Source Ports",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": true,
-        "values": ["total"]
-      },
-      "yaxes": [
+      "transformations": [
         {
-          "$$hashKey": "object:1218",
-          "format": "short",
-          "label": "Number of Flows",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1219",
-          "format": "short",
-          "logBase": 1,
-          "show": true
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
         }
       ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "bargauge"
     },
     {
-      "aliasColors": {},
-      "bars": true,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
-      "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "links": []
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 124
+        "y": 102
       },
-      "hiddenSeries": false,
       "id": 28,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": false,
-        "max": true,
-        "min": false,
-        "show": false,
-        "total": true,
-        "values": true
-      },
-      "lines": false,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
       },
-      "percentage": false,
-      "pluginVersion": "9.5.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -2852,38 +2578,18 @@
           "timeField": "start"
         }
       ],
-      "thresholds": [],
-      "timeRegions": [],
       "title": "Top Destination Ports",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "series",
-        "show": true,
-        "values": ["total"]
-      },
-      "yaxes": [
+      "transformations": [
         {
-          "$$hashKey": "object:1333",
-          "format": "short",
-          "label": "Number of Flows",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1334",
-          "format": "short",
-          "logBase": 1,
-          "show": true
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
         }
       ],
-      "yaxis": {
-        "align": false
-      }
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -2894,7 +2600,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 132
+        "y": 110
       },
       "id": 29,
       "links": [],
@@ -2907,7 +2613,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eNetSage Sensors Observing Selected Country Flows\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
@@ -3005,7 +2711,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 134
+        "y": 112
       },
       "hideTimeOverride": false,
       "id": 30,
@@ -3026,7 +2732,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.3",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "bucketAggs": [
@@ -3118,80 +2824,23 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 145
-      },
-      "id": 31,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "",
-        "mode": "markdown"
-      },
-      "pluginVersion": "9.5.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "content": "\u003cdiv class=\"netsage_footer\"\u003e If you have any questions, concerns, or other issues, feel free to contact us at \u003ca href=\"mailto:netsage@iu.edu\"\u003enetsage@iu.edu \u003c/a\u003e Thanks! \u003cimg style=\"margin-left:10px\" src=\"https://www.nsf.gov/images/logos/NSF_4-Color_bitmap_Logo.png\" width=50 height=50\u003e \u003ca href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=1540933\"\u003e NSF GRANT 1540933 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e To Review the NetSage Data Policy \u003ca href=\"http://www.netsage.global/home/netsage-privacy-policy\"\u003e click here \u003c/a\u003e \u003c/div\u003e\n",
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 146
+        "y": 123
       },
-      "id": 32,
-      "links": [],
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \u003c/img\u003e \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \u003c/div\u003e",
-        "mode": "html"
+      "id": 35,
+      "libraryPanel": {
+        "name": "Footer",
+        "uid": "e2261182-e775-48aa-8e5c-0c578ab27f76"
       },
-      "pluginVersion": "9.5.3",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
-      "transparent": true,
-      "type": "text"
+      "title": ""
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": ["netsage"],
+  "tags": ["Flow Data"],
   "templating": {
     "list": [
       {
@@ -3335,9 +2984,10 @@
     ]
   },
   "time": {
-    "from": "2022-03-21T17:21:52.058Z",
-    "to": "2022-03-28T17:21:52.059Z"
+    "from": "now-7d",
+    "to": "now"
   },
+  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "refresh_intervals": [
       "5s",
@@ -3356,6 +3006,6 @@
   "timezone": "",
   "title": "What do individual flows by country look like?",
   "uid": "80IVUboZk",
-  "version": 2,
+  "version": 8,
   "weekStart": ""
 }

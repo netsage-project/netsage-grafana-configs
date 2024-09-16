@@ -35,7 +35,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 22,
         "x": 2,
         "y": 0
@@ -48,7 +48,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/80IVUboZa/?var-src=$Country\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Country\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\" /\u003e\n\u003cdiv style=\"font-size: 0.9em\" \u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Country\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top tasks with the specified country as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe first set of tables show top twenty data by both volume and rate and then the set of top pairs of organizations sharing data.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eOther statistics about data to and from this country, including a Sankey graph for the top sources by volume, is then listed.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e",
+        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/80IVUboZa/?var-src=$Country\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Country\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\" /\u003e\n\u003cdiv style=\"font-size: 0.9em\" \u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Country\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top tasks with the specified country as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe first set of tables show top twenty data by both volume and rate and then the set of top pairs of organizations sharing data.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eOther statistics about data to and from this country, including a Sankey graph for the top sources by volume, is then listed.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -73,7 +73,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 30,
       "links": [],
@@ -143,7 +143,7 @@
         "h": 3,
         "w": 5,
         "x": 8,
-        "y": 7
+        "y": 8
       },
       "id": 4711117,
       "links": [],
@@ -196,7 +196,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -250,7 +250,7 @@
         "h": 3,
         "w": 4,
         "x": 13,
-        "y": 7
+        "y": 8
       },
       "id": 4711119,
       "links": [],
@@ -308,7 +308,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -445,7 +445,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -525,7 +525,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -650,7 +650,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 23
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -720,7 +720,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -737,7 +737,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "id": 31,
       "links": [],
@@ -807,7 +807,7 @@
         "h": 3,
         "w": 5,
         "x": 8,
-        "y": 37
+        "y": 38
       },
       "id": 4711121,
       "links": [],
@@ -860,7 +860,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -914,7 +914,7 @@
         "h": 3,
         "w": 4,
         "x": 13,
-        "y": 37
+        "y": 38
       },
       "id": 4711123,
       "links": [],
@@ -972,7 +972,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1102,7 +1102,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 41
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -1182,7 +1182,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
           "refId": "A",
           "timeField": "start"
         }
@@ -1307,7 +1307,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 53
       },
       "hideTimeOverride": false,
       "id": 33,
@@ -1371,7 +1371,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1388,7 +1388,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 65
       },
       "id": 4711111,
       "links": [],
@@ -1601,7 +1601,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 68
       },
       "id": 4711,
       "links": [],
@@ -1709,7 +1709,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors  AND ( meta.src_country_name:$Country OR meta.dst_country_name:$Country )",
+          "query": "meta.sensor_id:$Sensors AND ( meta.src_country_name:$Country OR meta.dst_country_name:$Country ) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw})",
           "refId": "A",
           "timeField": "start"
         }
@@ -1744,7 +1744,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 82
+        "y": 83
       },
       "id": 4711115,
       "links": [],
@@ -1803,7 +1803,7 @@
         "h": 15,
         "w": 12,
         "x": 0,
-        "y": 84
+        "y": 85
       },
       "id": 4711113,
       "links": [],
@@ -1813,7 +1813,8 @@
         "monochrome": false,
         "nodeColor": "grey",
         "nodePadding": 30,
-        "nodeWidth": 30
+        "nodeWidth": 30,
+        "valueField": "Sum"
       },
       "targets": [
         {
@@ -1862,7 +1863,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$Sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1916,7 +1917,7 @@
         "h": 15,
         "w": 12,
         "x": 12,
-        "y": 84
+        "y": 85
       },
       "id": 4711114,
       "links": [],
@@ -1926,7 +1927,8 @@
         "monochrome": false,
         "nodeColor": "grey",
         "nodePadding": 30,
-        "nodeWidth": 30
+        "nodeWidth": 30,
+        "valueField": "Sum"
       },
       "targets": [
         {
@@ -1975,7 +1977,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_country_name:$Country AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$Sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -2040,7 +2042,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 100
       },
       "id": 42,
       "interval": "1h",
@@ -2094,7 +2096,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND meta.sensor_id:$Sensors",
+          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND ( meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$Sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -2113,7 +2115,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 102
+        "y": 103
       },
       "id": 4711125,
       "options": {
@@ -2158,7 +2160,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Globus task"],
   "templating": {
@@ -2201,7 +2203,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "multi": true,
         "name": "Sensors",
@@ -2215,6 +2217,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "No",
+          "value": "(-UNAVAILABLE)"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Display Confidential Tasks",
+        "multi": false,
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-UNAVAILABLE)"
+          }
+        ],
+        "query": "Yes : *, No : (-UNAVAILABLE)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -2242,6 +2272,6 @@
   "timezone": "",
   "title": "What are the top Globus tasks by country?",
   "uid": "fgrOzz_ml",
-  "version": 10,
+  "version": 13,
   "weekStart": ""
 }

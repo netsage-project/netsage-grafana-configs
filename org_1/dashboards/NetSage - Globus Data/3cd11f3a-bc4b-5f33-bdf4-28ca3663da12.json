@@ -35,7 +35,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 21,
         "x": 2,
         "y": 0
@@ -48,7 +48,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eOther Globus Task Statistics\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard provides a summary of task information for science registry tagging, organizations, and countries, as well as volume and counts of tasks. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time. \u003c/center\u003e\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eOther Globus Task Statistics\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard provides a summary of Task information for science registry tagging, organizations, and countries, as well as volume and counts of Tasks. \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time. \u003c/center\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -91,6 +91,329 @@
               }
             ]
           },
+          "unit": "decbytes",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 1,
+        "y": 5
+      },
+      "id": 46,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transformations": [],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 5,
+        "y": 5
+      },
+      "id": 42,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr\u003e\n\u003ch4  style = 'margin-top: 0px; font-weight:bold; color:#FF780A'\u003eTotal Task Volume\u003c/h4\u003e\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bps",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 5
+      },
+      "id": 45,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Average values.bits_per_second": false,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
+              "Unique Count meta.dst_asn": true,
+              "Unique Count meta.dst_country_name": true,
+              "Unique Count meta.dst_organization": true,
+              "Unique Count meta.src_asn": true,
+              "Unique Count meta.src_country_name": true,
+              "Unique Count meta.src_organization": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 5
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr\u003e\n\u003ch4  style = 'margin-top: 0px; font-weight:bold; color:#FF780A'\u003eAverage Task Rate\u003c/h4\u003e\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
           "unit": "locale",
           "unitScale": true
         },
@@ -100,7 +423,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 4
+        "y": 7
       },
       "id": 4,
       "links": [],
@@ -191,9 +514,23 @@
               "meta": {},
               "settings": {},
               "type": "cardinality"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "8",
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "9",
+              "settings": {},
+              "type": "avg"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -207,12 +544,16 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
               "Unique Count meta.dst_organization": true,
               "Unique Count meta.src_asn": true,
               "Unique Count meta.src_country_name": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -230,7 +571,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 4
+        "y": 7
       },
       "id": 5,
       "options": {
@@ -313,7 +654,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 4
+        "y": 7
       },
       "id": 6,
       "links": [],
@@ -356,12 +697,16 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
               "Unique Count meta.src_asn": true,
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -379,9 +724,9 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 4
+        "y": 7
       },
-      "id": 7,
+      "id": 44,
       "options": {
         "code": {
           "language": "plaintext",
@@ -464,7 +809,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 6
+        "y": 9
       },
       "id": 8,
       "links": [],
@@ -507,6 +852,9 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
@@ -514,6 +862,7 @@
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -531,7 +880,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 6
+        "y": 9
       },
       "id": 9,
       "options": {
@@ -615,7 +964,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 6
+        "y": 9
       },
       "id": 10,
       "links": [],
@@ -658,6 +1007,9 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": false,
               "Unique Count meta.dst_country_name": true,
@@ -666,6 +1018,7 @@
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -683,7 +1036,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 6
+        "y": 9
       },
       "id": 11,
       "options": {
@@ -768,7 +1121,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 8
+        "y": 11
       },
       "id": 12,
       "links": [],
@@ -811,6 +1164,9 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
@@ -818,6 +1174,7 @@
               "Unique Count meta.src_asn": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -835,7 +1192,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 8
+        "y": 11
       },
       "id": 13,
       "options": {
@@ -919,7 +1276,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 8
+        "y": 11
       },
       "id": 14,
       "interval": "",
@@ -963,6 +1320,9 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Max values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_organization": true,
@@ -970,6 +1330,7 @@
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -987,7 +1348,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 11
       },
       "id": 15,
       "options": {
@@ -1071,7 +1432,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 10
+        "y": 13
       },
       "id": 36,
       "links": [],
@@ -1118,7 +1479,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.ip_version:4",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.ip_version:4",
           "refId": "A",
           "timeField": "start"
         }
@@ -1155,7 +1516,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 10
+        "y": 13
       },
       "id": 35,
       "options": {
@@ -1239,7 +1600,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 10
+        "y": 13
       },
       "id": 37,
       "links": [],
@@ -1288,7 +1649,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.ip_version:6",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.ip_version:6",
           "refId": "A",
           "timeField": "start"
         }
@@ -1325,7 +1686,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 13
       },
       "id": 38,
       "options": {
@@ -1410,7 +1771,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 12
+        "y": 15
       },
       "id": 16,
       "interval": "",
@@ -1465,7 +1826,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ( _exists_:meta.scireg.src.org_name  OR _exists_:meta.scireg.dst.org_name  ) AND NOT ( _exists_:meta.scireg.src.org_name  AND _exists_:meta.scireg.dst.org_name  ) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ( _exists_:meta.scireg.src.org_name  OR _exists_:meta.scireg.dst.org_name  ) AND NOT ( _exists_:meta.scireg.src.org_name  AND _exists_:meta.scireg.dst.org_name  ) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1482,7 +1843,7 @@
         "h": 3,
         "w": 7,
         "x": 5,
-        "y": 12
+        "y": 15
       },
       "id": 17,
       "options": {
@@ -1565,7 +1926,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 12
+        "y": 15
       },
       "id": 18,
       "links": [],
@@ -1635,7 +1996,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 12
+        "y": 15
       },
       "id": 19,
       "options": {
@@ -1719,7 +2080,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 18
       },
       "id": 3,
       "interval": "1h",
@@ -1773,7 +2134,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1900,7 +2261,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 21
       },
       "hideTimeOverride": false,
       "id": 31,
@@ -1956,7 +2317,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2110,7 +2471,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 21
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -2166,7 +2527,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2321,7 +2682,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 32
+        "y": 35
       },
       "hideTimeOverride": false,
       "id": 27,
@@ -2362,7 +2723,7 @@
             {
               "$$hashKey": "object:417",
               "fake": true,
-              "field": "meta.src_preferred_org",
+              "field": "meta.src_organization",
               "id": "12",
               "settings": {
                 "min_doc_count": "1",
@@ -2402,7 +2763,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (!(_exists_:meta.scireg.src.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw}\nAND (!(_exists_:meta.scireg.src.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2417,6 +2778,7 @@
               "Max values.bits_per_second": true,
               "Max values.num_bits": true
             },
+            "includeByName": {},
             "indexByName": {
               "Average": 5,
               "Max values.bits_per_second": 6,
@@ -2429,6 +2791,7 @@
             "renameByName": {
               "meta.dst_preferred_org": "Destination Organization",
               "meta.src_ip": "",
+              "meta.src_organization": "Source Organization",
               "meta.src_preferred_org": ""
             }
           }
@@ -2554,7 +2917,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 32
+        "y": 35
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -2595,7 +2958,7 @@
             {
               "$$hashKey": "object:242",
               "fake": true,
-              "field": "meta.dst_preferred_org",
+              "field": "meta.dst_organization",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -2635,7 +2998,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (!(_exists_:meta.scireg.dst.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND meta.dst_organization:${confidential:raw}\nAND (!(_exists_:meta.scireg.dst.discipline)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2650,6 +3013,7 @@
               "Max values.bits_per_second": true,
               "Max values.num_bits": true
             },
+            "includeByName": {},
             "indexByName": {
               "Average": 5,
               "Max values.bits_per_second": 6,
@@ -2661,6 +3025,7 @@
             },
             "renameByName": {
               "meta.dst_ip": "",
+              "meta.dst_organization": "Destination Organization",
               "meta.dst_preferred_org": "",
               "meta.src_preferred_org": "Source Organization"
             }
@@ -2679,7 +3044,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 49
       },
       "id": 40,
       "options": {
@@ -2724,7 +3089,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Globus task"],
   "templating": {
@@ -2740,7 +3105,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Sensors",
         "multi": true,
@@ -2768,7 +3133,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Scope",
         "multi": true,
@@ -2783,6 +3148,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "No",
+          "value": "(-UNAVAILABLE)"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Display Confidential Tasks",
+        "multi": false,
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-UNAVAILABLE)"
+          }
+        ],
+        "query": "Yes : *, No : (-UNAVAILABLE)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -2810,6 +3203,6 @@
   "timezone": "",
   "title": "What are the current Globus task summary statistics?",
   "uid": "CJC1FFhma",
-  "version": 14,
+  "version": 18,
   "weekStart": ""
 }

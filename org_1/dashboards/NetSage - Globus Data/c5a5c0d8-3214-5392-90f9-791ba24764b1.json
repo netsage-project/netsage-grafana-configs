@@ -35,7 +35,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 18,
         "x": 3,
         "y": 0
@@ -48,7 +48,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows the top sources and destinations by volume and rate of all Globus Tasks.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on an organization name in one of the tables to see the Task data dashboard for that organization.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe slope graph below shows the top pairs of organizations by volume.  Darker lines correspond with larger volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows the top sources and destinations by volume and rate of all Globus Tasks.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on an organization name in one of the tables to see the Task data dashboard for that organization.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe slope graph below shows the top pairs of organizations by volume.  Darker lines correspond with larger volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e",
         "mode": "markdown"
       },
       "pluginVersion": "10.3.4",
@@ -73,7 +73,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 3,
       "links": [],
@@ -237,7 +237,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "hideTimeOverride": false,
       "id": 4,
@@ -312,7 +312,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -438,7 +438,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "hideTimeOverride": false,
       "id": 6,
@@ -508,7 +508,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -525,7 +525,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 32
       },
       "id": 8,
       "links": [],
@@ -673,7 +673,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 35
       },
       "hideTimeOverride": false,
       "id": 9,
@@ -753,7 +753,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -879,7 +879,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 47
       },
       "hideTimeOverride": false,
       "id": 11,
@@ -949,7 +949,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -966,7 +966,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "id": 13,
       "links": [],
@@ -1168,7 +1168,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 61
+        "y": 62
       },
       "hideTimeOverride": false,
       "id": 14,
@@ -1278,7 +1278,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1369,7 +1369,7 @@
         "h": 21,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 73
       },
       "id": 15,
       "links": [],
@@ -1432,7 +1432,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1449,7 +1449,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 93
+        "y": 94
       },
       "id": 20,
       "links": [],
@@ -1519,7 +1519,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 96
+        "y": 97
       },
       "id": 18,
       "interval": "1h",
@@ -1573,7 +1573,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors",
+          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw})",
           "refId": "A",
           "timeField": "start"
         }
@@ -1592,7 +1592,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 100
       },
       "id": 24,
       "options": {
@@ -1637,7 +1637,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Globus task"],
   "templating": {
@@ -1653,7 +1653,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "multi": true,
         "name": "Sensors",
@@ -1680,7 +1680,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Scope",
         "multi": true,
@@ -1695,6 +1695,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "No",
+          "value": "(-UNAVAILABLE)"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Display Confidential Tasks",
+        "multi": false,
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-UNAVAILABLE)"
+          }
+        ],
+        "query": "Yes : *, No : (-UNAVAILABLE)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -1721,6 +1749,6 @@
   "timezone": "",
   "title": "What are the top sources/destinations of Globus tasks?",
   "uid": "xk26IFhml",
-  "version": 13,
+  "version": 16,
   "weekStart": ""
 }

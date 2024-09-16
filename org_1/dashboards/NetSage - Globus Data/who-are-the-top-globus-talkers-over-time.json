@@ -35,7 +35,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 23,
         "x": 1,
         "y": 0
@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eTop Talkers Over Time\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard displays top sending and receiving Organizations over time, ranked by task volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e",
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eTop Talkers Over Time\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard displays top sending and receiving Organizations over time, ranked by task volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -102,7 +102,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "header1": "Source Organization",
       "id": 2,
@@ -161,7 +161,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:$org",
+          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:$org AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw})",
           "refId": "A",
           "timeField": "start"
         }
@@ -186,7 +186,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 23
       },
       "header1": "Destination Organization",
       "id": 3,
@@ -245,7 +245,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.src_organization:$org",
+          "query": "meta.sensor_id:$Sensors AND meta.src_organization:$org AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw})",
           "refId": "A",
           "timeField": "start"
         }
@@ -263,7 +263,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 41
       },
       "id": 9,
       "options": {
@@ -325,7 +325,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "multi": true,
         "name": "Sensors",
@@ -384,8 +384,8 @@
         "allValue": "*",
         "current": {
           "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "elasticsearch",
@@ -474,6 +474,34 @@
         "query": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "No",
+          "value": "(-UNAVAILABLE)"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Display Confidential Tasks",
+        "multi": false,
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-UNAVAILABLE)"
+          }
+        ],
+        "query": "Yes : *, No : (-UNAVAILABLE)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -499,6 +527,6 @@
   "timezone": "",
   "title": "Who are the top Globus talkers over time?",
   "uid": "b35BWxAZa",
-  "version": 8,
+  "version": 11,
   "weekStart": ""
 }

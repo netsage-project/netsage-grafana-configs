@@ -35,7 +35,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 22,
         "x": 2,
         "y": 0
@@ -48,7 +48,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/-l3_u8nWl/?var-src=$Organization\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Organization\u003c/a\u003e\n\u003ca class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/WNn1qyaia/?var-org=$Organization\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Science Data for $Organization\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\"\u003e\n\u003cdiv style=\"padding-right: 10%\"\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Organization\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top tasks with the specified organization as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the name of an institution in one of the tables to go to the individual tasks dashboard for that institution and the one selected for the page.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e\n\n\n\u003cbr\u003e",
+        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/-l3_u8nWl/?var-src=$Organization\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Organization\u003c/a\u003e\n\u003ca class=\"btn gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/WNn1qyaia/?var-org=$Organization\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Science Data for $Organization\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\"\u003e\n\u003cdiv style=\"padding-right: 10%\"\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Organization\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows top tasks with the specified organization as the source or destination.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the name of an institution in one of the tables to go to the individual tasks dashboard for that institution and the one selected for the page.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\u003c/div\u003e\n\n\n\u003cbr\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -73,7 +73,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 30,
       "links": [],
@@ -143,7 +143,7 @@
         "h": 3,
         "w": 5,
         "x": 8,
-        "y": 10
+        "y": 11
       },
       "id": 483,
       "links": [],
@@ -196,7 +196,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -250,7 +250,7 @@
         "h": 3,
         "w": 4,
         "x": 13,
-        "y": 10
+        "y": 11
       },
       "id": 485,
       "links": [],
@@ -308,7 +308,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -441,7 +441,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 14
       },
       "hideTimeOverride": false,
       "id": 21,
@@ -522,7 +522,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -567,8 +567,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -670,7 +669,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -740,7 +739,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.src_organization:$Organization AND meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -773,7 +772,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 38
       },
       "id": 31,
       "links": [],
@@ -821,8 +820,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -843,7 +841,7 @@
         "h": 3,
         "w": 5,
         "x": 8,
-        "y": 40
+        "y": 41
       },
       "id": 487,
       "links": [],
@@ -896,7 +894,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors -meta.src_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -928,8 +926,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -950,7 +947,7 @@
         "h": 3,
         "w": 4,
         "x": 13,
-        "y": 40
+        "y": 41
       },
       "id": 489,
       "links": [],
@@ -1008,7 +1005,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors -meta.src_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1038,8 +1035,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1137,7 +1133,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 44
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -1217,7 +1213,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors -meta.src_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1262,8 +1258,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1361,7 +1356,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 56
       },
       "hideTimeOverride": false,
       "id": 33,
@@ -1431,7 +1426,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors -meta.src_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.dst_organization:$Organization AND meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1464,7 +1459,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 68
       },
       "id": 34,
       "links": [],
@@ -1512,8 +1507,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               }
             ]
           },
@@ -1526,7 +1520,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 70
+        "y": 71
       },
       "id": 42,
       "interval": "1h",
@@ -1580,7 +1574,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.src_organization:$Organization OR meta.dst_organization:$Organization) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "(meta.src_organization:$Organization OR meta.dst_organization:$Organization) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1599,7 +1593,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 74
       },
       "id": 491,
       "options": {
@@ -1644,7 +1638,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Globus task"],
   "templating": {
@@ -1652,8 +1646,8 @@
       {
         "current": {
           "selected": true,
-          "text": "University of Texas at Austin",
-          "value": "University of Texas at Austin"
+          "text": "Texas Advanced Computing Center (TACC)",
+          "value": "Texas Advanced Computing Center (TACC)"
         },
         "datasource": {
           "type": "elasticsearch",
@@ -1687,7 +1681,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "multi": true,
         "name": "Sensors",
@@ -1714,7 +1708,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Scope",
         "multi": true,
@@ -1729,6 +1723,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "No",
+          "value": "(-UNAVAILABLE)"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Display Confidential Tasks",
+        "multi": false,
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-UNAVAILABLE)"
+          }
+        ],
+        "query": "Yes : *, No : (-UNAVAILABLE)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -1756,6 +1778,6 @@
   "timezone": "",
   "title": "What are the top Globus tasks by organization?",
   "uid": "QfzDJKhil",
-  "version": 13,
+  "version": 17,
   "weekStart": ""
 }

@@ -34,7 +34,7 @@
         "uid": "u1Gafq5Vz"
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 20,
         "x": 2,
         "y": 0
@@ -47,7 +47,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Project\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows a summary of task information for a selected project.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that tasks with either end tagged as part of the project are included.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
+        "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Project\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows a summary of task information for a selected project.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that tasks with either end tagged as part of the project are included.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -89,7 +89,7 @@
         "h": 3,
         "w": 5,
         "x": 7,
-        "y": 4
+        "y": 5
       },
       "id": 26,
       "options": {
@@ -142,7 +142,7 @@
               "type": "sum"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -178,7 +178,7 @@
         "h": 3,
         "w": 4,
         "x": 12,
-        "y": 4
+        "y": 5
       },
       "id": 30,
       "options": {
@@ -227,7 +227,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -301,7 +301,7 @@
         "h": 22,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 53,
       "links": [],
@@ -320,7 +320,7 @@
             {
               "$$hashKey": "object:191",
               "fake": true,
-              "field": "meta.src_preferred_org",
+              "field": "meta.src_organization",
               "id": "5",
               "settings": {
                 "min_doc_count": 1,
@@ -334,7 +334,7 @@
             {
               "$$hashKey": "object:195",
               "fake": true,
-              "field": "meta.dst_preferred_org",
+              "field": "meta.dst_organization",
               "id": "10",
               "settings": {
                 "min_doc_count": 1,
@@ -366,7 +366,7 @@
               "type": "sum"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
           "refId": "C",
           "timeField": "start"
         }
@@ -384,7 +384,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 30
       },
       "id": 39,
       "links": [],
@@ -430,8 +430,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -612,7 +611,7 @@
         "h": 15,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 33
       },
       "id": 34,
       "links": [],
@@ -720,7 +719,7 @@
               "type": "max"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -768,8 +767,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -786,7 +784,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 48
       },
       "id": 14,
       "links": [],
@@ -833,7 +831,7 @@
               "type": "sum"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -863,8 +861,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -881,7 +878,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 59
       },
       "id": 16,
       "links": [],
@@ -923,7 +920,7 @@
               "type": "avg"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -940,7 +937,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 69
+        "y": 70
       },
       "id": 36,
       "links": [],
@@ -986,8 +983,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1146,7 +1142,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 73
       },
       "hideTimeOverride": false,
       "id": 38,
@@ -1242,7 +1238,7 @@
               "type": "max"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1287,8 +1283,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d",
-                "value": null
+                "color": "#5795f24d"
               },
               {
                 "color": "light-blue",
@@ -1447,7 +1442,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 84
       },
       "hideTimeOverride": false,
       "id": 40,
@@ -1543,7 +1538,7 @@
               "type": "max"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$sensors",
           "refId": "A",
           "timeField": "start"
         }
@@ -1578,7 +1573,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 94
+        "y": 95
       },
       "id": 55,
       "options": {
@@ -1623,7 +1618,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Globus task"],
   "templating": {
@@ -1666,7 +1661,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Sensors",
         "multi": true,
@@ -1681,6 +1676,34 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "No",
+          "value": "(-UNAVAILABLE)"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Display Confidential Tasks",
+        "multi": false,
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-UNAVAILABLE)"
+          }
+        ],
+        "query": "Yes : *, No : (-UNAVAILABLE)",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
@@ -1705,6 +1728,6 @@
   "timezone": "",
   "title": "What are the Globus tasks by project?",
   "uid": "ie7TeomGa",
-  "version": 13,
+  "version": 15,
   "weekStart": ""
 }

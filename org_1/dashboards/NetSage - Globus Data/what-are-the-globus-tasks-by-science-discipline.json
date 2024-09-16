@@ -48,7 +48,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Task Data by Science Discipline\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows information related to science disciplines for top talkers using the \u003ca href=\"https://scienceregistry.netsage.global\"\u003eNetSage Science Registry\u003c/a\u003e.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe map shows only the top 100 pairs of organizations with at least one end tagged in the science registry.  Larger dots indicate larger tasks.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s)\u003cbr/\u003e and their associated top three destination organizations, with thicker lines for larger task volumes.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\n\n \u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
+        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Task Data by Science Discipline\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows information related to science disciplines for top talkers using the \u003ca href=\"https://scienceregistry.netsage.global\"\u003eNetSage Science Registry\u003c/a\u003e.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe map shows only the top 100 pairs of organizations with at least one end tagged in the science registry.  Larger dots indicate larger tasks.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s)\u003cbr/\u003e and their associated top three destination organizations, with thicker lines for larger task volumes.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been removed.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -168,7 +168,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_org_organization:$org OR meta.dst_organization:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -276,7 +276,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -389,7 +389,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -497,7 +497,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -633,7 +633,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
+          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:$org OR meta.dst_organization:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -769,7 +769,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -865,7 +865,7 @@
             {
               "$$hashKey": "object:164",
               "fake": true,
-              "field": "meta.src_preferred_org",
+              "field": "meta.src_organization",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -892,7 +892,7 @@
             },
             {
               "$$hashKey": "object:166",
-              "field": "meta.dst_preferred_org",
+              "field": "meta.dst_organization",
               "id": "2",
               "settings": {
                 "min_doc_count": 1,
@@ -924,7 +924,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -934,10 +934,13 @@
           "id": "organize",
           "options": {
             "excludeByName": {},
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {
+              "meta.dst_organization": "Destination Organization",
               "meta.dst_preferred_org": "Destination",
               "meta.scireg.src.discipline": "Science Discipline",
+              "meta.src_organization": "Source Organization",
               "meta.src_preferred_org": "Source"
             }
           }
@@ -984,7 +987,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.src_preferred_org"
+              "options": "meta.dst_organization"
             },
             "properties": [
               {
@@ -1006,7 +1009,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.dst_preferred_org"
+              "options": "meta.src_organization"
             },
             "properties": [
               {
@@ -1151,7 +1154,7 @@
             {
               "$$hashKey": "object:774",
               "fake": true,
-              "field": "meta.src_preferred_org",
+              "field": "meta.src_organization",
               "id": "8",
               "settings": {
                 "min_doc_count": 1,
@@ -1164,7 +1167,7 @@
             {
               "$$hashKey": "object:775",
               "fake": true,
-              "field": "meta.dst_preferred_org",
+              "field": "meta.dst_organization",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1233,7 +1236,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.scireg.src.discipline:$discipline AND (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src_organization:(-UNAVAILABLE) AND meta.dst_organization:(-UNAVAILABLE)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1544,7 +1547,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1819,7 +1822,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1899,7 +1902,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Globus task"],
   "templating": {
@@ -1915,14 +1918,14 @@
           "type": "elasticsearch",
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_preferred_org\", \"size\": 10000000}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
         "hide": 0,
         "includeAll": true,
         "label": "Organization",
         "multi": true,
         "name": "org",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_preferred_org\", \"size\": 10000000}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1942,14 +1945,14 @@
           "type": "elasticsearch",
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"Network Monitoring\\\" AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)\"}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"CS.Network Testing and Monitoring\\\" AND (meta.src_organization:$org OR meta.dst_organization:$org)\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Discipline",
         "multi": true,
         "name": "discipline",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"Network Monitoring\\\" AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"CS.Network Testing and Monitoring\\\" AND (meta.src_organization:$org OR meta.dst_organization:$org)\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -1971,7 +1974,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "multi": true,
         "name": "Sensors",
@@ -1998,7 +2001,7 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Scope",
         "multi": true,
@@ -2040,6 +2043,6 @@
   "timezone": "",
   "title": "What are the Globus tasks by science discipline?",
   "uid": "WNn1qyaia",
-  "version": 14,
+  "version": 20,
   "weekStart": ""
 }

@@ -168,7 +168,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -276,7 +276,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -389,7 +389,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -497,7 +497,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -634,7 +634,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -773,7 +773,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -869,7 +869,7 @@
             {
               "$$hashKey": "object:164",
               "fake": true,
-              "field": "meta.src_preferred_org",
+              "field": "meta.src_organization",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -896,7 +896,7 @@
             },
             {
               "$$hashKey": "object:166",
-              "field": "meta.dst_preferred_org",
+              "field": "meta.dst_organization",
               "id": "2",
               "settings": {
                 "min_doc_count": 1,
@@ -928,7 +928,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.scireg.src.discipline:$discipline AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -938,10 +938,14 @@
           "id": "organize",
           "options": {
             "excludeByName": {},
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {
+              "Sum": "Total",
+              "meta.dst_organization": "Destination",
               "meta.dst_preferred_org": "Destination",
               "meta.scireg.src.discipline": "Science Discipline",
+              "meta.src_organization": "Source",
               "meta.src_preferred_org": "Source"
             }
           }
@@ -988,7 +992,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.src_preferred_org"
+              "options": "meta.src_organization"
             },
             "properties": [
               {
@@ -1010,7 +1014,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.dst_preferred_org"
+              "options": "meta.dst_organization"
             },
             "properties": [
               {
@@ -1155,7 +1159,7 @@
             {
               "$$hashKey": "object:774",
               "fake": true,
-              "field": "meta.src_preferred_org",
+              "field": "meta.src_organization",
               "id": "8",
               "settings": {
                 "min_doc_count": 1,
@@ -1168,7 +1172,7 @@
             {
               "$$hashKey": "object:775",
               "fake": true,
-              "field": "meta.dst_preferred_org",
+              "field": "meta.dst_organization",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1213,14 +1217,6 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:766",
-              "field": "meta.id",
-              "id": "7",
-              "meta": {},
-              "settings": {},
-              "type": "count"
-            },
-            {
               "$$hashKey": "object:767",
               "field": "values.bits_per_second",
               "id": "9",
@@ -1235,32 +1231,19 @@
               "meta": {},
               "settings": {},
               "type": "max"
+            },
+            {
+              "id": "11",
+              "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.scireg.src.discipline:$discipline AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
       ],
       "title": "Top Pairs",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {
-              "Average": 4,
-              "Count": 6,
-              "Max values.bits_per_second": 5,
-              "Max values.num_bits": 3,
-              "Sum": 2,
-              "meta.dst_preferred_org": 1,
-              "meta.src_preferred_org": 0
-            },
-            "renameByName": {}
-          }
-        }
-      ],
+      "transformations": [],
       "type": "table"
     },
     {
@@ -1548,7 +1531,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1823,7 +1806,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)",
+          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2063,7 +2046,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -2126,7 +2109,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Flow Data", "Science Registry"],
   "templating": {
@@ -2169,14 +2152,14 @@
           "type": "elasticsearch",
           "uid": "u1Gafq5Vz"
         },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"Network Monitoring\\\" AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)\"}",
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Discipline",
         "multi": true,
         "name": "discipline",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"Network Monitoring\\\" AND (meta.src_preferred_org:$org OR meta.dst_preferred_org:$org)\"}",
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\"}",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -2267,6 +2250,6 @@
   "timezone": "",
   "title": "What are the flows by science discipline?",
   "uid": "WNn1qyaiz",
-  "version": 12,
+  "version": 14,
   "weekStart": ""
 }

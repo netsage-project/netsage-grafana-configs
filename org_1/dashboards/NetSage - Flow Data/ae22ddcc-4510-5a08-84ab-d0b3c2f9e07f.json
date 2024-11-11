@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 33,
+  "id": 59,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -137,12 +137,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.src_organization"
+              "options": "meta.src_resource_name"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Source Organization"
+                "value": "Source"
               },
               {
                 "id": "links",
@@ -154,8 +154,8 @@
                 ]
               },
               {
-                "id": "custom.minWidth",
-                "value": 350
+                "id": "custom.width",
+                "value": 500
               }
             ]
           },
@@ -183,10 +183,6 @@
                   "mode": "gradient",
                   "type": "gauge"
                 }
-              },
-              {
-                "id": "custom.minWidth",
-                "value": 500
               }
             ]
           },
@@ -233,43 +229,6 @@
                 "value": 100
               }
             ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_resource_name"
-            },
-            "properties": [
-              {
-                "id": "custom.minWidth",
-                "value": 350
-              },
-              {
-                "id": "displayName",
-                "value": "Source Resource"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__data.fields[\"meta.src_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_asn"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
           }
         ]
       },
@@ -290,7 +249,6 @@
           "reducer": ["sum"],
           "show": false
         },
-        "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
           {
@@ -306,24 +264,13 @@
             {
               "$$hashKey": "object:93",
               "fake": true,
-              "field": "meta.src_organization",
+              "field": "meta.src_resource_name",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
                 "size": "25"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.src_${sortby:raw}",
-              "id": "8",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
               },
               "type": "terms"
             }
@@ -415,12 +362,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.src_organization"
+              "options": "meta.src_resource_name"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Source Organization"
+                "value": "Source"
               },
               {
                 "id": "links",
@@ -432,8 +379,8 @@
                 ]
               },
               {
-                "id": "custom.minWidth",
-                "value": 350
+                "id": "custom.width",
+                "value": 500
               }
             ]
           },
@@ -453,10 +400,6 @@
                   "mode": "gradient",
                   "type": "gauge"
                 }
-              },
-              {
-                "id": "custom.minWidth",
-                "value": 500
               }
             ]
           },
@@ -489,43 +432,6 @@
               {
                 "id": "custom.width",
                 "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_resource_name"
-            },
-            "properties": [
-              {
-                "id": "custom.minWidth",
-                "value": 350
-              },
-              {
-                "id": "displayName",
-                "value": "Source Resource"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__data.fields[\"meta.src_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}\r\n"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_asn"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
               }
             ]
           }
@@ -563,24 +469,13 @@
             {
               "$$hashKey": "object:261",
               "fake": true,
-              "field": "meta.src_organization",
+              "field": "meta.src_resource_name",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
                 "size": "25"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.src_${sortby:raw}",
-              "id": "8",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
               },
               "type": "terms"
             }
@@ -616,7 +511,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -681,7 +576,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d"
+                "color": "#5795f24d",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -696,12 +592,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.dst_organization"
+              "options": "meta.dst_resource_name"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Destination Organization"
+                "value": "Destination"
               },
               {
                 "id": "links",
@@ -713,8 +609,8 @@
                 ]
               },
               {
-                "id": "custom.minWidth",
-                "value": 350
+                "id": "custom.width",
+                "value": 500
               }
             ]
           },
@@ -734,10 +630,6 @@
                   "mode": "gradient",
                   "type": "gauge"
                 }
-              },
-              {
-                "id": "custom.minWidth",
-                "value": 500
               }
             ]
           },
@@ -776,43 +668,6 @@
                 "value": 100
               }
             ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_resource_name"
-            },
-            "properties": [
-              {
-                "id": "custom.minWidth",
-                "value": 350
-              },
-              {
-                "id": "displayName",
-                "value": "Destination Resource"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}\r\n"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_asn"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
           }
         ]
       },
@@ -848,24 +703,13 @@
             {
               "$$hashKey": "object:470",
               "fake": true,
-              "field": "meta.dst_organization",
+              "field": "meta.dst_resource_name",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
                 "size": "25"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.dst_${sortby:raw}",
-              "id": "8",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
               },
               "type": "terms"
             }
@@ -911,7 +755,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -941,7 +785,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d"
+                "color": "#5795f24d",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -956,12 +801,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.dst_organization"
+              "options": "meta.dst_resource_name"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Destination Organization"
+                "value": "Destination"
               },
               {
                 "id": "links",
@@ -973,8 +818,8 @@
                 ]
               },
               {
-                "id": "custom.minWidth",
-                "value": 350
+                "id": "custom.width",
+                "value": 500
               }
             ]
           },
@@ -994,10 +839,6 @@
                   "mode": "gradient",
                   "type": "gauge"
                 }
-              },
-              {
-                "id": "custom.minWidth",
-                "value": 500
               }
             ]
           },
@@ -1030,43 +871,6 @@
               {
                 "id": "custom.width",
                 "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_resource_name"
-            },
-            "properties": [
-              {
-                "id": "custom.minWidth",
-                "value": 350
-              },
-              {
-                "id": "displayName",
-                "value": "Destination Resource"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}\r\n"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_asn"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
               }
             ]
           }
@@ -1104,24 +908,13 @@
             {
               "$$hashKey": "object:623",
               "fake": true,
-              "field": "meta.dst_organization",
+              "field": "meta.dst_resource_name",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
                 "order": "desc",
                 "orderBy": "1",
                 "size": "25"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.dst_${sortby:raw}",
-              "id": "8",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
               },
               "type": "terms"
             }
@@ -1157,7 +950,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1184,7 +977,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Pairs by Resource\u003c/center\u003e\u003c/h1\u003e",
+        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Pairs\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
@@ -1222,7 +1015,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1249,7 +1043,7 @@
                 "value": [
                   {
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__data.fields[\"meta.src_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}\r\n"
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               }
@@ -1270,7 +1064,7 @@
                 "value": [
                   {
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}\r\n"
+                    "url": "/grafana/d/QfzDJKhik/flow-data-per-organization?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               }
@@ -1367,30 +1161,6 @@
                 "value": 100
               }
             ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_organization"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_organization"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
           }
         ]
       },
@@ -1448,28 +1218,6 @@
                 "size": "50"
               },
               "type": "terms"
-            },
-            {
-              "field": "meta.src_organization",
-              "id": "12",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.dst_organization",
-              "id": "13",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
-              },
-              "type": "terms"
             }
           ],
           "datasource": {
@@ -1506,6 +1254,14 @@
               "type": "max"
             },
             {
+              "$$hashKey": "object:766",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
               "$$hashKey": "object:767",
               "field": "values.bits_per_second",
               "id": "9",
@@ -1520,10 +1276,6 @@
               "meta": {},
               "settings": {},
               "type": "max"
-            },
-            {
-              "id": "11",
-              "type": "count"
             }
           ],
           "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -1532,7 +1284,27 @@
         }
       ],
       "title": "Top Pairs",
-      "transformations": [],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Sum": 2,
+              "meta.dst_resource_name": 1,
+              "meta.src_resource_name": 0
+            },
+            "renameByName": {
+              "meta.src_resource_name": ""
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -1551,7 +1323,8 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "#3275d933"
+                "color": "#3275d933",
+                "value": null
               },
               {
                 "color": "#3275d959",
@@ -1613,7 +1386,7 @@
         "leftHeader": "Source",
         "numLines": 30,
         "rightHeader": "Destination",
-        "txtLength": 40
+        "txtLength": 35
       },
       "targets": [
         {
@@ -1663,12 +1436,12 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$Sensors AND -meta.src_organization:\"\" AND -meta.dst_organization:\"\" AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "title": "Top 30 Resource Pairs by Data Volume",
+      "title": "Top 30 Pairs by Data Volume",
       "type": "netsage-slopegraph-panel"
     },
     {
@@ -1728,7 +1501,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1829,7 +1603,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -1944,7 +1719,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2058,7 +1834,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2212,7 +1989,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               }
             ]
           },
@@ -2222,7 +2000,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.sensor_id 1"
+              "options": "meta.sensor_id"
             },
             "properties": [
               {
@@ -2254,7 +2032,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max 1"
+              "options": "Max values.num_bits"
             },
             "properties": [
               {
@@ -2268,23 +2046,13 @@
               {
                 "id": "custom.width",
                 "value": 149
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "View Largest Flow",
-                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Largest\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__data.fields[\"largeststart\"]}"
-                  }
-                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Max 2"
+              "options": "Max values.bits_per_second"
             },
             "properties": [
               {
@@ -2298,16 +2066,6 @@
               {
                 "id": "custom.width",
                 "value": 149
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "View Fastest Flow",
-                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Fastest\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__data.fields[\"fasteststart\"]}"
-                  }
-                ]
               }
             ]
           },
@@ -2330,94 +2088,6 @@
                 "value": 150
               }
             ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "es_doc_id 1"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              },
-              {
-                "id": "displayName",
-                "value": "Largest"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "es_doc_id 2"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              },
-              {
-                "id": "displayName",
-                "value": "Fastest"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "start 1"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "largeststart"
-              },
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "start 2"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "fasteststart"
-              },
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.sensor_id 2"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.sensor_id 3"
-            },
-            "properties": [
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
           }
         ]
       },
@@ -2438,7 +2108,6 @@
           "reducer": ["sum"],
           "show": false
         },
-        "frameIndex": 0,
         "showHeader": true,
         "sortBy": [
           {
@@ -2478,166 +2147,48 @@
               "inlineScript": "_value/8",
               "meta": {},
               "settings": {
-                "script": "_value/8"
+                "script": {
+                  "inline": "_value/8"
+                }
               },
               "type": "sum"
             },
             {
-              "id": "8",
+              "$$hashKey": "object:787",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:788",
+              "field": "values.bits_per_second",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:789",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
               "type": "count"
             }
           ],
           "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
-        },
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "meta.sensor_id",
-              "id": "2",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "es_doc_id",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "4",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "asc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "hide": false,
-          "metrics": [
-            {
-              "field": "values.num_bits",
-              "id": "1",
-              "settings": {
-                "script": "_value / 8"
-              },
-              "type": "max"
-            }
-          ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
-          "refId": "B",
-          "timeField": "start"
-        },
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "meta.sensor_id",
-              "id": "2",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "0"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "es_doc_id",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "1"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "start",
-              "id": "4",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "asc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "hide": false,
-          "metrics": [
-            {
-              "field": "values.bits_per_second",
-              "id": "1",
-              "type": "max"
-            }
-          ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
-          "refId": "C",
-          "timeField": "start"
         }
       ],
       "title": "Sensor Usage",
-      "transformations": [
-        {
-          "id": "concatenate",
-          "options": {
-            "frameNameLabel": "frame",
-            "frameNameMode": "field"
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "es_doc_id 1": false,
-              "start 2": false
-            },
-            "includeByName": {},
-            "indexByName": {
-              "Count": 8,
-              "Max 1": 4,
-              "Max 2": 7,
-              "Sum": 1,
-              "es_doc_id 1": 2,
-              "es_doc_id 2": 5,
-              "meta.sensor_id 1": 0,
-              "meta.sensor_id 2": 9,
-              "meta.sensor_id 3": 10,
-              "start 1": 3,
-              "start 2": 6
-            },
-            "renameByName": {
-              "start 1": "",
-              "start 2": ""
-            }
-          }
-        }
-      ],
       "type": "table"
     },
     {
@@ -2702,7 +2253,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": ["All"],
           "value": ["$__all"]
         },
@@ -2727,37 +2278,9 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": true,
-          "text": "No",
-          "value": "asn"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Show Resource",
-        "multi": false,
-        "name": "sortby",
-        "options": [
-          {
-            "selected": true,
-            "text": "No",
-            "value": "asn"
-          },
-          {
-            "selected": false,
-            "text": "Yes",
-            "value": "resource_name"
-          }
-        ],
-        "query": "No : asn, Yes : resource_name",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
         "allValue": "*",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": ["All"],
           "value": ["$__all"]
         },
@@ -2833,8 +2356,8 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
-  "title": "What are the top sources/destinations of flows?",
-  "uid": "xk26IFhmk",
-  "version": 35,
+  "title": "What are the top sources/destinations of flows by resource?",
+  "uid": "d5a67558-2d3d-4211-bf67-86a493b92463",
+  "version": 2,
   "weekStart": ""
 }

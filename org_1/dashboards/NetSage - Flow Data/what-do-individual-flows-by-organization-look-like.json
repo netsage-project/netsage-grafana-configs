@@ -749,7 +749,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -915,8 +915,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1033,8 +1032,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -1148,8 +1146,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -1263,8 +1260,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -1418,8 +1414,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1525,8 +1520,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1637,8 +1631,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1741,8 +1734,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2121,8 +2113,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2215,8 +2206,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2333,8 +2323,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2448,8 +2437,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2563,8 +2551,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2717,8 +2704,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2963,7 +2949,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Flow Data"],
   "templating": {
@@ -3023,6 +3009,26 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": ["TACC - other"],
+          "value": ["TACC - other"]
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Resource",
+        "multi": true,
+        "name": "resource",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       },
       {
         "current": {
@@ -3153,6 +3159,6 @@
   "timezone": "",
   "title": "What do individual flows by organization look like?",
   "uid": "-l3_u8nWk",
-  "version": 10,
+  "version": 11,
   "weekStart": ""
 }

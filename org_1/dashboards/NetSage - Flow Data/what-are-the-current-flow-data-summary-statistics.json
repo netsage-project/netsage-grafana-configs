@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 38,
+  "id": 115,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -230,6 +230,313 @@
     },
     {
       "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 1,
+        "y": 6
+      },
+      "id": 45,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 4,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Time": false,
+              "Unique Count meta.dst_asn": true,
+              "Unique Count meta.dst_country_name": true,
+              "Unique Count meta.dst_organization": true,
+              "Unique Count meta.src_asn": true,
+              "Unique Count meta.src_country_name": true,
+              "Unique Count meta.src_organization": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 5,
+        "y": 6
+      },
+      "id": 48,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr\u003e\n\u003ch4  style = 'margin-top: 0px; font-weight:bold; color:#FF780A'\u003eTotal Flow Volume\u003c/h4\u003e\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bps",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 6
+      },
+      "id": 46,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 4,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Average values.bits_per_second": false,
+              "Sum values.num_bits": true,
+              "Unique Count meta.dst_asn": true,
+              "Unique Count meta.dst_country_name": true,
+              "Unique Count meta.dst_organization": true,
+              "Unique Count meta.src_asn": true,
+              "Unique Count meta.src_country_name": true,
+              "Unique Count meta.src_organization": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 8,
+        "x": 16,
+        "y": 6
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr\u003e\n\u003ch4  style = 'margin-top: 0px; font-weight:bold; color:#FF780A'\u003eAverage Flow Rate\u003c/h4\u003e\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "select field",
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
         "type": "elasticsearch",
         "uid": "u1Gafq5Vz"
       },
@@ -264,7 +571,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 6
+        "y": 8
       },
       "id": 4,
       "links": [],
@@ -355,6 +662,19 @@
               "meta": {},
               "settings": {},
               "type": "cardinality"
+            },
+            {
+              "field": "values.num_bits",
+              "id": "8",
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            },
+            {
+              "field": "values.bits_per_second",
+              "id": "9",
+              "type": "avg"
             }
           ],
           "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
@@ -371,12 +691,15 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
               "Unique Count meta.dst_organization": true,
               "Unique Count meta.src_asn": true,
               "Unique Count meta.src_country_name": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -394,7 +717,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 6
+        "y": 8
       },
       "id": 5,
       "options": {
@@ -477,7 +800,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 6
+        "y": 8
       },
       "id": 6,
       "links": [],
@@ -520,12 +843,15 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
               "Unique Count meta.src_asn": true,
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -543,9 +869,9 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 6
+        "y": 8
       },
-      "id": 7,
+      "id": 47,
       "options": {
         "code": {
           "language": "plaintext",
@@ -628,7 +954,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 8
+        "y": 10
       },
       "id": 8,
       "links": [],
@@ -671,6 +997,8 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
@@ -678,6 +1006,7 @@
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -695,7 +1024,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 8
+        "y": 10
       },
       "id": 9,
       "options": {
@@ -779,7 +1108,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 8
+        "y": 10
       },
       "id": 10,
       "links": [],
@@ -822,6 +1151,8 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": false,
               "Unique Count meta.dst_country_name": true,
@@ -830,6 +1161,7 @@
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -847,7 +1179,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 10
       },
       "id": 11,
       "options": {
@@ -932,7 +1264,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 10
+        "y": 12
       },
       "id": 12,
       "links": [],
@@ -975,6 +1307,8 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_country_name": true,
@@ -982,6 +1316,7 @@
               "Unique Count meta.src_asn": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -999,7 +1334,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 10
+        "y": 12
       },
       "id": 13,
       "options": {
@@ -1083,7 +1418,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 10
+        "y": 12
       },
       "id": 14,
       "interval": "",
@@ -1127,6 +1462,8 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "Average values.bits_per_second": true,
+              "Sum values.num_bits": true,
               "Time": true,
               "Unique Count meta.dst_asn": true,
               "Unique Count meta.dst_organization": true,
@@ -1134,6 +1471,7 @@
               "Unique Count meta.src_country_name": true,
               "Unique Count meta.src_organization": true
             },
+            "includeByName": {},
             "indexByName": {},
             "renameByName": {}
           }
@@ -1151,7 +1489,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 12
       },
       "id": 15,
       "options": {
@@ -1235,7 +1573,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 12
+        "y": 14
       },
       "id": 36,
       "links": [],
@@ -1321,7 +1659,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 12
+        "y": 14
       },
       "id": 35,
       "options": {
@@ -1405,7 +1743,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 12
+        "y": 14
       },
       "id": 37,
       "links": [],
@@ -1491,7 +1829,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 12
+        "y": 14
       },
       "id": 38,
       "options": {
@@ -1576,7 +1914,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 14
+        "y": 16
       },
       "id": 16,
       "interval": "",
@@ -1648,7 +1986,7 @@
         "h": 3,
         "w": 7,
         "x": 5,
-        "y": 14
+        "y": 16
       },
       "id": 17,
       "options": {
@@ -1731,7 +2069,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 14
+        "y": 16
       },
       "id": 18,
       "links": [],
@@ -1801,7 +2139,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 16
       },
       "id": 19,
       "options": {
@@ -1885,7 +2223,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 19
       },
       "id": 3,
       "interval": "1h",
@@ -1973,6 +2311,338 @@
               }
             ]
           },
+          "unit": "short",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 22
+      },
+      "id": 20,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:49",
+              "fake": true,
+              "field": "meta.protocol",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "4",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:50",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "id": "4",
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Top Protocols by Count",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 22
+      },
+      "id": 21,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:284",
+              "fake": true,
+              "field": "meta.src_port",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "5",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:285",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "id": "5",
+              "type": "count"
+            }
+          ],
+          "query": "-meta.src_port:0 AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Top Source Ports by Count",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 22
+      },
+      "id": 22,
+      "links": [],
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "text"
+      },
+      "pluginVersion": "10.3.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:405",
+              "fake": true,
+              "field": "meta.dst_port",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "4",
+                "size": "5"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:406",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "metrics": [
+            {
+              "id": "4",
+              "type": "count"
+            }
+          ],
+          "query": "-meta.dst_port:0 AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Top Destination Ports by Count",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "includeTimeField": false,
+            "mode": "reduceFields",
+            "reducers": ["sum"]
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "u1Gafq5Vz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-orange",
+                "value": 80
+              }
+            ]
+          },
           "unit": "decbytes",
           "unitScale": true
         },
@@ -1982,9 +2652,9 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 20
+        "y": 30
       },
-      "id": 20,
+      "id": 42,
       "links": [],
       "options": {
         "displayMode": "gradient",
@@ -2050,7 +2720,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Top Protocols",
+      "title": "Top Protocols by Volume",
       "transformations": [
         {
           "id": "reduce",
@@ -2079,8 +2749,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2097,9 +2766,9 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 20
+        "y": 30
       },
-      "id": 21,
+      "id": 43,
       "links": [],
       "options": {
         "displayMode": "gradient",
@@ -2165,7 +2834,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Top Source Ports",
+      "title": "Top Source Ports by Volume",
       "transformations": [
         {
           "id": "reduce",
@@ -2194,8 +2863,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2212,9 +2880,9 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 20
+        "y": 30
       },
-      "id": 22,
+      "id": 44,
       "links": [],
       "options": {
         "displayMode": "gradient",
@@ -2280,7 +2948,7 @@
           "timeField": "start"
         }
       ],
-      "title": "Top Destination Ports",
+      "title": "Top Destination Ports by Volume",
       "transformations": [
         {
           "id": "reduce",
@@ -2313,8 +2981,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2411,7 +3078,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 38
       },
       "hideTimeOverride": false,
       "id": 31,
@@ -2523,8 +3190,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2621,7 +3287,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 38
       },
       "hideTimeOverride": false,
       "id": 32,
@@ -2780,7 +3446,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 42
+        "y": 52
       },
       "id": 24,
       "links": [],
@@ -2971,7 +3637,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 61
       },
       "hideTimeOverride": false,
       "id": 33,
@@ -3301,7 +3967,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 72
       },
       "hideTimeOverride": false,
       "id": 41,
@@ -3633,7 +4299,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 73
+        "y": 83
       },
       "hideTimeOverride": false,
       "id": 27,
@@ -3865,7 +4531,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 73
+        "y": 83
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -3990,7 +4656,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 87
+        "y": 97
       },
       "id": 40,
       "options": {
@@ -4035,7 +4701,7 @@
       "type": "text"
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "schemaVersion": 39,
   "tags": ["Flow Data"],
   "templating": {
@@ -4149,6 +4815,6 @@
   "timezone": "",
   "title": "What are the current flow data summary statistics?",
   "uid": "CJC1FFhmz",
-  "version": 13,
+  "version": 4,
   "weekStart": ""
 }

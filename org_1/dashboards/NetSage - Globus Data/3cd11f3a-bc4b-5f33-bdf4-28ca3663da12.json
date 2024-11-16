@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 54,
+  "id": 128,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -94,7 +94,20 @@
           "unit": "decbytes",
           "unitScale": true
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bps"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 2,
@@ -151,7 +164,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} OR meta.dst_organization:${confidential:raw})",
           "refId": "A",
           "timeField": "start"
         }
@@ -301,7 +314,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw} AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} OR meta.dst_organization:${confidential:raw})",
           "refId": "A",
           "timeField": "start"
         }
@@ -1826,7 +1839,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ( _exists_:meta.scireg.src.org_name  OR _exists_:meta.scireg.dst.org_name  ) AND NOT ( _exists_:meta.scireg.src.org_name  AND _exists_:meta.scireg.dst.org_name  ) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND ( meta.src_location.data_source:scireg OR meta.dst_location.data_source:scireg ) AND NOT ( meta.src_location.data_source:scireg AND meta.dst_location.data_source:scireg )",
           "refId": "A",
           "timeField": "start"
         }
@@ -1979,7 +1992,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ( _exists_:meta.scireg.src.org_name  AND _exists_:meta.scireg.dst.org_name  ) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$sensors AND ( meta.src_location.data_source:scireg AND meta.dst_location.data_source:scireg )",
           "refId": "A",
           "timeField": "start"
         }
@@ -2584,8 +2597,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2819,8 +2831,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3203,6 +3214,6 @@
   "timezone": "",
   "title": "What are the current Globus task summary statistics?",
   "uid": "CJC1FFhma",
-  "version": 18,
+  "version": 2,
   "weekStart": ""
 }

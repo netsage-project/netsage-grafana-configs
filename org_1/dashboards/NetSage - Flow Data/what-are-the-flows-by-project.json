@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 117,
+  "id": 112,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -728,7 +728,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND NOT values.duration: \u003c0.1",
           "refId": "A",
           "timeField": "start"
         }
@@ -759,7 +759,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -853,7 +854,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -975,7 +977,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d"
+                "color": "#5795f24d",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1253,7 +1256,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND NOT values.duration: \u003c0.1",
           "refId": "A",
           "timeField": "start"
         }
@@ -1282,7 +1285,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d"
+                "color": "#5795f24d",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1556,7 +1560,7 @@
               "type": "count"
             }
           ],
-          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND NOT values.duration: \u003c0.1",
           "refId": "A",
           "timeField": "start"
         }
@@ -1621,7 +1625,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               }
             ]
           },
@@ -1631,7 +1636,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "meta.sensor_id"
+              "options": "meta.sensor_id 1"
             },
             "properties": [
               {
@@ -1663,7 +1668,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.num_bits"
+              "options": "Max 1"
             },
             "properties": [
               {
@@ -1677,13 +1682,23 @@
               {
                 "id": "custom.width",
                 "value": 149
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Largest Flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Largest\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__data.fields[\"largeststart\"]}"
+                  }
+                ]
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Max values.bits_per_second"
+              "options": "Max 2"
             },
             "properties": [
               {
@@ -1697,6 +1712,16 @@
               {
                 "id": "custom.width",
                 "value": 149
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "View Fastest Flow",
+                    "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Fastest\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__data.fields[\"fasteststart\"]}"
+                  }
+                ]
               }
             ]
           },
@@ -1719,6 +1744,94 @@
                 "value": 150
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "es_doc_id 1"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              },
+              {
+                "id": "displayName",
+                "value": "Largest"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "es_doc_id 2"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              },
+              {
+                "id": "displayName",
+                "value": "Fastest"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "start 1"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "largeststart"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "start 2"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "fasteststart"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.sensor_id 2"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.sensor_id 3"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
           }
         ]
       },
@@ -1729,7 +1842,7 @@
         "y": 97
       },
       "hideTimeOverride": false,
-      "id": 54,
+      "id": 58,
       "links": [],
       "options": {
         "cellHeight": "sm",
@@ -1739,6 +1852,7 @@
           "reducer": ["sum"],
           "show": false
         },
+        "frameIndex": 0,
         "showHeader": true,
         "sortBy": [
           {
@@ -1778,48 +1892,166 @@
               "inlineScript": "_value/8",
               "meta": {},
               "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
+                "script": "_value/8"
               },
               "type": "sum"
             },
             {
-              "$$hashKey": "object:787",
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:788",
-              "field": "values.bits_per_second",
-              "id": "6",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:789",
-              "field": "meta.id",
-              "id": "7",
-              "meta": {},
-              "settings": {},
+              "id": "8",
               "type": "count"
             }
           ],
           "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
           "refId": "A",
           "timeField": "start"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "meta.sensor_id",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "es_doc_id",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "4",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "id": "1",
+              "settings": {
+                "script": "_value / 8"
+              },
+              "type": "max"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "B",
+          "timeField": "start"
+        },
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "meta.sensor_id",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "es_doc_id",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "start",
+              "id": "4",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "u1Gafq5Vz"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "field": "values.bits_per_second",
+              "id": "1",
+              "type": "max"
+            }
+          ],
+          "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND NOT values.duration: \u003c0.1",
+          "refId": "C",
+          "timeField": "start"
         }
       ],
       "title": "Sensor Usage",
+      "transformations": [
+        {
+          "id": "concatenate",
+          "options": {
+            "frameNameLabel": "frame",
+            "frameNameMode": "field"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "es_doc_id 1": false,
+              "start 2": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Count": 8,
+              "Max 1": 4,
+              "Max 2": 7,
+              "Sum": 1,
+              "es_doc_id 1": 2,
+              "es_doc_id 2": 5,
+              "meta.sensor_id 1": 0,
+              "meta.sensor_id 2": 9,
+              "meta.sensor_id 3": 10,
+              "start 1": 3,
+              "start 2": 6
+            },
+            "renameByName": {
+              "start 1": "",
+              "start 2": ""
+            }
+          }
+        }
+      ],
       "type": "table"
     },
     {
@@ -1884,9 +2116,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "ATLAS",
-          "value": "ATLAS"
+          "selected": true,
+          "text": "SC24",
+          "value": "SC24"
         },
         "datasource": {
           "type": "elasticsearch",
@@ -1939,8 +2171,8 @@
       {
         "current": {
           "selected": true,
-          "text": "Resource",
-          "value": "resource_name"
+          "text": "Organization",
+          "value": "organization"
         },
         "hide": 0,
         "includeAll": false,
@@ -1949,12 +2181,12 @@
         "name": "sortby",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "Organization",
             "value": "organization"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "Resource",
             "value": "resource_name"
           }
@@ -2015,6 +2247,6 @@
   "timezone": "",
   "title": "What are the flows by project?",
   "uid": "ie7TeomGz",
-  "version": 1,
+  "version": 4,
   "weekStart": ""
 }

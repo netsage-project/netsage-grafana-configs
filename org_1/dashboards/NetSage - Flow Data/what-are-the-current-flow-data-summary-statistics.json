@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 115,
+  "id": 110,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -2635,7 +2635,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2749,7 +2750,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2863,7 +2865,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2981,7 +2984,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3190,7 +3194,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3429,7 +3434,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3532,229 +3538,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
-              }
-            ]
-          },
-          "unitScale": true
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.sensor_id"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Sensor"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Total Volume"
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              },
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max values.num_bits"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Largest Flow"
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              },
-              {
-                "id": "custom.width",
-                "value": 149
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max values.bits_per_second"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Fastest Flow"
-              },
-              {
-                "id": "unit",
-                "value": "bps"
-              },
-              {
-                "id": "custom.width",
-                "value": 149
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Number of Flows"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 61
-      },
-      "hideTimeOverride": false,
-      "id": 33,
-      "links": [],
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": ["sum"],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Total Volume"
-          }
-        ]
-      },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:794",
-              "fake": true,
-              "field": "meta.sensor_id",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "0"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "dsType": "elasticsearch",
-          "metrics": [
-            {
-              "$$hashKey": "object:786",
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:787",
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:788",
-              "field": "values.bits_per_second",
-              "id": "6",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:789",
-              "field": "meta.id",
-              "id": "7",
-              "meta": {},
-              "settings": {},
-              "type": "count"
-            }
-          ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "Sensor Usage",
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "left",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "filterable": false,
-            "inspect": false
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               }
             ]
           },
@@ -3967,7 +3752,7 @@
         "h": 11,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 61
       },
       "hideTimeOverride": false,
       "id": 41,
@@ -4138,7 +3923,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "query": "meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND NOT values.duration: \u003c0.1",
           "refId": "C",
           "timeField": "start"
         }
@@ -4202,7 +3987,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4299,7 +4085,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 83
+        "y": 72
       },
       "hideTimeOverride": false,
       "id": 27,
@@ -4434,7 +4220,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4531,7 +4318,7 @@
         "h": 14,
         "w": 12,
         "x": 12,
-        "y": 83
+        "y": 72
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -4656,7 +4443,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 97
+        "y": 86
       },
       "id": 40,
       "options": {
@@ -4701,7 +4488,7 @@
       "type": "text"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "schemaVersion": 39,
   "tags": ["Flow Data"],
   "templating": {
@@ -4815,6 +4602,6 @@
   "timezone": "",
   "title": "What are the current flow data summary statistics?",
   "uid": "CJC1FFhmz",
-  "version": 4,
+  "version": 2,
   "weekStart": ""
 }

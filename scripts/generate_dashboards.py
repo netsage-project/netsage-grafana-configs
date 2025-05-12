@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
 
-# this script generated updated Grafana files for dashboards based the the TACC dashboards
+# this script generates updated Grafana files for dashboards based the the TACC dashboards
 #
-# it looks for all files under netsage-grafana-configs/org_1/dashboards with TACC, and 
-#   replaces TACC with the org specifed with the -org argument, and generates updated files ending in .updated
+# it looks for all files under netsage-grafana-configs/org_1/dashboards with "TACC", and 
+#   replaces "TACC" with the org specifed with the -org argument
+#   output files will be found in directory: output/ORG
 #
 # sample use:
-#    generate_dashboards.py -org "Great Plains Network (GPN)"
+#    generate_dashboards.py -org GPN
 #
-#  where ORG must be in the default dict defined below
+#  where ORG must be in the default dict 'org_list' defined below
 #
 # To Do:
 #  need to set defaults for SNMP pages??
 #      what-are-the-bandwidth-patterns-in-the-network.json
 #      what-is-the-current-state-of-the-network.json
 #
-#  maybe:
+#  maybe handle:
 #    - currently this file is hardcoded to TACC: what-are-the-top-globus-tasks-by-organization.json:
 #        "value": "AND (!(meta.src_organization:\"Texas Advanced Computing Center (TACC)\" AND meta.dst_organization:\"Texas Advanced Computing Center (TACC)\"))"
 #        currently TACC (and ORNL) is usually the top site, so OK to use TACC as the default everywhere?
@@ -26,12 +27,16 @@ import argparse
 import re
 import json
 
-# Global file skip list: the code below does not work on these
+# Global file skip list: the code below does not work on these (for now)
 skip_files = [
+# Flow files
     'individual-flow-information.json',
     'what-are-the-top-flows-by-country.json',
     'what-are-the-top-globus-tasks-by-country.json',
     'individual-globus-task-information.json',
+# SNMP files
+    'what-are-the-bandwidth-patterns-in-the-network.json',
+    'what-is-the-current-state-of-the-network.json',
     'advanced-flow-analysis.json'
 ]
 
@@ -140,7 +145,9 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
         # Write updated file if changed
         if changed:
-            outpath = f"{filepath}.{org_abbr}"
+            outdir = os.path.join('output', org_abbr)
+            os.makedirs(outdir, exist_ok=True)
+            outpath = os.path.join(outdir, os.path.basename(filepath))
             with open(outpath, 'w', encoding='utf-8') as f:
                 f.write(data)
             print(f'Updated file written to: {outpath}\n')

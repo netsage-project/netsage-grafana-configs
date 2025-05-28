@@ -25,14 +25,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 123,
+  "id": 86,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 6,
@@ -41,26 +40,17 @@
         "y": 0
       },
       "id": 34,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003ch1\u003e\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003eIndividual Flows\u003c/b\u003e\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows per-flow level data, given a particular source and destination organization.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for the top 1000 largest flows.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n",
-        "mode": "html"
+        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Flows\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows per-flow level data, given a particular source and destination organization.\u003c/li\u003e\n  \u003cli\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for the top 1000 largest flows.\u003c/li\u003e\n  \u003cli\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n",
+        "mode": "markdown"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -99,8 +89,7 @@
               }
             ]
           },
-          "unit": "locale",
-          "unitScale": true
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -111,7 +100,6 @@
         "y": 6
       },
       "id": 45,
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -121,6 +109,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -131,7 +120,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -161,7 +150,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -206,8 +195,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -218,7 +206,6 @@
         "y": 6
       },
       "id": 35,
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -228,6 +215,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -238,7 +226,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -273,7 +261,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -318,8 +306,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -330,7 +317,6 @@
         "y": 6
       },
       "id": 21,
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -340,6 +326,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["mean"],
           "fields": "",
@@ -350,7 +337,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -380,7 +367,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -390,9 +377,9 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 1,
@@ -401,7 +388,6 @@
         "y": 9
       },
       "id": 52,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
@@ -411,16 +397,8 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -452,8 +430,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -599,7 +576,6 @@
         "y": 10
       },
       "id": 2,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -616,7 +592,7 @@
           }
         ]
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "alias": "",
@@ -749,7 +725,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -821,7 +797,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -829,8 +806,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -841,7 +817,6 @@
         "y": 25
       },
       "id": 18,
-      "links": [],
       "options": {
         "from": "0",
         "legendGradientQuality": "high",
@@ -851,6 +826,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -885,7 +861,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -914,7 +890,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -922,8 +899,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -934,7 +910,6 @@
         "y": 36
       },
       "id": 56,
-      "links": [],
       "options": {
         "from": "0",
         "legendGradientQuality": "high",
@@ -944,6 +919,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -973,7 +949,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -982,9 +958,9 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -1002,16 +978,8 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eSummary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1031,7 +999,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -1039,8 +1008,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -1051,9 +1019,14 @@
         "y": 49
       },
       "id": 39,
-      "links": [],
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -1068,7 +1041,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1111,7 +1084,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1145,7 +1118,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -1153,8 +1127,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -1165,9 +1138,14 @@
         "y": 49
       },
       "id": 40,
-      "links": [],
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -1182,7 +1160,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1225,7 +1203,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1259,7 +1237,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -1267,8 +1246,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -1279,9 +1257,14 @@
         "y": 49
       },
       "id": 41,
-      "links": [],
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -1296,7 +1279,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1339,7 +1322,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1358,9 +1341,9 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -1378,16 +1361,8 @@
         "content": "\u003ccenter style=\"margin-top:35px;\"\u003e\u003ch1\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1413,7 +1388,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1425,8 +1401,7 @@
               }
             ]
           },
-          "unit": "locale",
-          "unitScale": true
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -1437,7 +1412,6 @@
         "y": 60
       },
       "id": 26,
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -1447,6 +1421,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -1457,7 +1432,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1487,7 +1462,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1519,7 +1494,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1531,8 +1507,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -1543,7 +1518,6 @@
         "y": 60
       },
       "id": 47,
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -1553,6 +1527,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -1563,7 +1538,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1598,7 +1573,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1630,7 +1605,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1642,8 +1618,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -1654,7 +1629,6 @@
         "y": 60
       },
       "id": 48,
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -1664,6 +1638,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["mean"],
           "fields": "",
@@ -1674,7 +1649,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1704,7 +1679,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1733,15 +1708,15 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -1891,7 +1866,6 @@
         "y": 63
       },
       "id": 54,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1908,7 +1882,7 @@
           }
         ]
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "alias": "",
@@ -2041,7 +2015,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2112,7 +2086,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2120,8 +2095,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -2132,7 +2106,6 @@
         "y": 78
       },
       "id": 55,
-      "links": [],
       "options": {
         "from": "0",
         "legendGradientQuality": "high",
@@ -2142,6 +2115,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2176,7 +2150,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2205,7 +2179,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2213,8 +2188,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -2225,7 +2199,6 @@
         "y": 89
       },
       "id": 24,
-      "links": [],
       "options": {
         "from": "0",
         "legendGradientQuality": "high",
@@ -2235,6 +2208,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -2264,7 +2238,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2273,9 +2247,9 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -2293,16 +2267,8 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003e Reverse Summary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -2322,7 +2288,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2330,8 +2297,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -2342,9 +2308,14 @@
         "y": 102
       },
       "id": 59,
-      "links": [],
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -2359,7 +2330,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -2402,7 +2373,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2436,7 +2407,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2444,8 +2416,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -2456,9 +2427,14 @@
         "y": 102
       },
       "id": 60,
-      "links": [],
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -2473,7 +2449,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -2516,7 +2492,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2550,7 +2526,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-orange",
@@ -2558,8 +2535,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -2570,9 +2546,14 @@
         "y": 102
       },
       "id": 61,
-      "links": [],
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -2587,7 +2568,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -2630,7 +2611,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2649,9 +2630,9 @@
       "type": "bargauge"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -2660,7 +2641,6 @@
         "y": 110
       },
       "id": 73,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
@@ -2670,16 +2650,8 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eNetSage Sensors Observing Selected Organization Flows\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -2703,15 +2675,15 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -2786,9 +2758,7 @@
         "x": 0,
         "y": 112
       },
-      "hideTimeOverride": false,
       "id": 75,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -2799,7 +2769,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -2866,7 +2836,7 @@
               "type": "count"
             }
           ],
-          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR  (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND ((meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource) OR (meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource)) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2894,11 +2864,11 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "gdndZ_Znk"
-      },
       "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -2915,48 +2885,21 @@
         "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \n  \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \n    \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "gdndZ_Znk"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 39,
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
   "tags": ["Flow Data"],
   "templating": {
     "list": [
       {
         "allValue": "*",
         "current": {
-          "selected": false,
           "text": ["Texas Advanced Computing Center (TACC)"],
           "value": ["Texas Advanced Computing Center (TACC)"]
         },
@@ -2965,7 +2908,6 @@
           "uid": "u1Gafq5Vz"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
-        "hide": 0,
         "includeAll": true,
         "label": "Source Organization",
         "multi": true,
@@ -2974,26 +2916,39 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
-        "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
           "type": "elasticsearch",
           "uid": "u1Gafq5Vz"
         },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
+        "includeAll": true,
+        "label": "Source Resource",
+        "multi": true,
+        "name": "src_resource",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": ["Indiana University (IU)"],
+          "value": ["Indiana University (IU)"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
-        "hide": 0,
         "includeAll": true,
         "label": "Destination Organization",
         "multi": true,
@@ -3002,44 +2957,33 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
           "type": "elasticsearch",
           "uid": "u1Gafq5Vz"
         },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
-        "hide": 0,
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
         "includeAll": true,
-        "label": "Resource",
+        "label": "Destination Resource",
         "multi": true,
-        "name": "resource",
+        "name": "dst_resource",
         "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
-        "refresh": 1,
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
+        "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
         "type": "query"
       },
       {
         "current": {
-          "selected": true,
           "text": "",
           "value": ""
         },
-        "hide": 0,
         "label": "Subnet",
         "name": "subnet",
         "options": [
@@ -3050,14 +2994,11 @@
           }
         ],
         "query": "",
-        "skipUrlSync": false,
         "type": "textbox"
       },
       {
-        "allValue": "",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -3065,7 +3006,6 @@
           "uid": "u1Gafq5Vz"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
         "includeAll": true,
         "label": "Sensors",
         "multi": true,
@@ -3074,18 +3014,12 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -3093,7 +3027,7 @@
           "uid": "u1Gafq5Vz"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
-        "hide": 0,
+        "hide": 2,
         "includeAll": true,
         "label": "Scope",
         "multi": true,
@@ -3102,23 +3036,15 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "yes",
           "value": "yes"
         },
-        "hide": 0,
         "includeAll": false,
         "label": "Show Test Traffic",
-        "multi": false,
         "name": "is_net_test",
         "options": [
           {
@@ -3133,35 +3059,18 @@
           }
         ],
         "query": "yes,no",
-        "queryValue": "",
-        "skipUrlSync": false,
         "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-7d",
-    "to": "now"
+    "from": "2025-05-20T16:21:08.455Z",
+    "to": "2025-05-20T17:21:08.455Z"
   },
-  "timeRangeUpdatedDuringEditOrView": false,
-  "timepicker": {
-    "refresh_intervals": [
-      "5s",
-      "10s",
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
-  },
+  "timepicker": {},
   "timezone": "",
   "title": "What do individual flows by organization look like?",
   "uid": "-l3_u8nWk",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }

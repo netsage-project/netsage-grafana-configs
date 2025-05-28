@@ -24,14 +24,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 134,
+  "id": 97,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -40,26 +39,17 @@
         "y": 0
       },
       "id": 48,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Tasks by Project\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows a summary of task information for a selected project.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003cb\u003ePlease note that tasks with either end tagged as part of the project are included.\u003c/b\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been marked \"UNAVAILABLE\". Confidential Task data rates and totals are available via the toggle at the top of this dashboard.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n",
+        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eGlobus Tasks by Project\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows a summary of task information for a selected project.\u003c/li\u003e\n  \u003cli\u003e\u003cb\u003ePlease note that tasks with either end tagged as part of the project are included.\u003c/b\u003e\u003c/li\u003e\n \u003cli\u003eGlobus Task endpoints are de-identified, and private data sources are marked \"Private\". \u003c/li\u003e\n\u003cli\u003ePrivate Task data rates and totals are available via the toggle at the top of this dashboard. \u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -80,8 +70,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -97,6 +86,7 @@
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -107,7 +97,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -169,8 +159,7 @@
               }
             ]
           },
-          "unit": "locale",
-          "unitScale": true
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -186,6 +175,7 @@
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -196,7 +186,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -292,8 +282,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -304,7 +293,6 @@
         "y": 8
       },
       "id": 53,
-      "links": [],
       "options": {
         "fontSize": 12,
         "headerColor": "text",
@@ -314,13 +302,14 @@
         "rightHeader": "Destination",
         "txtLength": 40
       },
+      "pluginVersion": "1.1.2",
       "targets": [
         {
           "bucketAggs": [
             {
               "$$hashKey": "object:191",
               "fake": true,
-              "field": "meta.src_organization",
+              "field": "meta.src_${sortby:raw}",
               "id": "5",
               "settings": {
                 "min_doc_count": 1,
@@ -334,7 +323,7 @@
             {
               "$$hashKey": "object:195",
               "fake": true,
-              "field": "meta.dst_organization",
+              "field": "meta.dst_${sortby:raw}",
               "id": "10",
               "settings": {
                 "min_doc_count": 1,
@@ -376,9 +365,9 @@
       "type": "netsage-slopegraph-panel"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -387,7 +376,6 @@
         "y": 30
       },
       "id": 39,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
@@ -398,15 +386,7 @@
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -549,7 +529,7 @@
               },
               {
                 "id": "decimals",
-                "value": 1
+                "value": 0
               },
               {
                 "id": "custom.width",
@@ -604,6 +584,30 @@
                 "value": 115
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_resource_name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_resource_name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination"
+              }
+            ]
           }
         ]
       },
@@ -614,7 +618,6 @@
         "y": 33
       },
       "id": 34,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -638,7 +641,7 @@
             {
               "$$hashKey": "object:1281",
               "fake": true,
-              "field": "meta.src_organization",
+              "field": "meta.src_${sortby:raw}",
               "id": "4",
               "settings": {
                 "min_doc_count": 1,
@@ -651,7 +654,7 @@
             {
               "$$hashKey": "object:1282",
               "fake": true,
-              "field": "meta.dst_organization",
+              "field": "meta.dst_${sortby:raw}",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -695,14 +698,6 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:1273",
-              "field": "meta.id",
-              "id": "6",
-              "meta": {},
-              "settings": {},
-              "type": "count"
-            },
-            {
               "$$hashKey": "object:1274",
               "field": "values.bits_per_second",
               "id": "7",
@@ -717,6 +712,10 @@
               "meta": {},
               "settings": {},
               "type": "max"
+            },
+            {
+              "id": "9",
+              "type": "count"
             }
           ],
           "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors",
@@ -725,24 +724,6 @@
         }
       ],
       "title": "By Organization Pair",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {
-              "Average": 4,
-              "Count": 6,
-              "Max values.bits_per_second": 5,
-              "Max values.num_bits": 3,
-              "Sum": 2,
-              "meta.dst_organization": 1,
-              "meta.src_organization": 0
-            },
-            "renameByName": {}
-          }
-        }
-      ],
       "type": "table"
     },
     {
@@ -787,7 +768,6 @@
         "y": 48
       },
       "id": 14,
-      "links": [],
       "options": {
         "from": "0",
         "legendGradientQuality": "high",
@@ -881,7 +861,6 @@
         "y": 59
       },
       "id": 16,
-      "links": [],
       "options": {
         "from": "0",
         "legendGradientQuality": "high",
@@ -929,9 +908,9 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 3,
@@ -940,26 +919,17 @@
         "y": 70
       },
       "id": 36,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch3 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eSummary of Organizations for $project_type\u003c/center\u003e\u003c/h3\u003e",
+        "content": "\u003ch3 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eSummary of Endpoints for $project_type\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1036,7 +1006,7 @@
               },
               {
                 "id": "decimals",
-                "value": 1
+                "value": 0
               },
               {
                 "id": "custom.width",
@@ -1144,9 +1114,7 @@
         "x": 0,
         "y": 73
       },
-      "hideTimeOverride": false,
       "id": 38,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1170,7 +1138,7 @@
             {
               "$$hashKey": "object:67",
               "fake": true,
-              "field": "meta.src_organization",
+              "field": "meta.src_${sortby:raw}",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1214,14 +1182,6 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:59",
-              "field": "meta.id",
-              "id": "9",
-              "meta": {},
-              "settings": {},
-              "type": "count"
-            },
-            {
               "$$hashKey": "object:60",
               "field": "values.bits_per_second",
               "id": "10",
@@ -1236,6 +1196,10 @@
               "meta": {},
               "settings": {},
               "type": "max"
+            },
+            {
+              "id": "12",
+              "type": "count"
             }
           ],
           "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.src_organization:${confidential:raw} AND meta.sensor_id:$sensors",
@@ -1244,23 +1208,6 @@
         }
       ],
       "title": "Summary of Source Organizations",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {
-              "Average": 3,
-              "Count": 5,
-              "Max values.bits_per_second": 4,
-              "Max values.num_bits": 2,
-              "Sum": 1,
-              "meta.src_organization": 0
-            },
-            "renameByName": {}
-          }
-        }
-      ],
       "type": "table"
     },
     {
@@ -1336,7 +1283,7 @@
               },
               {
                 "id": "decimals",
-                "value": 1
+                "value": 0
               },
               {
                 "id": "custom.width",
@@ -1444,9 +1391,7 @@
         "x": 0,
         "y": 84
       },
-      "hideTimeOverride": false,
       "id": 40,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1470,7 +1415,7 @@
             {
               "$$hashKey": "object:67",
               "fake": true,
-              "field": "meta.dst_organization",
+              "field": "meta.dst_${sortby:raw}",
               "id": "3",
               "settings": {
                 "min_doc_count": 1,
@@ -1514,14 +1459,6 @@
               "type": "max"
             },
             {
-              "$$hashKey": "object:59",
-              "field": "meta.id",
-              "id": "9",
-              "meta": {},
-              "settings": {},
-              "type": "count"
-            },
-            {
               "$$hashKey": "object:60",
               "field": "values.bits_per_second",
               "id": "10",
@@ -1536,6 +1473,10 @@
               "meta": {},
               "settings": {},
               "type": "max"
+            },
+            {
+              "id": "12",
+              "type": "count"
             }
           ],
           "query": "(meta.scireg.src.project_names:$project_type OR meta.scireg.dst.project_names:$project_type) AND meta.dst_organization:${confidential:raw} AND meta.sensor_id:$sensors",
@@ -1544,31 +1485,14 @@
         }
       ],
       "title": "Summary of Destination Organizations",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {
-              "Average": 3,
-              "Count": 5,
-              "Max values.bits_per_second": 4,
-              "Max values.num_bits": 2,
-              "Sum": 1,
-              "meta.dst_organization": 0
-            },
-            "renameByName": {}
-          }
-        }
-      ],
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "gdndZ_Znk"
-      },
       "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1586,74 +1510,39 @@
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "gdndZ_Znk"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
+      "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 39,
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
   "tags": ["Globus task"],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "ANL-Argonne Leadership Computing Facility (ALCF)",
-          "value": "ANL-Argonne Leadership Computing Facility (ALCF)"
+          "text": "ACCESS",
+          "value": "ACCESS"
         },
         "datasource": {
           "type": "elasticsearch",
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.project_names\"}",
-        "hide": 0,
         "includeAll": false,
         "label": "Project",
-        "multi": false,
         "name": "project_type",
         "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.project_names\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -1670,23 +1559,15 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": true,
-          "text": "No",
-          "value": "(-UNAVAILABLE)"
+          "text": "(-Private)",
+          "value": "(-Private)"
         },
-        "hide": 0,
         "includeAll": false,
-        "label": "Display Confidential Tasks",
-        "multi": false,
+        "label": "Display Private Tasks",
         "name": "confidential",
         "options": [
           {
@@ -1697,21 +1578,41 @@
           {
             "selected": true,
             "text": "No",
-            "value": "(-UNAVAILABLE)"
+            "value": "(-Private)"
           }
         ],
-        "query": "Yes : *, No : (-UNAVAILABLE)",
-        "queryValue": "",
-        "skipUrlSync": false,
+        "query": "Yes : *, No : (-Private)",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "resource_name",
+          "value": "resource_name"
+        },
+        "includeAll": false,
+        "label": "Sort By",
+        "name": "sortby",
+        "options": [
+          {
+            "selected": false,
+            "text": "Organization",
+            "value": "organization"
+          },
+          {
+            "selected": true,
+            "text": "Resource",
+            "value": "resource_name"
+          }
+        ],
+        "query": "Organization : organization,Resource : resource_name",
         "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "now-7d",
-    "to": "now"
+    "from": "2025-05-14T14:42:48.919Z",
+    "to": "2025-05-21T14:42:48.919Z"
   },
-  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "refresh_intervals": [
       "10s",
@@ -1728,6 +1629,6 @@
   "timezone": "",
   "title": "What are the Globus tasks by project?",
   "uid": "ie7TeomGa",
-  "version": 1,
+  "version": 8,
   "weekStart": ""
 }

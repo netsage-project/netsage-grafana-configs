@@ -1,0 +1,261 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "limit": 100,
+        "name": "Annotations \u0026 Alerts",
+        "showIn": 0,
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 89,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eGlobus Science Discipline Patterns\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows heatmaps for Globus tasks by science discipline.\u003c/li\u003e\n  \u003cli\u003eThe horizontal axis represents days and the vertical axis represents time of day.\u003c/li\u003e\n  \u003cli\u003eDarker squares show higher data transmission rates at those hours.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps",
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 3,
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "repeat": "disciplines",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:17",
+              "fake": true,
+              "field": "start",
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:15",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.sensor_id:$sensors AND meta.scireg.src.discipline:$disciplines AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "$disciplines",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 78
+      },
+      "id": 26,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \n  \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \n    \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": ["Globus Task"],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\"}",
+        "includeAll": true,
+        "label": "Disciplines",
+        "multi": true,
+        "name": "disciplines",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Sensors",
+        "multi": true,
+        "name": "sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Scope",
+        "multi": true,
+        "name": "country_scope",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2025-05-15T18:42:35.207Z",
+    "to": "2025-05-22T18:42:35.207Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "What are the patterns of science data transfers in Globus tasks?",
+  "uid": "ufIS9W7Zl",
+  "version": 5,
+  "weekStart": ""
+}

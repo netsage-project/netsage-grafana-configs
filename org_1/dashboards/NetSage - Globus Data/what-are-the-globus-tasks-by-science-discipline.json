@@ -25,14 +25,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 135,
+  "id": 98,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
@@ -41,26 +40,17 @@
         "y": 0
       },
       "id": 2,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eGlobus Task Data by Science Discipline\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard shows information related to science disciplines for top talkers using the \u003ca href=\"https://scienceregistry.netsage.global\"\u003eNetSage Science Registry\u003c/a\u003e.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe map shows only the top 100 pairs of organizations with at least one end tagged in the science registry.  Larger dots indicate larger tasks.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThe Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s)\u003cbr/\u003e and their associated top three destination organizations, with thicker lines for larger task volumes.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eGlobus Tasks have been de-identified and confidential data has been removed.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e",
-        "mode": "html"
+        "content": "\n\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eGlobus Task Data by Science Discipline\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows information related to science disciplines for top talkers using the \u003ca href=\"https://netsage.io/scienceregistry/\"\u003eNetSage Science Registry\u003c/a\u003e.\u003c/li\u003e\n  \u003cli\u003eThe Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s) and their associated top three destination organizations, with thicker lines for larger task volumes.\u003c/li\u003e\n   \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n",
+        "mode": "markdown"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -100,8 +90,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -113,7 +102,6 @@
       },
       "id": 3,
       "interval": "1h",
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -123,6 +111,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -133,7 +122,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -168,7 +157,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_org_organization:$org OR meta.dst_organization:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_org_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -213,8 +202,7 @@
               }
             ]
           },
-          "unit": "locale",
-          "unitScale": true
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -226,7 +214,6 @@
       },
       "id": 4,
       "interval": "1h",
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -236,6 +223,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -246,7 +234,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -276,7 +264,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -321,8 +309,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -334,7 +321,6 @@
       },
       "id": 5,
       "interval": "1h",
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -344,6 +330,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -354,7 +341,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -389,7 +376,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -434,8 +421,7 @@
               }
             ]
           },
-          "unit": "locale",
-          "unitScale": true
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -447,7 +433,6 @@
       },
       "id": 6,
       "interval": "1h",
-      "links": [],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "value",
@@ -457,6 +442,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -467,7 +453,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -497,7 +483,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -524,6 +510,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 100,
             "gradientMode": "none",
@@ -563,8 +550,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -583,11 +569,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -633,7 +620,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:$org OR meta.dst_organization:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
+          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -660,6 +647,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 100,
             "gradientMode": "none",
@@ -699,8 +687,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -719,11 +706,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -769,7 +757,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org)AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
           "refId": "A",
           "timeField": "start"
         }
@@ -779,9 +767,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 2,
@@ -790,7 +778,6 @@
         "y": 22
       },
       "id": 8,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
@@ -800,16 +787,8 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eTop Science Talkers\u003c/center\u003e\u003c/h3\u003e\n",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -838,8 +817,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -850,15 +828,16 @@
         "y": 24
       },
       "id": 9,
-      "links": [],
       "options": {
         "color": "blue",
         "iteration": 7,
+        "labelSize": 14,
         "monochrome": false,
         "nodeColor": "grey",
         "nodePadding": 30,
         "nodeWidth": 30
       },
+      "pluginVersion": "1.1.3",
       "targets": [
         {
           "bucketAggs": [
@@ -924,11 +903,12 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
       ],
+      "title": "",
       "transformations": [
         {
           "id": "organize",
@@ -980,8 +960,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": [
           {
@@ -1128,9 +1107,7 @@
         "x": 0,
         "y": 55
       },
-      "hideTimeOverride": false,
       "id": 16,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1147,7 +1124,7 @@
           }
         ]
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1236,7 +1213,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.scireg.src.discipline:$discipline AND (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src_organization:(-UNAVAILABLE) AND meta.dst_organization:(-UNAVAILABLE)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "meta.sensor_id:$Sensors AND meta.scireg.src.discipline:$discipline AND (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND (meta.src_organization:(-UNAVAILABLE) AND meta.dst_organization:(-UNAVAILABLE)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1263,9 +1240,9 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -1274,7 +1251,6 @@
         "y": 68
       },
       "id": 10,
-      "links": [],
       "options": {
         "code": {
           "language": "plaintext",
@@ -1284,16 +1260,8 @@
         "content": "\u003cbr/\u003e\u003cbr/\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003ch1\u003e\u003ccenter\u003eSummary of All Disciplines\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003ccenter\u003eOnly tasks where source or destination has been tagged with a science discipline \u003cbr\u003e\nfrom the Science Registry are counted.\n\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "refId": "A"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1325,8 +1293,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -1453,9 +1420,7 @@
         "x": 0,
         "y": 73
       },
-      "hideTimeOverride": false,
       "id": 11,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1472,7 +1437,7 @@
           }
         ]
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1547,7 +1512,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1600,8 +1565,7 @@
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -1728,9 +1692,7 @@
         "x": 0,
         "y": 90
       },
-      "hideTimeOverride": false,
       "id": 14,
-      "links": [],
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1747,7 +1709,7 @@
           }
         ]
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1822,7 +1784,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
           "refId": "A",
           "timeField": "start"
         }
@@ -1848,11 +1810,11 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "gdndZ_Znk"
-      },
       "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -1869,49 +1831,22 @@
         "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \n  \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \n    \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "gdndZ_Znk"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 39,
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
   "tags": ["Globus task"],
   "templating": {
     "list": [
       {
         "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -1919,7 +1854,6 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
-        "hide": 0,
         "includeAll": true,
         "label": "Organization",
         "multi": true,
@@ -1928,16 +1862,11 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": true,
           "text": ["MPS.Physics.High Energy"],
           "value": ["MPS.Physics.High Energy"]
         },
@@ -1946,7 +1875,6 @@
           "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"CS.Network Testing and Monitoring\\\" AND (meta.src_organization:$org OR meta.dst_organization:$org)\"}",
-        "hide": 0,
         "includeAll": false,
         "label": "Discipline",
         "multi": true,
@@ -1955,18 +1883,13 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"-meta.scireg.src.discipline:\\\"CS.Network Testing and Monitoring\\\" AND (meta.src_organization:$org OR meta.dst_organization:$org)\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -1982,18 +1905,13 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -2010,39 +1928,38 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"meta.src.community\",\"query\":\"meta.src_organization:$org OR meta.dst_organization:$org\"}",
+        "includeAll": true,
+        "label": "Community",
+        "multi": true,
+        "name": "community",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"meta.src.community\",\"query\":\"meta.src_organization:$org OR meta.dst_organization:$org\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-7d",
-    "to": "now"
+    "from": "2025-05-15T18:42:35.207Z",
+    "to": "2025-05-22T18:42:35.207Z"
   },
-  "timeRangeUpdatedDuringEditOrView": false,
-  "timepicker": {
-    "hidden": false,
-    "refresh_intervals": [
-      "5s",
-      "10s",
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
-  },
+  "timepicker": {},
   "timezone": "",
   "title": "What are the Globus tasks by science discipline?",
   "uid": "WNn1qyaia",
-  "version": 1,
+  "version": 8,
   "weekStart": ""
 }

@@ -25,14 +25,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 125,
+  "id": 88,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 4,
@@ -47,41 +46,11 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ccenter style=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003ch1\u003e\u003cb\u003eTop Talkers Over Time\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eThis dashboard displays top sending and receiving Organizations over time, ranked by flow data volume.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003eAll times are displayed in browser local time.\u003c/center\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
-        "mode": "html"
+        "content": "\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eTop Talkers Over Time\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard displays top sending and receiving Organizations over time, ranked by flow data volume.\u003c/li\u003e\n  \u003cli\u003eSelect an organization from the list above, or start typing the name of the specific organization since the dropdown menu will only show 1000 results at a time.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e",
+        "mode": "markdown"
       },
-      "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:25",
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto",
-                "min_doc_count": 0,
-                "trimEdges": 0
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
-          },
-          "metrics": [
-            {
-              "$$hashKey": "object:23",
-              "field": "select field",
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
+      "pluginVersion": "11.5.4",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -93,8 +62,7 @@
       "fieldConfig": {
         "defaults": {
           "mappings": [],
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -104,9 +72,7 @@
         "x": 0,
         "y": 4
       },
-      "header1": "Source Organization",
       "id": 2,
-      "num_top_talkers": "10",
       "options": {
         "headerText": "Organization",
         "labelMargin": 300,
@@ -114,6 +80,7 @@
         "tooltipMetric": "Value",
         "txtSize": 12
       },
+      "pluginVersion": "1.1.3",
       "targets": [
         {
           "bucketAggs": [
@@ -161,7 +128,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:$org",
+          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:$org AND meta.src.community:$community",
           "refId": "A",
           "timeField": "start"
         }
@@ -177,8 +144,7 @@
       "fieldConfig": {
         "defaults": {
           "mappings": [],
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -188,9 +154,7 @@
         "x": 0,
         "y": 21
       },
-      "header1": "Destination Organization",
       "id": 3,
-      "num_top_talkers": 10,
       "options": {
         "headerText": "Organization",
         "labelMargin": 300,
@@ -198,6 +162,7 @@
         "tooltipMetric": "Value",
         "txtSize": 12
       },
+      "pluginVersion": "1.1.3",
       "targets": [
         {
           "bucketAggs": [
@@ -245,7 +210,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.src_organization:$org",
+          "query": "meta.sensor_id:$Sensors AND meta.src_organization:$org AND meta.dst.community:$community",
           "refId": "A",
           "timeField": "start"
         }
@@ -254,11 +219,11 @@
       "type": "netsage-bumpchart-panel"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "gdndZ_Znk"
-      },
       "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 3,
         "w": 24,
@@ -276,48 +241,21 @@
         "mode": "html"
       },
       "pluginVersion": "10.3.4",
-      "targets": [
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "start",
-              "id": "2",
-              "settings": {
-                "interval": "auto"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "gdndZ_Znk"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
+      "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
+  "preload": false,
   "refresh": "",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": ["Flow Data"],
   "templating": {
     "list": [
       {
         "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -325,7 +263,6 @@
           "uid": "u1Gafq5Vz"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "Sensors",
@@ -333,23 +270,17 @@
         "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "auto": false,
         "auto_count": 30,
         "auto_min": "10s",
         "current": {
-          "selected": false,
           "text": "14d",
           "value": "14d"
         },
-        "hide": 0,
         "label": "Days per Interval",
         "name": "Interval",
         "options": [
@@ -374,50 +305,59 @@
             "value": "30d"
           }
         ],
-        "query": "1d, 7d, 14d, 30d",
-        "queryValue": "",
+        "query": "1d,7d,14d,30d",
         "refresh": 2,
-        "skipUrlSync": false,
         "type": "interval"
       },
       {
         "allValue": "*",
         "current": {
-          "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "elasticsearch",
           "uid": "u1Gafq5Vz"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
-        "hide": 0,
         "includeAll": true,
         "label": "Organization(s)",
-        "multi": false,
         "name": "org",
         "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": false,
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "u1Gafq5Vz"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
+        "includeAll": true,
+        "label": "Community",
+        "multi": true,
+        "name": "community",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
           "text": "1",
           "value": "1"
         },
         "hide": 2,
         "includeAll": false,
         "label": "Number of Top Talkers to Display",
-        "multi": false,
         "name": "num_lines",
         "options": [
           {
@@ -472,7 +412,6 @@
           }
         ],
         "query": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
-        "skipUrlSync": false,
         "type": "custom"
       }
     ]
@@ -481,7 +420,6 @@
     "from": "now-3M",
     "to": "now"
   },
-  "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
     "refresh_intervals": [
       "10s",
@@ -493,12 +431,11 @@
       "1h",
       "2h",
       "1d"
-    ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    ]
   },
   "timezone": "",
   "title": "Who are the top talkers over time?",
   "uid": "b35BWxAZz",
-  "version": 1,
+  "version": 6,
   "weekStart": ""
 }

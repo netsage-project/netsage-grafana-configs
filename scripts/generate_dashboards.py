@@ -17,6 +17,9 @@
 #      what-is-the-current-state-of-the-network.json
 #
 #  maybe handle:
+#    reformate help text at top of page. See routine 'reformat_content' to use as a starting point.
+#
+#  maybe handle:
 #    - currently this file is hardcoded to TACC: what-are-the-top-globus-tasks-by-organization.json:
 #        "value": "AND (!(meta.src_organization:\"Texas Advanced Computing Center (TACC)\" AND meta.dst_organization:\"Texas Advanced Computing Center (TACC)\"))"
 #        currently TACC (and ORNL) is usually the top site, so OK to use TACC as the default everywhere?
@@ -26,6 +29,8 @@ import os
 import argparse
 import re
 import json
+from bs4 import BeautifulSoup
+import html
 
 # Global file skip list: the code below does not work on these (for now)
 skip_files = [
@@ -108,6 +113,49 @@ def update_text_value_fields(dash, default_src, filepath):
     except Exception as e:
         print(f"Error processing templating section in {filepath}: {e}")
     return changed
+
+
+def reformat_content(data):
+    """
+    Takes a JSON-like dict with a 'content' field containing HTML,
+    reformats it by:
+    - Removing <center> tags.
+    - Wrapping items in <li> inside a <blockquote>.
+    - Keeping the heading <h1> and font color styling.
+    - Returns a new dict with the reformatted 'content'.
+
+    Sample use:     new_data = reformat_content(original_data)
+    """
+    # Unescape unicode HTML entities
+    html_content = html.unescape(data.get("content", ""))
+
+    # Parse with BeautifulSoup
+    soup = BeautifulSoup(html_content, "html.parser")
+
+    # Extract the first <h1> inside <center> for the title
+    title_tag = soup.find('h1')
+    if not title_tag:
+        raise ValueError("No <h1> tag found in content")
+
+    # Extract text from the remaining <center> tags into <li> items
+    li_items = []
+    for center_tag in soup.find_all('center'):
+        # Skip if this <center> has the <h1> (the title)
+        if center_tag.find('h1'):
+            continue
+        # Clean text and wrap in <li>
+        text = center_tag.get_text(strip=True)
+        if text:  # skip empty centers
+            li_items.append(f"<li>{text}")
+
+    # Build the new HTML structure
+    new_html = f'<font color="#5794f2"><blockquote>{str(title_tag)}'
+    new_html += ''.join(li_items)
+    new_html += '</blockquote>'
+
+    # Return the new JSON structure
+    return {"content": new_html}
+
 
 def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org):
     changed = False

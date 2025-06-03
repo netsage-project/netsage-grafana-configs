@@ -150,7 +150,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -261,7 +261,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -367,7 +367,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -724,7 +724,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -801,7 +801,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -809,8 +810,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -830,6 +830,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -864,7 +865,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -893,7 +894,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -901,8 +903,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -922,6 +923,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -951,7 +953,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -980,7 +982,7 @@
         "content": "\u003ccenter style=\"margin-top:35px;\"\u003e\u003ch1\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1008,7 +1010,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1020,8 +1023,7 @@
               }
             ]
           },
-          "unit": "locale",
-          "unitScale": true
+          "unit": "locale"
         },
         "overrides": []
       },
@@ -1041,6 +1043,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -1051,7 +1054,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1081,7 +1084,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1113,7 +1116,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1125,8 +1129,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -1146,6 +1149,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["sum"],
           "fields": "",
@@ -1156,7 +1160,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1191,7 +1195,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1223,7 +1227,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -1235,8 +1240,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -1256,6 +1260,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": ["mean"],
           "fields": "",
@@ -1266,7 +1271,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "bucketAggs": [
@@ -1296,7 +1301,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1326,15 +1331,15 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unitScale": true
+          }
         },
         "overrides": [
           {
@@ -1504,7 +1509,7 @@
           }
         ]
       },
-      "pluginVersion": "10.3.4",
+      "pluginVersion": "11.5.4",
       "targets": [
         {
           "alias": "",
@@ -1648,7 +1653,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1723,7 +1728,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1731,8 +1737,7 @@
               }
             ]
           },
-          "unit": "decbytes",
-          "unitScale": true
+          "unit": "decbytes"
         },
         "overrides": []
       },
@@ -1752,6 +1757,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1786,7 +1792,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1815,7 +1821,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1823,8 +1830,7 @@
               }
             ]
           },
-          "unit": "bps",
-          "unitScale": true
+          "unit": "bps"
         },
         "overrides": []
       },
@@ -1844,6 +1850,7 @@
         "showValueIndicator": false,
         "to": "0"
       },
+      "pluginVersion": "2.0.1",
       "targets": [
         {
           "bucketAggs": [
@@ -1873,7 +1880,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1882,31 +1889,18 @@
       "type": "marcusolsson-hourly-heatmap-panel"
     },
     {
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 3,
         "w": 24,
         "x": 0,
         "y": 90
       },
-      "id": 64,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e \n  \u003cimg style=\"margin-left:10px\" src=\"/public/img/nsf.jpg\" width=50 height=50\u003e \n    \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.nsf.gov/awardsearch/showAward?AWD_ID=2328479\"\u003e 2328479 \u003c/a\u003e \n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\" src=\"/public/img/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://drive.google.com/file/d/19ljTq4xztalXyz5DhTfyjUMO1q4s0mYR/view\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
-        "mode": "html"
+      "id": 65,
+      "libraryPanel": {
+        "name": "NetSage Footer",
+        "uid": "eenrqb0bexx4wb"
       },
-      "pluginVersion": "10.3.4",
-      "title": "",
-      "transparent": true,
-      "type": "text"
+      "title": ""
     }
   ],
   "preload": false,
@@ -1937,9 +1931,29 @@
         "type": "query"
       },
       {
-        "allValue": "*",
         "current": {
           "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
+        "includeAll": true,
+        "label": "Source Resource",
+        "multi": true,
+        "name": "src_resource",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": ["All"],
           "value": ["$__all"]
         },
         "datasource": {
@@ -1953,6 +1967,26 @@
         "name": "dest",
         "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
+        "includeAll": true,
+        "label": "Destination Resource",
+        "multi": true,
+        "name": "dst_resource",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
         "refresh": 2,
         "regex": "",
         "type": "query"
@@ -1979,26 +2013,6 @@
         ],
         "query": "Yes : *, No : (-Private)",
         "type": "custom"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
-        "includeAll": true,
-        "label": "Resource",
-        "multi": true,
-        "name": "resource",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
       },
       {
         "current": {
@@ -2086,13 +2100,13 @@
     ]
   },
   "time": {
-    "from": "2025-05-14T14:42:48.919Z",
-    "to": "2025-05-21T14:42:48.919Z"
+    "from": "2025-05-26T20:09:12.478Z",
+    "to": "2025-06-02T20:09:12.478Z"
   },
   "timepicker": {},
   "timezone": "",
   "title": "What do individual Globus tasks by organization look like?",
   "uid": "-l3_u8nWl",
-  "version": 14,
+  "version": 18,
   "weekStart": ""
 }

@@ -33,7 +33,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 5,
         "w": 20,
         "x": 2,
         "y": 0
@@ -45,7 +45,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Globus Task Information\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows additional information for the selected task.\n   \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
+        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Globus Task Information\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows additional information for the selected task.\n  \u003cli\u003eThe first table shows information common to both endpoints, while the other tables show information unique to each endpoint.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.4",
@@ -79,7 +79,7 @@
         "h": 3,
         "w": 4,
         "x": 7,
-        "y": 6
+        "y": 5
       },
       "id": 7,
       "options": {
@@ -186,7 +186,7 @@
         "h": 3,
         "w": 5,
         "x": 13,
-        "y": 6
+        "y": 5
       },
       "id": 9,
       "maxDataPoints": 100,
@@ -333,7 +333,7 @@
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 8
       },
       "id": 15,
       "options": {
@@ -521,10 +521,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 13,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 12
       },
       "id": 4,
       "options": {
@@ -757,6 +757,7 @@
               "Count": true,
               "end": true,
               "meta.id": true,
+              "meta.src.community": true,
               "start": true
             },
             "includeByName": {},
@@ -866,10 +867,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 13,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 12
       },
       "id": 13,
       "options": {
@@ -1101,6 +1102,7 @@
               "Average values.num_packets": true,
               "Count": true,
               "end": true,
+              "meta.dst.community": true,
               "meta.id": true,
               "start": true
             },
@@ -1173,6 +1175,204 @@
       "type": "table"
     },
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 25,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 4,
+          "refId": "A"
+        }
+      ],
+      "title": "Source Community Information",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count": true,
+              "end": true,
+              "meta.scireg.src.discipline": true,
+              "meta.scireg.src.project_names": true,
+              "meta.src_asn": true,
+              "meta.src_country_name": true,
+              "meta.src_ip": true,
+              "meta.src_location.data_source": true,
+              "meta.src_location.lat": true,
+              "meta.src_location.lon": true,
+              "meta.src_organization": true,
+              "meta.src_port": true,
+              "meta.src_resource_name": true,
+              "start": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "meta.src.community": "Source Communities"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 26,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 13,
+          "refId": "A"
+        }
+      ],
+      "title": "Destination Community Information",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Count": true,
+              "end": true,
+              "meta.dst_asn": true,
+              "meta.dst_country_name": true,
+              "meta.dst_ip": true,
+              "meta.dst_location.data_source": true,
+              "meta.dst_location.lat": true,
+              "meta.dst_location.lon": true,
+              "meta.dst_organization": true,
+              "meta.dst_port": true,
+              "meta.dst_resource_name": true,
+              "meta.scireg.dst.discipline": true,
+              "meta.scireg.dst.project_names": true,
+              "meta.scireg.src.discipline": true,
+              "meta.scireg.src.project_names": true,
+              "meta.src_asn": true,
+              "meta.src_country_name": true,
+              "meta.src_ip": true,
+              "meta.src_location.data_source": true,
+              "meta.src_location.lat": true,
+              "meta.src_location.lon": true,
+              "meta.src_organization": true,
+              "meta.src_port": true,
+              "meta.src_resource_name": true,
+              "start": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "meta.dst.community": "Destination Communities",
+              "meta.src.community": "Source Community"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
       "description": "",
       "fieldConfig": {
         "defaults": {},
@@ -1182,7 +1382,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 32
       },
       "id": 24,
       "options": {
@@ -1208,8 +1408,8 @@
     "list": [
       {
         "current": {
-          "text": "blank",
-          "value": "blank"
+          "text": "bb9d3488e98982d2b67aa1a551f9bd46d82892a691bba69425beb3358b6c167e",
+          "value": "bb9d3488e98982d2b67aa1a551f9bd46d82892a691bba69425beb3358b6c167e"
         },
         "hide": 2,
         "includeAll": false,
@@ -1217,7 +1417,7 @@
         "name": "flow",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "blank",
             "value": "blank"
           }
@@ -1227,8 +1427,8 @@
       },
       {
         "current": {
-          "text": "blank",
-          "value": "blank"
+          "text": "1748788074595",
+          "value": "1748788074595"
         },
         "hide": 2,
         "includeAll": false,
@@ -1236,7 +1436,7 @@
         "name": "timestamp",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "blank",
             "value": "blank"
           }
@@ -1247,13 +1447,13 @@
     ]
   },
   "time": {
-    "from": "2025-05-26T19:51:53.985Z",
-    "to": "2025-06-02T19:51:53.985Z"
+    "from": "2025-05-29T18:05:32.904Z",
+    "to": "2025-06-05T18:05:32.904Z"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Individual Globus Task Information",
   "uid": "nzuMyBcGl",
-  "version": 8,
+  "version": 10,
   "weekStart": ""
 }

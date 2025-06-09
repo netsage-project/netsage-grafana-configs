@@ -36,7 +36,10 @@ import html
 skip_files = [
 # Flow files
     'individual-flow-information.json',
+    'what-are-the-flows-by-project.json',
+    'what-are-the-globus-tasks-by-project.json',
     'what-are-the-top-flows-by-country.json',
+    'what-are-the-flows-by-project-resources.json',
     'what-are-the-top-globus-tasks-by-country.json',
     'individual-globus-task-information.json',
 # SNMP files
@@ -56,6 +59,7 @@ org_list = [
     ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)'),
     ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)'),
     ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)'),
+    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii'),
     ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)'),
     ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)'),
     ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)')
@@ -193,7 +197,7 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
         # Write updated file if changed
         if changed:
-            outdir = os.path.join('output', org_abbr)
+            outdir = os.path.join('../output', org_abbr)
             os.makedirs(outdir, exist_ok=True)
             outpath = os.path.join(outdir, os.path.basename(filepath))
             with open(outpath, 'w', encoding='utf-8') as f:

@@ -102,7 +102,7 @@ def update_text_value_fields(dash, default_src, filepath):
                 current = item["current"]
                 old_text = current.get("text")
                 old_value = current.get("value")
-                if isinstance(old_text, str) and old_text != default_src:
+                if isinstance(old_text, str) and old_text != default_src and old_text != "All":
                     print(f'[FILE: {filepath}]\nOLD text: {old_text}\nNEW text: {default_src}\n')
                     current["text"] = default_src
                     changed = True

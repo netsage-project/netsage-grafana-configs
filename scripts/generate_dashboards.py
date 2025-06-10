@@ -31,6 +31,8 @@ import re
 import json
 from bs4 import BeautifulSoup
 import html
+import sys
+import shutil
 
 # Global file skip list: the code below does not work on these (for now)
 skip_files = [
@@ -64,6 +66,24 @@ org_list = [
     ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)'),
     ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)')
 ]
+
+def clone_dashboards(input_dir, output_dir):
+
+    print (f"Copying files from {input_dir} to {output_dir}")
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    for root, dirs, files in os.walk(input_dir):
+        # Compute destination path
+        relative_path = os.path.relpath(root, input_dir)
+        dest_root = os.path.join(output_dir, relative_path)
+        os.makedirs(dest_root, exist_ok=True)
+
+        for file in files:
+            src_file = os.path.join(root, file)
+            dest_file = os.path.join(dest_root, file)
+            #print(f"Copying file {src_file} to {dest_file}")
+            shutil.copy2(src_file, dest_file)
 
 def initialize_org_dict(org_list):
     org_dict = {}
@@ -161,7 +181,7 @@ def reformat_content(data):
     return {"content": new_html}
 
 
-def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org):
+def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org, output_dir):
     changed = False
 
     try:
@@ -197,9 +217,9 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
         # Write updated file if changed
         if changed:
-            outdir = os.path.join('../output', org_abbr)
-            os.makedirs(outdir, exist_ok=True)
-            outpath = os.path.join(outdir, os.path.basename(filepath))
+            parent_dir = os.path.basename(os.path.dirname(filepath))
+            filename = os.path.basename(filepath)
+            outpath = os.path.join(output_dir, parent_dir, filename)
             with open(outpath, 'w', encoding='utf-8') as f:
                 f.write(data)
             print(f'Updated file written to: {outpath}\n')
@@ -210,6 +230,9 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
         print(f"Failed to process file {filepath}: {e}")
 
 def main():
+    input_dir = 'dashboards'
+    output_dir = 'output'
+
     parser = argparse.ArgumentParser(description='Replace Netsage strings in dashboard JSON files.')
     parser.add_argument('-org', required=True, help='Organization abbreviation (e.g., TACC, FRGP, GPN).')
     args = parser.parse_args()
@@ -226,12 +249,20 @@ def main():
     default_src = org_dict[org_abbr]['default_src']
     netsage_org_part = extract_parenthesized_part(org_full_name)
     encoded_org = encode_org_for_url(org_full_name)
+    output_dir = os.path.join('../', output_dir, org_abbr)
 
-    for root, _, files in os.walk('.'):
+    if not os.path.isdir(input_dir):
+        print(f"Error: Input directory '{input_dir}' not found.", file=sys.stderr)
+        sys.exit(1)
+
+    clone_dashboards(input_dir, output_dir)
+
+    for root, _, files in os.walk(input_dir):
         for filename in files:
-            if filename.endswith('.json') and filename not in skip_files:
-                filepath = os.path.join(root, filename)
-                process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org)
+           if filename.endswith('.json') and filename not in skip_files:
+              filepath = os.path.join(root, filename)
+              process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org, output_dir)
+
 
 if __name__ == '__main__':
     main()

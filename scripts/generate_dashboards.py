@@ -274,7 +274,7 @@ def main():
         sys.exit(1)
 
     # also copy over defaults file
-    df = secure_dir+'/defaults.json'
+    df = secure_dir+'/default.json'
     print (f"copying file {defaults_file} to {df}")
     shutil.copy(defaults_file, df)
 

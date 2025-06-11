@@ -266,7 +266,7 @@ def main():
     secure_dir = output_dir + '/secure'
     try:
         os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-        os.makedirs(os.path.dirname(secure_dir), exist_ok=True)
+        os.makedirs(secure_dir, exist_ok=True)  # this creates secure_dir itself
         print("Created directory: ", secure_dir)
     except OSError as e:
         print(f"Error creating directory: {e}", file=sys.stderr)

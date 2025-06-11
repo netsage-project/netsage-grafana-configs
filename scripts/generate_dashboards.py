@@ -235,13 +235,14 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
 def main():
     input_dir = 'dashboards'
-    output_dir = 'output'
     defaults_file = '/var/opt/netsage-grafana/default.json'
 
     parser = argparse.ArgumentParser(description='Replace Netsage strings in dashboard JSON files.')
     parser.add_argument('-org', required=True, help='Organization abbreviation (e.g., TACC, FRGP, GPN).')
+    parser.add_argument('-o', '--output-dir', required=True, help='Path to the output directory')
     args = parser.parse_args()
     org_abbr = args.org
+    output_dir = args.output_dir+"/"+org_abbr
 
     org_dict = initialize_org_dict(org_list)
 
@@ -254,19 +255,19 @@ def main():
     default_src = org_dict[org_abbr]['default_src']
     netsage_org_part = extract_parenthesized_part(org_full_name)
     encoded_org = encode_org_for_url(org_full_name)
-    output_dir = os.path.join('../', output_dir, org_abbr)
 
     if not os.path.isdir(input_dir):
         print(f"Error: Input directory '{input_dir}' not found.", file=sys.stderr)
         sys.exit(1)
 
     current_dir = os.getcwd()
+
+    # next do the org from the command line
     clone_dashboards(current_dir, output_dir+'/org_main-org')
     # Create destination directory if it doesn't exist
     secure_dir = output_dir + '/secure'
     try:
-        os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-        os.makedirs(secure_dir, exist_ok=True)  # this creates secure_dir itself
+        os.makedirs(secure_dir, exist_ok=True)  
         print("Created directory: ", secure_dir)
     except OSError as e:
         print(f"Error creating directory: {e}", file=sys.stderr)

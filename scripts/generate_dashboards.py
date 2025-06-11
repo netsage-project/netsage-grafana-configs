@@ -2,7 +2,7 @@
 
 # this script generates updated Grafana files for dashboards based the the TACC dashboards
 #
-# it looks for all files under netsage-grafana-configs/org_1/dashboards with "TACC", and 
+# it looks for all files under netsage-grafana-configs/org_main-org/ with "TACC", and 
 #   replaces "TACC" with the org specifed with the -org argument
 #   output files will be found in directory: output/ORG
 #
@@ -74,6 +74,9 @@ def clone_dashboards(input_dir, output_dir):
         os.makedirs(output_dir)
     
     for root, dirs, files in os.walk(input_dir):
+        # Remove subdirectories with 'Archive' in name from traversal
+        dirs[:] = [d for d in dirs if 'Archive' not in d]
+
         # Compute destination path
         relative_path = os.path.relpath(root, input_dir)
         dest_root = os.path.join(output_dir, relative_path)
@@ -228,10 +231,12 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
     except Exception as e:
         print(f"Failed to process file {filepath}: {e}")
+        sys.exit()
 
 def main():
     input_dir = 'dashboards'
     output_dir = 'output'
+    defaults_file = '/var/opt/netsage-grafana/default.json'
 
     parser = argparse.ArgumentParser(description='Replace Netsage strings in dashboard JSON files.')
     parser.add_argument('-org', required=True, help='Organization abbreviation (e.g., TACC, FRGP, GPN).')
@@ -255,13 +260,31 @@ def main():
         print(f"Error: Input directory '{input_dir}' not found.", file=sys.stderr)
         sys.exit(1)
 
-    clone_dashboards(input_dir, output_dir)
+    current_dir = os.getcwd()
+    clone_dashboards(current_dir, output_dir+'/org_main-org')
+    # Create destination directory if it doesn't exist
+    secure_dir = output_dir + '/secure'
+    try:
+        os.makedirs(os.path.dirname(output_dir), exist_ok=True)
+        os.makedirs(os.path.dirname(secure_dir), exist_ok=True)
+        print("Created directory: ", secure_dir)
+    except OSError as e:
+        print(f"Error creating directory: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # also copy over defaults file
+    df = secure_dir+'/defaults.json'
+    print (f"copying file {defaults_file} to {df}")
+    shutil.copy(defaults_file, df)
 
     for root, _, files in os.walk(input_dir):
+        if 'Archive' in root:
+            continue  # Skip this directory and its subdirectories
+
         for filename in files:
            if filename.endswith('.json') and filename not in skip_files:
               filepath = os.path.join(root, filename)
-              process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org, output_dir)
+              process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org, output_dir+'/org_main-org/dashboards')
 
 
 if __name__ == '__main__':

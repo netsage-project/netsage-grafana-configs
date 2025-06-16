@@ -50,21 +50,22 @@ skip_files = [
     'advanced-flow-analysis.json'
 ]
 
-# list of networks/org abbr, full name, and default src site
+# list of networks/org abbr, full name, default src site, index name, welcome page template
 #     note: default src based on top src for the month or April 2025
 #     note: For FRGP, close 2nd place is NCAR
 #     note: for SCN: top src is actually Google and Akamai, but using top University instead
+
 org_list = [
-    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)'),
-    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)'),
-    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)'),
-    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)'),
-    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)'),
-    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)'),
-    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii'),
-    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)'),
-    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)'),
-    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)')
+    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc', 'welcome-all'),
+    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp', 'welcome-all'),
+    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn', 'welcome-all'),
+    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn', 'welcome-all'),
+    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox', 'welcome-all'),
+    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor', 'welcome-flow'),
+    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren', 'welcome-flow'),
+    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access', 'welcome-flow'),
+    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus', 'welcome-globus'),
+    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc', 'welcome-flow')
 ]
 
 def clone_dashboards(input_dir, output_dir):
@@ -187,19 +188,26 @@ def reformat_content(data):
 def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org, output_dir):
     changed = False
 
+    phrases = [
+        r'Data Sources to TACC',
+        r'TACC Links at a Glance',
+        r'Welcome to Netsage - TACC'
+    ]
+
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             data = f.read()
 
-        # Replace only if both 'Welcome to Netsage' and 'content' are on the line, and replace with org_abbr
-        pattern = r'(.*content.*Welcome to Netsage - )TACC'
+        # Build a regex pattern that matches any of the 'phrases'
+        pattern = r'(' + '|'.join(re.escape(p) for p in phrases) + r')'
+
+        # Perform the replacement
         matches = re.findall(pattern, data)
         if matches:
             for match in matches:
-                old_line = match + 'TACC'
-                new_line = match + org_abbr
-                print(f'[FILE: {filepath}]\nOLD line: {old_line}\nNEW line: {new_line}\n')
-                data = data.replace(old_line, new_line)
+                new_line = match.replace('TACC', org_abbr)
+                print(f'[FILE: {filepath}]\nOLD line: {match}\nNEW line: {new_line}\n')
+                data = data.replace(match, new_line)
             changed = True
 
         # Try parsing JSON and modifying templating.current.text/value

@@ -91,11 +91,14 @@ def clone_dashboards(input_dir, output_dir):
 
 def initialize_org_dict(org_list):
     org_dict = {}
-    for org_abbr, org_name, default_src in org_list:
+    for org_abbr, org_name, default_src, index, welcome in org_list:
         org_dict[org_abbr] = {
             'org_name': org_name,
-            'default_src': default_src
+            'default_src': default_src,
+            'index': index,
+            'default_src': welcome
         }
+    print (org_dict)
     return org_dict
 
 def force_ascii_escape(json_str):

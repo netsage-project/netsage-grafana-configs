@@ -96,9 +96,8 @@ def initialize_org_dict(org_list):
             'org_name': org_name,
             'default_src': default_src,
             'index': index,
-            'default_src': welcome
+            'welcome': welcome
         }
-    print (org_dict)
     return org_dict
 
 def force_ascii_escape(json_str):
@@ -298,6 +297,33 @@ def main():
               filepath = os.path.join(root, filename)
               process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org, output_dir+'/org_main-org/dashboards')
 
+    # Also Walk the output directory to find and modify 'connections/netsage.json'
+    print ("Looking for file connnections/netsage.json to update index...")
+    for root, dirs, files in os.walk(output_dir):
+
+       if 'connections' in dirs:
+           json_path = os.path.join(root, 'connections', 'netsage.json')
+           if os.path.isfile(json_path):
+               try:
+                   with open(json_path, 'r', encoding='utf-8') as f:
+                       data = json.load(f)
+       
+                   # Update index under jsonData
+                   if "jsonData" in data and "index" in data["jsonData"]:
+                       old_index = data["jsonData"]["index"]
+                       new_index = org_dict[org_abbr]["index"]
+                       if old_index != new_index:
+                           data["jsonData"]["index"] = new_index
+                           with open(json_path, "w", encoding="utf-8") as f:
+                               json.dump(data, f, indent=2)
+                           print(f"Updated index from '{old_index}' to '{new_index}' in {json_path}")
+                   else:
+                       print(f"No jsonData.index found in {json_path}")
+
+               except Exception as e:
+                   print(f"[ERROR] Failed to update index in {json_path}: {e}")
+
+    print ("Done.\n")
 
 if __name__ == '__main__':
     main()

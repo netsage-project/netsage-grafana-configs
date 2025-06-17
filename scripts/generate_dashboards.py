@@ -51,21 +51,25 @@ skip_files = [
 ]
 
 # list of networks/org abbr, full name, default src site, index name, welcome page template
+#     note: 3 types of 'welcome' page: all, flow, or globus
+#          - all = flow + snmp + globus
+#          - flow = flow + globus
+#          - globus = globus only
 #     note: default src based on top src for the month or April 2025
 #     note: For FRGP, close 2nd place is NCAR
 #     note: for SCN: top src is actually Google and Akamai, but using top University instead
 
 org_list = [
-    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc', 'welcome-all'),
-    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp', 'welcome-all'),
-    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn', 'welcome-all'),
-    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn', 'welcome-all'),
-    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox', 'welcome-all'),
-    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor', 'welcome-flow'),
-    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren', 'welcome-flow'),
-    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access', 'welcome-flow'),
-    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus', 'welcome-globus'),
-    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc', 'welcome-flow')
+    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc', 'all'),
+    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp', 'all'),
+    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn', 'all'),
+    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn', 'all'),
+    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox', 'all'),
+    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor', 'flow'),
+    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren', 'flow'),
+    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access', 'flow'),
+    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus', 'globus'),
+    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc', 'flow')
 ]
 
 def clone_dashboards(input_dir, output_dir):
@@ -226,7 +230,8 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
                 changed = True
         except Exception as e:
-            print(f"Warning: {filepath} could not be parsed as JSON: {e}")
+            print(f"ERROR: {filepath} could not be parsed as JSON: {e}")
+            sys.exit()
 
         # Write updated file if changed
         if changed:
@@ -271,6 +276,27 @@ def main():
         sys.exit(1)
 
     current_dir = os.getcwd()
+
+    # Copy the correct welcome-*.json file to dashboards/General/welcome.json
+    welcome_type = org_dict[org_abbr]["welcome"]
+    welcome_map = {
+        "globus": "../homepage/welcome-globus.json",
+        "all": "../homepage/welcome-all.json",
+        "flow": "../homepage/welcome-flow.json"
+    }
+
+    if welcome_type in welcome_map:
+        src_welcome = os.path.join(current_dir, welcome_map[welcome_type])
+        dest_welcome = os.path.join(input_dir, "General", "welcome.json")
+        try:
+            os.makedirs(os.path.dirname(dest_welcome), exist_ok=True)
+            shutil.copy2(src_welcome, dest_welcome)
+            print(f"Copied {src_welcome} to {dest_welcome}")
+        except Exception as e:
+            print(f"[ERROR] Failed to copy welcome file: {e}")
+    else:
+        print(f"[ERROR] Unknown welcome type '{welcome_type}' for org {org_abbr}")
+        sys.exit()
 
     # next do the org from the command line
     clone_dashboards(current_dir, output_dir+'/org_main-org')

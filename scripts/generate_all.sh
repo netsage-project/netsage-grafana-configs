@@ -2,7 +2,8 @@
 
 INPUT_DIR="/var/opt/netsage-grafana/netsage-grafana-configs/org_main-org"
 BIN_DIR="/home/tierney/src/netsage-grafana-configs/scripts"
-OUTPUT_DIR="/var/opt/netsage-grafana/netsage-grafana-configs/output"
+OUTPUT_DIR="/var/opt/netsage-grafana/netsage-grafana-configs/test"
+#OUTPUT_DIR="/var/opt/netsage-grafana/netsage-grafana-configs/output"
 LOG_DIR="/tmp"
 
 cd "$INPUT_DIR" || exit 1

@@ -60,16 +60,17 @@ skip_files = [
 #     note: for SCN: top src is actually Google and Akamai, but using top University instead
 
 org_list = [
-    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc', 'all'),
-    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp', 'all'),
-    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn', 'all'),
-    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn', 'all'),
-    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox', 'all'),
-    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor', 'flow'),
-    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren', 'flow'),
-    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access', 'flow'),
-    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus', 'globus'),
-    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc', 'flow')
+    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc-*', 'all'),
+    ('TACC-internal', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-internal-tacc-*', 'all'),
+    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp-*', 'all'),
+    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn-*', 'all'),
+    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn-*', 'all'),
+    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox-*', 'all'),
+    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor-*', 'flow'),
+    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren-*', 'flow'),
+    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access-*', 'flow'),
+    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus-*', 'globus'),
+    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc-*', 'flow')
 ]
 
 def clone_dashboards(input_dir, output_dir):
@@ -326,28 +327,34 @@ def main():
     # Also Walk the output directory to find and modify 'connections/netsage.json'
     print ("Looking for file connnections/netsage.json to update index...")
     for root, dirs, files in os.walk(output_dir):
-
        if 'connections' in dirs:
-           json_path = os.path.join(root, 'connections', 'netsage.json')
-           if os.path.isfile(json_path):
-               try:
-                   with open(json_path, 'r', encoding='utf-8') as f:
-                       data = json.load(f)
-       
-                   # Update index under jsonData
-                   if "jsonData" in data and "index" in data["jsonData"]:
-                       old_index = data["jsonData"]["index"]
-                       new_index = org_dict[org_abbr]["index"]
-                       if old_index != new_index:
-                           data["jsonData"]["index"] = new_index
-                           with open(json_path, "w", encoding="utf-8") as f:
-                               json.dump(data, f, indent=2)
-                           print(f"Updated index from '{old_index}' to '{new_index}' in {json_path}")
-                   else:
-                       print(f"No jsonData.index found in {json_path}")
+           for filename in ['netsage.json', 'netsage-snmp.json']:
+               json_path = os.path.join(root, 'connections', filename)
+               if os.path.isfile(json_path):
+                   try:
+                       with open(json_path, 'r', encoding='utf-8') as f:
+                           data = json.load(f)
+   
+                       if "jsonData" in data and "index" in data["jsonData"]:
+                           old_index = data["jsonData"]["index"]
+                           base_index = org_dict[org_abbr]["index"]
+   
+                           if filename == "netsage-snmp.json":
+                               new_index = base_index.replace("netsage", "snmp")
+                           else:
+                               new_index = base_index
+   
+                           if old_index != new_index:
+                               data["jsonData"]["index"] = new_index
+                               with open(json_path, "w", encoding="utf-8") as f:
+                                   json.dump(data, f, indent=2)
+                               print(f"Updated index from '{old_index}' to '{new_index}' in {json_path}")
+                       else:
+                           print(f"No jsonData.index found in {json_path}")
+   
+                   except Exception as e:
+                       print(f"[ERROR] Failed to update index in {json_path}: {e}")
 
-               except Exception as e:
-                   print(f"[ERROR] Failed to update index in {json_path}: {e}")
 
     print ("Done.\n")
 

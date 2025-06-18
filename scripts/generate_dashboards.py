@@ -60,17 +60,17 @@ skip_files = [
 #     note: for SCN: top src is actually Google and Akamai, but using top University instead
 
 org_list = [
-    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc-*', 'all'),
-    ('TACC-internal', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-internal-tacc-*', 'all'),
-    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp-*', 'all'),
-    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn-*', 'all'),
-    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn-*', 'all'),
-    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox-*', 'all'),
-    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor-*', 'flow'),
-    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren-*', 'flow'),
-    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access-*', 'flow'),
-    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus-*', 'globus'),
-    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc-*', 'flow')
+    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc*', 'all'),
+    ('TACC-internal', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-internal-tacc*', 'all'),
+    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp*', 'all'),
+    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn*', 'all'),
+    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn*', 'all'),
+    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox*', 'all'),
+    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor*', 'flow'),
+    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren*', 'flow'),
+    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access*', 'flow'),
+    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus*', 'globus'),
+    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc*', 'flow')
 ]
 
 def clone_dashboards(input_dir, output_dir):

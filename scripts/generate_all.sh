@@ -8,6 +8,7 @@ LOG_DIR="/tmp"
 cd "$INPUT_DIR" || exit 1
 
 $BIN_DIR/generate_dashboards.py -org TACC -o "$OUTPUT_DIR" > "$LOG_DIR/TACC.out"
+$BIN_DIR/generate_dashboards.py -org TACC-dev -o "$OUTPUT_DIR" > "$LOG_DIR/TACC-dev.out"
 $BIN_DIR/generate_dashboards.py -org TACC-internal -o "$OUTPUT_DIR" > "$LOG_DIR/TACC-internal.out"
 $BIN_DIR/generate_dashboards.py -org GPN -o "$OUTPUT_DIR" > "$LOG_DIR/GPN.out"
 $BIN_DIR/generate_dashboards.py -org FRGP -o "$OUTPUT_DIR" > "$LOG_DIR/FRGP.out"

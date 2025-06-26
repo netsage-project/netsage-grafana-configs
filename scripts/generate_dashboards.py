@@ -61,6 +61,7 @@ skip_files = [
 
 org_list = [
     ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc*', 'all'),
+    ('TACC-dev', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc*', 'all'),
     ('TACC-internal', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-internal-tacc*', 'all'),
     ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp*', 'all'),
     ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn*', 'all'),

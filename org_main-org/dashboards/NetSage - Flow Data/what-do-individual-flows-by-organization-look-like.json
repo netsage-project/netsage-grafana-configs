@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 86,
+  "id": 13,
   "links": [],
   "panels": [
     {
@@ -46,10 +46,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Flows\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows per-flow level data, given a particular source and destination organization.\u003c/li\u003e\n  \u003cli\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for the top 1000 largest flows.\u003c/li\u003e\n  \u003cli\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n",
+        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Flows\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows per-flow level data, given a particular source and destination organization.\u003c/li\u003e\n  \u003cli\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) for the top 1000 largest flows.\u003c/li\u003e\n  \u003cli\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n",
         "mode": "markdown"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -120,7 +120,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -150,7 +150,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -226,7 +226,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -261,7 +261,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -337,7 +337,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -367,7 +367,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -397,7 +397,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -415,7 +415,8 @@
               "type": "auto"
             },
             "filterable": false,
-            "inspect": false
+            "inspect": false,
+            "minWidth": 80
           },
           "mappings": [],
           "thresholds": {
@@ -446,10 +447,6 @@
               {
                 "id": "decimals",
                 "value": 1
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               }
             ]
           },
@@ -462,10 +459,6 @@
               {
                 "id": "unit",
                 "value": "bps"
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               }
             ]
           },
@@ -478,34 +471,6 @@
               {
                 "id": "unit",
                 "value": "dthms"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Retransmits"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 0
-              },
-              {
-                "id": "noValue",
-                "value": "-"
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               }
             ]
           },
@@ -534,36 +499,36 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Source Subnet"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Destination Subnet"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
               "options": "Flow ID"
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 1
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.minWidth",
+                "value": 300
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Destination Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.minWidth",
+                "value": 300
               }
             ]
           }
@@ -592,7 +557,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "alias": "",
@@ -687,6 +652,28 @@
                 "size": "0"
               },
               "type": "terms"
+            },
+            {
+              "field": "meta.src_port",
+              "id": "34",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "meta.dst_port",
+              "id": "35",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
             }
           ],
           "datasource": {
@@ -725,7 +712,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -742,15 +729,17 @@
             },
             "includeByName": {},
             "indexByName": {
-              "Average": 8,
-              "Max": 7,
-              "Sum": 6,
+              "Average": 10,
+              "Max": 9,
+              "Sum": 8,
               "end": 1,
-              "es_doc_id": 9,
-              "meta.dst_ip": 5,
-              "meta.dst_organization": 4,
+              "es_doc_id": 11,
+              "meta.dst_ip": 6,
+              "meta.dst_organization": 5,
+              "meta.dst_port": 7,
               "meta.src_ip": 3,
               "meta.src_organization": 2,
+              "meta.src_port": 4,
               "start": 0
             },
             "renameByName": {
@@ -766,9 +755,11 @@
               "es_doc_id": "Flow ID",
               "meta.dst_ip": "Destination Subnet",
               "meta.dst_organization": "Destination Organization",
+              "meta.dst_port": "Destination Port",
               "meta.id": "Flow ID",
               "meta.src_ip": "Source Subnet",
               "meta.src_organization": "Source Organization",
+              "meta.src_port": "Source Port",
               "start": "Timestamp"
             }
           }
@@ -861,7 +852,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -949,7 +940,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -978,7 +969,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eSummary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1041,7 +1032,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1084,7 +1075,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1160,7 +1151,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1203,7 +1194,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1279,7 +1270,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1322,7 +1313,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.sensor_id:$sensors AND meta.src_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1361,7 +1352,7 @@
         "content": "\u003ccenter style=\"margin-top:35px;\"\u003e\u003ch1\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1432,7 +1423,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1462,7 +1453,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1538,7 +1529,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1573,7 +1564,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1649,7 +1640,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1679,7 +1670,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1701,7 +1692,8 @@
               "type": "auto"
             },
             "filterable": false,
-            "inspect": false
+            "inspect": false,
+            "minWidth": 80
           },
           "mappings": [],
           "thresholds": {
@@ -1754,10 +1746,6 @@
               {
                 "id": "decimals",
                 "value": 1
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               }
             ]
           },
@@ -1774,10 +1762,6 @@
               {
                 "id": "decimals",
                 "value": 1
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               }
             ]
           },
@@ -1800,60 +1784,36 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Retransmits"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 0
-              },
-              {
-                "id": "noValue",
-                "value": "-"
-              },
-              {
-                "id": "custom.width",
-                "value": 115
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Source Subnet"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Destination Subnet"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
               "options": "Flow ID"
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 1
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.minWidth",
+                "value": 300
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Destination Organization"
+            },
+            "properties": [
+              {
+                "id": "custom.minWidth",
+                "value": 300
               }
             ]
           }
@@ -1882,7 +1842,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "alias": "",
@@ -1977,6 +1937,28 @@
                 "size": "0"
               },
               "type": "terms"
+            },
+            {
+              "field": "meta.src_port",
+              "id": "34",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "meta.dst_port",
+              "id": "35",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
             }
           ],
           "datasource": {
@@ -2015,7 +1997,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$src_resource AND meta.sensor_id:$sensors AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2032,15 +2014,17 @@
             },
             "includeByName": {},
             "indexByName": {
-              "Average": 8,
-              "Max": 7,
-              "Sum": 6,
+              "Average": 10,
+              "Max": 9,
+              "Sum": 8,
               "end": 1,
-              "es_doc_id": 9,
-              "meta.dst_ip": 5,
-              "meta.dst_organization": 4,
+              "es_doc_id": 11,
+              "meta.dst_ip": 6,
+              "meta.dst_organization": 5,
+              "meta.dst_port": 7,
               "meta.src_ip": 3,
               "meta.src_organization": 2,
+              "meta.src_port": 4,
               "start": 0
             },
             "renameByName": {
@@ -2055,9 +2039,11 @@
               "es_doc_id": "Flow ID",
               "meta.dst_ip": "Destination Subnet",
               "meta.dst_organization": "Destination Organization",
+              "meta.dst_port": "Destination Port",
               "meta.id": "Flow ID",
               "meta.src_ip": "Source Subnet",
               "meta.src_organization": "Source Organization",
+              "meta.src_port": "Source Port",
               "start": "Timestamp"
             }
           }
@@ -2086,8 +2072,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2150,7 +2135,7 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2179,8 +2164,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2238,7 +2222,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2267,7 +2251,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003e Reverse Summary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2288,8 +2272,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2330,7 +2313,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2373,7 +2356,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2407,8 +2390,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2449,7 +2431,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2492,7 +2474,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2526,8 +2508,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2568,7 +2549,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2611,7 +2592,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.sensor_id:$sensors AND meta.dst_resource_name:$src_resource AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2650,7 +2631,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eNetSage Sensors Observing Selected Organization Flows\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2675,8 +2656,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2769,7 +2749,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2836,7 +2816,7 @@
               "type": "count"
             }
           ],
-          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND ((meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource) OR (meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource)) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND (meta.src_resource_name:$src_resource OR meta.dst_resource_name:$src_resource) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -2885,7 +2865,7 @@
         "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e\n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\"\" src=\"https://netsage-project.github.io/Science-Registry/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://netsage-project.github.io/Science-Registry/EPOC-Data-Privacy.pdf\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2908,7 +2888,7 @@
           "uid": "u1Gafq5Vz"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
-        "includeAll": true,
+        "includeAll": false,
         "label": "Source Organization",
         "multi": true,
         "name": "src",
@@ -2955,26 +2935,6 @@
         "name": "dest",
         "options": [],
         "query": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "u1Gafq5Vz"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
-        "includeAll": true,
-        "label": "Destination Resource",
-        "multi": true,
-        "name": "dst_resource",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
         "refresh": 2,
         "regex": "",
         "type": "query"
@@ -3071,6 +3031,6 @@
   "timezone": "",
   "title": "What do individual flows by organization look like?",
   "uid": "-l3_u8nWk",
-  "version": 11,
+  "version": 4,
   "weekStart": ""
 }

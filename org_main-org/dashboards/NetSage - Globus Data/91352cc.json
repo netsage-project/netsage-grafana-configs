@@ -1,0 +1,1983 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "$$hashKey": "object:19",
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 21,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\n\u003cblockquote style=\"margin-top: 0px; padding-right: 10%\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Globus Tasks by Country\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows per-Globus Task level data, given a particular source and destination country.\n\u003c/li\u003e\n  \u003cli\u003e  The table shows the volume, rate, and duration (in hours, minutes and seconds) for each task. \n  \u003c/li\u003e\n  \u003cli\u003e  Click on the timestamp of an individual flow to show more detailed information about that task.\n  \u003c/li\u003e\n \u003cli\u003eGlobus Task datasets have been de-identified. Globus Tasks where the organization is not disclosed are marked \"Private\". \u003c/li\u003e\n\u003cli\u003ePrivate Task data rates and totals are available via the toggle at the top of this dashboard. \u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n\u003ccenter style=\"margin-top: 0px\"\u003e\n  \u003c/center\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\n  ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.5",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 5,
+        "y": 6
+      },
+      "id": 3,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:70",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:68",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "# Tasks",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 10,
+        "y": 6
+      },
+      "id": 4,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:183",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:181",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Volume",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 15,
+        "y": 6
+      },
+      "id": 5,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["mean"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:259",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:257",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Avg Rate",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.5",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Timestamp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this task",
+                    "url": "/grafana/d/nzuMyBcGl/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Volume"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dthms"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source Subnet"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Destination Subnet"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.num_files"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Volume"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:421",
+              "fake": true,
+              "field": "es_doc_id",
+              "id": "15",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "12",
+                "size": "1000"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:422",
+              "fake": true,
+              "field": "start",
+              "id": "16",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:423",
+              "fake": true,
+              "field": "end",
+              "id": "17",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:424",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "28",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:425",
+              "fake": true,
+              "field": "meta.src_ip",
+              "id": "32",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:426",
+              "fake": true,
+              "field": "meta.dst_organization",
+              "id": "33",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:427",
+              "fake": true,
+              "field": "meta.dst_ip",
+              "id": "31",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "meta.num_files",
+              "id": "34",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:409",
+              "field": "values.num_bits",
+              "id": "12",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:410",
+              "field": "values.bits_per_second",
+              "id": "30",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.duration",
+              "id": "35",
+              "type": "avg"
+            }
+          ],
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Tasks from Source to Destination",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "end": true,
+              "meta.id": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Average": 9,
+              "Max": 7,
+              "Sum": 6,
+              "end": 1,
+              "es_doc_id": 10,
+              "meta.dst_ip": 5,
+              "meta.dst_organization": 4,
+              "meta.num_files": 8,
+              "meta.src_ip": 3,
+              "meta.src_organization": 2,
+              "start": 0
+            },
+            "renameByName": {
+              "Average": "Duration",
+              "Average values.duration": "Duration",
+              "Average values.num_packets": "",
+              "Average values.tcp_rexmit_pkts": "Retransmits",
+              "Average values.tcp_rtt_min": "RTT",
+              "Max": "Rate",
+              "Sum": "Total Volume",
+              "_id": "",
+              "end": "",
+              "es_doc_id": "Flow ID",
+              "meta.dst_ip": "Destination Subnet",
+              "meta.dst_organization": "Destination Organization",
+              "meta.id": "Flow ID",
+              "meta.num_files": "# Files",
+              "meta.src_ip": "Source Subnet",
+              "meta.src_organization": "Source Organization",
+              "start": "Timestamp"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "sum",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 9,
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "pluginVersion": "2.0.1",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1174",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:1172",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Volume",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 10,
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "pluginVersion": "2.0.1",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:85",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:83",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.src_country_name:$src AND meta.dst_country_name:$dest AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Rate",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 16,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ccenter style=\"margin-top:20px;\"\u003e\u003ch1 style=\"margin-top:35px;\"\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 5,
+        "y": 50
+      },
+      "id": 17,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:875",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:873",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "# Tasks",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 10,
+        "y": 50
+      },
+      "id": 18,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:992",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:990",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Volume",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 15,
+        "y": 50
+      },
+      "id": 19,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["mean"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1068",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:1066",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Avg Rate",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Timestamp"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show more information about this task",
+                    "url": "/grafana/d/nzuMyBcGl/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Volume"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dthms"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Source Subnet"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Destination Subnet"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Flow ID"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.num_files"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 53
+      },
+      "id": 33,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Volume"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:421",
+              "fake": true,
+              "field": "es_doc_id",
+              "id": "15",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "12",
+                "size": "1000"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:422",
+              "fake": true,
+              "field": "start",
+              "id": "16",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "asc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:423",
+              "fake": true,
+              "field": "end",
+              "id": "17",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:424",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "28",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:425",
+              "fake": true,
+              "field": "meta.src_ip",
+              "id": "32",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:426",
+              "fake": true,
+              "field": "meta.dst_organization",
+              "id": "33",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:427",
+              "fake": true,
+              "field": "meta.dst_ip",
+              "id": "31",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "meta.num_files",
+              "id": "34",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:409",
+              "field": "values.num_bits",
+              "id": "12",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:410",
+              "field": "values.bits_per_second",
+              "id": "30",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "field": "values.duration",
+              "id": "35",
+              "type": "avg"
+            }
+          ],
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Tasks from Source to Destination (Reverse)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "end": true,
+              "meta.id": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Max": 7,
+              "Sum": 6,
+              "end": 1,
+              "es_doc_id": 9,
+              "meta.dst_ip": 5,
+              "meta.dst_organization": 4,
+              "meta.num_files": 8,
+              "meta.src_ip": 3,
+              "meta.src_organization": 2,
+              "start": 0
+            },
+            "renameByName": {
+              "Average": "Duration",
+              "Average values.duration": "Duration",
+              "Average values.num_packets": "",
+              "Average values.tcp_rexmit_pkts": "Retransmits",
+              "Average values.tcp_rtt_min": "RTT",
+              "Max": "Rate",
+              "Sum": "Total Volume",
+              "_id": "",
+              "end": "",
+              "es_doc_id": "Flow ID",
+              "meta.dst_ip": "Destination Subnet",
+              "meta.dst_organization": "Destination Organization",
+              "meta.id": "Flow ID",
+              "meta.num_files": "# Files",
+              "meta.src_ip": "Source Subnet",
+              "meta.src_organization": "Source Organization",
+              "start": "Timestamp"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "sum",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 22,
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "pluginVersion": "2.0.1",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:209",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:207",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Volume (Reverse)",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "calculation": "mean",
+            "colorPalette": "interpolateBlues",
+            "colorSpace": "rgb",
+            "groupBy": 60,
+            "invertPalette": false,
+            "nullValueColor": "rgb(169, 169, 169)"
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 79
+      },
+      "id": 23,
+      "options": {
+        "from": "0",
+        "legendGradientQuality": "high",
+        "showCellBorder": false,
+        "showLegend": false,
+        "showTooltip": true,
+        "showValueIndicator": false,
+        "to": "0"
+      },
+      "pluginVersion": "2.0.1",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:235",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 1,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:233",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            }
+          ],
+          "query": "meta.src_country_name:$dest AND meta.dst_country_name:$src AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Rate (Reverse)",
+      "type": "marcusolsson-hourly-heatmap-panel"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 90
+      },
+      "id": 36,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e\n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\"\" src=\"https://netsage-project.github.io/Science-Registry/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://netsage-project.github.io/Science-Registry/EPOC-Data-Privacy.pdf\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": ["Globus task"],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.flow_type\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Flow Type",
+        "multi": true,
+        "name": "flow_type",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.flow_type\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": ["United States"],
+          "value": ["United States"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "includeAll": true,
+        "label": "Source Country",
+        "multi": true,
+        "name": "src",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000} ",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "includeAll": true,
+        "label": "Destination Country",
+        "multi": true,
+        "name": "dest",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_country_name\", \"query\": \"meta.flow_type:$flow_type\", \"size\": 100000}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Sensors",
+        "multi": true,
+        "name": "sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "label": "Subnet",
+        "name": "subnet",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "(-Private)",
+          "value": "(-Private)"
+        },
+        "description": "",
+        "includeAll": false,
+        "label": "Display Private Tasks",
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-Private)"
+          }
+        ],
+        "query": "Yes : *, No : (-Private)",
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2025-05-26T19:51:53.985Z",
+    "to": "2025-06-02T19:51:53.985Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "What do individual Globus tasks by country look like?",
+  "uid": "80IVUboZa",
+  "version": 3,
+  "weekStart": ""
+}

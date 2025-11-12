@@ -1,0 +1,1965 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "$$hashKey": "object:13",
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 24,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 20,
+        "x": 2,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\n\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eGlobus Task Data by Science Discipline\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows information related to science disciplines for top talkers using the \u003ca href=\"https://netsage.io/scienceregistry/\"\u003eNetSage Science Registry\u003c/a\u003e.\u003c/li\u003e\n  \u003cli\u003eThe Sankey graph shows the top ten source organizations by volume for the selected discipline(s) and organization(s) and their associated top three destination organizations, with thicker lines for larger task volumes.\u003c/li\u003e\n   \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 1,
+        "y": 7
+      },
+      "id": 3,
+      "interval": "1h",
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:41",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:39",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src_org_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Task Volume for Selected Science Disciplines and Organizations",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 12,
+        "y": 7
+      },
+      "id": 4,
+      "interval": "1h",
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:88",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:86",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.scireg.src.discipline:$discipline OR meta.scireg.dst.discipline:$discipline) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Task Volume for Selected Organizations",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 1,
+        "y": 10
+      },
+      "id": 5,
+      "interval": "1h",
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:115",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:113",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Task Volume for Selected Organizations",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 11,
+        "x": 12,
+        "y": 10
+      },
+      "id": 6,
+      "interval": "1h",
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:146",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:144",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Number of Tasks for Selected Organizations",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": false,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": ["sum"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:91",
+              "fake": true,
+              "field": "meta.scireg.src.discipline",
+              "id": "5",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:145",
+              "fake": true,
+              "field": "start",
+              "id": "4",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:49",
+              "field": "values.num_bits",
+              "id": "1",
+              "meta": {},
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.src.discipline:$discipline",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Task Volume by Source of Selected Disciplines",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": false,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": ["sum"],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:91",
+              "fake": true,
+              "field": "meta.scireg.dst.discipline",
+              "id": "5",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:145",
+              "fake": true,
+              "field": "start",
+              "id": "4",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:49",
+              "field": "values.num_bits",
+              "id": "1",
+              "meta": {},
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.scireg.dst.discipline:$discipline",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Task Volume by Destination of Selected Disciplines",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eTop Science Talkers\u003c/center\u003e\u003c/h3\u003e\n",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 31,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 9,
+      "options": {
+        "color": "blue",
+        "iteration": 7,
+        "labelSize": 14,
+        "monochrome": false,
+        "nodeColor": "grey",
+        "nodePadding": 30,
+        "nodeWidth": 30
+      },
+      "pluginVersion": "1.1.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:164",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "Unknown",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:165",
+              "fake": true,
+              "field": "meta.scireg.src.discipline",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "UNK-SRC",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:166",
+              "field": "meta.dst_organization",
+              "id": "2",
+              "settings": {
+                "min_doc_count": 1,
+                "missing": "UNK-DST",
+                "order": "desc",
+                "orderBy": "1",
+                "size": "3"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:162",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors \u0026\u0026 meta.scireg.src.discipline:$discipline \u0026\u0026 (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "meta.dst_organization": "Destination Organization",
+              "meta.dst_preferred_org": "Destination",
+              "meta.scireg.src.discipline": "Science Discipline",
+              "meta.src_organization": "Source Organization",
+              "meta.src_preferred_org": "Source"
+            }
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "netsage-sankey-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__data.fields[\"meta.src_preferred_org\"]} and ${__data.fields[\"meta.dst_preferred_org\"]}",
+                    "url": "/grafana/d/-l3_u8nWl/?var-src=${__data.fields[\"meta.src_preferred_org\"]}\u0026var-dst=${__data.fields[\"meta.dst_preferred_org\"]}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__data.fields[\"meta.src_preferred_org\"]} and ${__data.fields[\"meta.dst_preferred_org\"]}",
+                    "url": "/grafana/d/-l3_u8nWk/individual-flows?var-src=${__data.fields[\"meta.src_preferred_org\"]}\u0026var-dst=${__data.fields[\"meta.dst_preferred_org\"]}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "custom.width",
+                "value": 103
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:774",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "8",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "50"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:775",
+              "fake": true,
+              "field": "meta.dst_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "50"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:764",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:765",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:766",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:767",
+              "field": "values.bits_per_second",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:768",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND meta.scireg.src.discipline:$discipline AND (meta.src_organization:$org OR meta.dst_organization:$org) AND (meta.src.community:$community OR meta.dst.community:$community) AND (meta.src_organization:(-UNAVAILABLE) AND meta.dst_organization:(-UNAVAILABLE)) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Top Pairs",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Sum": 2,
+              "meta.dst_preferred_org": 1,
+              "meta.src_preferred_org": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 68
+      },
+      "id": 10,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cbr/\u003e\u003cbr/\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003ch1\u003e\u003ccenter\u003eSummary of All Disciplines\u003c/center\u003e\u003c/h1\u003e\n\u003ccenter style=\"margin-top: 0px\"\u003e\u003ccenter\u003eOnly tasks where source or destination has been tagged with a science discipline \u003cbr\u003e\nfrom the Science Registry are counted.\n\u003c/center\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.scireg.src.discipline"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Discipline"
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 73
+      },
+      "id": 11,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:242",
+              "fake": true,
+              "field": "meta.scireg.src.discipline",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:232",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:233",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:234",
+              "field": "meta.id",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:235",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:236",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Task Statistics by Source Discipline",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 3,
+              "Count": 5,
+              "Max values.bits_per_second": 4,
+              "Max values.num_bits": 2,
+              "Sum": 1,
+              "meta.scireg.src.discipline": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.scireg.dst.discipline"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Discipline"
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "decimals",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 90
+      },
+      "id": 14,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:242",
+              "fake": true,
+              "field": "meta.scireg.dst.discipline",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:232",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:233",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:234",
+              "field": "meta.id",
+              "id": "9",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:235",
+              "field": "values.bits_per_second",
+              "id": "10",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:236",
+              "field": "values.bits_per_second",
+              "id": "11",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (meta.src_organization:$org OR meta.dst_organization:$org)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Task Statistics by Destination Discipline",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 3,
+              "Count": 5,
+              "Max values.bits_per_second": 4,
+              "Max values.num_bits": 2,
+              "Sum": 1,
+              "meta.scireg.dst.discipline": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 107
+      },
+      "id": 25,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e\n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\"\" src=\"https://netsage-project.github.io/Science-Registry/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://netsage-project.github.io/Science-Registry/EPOC-Data-Privacy.pdf\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": ["Globus task"],
+  "templating": {
+    "list": [
+      {
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
+        "includeAll": true,
+        "label": "Organization",
+        "multi": true,
+        "name": "org",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"size\": 10000000}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": ["MPS.Physics.High Energy"],
+          "value": ["MPS.Physics.High Energy"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"meta.src_organization:$org OR meta.dst_organization:$org\"}",
+        "includeAll": false,
+        "label": "Discipline",
+        "multi": true,
+        "name": "discipline",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.scireg.src.discipline\", \"query\":\"meta.src_organization:$org OR meta.dst_organization:$org\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "hide": 2,
+        "includeAll": true,
+        "multi": true,
+        "name": "Sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "*",
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
+        "hide": 2,
+        "includeAll": true,
+        "label": "Scope",
+        "multi": true,
+        "name": "country_scope",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"meta.src.community\",\"query\":\"meta.src_organization:$org OR meta.dst_organization:$org\"}",
+        "includeAll": true,
+        "label": "Community",
+        "multi": true,
+        "name": "community",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"meta.src.community\",\"query\":\"meta.src_organization:$org OR meta.dst_organization:$org\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2025-05-29T15:30:24.269Z",
+    "to": "2025-06-05T15:30:24.269Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "What are the Globus tasks by science discipline?",
+  "uid": "WNn1qyaia",
+  "version": 1,
+  "weekStart": ""
+}

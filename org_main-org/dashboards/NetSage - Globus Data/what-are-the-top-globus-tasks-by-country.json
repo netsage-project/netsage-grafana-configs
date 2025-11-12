@@ -1,0 +1,2165 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "$$hashKey": "object:3892",
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations \u0026 Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 25,
+  "links": [],
+  "panels": [
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 22,
+        "x": 2,
+        "y": 0
+      },
+      "id": 44,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv style=\"float:right;\"\u003e\n\u003ca class=\"btn navbar-button gf-timepicker-nav-btn\" target=\"_blank\" href=\"/grafana/d/80IVUboZa/?var-src=$Country\u0026from=${__from}\u0026to=${__to}\" style=\"text-decoration: none; color: #52545C; font-weight: bold; background-color: white; padding: 0px; height: 32px; border: 1px solid #C7D0D9; display: flex; margin-top: 0px; padding-left: 5px; padding-right: 5px;\"\u003eSee Individual Tasks for $Country\u003c/a\u003e\n\u003c/div\u003e\n\u003cbr clear=\"both\" /\u003e\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px; font-size: 0.9em\"\u003e\n  \u003ch1\u003e\u003cb\u003eGlobus Tasks by Country\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows top tasks with the specified country as the source or destination.\u003c/li\u003e\n  \u003cli\u003eThe first set of tables show top twenty data by both volume and rate and then the set of top pairs of organizations sharing data.\u003c/li\u003e\n  \u003cli\u003eOther statistics about data to and from this country, including a Sankey graph for the top sources by volume, is then listed.\u003c/li\u003e\n \u003cli\u003eGlobus Task datasets have been de-identified. Globus Tasks where the organization is not disclosed are marked \"Private\". \u003c/li\u003e\n\u003cli\u003ePrivate Task data rates and totals are available via the toggle at the top of this dashboard. \u003c/li\u003e\n\u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.5",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 30,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch1\u003e\u003ccenter\u003eTop Destinations from $Country\u003c/center\u003e\u003c/h1\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.5",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 8,
+        "y": 9
+      },
+      "id": 4711117,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4162",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:4160",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.src.community:$community AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Number of Tasks",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 13,
+        "y": 9
+      },
+      "id": 4711119,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4238",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:4236",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.src.community:$community AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Volume",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5795f24d",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_country_name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Country"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/80IVUboZa/?var-dest=${__value.text:percentencode}\u0026var-src=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Volume"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 21,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Volume"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:3972",
+              "fake": true,
+              "field": "meta.dst_country_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "25"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:3966",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:3967",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:3968",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.src.community:$community AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Volume",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5795f24d",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_country_name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Country"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/80IVUboZa/?var-dest=${__value.text:percentencode}\u0026var-src=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 28,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Peak"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4339",
+              "fake": true,
+              "field": "meta.dst_country_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "25"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:4333",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:4334",
+              "field": "values.bits_per_second",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:4335",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.src.community:$community AND meta.sensor_id:$Sensors AND -meta.dst_country_name:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Rate",
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 31,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch1\u003e\u003ccenter style=\"margin-top: 35px;\"\u003eTop Sources to $Country\u003c/center\u003e\u003c/h1\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 8,
+        "y": 39
+      },
+      "id": 4711121,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4752",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:4750",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.dst.community:$community AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Number of Tasks",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 13,
+        "y": 39
+      },
+      "id": 4711123,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4828",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:4826",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.dst.community:$community AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\" AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Volume",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5795f24d"
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_country_name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Country"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/80IVUboZa/?var-src=${__value.text:percentencode}\u0026var-dest=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Volume"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Job"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 32,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Volume"
+          }
+        ]
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4562",
+              "fake": true,
+              "field": "meta.src_country_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "25"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:4556",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:4557",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:4558",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.dst.community:$community AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Volume",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#5795f24d"
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_country_name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Country"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/80IVUboZa/?var-src=${__value.text:percentencode}\u0026var-dest=${Country:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 500
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "gradient",
+                  "type": "gauge"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "Peak"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 54
+      },
+      "id": 33,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:4913",
+              "fake": true,
+              "field": "meta.src_country_name",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "25"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "dsType": "elasticsearch",
+          "metrics": [
+            {
+              "$$hashKey": "object:4907",
+              "field": "values.bits_per_second",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:4908",
+              "field": "values.bits_per_second",
+              "id": "5",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:4909",
+              "field": "meta.id",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.dst.community:$community AND meta.sensor_id:$Sensors AND -meta.src_country_name:\"\"",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "By Rate",
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 66
+      },
+      "id": 4711111,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Endpoint Pairs in $Country\u003c/center\u003e\u003c/h1\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.src_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "meta.dst_organization"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Destination Organization"
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "See more information about ${__value.text}",
+                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Vol."
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.num_bits"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Largest Task"
+              },
+              {
+                "id": "unit",
+                "value": "decbytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 103
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "# Tasks"
+              },
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.width",
+                "value": 100
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Avg Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Max values.bits_per_second"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Peak Rate"
+              },
+              {
+                "id": "unit",
+                "value": "bps"
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 69
+      },
+      "id": 4711,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total Vol."
+          }
+        ]
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:1281",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "4",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:1282",
+              "fake": true,
+              "field": "meta.dst_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "hide": false,
+          "metrics": [
+            {
+              "$$hashKey": "object:1271",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "sum"
+            },
+            {
+              "$$hashKey": "object:1272",
+              "field": "values.num_bits",
+              "id": "5",
+              "inlineScript": "_value / 8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value / 8"
+                }
+              },
+              "type": "max"
+            },
+            {
+              "$$hashKey": "object:1273",
+              "field": "meta.id",
+              "id": "6",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            },
+            {
+              "$$hashKey": "object:1274",
+              "field": "values.bits_per_second",
+              "id": "7",
+              "meta": {},
+              "settings": {},
+              "type": "avg"
+            },
+            {
+              "$$hashKey": "object:1275",
+              "field": "values.bits_per_second",
+              "id": "8",
+              "meta": {},
+              "settings": {},
+              "type": "max"
+            }
+          ],
+          "query": "meta.sensor_id:$Sensors AND ( meta.src_country_name:$Country OR meta.dst_country_name:$Country ) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community)",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": " ",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "Average": 4,
+              "Count": 6,
+              "Max values.bits_per_second": 5,
+              "Max values.num_bits": 3,
+              "Sum": 2,
+              "meta.dst_organization": 1,
+              "meta.src_organization": 0
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 84
+      },
+      "id": 4711115,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eSankey Graph of Globus Tasks in and out of $Country\u003c/center\u003e\u003c/h3\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 0,
+        "y": 86
+      },
+      "id": 4711113,
+      "options": {
+        "color": "blue",
+        "iteration": 7,
+        "labelSize": 14,
+        "monochrome": false,
+        "nodeColor": "grey",
+        "nodePadding": 30,
+        "nodeWidth": 30,
+        "valueField": "Sum"
+      },
+      "pluginVersion": "1.1.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:996",
+              "fake": true,
+              "field": "meta.src_country_name",
+              "id": "6",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:997",
+              "fake": true,
+              "field": "meta.dst_country_name",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "1"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:994",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8e+9",
+              "meta": {},
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.dst_country_name:$Country AND meta.src_organization:${confidential:raw} AND meta.dst.community:$community AND meta.sensor_id:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "To $Country",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "meta.dst_country_name": "Destination",
+              "meta.src_country_name": "Source"
+            }
+          }
+        }
+      ],
+      "type": "netsage-sankey-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 12,
+        "x": 12,
+        "y": 86
+      },
+      "id": 4711114,
+      "options": {
+        "color": "blue",
+        "iteration": 7,
+        "labelSize": 14,
+        "monochrome": false,
+        "nodeColor": "grey",
+        "nodePadding": 30,
+        "nodeWidth": 30,
+        "valueField": "Sum"
+      },
+      "pluginVersion": "1.1.3",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:2457",
+              "fake": true,
+              "field": "meta.src_country_name",
+              "id": "6",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:2458",
+              "fake": true,
+              "field": "meta.dst_country_name",
+              "id": "5",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:2455",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8e+9",
+              "meta": {},
+              "settings": {
+                "script": "_value/8"
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "meta.src_country_name:$Country AND meta.dst_organization:${confidential:raw} AND meta.src.community:$community AND meta.sensor_id:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "From $Country",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "meta.dst_country_name": "Destination",
+              "meta.src_country_name": "Source"
+            }
+          }
+        }
+      ],
+      "type": "netsage-sankey-panel"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue"
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 101
+      },
+      "id": 42,
+      "interval": "1h",
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["sum"]
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.4",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:625",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:623",
+              "field": "meta.id",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "count"
+            }
+          ],
+          "query": "(meta.src_country_name:$Country OR meta.dst_country_name:$Country) AND ( meta.src_organization:${confidential:raw} AND (meta.src.community:$community OR meta.dst.community:$community) AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$Sensors",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Total Number of Globus Tasks Distributed Over Selected Time Period",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 104
+      },
+      "id": 4711126,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e\n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\"\" src=\"https://netsage-project.github.io/Science-Registry/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://netsage-project.github.io/Science-Registry/EPOC-Data-Privacy.pdf\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
+        "mode": "html"
+      },
+      "pluginVersion": "11.5.4",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": ["Globus task"],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": ["United States"],
+          "value": ["United States"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_country_name\", \"size\": 5000}",
+        "includeAll": true,
+        "multi": true,
+        "name": "Country",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.src_country_name\", \"size\": 5000}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "hide": 2,
+        "includeAll": true,
+        "multi": true,
+        "name": "Sensors",
+        "options": [],
+        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "(-Private)",
+          "value": "(-Private)"
+        },
+        "includeAll": false,
+        "label": "Display Private Tasks",
+        "name": "confidential",
+        "options": [
+          {
+            "selected": false,
+            "text": "Yes",
+            "value": "*"
+          },
+          {
+            "selected": true,
+            "text": "No",
+            "value": "(-Private)"
+          }
+        ],
+        "query": "Yes : *, No : (-Private)",
+        "type": "custom"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": ["$__all"]
+        },
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        },
+        "definition": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
+        "includeAll": true,
+        "label": "Community",
+        "multi": true,
+        "name": "community",
+        "options": [],
+        "query": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
+        "refresh": 2,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2025-05-29T15:30:24.269Z",
+    "to": "2025-06-05T15:30:24.269Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "What are the top Globus tasks by country?",
+  "uid": "fgrOzz_ml",
+  "version": 2,
+  "weekStart": ""
+}

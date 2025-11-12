@@ -2,7 +2,7 @@
 
 # this script generates updated Grafana files for dashboards based the the TACC dashboards
 #
-# it looks for all files under netsage-grafana-configs/org_1/dashboards with "TACC", and 
+# it looks for all files under netsage-grafana-configs/org_main-org/ with "TACC", and 
 #   replaces "TACC" with the org specifed with the -org argument
 #   output files will be found in directory: output/ORG
 #
@@ -31,12 +31,17 @@ import re
 import json
 from bs4 import BeautifulSoup
 import html
+import sys
+import shutil
 
 # Global file skip list: the code below does not work on these (for now)
 skip_files = [
 # Flow files
     'individual-flow-information.json',
+    'what-are-the-flows-by-project.json',
+    'what-are-the-globus-tasks-by-project.json',
     'what-are-the-top-flows-by-country.json',
+    'what-are-the-flows-by-project-resources.json',
     'what-are-the-top-globus-tasks-by-country.json',
     'individual-globus-task-information.json',
 # SNMP files
@@ -45,28 +50,59 @@ skip_files = [
     'advanced-flow-analysis.json'
 ]
 
-# list of networks/org abbr, full name, and default src site
+# list of networks/org abbr, full name, default src site, index name, welcome page template
+#     note: 3 types of 'welcome' page: all, flow, or globus
+#          - all = flow + snmp + globus
+#          - flow = flow + globus
+#          - globus = globus only
 #     note: default src based on top src for the month or April 2025
 #     note: For FRGP, close 2nd place is NCAR
 #     note: for SCN: top src is actually Google and Akamai, but using top University instead
+
 org_list = [
-    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)'),
-    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)'),
-    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)'),
-    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)'),
-    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)'),
-    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)'),
-    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)'),
-    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)'),
-    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)')
+    ('TACC', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc*', 'all'),
+    ('TACC-dev', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-tacc*', 'all'),
+    ('TACC-internal', 'Texas Advanced Computing Center', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-internal-tacc*', 'all'),
+    ('FRGP', 'Front Range GigaPop', 'National Oceanic and Atmospheric Administration (NOAA)', 'tacc-netsage-frgp*', 'all'),
+    ('GPN', 'Great Plains Network', 'National Center for Atmospheric Research (NCAR)', 'tacc-netsage-gpn*', 'all'),
+    ('LEARN', 'Lonestar Education and Research Network', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-learn*', 'all'),
+    ('SoX', 'Southern Crossroads Network', 'Georgia Institute of Technology (GT)', 'tacc-netsage-sox*', 'all'),
+    ('SCN', 'Sun Corridor Network', 'University of Arizona (UArizona)', 'tacc-netsage-suncorridor*', 'flow'),
+    ('PIREN', 'Pacific Islands Research and Education Network', 'University of Hawaii', 'tacc-netsage-piren*', 'flow'),
+    ('ACCESS', 'ACCESS Project', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-access*', 'flow'),
+    ('Globus', 'All Globus Transfers', 'Oak Ridge National Laboratory (ORNL)', 'tacc-netsage-globus*', 'globus'),
+    ('EPOC', 'All Data Collected by NetSage', 'Texas Advanced Computing Center (TACC)', 'tacc-netsage-epoc*', 'flow')
 ]
+
+def clone_dashboards(input_dir, output_dir):
+
+    print (f"Copying files from {input_dir} to {output_dir}")
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    for root, dirs, files in os.walk(input_dir):
+        # Remove subdirectories with 'Archive' in name from traversal
+        dirs[:] = [d for d in dirs if 'Archive' not in d]
+
+        # Compute destination path
+        relative_path = os.path.relpath(root, input_dir)
+        dest_root = os.path.join(output_dir, relative_path)
+        os.makedirs(dest_root, exist_ok=True)
+
+        for file in files:
+            src_file = os.path.join(root, file)
+            dest_file = os.path.join(dest_root, file)
+            #print(f"Copying file {src_file} to {dest_file}")
+            shutil.copy2(src_file, dest_file)
 
 def initialize_org_dict(org_list):
     org_dict = {}
-    for org_abbr, org_name, default_src in org_list:
+    for org_abbr, org_name, default_src, index, welcome in org_list:
         org_dict[org_abbr] = {
             'org_name': org_name,
-            'default_src': default_src
+            'default_src': default_src,
+            'index': index,
+            'welcome': welcome
         }
     return org_dict
 
@@ -102,7 +138,7 @@ def update_text_value_fields(dash, default_src, filepath):
                 current = item["current"]
                 old_text = current.get("text")
                 old_value = current.get("value")
-                if isinstance(old_text, str) and old_text != default_src:
+                if isinstance(old_text, str) and old_text != default_src and old_text != "All":
                     print(f'[FILE: {filepath}]\nOLD text: {old_text}\nNEW text: {default_src}\n')
                     current["text"] = default_src
                     changed = True
@@ -157,22 +193,29 @@ def reformat_content(data):
     return {"content": new_html}
 
 
-def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org):
+def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org, output_dir):
     changed = False
+
+    phrases = [
+        r'Data Sources to TACC',
+        r'TACC Links at a Glance',
+        r'Welcome to Netsage - TACC'
+    ]
 
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             data = f.read()
 
-        # Replace only if both 'Welcome to Netsage' and 'content' are on the line, and replace with org_abbr
-        pattern = r'(.*content.*Welcome to Netsage - )TACC'
+        # Build a regex pattern that matches any of the 'phrases'
+        pattern = r'(' + '|'.join(re.escape(p) for p in phrases) + r')'
+
+        # Perform the replacement
         matches = re.findall(pattern, data)
         if matches:
             for match in matches:
-                old_line = match + 'TACC'
-                new_line = match + org_abbr
-                print(f'[FILE: {filepath}]\nOLD line: {old_line}\nNEW line: {new_line}\n')
-                data = data.replace(old_line, new_line)
+                new_line = match.replace('TACC', org_abbr)
+                print(f'[FILE: {filepath}]\nOLD line: {match}\nNEW line: {new_line}\n')
+                data = data.replace(match, new_line)
             changed = True
 
         # Try parsing JSON and modifying templating.current.text/value
@@ -189,13 +232,14 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
                 changed = True
         except Exception as e:
-            print(f"Warning: {filepath} could not be parsed as JSON: {e}")
+            print(f"ERROR: {filepath} could not be parsed as JSON: {e}")
+            sys.exit()
 
         # Write updated file if changed
         if changed:
-            outdir = os.path.join('output', org_abbr)
-            os.makedirs(outdir, exist_ok=True)
-            outpath = os.path.join(outdir, os.path.basename(filepath))
+            parent_dir = os.path.basename(os.path.dirname(filepath))
+            filename = os.path.basename(filepath)
+            outpath = os.path.join(output_dir, parent_dir, filename)
             with open(outpath, 'w', encoding='utf-8') as f:
                 f.write(data)
             print(f'Updated file written to: {outpath}\n')
@@ -204,12 +248,18 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
 
     except Exception as e:
         print(f"Failed to process file {filepath}: {e}")
+        sys.exit()
 
 def main():
+    input_dir = 'dashboards'
+    defaults_file = '/var/opt/netsage-grafana/default.json'
+
     parser = argparse.ArgumentParser(description='Replace Netsage strings in dashboard JSON files.')
     parser.add_argument('-org', required=True, help='Organization abbreviation (e.g., TACC, FRGP, GPN).')
+    parser.add_argument('-o', '--output-dir', required=True, help='Path to the output directory')
     args = parser.parse_args()
     org_abbr = args.org
+    output_dir = args.output_dir+"/"+org_abbr
 
     org_dict = initialize_org_dict(org_list)
 
@@ -223,12 +273,93 @@ def main():
     netsage_org_part = extract_parenthesized_part(org_full_name)
     encoded_org = encode_org_for_url(org_full_name)
 
-    for root, _, files in os.walk('.'):
+    if not os.path.isdir(input_dir):
+        print(f"Error: Input directory '{input_dir}' not found.", file=sys.stderr)
+        sys.exit(1)
+
+    current_dir = os.getcwd()
+
+    # Copy the correct welcome-*.json file to dashboards/General/welcome.json
+    welcome_type = org_dict[org_abbr]["welcome"]
+    welcome_map = {
+        "globus": "../homepage/welcome-globus.json",
+        "all": "../homepage/welcome-all.json",
+        "flow": "../homepage/welcome-flow.json"
+    }
+
+    if welcome_type in welcome_map:
+        src_welcome = os.path.join(current_dir, welcome_map[welcome_type])
+        dest_welcome = os.path.join(input_dir, "General", "welcome.json")
+        try:
+            os.makedirs(os.path.dirname(dest_welcome), exist_ok=True)
+            shutil.copy2(src_welcome, dest_welcome)
+            print(f"Copied {src_welcome} to {dest_welcome}")
+        except Exception as e:
+            print(f"[ERROR] Failed to copy welcome file: {e}")
+    else:
+        print(f"[ERROR] Unknown welcome type '{welcome_type}' for org {org_abbr}")
+        sys.exit()
+
+    # next do the org from the command line
+    clone_dashboards(current_dir, output_dir+'/org_main-org')
+    # Create destination directory if it doesn't exist
+    secure_dir = output_dir + '/secure'
+    try:
+        os.makedirs(secure_dir, exist_ok=True)  
+        print("Created directory: ", secure_dir)
+    except OSError as e:
+        print(f"Error creating directory: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # also copy over defaults file
+    df = secure_dir+'/default.json'
+    print (f"copying file {defaults_file} to {df}")
+    shutil.copy(defaults_file, df)
+
+    for root, _, files in os.walk(input_dir):
+        if 'Archive' in root:
+            continue  # Skip this directory and its subdirectories
+
         for filename in files:
-            if filename.endswith('.json') and filename not in skip_files:
-                filepath = os.path.join(root, filename)
-                process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org)
+           if filename.endswith('.json') and filename not in skip_files:
+              filepath = os.path.join(root, filename)
+              process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org, output_dir+'/org_main-org/dashboards')
+
+    # Also Walk the output directory to find and modify 'connections/netsage.json'
+    print ("Looking for file connnections/netsage.json to update index...")
+    for root, dirs, files in os.walk(output_dir):
+       if 'connections' in dirs:
+           for filename in ['netsage.json', 'netsage-snmp.json']:
+               json_path = os.path.join(root, 'connections', filename)
+               if os.path.isfile(json_path):
+                   try:
+                       with open(json_path, 'r', encoding='utf-8') as f:
+                           data = json.load(f)
+   
+                       if "jsonData" in data and "index" in data["jsonData"]:
+                           old_index = data["jsonData"]["index"]
+                           base_index = org_dict[org_abbr]["index"]
+   
+                           if filename == "netsage-snmp.json":
+                               new_index = base_index.replace("netsage", "snmp")
+                           else:
+                               new_index = base_index
+   
+                           if old_index != new_index:
+                               data["jsonData"]["index"] = new_index
+                               with open(json_path, "w", encoding="utf-8") as f:
+                                   json.dump(data, f, indent=2)
+                               print(f"Updated index from '{old_index}' to '{new_index}' in {json_path}")
+                       else:
+                           print(f"No jsonData.index found in {json_path}")
+   
+                   except Exception as e:
+                       print(f"[ERROR] Failed to update index in {json_path}: {e}")
+
+
+    print ("Done.\n")
 
 if __name__ == '__main__':
     main()
+
 

@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 12,
+  "id": 13,
   "links": [],
   "panels": [
     {
@@ -49,7 +49,7 @@
         "content": "\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Flows per Country\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows per-flow level data, given a particular source and destination country.\u003c/li\u003e\n  \u003cli\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) and retransmits for each flow.\u003c/li\u003e\n  \u003cli\u003eClick on the timestamp of an individual flow to show more detailed information about that flow.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n",
         "mode": "markdown"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -112,7 +112,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -211,7 +211,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -314,7 +314,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -374,7 +374,7 @@
         "content": "",
         "mode": "markdown"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -387,12 +387,14 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": "auto",
+            "align": "left",
             "cellOptions": {
-              "type": "auto"
+              "type": "auto",
+              "wrapText": true
             },
             "filterable": false,
-            "inspect": false
+            "inspect": false,
+            "minWidth": 80
           },
           "mappings": [],
           "thresholds": {
@@ -429,6 +431,10 @@
                     "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
                   }
                 ]
+              },
+              {
+                "id": "custom.minWidth",
+                "value": 180
               }
             ]
           },
@@ -441,10 +447,6 @@
               {
                 "id": "unit",
                 "value": "decbytes"
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               },
               {
                 "id": "decimals",
@@ -463,10 +465,6 @@
                 "value": "bps"
               },
               {
-                "id": "custom.width",
-                "value": 115
-              },
-              {
                 "id": "decimals",
                 "value": 1
               }
@@ -481,58 +479,30 @@
               {
                 "id": "unit",
                 "value": "dthms"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Retransmits"
+              "options": "Source Organization"
             },
             "properties": [
               {
-                "id": "noValue",
-                "value": "-"
-              },
-              {
                 "id": "custom.width",
-                "value": 115
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 0
+                "value": 300
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Source Subnet"
+              "options": "Destination Organization"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Destination Subnet"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
+                "value": 300
               }
             ]
           },
@@ -543,8 +513,8 @@
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 1
+                "id": "custom.hidden",
+                "value": true
               }
             ]
           }
@@ -573,7 +543,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "alias": "",
@@ -959,7 +929,7 @@
         "content": "\u003ch3 style=\"margin-top:16px;\"\u003e\u003ccenter\u003eSummary Statistics\u003c/center\u003e\u003c/h3\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1022,7 +992,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1141,7 +1111,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1260,7 +1230,7 @@
         "sizing": "auto",
         "valueMode": "text"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1342,7 +1312,7 @@
         "content": "\u003ccenter style=\"margin-top:20px;\"\u003e\u003ch1 style=\"margin-top:35px;\"\u003eReverse Direction\u003c/h1\u003e\u003c/center\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1406,7 +1376,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1504,7 +1474,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1607,7 +1577,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1654,9 +1624,10 @@
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": "auto",
+            "align": "left",
             "cellOptions": {
-              "type": "auto"
+              "type": "auto",
+              "wrapText": true
             },
             "filterable": false,
             "inspect": false
@@ -1696,6 +1667,10 @@
                     "url": "/grafana/d/nzuMyBcGk/flow-information?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
                   }
                 ]
+              },
+              {
+                "id": "custom.minWidth",
+                "value": 180
               }
             ]
           },
@@ -1708,10 +1683,6 @@
               {
                 "id": "unit",
                 "value": "decbytes"
-              },
-              {
-                "id": "custom.width",
-                "value": 115
               },
               {
                 "id": "decimals",
@@ -1730,10 +1701,6 @@
                 "value": "bps"
               },
               {
-                "id": "custom.width",
-                "value": 115
-              },
-              {
                 "id": "decimals",
                 "value": 1
               }
@@ -1748,58 +1715,30 @@
               {
                 "id": "unit",
                 "value": "dthms"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Retransmits"
+              "options": "Source Organization"
             },
             "properties": [
               {
-                "id": "noValue",
-                "value": "-"
-              },
-              {
                 "id": "custom.width",
-                "value": 100
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 0
+                "value": 300
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "Source Subnet"
+              "options": "Destination Organization"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Destination Subnet"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
+                "value": 300
               }
             ]
           },
@@ -1810,8 +1749,8 @@
             },
             "properties": [
               {
-                "id": "custom.width",
-                "value": 1
+                "id": "custom.hidden",
+                "value": true
               }
             ]
           }
@@ -1840,7 +1779,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "alias": "",
@@ -2137,8 +2076,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2246,8 +2184,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2365,8 +2302,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2484,8 +2420,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-orange",
@@ -2634,8 +2569,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -2969,13 +2903,13 @@
     ]
   },
   "time": {
-    "from": "2025-05-26T19:43:55.822Z",
-    "to": "2025-06-02T19:43:55.822Z"
+    "from": "2026-03-17T16:47:37.097Z",
+    "to": "2026-03-24T16:47:37.097Z"
   },
   "timepicker": {},
   "timezone": "",
   "title": "What do individual flows by country look like?",
   "uid": "80IVUboZk",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }

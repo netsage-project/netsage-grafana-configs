@@ -138,14 +138,31 @@ def update_text_value_fields(dash, default_src, filepath):
                 current = item["current"]
                 old_text = current.get("text")
                 old_value = current.get("value")
+                # Normalize lists to first element
+                if isinstance(old_text, list):
+                    old_text = old_text[0] if old_text else None
+                if isinstance(old_value, list):
+                    old_value = old_value[0] if old_value else None
+
                 if isinstance(old_text, str) and old_text != default_src and old_text != "All":
                     print(f'[FILE: {filepath}]\nOLD text: {old_text}\nNEW text: {default_src}\n')
                     current["text"] = default_src
                     changed = True
+                # else clause for debugging
+                #else:
+                #    reasons = []
+                #    if not isinstance(old_text, str):
+                #        reasons.append(f'text is not a string (got {type(old_text).__name__}: {old_text!r})')
+                #    if old_text == default_src:
+                #        reasons.append(f'text already matches default_src ({default_src!r})')
+                #    if old_text == "All":
+                #        reasons.append('text is "All" (skipped)')
+                #    print(f'[FILE: {filepath}] No change: {"; ".join(reasons)}')
                 if isinstance(old_value, str) and old_value != default_src:
                     print(f'[FILE: {filepath}]\nOLD value: {old_value}\nNEW value: {default_src}\n')
                     current["value"] = default_src
                     changed = True
+
     except Exception as e:
         print(f"Error processing templating section in {filepath}: {e}")
     return changed

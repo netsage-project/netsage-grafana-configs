@@ -138,6 +138,12 @@ def update_text_value_fields(dash, default_src, filepath):
                 current = item["current"]
                 old_text = current.get("text")
                 old_value = current.get("value")
+                # Normalize lists to first element
+                if isinstance(old_text, list):
+                    old_text = old_text[0] if old_text else None
+                if isinstance(old_value, list):
+                    old_value = old_value[0] if old_value else None
+
                 if isinstance(old_text, str) and old_text != default_src and old_text != "All":
                     print(f'[FILE: {filepath}]\nOLD text: {old_text}\nNEW text: {default_src}\n')
                     current["text"] = default_src

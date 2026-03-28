@@ -2,7 +2,7 @@
 
 # this script generates updated Grafana files for dashboards based the the TACC dashboards
 #
-# it looks for all files under netsage-grafana-configs/org_main-org/ with "TACC", and 
+# it looks for all files under netsage-grafana-configs/org_main-org/ with "TACC", and
 #   replaces "TACC" with the org specifed with the -org argument
 #   output files will be found in directory: output/ORG
 #
@@ -33,7 +33,6 @@ from bs4 import BeautifulSoup
 import html
 import sys
 import shutil
-import difflib
 
 # Global file skip list: the code below does not work on these (for now)
 skip_files = [
@@ -76,11 +75,11 @@ org_list = [
 ]
 
 def clone_dashboards(input_dir, output_dir):
-
-    print (f"Copying files from {input_dir} to {output_dir}")
+    print(f"Copying files from {input_dir} to {output_dir}")
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    
+
+    files_copied = 0
     for root, dirs, files in os.walk(input_dir):
         # Remove subdirectories with 'Archive' in name from traversal
         dirs[:] = [d for d in dirs if 'Archive' not in d]
@@ -93,8 +92,10 @@ def clone_dashboards(input_dir, output_dir):
         for file in files:
             src_file = os.path.join(root, file)
             dest_file = os.path.join(dest_root, file)
-            #print(f"Copying file {src_file} to {dest_file}")
             shutil.copy2(src_file, dest_file)
+            files_copied += 1
+
+    print(f"  Copied {files_copied} files to {output_dir}")
 
 def initialize_org_dict(org_list):
     org_dict = {}
@@ -129,32 +130,44 @@ def encode_org_for_url(org):
     return org.replace(' ', '%20').replace('(', '%28').replace(')', '%29')
 
 def update_text_value_fields(dash, default_src, filepath):
+    """
+    Update templating.list[0].current.text and .value to default_src.
+    Returns True if any change was made.
+    """
     changed = False
     try:
         templating = dash.get("templating", {})
         lst = templating.get("list", [])
-        if lst:
-            item = lst[0]  # Only check the first item
-            if "current" in item:
-                current = item["current"]
-                old_text = current.get("text")
-                old_value = current.get("value")
-                # Normalize lists to first element
-                if isinstance(old_text, list):
-                    old_text = old_text[0] if old_text else None
-                if isinstance(old_value, list):
-                    old_value = old_value[0] if old_value else None
+        if not lst:
+            return False
 
-                if isinstance(old_text, str) and old_text != default_src and old_text != "All":
-                    print(f'[FILE: {filepath}]\nOLD text: {old_text}\nNEW text: {default_src}\n')
-                    current["text"] = default_src
-                    changed = True
-                if isinstance(old_value, str) and old_value != default_src:
-                    print(f'[FILE: {filepath}]\nOLD value: {old_value}\nNEW value: {default_src}\n')
-                    current["value"] = default_src
-                    changed = True
+        item = lst[0]  # Only check the first item
+        if "current" not in item:
+            return False
+
+        current = item["current"]
+        old_text = current.get("text")
+        old_value = current.get("value")
+
+        # Normalize lists to first element
+        if isinstance(old_text, list):
+            old_text = old_text[0] if old_text else None
+        if isinstance(old_value, list):
+            old_value = old_value[0] if old_value else None
+
+        if isinstance(old_text, str) and old_text not in (default_src, "All"):
+            print(f'  [JSON] templating.current.text: "{old_text}" -> "{default_src}"')
+            current["text"] = default_src
+            changed = True
+
+        if isinstance(old_value, str) and old_value != default_src:
+            print(f'  [JSON] templating.current.value: "{old_value}" -> "{default_src}"')
+            current["value"] = default_src
+            changed = True
+
     except Exception as e:
-        print(f"Error processing templating section in {filepath}: {e}")
+        print(f"  [ERROR] Exception in update_text_value_fields for {filepath}: {e}")
+
     return changed
 
 
@@ -200,8 +213,14 @@ def reformat_content(data):
     return {"content": new_html}
 
 
-def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org, output_dir):
-    changed = False
+
+def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded_org, output_dir, debug=False):
+    """
+    Process a single dashboard JSON file:
+      1. Apply phrase-level string replacements (TACC label phrases).
+      2. Parse JSON and update templating.current.text/value.
+      3. Write modified file to output_dir if anything changed.
+    """
 
     phrases = [
         r'Data Sources to TACC',
@@ -209,81 +228,98 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
         r'Welcome to Netsage - TACC'
     ]
 
+    # Derive a short relative label for display
+    display_path = filepath
+
+    print(f"\n{'='*70}")
+    print(f"Processing: {display_path}")
+
+    # --- Read source file ---
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
-            data = f.read()
+            original_data = f.read()
+    except OSError as e:
+        print(f"  [ERROR] Cannot read file {filepath}: {e}")
+        return
 
-        # Build a regex pattern that matches any of the 'phrases'
-        pattern = r'(' + '|'.join(re.escape(p) for p in phrases) + r')'
+    data = original_data
+    changed = False
+    phrase_changed = False
+    json_changed = False
 
-        # Perform the replacement
-        matches = re.findall(pattern, data)
-        if matches:
-            for match in matches:
-                new_line = match.replace('TACC', org_abbr)
-                print(f'[FILE: {filepath}]\nOLD line: {match}\nNEW line: {new_line}\n')
-                data = data.replace(match, new_line)
-            changed = True
+    # --- Step 1: Phrase-level string replacements ---
+    pattern = r'(' + '|'.join(re.escape(p) for p in phrases) + r')'
+    matches = re.findall(pattern, data)
+    if matches:
+        for match in matches:
+            new_line = match.replace('TACC', org_abbr)
+            print(f'  [PHRASE] "{match}" -> "{new_line}"')
+            data = data.replace(match, new_line)
+        phrase_changed = True
+        changed = True
+    else:
+        print(f'  [PHRASE] No phrase matches found.')
 
-        # Try parsing JSON and modifying templating.current.text/value
-        try:
-            dash = json.loads(data)
-            json_changed = update_text_value_fields(dash, default_src, filepath)
-            if json_changed:
-                json_data = json.dumps(dash, indent=2, ensure_ascii=True)
+    # --- Step 2: JSON parse and update templating.current ---
+    try:
+        dash = json.loads(data)
+    except json.JSONDecodeError as e:
+        print(f"  [ERROR] Cannot parse as JSON: {e}")
+        print(f"  [ERROR] Skipping file: {filepath}")
+        return
 
-                # note: json.dumps leaves characters like &, <, > alone.
-                #  the files generated by Grafana convert those characters to unicode
-                #  if this is a problem, call this routine:
-                #data = force_ascii_escape(json_data)
-
-                changed = True
-        except Exception as e:
-            print(f"ERROR: {filepath} could not be parsed as JSON: {e}")
-            sys.exit()
-
-        # Write updated file if changed
-        if changed:
-            parent_dir = os.path.basename(os.path.dirname(filepath))
-            filename = os.path.basename(filepath)
-            outpath = os.path.join(output_dir, parent_dir, filename)
-            with open(outpath, 'w', encoding='utf-8') as f:
-                f.write(data)
-            print(f'Updated file written to: {outpath}\n')
-
-            debug = 1
-            if debug:
-               # print changes
-               parent_dir = os.path.basename(os.path.dirname(filepath))
-               filename = os.path.basename(filepath)
-               outpath = os.path.join(output_dir, parent_dir, filename)
-               print (f"Showing diff of oldfile {filepath} and newfile {outpath} ")
-   
-               # Read original for diff
-               with open(filepath, 'r', encoding='utf-8') as f:
-                   original_lines = f.readlines()
-               new_lines = data.splitlines(keepends=True)
-   
-               diff = difflib.unified_diff(
-                   original_lines,
-                   new_lines,
-                   fromfile=f'ORIGINAL: {filepath}',
-                   tofile=f'UPDATED:  {outpath}',
-               )
-               if diff:
-                   print(''.join(diff))
-               else:
-                   print(f'[FILE: {filepath}] No diff despite changed=True\n')
-
-            with open(outpath, 'w', encoding='utf-8') as f:
-                f.write(data)
-            print(f'Updated file written to: {outpath}\n')
-        else:
-            print(f'No changes made in file: {filepath}\n')
-
+    try:
+        json_changed = update_text_value_fields(dash, default_src, filepath)
     except Exception as e:
-        print(f"Failed to process file {filepath}: {e}")
-        sys.exit()
+        print(f"  [ERROR] Unexpected error in update_text_value_fields: {e}")
+        return
+
+    if json_changed:
+        # FIX: serialize the modified dash back into data so the written file
+        # reflects the JSON changes. Previously json_data was computed but
+        # never assigned back, so the original string was written unchanged.
+        try:
+            data = json.dumps(dash, indent=2, ensure_ascii=True)
+        except (TypeError, ValueError) as e:
+            print(f"  [ERROR] json.dumps failed for {filepath}: {e}")
+            print(f"  [ERROR] Skipping file — JSON changes not applied.")
+            return
+
+        # note: json.dumps leaves characters like &, <, > alone.
+        #  the files generated by Grafana convert those characters to unicode
+        #  if this is a problem, uncomment this:
+        # data = force_ascii_escape(data)
+
+        changed = True
+    else:
+        print(f'  [JSON]  No templating.current changes needed.')
+
+    # --- Step 3: Write output if changed ---
+    if not changed:
+        print(f'  [SKIP] No changes made.')
+        return
+
+    # Build output path
+    parent_dir = os.path.basename(os.path.dirname(filepath))
+    filename = os.path.basename(filepath)
+    outpath = os.path.join(output_dir, parent_dir, filename)
+
+    # Ensure the output subdirectory exists
+    out_subdir = os.path.dirname(outpath)
+    try:
+        os.makedirs(out_subdir, exist_ok=True)
+    except OSError as e:
+        print(f"  [ERROR] Cannot create output directory {out_subdir}: {e}")
+        return
+
+    try:
+        with open(outpath, 'w', encoding='utf-8') as f:
+            f.write(data)
+        print(f'  [WRITE] Output written to: {outpath}')
+    except OSError as e:
+        print(f"  [ERROR] Cannot write output file {outpath}: {e}")
+        return
+
 
 def main():
     input_dir = 'dashboards'
@@ -293,108 +329,158 @@ def main():
     parser.add_argument('-org', required=True, help='Organization abbreviation (e.g., TACC, FRGP, GPN).')
     parser.add_argument('-o', '--output-dir', required=True, help='Path to the output directory')
     args = parser.parse_args()
+
     org_abbr = args.org
-    output_dir = args.output_dir+"/"+org_abbr
+    output_dir = os.path.join(args.output_dir, org_abbr)
 
     org_dict = initialize_org_dict(org_list)
 
     if org_abbr not in org_dict:
         print(f"Error: '{org_abbr}' is not a valid organization abbreviation.")
         print("Valid options are:", ', '.join(org_dict.keys()))
-        exit(1)
+        sys.exit(1)
 
     org_full_name = org_dict[org_abbr]['org_name']
     default_src = org_dict[org_abbr]['default_src']
     netsage_org_part = extract_parenthesized_part(org_full_name)
     encoded_org = encode_org_for_url(org_full_name)
 
+    print(f"\nOrg:         {org_abbr}")
+    print(f"Full name:   {org_full_name}")
+    print(f"Default src: {default_src}")
+    print(f"Index:       {org_dict[org_abbr]['index']}")
+    print(f"Output dir:  {output_dir}")
+
     if not os.path.isdir(input_dir):
-        print(f"Error: Input directory '{input_dir}' not found.", file=sys.stderr)
+        print(f"\nError: Input directory '{input_dir}' not found.", file=sys.stderr)
         sys.exit(1)
 
     current_dir = os.getcwd()
+    # --- Clone dashboards directory first so output tree exists ---
+    print()
+    clone_dashboards(current_dir, output_dir + '/org_main-org')
 
-    # Copy the correct welcome-*.json file to dashboards/General/welcome.json
+    # --- Copy welcome page directly into output tree ---
     welcome_type = org_dict[org_abbr]["welcome"]
     welcome_map = {
         "globus": "../homepage/welcome-globus.json",
-        "all": "../homepage/welcome-all.json",
-        "flow": "../homepage/welcome-flow.json"
+        "all":    "../homepage/welcome-all.json",
+        "flow":   "../homepage/welcome-flow.json"
     }
 
-    if welcome_type in welcome_map:
-        src_welcome = os.path.join(current_dir, welcome_map[welcome_type])
-        dest_welcome = os.path.join(input_dir, "General", "welcome.json")
-        try:
-            os.makedirs(os.path.dirname(dest_welcome), exist_ok=True)
-            shutil.copy2(src_welcome, dest_welcome)
-            print(f"Copied {src_welcome} to {dest_welcome}")
-        except Exception as e:
-            print(f"[ERROR] Failed to copy welcome file: {e}")
-    else:
-        print(f"[ERROR] Unknown welcome type '{welcome_type}' for org {org_abbr}")
-        sys.exit()
-
-    # next do the org from the command line
-    clone_dashboards(current_dir, output_dir+'/org_main-org')
-    # Create destination directory if it doesn't exist
-    secure_dir = output_dir + '/secure'
-    try:
-        os.makedirs(secure_dir, exist_ok=True)  
-        print("Created directory: ", secure_dir)
-    except OSError as e:
-        print(f"Error creating directory: {e}", file=sys.stderr)
+    if welcome_type not in welcome_map:
+        print(f"\n[ERROR] Unknown welcome type '{welcome_type}' for org {org_abbr}", file=sys.stderr)
         sys.exit(1)
 
-    # also copy over defaults file
-    df = secure_dir+'/default.json'
-    print (f"copying file {defaults_file} to {df}")
-    shutil.copy(defaults_file, df)
+    src_welcome = os.path.join(current_dir, welcome_map[welcome_type])
+    dest_welcome = os.path.join(output_dir, 'org_main-org', 'dashboards', 'General', 'welcome.json')
+    try:
+        os.makedirs(os.path.dirname(dest_welcome), exist_ok=True)
+        shutil.copy2(src_welcome, dest_welcome)
+        print(f"\nCopied welcome file:")
+        print(f"         src:  {src_welcome}")
+        print(f"         dest: {dest_welcome}")
+    except OSError as e:
+        if not os.path.exists(src_welcome):
+            print(f"\n[ERROR] Welcome file copy failed — SOURCE not found:", file=sys.stderr)
+            print(f"         src:  {src_welcome}", file=sys.stderr)
+        elif isinstance(e, PermissionError):
+            print(f"\n[ERROR] Welcome file copy failed — PERMISSION DENIED on destination:", file=sys.stderr)
+            print(f"         src:  {src_welcome}", file=sys.stderr)
+            print(f"         dest: {dest_welcome}", file=sys.stderr)
+        else:
+            print(f"\n[ERROR] Welcome file copy failed ({type(e).__name__}):", file=sys.stderr)
+            print(f"         src:  {src_welcome}", file=sys.stderr)
+            print(f"         dest: {dest_welcome}", file=sys.stderr)
+            print(f"         err:  {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+    # --- Create secure dir and copy defaults ---
+    secure_dir = output_dir + '/secure'
+    try:
+        os.makedirs(secure_dir, exist_ok=True)
+        print(f"Created directory: {secure_dir}")
+    except OSError as e:
+        print(f"[ERROR] Cannot create directory {secure_dir}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    df = os.path.join(secure_dir, 'default.json')
+    try:
+        shutil.copy(defaults_file, df)
+        print(f"Copied {defaults_file} -> {df}")
+    except OSError as e:
+        print(f"[ERROR] Cannot copy defaults file {defaults_file}: {e}", file=sys.stderr)
+        sys.exit(1)
+
+    # --- Process each dashboard JSON ---
+    files_processed = 0
+    files_changed = 0
 
     for root, _, files in os.walk(input_dir):
         if 'Archive' in root:
-            continue  # Skip this directory and its subdirectories
+            continue
 
         for filename in files:
-           if filename.endswith('.json') and filename not in skip_files:
-              filepath = os.path.join(root, filename)
-              process_file(filepath, org_full_name, org_abbr, default_src, netsage_org_part, encoded_org, output_dir+'/org_main-org/dashboards')
+            if filename.endswith('.json') and filename not in skip_files:
+                filepath = os.path.join(root, filename)
+                files_processed += 1
+                try:
+                    process_file(
+                        filepath,
+                        org_full_name,
+                        org_abbr,
+                        default_src,
+                        netsage_org_part,
+                        encoded_org,
+                        output_dir + '/org_main-org/dashboards',
+                    )
+                except Exception as e:
+                    import traceback
+                    print(f"\n  [FATAL] Unhandled exception processing {filepath}: {e}")
+                    print(f"  [FATAL] Skipping — continuing to next file...")
+                    traceback.print_exc()
 
-    # Also Walk the output directory to find and modify 'connections/netsage.json'
-    print ("Looking for file connnections/netsage.json to update index...")
+    print(f"\n{'='*70}")
+    print(f"Processed {files_processed} files.")
+
+    # --- Update connections/netsage.json index ---
+    print("\nLooking for connections/netsage.json to update index...")
     for root, dirs, files in os.walk(output_dir):
-       if 'connections' in dirs:
-           for filename in ['netsage.json', 'netsage-snmp.json']:
-               json_path = os.path.join(root, 'connections', filename)
-               if os.path.isfile(json_path):
-                   try:
-                       with open(json_path, 'r', encoding='utf-8') as f:
-                           data = json.load(f)
-   
-                       if "jsonData" in data and "index" in data["jsonData"]:
-                           old_index = data["jsonData"]["index"]
-                           base_index = org_dict[org_abbr]["index"]
-   
-                           if filename == "netsage-snmp.json":
-                               new_index = base_index.replace("netsage", "snmp")
-                           else:
-                               new_index = base_index
-   
-                           if old_index != new_index:
-                               data["jsonData"]["index"] = new_index
-                               with open(json_path, "w", encoding="utf-8") as f:
-                                   json.dump(data, f, indent=2)
-                               print(f"Updated index from '{old_index}' to '{new_index}' in {json_path}")
-                       else:
-                           print(f"No jsonData.index found in {json_path}")
-   
-                   except Exception as e:
-                       print(f"[ERROR] Failed to update index in {json_path}: {e}")
+        if 'connections' in dirs:
+            for conn_filename in ['netsage.json', 'netsage-snmp.json']:
+                json_path = os.path.join(root, 'connections', conn_filename)
+                if not os.path.isfile(json_path):
+                    continue
 
+                try:
+                    with open(json_path, 'r', encoding='utf-8') as f:
+                        conn_data = json.load(f)
 
-    print ("Done.\n")
+                    if "jsonData" not in conn_data or "index" not in conn_data["jsonData"]:
+                        print(f"  [SKIP] No jsonData.index found in {json_path}")
+                        continue
+
+                    old_index = conn_data["jsonData"]["index"]
+                    base_index = org_dict[org_abbr]["index"]
+                    new_index = base_index.replace("netsage", "snmp") if conn_filename == "netsage-snmp.json" else base_index
+
+                    if old_index == new_index:
+                        print(f"  [SKIP] Index already correct in {json_path}: '{old_index}'")
+                        continue
+
+                    conn_data["jsonData"]["index"] = new_index
+                    with open(json_path, 'w', encoding='utf-8') as f:
+                        json.dump(conn_data, f, indent=2)
+                    print(f"  [UPDATE] {json_path}: index '{old_index}' -> '{new_index}'")
+
+                except json.JSONDecodeError as e:
+                    print(f"  [ERROR] Cannot parse JSON in {json_path}: {e}")
+                except OSError as e:
+                    print(f"  [ERROR] Cannot read/write {json_path}: {e}")
+
+    print("\nDone.\n")
 
 if __name__ == '__main__':
     main()
-
 

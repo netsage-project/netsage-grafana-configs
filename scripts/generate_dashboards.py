@@ -33,6 +33,7 @@ from bs4 import BeautifulSoup
 import html
 import sys
 import shutil
+import difflib
 
 # Global file skip list: the code below does not work on these (for now)
 skip_files = [
@@ -246,6 +247,34 @@ def process_file(filepath, org, org_abbr, default_src, netsage_org_part, encoded
             parent_dir = os.path.basename(os.path.dirname(filepath))
             filename = os.path.basename(filepath)
             outpath = os.path.join(output_dir, parent_dir, filename)
+            with open(outpath, 'w', encoding='utf-8') as f:
+                f.write(data)
+            print(f'Updated file written to: {outpath}\n')
+
+            debug = 1
+            if debug:
+               # print changes
+               parent_dir = os.path.basename(os.path.dirname(filepath))
+               filename = os.path.basename(filepath)
+               outpath = os.path.join(output_dir, parent_dir, filename)
+               print (f"Showing diff of oldfile {filepath} and newfile {outpath} ")
+   
+               # Read original for diff
+               with open(filepath, 'r', encoding='utf-8') as f:
+                   original_lines = f.readlines()
+               new_lines = data.splitlines(keepends=True)
+   
+               diff = difflib.unified_diff(
+                   original_lines,
+                   new_lines,
+                   fromfile=f'ORIGINAL: {filepath}',
+                   tofile=f'UPDATED:  {outpath}',
+               )
+               if diff:
+                   print(''.join(diff))
+               else:
+                   print(f'[FILE: {filepath}] No diff despite changed=True\n')
+
             with open(outpath, 'w', encoding='utf-8') as f:
                 f.write(data)
             print(f'Updated file written to: {outpath}\n')

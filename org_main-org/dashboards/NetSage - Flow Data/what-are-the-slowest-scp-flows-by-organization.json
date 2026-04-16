@@ -395,7 +395,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND meta.sensor_id:$sensors AND (meta.src_port:22 OR meta.dst_port:22) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*)) AND values.duration:[1800 TO *] AND values.num_bits:[8589934592 TO *]",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.sensor_id:$sensors AND (meta.src_port:22 OR meta.dst_port:22) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*)) AND values.duration:[1800 TO *] AND values.num_bits:[8589934592 TO *]",
           "refId": "A",
           "timeField": "start"
         }
@@ -811,7 +811,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource AND meta.sensor_id:$sensors AND (meta.src_port:22 OR meta.dst_port:22) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*)) AND values.duration:[1800 TO *] and values.num_bits:[1000000000000 TO *] AND values.num_bits:[8589934592 TO *]",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND meta.sensor_id:$sensors AND (meta.src_port:22 OR meta.dst_port:22) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*)) AND values.duration:[1800 TO *] and values.num_bits:[1000000000000 TO *] AND values.num_bits:[8589934592 TO *]",
           "refId": "A",
           "timeField": "start"
         }
@@ -1076,7 +1076,7 @@
               "type": "count"
             }
           ],
-          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND ((meta.src_resource_name:$src_resource AND meta.dst_resource_name:$dst_resource) OR (meta.src_resource_name:$dst_resource AND meta.dst_resource_name:$src_resource)) AND ((!(_exists_:meta.is_network_testing)) OR meta.is_network_testing:no OR meta.is_network_testing:$is_net_test) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "((meta.src_organization:$src AND meta.dst_organization:$dest) OR (meta.src_organization:$dest AND meta.dst_organization:$src)) AND meta.sensor_id:$sensors AND (meta.src_resource_name:$src_resource OR meta.dst_resource_name:$src_resource) AND (meta.src_port:22 OR meta.dst_port:22) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
           "refId": "A",
           "timeField": "start"
         }
@@ -1201,26 +1201,6 @@
       },
       {
         "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "u1Gafq5Vz"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
-        "includeAll": true,
-        "label": "Destination Resource",
-        "multi": true,
-        "name": "dst_resource",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.dst_resource_name\", \"query\":\"meta.dst_organization:$dest\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
           "text": "",
           "value": ""
         },
@@ -1238,7 +1218,7 @@
       },
       {
         "current": {
-          "text": ["All"],
+          "text": "All",
           "value": ["$__all"]
         },
         "datasource": {
@@ -1281,13 +1261,13 @@
     ]
   },
   "time": {
-    "from": "2026-03-17T15:33:45.536Z",
-    "to": "2026-03-24T15:33:45.536Z"
+    "from": "2026-04-09T13:23:16.857Z",
+    "to": "2026-04-16T13:23:16.857Z"
   },
   "timepicker": {},
   "timezone": "",
   "title": "What are the slowest SCP flows by organization?",
   "uid": "ff11awegnesqod",
-  "version": 7,
+  "version": 4,
   "weekStart": ""
 }

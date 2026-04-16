@@ -41,6 +41,9 @@ include_files = [
     'what-are-the-top-flows-by-organization.json',
     'what-do-individual-flows-by-organization-look-like.json',
     'what-are-the-slowest-scp-flows-by-organization.json',
+    'what-are-the-top-globus-tasks-by-organization.json',
+    #'What do individual Globus tasks by organization look like' is this one
+    '1b22d62.json'
 ]
 
 # list of networks/org abbr, full name, default src site, index name, welcome page template

@@ -68,7 +68,8 @@ org_list = [
     ('PIREN',         'Pacific Islands Research and Education Network', 'University of Hawaii',                            'tacc-netsage-piren*',         'flow'),
     ('ACCESS',        'ACCESS Project',                                'Texas Advanced Computing Center (TACC)',           'tacc-netsage-access*',        'access'),
     ('Globus',        'All Globus Transfers',                          'Oak Ridge National Laboratory (ORNL)',             'tacc-netsage-globus*',        'globus'),
-    ('EPOC',          'All Data Collected by NetSage',                 'Texas Advanced Computing Center (TACC)',           'tacc-netsage-epoc*',          'flow')
+    ('EPOC',          'All Data Collected by NetSage',                 'Texas Advanced Computing Center (TACC)',           'tacc-netsage-epoc*',          'flow'),
+    ('UTS',           'University of Texas System',                    'Texas Advanced Computing Center (TACC)',                 'tacc-netsage-ots*',   'flow')
 ]
 
 

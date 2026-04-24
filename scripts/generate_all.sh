@@ -19,4 +19,4 @@ $BIN_DIR/generate_dashboards.py -org PIREN -o "$OUTPUT_DIR" > "$LOG_DIR/PIREN.ou
 $BIN_DIR/generate_dashboards.py -org ACCESS -o "$OUTPUT_DIR" > "$LOG_DIR/ACCESS.out"
 $BIN_DIR/generate_dashboards.py -org Globus -o "$OUTPUT_DIR" > "$LOG_DIR/Globus.out"
 $BIN_DIR/generate_dashboards.py -org EPOC -o "$OUTPUT_DIR" > "$LOG_DIR/EPOC.out"
-$BIN_DIR/generate_dashboards.py -org UTS -o "$OUTPUT_DIR" > "$LOG_DIR/UTS.out"
+$BIN_DIR/generate_dashboards.py -org UT_System -o "$OUTPUT_DIR" > "$LOG_DIR/UTSystem.out"

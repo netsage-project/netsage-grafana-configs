@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 22,
+  "id": 34,
   "links": [],
   "panels": [
     {
@@ -34,7 +34,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 4,
         "w": 21,
         "x": 2,
         "y": 0
@@ -46,7 +46,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003cstyle=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003cblockquote\u003e\u003ch1\u003e\u003cb\u003eOther Globus Task Statistics\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\n\u003cli\u003eThis dashboard provides a summary of Task information for science registry tagging, organizations, and countries, as well as volume and counts of Tasks. \u003cp\u003e\n\u003cli\u003eGlobus Task datasets have been de-identified. Globus Tasks where the organization is not disclosed are marked \"Private\". \u003c/li\u003e\n\u003cli\u003ePrivate Task data rates and totals are available via the toggle at the top of this dashboard. \u003c/li\u003e\n\u003cli\u003eAll times are displayed in browser local time.\u003c/blockquote\u003e",
+        "content": "\u003cstyle=\"margin-top: 0px\"\u003e\u003cfont color=\"#5794f2\"\u003e\u003cblockquote\u003e\u003ch1\u003e\u003cb\u003eOther V. Rubin Transfer Statistics\u003c/b\u003e\u003c/h1\u003e\u003c/font\u003e\n\u003cli\u003eThis dashboard provides a summary of file transfer information for science registry tagging, organizations, and countries, as well as volume and counts of files. \u003cp\u003e\n\u003cli\u003eAll times are displayed in browser local time.\u003c/blockquote\u003e",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -56,8 +56,8 @@
     },
     {
       "datasource": {
-        "type": "datasource",
-        "uid": "-- Dashboard --"
+        "type": "elasticsearch",
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -102,7 +102,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 6
+        "y": 4
       },
       "id": 46,
       "maxDataPoints": 100,
@@ -128,12 +128,30 @@
       "pluginVersion": "11.5.5",
       "targets": [
         {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
           "datasource": {
-            "type": "datasource",
-            "uid": "-- Dashboard --"
+            "type": "elasticsearch",
+            "uid": "dfsosh8vml24gc"
           },
-          "panelId": 4,
-          "refId": "A"
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": "@timestamp"
         }
       ],
       "title": "",
@@ -172,7 +190,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 6
+        "y": 4
       },
       "id": 42,
       "options": {
@@ -181,7 +199,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eTotal Task Volume\u003c/h4\u003e",
+        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eTotal Volume\u003c/h4\u003e",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -224,7 +242,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 6
+        "y": 4
       },
       "id": 45,
       "maxDataPoints": 100,
@@ -295,7 +313,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 6
+        "y": 4
       },
       "id": 7,
       "options": {
@@ -304,7 +322,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eAverage Task Rate\u003c/h4\u003e",
+        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eAverage Transfer Rate\u003c/h4\u003e",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -315,7 +333,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -347,7 +365,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 8
+        "y": 6
       },
       "id": 4,
       "maxDataPoints": 100,
@@ -388,7 +406,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -454,9 +472,9 @@
               "type": "avg"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw} AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "",
@@ -496,7 +514,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 8
+        "y": 6
       },
       "id": 5,
       "options": {
@@ -548,7 +566,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 8
+        "y": 6
       },
       "id": 6,
       "maxDataPoints": 100,
@@ -619,7 +637,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 6
       },
       "id": 44,
       "options": {
@@ -672,7 +690,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 10
+        "y": 8
       },
       "id": 8,
       "maxDataPoints": 100,
@@ -744,7 +762,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 10
+        "y": 8
       },
       "id": 9,
       "options": {
@@ -796,7 +814,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 10
+        "y": 8
       },
       "id": 10,
       "maxDataPoints": 100,
@@ -869,7 +887,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 8
       },
       "id": 11,
       "options": {
@@ -922,7 +940,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 12
+        "y": 10
       },
       "id": 12,
       "maxDataPoints": 100,
@@ -994,7 +1012,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 12
+        "y": 10
       },
       "id": 13,
       "options": {
@@ -1046,7 +1064,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 12
+        "y": 10
       },
       "id": 14,
       "maxDataPoints": 100,
@@ -1118,7 +1136,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 12
+        "y": 10
       },
       "id": 15,
       "options": {
@@ -1138,7 +1156,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -1170,7 +1188,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 14
+        "y": 12
       },
       "id": 36,
       "maxDataPoints": 100,
@@ -1209,7 +1227,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1217,9 +1235,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.ip_version:4",
+          "query": "meta.sensor_id:$sensors AND meta.ip_version:4",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "",
@@ -1255,7 +1273,7 @@
         "h": 2,
         "w": 7,
         "x": 5,
-        "y": 14
+        "y": 12
       },
       "id": 35,
       "options": {
@@ -1264,7 +1282,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eIPv4 Tasks\u003c/h4\u003e",
+        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eIPv4 Transfers\u003c/h4\u003e",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -1275,7 +1293,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -1307,7 +1325,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 14
+        "y": 12
       },
       "id": 37,
       "maxDataPoints": 100,
@@ -1348,7 +1366,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1356,9 +1374,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND meta.ip_version:6",
+          "query": "meta.sensor_id:$sensors AND meta.ip_version:6",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "",
@@ -1394,7 +1412,7 @@
         "h": 2,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 12
       },
       "id": 38,
       "options": {
@@ -1403,7 +1421,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eIPv6 Tasks\u003c/h4\u003e",
+        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eIPv6 Transfers\u003c/h4\u003e",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -1414,7 +1432,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -1447,7 +1465,7 @@
         "h": 2,
         "w": 4,
         "x": 1,
-        "y": 16
+        "y": 14
       },
       "id": 16,
       "maxDataPoints": 100,
@@ -1489,7 +1507,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1501,9 +1519,9 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND ( meta.src_location.data_source:scireg OR meta.dst_location.data_source:scireg ) AND NOT ( meta.src_location.data_source:scireg AND meta.dst_location.data_source:scireg ) AND (meta.src.community:$community OR meta.dst.community:$community)",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "",
@@ -1519,7 +1537,7 @@
         "h": 3,
         "w": 7,
         "x": 5,
-        "y": 16
+        "y": 14
       },
       "id": 17,
       "options": {
@@ -1528,7 +1546,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eTasks with only one end tagged in Science Registry\u003c/h4\u003e",
+        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eFiles with only one end tagged in Science Registry\u003c/h4\u003e",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -1571,7 +1589,7 @@
         "h": 2,
         "w": 4,
         "x": 12,
-        "y": 16
+        "y": 14
       },
       "id": 18,
       "maxDataPoints": 100,
@@ -1642,7 +1660,7 @@
         "h": 3,
         "w": 8,
         "x": 16,
-        "y": 16
+        "y": 14
       },
       "id": 19,
       "options": {
@@ -1651,7 +1669,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eTasks with both ends tagged in Science Registry\u003c/h4\u003e\n\n",
+        "content": "\u003ch4  style = 'margin-top: 16px; font-weight:bold; color:#FF780A'\u003eFiles with both ends tagged in Science Registry\u003c/h4\u003e\n\n",
         "mode": "html"
       },
       "pluginVersion": "11.5.5",
@@ -1662,7 +1680,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -1695,7 +1713,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 17
       },
       "id": 3,
       "interval": "1h",
@@ -1737,7 +1755,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1749,19 +1767,19 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
-      "title": "Total Number of Tasks Distributed Over Selected Time Period",
+      "title": "Total Number of Files Distributed Over Selected Time Period",
       "transparent": true,
       "type": "stat"
     },
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -1857,7 +1875,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "Largest Task"
+                "value": "Largest File"
               },
               {
                 "id": "unit",
@@ -1881,7 +1899,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -1933,10 +1951,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 9,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 20
       },
       "id": 47,
       "options": {
@@ -1970,7 +1988,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "metrics": [
@@ -2009,9 +2027,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw}",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Total Source Volume by Community",
@@ -2020,7 +2038,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -2116,7 +2134,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "Largest Task"
+                "value": "Largest Files"
               },
               {
                 "id": "unit",
@@ -2140,7 +2158,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -2192,10 +2210,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 9,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 20
       },
       "id": 48,
       "options": {
@@ -2229,7 +2247,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "metrics": [
@@ -2268,9 +2286,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.dst_organization:${confidential:raw}",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Total Destination Volume by Community",
@@ -2279,7 +2297,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -2296,7 +2314,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2389,10 +2408,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 7,
         "w": 12,
         "x": 0,
-        "y": 36
+        "y": 29
       },
       "id": 31,
       "options": {
@@ -2411,7 +2430,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2431,7 +2450,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "hide": false,
@@ -2446,9 +2465,9 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Source Countries",
@@ -2485,7 +2504,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -2502,7 +2521,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2595,10 +2615,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 7,
         "w": 12,
         "x": 12,
-        "y": 36
+        "y": 29
       },
       "id": 32,
       "options": {
@@ -2617,7 +2637,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2637,7 +2657,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "hide": false,
@@ -2652,7 +2672,7 @@
               "type": "cardinality"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
           "timeField": "start"
         }
@@ -2692,7 +2712,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -2709,7 +2729,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2763,7 +2784,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -2802,10 +2823,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 6,
         "w": 12,
         "x": 0,
-        "y": 50
+        "y": 36
       },
       "id": 27,
       "options": {
@@ -2824,7 +2845,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2857,7 +2878,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "hide": false,
@@ -2884,9 +2905,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.src_organization:${confidential:raw}\nAND !meta.src.data_source:scireg",
+          "query": "!meta.src.data_source:scireg",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Top Sources not in Science Registry",
@@ -2920,7 +2941,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -2937,7 +2958,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2991,7 +3013,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -3030,10 +3052,10 @@
         ]
       },
       "gridPos": {
-        "h": 14,
+        "h": 6,
         "w": 12,
         "x": 12,
-        "y": 50
+        "y": 36
       },
       "id": 28,
       "options": {
@@ -3052,7 +3074,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -3085,7 +3107,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "hide": false,
@@ -3112,9 +3134,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$sensors AND meta.dst_organization:${confidential:raw}\nAND !meta.dst.data_source:scireg",
+          "query": "!meta.dst.data_source:scireg",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Top Destinations not in Science Registry",
@@ -3155,7 +3177,7 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 64
+        "y": 42
       },
       "id": 49,
       "options": {
@@ -3167,7 +3189,7 @@
         "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e\n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\"\" src=\"https://netsage-project.github.io/Science-Registry/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://netsage-project.github.io/Science-Registry/EPOC-Data-Privacy.pdf\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -3176,105 +3198,18 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 40,
-  "tags": ["Globus task"],
+  "tags": [],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 2,
-        "includeAll": true,
-        "label": "Sensors",
-        "multi": true,
-        "name": "sensors",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "allValue": "*",
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "hide": 2,
-        "includeAll": true,
-        "label": "Scope",
-        "multi": true,
-        "name": "country_scope",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
-        "includeAll": true,
-        "label": "Community",
-        "multi": true,
-        "name": "community",
-        "options": [],
-        "query": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "(-Private)",
-          "value": "(-Private)"
-        },
-        "includeAll": false,
-        "label": "Display Private Tasks",
-        "name": "confidential",
-        "options": [
-          {
-            "selected": false,
-            "text": "Yes",
-            "value": "*"
-          },
-          {
-            "selected": true,
-            "text": "No",
-            "value": "(-Private)"
-          }
-        ],
-        "query": "Yes : *, No : (-Private)",
-        "type": "custom"
-      }
-    ]
+    "list": []
   },
   "time": {
-    "from": "2025-05-29T15:30:24.269Z",
-    "to": "2025-06-05T15:30:24.269Z"
+    "from": "now-6M",
+    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "What are the current Globus task summary statistics?",
-  "uid": "CJC1FFhma",
-  "version": 2,
+  "title": "What are the current V. Rubin summary statistics?",
+  "uid": "bfsbho9ta15hcb",
+  "version": 5,
   "weekStart": ""
 }

@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 19,
+  "id": 31,
   "links": [],
   "panels": [
     {
@@ -36,7 +36,7 @@
       "gridPos": {
         "h": 7,
         "w": 18,
-        "x": 3,
+        "x": 2,
         "y": 0
       },
       "id": 2,
@@ -46,7 +46,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eGlobus Tasks\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows the top sources and destinations by volume and rate of all Globus Tasks.\u003c/li\u003e\n  \u003cli\u003eClick on an organization name in one of the tables to see the Task data dashboard for that organization.\u003c/li\u003e\n  \u003cli\u003e Selecting a 'community' at the top of the page will include sites where source or dest is part of that community \u003c/li\u003e\n  \u003cli\u003eThe slope graph below shows the top pairs of organizations by volume. Darker lines correspond with larger volume.\u003c/li\u003e\n \u003cli\u003eGlobus Task datasets have been de-identified. Globus Tasks where the organization is not disclosed are marked \"Private\". \u003c/li\u003e\n\u003cli\u003ePrivate Task data rates and totals are available via the toggle at the top of this dashboard. \u003c/li\u003e\n \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
+        "content": "\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eV. Rubin File Transfers\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows the top sources and destinations by volume and rate of all file transfers.\u003c/li\u003e\n  \u003cli\u003eClick on an organization name in one of the tables to see the file transfer data dashboard for that organization.\u003c/li\u003e\n  \u003cli\u003eThe slope graph below shows the top pairs of organizations by volume. Darker lines correspond with larger volume.\u003c/li\u003e\n \u003cli\u003eAll IPs have been de-identified.\n \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.5",
@@ -55,15 +55,150 @@
       "type": "text"
     },
     {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfsosh8vml24gc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "#3275d933",
+                "value": null
+              },
+              {
+                "color": "#3275d959",
+                "value": 10
+              },
+              {
+                "color": "#3275d973",
+                "value": 20
+              },
+              {
+                "color": "#3275d980",
+                "value": 30
+              },
+              {
+                "color": "#3275d98c",
+                "value": 40
+              },
+              {
+                "color": "#3275d999",
+                "value": 50
+              },
+              {
+                "color": "#3275d9b3",
+                "value": 60
+              },
+              {
+                "color": "#3275d9cc",
+                "value": 70
+              },
+              {
+                "color": "#3275d9e6",
+                "value": 80
+              },
+              {
+                "color": "blue",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 20,
+        "x": 0,
+        "y": 7
+      },
+      "id": 15,
+      "options": {
+        "colorPalette": "customNetSage",
+        "fontSize": 12,
+        "headerColor": "black",
+        "hoverColor": "light-orange",
+        "invertColorPalette": false,
+        "leftHeader": "Source",
+        "numLines": 30,
+        "rightHeader": "Destination",
+        "txtLength": 40
+      },
+      "pluginVersion": "1.1.2",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:365",
+              "fake": true,
+              "field": "meta.src_organization",
+              "id": "3",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "50"
+              },
+              "type": "terms"
+            },
+            {
+              "$$hashKey": "object:366",
+              "field": "meta.dst_organization",
+              "id": "2",
+              "settings": {
+                "min_doc_count": 1,
+                "order": "desc",
+                "orderBy": "1",
+                "size": "50"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfsosh8vml24gc"
+          },
+          "metrics": [
+            {
+              "$$hashKey": "object:363",
+              "field": "values.num_bits",
+              "id": "1",
+              "inlineScript": "_value/8",
+              "meta": {},
+              "settings": {
+                "script": {
+                  "inline": "_value/8"
+                }
+              },
+              "type": "sum"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": "start"
+        }
+      ],
+      "title": "Top 30 Pairs by Volume",
+      "type": "netsage-slopegraph-panel"
+    },
+    {
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "gridPos": {
         "h": 2,
-        "w": 24,
+        "w": 20,
         "x": 0,
-        "y": 7
+        "y": 19
       },
       "id": 3,
       "options": {
@@ -83,7 +218,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -130,7 +265,7 @@
                   {
                     "targetBlank": false,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -179,7 +314,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "Largest Task"
+                "value": "Largest File"
               },
               {
                 "id": "unit",
@@ -203,7 +338,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -255,10 +390,10 @@
         ]
       },
       "gridPos": {
-        "h": 12,
-        "w": 24,
+        "h": 9,
+        "w": 20,
         "x": 0,
-        "y": 9
+        "y": 21
       },
       "id": 4,
       "options": {
@@ -303,7 +438,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "metrics": [
@@ -342,9 +477,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND meta.src.community:$community  ",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "By Volume",
@@ -353,7 +488,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -400,7 +535,7 @@
                   {
                     "targetBlank": false,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/afsbp8vveuepsb/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -441,7 +576,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -492,7 +627,7 @@
                 "value": [
                   {
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__data.fields[\"meta.src_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__data.fields[\"meta.src_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -505,10 +640,10 @@
         ]
       },
       "gridPos": {
-        "h": 12,
-        "w": 24,
+        "h": 9,
+        "w": 20,
         "x": 0,
-        "y": 21
+        "y": 30
       },
       "id": 6,
       "options": {
@@ -558,7 +693,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "metrics": [
@@ -587,7 +722,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.src_organization:${confidential:raw} AND meta.src.community:$community AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
           "timeField": "start"
         }
@@ -602,9 +737,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 24,
+        "w": 20,
         "x": 0,
-        "y": 33
+        "y": 39
       },
       "id": 8,
       "options": {
@@ -616,7 +751,7 @@
         "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Destinations\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -624,7 +759,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -643,7 +778,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d"
+                "color": "#5795f24d",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -670,7 +806,7 @@
                   {
                     "targetBlank": false,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -727,7 +863,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -766,7 +902,7 @@
                 "value": [
                   {
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/afsbp8vveuepsb/?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -779,10 +915,10 @@
         ]
       },
       "gridPos": {
-        "h": 12,
-        "w": 24,
+        "h": 8,
+        "w": 20,
         "x": 0,
-        "y": 36
+        "y": 42
       },
       "id": 9,
       "options": {
@@ -801,7 +937,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -832,7 +968,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "metrics": [
@@ -871,9 +1007,9 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND meta.dst.community:$community AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "By Volume",
@@ -882,7 +1018,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -901,7 +1037,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#5795f24d"
+                "color": "#5795f24d",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -928,7 +1065,7 @@
                   {
                     "targetBlank": false,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -969,7 +1106,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -1020,7 +1157,7 @@
                 "value": [
                   {
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1033,10 +1170,10 @@
         ]
       },
       "gridPos": {
-        "h": 12,
-        "w": 24,
+        "h": 8,
+        "w": 20,
         "x": 0,
-        "y": 48
+        "y": 50
       },
       "id": 11,
       "options": {
@@ -1055,7 +1192,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1086,7 +1223,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "metrics": [
@@ -1115,7 +1252,7 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND meta.dst_organization:${confidential:raw} AND meta.dst.community:$community AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
           "timeField": "start"
         }
@@ -1130,9 +1267,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 24,
+        "w": 20,
         "x": 0,
-        "y": 60
+        "y": 58
       },
       "id": 13,
       "options": {
@@ -1144,7 +1281,7 @@
         "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Pairs by Organization\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1152,7 +1289,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -1171,7 +1308,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1198,7 +1336,7 @@
                   {
                     "targetBlank": true,
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1223,7 +1361,7 @@
                 "value": [
                   {
                     "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
+                    "url": "/grafana/d/ffsoxhu8ceolca/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
                   }
                 ]
               },
@@ -1261,7 +1399,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "Largest Task"
+                "value": "Largest File"
               },
               {
                 "id": "custom.width",
@@ -1281,7 +1419,7 @@
             "properties": [
               {
                 "id": "displayName",
-                "value": "# Tasks"
+                "value": "# Files"
               },
               {
                 "id": "unit",
@@ -1370,10 +1508,10 @@
         ]
       },
       "gridPos": {
-        "h": 11,
-        "w": 24,
+        "h": 9,
+        "w": 20,
         "x": 0,
-        "y": 63
+        "y": 61
       },
       "id": 25,
       "options": {
@@ -1392,7 +1530,7 @@
           }
         ]
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -1423,7 +1561,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "dsType": "elasticsearch",
           "hide": false,
@@ -1479,7 +1617,7 @@
               "type": "max"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
+          "query": "",
           "refId": "A",
           "timeField": "start"
         }
@@ -1513,696 +1651,15 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "#3275d933"
-              },
-              {
-                "color": "#3275d959",
-                "value": 10
-              },
-              {
-                "color": "#3275d973",
-                "value": 20
-              },
-              {
-                "color": "#3275d980",
-                "value": 30
-              },
-              {
-                "color": "#3275d98c",
-                "value": 40
-              },
-              {
-                "color": "#3275d999",
-                "value": 50
-              },
-              {
-                "color": "#3275d9b3",
-                "value": 60
-              },
-              {
-                "color": "#3275d9cc",
-                "value": 70
-              },
-              {
-                "color": "#3275d9e6",
-                "value": 80
-              },
-              {
-                "color": "blue",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 21,
-        "w": 24,
-        "x": 0,
-        "y": 74
-      },
-      "id": 15,
-      "options": {
-        "colorPalette": "customNetSage",
-        "fontSize": 12,
-        "headerColor": "black",
-        "hoverColor": "light-orange",
-        "invertColorPalette": false,
-        "leftHeader": "Source",
-        "numLines": 30,
-        "rightHeader": "Destination",
-        "txtLength": 40
-      },
-      "pluginVersion": "1.1.2",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:365",
-              "fake": true,
-              "field": "meta.src_organization",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:366",
-              "field": "meta.dst_organization",
-              "id": "2",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-          },
-          "metrics": [
-            {
-              "$$hashKey": "object:363",
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "Top 30 Pairs by Volume",
-      "type": "netsage-slopegraph-panel"
-    },
-    {
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "gridPos": {
         "h": 3,
-        "w": 24,
+        "w": 20,
         "x": 0,
-        "y": 95
-      },
-      "id": 26,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eTop Pairs by Resource\u003c/center\u003e\u003c/h1\u003e",
-        "mode": "html"
-      },
-      "pluginVersion": "11.5.4",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "filterable": false,
-            "inspect": false
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bps"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_organization"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Source"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "targetBlank": true,
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
-                  }
-                ]
-              },
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_organization"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Destination"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__value.text:percentencode}\u0026from=${__from}\u0026to=${__to}"
-                  }
-                ]
-              },
-              {
-                "id": "custom.hidden",
-                "value": true
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Sum"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Total Vol."
-              },
-              {
-                "id": "custom.width",
-                "value": 100
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max values.num_bits"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Largest Task"
-              },
-              {
-                "id": "custom.width",
-                "value": 103
-              },
-              {
-                "id": "unit",
-                "value": "decbytes"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Count"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "# Tasks"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Average"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Avg Rate"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Max values.bits_per_second"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Peak Rate"
-              },
-              {
-                "id": "custom.width",
-                "value": 100
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.src_resource_name"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Source"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__data.fields[\"meta.src_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "meta.dst_resource_name"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Destination"
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "See more information about ${__value.text}",
-                    "url": "/grafana/d/QfzDJKhil/?var-Organization=${__data.fields[\"meta.dst_organization\"]}\u0026var-resource=${__value.text:percentcode}\u0026from=${__from}\u0026to=${__to}"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 98
-      },
-      "id": 14,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": ["sum"],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "Total Vol."
-          }
-        ]
-      },
-      "pluginVersion": "11.5.4",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:774",
-              "fake": true,
-              "field": "meta.src_organization",
-              "id": "8",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:775",
-              "fake": true,
-              "field": "meta.src_resource_name",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.dst_organization",
-              "id": "11",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "meta.dst_resource_name",
-              "id": "12",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-          },
-          "dsType": "elasticsearch",
-          "hide": false,
-          "metrics": [
-            {
-              "$$hashKey": "object:764",
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            },
-            {
-              "$$hashKey": "object:765",
-              "field": "values.num_bits",
-              "id": "5",
-              "inlineScript": "_value / 8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value / 8"
-                }
-              },
-              "type": "max"
-            },
-            {
-              "$$hashKey": "object:766",
-              "field": "meta.id",
-              "id": "7",
-              "meta": {},
-              "settings": {},
-              "type": "count"
-            },
-            {
-              "$$hashKey": "object:767",
-              "field": "values.bits_per_second",
-              "id": "9",
-              "meta": {},
-              "settings": {},
-              "type": "avg"
-            },
-            {
-              "$$hashKey": "object:768",
-              "field": "values.bits_per_second",
-              "id": "10",
-              "meta": {},
-              "settings": {},
-              "type": "max"
-            }
-          ],
-          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "Top Pairs",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "meta.dst_organization": false,
-              "meta.dst_resource_name": false,
-              "meta.src_organization": false
-            },
-            "includeByName": {},
-            "indexByName": {
-              "Average": 6,
-              "Count": 8,
-              "Max values.bits_per_second": 7,
-              "Max values.num_bits": 5,
-              "Sum": 4,
-              "meta.dst_organization": 3,
-              "meta.dst_resource_name": 1,
-              "meta.src_organization": 2,
-              "meta.src_resource_name": 0
-            },
-            "renameByName": {}
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "#3275d933"
-              },
-              {
-                "color": "#3275d959",
-                "value": 10
-              },
-              {
-                "color": "#3275d973",
-                "value": 20
-              },
-              {
-                "color": "#3275d980",
-                "value": 30
-              },
-              {
-                "color": "#3275d98c",
-                "value": 40
-              },
-              {
-                "color": "#3275d999",
-                "value": 50
-              },
-              {
-                "color": "#3275d9b3",
-                "value": 60
-              },
-              {
-                "color": "#3275d9cc",
-                "value": 70
-              },
-              {
-                "color": "#3275d9e6",
-                "value": 80
-              },
-              {
-                "color": "blue",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 21,
-        "w": 24,
-        "x": 0,
-        "y": 109
-      },
-      "id": 27,
-      "options": {
-        "colorPalette": "customNetSage",
-        "fontSize": 12,
-        "headerColor": "black",
-        "hoverColor": "light-orange",
-        "invertColorPalette": false,
-        "leftHeader": "Source",
-        "numLines": 30,
-        "rightHeader": "Destination",
-        "txtLength": 40
-      },
-      "pluginVersion": "1.1.2",
-      "targets": [
-        {
-          "bucketAggs": [
-            {
-              "$$hashKey": "object:365",
-              "fake": true,
-              "field": "meta.src_resource_name",
-              "id": "3",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            },
-            {
-              "$$hashKey": "object:366",
-              "field": "meta.dst_resource_name",
-              "id": "2",
-              "settings": {
-                "min_doc_count": 1,
-                "order": "desc",
-                "orderBy": "1",
-                "size": "50"
-              },
-              "type": "terms"
-            }
-          ],
-          "datasource": {
-            "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-          },
-          "metrics": [
-            {
-              "$$hashKey": "object:363",
-              "field": "values.num_bits",
-              "id": "1",
-              "inlineScript": "_value/8",
-              "meta": {},
-              "settings": {
-                "script": {
-                  "inline": "_value/8"
-                }
-              },
-              "type": "sum"
-            }
-          ],
-          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community) AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope)",
-          "refId": "A",
-          "timeField": "start"
-        }
-      ],
-      "title": "Top 30 Pairs by Volume",
-      "type": "netsage-slopegraph-panel"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 130
+        "y": 70
       },
       "id": 20,
       "options": {
@@ -2211,10 +1668,10 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eOther Globus Tasks Statistics Related To Selected Sensor(s)\u003c/center\u003e\u003c/h1\u003e",
+        "content": "\u003ch1 style=\"margin-top:35px;\"\u003e\u003ccenter\u003eOther Statistics Related To Selected Sensor(s)\u003c/center\u003e\u003c/h1\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2222,7 +1679,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -2241,7 +1698,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue"
+                "color": "light-blue",
+                "value": null
               },
               {
                 "color": "light-blue",
@@ -2259,9 +1717,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 24,
+        "w": 20,
         "x": 0,
-        "y": 133
+        "y": 73
       },
       "id": 18,
       "interval": "1h",
@@ -2285,7 +1743,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "targets": [
         {
           "bucketAggs": [
@@ -2303,7 +1761,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -2315,12 +1773,12 @@
               "type": "count"
             }
           ],
-          "query": "meta.sensor_id:$Sensors AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND (meta.src.community:$community OR meta.dst.community:$community)",
+          "query": "",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "title": "Total Number of Tasks Distributed Over Selected Time Period",
+      "title": "Total Number of Files Transfered Distributed Over Selected Time Period",
       "transparent": true,
       "type": "stat"
     },
@@ -2332,9 +1790,9 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 24,
+        "w": 20,
         "x": 0,
-        "y": 136
+        "y": 76
       },
       "id": 28,
       "options": {
@@ -2346,7 +1804,7 @@
         "content": "\u003cdiv\u003eQuestions, concerns, or other issues: \n  \u003ca href=\"mailto:epoc@tacc.utexas.edu\"\u003eepoc@tacc.utexas.edu\u003c/a\u003e\n  \u003c/img\u003e \n  \u003cimg style=\"margin-left:30px\"\" src=\"https://netsage-project.github.io/Science-Registry/tacc.svg\" width=120 height=50\u003e \n  \u003cspan style=\"float:right; position:relative; top:15px\"\u003e \u003ca target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://netsage-project.github.io/Science-Registry/EPOC-Data-Privacy.pdf\"\u003e NetSage Data Policy \u003c/a\u003e \n\u003c/div\u003e",
         "mode": "html"
       },
-      "pluginVersion": "11.5.4",
+      "pluginVersion": "11.5.5",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2355,75 +1813,9 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 40,
-  "tags": ["Globus task"],
+  "tags": [],
   "templating": {
     "list": [
-      {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 2,
-        "includeAll": true,
-        "multi": true,
-        "name": "Sensors",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "refresh": 2,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "allValue": "*",
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "hide": 2,
-        "includeAll": true,
-        "label": "Scope",
-        "multi": true,
-        "name": "country_scope",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "(-Private)",
-          "value": "(-Private)"
-        },
-        "includeAll": false,
-        "label": "Display Private Tasks",
-        "name": "confidential",
-        "options": [
-          {
-            "selected": false,
-            "text": "Yes",
-            "value": "*"
-          },
-          {
-            "selected": true,
-            "text": "No",
-            "value": "(-Private)"
-          }
-        ],
-        "query": "Yes : *, No : (-Private)",
-        "type": "custom"
-      },
       {
         "current": {
           "text": "preferred_org",
@@ -2446,32 +1838,12 @@
         ],
         "query": "No : preferred_org, Yes : resource_name",
         "type": "custom"
-      },
-      {
-        "current": {
-          "text": ["All"],
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
-        "includeAll": true,
-        "label": "Community",
-        "multi": true,
-        "name": "community",
-        "options": [],
-        "query": "{\"find\":\"terms\",\"field\":\"meta.src.community\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "2025-06-19T18:46:18.728Z",
-    "to": "2025-06-26T18:46:18.728Z"
+    "from": "now-6M",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -2487,8 +1859,8 @@
     ]
   },
   "timezone": "",
-  "title": "What are the top sources/destinations of Globus tasks?",
-  "uid": "xk26IFhml",
-  "version": 2,
+  "title": "What are the top sources/destinations of V Rubin Files Transfers?",
+  "uid": "efsbhqrc8iqrke",
+  "version": 5,
   "weekStart": ""
 }

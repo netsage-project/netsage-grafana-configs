@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 20,
+  "id": 32,
   "links": [],
   "panels": [
     {
@@ -46,7 +46,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Globus Tasks\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows per-Globus Task level data, given a particular source and destination organization.\u003c/li\u003e\n  \u003cli\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) for the top 1000 largest tasks.\u003c/li\u003e\n  \u003cli\u003eClick on the timestamp of an individual task to show more detailed information about that task.\u003c/li\u003e\n \u003cli\u003eGlobus Task datasets have been de-identified. Globus Tasks where the organization is not disclosed are marked \"Private\". \u003c/li\u003e\n\u003cli\u003ePrivate Task data rates and totals are available via the toggle at the top of this dashboard. \u003c/li\u003e\n \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
+        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual V. Rubin Transfers\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows file level data, given a particular source and destination organization.\u003c/li\u003e\n  \u003cli\u003eThe table shows the volume, rate, duration (in hours, minutes and seconds) for the top 1000 largest files.\u003c/li\u003e\n  \u003cli\u003eClick on the timestamp of an individual transfer to show more detailed information about that transfer.\u003c/li\u003e\n \u003cli\u003eIPs  have been de-identified. \n \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.5",
@@ -57,7 +57,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -95,8 +95,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
-        "x": 4,
+        "w": 4,
+        "x": 3,
         "y": 6
       },
       "id": 45,
@@ -138,7 +138,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -150,19 +150,19 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
-      "title": "# Tasks",
+      "title": "# Files",
       "transparent": true,
       "type": "stat"
     },
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -201,8 +201,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
-        "x": 9,
+        "w": 4,
+        "x": 7,
         "y": 6
       },
       "id": 35,
@@ -244,7 +244,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -261,9 +261,9 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors  AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Total Volume",
@@ -273,7 +273,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -312,8 +312,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 5,
-        "x": 14,
+        "w": 4,
+        "x": 11,
         "y": 6
       },
       "id": 21,
@@ -355,7 +355,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -367,12 +367,129 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
-      "title": "Avg Rate",
+      "title": "Avgerage Rate",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "dfsosh8vml24gc"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 0
+              },
+              {
+                "color": "light-blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 15,
+        "y": 6
+      },
+      "id": 66,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": ["mean"]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["mean"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.5",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "$$hashKey": "object:130",
+              "field": "start",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "dfsosh8vml24gc"
+          },
+          "metrics": [
+            {
+              "field": "values.num_bits",
+              "hide": true,
+              "id": "1",
+              "type": "sum"
+            },
+            {
+              "id": "3",
+              "pipelineVariables": [
+                {
+                  "name": "total_bits",
+                  "pipelineAgg": "1"
+                }
+              ],
+              "settings": {
+                "script": "(double) params.total_bits / 86400"
+              },
+              "type": "bucket_script"
+            }
+          ],
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest  ",
+          "refId": "A",
+          "timeField": "@timestamp"
+        }
+      ],
+      "title": "Aggregate Rate",
       "transparent": true,
       "type": "stat"
     },
@@ -405,7 +522,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -491,7 +608,7 @@
                   {
                     "targetBlank": true,
                     "title": "Show more information about this task",
-                    "url": "/grafana/d/nzuMyBcGl/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
+                    "url": "/grafana/d/efsbhma9393b4f/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
                   }
                 ]
               },
@@ -657,22 +774,11 @@
                 "size": "0"
               },
               "type": "terms"
-            },
-            {
-              "field": "meta.num_files",
-              "id": "34",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
             }
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "hide": false,
           "metrics": [
@@ -706,12 +812,12 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
-      "title": "Globus Tasks from Source to Destination",
+      "title": "Transfers from Source to Destination",
       "transformations": [
         {
           "id": "organize",
@@ -765,7 +871,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -783,8 +889,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -830,7 +935,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -847,9 +952,9 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "By Volume",
@@ -858,7 +963,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -876,8 +981,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -923,7 +1027,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -935,7 +1039,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$src AND meta.dst_organization:$dest AND meta.src_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$src AND meta.dst_organization:$dest ",
           "refId": "A",
           "timeField": "start"
         }
@@ -972,7 +1076,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -992,8 +1096,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1054,7 +1157,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1066,19 +1169,19 @@
               "type": "count"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
-      "title": "# Tasks",
+      "title": "# Files",
       "transparent": true,
       "type": "stat"
     },
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -1098,8 +1201,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1160,7 +1262,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1177,9 +1279,9 @@
               "type": "sum"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Total Volume",
@@ -1189,7 +1291,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -1209,8 +1311,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "light-blue",
-                "value": null
+                "color": "light-blue"
               },
               {
                 "color": "light-blue",
@@ -1271,7 +1372,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -1283,9 +1384,9 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src  ",
           "refId": "A",
-          "timeField": "start"
+          "timeField": "@timestamp"
         }
       ],
       "title": "Avg Rate",
@@ -1295,7 +1396,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -1315,8 +1416,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1341,8 +1441,8 @@
                 "value": [
                   {
                     "targetBlank": true,
-                    "title": "Show more information about this task",
-                    "url": "/grafana/d/nzuMyBcGl/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
+                    "title": "Show more information about this file",
+                    "url": "/grafana/d/efsbhma9393b4f/?var-flow=${__data.fields[\"Flow ID\"]}\u0026from=${__from}\u0026to=${__to}\u0026var-timestamp=${__value.numeric}"
                   }
                 ]
               },
@@ -1552,22 +1652,11 @@
                 "size": "0"
               },
               "type": "terms"
-            },
-            {
-              "field": "meta.num_files",
-              "id": "34",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
             }
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+            "uid": "dfsosh8vml24gc"
           },
           "hide": false,
           "metrics": [
@@ -1601,12 +1690,12 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src ",
           "refId": "A",
           "timeField": "start"
         }
       ],
-      "title": "Globus Tasks from Source to Destination (Reverse)",
+      "title": "File Transfers from Source to Destination (Reverse)",
       "transformations": [
         {
           "id": "organize",
@@ -1676,8 +1765,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1827,7 +1915,7 @@
               "type": "avg"
             }
           ],
-          "query": "meta.src_organization:$dest AND meta.dst_organization:$src AND meta.dst_resource_name:$src_resource AND (${internal:raw}(meta.src_organization:$src AND meta.dst_organization:$src)) AND (meta.src_organization:${confidential:raw} AND meta.dst_organization:${confidential:raw}) AND meta.sensor_id:$sensors AND ((!(_exists_:meta.country_scope)) OR meta.country_scope:$country_scope) AND (( (!(_exists_:meta.src_ip)) OR meta.src_ip:${subnet.regex}*) OR ( (!(_exists_:meta.dst_ip)) OR meta.dst_ip:${subnet.regex}*))",
+          "query": "meta.src_organization:$dest AND meta.dst_organization:$src ",
           "refId": "A",
           "timeField": "start"
         }
@@ -1866,18 +1954,18 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 40,
-  "tags": ["Globus task"],
+  "tags": [],
   "templating": {
     "list": [
       {
         "allValue": "*",
         "current": {
-          "text": ["Texas Advanced Computing Center (TACC)"],
-          "value": ["Texas Advanced Computing Center (TACC)"]
+          "text": ["Renater"],
+          "value": ["Renater"]
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          "uid": "dfsosh8vml24gc"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.src_organization\", \"query\": \"\", \"size\": 100000} ",
         "includeAll": false,
@@ -1891,34 +1979,14 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
-        "includeAll": true,
-        "label": "Source Resource",
-        "multi": true,
-        "name": "src_resource",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.src_resource_name\", \"query\":\"meta.src_organization:$src\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
         "allValue": "*",
         "current": {
-          "text": "All",
-          "value": ["$__all"]
+          "text": ["SLAC National Accelerator Laboratory (SLAC)"],
+          "value": ["SLAC National Accelerator Laboratory (SLAC)"]
         },
         "datasource": {
           "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
+          "uid": "dfsosh8vml24gc"
         },
         "definition": "{\"find\":\"terms\", \"field\":\"meta.dst_organization\", \"query\": \"\", \"size\": 100000}",
         "includeAll": true,
@@ -1930,123 +1998,17 @@
         "refresh": 2,
         "regex": "",
         "type": "query"
-      },
-      {
-        "current": {
-          "text": "(-Private)",
-          "value": "(-Private)"
-        },
-        "includeAll": false,
-        "label": "Display Private Tasks",
-        "name": "confidential",
-        "options": [
-          {
-            "selected": false,
-            "text": "Yes",
-            "value": "*"
-          },
-          {
-            "selected": true,
-            "text": "No",
-            "value": "(-Private)"
-          }
-        ],
-        "query": "Yes : *, No : (-Private)",
-        "type": "custom"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": ["$__all"]
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "hide": 2,
-        "includeAll": true,
-        "label": "Sensors",
-        "multi": true,
-        "name": "sensors",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.sensor_id\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "allValue": "*",
-        "current": {
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "elasticsearch",
-          "uid": "b55c4c1f-9767-448d-8eb9-f5ceb31f2476"
-        },
-        "definition": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
-        "hide": 2,
-        "includeAll": true,
-        "label": "Scope",
-        "multi": true,
-        "name": "country_scope",
-        "options": [],
-        "query": "{\"find\":\"terms\", \"field\":\"meta.country_scope\", \"query\":\"meta.src_organization:$src AND meta.dst_organization:$dest\"}",
-        "refresh": 2,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "",
-          "value": ""
-        },
-        "label": "Subnet",
-        "name": "subnet",
-        "options": [
-          {
-            "selected": true,
-            "text": "",
-            "value": ""
-          }
-        ],
-        "query": "",
-        "type": "textbox"
-      },
-      {
-        "current": {
-          "text": "*",
-          "value": "*"
-        },
-        "includeAll": false,
-        "label": "Display Internal Transfers",
-        "name": "internal",
-        "options": [
-          {
-            "selected": true,
-            "text": "Yes",
-            "value": "*"
-          },
-          {
-            "selected": false,
-            "text": "No",
-            "value": "!"
-          }
-        ],
-        "query": "Yes : *, No : !",
-        "type": "custom"
       }
     ]
   },
   "time": {
-    "from": "2026-03-17T16:47:11.772Z",
-    "to": "2026-03-24T16:47:11.772Z"
+    "from": "2026-01-22T15:34:42.935Z",
+    "to": "2026-07-22T14:34:42.935Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "What do individual Globus tasks by organization look like?",
-  "uid": "-l3_u8nWl",
-  "version": 2,
+  "title": "What do individual V Rubin transfers by organization look like?",
+  "uid": "dfsbhtkemmebkc",
+  "version": 9,
   "weekStart": ""
 }

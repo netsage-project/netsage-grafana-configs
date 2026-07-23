@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 33,
   "links": [],
   "panels": [
     {
@@ -45,7 +45,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual Flow Information\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows additional flow information for the selected flow.\u003c/li\u003e\n  \u003cli\u003eThe first table shows information common to both endpoints, while the other tables show information unique to each endpoint.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n\n\u003c!-- Global site tag (gtag.js) - Google Analytics --\u003e\n\u003cscript async src=\"https://www.googletagmanager.com/gtag/js?id=UA-142763676-1\"\u003e\u003c/script\u003e\n\u003cscript\u003e\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'UA-142763676-1');\n\u003c/script\u003e\n",
+        "content": "\n\u003cfont color=\"#5794f2\"\u003e\n\u003cblockquote style=\"margin-top: 0px\"\u003e\n  \u003ch1\u003e\u003cb\u003eIndividual File Transfer Information\u003c/b\u003e\u003c/h1\u003e\n\u003c/font\u003e\n\n  \u003cli\u003eThis dashboard shows additional information for the selected file.\n  \u003cli\u003eThe first table shows information common to both endpoints, while the other tables show information unique to each endpoint.\u003c/li\u003e\n  \u003cli\u003eAll times are displayed in browser local time.\u003c/li\u003e\n\u003c/blockquote\u003e\n",
         "mode": "markdown"
       },
       "pluginVersion": "11.5.5",
@@ -56,7 +56,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -116,7 +116,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -145,7 +145,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -184,7 +184,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
+        "w": 5,
         "x": 13,
         "y": 5
       },
@@ -227,7 +227,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -251,7 +251,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "dfsosh8vml24gc"
       },
       "fieldConfig": {
         "defaults": {
@@ -403,11 +403,22 @@
                 "size": "0"
               },
               "type": "terms"
+            },
+            {
+              "field": "meta.num_files",
+              "id": "11",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
             }
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "dfsosh8vml24gc"
           },
           "metrics": [
             {
@@ -452,6 +463,7 @@
               "Count": "",
               "_id": "Flow ID",
               "meta.id": "5-Tuple Hash",
+              "meta.num_files": "# Files",
               "meta.protocol": "Protocol",
               "meta.sensor_id": "Sensor",
               "start": "Timestamp"
@@ -464,7 +476,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -628,6 +640,20 @@
               "type": "terms"
             },
             {
+              "$$hashKey": "object:141",
+              "fake": true,
+              "field": "meta.src_resource_name",
+              "id": "43",
+              "settings": {
+                "min_doc_count": "1",
+                "missing": "No Data",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            },
+            {
               "$$hashKey": "object:393",
               "fake": true,
               "field": "meta.scireg.src.project_names",
@@ -689,8 +715,8 @@
               "type": "terms"
             },
             {
-              "field": "meta.src_resource_name",
-              "id": "50",
+              "field": "meta.src.community",
+              "id": "51",
               "settings": {
                 "min_doc_count": "1",
                 "missing": "No Data",
@@ -699,23 +725,11 @@
                 "size": "0"
               },
               "type": "terms"
-            },
-            {
-              "field": "meta.src.community",
-              "id": "51",
-              "settings": {
-                "min_doc_count": "1",
-                "missing": "No Data",
-                "order": "asc",
-                "orderBy": "_term",
-                "size": "0"
-              },
-              "type": "terms"
             }
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "dfsosh8vml24gc"
           },
           "hide": false,
           "metrics": [
@@ -809,7 +823,7 @@
     {
       "datasource": {
         "type": "elasticsearch",
-        "uid": "u1Gafq5Vz"
+        "uid": "dfsosh8vml24gc"
       },
       "description": "",
       "fieldConfig": {
@@ -1049,11 +1063,11 @@
             },
             {
               "field": "meta.dst.community",
-              "id": "50",
+              "id": "51",
               "settings": {
                 "min_doc_count": "1",
                 "missing": "No Data",
-                "order": "asc",
+                "order": "desc",
                 "orderBy": "_term",
                 "size": "0"
               },
@@ -1062,7 +1076,7 @@
           ],
           "datasource": {
             "type": "elasticsearch",
-            "uid": "u1Gafq5Vz"
+            "uid": "dfsosh8vml24gc"
           },
           "hide": false,
           "metrics": [
@@ -1202,7 +1216,7 @@
         "x": 0,
         "y": 25
       },
-      "id": 24,
+      "id": 25,
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1295,7 +1309,7 @@
         "x": 12,
         "y": 25
       },
-      "id": 25,
+      "id": 26,
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1353,7 +1367,7 @@
             "indexByName": {},
             "renameByName": {
               "meta.dst.community": "Destination Communities",
-              "meta.src.community": "Source Communities"
+              "meta.src.community": "Source Community"
             }
           }
         }
@@ -1372,7 +1386,7 @@
         "x": 0,
         "y": 32
       },
-      "id": 26,
+      "id": 24,
       "options": {
         "code": {
           "language": "plaintext",
@@ -1391,13 +1405,13 @@
   "preload": false,
   "refresh": "",
   "schemaVersion": 40,
-  "tags": ["Flow Data"],
+  "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "text": "07de4ec0e4d0d1ca60caea583a86a0e2f0f6d4c9772d12ed84e1f3d85ab146b4",
-          "value": "07de4ec0e4d0d1ca60caea583a86a0e2f0f6d4c9772d12ed84e1f3d85ab146b4"
+          "text": "blank",
+          "value": "blank"
         },
         "hide": 2,
         "includeAll": false,
@@ -1405,7 +1419,7 @@
         "name": "flow",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "blank",
             "value": "blank"
           }
@@ -1415,8 +1429,8 @@
       },
       {
         "current": {
-          "text": "1758148198750",
-          "value": "1758148198750"
+          "text": "blank",
+          "value": "blank"
         },
         "hide": 2,
         "includeAll": false,
@@ -1424,7 +1438,7 @@
         "name": "timestamp",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "blank",
             "value": "blank"
           }
@@ -1435,13 +1449,13 @@
     ]
   },
   "time": {
-    "from": "2025-09-16T12:54:34.129Z",
-    "to": "2025-09-23T12:54:34.129Z"
+    "from": "2026-01-19T21:22:18.621Z",
+    "to": "2026-07-19T20:22:18.621Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Individual Flow Information",
-  "uid": "nzuMyBcGk",
-  "version": 2,
+  "title": "Individual Rubin File Information",
+  "uid": "efsbhma9393b4f",
+  "version": 3,
   "weekStart": ""
 }
